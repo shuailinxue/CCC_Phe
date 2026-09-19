@@ -1,0 +1,9 @@
+{
+  "neighborhood_type": "fixed_radius",
+  "radius_um": 200.0,
+  "ccc_sigma_um": 20.0,
+  "pair_kernel_numerical_cutoff_um": 100.0,
+  "seed": 40700,
+  "K": 8,
+  "NMF_iterations": 500
+}
