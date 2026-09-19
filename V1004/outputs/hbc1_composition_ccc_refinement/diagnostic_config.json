@@ -1,0 +1,9 @@
+{
+  "seed": 40700,
+  "pair_samples_per_category_per_C_state": 2000,
+  "region_display_min_cells": 30,
+  "common_support_rule": "actual opportunity > 0 in both cells or both groups",
+  "K": 8,
+  "neighborhood_k": 30,
+  "sigma_um": 20.0
+}
