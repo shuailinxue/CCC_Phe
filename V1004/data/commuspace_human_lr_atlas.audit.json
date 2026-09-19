@@ -1,0 +1,17 @@
+{
+  "construction": "union of NicheNet v2, CellChat v2, and LIANA human consensus; exact pair deduplication",
+  "pairs": 9311,
+  "source_unique_pairs": {
+    "nichenet_v2": 4986,
+    "cellchat_v2": 3217,
+    "liana_consensus": 4620
+  },
+  "paper_reported_pairs": 9373,
+  "difference_from_paper_frozen_snapshot": -62,
+  "snapshot_note": "The source-version union is retained; no undocumented pairs were added to force 9,373.",
+  "inputs": {
+    "/tmp/nichenet_lr.tsv": "0f9bf2b3c4e0853fe4f05f479a20214148a07de8043fa070abd12b004c577d12",
+    "/tmp/cellchat_human.tsv": "1b7a6f70e520d604df3d6bbf96631f4c575840c071e09a89cf93e7df5978843d",
+    "/tmp/liana-py/src/liana/resource/omni_resource.csv": "b499b56ce084b7afde3462460e25b79c6abc047086833cd95ca42172d78e0b7c"
+  }
+}

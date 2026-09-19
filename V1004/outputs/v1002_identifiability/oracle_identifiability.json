@@ -1,0 +1,565 @@
+{
+  "criterion": {
+    "N1_N2_CS_symmetric_max": 0.6,
+    "N1_N2_IS_min": 0.9,
+    "N3_N4_CS_min": 0.9,
+    "N3_N4_IS_symmetric_max": 0.6,
+    "BG_vs_niche_min": 0.9
+  },
+  "protocol": "leave-one-independent-tissue-out; 2 tissues train, 1 tissue test; fixed common phenotype-free feature mask",
+  "attempts": [
+    {
+      "variant": 0,
+      "change": "Historical v2 generator; no repair (baseline audit)",
+      "passed": false,
+      "common_features": 15418,
+      "rows": [
+        {
+          "seed": 33700,
+          "N1_N2": {
+            "CS_AUC": 0.2929,
+            "IS_AUC": 0.9996999999999999,
+            "CS_centroid_cosine": 0.9359005093574524,
+            "IS_centroid_cosine": 0.420407772064209
+          },
+          "N3_N4": {
+            "CS_AUC": 0.7801,
+            "IS_AUC": 0.6577,
+            "CS_centroid_cosine": 0.8351981043815613,
+            "IS_centroid_cosine": 0.8373101353645325
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9756230769230769,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161057472229004,
+            "diameter_ratio": 2.6107106858469056,
+            "interior_fraction_by_niche": {
+              "1": 0.63,
+              "2": 0.66,
+              "3": 0.66,
+              "4": 0.67,
+              "5": 0.67
+            }
+          }
+        },
+        {
+          "seed": 33701,
+          "N1_N2": {
+            "CS_AUC": 0.4635,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9449653625488281,
+            "IS_centroid_cosine": 0.4316125512123108
+          },
+          "N3_N4": {
+            "CS_AUC": 0.7846000000000001,
+            "IS_AUC": 0.7395,
+            "CS_centroid_cosine": 0.859730064868927,
+            "IS_centroid_cosine": 0.813351035118103
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9852715384615385,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.1623001098632812,
+            "diameter_ratio": 2.6092103541697043,
+            "interior_fraction_by_niche": {
+              "1": 0.65,
+              "2": 0.66,
+              "3": 0.65,
+              "4": 0.66,
+              "5": 0.62
+            }
+          }
+        },
+        {
+          "seed": 33702,
+          "N1_N2": {
+            "CS_AUC": 0.5075999999999999,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9515292644500732,
+            "IS_centroid_cosine": 0.41515496373176575
+          },
+          "N3_N4": {
+            "CS_AUC": 0.6870999999999999,
+            "IS_AUC": 0.806,
+            "CS_centroid_cosine": 0.9413518309593201,
+            "IS_centroid_cosine": 0.8734899759292603
+          },
+          "background_vs_niche_CS_IS_AUC": 0.983443076923077,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161505699157715,
+            "diameter_ratio": 2.610169308216985,
+            "interior_fraction_by_niche": {
+              "1": 0.66,
+              "2": 0.66,
+              "3": 0.64,
+              "4": 0.62,
+              "5": 0.67
+            }
+          }
+        }
+      ]
+    },
+    {
+      "variant": 1,
+      "change": "Match N1/N2 realized cell-type counts and local type pattern",
+      "passed": false,
+      "common_features": 15805,
+      "rows": [
+        {
+          "seed": 33700,
+          "N1_N2": {
+            "CS_AUC": 0.47570000000000007,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9992198944091797,
+            "IS_centroid_cosine": 0.44325366616249084
+          },
+          "N3_N4": {
+            "CS_AUC": 0.7801,
+            "IS_AUC": 0.7392000000000001,
+            "CS_centroid_cosine": 0.8351981043815613,
+            "IS_centroid_cosine": 0.8320647478103638
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9874876923076923,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161057472229004,
+            "diameter_ratio": 2.6107106858469056,
+            "interior_fraction_by_niche": {
+              "1": 0.63,
+              "2": 0.66,
+              "3": 0.66,
+              "4": 0.67,
+              "5": 0.67
+            }
+          }
+        },
+        {
+          "seed": 33701,
+          "N1_N2": {
+            "CS_AUC": 0.5089,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.996503472328186,
+            "IS_centroid_cosine": 0.44630083441734314
+          },
+          "N3_N4": {
+            "CS_AUC": 0.7846000000000001,
+            "IS_AUC": 0.7765999999999998,
+            "CS_centroid_cosine": 0.859730064868927,
+            "IS_centroid_cosine": 0.8406067490577698
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9834799999999999,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.1623001098632812,
+            "diameter_ratio": 2.6092103541697043,
+            "interior_fraction_by_niche": {
+              "1": 0.65,
+              "2": 0.66,
+              "3": 0.65,
+              "4": 0.66,
+              "5": 0.62
+            }
+          }
+        },
+        {
+          "seed": 33702,
+          "N1_N2": {
+            "CS_AUC": 0.5149,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.997711718082428,
+            "IS_centroid_cosine": 0.4781357944011688
+          },
+          "N3_N4": {
+            "CS_AUC": 0.6870999999999999,
+            "IS_AUC": 0.6804999999999999,
+            "CS_centroid_cosine": 0.9413518309593201,
+            "IS_centroid_cosine": 0.8699303269386292
+          },
+          "background_vs_niche_CS_IS_AUC": 0.985933846153846,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161505699157715,
+            "diameter_ratio": 2.610169308216985,
+            "interior_fraction_by_niche": {
+              "1": 0.66,
+              "2": 0.66,
+              "3": 0.64,
+              "4": 0.62,
+              "5": 0.67
+            }
+          }
+        }
+      ]
+    },
+    {
+      "variant": 2,
+      "change": "Pair B composition differs by swapping CCC-silent types 6/7",
+      "passed": false,
+      "common_features": 15166,
+      "rows": [
+        {
+          "seed": 33700,
+          "N1_N2": {
+            "CS_AUC": 0.47570000000000007,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9992198944091797,
+            "IS_centroid_cosine": 0.4421917200088501
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9092,
+            "IS_AUC": 0.7487999999999999,
+            "CS_centroid_cosine": 0.6944021582603455,
+            "IS_centroid_cosine": 0.8470976948738098
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9844923076923077,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161057472229004,
+            "diameter_ratio": 2.6107106858469056,
+            "interior_fraction_by_niche": {
+              "1": 0.63,
+              "2": 0.66,
+              "3": 0.66,
+              "4": 0.67,
+              "5": 0.67
+            }
+          }
+        },
+        {
+          "seed": 33701,
+          "N1_N2": {
+            "CS_AUC": 0.5089,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.996503472328186,
+            "IS_centroid_cosine": 0.4530692994594574
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9091,
+            "IS_AUC": 0.7836,
+            "CS_centroid_cosine": 0.6991742849349976,
+            "IS_centroid_cosine": 0.8047460317611694
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9855092307692308,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.1623001098632812,
+            "diameter_ratio": 2.6092103541697043,
+            "interior_fraction_by_niche": {
+              "1": 0.65,
+              "2": 0.66,
+              "3": 0.65,
+              "4": 0.66,
+              "5": 0.62
+            }
+          }
+        },
+        {
+          "seed": 33702,
+          "N1_N2": {
+            "CS_AUC": 0.5149,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.997711718082428,
+            "IS_centroid_cosine": 0.4693906307220459
+          },
+          "N3_N4": {
+            "CS_AUC": 0.8866,
+            "IS_AUC": 0.7247999999999999,
+            "CS_centroid_cosine": 0.7348352670669556,
+            "IS_centroid_cosine": 0.8257448077201843
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9762876923076923,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161505699157715,
+            "diameter_ratio": 2.610169308216985,
+            "interior_fraction_by_niche": {
+              "1": 0.66,
+              "2": 0.66,
+              "3": 0.64,
+              "4": 0.62,
+              "5": 0.67
+            }
+          }
+        }
+      ]
+    },
+    {
+      "variant": 3,
+      "change": "Pair B types 6/7 have zero LR molecular template before count sampling",
+      "passed": false,
+      "common_features": 14354,
+      "rows": [
+        {
+          "seed": 33700,
+          "N1_N2": {
+            "CS_AUC": 0.47570000000000007,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9992198944091797,
+            "IS_centroid_cosine": 0.4320405423641205
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9092,
+            "IS_AUC": 0.4832,
+            "CS_centroid_cosine": 0.6944021582603455,
+            "IS_centroid_cosine": 0.8418285846710205
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9858784615384615,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161057472229004,
+            "diameter_ratio": 2.6107106858469056,
+            "interior_fraction_by_niche": {
+              "1": 0.63,
+              "2": 0.66,
+              "3": 0.66,
+              "4": 0.67,
+              "5": 0.67
+            }
+          }
+        },
+        {
+          "seed": 33701,
+          "N1_N2": {
+            "CS_AUC": 0.5089,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.996503472328186,
+            "IS_centroid_cosine": 0.45592644810676575
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9091,
+            "IS_AUC": 0.5216,
+            "CS_centroid_cosine": 0.6991742849349976,
+            "IS_centroid_cosine": 0.8262908458709717
+          },
+          "background_vs_niche_CS_IS_AUC": 0.98836,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.1623001098632812,
+            "diameter_ratio": 2.6092103541697043,
+            "interior_fraction_by_niche": {
+              "1": 0.65,
+              "2": 0.66,
+              "3": 0.65,
+              "4": 0.66,
+              "5": 0.62
+            }
+          }
+        },
+        {
+          "seed": 33702,
+          "N1_N2": {
+            "CS_AUC": 0.5149,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.997711718082428,
+            "IS_centroid_cosine": 0.4573087692260742
+          },
+          "N3_N4": {
+            "CS_AUC": 0.8866,
+            "IS_AUC": 0.46320000000000006,
+            "CS_centroid_cosine": 0.7348352670669556,
+            "IS_centroid_cosine": 0.8287029266357422
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9837661538461538,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161505699157715,
+            "diameter_ratio": 2.610169308216985,
+            "interior_fraction_by_niche": {
+              "1": 0.66,
+              "2": 0.66,
+              "3": 0.64,
+              "4": 0.62,
+              "5": 0.67
+            }
+          }
+        }
+      ]
+    },
+    {
+      "variant": 4,
+      "change": "Increase Pair B 6/7 composition separation only (.24 to .30 swing)",
+      "passed": false,
+      "common_features": 14547,
+      "rows": [
+        {
+          "seed": 33700,
+          "N1_N2": {
+            "CS_AUC": 0.47570000000000007,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9992198944091797,
+            "IS_centroid_cosine": 0.4322553277015686
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9737,
+            "IS_AUC": 0.6391,
+            "CS_centroid_cosine": 0.5759216547012329,
+            "IS_centroid_cosine": 0.8416341543197632
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9836815384615385,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161057472229004,
+            "diameter_ratio": 2.6107106858469056,
+            "interior_fraction_by_niche": {
+              "1": 0.63,
+              "2": 0.66,
+              "3": 0.66,
+              "4": 0.67,
+              "5": 0.67
+            }
+          }
+        },
+        {
+          "seed": 33701,
+          "N1_N2": {
+            "CS_AUC": 0.5089,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.996503472328186,
+            "IS_centroid_cosine": 0.45508700609207153
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9761,
+            "IS_AUC": 0.5034,
+            "CS_centroid_cosine": 0.568520188331604,
+            "IS_centroid_cosine": 0.8247774839401245
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9868676923076923,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.1623001098632812,
+            "diameter_ratio": 2.6092103541697043,
+            "interior_fraction_by_niche": {
+              "1": 0.65,
+              "2": 0.66,
+              "3": 0.65,
+              "4": 0.66,
+              "5": 0.62
+            }
+          }
+        },
+        {
+          "seed": 33702,
+          "N1_N2": {
+            "CS_AUC": 0.5149,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.997711718082428,
+            "IS_centroid_cosine": 0.46730753779411316
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9657,
+            "IS_AUC": 0.6905,
+            "CS_centroid_cosine": 0.616144061088562,
+            "IS_centroid_cosine": 0.8163040280342102
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9845230769230768,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 2.161505699157715,
+            "diameter_ratio": 2.610169308216985,
+            "interior_fraction_by_niche": {
+              "1": 0.66,
+              "2": 0.66,
+              "3": 0.64,
+              "4": 0.62,
+              "5": 0.67
+            }
+          }
+        }
+      ]
+    },
+    {
+      "variant": 5,
+      "change": "Use 12-neighbor local radius; keep physical domains and LR biology fixed",
+      "passed": false,
+      "common_features": 14547,
+      "rows": [
+        {
+          "seed": 33700,
+          "N1_N2": {
+            "CS_AUC": 0.47390000000000004,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9992036819458008,
+            "IS_centroid_cosine": 0.42949068546295166
+          },
+          "N3_N4": {
+            "CS_AUC": 0.97,
+            "IS_AUC": 0.6118000000000001,
+            "CS_centroid_cosine": 0.576947808265686,
+            "IS_centroid_cosine": 0.8346279263496399
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9789215384615384,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 1.984793782234192,
+            "diameter_ratio": 2.842560212540941,
+            "interior_fraction_by_niche": {
+              "1": 0.65,
+              "2": 0.67,
+              "3": 0.65,
+              "4": 0.67,
+              "5": 0.68
+            }
+          }
+        },
+        {
+          "seed": 33701,
+          "N1_N2": {
+            "CS_AUC": 0.5127,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9964891076087952,
+            "IS_centroid_cosine": 0.45252344012260437
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9728,
+            "IS_AUC": 0.5252,
+            "CS_centroid_cosine": 0.565708339214325,
+            "IS_centroid_cosine": 0.830935001373291
+          },
+          "background_vs_niche_CS_IS_AUC": 0.977216923076923,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 1.9840975999832153,
+            "diameter_ratio": 2.8435576130555726,
+            "interior_fraction_by_niche": {
+              "1": 0.69,
+              "2": 0.68,
+              "3": 0.61,
+              "4": 0.67,
+              "5": 0.64
+            }
+          }
+        },
+        {
+          "seed": 33702,
+          "N1_N2": {
+            "CS_AUC": 0.5146000000000001,
+            "IS_AUC": 1.0,
+            "CS_centroid_cosine": 0.9974714517593384,
+            "IS_centroid_cosine": 0.4694782495498657
+          },
+          "N3_N4": {
+            "CS_AUC": 0.9634,
+            "IS_AUC": 0.6559,
+            "CS_centroid_cosine": 0.6111560463905334,
+            "IS_centroid_cosine": 0.8255739808082581
+          },
+          "background_vs_niche_CS_IS_AUC": 0.9839261538461538,
+          "physical": {
+            "equivalent_niche_diameter": 11.283791670955125,
+            "median_neighborhood_radius": 1.9859894514083862,
+            "diameter_ratio": 2.8408488431177465,
+            "interior_fraction_by_niche": {
+              "1": 0.67,
+              "2": 0.67,
+              "3": 0.66,
+              "4": 0.63,
+              "5": 0.68
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "selected_variant": null
+}

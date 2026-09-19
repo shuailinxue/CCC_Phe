@@ -1,0 +1,25 @@
+{
+  "inherited_v999_python_files_changed": [],
+  "new_python_sha256": {
+    "src/phenoniche/simulation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/phenoniche/simulation/structured_ccc.py": "f21fad7e360904ab21728a68f440caeddafb0551b6d08bdc6766128664f52779",
+    "src/phenoniche/training/st_first.py": "1820fb47c5bc6837c2f0fa1320480da51376276fd19f223468798aec0511ba88",
+    "src/phenoniche/training/iterative_refinement.py": "6364190bacb410c35f781508d6488cd78f3e74ccf42e203c3aaff02cc6185d06",
+    "src/phenoniche/model/adapters.py": "50d745cba16d0a5442a649c5dc641af92917c200587d2fe788a9a17242d02b31",
+    "src/phenoniche/evaluation/niche_stability.py": "e59dd3c53d19675d29aaba9cd8ace0f26faa0162fa3ebac7633352b8a5e29a30",
+    "src/phenoniche/evaluation/structured_st_first_benchmark.py": "49383134edf6dcf0d0958cbb9eb2f2cf61263cba4bd3b530f76c289dbd67a0fa",
+    "scripts/run_structured_st_first.py": "a0e3e45a5122c8668f1d5a178c10fbff863610dd1ba8f159edfff27dc1dd8811",
+    "tests/test_structured_simulation.py": "b56b9bbcbab6846b7da629c785db2d8a4055b859ea687bd76b9fbfb305e3dee8",
+    "tests/test_st_first.py": "09435cce92b976f504077cf8e34cd8097e5658f9aee7318c203c2a86f00da1b6",
+    "tests/test_iterative_refinement.py": "d04d4ad8f7f9ef088d945e86200f22e384677bd4c085744f305746c6a7ae6969"
+  },
+  "old_experiments_overwritten": false,
+  "test_count": 100,
+  "required_artifacts_present": true,
+  "primary_st_discovery_gate_passed": true,
+  "inner_steps_selected_without_phenotype_or_truth": 50,
+  "all_primary_iterative_candidates_rejected": true,
+  "rollback_exact": true,
+  "nonfinite_runs": 0,
+  "gradient_clip_events": 0
+}

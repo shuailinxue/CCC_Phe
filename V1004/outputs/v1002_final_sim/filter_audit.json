@@ -1,0 +1,18 @@
+{
+  "raw_LR": 8408,
+  "raw_directed_CCC": 538112,
+  "assay_measurable_LR": 849,
+  "assay_directed_CCC": 54336,
+  "coverage_directed_CCC": 17181,
+  "retained_CCC": 17181,
+  "signal_edges": 465,
+  "signal_retained": 352,
+  "signal_retention_recall": 0.7569892473118279,
+  "opportunity_min_anchors": 20,
+  "feature_identity": "(sender, receiver, LR index); identical ST/bulk mask",
+  "selection_uses": [
+    "assay measurability",
+    "10% sender/receiver coverage",
+    "spatial pair opportunity"
+  ]
+}

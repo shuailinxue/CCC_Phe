@@ -1,0 +1,57 @@
+{
+  "train_c_index": 0.7117260787992495,
+  "validation_c_index": 0.608346709470305,
+  "test_c_index": 0.6884480746791132,
+  "gamma": [
+    1.999464511871338,
+    -0.20058082044124603,
+    0.0017538414103910327,
+    -1.0044233798980713,
+    0.4576767385005951,
+    -1.2607969045639038
+  ],
+  "per_niche": [
+    {
+      "true_index": 0,
+      "learned_index": 0,
+      "WB_recovery": 0.9275048319495798,
+      "gamma": 1.999464511871338,
+      "gamma_sign_correct": true
+    },
+    {
+      "true_index": 1,
+      "learned_index": 2,
+      "WB_recovery": 0.9828927133073339,
+      "gamma": 0.0017538414103910327,
+      "gamma_sign_correct": null
+    },
+    {
+      "true_index": 2,
+      "learned_index": 5,
+      "WB_recovery": 0.9944351051350898,
+      "gamma": -1.2607969045639038,
+      "gamma_sign_correct": true
+    },
+    {
+      "true_index": 3,
+      "learned_index": 3,
+      "WB_recovery": 0.7549460953936385,
+      "gamma": -1.0044233798980713,
+      "gamma_sign_correct": null
+    },
+    {
+      "true_index": 4,
+      "learned_index": 1,
+      "WB_recovery": 0.9890698915574794,
+      "gamma": -0.20058082044124603,
+      "gamma_sign_correct": null
+    },
+    {
+      "true_index": 5,
+      "learned_index": 4,
+      "WB_recovery": 0.9669607215129825,
+      "gamma": 0.4576767385005951,
+      "gamma_sign_correct": null
+    }
+  ]
+}

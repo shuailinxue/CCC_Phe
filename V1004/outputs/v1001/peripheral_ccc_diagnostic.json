@@ -1,0 +1,42 @@
+{
+  "design": {
+    "target_niches": [
+      "X",
+      "Y"
+    ],
+    "composition_identical": true,
+    "center_related_CCC_identical": true,
+    "peripheral_CCC_different": true,
+    "unchanged_factorizer_K": 6,
+    "auxiliary_control_niches": 4
+  },
+  "V1000-center-only": {
+    "X_HI": 0.3157502083007093,
+    "Y_HI": 0.31623967812134607,
+    "X_WS": 0.6234255254194624,
+    "Y_WS": 0.6239600049361805,
+    "collision": true
+  },
+  "V1001-neighborhood-internal": {
+    "X_HI": 0.9999999421644052,
+    "Y_HI": 0.9999999883194581,
+    "X_WS": 0.9999998620021004,
+    "Y_WS": 0.9999998899142107,
+    "collision": false
+  },
+  "primary_peripheral_audit": {
+    "local_directed_pair_instances": 11329926,
+    "peripheral_pair_instances": 8721678,
+    "peripheral_pair_fraction": 0.7697912590073404,
+    "peripheral_signal_fraction": 0.4156547107367141,
+    "peripheral_normalized_l1": 906.5211563739778,
+    "ordered_pairs": true,
+    "self_pairs_excluded": true,
+    "null_opportunity_audit": {
+      "mean_abs_raw_vs_abundance_correlation": 0.951704941635446,
+      "mean_abs_normalized_vs_abundance_correlation": 0.46470817258203106,
+      "correlation_reduction": 0.4869967690534149,
+      "features_audited": 64
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "local_directed_pair_instances": 11329926,
+  "peripheral_pair_instances": 8721678,
+  "peripheral_pair_fraction": 0.7697912590073404,
+  "peripheral_signal_fraction": 0.4156547107367141,
+  "peripheral_normalized_l1": 906.5211563739778,
+  "ordered_pairs": true,
+  "self_pairs_excluded": true,
+  "null_opportunity_audit": {
+    "mean_abs_raw_vs_abundance_correlation": 0.951704941635446,
+    "mean_abs_normalized_vs_abundance_correlation": 0.46470817258203106,
+    "correlation_reduction": 0.4869967690534149,
+    "features_audited": 64
+  }
+}

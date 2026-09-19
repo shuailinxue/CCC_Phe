@@ -1,0 +1,127 @@
+{
+  "ST_comparison": [
+    {
+      "Method": "V1000",
+      "Overall_HC": 0.9626307403474997,
+      "Overall_HI": 0.8935686255290455,
+      "Overall_HO": 0.9246979200352646,
+      "Overall_WS": 0.8891560639113499,
+      "A_HI": 0.7244256478966256,
+      "A_WS": 0.8652900798238512,
+      "B_HI": 0.9365964409472858,
+      "B_WS": 0.9956701997440168,
+      "A_B_collision": false,
+      "A_B_WS_separation": 1.124892090320644,
+      "Top_50_precision": 0.8633333333333333,
+      "Top_50_recall": 0.8993055555555557,
+      "HI_stability": 0.9461739660668578,
+      "WS_stability": 0.9619071251584979
+    },
+    {
+      "Method": "V1001",
+      "Overall_HC": 0.963619261746184,
+      "Overall_HI": 0.8923130684393787,
+      "Overall_HO": 0.9269316438732839,
+      "Overall_WS": 0.9002885652125207,
+      "A_HI": 0.721876992103676,
+      "A_WS": 0.8688285530950345,
+      "B_HI": 0.9308030356514629,
+      "B_WS": 0.9951640414755804,
+      "A_B_collision": false,
+      "A_B_WS_separation": 1.1472641274647897,
+      "Top_50_precision": 0.8633333333333333,
+      "Top_50_recall": 0.8993055555555557,
+      "HI_stability": 0.9297570783464785,
+      "WS_stability": 0.9449663389050956
+    }
+  ],
+  "bulk_comparison": [
+    {
+      "Method": "V1000",
+      "Risk_WB_recovery": 0.9275048319495798,
+      "Protective_WB_recovery": 0.9944351051350898,
+      "Validation_C": 0.608346709470305,
+      "Test_C": 0.6884480746791132,
+      "A_gamma": 1.999464511871338,
+      "B_gamma": 0.0017538414103910327,
+      "C_gamma": -1.2607969045639038
+    },
+    {
+      "Method": "V1001",
+      "Risk_WB_recovery": 0.923168049162236,
+      "Protective_WB_recovery": 0.9946188749581251,
+      "Validation_C": 0.6067415730337079,
+      "Test_C": 0.6826137689614936,
+      "A_gamma": 1.9642024040222168,
+      "B_gamma": 0.007695102132856846,
+      "C_gamma": -1.2169299125671387
+    }
+  ],
+  "mechanism_diagnostic": {
+    "design": {
+      "target_niches": [
+        "X",
+        "Y"
+      ],
+      "composition_identical": true,
+      "center_related_CCC_identical": true,
+      "peripheral_CCC_different": true,
+      "unchanged_factorizer_K": 6,
+      "auxiliary_control_niches": 4
+    },
+    "V1000-center-only": {
+      "X_HI": 0.3157502083007093,
+      "Y_HI": 0.31623967812134607,
+      "X_WS": 0.6234255254194624,
+      "Y_WS": 0.6239600049361805,
+      "collision": true
+    },
+    "V1001-neighborhood-internal": {
+      "X_HI": 0.9999999421644052,
+      "Y_HI": 0.9999999883194581,
+      "X_WS": 0.9999998620021004,
+      "Y_WS": 0.9999998899142107,
+      "collision": false
+    },
+    "primary_peripheral_audit": {
+      "local_directed_pair_instances": 11329926,
+      "peripheral_pair_instances": 8721678,
+      "peripheral_pair_fraction": 0.7697912590073404,
+      "peripheral_signal_fraction": 0.4156547107367141,
+      "peripheral_normalized_l1": 906.5211563739778,
+      "ordered_pairs": true,
+      "self_pairs_excluded": true,
+      "null_opportunity_audit": {
+        "mean_abs_raw_vs_abundance_correlation": 0.951704941635446,
+        "mean_abs_normalized_vs_abundance_correlation": 0.46470817258203106,
+        "correlation_reduction": 0.4869967690534149,
+        "features_audited": 64
+      }
+    }
+  },
+  "runtime": {
+    "V1000": {
+      "construction_seconds": 0.007931009866297245,
+      "peak_python_memory_bytes": 18466272,
+      "anchors": 1200,
+      "features": 768
+    },
+    "V1001": {
+      "construction_seconds": 5.543048736639321,
+      "peak_python_memory_bytes": 33372455,
+      "cells": 14400,
+      "anchors": 1200,
+      "local_directed_cell_pair_instances": 11329926,
+      "mean_cells_per_neighborhood": 97.06416666666667,
+      "mean_directed_pairs_per_neighborhood": 9441.605
+    },
+    "construction_time_ratio_V1001_over_V1000": 698.9083143364197
+  },
+  "five_answers": {
+    "1_entire_neighborhood_CCC_included": true,
+    "2_peripheral_information_added": true,
+    "3_same_composition_recovery_improved": false,
+    "4_bulk_projection_maintained_or_improved": false,
+    "5_computationally_acceptable": true
+  }
+}

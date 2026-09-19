@@ -1,0 +1,1577 @@
+{
+  "runs": [
+    {
+      "permutation_seed": 101,
+      "frozen": {
+        "train_c_index": 0.4524390243902439,
+        "validation_c_index": 0.5593900481540931,
+        "test_c_index": 0.5355892648774796,
+        "gamma": [
+          -0.1559147834777832,
+          -0.35842716693878174,
+          0.4225008189678192,
+          0.28411665558815,
+          0.1022358238697052,
+          -0.26697489619255066
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9275048319495798,
+            "gamma": -0.1559147834777832,
+            "gamma_sign_correct": false
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9828927133073339,
+            "gamma": 0.4225008189678192,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944351051350898,
+            "gamma": -0.26697489619255066,
+            "gamma_sign_correct": true
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7549460953936385,
+            "gamma": 0.28411665558815,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890698915574794,
+            "gamma": -0.35842716693878174,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669607215129825,
+            "gamma": 0.1022358238697052,
+            "gamma_sign_correct": null
+          }
+        ]
+      },
+      "iterative": {
+        "train_c_index": 0.5431519699812383,
+        "validation_c_index": 0.5738362760834671,
+        "test_c_index": 0.5717619603267211,
+        "gamma": [
+          1.9521758556365967,
+          1.9366282224655151,
+          3.51078724861145,
+          2.8552401065826416,
+          2.718318223953247,
+          1.575007677078247
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9291397191119668,
+            "WS_truth_recovery": 0.8635622933735374,
+            "WS_anchor_correlation": 0.9999705928847546,
+            "gamma": 1.9521758556365967,
+            "HC_anchor_cosine": 0.999999119674813,
+            "HI_anchor_cosine": 0.999783718589047
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9834654304035224,
+            "WS_truth_recovery": 0.9957673705249226,
+            "WS_anchor_correlation": 0.9999987674172174,
+            "gamma": 3.51078724861145,
+            "HC_anchor_cosine": 0.9999996161316077,
+            "HI_anchor_cosine": 0.9999721090504937
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9942954717221627,
+            "WS_truth_recovery": 0.9981076255164101,
+            "WS_anchor_correlation": 0.9999996716370609,
+            "gamma": 1.575007677078247,
+            "HC_anchor_cosine": 0.9999999355741251,
+            "HI_anchor_cosine": 0.9999869872580599
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.763530944862706,
+            "WS_truth_recovery": 0.4973327771405602,
+            "WS_anchor_correlation": 0.9998596155205657,
+            "gamma": 2.8552401065826416,
+            "HC_anchor_cosine": 0.9999994930794706,
+            "HI_anchor_cosine": 0.9999121855250476
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9894957326584549,
+            "WS_truth_recovery": 0.9954970280513127,
+            "WS_anchor_correlation": 0.9999986390695542,
+            "gamma": 1.9366282224655151,
+            "HC_anchor_cosine": 0.9999994770329529,
+            "HI_anchor_cosine": 0.9999983553554486
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669171407795627,
+            "WS_truth_recovery": 0.9935086507470073,
+            "WS_anchor_correlation": 0.999999571530618,
+            "gamma": 2.718318223953247,
+            "HC_anchor_cosine": 0.9999997688715409,
+            "HI_anchor_cosine": 0.9999974386341995
+          }
+        ],
+        "HC_anchor_cosine": 0.9999995683940851,
+        "HI_anchor_cosine": 0.9999417990687159,
+        "WS_anchor_correlation": 0.9999711430099619,
+        "spatial_reconstruction": {
+          "composition": 8.77489128470188e-06,
+          "communication": 8.103411346382927e-06,
+          "topology": 1.0926039067271631e-05,
+          "total": 2.780434169835644e-05
+        }
+      },
+      "history": [
+        {
+          "iteration": 1,
+          "accepted": true,
+          "validation_c_index": 0.5706260032102729,
+          "HC_anchor_cosine": 0.9999996070983349,
+          "HI_anchor_cosine": 0.9999415936117367,
+          "HC_per_niche_anchor_cosine": [
+            0.999999390981981,
+            0.9999997163086389,
+            0.9999996269273043,
+            0.9999992626608184,
+            0.9999997201999297,
+            0.9999999255113373
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9998394339510382,
+            0.9999989875783372,
+            0.999974625711961,
+            0.9998559903679586,
+            0.9999961619009173,
+            0.9999843621602079
+          ],
+          "ST_reconstruction_change": -0.01324211753910946,
+          "adapter_max_abs_delta": 0.03806472197175026,
+          "final_losses": {
+            "total_loss": 0.22215507924556732,
+            "st_anchor": 2.803723509714473e-05,
+            "bulk_reconstruction": 7.838064630050212e-05,
+            "cox_loss": 4.440627098083496,
+            "adapter_penalty": 1.7301852494711056e-05
+          }
+        },
+        {
+          "iteration": 2,
+          "accepted": true,
+          "validation_c_index": 0.5698234349919743,
+          "HC_anchor_cosine": 0.9999996053174532,
+          "HI_anchor_cosine": 0.999942999469254,
+          "HC_per_niche_anchor_cosine": [
+            0.9999992704944162,
+            0.9999997385543298,
+            0.9999996347225262,
+            0.9999993049869328,
+            0.9999997486711024,
+            0.9999999344754112
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9998323419074657,
+            0.9999988906567707,
+            0.9999727840338193,
+            0.9998721121954083,
+            0.99999633330121,
+            0.9999855347208503
+          ],
+          "ST_reconstruction_change": -0.013142025439653827,
+          "adapter_max_abs_delta": 0.03511379659175873,
+          "final_losses": {
+            "total_loss": 0.22214782238006592,
+            "st_anchor": 2.803865027090069e-05,
+            "bulk_reconstruction": 7.834953430574387e-05,
+            "cox_loss": 4.440489768981934,
+            "adapter_penalty": 1.6935444364207797e-05
+          }
+        },
+        {
+          "iteration": 3,
+          "accepted": true,
+          "validation_c_index": 0.5730337078651685,
+          "HC_anchor_cosine": 0.9999995866117252,
+          "HI_anchor_cosine": 0.9999430366095403,
+          "HC_per_niche_anchor_cosine": [
+            0.9999991203889047,
+            0.9999996276815325,
+            0.9999996560762682,
+            0.9999994210759972,
+            0.9999997649051541,
+            0.9999999295424947
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9998064446616575,
+            0.9999986347357528,
+            0.999973262111243,
+            0.9998960419876741,
+            0.9999969378598862,
+            0.9999868983010277
+          ],
+          "ST_reconstruction_change": -0.013041133115546326,
+          "adapter_max_abs_delta": 0.03188004344701767,
+          "final_losses": {
+            "total_loss": 0.2221319079399109,
+            "st_anchor": 2.8041617042617872e-05,
+            "bulk_reconstruction": 7.82047281973064e-05,
+            "cox_loss": 4.440184116363525,
+            "adapter_penalty": 1.6454285287181847e-05
+          }
+        },
+        {
+          "iteration": 4,
+          "accepted": true,
+          "validation_c_index": 0.5738362760834671,
+          "HC_anchor_cosine": 0.9999995683940851,
+          "HI_anchor_cosine": 0.9999417990687159,
+          "HC_per_niche_anchor_cosine": [
+            0.999999119674813,
+            0.9999994770329529,
+            0.9999996161316077,
+            0.9999994930794706,
+            0.9999997688715409,
+            0.9999999355741251
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.999783718589047,
+            0.9999983553554486,
+            0.9999721090504937,
+            0.9999121855250476,
+            0.9999974386341995,
+            0.9999869872580599
+          ],
+          "ST_reconstruction_change": -0.01154135207301557,
+          "adapter_max_abs_delta": 0.03006947599351406,
+          "final_losses": {
+            "total_loss": 0.2221209853887558,
+            "st_anchor": 2.8073396606487222e-05,
+            "bulk_reconstruction": 7.807373185642064e-05,
+            "cox_loss": 4.439966201782227,
+            "adapter_penalty": 1.652214086789172e-05
+          }
+        },
+        {
+          "iteration": 5,
+          "accepted": true,
+          "validation_c_index": 0.5738362760834671,
+          "HC_anchor_cosine": 0.9999995178660047,
+          "HI_anchor_cosine": 0.999939550205151,
+          "HC_per_niche_anchor_cosine": [
+            0.9999988488177194,
+            0.9999993120521683,
+            0.9999996470808442,
+            0.9999995778724021,
+            0.9999997841191065,
+            0.999999937253787
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9997573412811489,
+            0.9999980001828234,
+            0.9999705204065737,
+            0.9999257218337637,
+            0.9999979249160598,
+            0.9999877926105373
+          ],
+          "ST_reconstruction_change": -0.010117464336467962,
+          "adapter_max_abs_delta": 0.031805433332920074,
+          "final_losses": {
+            "total_loss": 0.22210878133773804,
+            "st_anchor": 2.8096899768570438e-05,
+            "bulk_reconstruction": 7.794488919898868e-05,
+            "cox_loss": 4.4397196769714355,
+            "adapter_penalty": 1.6757849152782e-05
+          }
+        }
+      ],
+      "diagnostics": {
+        "selected_validation_c_index": 0.5738362760834671,
+        "max_gradient_norm": 0.0007134409388527274,
+        "gradient_clip_count": 0,
+        "all_finite": true,
+        "HC_anchor_cosine": 0.9999995683940851,
+        "HI_anchor_cosine": 0.9999417990687159
+      }
+    },
+    {
+      "permutation_seed": 102,
+      "frozen": {
+        "train_c_index": 0.7042213883677299,
+        "validation_c_index": 0.5738362760834671,
+        "test_c_index": 0.6592765460910152,
+        "gamma": [
+          0.5501987934112549,
+          0.040670331567525864,
+          -0.0968620702624321,
+          -0.3274984359741211,
+          0.03131666034460068,
+          -0.23342618346214294
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9275048319495798,
+            "gamma": 0.5501987934112549,
+            "gamma_sign_correct": true
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9828927133073339,
+            "gamma": -0.0968620702624321,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944351051350898,
+            "gamma": -0.23342618346214294,
+            "gamma_sign_correct": true
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7549460953936385,
+            "gamma": -0.3274984359741211,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890698915574794,
+            "gamma": 0.040670331567525864,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669607215129825,
+            "gamma": 0.03131666034460068,
+            "gamma_sign_correct": null
+          }
+        ]
+      },
+      "iterative": {
+        "train_c_index": 0.549249530956848,
+        "validation_c_index": 0.5802568218298555,
+        "test_c_index": 0.6651108518086347,
+        "gamma": [
+          -0.586638867855072,
+          -1.7461415529251099,
+          -2.019988536834717,
+          -2.2941298484802246,
+          -1.6568375825881958,
+          -2.301177740097046
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.928340266458193,
+            "WS_truth_recovery": 0.8682762606993847,
+            "WS_anchor_correlation": 0.9999706917978244,
+            "gamma": -0.586638867855072,
+            "HC_anchor_cosine": 0.9999994662469123,
+            "HI_anchor_cosine": 0.9999572598101452
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9830935024866276,
+            "WS_truth_recovery": 0.9956564147722077,
+            "WS_anchor_correlation": 0.999999550550231,
+            "gamma": -2.019988536834717,
+            "HC_anchor_cosine": 0.999999142217698,
+            "HI_anchor_cosine": 0.9999696112455582
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9946972453516149,
+            "WS_truth_recovery": 0.9981611301027927,
+            "WS_anchor_correlation": 0.9999996321886885,
+            "gamma": -2.301177740097046,
+            "HC_anchor_cosine": 0.9999997751806974,
+            "HI_anchor_cosine": 0.999970198950275
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7515411526882507,
+            "WS_truth_recovery": 0.48247824694963487,
+            "WS_anchor_correlation": 0.9999649575923112,
+            "gamma": -2.2941298484802246,
+            "HC_anchor_cosine": 0.9999998627249832,
+            "HI_anchor_cosine": 0.9999881661753536
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9893106628363555,
+            "WS_truth_recovery": 0.9954682071516119,
+            "WS_anchor_correlation": 0.9999991949289856,
+            "gamma": -1.7461415529251099,
+            "HC_anchor_cosine": 0.9999997721790836,
+            "HI_anchor_cosine": 0.9999987138496192
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9672973154754487,
+            "WS_truth_recovery": 0.9935784686284214,
+            "WS_anchor_correlation": 0.9999997329306782,
+            "gamma": -1.6568375825881958,
+            "HC_anchor_cosine": 0.9999999100774594,
+            "HI_anchor_cosine": 0.9999968831445477
+          }
+        ],
+        "HC_anchor_cosine": 0.999999654771139,
+        "HI_anchor_cosine": 0.9999801388625832,
+        "WS_anchor_correlation": 0.9999889599981199,
+        "spatial_reconstruction": {
+          "composition": 8.645085472380742e-06,
+          "communication": 8.692237315699458e-06,
+          "topology": 1.1063678357459139e-05,
+          "total": 2.840100114553934e-05
+        }
+      },
+      "history": [
+        {
+          "iteration": 1,
+          "accepted": true,
+          "validation_c_index": 0.5754414125200642,
+          "HC_anchor_cosine": 0.9999997583442504,
+          "HI_anchor_cosine": 0.9999822873779588,
+          "HC_per_niche_anchor_cosine": [
+            0.9999994118294483,
+            0.9999998605700497,
+            0.9999996649799233,
+            0.9999998434858661,
+            0.9999998745413474,
+            0.9999998946588666
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999406166943416,
+            0.9999988972860989,
+            0.9999885404011457,
+            0.999979799095776,
+            0.9999965094865656,
+            0.9999893613038253
+          ],
+          "ST_reconstruction_change": 0.0048461925006978756,
+          "adapter_max_abs_delta": 0.018271006643772125,
+          "final_losses": {
+            "total_loss": 0.222286656498909,
+            "st_anchor": 2.8588559871423058e-05,
+            "bulk_reconstruction": 8.562788570998237e-05,
+            "cox_loss": 4.443330764770508,
+            "adapter_penalty": 5.901789791096235e-06
+          }
+        },
+        {
+          "iteration": 2,
+          "accepted": true,
+          "validation_c_index": 0.5754414125200642,
+          "HC_anchor_cosine": 0.9999997537685171,
+          "HI_anchor_cosine": 0.9999835521542636,
+          "HC_per_niche_anchor_cosine": [
+            0.9999993726171442,
+            0.9999998572877247,
+            0.9999996716482669,
+            0.9999998211351764,
+            0.9999999005490672,
+            0.9999998993737234
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999448000061911,
+            0.9999989148213114,
+            0.9999900733379957,
+            0.9999799147796167,
+            0.9999966984850126,
+            0.9999909114954545
+          ],
+          "ST_reconstruction_change": 0.002935160005079186,
+          "adapter_max_abs_delta": 0.017211126163601875,
+          "final_losses": {
+            "total_loss": 0.22227542102336884,
+            "st_anchor": 2.852474972314667e-05,
+            "bulk_reconstruction": 8.551195787731558e-05,
+            "cox_loss": 4.443117618560791,
+            "adapter_penalty": 5.504201908479445e-06
+          }
+        },
+        {
+          "iteration": 3,
+          "accepted": true,
+          "validation_c_index": 0.5802568218298555,
+          "HC_anchor_cosine": 0.999999654771139,
+          "HI_anchor_cosine": 0.9999801388625832,
+          "HC_per_niche_anchor_cosine": [
+            0.9999994662469123,
+            0.9999997721790836,
+            0.999999142217698,
+            0.9999998627249832,
+            0.9999999100774594,
+            0.9999997751806974
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999572598101452,
+            0.9999987138496192,
+            0.9999696112455582,
+            0.9999881661753536,
+            0.9999968831445477,
+            0.999970198950275
+          ],
+          "ST_reconstruction_change": 0.0065971160479708435,
+          "adapter_max_abs_delta": 0.020103853195905685,
+          "final_losses": {
+            "total_loss": 0.2222512662410736,
+            "st_anchor": 2.8612679670914076e-05,
+            "bulk_reconstruction": 8.531731873517856e-05,
+            "cox_loss": 4.442589282989502,
+            "adapter_penalty": 7.871026355132926e-06
+          }
+        },
+        {
+          "iteration": 4,
+          "accepted": true,
+          "validation_c_index": 0.579454253611557,
+          "HC_anchor_cosine": 0.9999996556028642,
+          "HI_anchor_cosine": 0.9999813971676718,
+          "HC_per_niche_anchor_cosine": [
+            0.999999586144488,
+            0.9999996283944225,
+            0.9999992096789467,
+            0.9999998310810716,
+            0.9999998871228368,
+            0.9999997911954199
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999625609670507,
+            0.9999982478925826,
+            0.9999716469764995,
+            0.9999877266788387,
+            0.9999972321715735,
+            0.9999709683194866
+          ],
+          "ST_reconstruction_change": 0.00351580301247451,
+          "adapter_max_abs_delta": 0.019370514899492264,
+          "final_losses": {
+            "total_loss": 0.22222775220870972,
+            "st_anchor": 2.8492819183156826e-05,
+            "bulk_reconstruction": 8.501618867740035e-05,
+            "cox_loss": 4.442140579223633,
+            "adapter_penalty": 7.211873708001804e-06
+          }
+        },
+        {
+          "iteration": 5,
+          "accepted": true,
+          "validation_c_index": 0.5762439807383628,
+          "HC_anchor_cosine": 0.9999996455784231,
+          "HI_anchor_cosine": 0.9999823145820561,
+          "HC_per_niche_anchor_cosine": [
+            0.9999996195544804,
+            0.9999994959879169,
+            0.9999992615792369,
+            0.9999998299629949,
+            0.9999998867688357,
+            0.9999997796170742
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999638514485639,
+            0.9999977456401377,
+            0.9999745265410676,
+            0.999988052670017,
+            0.9999976122527253,
+            0.9999720989398259
+          ],
+          "ST_reconstruction_change": 0.0019907028619586546,
+          "adapter_max_abs_delta": 0.018372708931565285,
+          "final_losses": {
+            "total_loss": 0.22221149504184723,
+            "st_anchor": 2.845809285645373e-05,
+            "bulk_reconstruction": 8.489414176438004e-05,
+            "cox_loss": 4.4418230056762695,
+            "adapter_penalty": 6.994720479269745e-06
+          }
+        }
+      ],
+      "diagnostics": {
+        "selected_validation_c_index": 0.5802568218298555,
+        "max_gradient_norm": 0.0007113444735296071,
+        "gradient_clip_count": 0,
+        "all_finite": true,
+        "HC_anchor_cosine": 0.999999654771139,
+        "HI_anchor_cosine": 0.9999801388625832
+      }
+    },
+    {
+      "permutation_seed": 103,
+      "frozen": {
+        "train_c_index": 0.5727016885553471,
+        "validation_c_index": 0.5112359550561798,
+        "test_c_index": 0.5169194865810969,
+        "gamma": [
+          -0.08056134730577469,
+          0.11887402832508087,
+          0.015128704719245434,
+          -0.28686532378196716,
+          0.2726643979549408,
+          -0.0699782520532608
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9275048319495798,
+            "gamma": -0.08056134730577469,
+            "gamma_sign_correct": false
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9828927133073339,
+            "gamma": 0.015128704719245434,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944351051350898,
+            "gamma": -0.0699782520532608,
+            "gamma_sign_correct": true
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7549460953936385,
+            "gamma": -0.28686532378196716,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890698915574794,
+            "gamma": 0.11887402832508087,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669607215129825,
+            "gamma": 0.2726643979549408,
+            "gamma_sign_correct": null
+          }
+        ]
+      },
+      "iterative": {
+        "train_c_index": 0.5167917448405254,
+        "validation_c_index": 0.5313001605136437,
+        "test_c_index": 0.5367561260210035,
+        "gamma": [
+          -4.121476173400879,
+          -3.7088894844055176,
+          -3.7854995727539062,
+          -4.255213737487793,
+          -2.936148166656494,
+          -4.125463008880615
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9277504595896598,
+            "WS_truth_recovery": 0.8651666360701993,
+            "WS_anchor_correlation": 0.9999995560868911,
+            "gamma": -4.121476173400879,
+            "HC_anchor_cosine": 0.9999999551034671,
+            "HI_anchor_cosine": 0.999999229046219
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9829688386319609,
+            "WS_truth_recovery": 0.9956852711452842,
+            "WS_anchor_correlation": 0.9999999667028849,
+            "gamma": -3.7854995727539062,
+            "HC_anchor_cosine": 0.9999999689442751,
+            "HI_anchor_cosine": 0.9999995029578932
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944037384092429,
+            "WS_truth_recovery": 0.9981289855414536,
+            "WS_anchor_correlation": 0.9999999921393199,
+            "gamma": -4.125463008880615,
+            "HC_anchor_cosine": 0.9999995639976312,
+            "HI_anchor_cosine": 0.9999959001589724
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7550400128526373,
+            "WS_truth_recovery": 0.48888738170154683,
+            "WS_anchor_correlation": 0.9999925090591546,
+            "gamma": -4.255213737487793,
+            "HC_anchor_cosine": 0.9999997881250893,
+            "HI_anchor_cosine": 0.9999973845079094
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890693950907781,
+            "WS_truth_recovery": 0.995412604422298,
+            "WS_anchor_correlation": 0.9999999471995109,
+            "gamma": -3.7088894844055176,
+            "HC_anchor_cosine": 0.9999999229215323,
+            "HI_anchor_cosine": 0.9999987475023524
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9670726411322925,
+            "WS_truth_recovery": 0.9935457615623384,
+            "WS_anchor_correlation": 0.9999999540485244,
+            "gamma": -2.936148166656494,
+            "HC_anchor_cosine": 0.9999999631286108,
+            "HI_anchor_cosine": 0.9999995014153427
+          }
+        ],
+        "HC_anchor_cosine": 0.9999998603701009,
+        "HI_anchor_cosine": 0.9999983775981148,
+        "WS_anchor_correlation": 0.9999986542060476,
+        "spatial_reconstruction": {
+          "composition": 8.79483104654355e-06,
+          "communication": 8.472919034829829e-06,
+          "topology": 1.078398599929642e-05,
+          "total": 2.8051736080669798e-05
+        }
+      },
+      "history": [
+        {
+          "iteration": 1,
+          "accepted": true,
+          "validation_c_index": 0.5160513643659711,
+          "HC_anchor_cosine": 0.9999998188299797,
+          "HI_anchor_cosine": 0.9999977192456583,
+          "HC_per_niche_anchor_cosine": [
+            0.999999943085907,
+            0.9999995208828704,
+            0.9999998958861078,
+            0.9999998040405881,
+            0.9999999180844446,
+            0.9999998309999598
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999994292764487,
+            0.9999964668968983,
+            0.9999985540432035,
+            0.9999942637465074,
+            0.9999993325487321,
+            0.9999982689621599
+          ],
+          "ST_reconstruction_change": -0.0018389162499923579,
+          "adapter_max_abs_delta": 0.010321944952011108,
+          "final_losses": {
+            "total_loss": 0.2228434979915619,
+            "st_anchor": 2.8362848752294667e-05,
+            "bulk_reconstruction": 8.346026879735291e-05,
+            "cox_loss": 4.454605579376221,
+            "adapter_penalty": 1.4052968708710978e-06
+          }
+        },
+        {
+          "iteration": 2,
+          "accepted": true,
+          "validation_c_index": 0.5200642054574639,
+          "HC_anchor_cosine": 0.9999998493742149,
+          "HI_anchor_cosine": 0.9999978836776305,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999589088865,
+            0.9999996120009513,
+            0.9999999252972658,
+            0.9999997895823796,
+            0.9999999432820468,
+            0.9999998671737592
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999994418619538,
+            0.9999972653484036,
+            0.9999989434162831,
+            0.9999947922839414,
+            0.999999475464829,
+            0.9999973836903727
+          ],
+          "ST_reconstruction_change": -0.0037751398176518484,
+          "adapter_max_abs_delta": 0.009518804959952831,
+          "final_losses": {
+            "total_loss": 0.22283677756786346,
+            "st_anchor": 2.830664743669331e-05,
+            "bulk_reconstruction": 8.340392378158867e-05,
+            "cox_loss": 4.454476356506348,
+            "adapter_penalty": 1.234807768923929e-06
+          }
+        },
+        {
+          "iteration": 3,
+          "accepted": true,
+          "validation_c_index": 0.521669341894061,
+          "HC_anchor_cosine": 0.9999998767141154,
+          "HI_anchor_cosine": 0.999998461462344,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999502158112,
+            0.9999997775968209,
+            0.9999999382551278,
+            0.9999998128228936,
+            0.9999999367506252,
+            0.9999998446434137
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999995667632922,
+            0.9999983212210736,
+            0.9999989755840446,
+            0.9999955697588808,
+            0.999999547933266,
+            0.9999987875135066
+          ],
+          "ST_reconstruction_change": -0.00687844302658151,
+          "adapter_max_abs_delta": 0.008985398337244987,
+          "final_losses": {
+            "total_loss": 0.2228204905986786,
+            "st_anchor": 2.821495036187116e-05,
+            "bulk_reconstruction": 8.34265592857264e-05,
+            "cox_loss": 4.454159259796143,
+            "adapter_penalty": 8.778332585279713e-07
+          }
+        },
+        {
+          "iteration": 4,
+          "accepted": true,
+          "validation_c_index": 0.5224719101123596,
+          "HC_anchor_cosine": 0.9999998912636002,
+          "HI_anchor_cosine": 0.9999987014969903,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999381747401,
+            0.9999998932890491,
+            0.9999999321860547,
+            0.9999997996107858,
+            0.9999999298952232,
+            0.9999998544257491
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999995376567501,
+            0.9999987291961085,
+            0.9999991368098384,
+            0.9999965796780241,
+            0.999999583127371,
+            0.9999986425138498
+          ],
+          "ST_reconstruction_change": -0.008061655196833339,
+          "adapter_max_abs_delta": 0.0076068914495408535,
+          "final_losses": {
+            "total_loss": 0.22280852496623993,
+            "st_anchor": 2.818304164975416e-05,
+            "bulk_reconstruction": 8.352365694008768e-05,
+            "cox_loss": 4.453922271728516,
+            "adapter_penalty": 7.049861210361996e-07
+          }
+        },
+        {
+          "iteration": 5,
+          "accepted": true,
+          "validation_c_index": 0.5313001605136437,
+          "HC_anchor_cosine": 0.9999998603701009,
+          "HI_anchor_cosine": 0.9999983775981148,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999551034671,
+            0.9999999229215323,
+            0.9999999689442751,
+            0.9999997881250893,
+            0.9999999631286108,
+            0.9999995639976312
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.999999229046219,
+            0.9999987475023524,
+            0.9999995029578932,
+            0.9999973845079094,
+            0.9999995014153427,
+            0.9999959001589724
+          ],
+          "ST_reconstruction_change": -0.012214661095097194,
+          "adapter_max_abs_delta": 0.0073963128961622715,
+          "final_losses": {
+            "total_loss": 0.2227947860956192,
+            "st_anchor": 2.8052359994035214e-05,
+            "bulk_reconstruction": 8.299809996969998e-05,
+            "cox_loss": 4.453652381896973,
+            "adapter_penalty": 1.1202715768376947e-06
+          }
+        }
+      ],
+      "diagnostics": {
+        "selected_validation_c_index": 0.5313001605136437,
+        "max_gradient_norm": 0.0004802295006811619,
+        "gradient_clip_count": 0,
+        "all_finite": true,
+        "HC_anchor_cosine": 0.9999998603701009,
+        "HI_anchor_cosine": 0.9999983775981148
+      }
+    },
+    {
+      "permutation_seed": 104,
+      "frozen": {
+        "train_c_index": 0.33902439024390246,
+        "validation_c_index": 0.38924558587479935,
+        "test_c_index": 0.3617269544924154,
+        "gamma": [
+          -0.06882665306329727,
+          -0.12727737426757812,
+          -0.2633267045021057,
+          0.640778660774231,
+          -0.5079142451286316,
+          0.3427935540676117
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9275048319495798,
+            "gamma": -0.06882665306329727,
+            "gamma_sign_correct": false
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9828927133073339,
+            "gamma": -0.2633267045021057,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944351051350898,
+            "gamma": 0.3427935540676117,
+            "gamma_sign_correct": false
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7549460953936385,
+            "gamma": 0.640778660774231,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890698915574794,
+            "gamma": -0.12727737426757812,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669607215129825,
+            "gamma": -0.5079142451286316,
+            "gamma_sign_correct": null
+          }
+        ]
+      },
+      "iterative": {
+        "train_c_index": 0.5677298311444653,
+        "validation_c_index": 0.38924558587479935,
+        "test_c_index": 0.3617269544924154,
+        "gamma": [
+          -0.06882665306329727,
+          -0.12727737426757812,
+          -0.2633267045021057,
+          0.640778660774231,
+          -0.5079142451286316,
+          0.3427935540676117
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9275048379626424,
+            "WS_truth_recovery": 0.8652901089204331,
+            "WS_anchor_correlation": 0.9999999999998525,
+            "gamma": -0.06882665306329727,
+            "HC_anchor_cosine": 1.0,
+            "HI_anchor_cosine": 1.0
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9828927048707237,
+            "WS_truth_recovery": 0.9956702006730805,
+            "WS_anchor_correlation": 0.9999999999999779,
+            "gamma": -0.2633267045021057,
+            "HC_anchor_cosine": 0.9999999999999999,
+            "HI_anchor_cosine": 0.9999999999999997
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944351078252163,
+            "WS_truth_recovery": 0.9981311089994572,
+            "WS_anchor_correlation": 0.9999999999999815,
+            "gamma": 0.3427935540676117,
+            "HC_anchor_cosine": 1.0,
+            "HI_anchor_cosine": 0.9999999999999997
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7549461062889268,
+            "WS_truth_recovery": 0.48691641788665674,
+            "WS_anchor_correlation": 0.9999999999996787,
+            "gamma": 0.640778660774231,
+            "HC_anchor_cosine": 1.0000000000000002,
+            "HI_anchor_cosine": 1.0
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890698928790469,
+            "WS_truth_recovery": 0.9954041183834019,
+            "WS_anchor_correlation": 0.999999999999993,
+            "gamma": -0.12727737426757812,
+            "HC_anchor_cosine": 1.0000000000000002,
+            "HI_anchor_cosine": 1.0000000000000002
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669607250603224,
+            "WS_truth_recovery": 0.9935244466866288,
+            "WS_anchor_correlation": 0.9999999999999916,
+            "gamma": -0.5079142451286316,
+            "HC_anchor_cosine": 1.0,
+            "HI_anchor_cosine": 1.0
+          }
+        ],
+        "HC_anchor_cosine": 1.0,
+        "HI_anchor_cosine": 1.0,
+        "WS_anchor_correlation": 0.9999999999999124,
+        "spatial_reconstruction": {
+          "composition": 8.91435774974525e-06,
+          "communication": 8.711128430149984e-06,
+          "topology": 1.0788243343995418e-05,
+          "total": 2.8413729523890652e-05
+        }
+      },
+      "history": [
+        {
+          "iteration": 1,
+          "accepted": true,
+          "validation_c_index": 0.3635634028892456,
+          "HC_anchor_cosine": 0.9999998591411727,
+          "HI_anchor_cosine": 0.9999882371487607,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999402369029,
+            0.9999999671641325,
+            0.9999999183188372,
+            0.99999964043538,
+            0.999999872415237,
+            0.999999816276547
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999866654296695,
+            0.9999971808185426,
+            0.9999934254990751,
+            0.9999898937336911,
+            0.9999997117332279,
+            0.9999625456783585
+          ],
+          "ST_reconstruction_change": 0.01407944060583792,
+          "adapter_max_abs_delta": 0.0170345026999712,
+          "final_losses": {
+            "total_loss": 0.22128386795520782,
+            "st_anchor": 2.8807036869693547e-05,
+            "bulk_reconstruction": 8.305704977829009e-05,
+            "cox_loss": 4.423340797424316,
+            "adapter_penalty": 4.9589425543672405e-06
+          }
+        },
+        {
+          "iteration": 2,
+          "accepted": true,
+          "validation_c_index": 0.38924558587479935,
+          "HC_anchor_cosine": 0.9999998769852249,
+          "HI_anchor_cosine": 0.9999885335194604,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999607472565,
+            0.9999999710884735,
+            0.9999998346447659,
+            0.9999996768360935,
+            0.9999999713394697,
+            0.9999998472552901
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999908431381517,
+            0.9999958734108548,
+            0.999993638330746,
+            0.9999861982192358,
+            0.9999991741328678,
+            0.999965473884906
+          ],
+          "ST_reconstruction_change": 0.013016550214240944,
+          "adapter_max_abs_delta": 0.01624206267297268,
+          "final_losses": {
+            "total_loss": 0.22125093638896942,
+            "st_anchor": 2.8776314138667658e-05,
+            "bulk_reconstruction": 8.321439236169681e-05,
+            "cox_loss": 4.422676086425781,
+            "adapter_penalty": 5.120171863381984e-06
+          }
+        },
+        {
+          "iteration": 3,
+          "accepted": true,
+          "validation_c_index": 0.3868378812199037,
+          "HC_anchor_cosine": 0.9999998778481709,
+          "HI_anchor_cosine": 0.9999883454221933,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999539807969,
+            0.9999999611356175,
+            0.9999998776839828,
+            0.9999996785172371,
+            0.9999999723547814,
+            0.9999998234166092
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999921498776128,
+            0.9999956370536917,
+            0.9999933930513651,
+            0.9999844631049802,
+            0.9999990062256376,
+            0.9999654232198719
+          ],
+          "ST_reconstruction_change": 0.013904287434037082,
+          "adapter_max_abs_delta": 0.01631748490035534,
+          "final_losses": {
+            "total_loss": 0.2212405651807785,
+            "st_anchor": 2.8800988729926758e-05,
+            "bulk_reconstruction": 8.326786337420344e-05,
+            "cox_loss": 4.422464370727539,
+            "adapter_penalty": 5.2798727665503975e-06
+          }
+        },
+        {
+          "iteration": 4,
+          "accepted": true,
+          "validation_c_index": 0.38764044943820225,
+          "HC_anchor_cosine": 0.9999998754682863,
+          "HI_anchor_cosine": 0.9999876642278829,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999646183472,
+            0.9999999492386236,
+            0.9999998782988233,
+            0.9999996913406068,
+            0.9999999740495383,
+            0.9999997952637784
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999929173974839,
+            0.9999953707558062,
+            0.9999932171134803,
+            0.9999818943117332,
+            0.9999988294892654,
+            0.9999637562995283
+          ],
+          "ST_reconstruction_change": 0.015329103431180857,
+          "adapter_max_abs_delta": 0.016601650044322014,
+          "final_losses": {
+            "total_loss": 0.22122441232204437,
+            "st_anchor": 2.8851414754171856e-05,
+            "bulk_reconstruction": 8.331656863447279e-05,
+            "cox_loss": 4.422131061553955,
+            "adapter_penalty": 5.69056373933563e-06
+          }
+        },
+        {
+          "iteration": 5,
+          "accepted": true,
+          "validation_c_index": 0.38764044943820225,
+          "HC_anchor_cosine": 0.9999998670207652,
+          "HI_anchor_cosine": 0.9999869543833938,
+          "HC_per_niche_anchor_cosine": [
+            0.9999999741147707,
+            0.9999999184372661,
+            0.9999999060532121,
+            0.9999996855132163,
+            0.9999999724085722,
+            0.9999997455975537
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999942503812067,
+            0.9999950206202186,
+            0.9999929632160383,
+            0.999978307660435,
+            0.9999987396247718,
+            0.9999624447976918
+          ],
+          "ST_reconstruction_change": 0.016758784794207986,
+          "adapter_max_abs_delta": 0.01689913123846054,
+          "final_losses": {
+            "total_loss": 0.22120818495750427,
+            "st_anchor": 2.8890719477203675e-05,
+            "bulk_reconstruction": 8.339122723555192e-05,
+            "cox_loss": 4.421794891357422,
+            "adapter_penalty": 6.148222382762469e-06
+          }
+        }
+      ],
+      "diagnostics": {
+        "selected_validation_c_index": 0.38924558587479935,
+        "max_gradient_norm": 0.0009475183323957026,
+        "gradient_clip_count": 0,
+        "all_finite": true,
+        "HC_anchor_cosine": 1.0,
+        "HI_anchor_cosine": 1.0
+      }
+    },
+    {
+      "permutation_seed": 105,
+      "frozen": {
+        "train_c_index": 0.526829268292683,
+        "validation_c_index": 0.4895666131621188,
+        "test_c_index": 0.47841306884480744,
+        "gamma": [
+          -0.17544056475162506,
+          0.5358980298042297,
+          0.05233704298734665,
+          -0.38790297508239746,
+          -0.06722993403673172,
+          -0.0011680088937282562
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9275048319495798,
+            "gamma": -0.17544056475162506,
+            "gamma_sign_correct": false
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9828927133073339,
+            "gamma": 0.05233704298734665,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9944351051350898,
+            "gamma": -0.0011680088937282562,
+            "gamma_sign_correct": true
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7549460953936385,
+            "gamma": -0.38790297508239746,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9890698915574794,
+            "gamma": 0.5358980298042297,
+            "gamma_sign_correct": null
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9669607215129825,
+            "gamma": -0.06722993403673172,
+            "gamma_sign_correct": null
+          }
+        ]
+      },
+      "iterative": {
+        "train_c_index": 0.5462476547842402,
+        "validation_c_index": 0.4967897271268058,
+        "test_c_index": 0.44807467911318555,
+        "gamma": [
+          -0.35000449419021606,
+          0.8391092419624329,
+          0.4849550426006317,
+          -0.8663542866706848,
+          -0.12148541957139969,
+          0.3115139901638031
+        ],
+        "per_niche": [
+          {
+            "true_index": 0,
+            "learned_index": 0,
+            "WB_recovery": 0.9302799884082747,
+            "WS_truth_recovery": 0.8660135732954715,
+            "WS_anchor_correlation": 0.9999907077005629,
+            "gamma": -0.35000449419021606,
+            "HC_anchor_cosine": 0.9999994442869465,
+            "HI_anchor_cosine": 0.9999102443265174
+          },
+          {
+            "true_index": 1,
+            "learned_index": 2,
+            "WB_recovery": 0.9839147581539387,
+            "WS_truth_recovery": 0.9957965248104965,
+            "WS_anchor_correlation": 0.9999988669666842,
+            "gamma": 0.4849550426006317,
+            "HC_anchor_cosine": 0.9999999630097773,
+            "HI_anchor_cosine": 0.999999090967069
+          },
+          {
+            "true_index": 2,
+            "learned_index": 5,
+            "WB_recovery": 0.9945000328964279,
+            "WS_truth_recovery": 0.998132594379983,
+            "WS_anchor_correlation": 0.9999999416800827,
+            "gamma": 0.3115139901638031,
+            "HC_anchor_cosine": 0.9999997638110433,
+            "HI_anchor_cosine": 0.999998032345427
+          },
+          {
+            "true_index": 3,
+            "learned_index": 3,
+            "WB_recovery": 0.7595637272631599,
+            "WS_truth_recovery": 0.49365785193040096,
+            "WS_anchor_correlation": 0.999933126987777,
+            "gamma": -0.8663542866706848,
+            "HC_anchor_cosine": 0.9999984217043315,
+            "HI_anchor_cosine": 0.9997704856691305
+          },
+          {
+            "true_index": 4,
+            "learned_index": 1,
+            "WB_recovery": 0.9898986970710486,
+            "WS_truth_recovery": 0.9956115660419893,
+            "WS_anchor_correlation": 0.9999968375939726,
+            "gamma": 0.8391092419624329,
+            "HC_anchor_cosine": 0.9999982543756047,
+            "HI_anchor_cosine": 0.999994304437842
+          },
+          {
+            "true_index": 5,
+            "learned_index": 4,
+            "WB_recovery": 0.9670681111546642,
+            "WS_truth_recovery": 0.9935611623310971,
+            "WS_anchor_correlation": 0.9999991878467498,
+            "gamma": -0.12148541957139969,
+            "HC_anchor_cosine": 0.9999998049455909,
+            "HI_anchor_cosine": 0.9999956352127257
+          }
+        ],
+        "HC_anchor_cosine": 0.9999992753555492,
+        "HI_anchor_cosine": 0.9999446321597855,
+        "WS_anchor_correlation": 0.9999864447959714,
+        "spatial_reconstruction": {
+          "composition": 8.444126251561102e-06,
+          "communication": 7.475474831153406e-06,
+          "topology": 1.103776776290033e-05,
+          "total": 2.6957368845614837e-05
+        }
+      },
+      "history": [
+        {
+          "iteration": 1,
+          "accepted": true,
+          "validation_c_index": 0.4967897271268058,
+          "HC_anchor_cosine": 0.9999992753555492,
+          "HI_anchor_cosine": 0.9999446321597855,
+          "HC_per_niche_anchor_cosine": [
+            0.9999994442869465,
+            0.9999982543756047,
+            0.9999999630097773,
+            0.9999984217043315,
+            0.9999998049455909,
+            0.9999997638110433
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9999102443265174,
+            0.999994304437842,
+            0.999999090967069,
+            0.9997704856691305,
+            0.9999956352127257,
+            0.999998032345427
+          ],
+          "ST_reconstruction_change": -0.04560976430279131,
+          "adapter_max_abs_delta": 0.04465128481388092,
+          "final_losses": {
+            "total_loss": 0.222099170088768,
+            "st_anchor": 2.7113930627820082e-05,
+            "bulk_reconstruction": 7.829770765965804e-05,
+            "cox_loss": 4.439518451690674,
+            "adapter_penalty": 1.783694460755214e-05
+          }
+        },
+        {
+          "iteration": 2,
+          "accepted": true,
+          "validation_c_index": 0.4911717495987159,
+          "HC_anchor_cosine": 0.9999992909066413,
+          "HI_anchor_cosine": 0.9999483838311881,
+          "HC_per_niche_anchor_cosine": [
+            0.9999992989961398,
+            0.9999982885378631,
+            0.9999999713902278,
+            0.999998750926731,
+            0.9999998580496788,
+            0.9999995775392072
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9998901056295295,
+            0.999994635577248,
+            0.9999995284606995,
+            0.9998121068821667,
+            0.9999961610667997,
+            0.9999977653706852
+          ],
+          "ST_reconstruction_change": -0.044353955752122025,
+          "adapter_max_abs_delta": 0.0409001000225544,
+          "final_losses": {
+            "total_loss": 0.2220817357301712,
+            "st_anchor": 2.7145963031216525e-05,
+            "bulk_reconstruction": 7.8121418482624e-05,
+            "cox_loss": 4.439208507537842,
+            "adapter_penalty": 1.6046868040575646e-05
+          }
+        },
+        {
+          "iteration": 3,
+          "accepted": true,
+          "validation_c_index": 0.49036918138041735,
+          "HC_anchor_cosine": 0.9999992259020637,
+          "HI_anchor_cosine": 0.9999470344466834,
+          "HC_per_niche_anchor_cosine": [
+            0.9999990258827989,
+            0.9999980453028128,
+            0.9999999831854103,
+            0.9999990434463615,
+            0.9999998442122582,
+            0.9999994133827405
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.99984889544657,
+            0.9999949990591903,
+            0.9999995407472637,
+            0.9998454468029395,
+            0.9999963272229241,
+            0.9999969974012127
+          ],
+          "ST_reconstruction_change": -0.04194502347811115,
+          "adapter_max_abs_delta": 0.038121894001960754,
+          "final_losses": {
+            "total_loss": 0.22206337749958038,
+            "st_anchor": 2.7216692615184e-05,
+            "bulk_reconstruction": 7.768662180751562e-05,
+            "cox_loss": 4.438854694366455,
+            "adapter_penalty": 1.573290501255542e-05
+          }
+        },
+        {
+          "iteration": 4,
+          "accepted": true,
+          "validation_c_index": 0.48796147672552165,
+          "HC_anchor_cosine": 0.9999992533422738,
+          "HI_anchor_cosine": 0.9999486461964956,
+          "HC_per_niche_anchor_cosine": [
+            0.9999989733935941,
+            0.9999981098229656,
+            0.9999999831606873,
+            0.9999993019444668,
+            0.9999998502535803,
+            0.9999993014783488
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9998321877555905,
+            0.9999952355770291,
+            0.9999992920658672,
+            0.9998724879789637,
+            0.9999965956439038,
+            0.9999960781576197
+          ],
+          "ST_reconstruction_change": -0.039952144005099416,
+          "adapter_max_abs_delta": 0.03562312573194504,
+          "final_losses": {
+            "total_loss": 0.22205041348934174,
+            "st_anchor": 2.727470018726308e-05,
+            "bulk_reconstruction": 7.759079016977921e-05,
+            "cox_loss": 4.4386115074157715,
+            "adapter_penalty": 1.4971104974392802e-05
+          }
+        },
+        {
+          "iteration": 5,
+          "accepted": true,
+          "validation_c_index": 0.485553772070626,
+          "HC_anchor_cosine": 0.9999991803519811,
+          "HI_anchor_cosine": 0.999948169105911,
+          "HC_per_niche_anchor_cosine": [
+            0.9999987882004179,
+            0.9999979421280412,
+            0.9999999824940978,
+            0.9999994872871086,
+            0.9999998006990869,
+            0.9999990813031339
+          ],
+          "HI_per_niche_anchor_cosine": [
+            0.9998021926416458,
+            0.9999954783223413,
+            0.9999987087998045,
+            0.9999014565188382,
+            0.9999968994551157,
+            0.9999942788977212
+          ],
+          "ST_reconstruction_change": -0.03629553346288224,
+          "adapter_max_abs_delta": 0.032285839319229126,
+          "final_losses": {
+            "total_loss": 0.22203181684017181,
+            "st_anchor": 2.737499016802758e-05,
+            "bulk_reconstruction": 7.738478598184884e-05,
+            "cox_loss": 4.438244342803955,
+            "adapter_penalty": 1.4836373338766862e-05
+          }
+        }
+      ],
+      "diagnostics": {
+        "selected_validation_c_index": 0.4967897271268058,
+        "max_gradient_norm": 0.00069107033777982,
+        "gradient_clip_count": 0,
+        "all_finite": true,
+        "HC_anchor_cosine": 0.9999992753555492,
+        "HI_anchor_cosine": 0.9999446321597855
+      }
+    }
+  ],
+  "mean_test_c_index": 0.5166861143523921,
+  "std_test_c_index": 0.11638935425675152,
+  "ST_anchor_sha256": "b44974fc1099b19d7479f0da39883d60354f1aa296709540f2b092154c2c4254"
+}
