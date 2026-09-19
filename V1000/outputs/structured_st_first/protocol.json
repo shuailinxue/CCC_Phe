@@ -1,0 +1,71 @@
+{
+  "primary": {
+    "patients": 320,
+    "rows": 30,
+    "columns": 40,
+    "cell_types": 8,
+    "programs": 12,
+    "topology_features": 24,
+    "niches": 6,
+    "active_fraction": 0.0625,
+    "opportunity_tau": 0.0001,
+    "communication_baseline": 0.001,
+    "observation_noise": 0.005,
+    "beta_risk": 10.0,
+    "beta_protective": -10.0,
+    "seed": 20260918
+  },
+  "model_seeds": [
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "sensitivity": {
+    "Q": [
+      2,
+      4,
+      8
+    ],
+    "model_seeds": [
+      31,
+      32,
+      33
+    ]
+  },
+  "st_iterations": 500,
+  "iterative": {
+    "outer_iterations": 5,
+    "epochs_per_iteration": 60,
+    "learning_rate": 0.02,
+    "delta_max": 0.22314355131420976,
+    "lambda_st": 1.0,
+    "lambda_bulk": 1.0,
+    "lambda_ph": 0.05,
+    "lambda_adapter": 1.0,
+    "hc_gate": 0.95,
+    "hi_gate": 0.9,
+    "st_degradation_gate": 0.05,
+    "gradient_clip": 10.0
+  },
+  "patient_split_seed": 90210,
+  "inner_steps_candidates": [
+    10,
+    25,
+    50,
+    100,
+    200
+  ],
+  "inner_selection": "reconstruction accuracy only; no phenotype or truth",
+  "success_gate_before_refinement": "consensus A/B HI>=0.65, WS>=0.60, no HI-only or HC+HI collision",
+  "forbidden_mechanisms": [
+    "anti-collapse",
+    "dual-bank",
+    "entropy",
+    "orthogonality",
+    "JSD",
+    "contrastive",
+    "GNN"
+  ]
+}

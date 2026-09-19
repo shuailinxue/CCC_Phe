@@ -1,0 +1,5633 @@
+{
+  "single_bank": {
+    "same_composition": {
+      "train_c_index": {
+        "mean": 0.7471442470541602,
+        "std": 0.004103523578826053,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.6634580012262417,
+        "std": 0.0052333210226724386,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6744298777129007,
+        "std": 0.008983433611243078,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.001426199881825596,
+        "std": 0.00016406411121904337,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.00237244195304811,
+        "std": 0.00016853974906409482,
+        "n": 5,
+        "undefined": 0
+      },
+      "overall_dictionary_recovery": {
+        "mean": 0.6959090926214005,
+        "std": 0.014107453941178369,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.639458113448784,
+          "std": 0.07408189688269438,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.7874571940381807,
+          "std": 0.05464324212198851,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.47928724219149627,
+          "std": 0.08887882876526347,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.3711174590788606,
+          "std": 0.05524423166149167,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.8898634957015445,
+          "std": 0.02551857297704878,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.4925818492675553,
+          "std": 0.13150504639693059,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 5.494714450836182,
+          "std": 0.6386801150234543,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_gamma_sign_consistency": 1.0,
+      "protective_niche_recovery": null,
+      "protective_gamma_sign_consistency": null,
+      "neutral_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.6703101335250963,
+          "std": 0.024626976814030234,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.7091066559616832,
+          "std": 0.04565490686120821,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.6293576948646936,
+          "std": 0.020153913635357096,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.6201048341252811,
+          "std": 0.03429677213308463,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6751756955227483,
+          "std": 0.12059256340985439,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.6450780362957372,
+          "std": 0.03308091777560985,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 0.8273186010619004,
+          "std": 0.908526994442995,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_gamma_sign_consistency": null,
+      "nuisance_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.9971415094207646,
+          "std": 0.0009555269622257707,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9976898713898045,
+          "std": 0.0009172705465581794,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9967309982850037,
+          "std": 0.0012821685288820325,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9972774664745966,
+          "std": 0.00041062680645433244,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9786513900490774,
+          "std": 0.023232490684039223,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9978260223842513,
+          "std": 0.0011780063308326136,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.19393864646553993,
+          "std": 0.31174211104728355,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_gamma_sign_consistency": null,
+      "collision_rate": 0.2,
+      "HI_only_collision_rate": 0.0,
+      "pair": {
+        "learned_pair_HI_cosine": {
+          "mean": 0.8618385862578595,
+          "std": 0.08296451366580807,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_recovery": {
+          "mean": 0.6394581134487838,
+          "std": 0.07408189688269436,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_HI_cosine": {
+          "mean": 0.47928724219149627,
+          "std": 0.08887882876526347,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_HC_cosine": {
+          "mean": 0.7874571940381807,
+          "std": 0.05464324212198851,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_WS_correlation": {
+          "mean": 0.4925818492675553,
+          "std": 0.13150504639693059,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_gamma": {
+          "mean": 5.494714450836182,
+          "std": 0.6386801150234543,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_recovery": {
+          "mean": 0.6827680982822357,
+          "std": 0.034420635653242965,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_HI_cosine": {
+          "mean": 0.5571756107798413,
+          "std": 0.04543455634320188,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_HC_cosine": {
+          "mean": 0.7930857892338988,
+          "std": 0.07429768324679195,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_WS_correlation": {
+          "mean": 0.7162942097142436,
+          "std": 0.1111170800595761,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_gamma": {
+          "mean": 0.7932918675243854,
+          "std": 2.673590999145628,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_HO_cosine": {
+          "mean": 0.3711174590788606,
+          "std": 0.05524423166149167,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_WB_correlation": {
+          "mean": 0.8898634957015445,
+          "std": 0.02551857297704878,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_HO_cosine": {
+          "mean": 0.5486924797221805,
+          "std": 0.11671772342647783,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_WB_correlation": {
+          "mean": 0.7127973553339542,
+          "std": 0.3562149555359975,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "redundancy": {
+        "mean_pair_collapse": {
+          "mean": 0.17585704028606414,
+          "std": 0.012087585172177737,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_pair_collapse": {
+          "mean": 0.7267607927322388,
+          "std": 0.21243947516285697,
+          "n": 5,
+          "undefined": 0
+        },
+        "mean_HC_cosine": {
+          "mean": 0.40689154863357546,
+          "std": 0.042496419668560104,
+          "n": 5,
+          "undefined": 0
+        },
+        "median_HC_cosine": {
+          "mean": 0.3248132526874542,
+          "std": 0.12911204982665403,
+          "n": 5,
+          "undefined": 0
+        },
+        "min_HC_cosine": {
+          "mean": 0.08267843574285508,
+          "std": 0.021985916597706046,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_HC_cosine": {
+          "mean": 0.9669455647468567,
+          "std": 0.01717039246171589,
+          "n": 5,
+          "undefined": 0
+        },
+        "mean_HO_cosine": {
+          "mean": 0.4839555859565735,
+          "std": 0.020354479987096753,
+          "n": 5,
+          "undefined": 0
+        },
+        "median_HO_cosine": {
+          "mean": 0.48023954033851624,
+          "std": 0.10782996690673959,
+          "n": 5,
+          "undefined": 0
+        },
+        "min_HO_cosine": {
+          "mean": 0.12269918322563171,
+          "std": 0.014894630326761162,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_HO_cosine": {
+          "mean": 0.8793777823448181,
+          "std": 0.10491568387197686,
+          "n": 5,
+          "undefined": 0
+        },
+        "mean_HI_cosine": {
+          "mean": 0.4389070749282837,
+          "std": 0.02473053857354837,
+          "n": 5,
+          "undefined": 0
+        },
+        "median_HI_cosine": {
+          "mean": 0.37946479916572573,
+          "std": 0.09882750129956447,
+          "n": 5,
+          "undefined": 0
+        },
+        "min_HI_cosine": {
+          "mean": 0.10508403778076172,
+          "std": 0.025353458731788816,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_HI_cosine": {
+          "mean": 0.8825446128845215,
+          "std": 0.09197705796011009,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "matched_pair": {
+        "matched_A_B_HC_cosine": {
+          "mean": 0.9582656621932983,
+          "std": 0.0390914452705006,
+          "n": 5,
+          "undefined": 0
+        },
+        "matched_A_B_HO_cosine": {
+          "mean": 0.8310933828353881,
+          "std": 0.12544791289542798,
+          "n": 5,
+          "undefined": 0
+        },
+        "matched_A_B_HI_cosine": {
+          "mean": 0.8618385910987854,
+          "std": 0.08296451691918791,
+          "n": 5,
+          "undefined": 0
+        },
+        "matched_A_B_joint_collapse_score": {
+          "mean": 0.6963318299376275,
+          "std": 0.19155053853983606,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "final_losses": {
+        "total_loss": {
+          "mean": 0.5019671797752381,
+          "std": 0.0007126627132942414,
+          "n": 5,
+          "undefined": 0
+        },
+        "bulk_recon": {
+          "mean": 0.0014261998701840639,
+          "std": 0.00016406407831711498,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_recon": {
+          "mean": 0.002372441999614239,
+          "std": 0.00016853982808609985,
+          "n": 5,
+          "undefined": 0
+        },
+        "cox_loss": {
+          "mean": 4.768987655639648,
+          "std": 0.013040925084041616,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_loss": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 5,
+          "undefined": 0
+        },
+        "regularization": {
+          "mean": 212.69772338867188,
+          "std": 3.9062135193432597,
+          "n": 5,
+          "undefined": 0
+        },
+        "collapse_loss": {
+          "mean": 0.17585703432559968,
+          "std": 0.012087583605150784,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "stability": {
+        "total_clip_events": 0,
+        "clipped_runs": 0,
+        "max_gradient_norm": 0.07379128783941269,
+        "nonfinite_runs": 0
+      }
+    },
+    "capacity": {
+      "train_c_index": {
+        "mean": 0.8008877159309021,
+        "std": 0.0029147755905562208,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.7282694848084544,
+        "std": 0.004832961196810257,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.7270352875798832,
+        "std": 0.0039483277765502,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.0026229158393107355,
+        "std": 0.0008502458031432863,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.003588188975118101,
+        "std": 0.0008927993319386775,
+        "n": 5,
+        "undefined": 0
+      },
+      "overall_dictionary_recovery": {
+        "mean": 0.4865628636310264,
+        "std": 0.042750690629166845,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.44670881107060423,
+          "std": 0.13573492567260825,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.445063131360892,
+          "std": 0.14206293461796013,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.4516471825512879,
+          "std": 0.1465553936604062,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.3265677326455939,
+          "std": 0.10908604893568362,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6357263598311966,
+          "std": 0.4793850312574962,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3148847596043991,
+          "std": 0.178934430242481,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 4.230752038955688,
+          "std": 4.014177078669439,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_gamma_sign_consistency": 0.8,
+      "protective_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.3684999381628196,
+          "std": 0.1204870289217393,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.34917855119187685,
+          "std": 0.11722702109114007,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3879786427930658,
+          "std": 0.1241440301001361,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.3245183558056365,
+          "std": 0.06852750063555618,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6328768899319532,
+          "std": 0.23845511598905902,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3768251994870909,
+          "std": 0.12221031093627356,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -4.304402875900268,
+          "std": 1.4287662952009486,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "protective_gamma_sign_consistency": 1.0,
+      "neutral_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.41929745145981706,
+          "std": 0.17807158930497236,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.41160887808278035,
+          "std": 0.19582209112051072,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.4260770746957017,
+          "std": 0.16208323866325772,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.3949865792083916,
+          "std": 0.18701545407833456,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.38324678765987896,
+          "std": 0.24506659545275022,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3312995169442975,
+          "std": 0.2791306361547587,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -3.1721503257751467,
+          "std": 2.280795596663105,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_gamma_sign_consistency": null,
+      "nuisance_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.9953824525269088,
+          "std": 0.00421775587204566,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9955298474185437,
+          "std": 0.004245288610728862,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9953931624897902,
+          "std": 0.004139834116437265,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9972393984417897,
+          "std": 0.0011867076534016576,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9901159516358421,
+          "std": 0.011481943202176709,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9976987023206718,
+          "std": 0.0017847562207427032,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.40494548100978134,
+          "std": 1.0239021358364964,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_gamma_sign_consistency": null,
+      "collision_rate": 0.2,
+      "HI_only_collision_rate": 0.2,
+      "pair": {
+        "learned_pair_HI_cosine": {
+          "mean": 0.7810012787013072,
+          "std": 0.18365791917277308,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_recovery": {
+          "mean": 0.44670881107060423,
+          "std": 0.13573492567260825,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_HI_cosine": {
+          "mean": 0.4516471825512879,
+          "std": 0.1465553936604062,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_HC_cosine": {
+          "mean": 0.445063131360892,
+          "std": 0.14206293461796013,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_WS_correlation": {
+          "mean": 0.3148847596043991,
+          "std": 0.178934430242481,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_gamma": {
+          "mean": 4.230752038955688,
+          "std": 4.014177078669439,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_recovery": {
+          "mean": 0.36849993816281956,
+          "std": 0.12048702892173929,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_HI_cosine": {
+          "mean": 0.3879786427930658,
+          "std": 0.1241440301001361,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_HC_cosine": {
+          "mean": 0.34917855119187685,
+          "std": 0.11722702109114007,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_WS_correlation": {
+          "mean": 0.3768251994870909,
+          "std": 0.12221031093627356,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_gamma": {
+          "mean": -4.304402875900268,
+          "std": 1.4287662952009486,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_HO_cosine": {
+          "mean": 0.3265677326455939,
+          "std": 0.10908604893568362,
+          "n": 5,
+          "undefined": 0
+        },
+        "A_WB_correlation": {
+          "mean": 0.6357263598311966,
+          "std": 0.4793850312574962,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_HO_cosine": {
+          "mean": 0.3245183558056365,
+          "std": 0.06852750063555618,
+          "n": 5,
+          "undefined": 0
+        },
+        "B_WB_correlation": {
+          "mean": 0.6328768899319532,
+          "std": 0.23845511598905902,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "redundancy": {
+        "mean_pair_collapse": {
+          "mean": 0.13118043839931487,
+          "std": 0.04172482699756256,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_pair_collapse": {
+          "mean": 0.4395553648471832,
+          "std": 0.09245850769291947,
+          "n": 5,
+          "undefined": 0
+        },
+        "mean_HC_cosine": {
+          "mean": 0.41838049292564394,
+          "std": 0.06409416438960239,
+          "n": 5,
+          "undefined": 0
+        },
+        "median_HC_cosine": {
+          "mean": 0.3671527236700058,
+          "std": 0.1353608822543557,
+          "n": 5,
+          "undefined": 0
+        },
+        "min_HC_cosine": {
+          "mean": 0.0793730616569519,
+          "std": 0.032324603257681196,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_HC_cosine": {
+          "mean": 0.8795306205749511,
+          "std": 0.07489839830859453,
+          "n": 5,
+          "undefined": 0
+        },
+        "mean_HO_cosine": {
+          "mean": 0.3652961254119873,
+          "std": 0.05327263876056828,
+          "n": 5,
+          "undefined": 0
+        },
+        "median_HO_cosine": {
+          "mean": 0.3552047610282898,
+          "std": 0.0705390803667888,
+          "n": 5,
+          "undefined": 0
+        },
+        "min_HO_cosine": {
+          "mean": 0.11193654984235764,
+          "std": 0.017574374599183887,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_HO_cosine": {
+          "mean": 0.6600960195064545,
+          "std": 0.19536928823930055,
+          "n": 5,
+          "undefined": 0
+        },
+        "mean_HI_cosine": {
+          "mean": 0.440857857465744,
+          "std": 0.07690780005793879,
+          "n": 5,
+          "undefined": 0
+        },
+        "median_HI_cosine": {
+          "mean": 0.4276301026344299,
+          "std": 0.12066023236302409,
+          "n": 5,
+          "undefined": 0
+        },
+        "min_HI_cosine": {
+          "mean": 0.08926438391208649,
+          "std": 0.02643925221133883,
+          "n": 5,
+          "undefined": 0
+        },
+        "max_HI_cosine": {
+          "mean": 0.8267590641975403,
+          "std": 0.10101205487583807,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "matched_pair": {
+        "matched_A_B_HC_cosine": {
+          "mean": 0.8221765756607056,
+          "std": 0.20537003063675469,
+          "n": 5,
+          "undefined": 0
+        },
+        "matched_A_B_HO_cosine": {
+          "mean": 0.6032156348228455,
+          "std": 0.2355837031611653,
+          "n": 5,
+          "undefined": 0
+        },
+        "matched_A_B_HI_cosine": {
+          "mean": 0.7810012698173523,
+          "std": 0.1836578752402904,
+          "n": 5,
+          "undefined": 0
+        },
+        "matched_A_B_joint_collapse_score": {
+          "mean": 0.4247662761136355,
+          "std": 0.3325141523149349,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "final_losses": {
+        "total_loss": {
+          "mean": 0.4971495568752289,
+          "std": 0.0010778823895158753,
+          "n": 5,
+          "undefined": 0
+        },
+        "bulk_recon": {
+          "mean": 0.002622915850952268,
+          "std": 0.0008502458730425788,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_recon": {
+          "mean": 0.0035881890449672937,
+          "std": 0.00089279916250445,
+          "n": 5,
+          "undefined": 0
+        },
+        "cox_loss": {
+          "mean": 4.685825157165527,
+          "std": 0.026153849611458186,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_loss": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 5,
+          "undefined": 0
+        },
+        "regularization": {
+          "mean": 223.559326171875,
+          "std": 8.081547987278748,
+          "n": 5,
+          "undefined": 0
+        },
+        "collapse_loss": {
+          "mean": 0.13118045032024384,
+          "std": 0.04172483562532762,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "stability": {
+        "total_clip_events": 0,
+        "clipped_runs": 0,
+        "max_gradient_norm": 0.10815227776765823,
+        "nonfinite_runs": 0
+      }
+    },
+    "source": "Audited inferred-WB single-bank lambda_ph=0.1, lambda_collapse=0, seeds 31..35"
+  },
+  "same_composition": {
+    "residual_frozen": {
+      "train_c_index": {
+        "mean": 0.6951269023338498,
+        "std": 0.002578724077756799,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.6761904761904762,
+        "std": 0.005866358836028047,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6479233226837061,
+        "std": 0.00543210314922955,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_test_c_index": {
+        "mean": 0.5943593698358488,
+        "std": 0.005282349716750861,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_test_c_index": {
+        "mean": 0.6479233226837061,
+        "std": 0.00543210314922955,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.001983391889370978,
+        "std": 2.880224725762379e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.002965229784604162,
+        "std": 3.2526244214013764e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "A": {
+        "phenotype_bank_rate": 0.6,
+        "background_bank_rate": 0.4,
+        "best_bank_counts": {
+          "phenotype": 3,
+          "background": 2
+        },
+        "bank_margin": {
+          "mean": 0.019753281160289914,
+          "std": 0.04936383963686363,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.62506108227417,
+          "std": 0.013580646500857276,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.5007324886258717,
+          "std": 0.16648256761221839,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.4075218688424007,
+          "std": 0.10002220604301386,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6676132989092897,
+          "std": 0.3326800845030901,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.2581938298515509,
+          "std": 0.05117441001199885,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.49996731393618443,
+          "std": 0.04650021475523515,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.4802140327758946,
+          "std": 0.007698064120345634,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.5581857628722908,
+          "std": 0.10702949168310054,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.5907195091677275,
+          "std": 0.06380402288800655,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.4524168981675178,
+          "std": 0.05110873709306578,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.9104033894915438,
+          "std": 0.003169915167107375,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.2200616434034824,
+          "std": 0.048114475485441364,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 4.738948059082031,
+          "std": 0.08750235698959594,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.6151425870425883,
+          "std": 0.007667631838727855,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.3213210158728357,
+          "std": 0.015973068378115688,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.30885765838946516,
+          "std": 0.03142963967602321,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.31478019673970936,
+          "std": 0.026896166613744797,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.3198855986266097,
+          "std": 0.04554307361781297,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "B": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.06053653859061233,
+          "std": 0.050387970495066436,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.6151425870425883,
+          "std": 0.007667631838727855,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3559793145604714,
+          "std": 0.012429294143517405,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.34361125547979904,
+          "std": 0.03124762588515283,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.2564098844221366,
+          "std": 0.016968591316485745,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.42141333750363497,
+          "std": 0.025542096397914656,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.4357399198903543,
+          "std": 0.04433266746077613,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.49627645848096663,
+          "std": 0.008067762358441831,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.24593726470052416,
+          "std": 0.05038887893211996,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.6015190728747222,
+          "std": 0.049331990410163146,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.4052538953916394,
+          "std": 0.07130784678248286,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.48172508849408036,
+          "std": 0.061757380363795834,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.0537496159687839,
+          "std": 0.09603884271075931,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.4648340702056886,
+          "std": 0.10150668355783367,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.6151425870425883,
+          "std": 0.007667631838727855,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.3559793145604714,
+          "std": 0.012429294143517405,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.34361125547979904,
+          "std": 0.03124762588515283,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.2564098844221366,
+          "std": 0.016968591316485745,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.42141333750363497,
+          "std": 0.025542096397914656,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.6003361041481254,
+          "std": 0.06372878134576504,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9966123235805082,
+          "std": 0.001227803733395333,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9959201000311424,
+          "std": 0.0007169361765379501,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9959656433607972,
+          "std": 0.0006824442625790025,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9967882994059085,
+          "std": 0.0007772404738691848,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9975060483274536,
+          "std": 0.0004428157974200728,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.39587756733148455,
+          "std": 0.06334225560137702,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.99621367147961,
+          "std": 0.0009897603966510704,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.37372738212332945,
+          "std": 0.14314977941712256,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.4161151583455139,
+          "std": 0.019848486855534572,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.42736537140204883,
+          "std": 0.09062359053262173,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.08689863622409126,
+          "std": 0.08265390990048693,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.017945332395883914,
+          "std": 0.05983773673685332,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.4648340702056886,
+          "std": 0.10150668355783367,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9966123235805082,
+          "std": 0.001227803733395333,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9959201000311424,
+          "std": 0.0007169361765379501,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9959656433607972,
+          "std": 0.0006824442625790025,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9967882994059085,
+          "std": 0.0007772404738691848,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9975060483274536,
+          "std": 0.0004428157974200728,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.6196784018228084,
+          "std": 0.04445237079806921,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9962817153507084,
+          "std": 0.0037504394180854707,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.995901053011701,
+          "std": 0.0018514409607162535,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9957511657763403,
+          "std": 0.001988956541654917,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9939905677739246,
+          "std": 0.00551421183673578,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9963254134361087,
+          "std": 0.003133467576823324,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.3763025137753302,
+          "std": 0.043906998149114876,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9959809155981386,
+          "std": 0.0029805044905016407,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.3397975610715195,
+          "std": 0.09173755901554194,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.406854175687893,
+          "std": 0.08021356492409389,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.44255341300949064,
+          "std": 0.059976331948587695,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.02246927800817066,
+          "std": 0.09243806690089076,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.03845535743860547,
+          "std": 0.057938580103990445,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.4648340702056886,
+          "std": 0.10150668355783367,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9962817153507084,
+          "std": 0.0037504394180854707,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.995901053011701,
+          "std": 0.0018514409607162535,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9957511657763403,
+          "std": 0.001988956541654917,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9939905677739246,
+          "std": 0.00551421183673578,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9963254134361087,
+          "std": 0.003133467576823324,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.22678436658816398,
+          "std": 0.028429138260272258,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5118240492566085,
+          "std": 0.01611470615269087,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.5584618620094784,
+          "std": 0.027698948779599913,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.529035073397223,
+          "std": 0.03538387802478389,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5230016215275152,
+          "std": 0.025100068743196393,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.4297967240253507,
+          "std": 0.057985367876547386,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.30306613669861926,
+          "std": 0.03839389361143308,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.5298505032867833,
+          "std": 0.02122568234004627,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.32772760145870206,
+          "std": 0.06313380061097253,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.2895089583541981,
+          "std": 0.06794875514156198,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.4210993143030099,
+          "std": 0.13271996300161637,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.17404119937034826,
+          "std": 0.05738729568881507,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.08945123575547773,
+          "std": 0.09109139018636643,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.4648340702056886,
+          "std": 0.10150668355783367,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5118240492566085,
+          "std": 0.01611470615269087,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.5584618620094784,
+          "std": 0.027698948779599913,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.529035073397223,
+          "std": 0.03538387802478389,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.5230016215275152,
+          "std": 0.025100068743196393,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.4297967240253507,
+          "std": 0.057985367876547386,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.27215316722499355,
+          "std": 0.049834776252757236,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5602444714278791,
+          "std": 0.03703412425151907,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.6021322174971951,
+          "std": 0.04518202425187534,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.5939890288607586,
+          "std": 0.0835172902815677,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5772537483971342,
+          "std": 0.04414760113106542,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.5126626513876791,
+          "std": 0.08935748986902237,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.30402863733493246,
+          "std": 0.025210279760058515,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.576181804559926,
+          "std": 0.03963767210662081,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.4109989397196615,
+          "std": 0.07836093054224058,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.2203346605730272,
+          "std": 0.047932168124313584,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.3902500623709128,
+          "std": 0.04159701523088495,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.16078201315099147,
+          "std": 0.10719978023756477,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.09380001490411868,
+          "std": 0.1462224814254468,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.4648340702056886,
+          "std": 0.10150668355783367,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5602444714278791,
+          "std": 0.03703412425151907,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.6021322174971951,
+          "std": 0.04518202425187534,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.5939890288607586,
+          "std": 0.0835172902815677,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.5772537483971342,
+          "std": 0.04414760113106542,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.5126626513876791,
+          "std": 0.08935748986902237,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "A_B_different_bank_rate": 0.6,
+      "A_B_different_factor_rate": 0.6,
+      "risk_gamma_sign_consistency": 1.0,
+      "gradient_clip_events": 0,
+      "max_gradient_norm": 0.0242298673838377
+    },
+    "residual_jointft": {
+      "train_c_index": {
+        "mean": 0.7279857782902719,
+        "std": 0.0019112758937813413,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.6768035969752708,
+        "std": 0.00492642116060525,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6925195549190262,
+        "std": 0.007631111274892142,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_test_c_index": {
+        "mean": 0.6111049906356726,
+        "std": 0.024664351125096497,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_test_c_index": {
+        "mean": 0.6925195549190262,
+        "std": 0.007631111274892142,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.002054848289117217,
+        "std": 3.0134917183942103e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.003022861829958856,
+        "std": 5.9009026690871915e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "A": {
+        "phenotype_bank_rate": 0.4,
+        "background_bank_rate": 0.6,
+        "best_bank_counts": {
+          "phenotype": 2,
+          "background": 3
+        },
+        "bank_margin": {
+          "mean": -0.003960741947545277,
+          "std": 0.0442141667493342,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5950149707949075,
+          "std": 0.005285682664366797,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3789162785559288,
+          "std": 0.10539473671315915,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.42550703582670046,
+          "std": 0.13479124329791373,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5577676658150261,
+          "std": 0.3666924887706902,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3533937046297221,
+          "std": 0.11672781830940725,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.4427299988260606,
+          "std": 0.03299236469890401,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.44669074077360593,
+          "std": 0.019826201220624975,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.5136397234236677,
+          "std": 0.0843248675605448,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.4888719875337898,
+          "std": 0.03530946539028018,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.5456823097470823,
+          "std": 0.04568883720438786,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.9571191315492065,
+          "std": 0.01210339277621585,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.422184091837181,
+          "std": 0.09035220347632106,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 5.194971656799316,
+          "std": 0.0432362741693147,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5857029868330151,
+          "std": 0.01256349107846764,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.29014256795362003,
+          "std": 0.025135062857979056,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.34713839665345425,
+          "std": 0.02516247064470706,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.2396590695193283,
+          "std": 0.07074741316486077,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.30506665881834194,
+          "std": 0.0455251373904223,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "B": {
+        "phenotype_bank_rate": 0.2,
+        "background_bank_rate": 0.8,
+        "best_bank_counts": {
+          "phenotype": 1,
+          "background": 4
+        },
+        "bank_margin": {
+          "mean": -0.027110277234054857,
+          "std": 0.0345588537952876,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5513060886302024,
+          "std": 0.08362644009498303,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.4024043254803432,
+          "std": 0.09010733324259837,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.36770179485132815,
+          "std": 0.05387652541317542,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.2958555968180784,
+          "std": 0.19239203989094603,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.32826441474300905,
+          "std": 0.19113537726131533,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.45298342241192435,
+          "std": 0.030328346545495762,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.48009369964597914,
+          "std": 0.011528035619919122,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.3761195273164686,
+          "std": 0.0698505466164375,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.5181148437365042,
+          "std": 0.03991961832376615,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.36334970144836787,
+          "std": 0.0692721189580235,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.5702323837672301,
+          "std": 0.06718896900400223,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.10949084107930114,
+          "std": 0.10501385021088752,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.1885798573493958,
+          "std": 0.18685499824755897,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5857029868330151,
+          "std": 0.01256349107846764,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.36093388069658905,
+          "std": 0.007899205701123886,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.39393347262532397,
+          "std": 0.02432577445023387,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.20819661831432162,
+          "std": 0.055289453371824754,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.4124270147713604,
+          "std": 0.01831577221891261,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.5693271751918341,
+          "std": 0.06206880057431663,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9950464452583816,
+          "std": 0.0007053690027695682,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9948083855169031,
+          "std": 0.00036050849753357526,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9964814089851398,
+          "std": 0.0008760145620365237,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9940944479289616,
+          "std": 0.0035160093559756613,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9973803229037141,
+          "std": 0.0005935407231905356,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.4254629251389665,
+          "std": 0.062001611257631165,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9947901003308004,
+          "std": 0.00047180769445438433,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.37507484674636155,
+          "std": 0.1644986415143033,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.4698760966270843,
+          "std": 0.053471004934626795,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.48748014647930527,
+          "std": 0.06744543838216097,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.008493060131787255,
+          "std": 0.04990660624820444,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.007135565642600752,
+          "std": 0.06216119015146187,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.1885798573493958,
+          "std": 0.18685499824755897,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9950464452583816,
+          "std": 0.0007053690027695682,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9948083855169031,
+          "std": 0.00036050849753357526,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9964814089851398,
+          "std": 0.0008760145620365237,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9940944479289616,
+          "std": 0.0035160093559756613,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9973803229037141,
+          "std": 0.0005935407231905356,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.6038573272653754,
+          "std": 0.02673718355772841,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9963279562605079,
+          "std": 0.002297262424094159,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9955883231841074,
+          "std": 0.0029143656705144546,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9965643115067466,
+          "std": 0.0013822736809789428,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9877836658944034,
+          "std": 0.017388490187691126,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.996697967352446,
+          "std": 0.0026794922368654356,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.3918029924930887,
+          "std": 0.025736807357314994,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9956603197584641,
+          "std": 0.002667101309487648,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.2717931050816099,
+          "std": 0.10218960722009733,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.49011468532962177,
+          "std": 0.08928464061202855,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.48829169488325636,
+          "std": 0.07097719036288345,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.14243195691474492,
+          "std": 0.1409763997468371,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.01676736354969833,
+          "std": 0.05392321566925153,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.1885798573493958,
+          "std": 0.18685499824755897,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9963279562605079,
+          "std": 0.002297262424094159,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9955883231841074,
+          "std": 0.0029143656705144546,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9965643115067466,
+          "std": 0.0013822736809789428,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9877836658944034,
+          "std": 0.017388490187691126,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.996697967352446,
+          "std": 0.0026794922368654356,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.2816705886620299,
+          "std": 0.03514118075635452,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.49866103255065575,
+          "std": 0.009401829322261999,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.6086374018506051,
+          "std": 0.028934546834412662,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.5562389040306346,
+          "std": 0.043779354114950875,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5483463119561679,
+          "std": 0.058818728738204026,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.4683578556770837,
+          "std": 0.09297081306905966,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.26652868413103625,
+          "std": 0.04609365992589223,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.5481992727930661,
+          "std": 0.01694831470401459,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.2723441924064525,
+          "std": 0.015386820040417085,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.2672168910441667,
+          "std": 0.08380462520769567,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.44304859604867114,
+          "std": 0.16612959200214447,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.1699464774265445,
+          "std": 0.09574582768926933,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.19924692930440105,
+          "std": 0.2065501055695233,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -1.1885798573493958,
+          "std": 0.18685499824755897,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.49866103255065575,
+          "std": 0.009401829322261999,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.6086374018506051,
+          "std": 0.028934546834412662,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.5562389040306346,
+          "std": 0.043779354114950875,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.5483463119561679,
+          "std": 0.058818728738204026,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.4683578556770837,
+          "std": 0.09297081306905966,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.3102378748878941,
+          "std": 0.06529972343998215,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5971266454246444,
+          "std": 0.032775986750050966,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.5482929782690916,
+          "std": 0.05261643178832236,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.55624189583724,
+          "std": 0.12147946738133099,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5960266568317275,
+          "std": 0.033655691377524014,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.4905820191710906,
+          "std": 0.1287289132513366,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.26241363504912874,
+          "std": 0.03093115571575909,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.5726515099370229,
+          "std": 0.041107440565542566,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.36318010428037356,
+          "std": 0.04381811326258313,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.21930309339185974,
+          "std": 0.06501406285505483,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.31881649830042963,
+          "std": 0.09836438212759333,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.18664182377933203,
+          "std": 0.11333898648991322,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.0073462830269920235,
+          "std": 0.14210373388582145,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 1.3554247975349427,
+          "std": 3.4725788108300875,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5971266454246444,
+          "std": 0.032775986750050966,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.5482929782690916,
+          "std": 0.05261643178832236,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.55624189583724,
+          "std": 0.12147946738133099,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.5960266568317275,
+          "std": 0.033655691377524014,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.4905820191710906,
+          "std": 0.1287289132513366,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "A_B_different_bank_rate": 0.2,
+      "A_B_different_factor_rate": 0.4,
+      "risk_gamma_sign_consistency": 1.0,
+      "gradient_clip_events": 0,
+      "max_gradient_norm": 0.0242298673838377
+    },
+    "joint_scratch": {
+      "train_c_index": {
+        "mean": 0.7515260711325717,
+        "std": 0.0020727614795822105,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.653668506029021,
+        "std": 0.016671706326460412,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6621350666519776,
+        "std": 0.018368505117053603,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_test_c_index": {
+        "mean": 0.612074473945136,
+        "std": 0.022516658341474642,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_test_c_index": {
+        "mean": 0.6621350666519776,
+        "std": 0.018368505117053603,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.0018999784253537655,
+        "std": 0.0003137592737932784,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.0027641735388897358,
+        "std": 0.00036288227901806183,
+        "n": 5,
+        "undefined": 0
+      },
+      "A": {
+        "phenotype_bank_rate": 0.6,
+        "background_bank_rate": 0.4,
+        "best_bank_counts": {
+          "phenotype": 3,
+          "background": 2
+        },
+        "bank_margin": {
+          "mean": -0.015343934938860604,
+          "std": 0.09333131119848137,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.570848402456906,
+          "std": 0.0841424269396464,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3891499022788369,
+          "std": 0.04487938885502481,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.3731082670694787,
+          "std": 0.10085287327728205,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.7136634408259825,
+          "std": 0.2550453230979639,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3480692497148744,
+          "std": 0.12204241970445352,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.428387190084197,
+          "std": 0.061133940660430326,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.4437311250230576,
+          "std": 0.055871430700523535,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.49665042935422077,
+          "std": 0.1141632314027339,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.38616613231533686,
+          "std": 0.05014689897994604,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.39023561804407303,
+          "std": 0.13580081517942047,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.6545167306293879,
+          "std": 0.5488434196510306,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.32714418457408945,
+          "std": 0.18302317108599242,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 4.029287052154541,
+          "std": 4.673566991386199,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5502117468673954,
+          "std": 0.08444465450721268,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.3366027063877963,
+          "std": 0.034154751308864736,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.28232552039124403,
+          "std": 0.04799950226389819,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.3062489319869478,
+          "std": 0.12782013856809543,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.30885669478069094,
+          "std": 0.06340897563580548,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "B": {
+        "phenotype_bank_rate": 0.6,
+        "background_bank_rate": 0.4,
+        "best_bank_counts": {
+          "phenotype": 3,
+          "background": 2
+        },
+        "bank_margin": {
+          "mean": -0.03259515294898332,
+          "std": 0.0821666466500532,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5049664584156253,
+          "std": 0.11795935879668921,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.4272455299730572,
+          "std": 0.07799661779918411,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.34362644050194585,
+          "std": 0.0773091333731546,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.29676927600296343,
+          "std": 0.1565783952787104,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3309178540890572,
+          "std": 0.15048699653325084,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.4216672745462202,
+          "std": 0.03415541860205176,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.4542624274952035,
+          "std": 0.06328320839835623,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.4272015202280951,
+          "std": 0.09308159370432514,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.4200208537149299,
+          "std": 0.11059395735355668,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.28025586505490435,
+          "std": 0.054182854802626176,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.2150144772995751,
+          "std": 0.18525113269896118,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.20768500289789188,
+          "std": 0.10175156172684248,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 0.5771248817443848,
+          "std": 5.259790025251874,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5502117468673954,
+          "std": 0.08444465450721268,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.35832447669791184,
+          "std": 0.046001158335317455,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.3717925820091258,
+          "std": 0.06614426444692817,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.24997995403243242,
+          "std": 0.06880033544763525,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.4108035174678951,
+          "std": 0.09727783492540673,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.718470358364127,
+          "std": 0.0684259279586536,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9972238912761144,
+          "std": 0.0013319022125710305,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9943323483703373,
+          "std": 0.005261465043097777,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.996711591898715,
+          "std": 0.002159763340355754,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9883804364989212,
+          "std": 0.008350896981651415,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9956498783091439,
+          "std": 0.0017276856210276823,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.2770154952171792,
+          "std": 0.06772695595062413,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9954858535813063,
+          "std": 0.003341618028914101,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.32023291380891045,
+          "std": 0.09555606716698332,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.2597263563708697,
+          "std": 0.15323502536708636,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.3038028949746158,
+          "std": 0.08613476242103216,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.01575367388750404,
+          "std": 0.15107916023293902,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.19560227909782932,
+          "std": 0.16799721604292106,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 0.7910202741622925,
+          "std": 5.251480523559979,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9972238912761144,
+          "std": 0.0013319022125710305,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9943323483703373,
+          "std": 0.005261465043097777,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.996711591898715,
+          "std": 0.002159763340355754,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9883804364989212,
+          "std": 0.008350896981651415,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9956498783091439,
+          "std": 0.0017276856210276823,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.6269060970155469,
+          "std": 0.09062208690625835,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9940128840823499,
+          "std": 0.0027807958630863892,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9955901967875702,
+          "std": 0.0021802324065689524,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.996653004109427,
+          "std": 0.0007666020364943862,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9930834554230625,
+          "std": 0.0021031972196545986,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.996959425091766,
+          "std": 0.0007785438002417165,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.36780238575995344,
+          "std": 0.08864542366137318,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9947084827755003,
+          "std": 0.0021839041871552388,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.3261812193125221,
+          "std": 0.16828339548024285,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.41036632238169923,
+          "std": 0.18000246918010487,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.5796299698272137,
+          "std": 0.1960184148643601,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.011878224004306442,
+          "std": 0.06418185059065455,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.059465370942893905,
+          "std": 0.3660662449870674,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 4.029287052154541,
+          "std": 4.673566991386199,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9940128840823499,
+          "std": 0.0027807958630863892,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9955901967875702,
+          "std": 0.0021802324065689524,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.996653004109427,
+          "std": 0.0007666020364943862,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9930834554230625,
+          "std": 0.0021031972196545986,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.996959425091766,
+          "std": 0.0007785438002417165,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.15194942223754873,
+          "std": 0.04889720790508147,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5805934464543094,
+          "std": 0.11939452432140274,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.5430309967293981,
+          "std": 0.043930005871147385,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.6219668659279701,
+          "std": 0.1716151931876185,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6979716722701961,
+          "std": 0.1938864826999081,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.6290169667251335,
+          "std": 0.23482787328030144,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.4102230117675444,
+          "std": 0.07660255462431134,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.5621724340050932,
+          "std": 0.06646751884213663,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.5652264013296742,
+          "std": 0.14056068420131432,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.2985937006191148,
+          "std": 0.09180707734584016,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.5558963046325427,
+          "std": 0.19247678616689015,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.01979893406647339,
+          "std": 0.10773262454648537,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.5825468612324689,
+          "std": 0.22386303313155315,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 2.4440768480300905,
+          "std": 5.12275396123721,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5805934464543094,
+          "std": 0.11939452432140274,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.5430309967293981,
+          "std": 0.043930005871147385,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.6219668659279701,
+          "std": 0.1716151931876185,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.6979716722701961,
+          "std": 0.1938864826999081,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.6290169667251335,
+          "std": 0.23482787328030144,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.11906473118719788,
+          "std": 0.08319585011669478,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.5714616852771315,
+          "std": 0.04985813884267568,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.5438568421318026,
+          "std": 0.03144070044595317,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.6282742085737518,
+          "std": 0.12024211593399182,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6477639983680228,
+          "std": 0.12075027508238945,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.6286547040131011,
+          "std": 0.1539552998260146,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.4385237569271654,
+          "std": 0.06273644242080827,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.5575884881143632,
+          "std": 0.034898630807512356,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.40633584640656795,
+          "std": 0.08526836610644581,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.47589230773600705,
+          "std": 0.06909250740395065,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.360922512398152,
+          "std": 0.14460880401982207,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.03031251519024274,
+          "std": 0.11513127656270682,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.21470610357429815,
+          "std": 0.246824598965577,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 4.029287052154541,
+          "std": 4.673566991386199,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.5714616852771315,
+          "std": 0.04985813884267568,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.5438568421318026,
+          "std": 0.03144070044595317,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.6282742085737518,
+          "std": 0.12024211593399182,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.6477639983680228,
+          "std": 0.12075027508238945,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.6286547040131011,
+          "std": 0.1539552998260146,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "A_B_different_bank_rate": 0.0,
+      "A_B_different_factor_rate": 0.4,
+      "risk_gamma_sign_consistency": 0.8,
+      "gradient_clip_events": 0,
+      "max_gradient_norm": 0.2991102933883667
+    }
+  },
+  "capacity": {
+    "residual_frozen": {
+      "train_c_index": {
+        "mean": 0.7968360124760077,
+        "std": 0.002801908680354729,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.7333685601056803,
+        "std": 0.0034857988162903097,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.7308419005279244,
+        "std": 0.0037052247983017533,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_test_c_index": {
+        "mean": 0.4580161155876633,
+        "std": 0.0008753533760501997,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_test_c_index": {
+        "mean": 0.7308419005279244,
+        "std": 0.0037052247983017533,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.004378239996731282,
+        "std": 1.738808421971532e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.005639234208501875,
+        "std": 4.783245178054167e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk": {
+        "phenotype_bank_rate": 1.0,
+        "background_bank_rate": 0.0,
+        "best_bank_counts": {
+          "phenotype": 5,
+          "background": 0
+        },
+        "bank_margin": {
+          "mean": 0.20192204753961845,
+          "std": 0.04738185956586391,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.3242301032309257,
+          "std": 0.1095854901189442,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3367488995425902,
+          "std": 0.04846800722666769,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.5064189930360581,
+          "std": 0.10644240143008839,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.8994488220728286,
+          "std": 0.019543325185180472,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.39070541154525706,
+          "std": 0.09625239072692741,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.2905775634451072,
+          "std": 0.04736578243352033,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.08865551590548881,
+          "std": 0.0006804857271956413,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.3242301032309257,
+          "std": 0.1095854901189442,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.3367488995425902,
+          "std": 0.04846800722666769,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.5064189930360581,
+          "std": 0.10644240143008839,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.8994488220728286,
+          "std": 0.019543325185180472,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.39070541154525706,
+          "std": 0.09625239072692741,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 4.882153701782227,
+          "std": 0.2246696587663186,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.09060422356690853,
+          "std": 0.0028190774815255865,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.08666264051844455,
+          "std": 0.0021060564990370186,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.08763303115126364,
+          "std": 0.0028054956881156472,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": -0.05893920698697822,
+          "std": 0.021415989887567415,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": -0.051441180089957815,
+          "std": 0.019484016600865284,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "protective": {
+        "phenotype_bank_rate": 1.0,
+        "background_bank_rate": 0.0,
+        "best_bank_counts": {
+          "phenotype": 5,
+          "background": 0
+        },
+        "bank_margin": {
+          "mean": 0.19343498515540264,
+          "std": 0.06173935728684289,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.43622632647913556,
+          "std": 0.11028711102302276,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.2552782762593672,
+          "std": 0.04977919757400623,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.47387945169615886,
+          "std": 0.04652577788815125,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.8604740373673131,
+          "std": 0.016015596636162775,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.4465620571288193,
+          "std": 0.035207238321372285,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.29087231479292874,
+          "std": 0.0620803111922857,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.09743732963752612,
+          "std": 0.000519915097826722,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.43622632647913556,
+          "std": 0.11028711102302276,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.2552782762593672,
+          "std": 0.04977919757400623,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.47387945169615886,
+          "std": 0.04652577788815125,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.8604740373673131,
+          "std": 0.016015596636162775,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.4465620571288193,
+          "std": 0.035207238321372285,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -4.569133186340332,
+          "std": 0.18695418576692413,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.09425757686162835,
+          "std": 0.00026983128326409675,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.10074135078726085,
+          "std": 0.0008798657795698152,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.09331788135148043,
+          "std": 0.00042977307276271224,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.03782827366416627,
+          "std": 0.0005249129865153608,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": -0.012906766061908288,
+          "std": 0.00025742109614033785,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.4575868540078279,
+          "std": 0.059199764579368694,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9824138545220947,
+          "std": 0.0002424157138157827,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9818578791123208,
+          "std": 0.00033999672327923974,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9830396461904496,
+          "std": 0.00034951492232677,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9955500095160346,
+          "std": 0.0008550926057103549,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9959016197923283,
+          "std": 0.0007794448147843569,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.524521225533378,
+          "std": 0.05937793441794077,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9821080795412058,
+          "std": 0.00028579406093625346,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.6866567473282048,
+          "std": 0.15273328202575265,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.5203697865169131,
+          "std": 0.020627108130017256,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.17969800129236171,
+          "std": 0.05034452952183615,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.06903468885952752,
+          "std": 0.012859310066689736,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.3285350883346866,
+          "std": 0.03281090201114411,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -0.8029109954833984,
+          "std": 5.0372026337880085,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9824138545220947,
+          "std": 0.0002424157138157827,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9818578791123208,
+          "std": 0.00033999672327923974,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9830396461904496,
+          "std": 0.00034951492232677,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9955500095160346,
+          "std": 0.0008550926057103549,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9959016197923283,
+          "std": 0.0007794448147843569,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.44760092183292094,
+          "std": 0.05333378054791056,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9861976053894598,
+          "std": 0.000882343766093039,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9858776442329384,
+          "std": 0.0009276921815335481,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9874597390252454,
+          "std": 0.0007871042717009767,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9948734978334051,
+          "std": 0.00019895682411434623,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9968685420132765,
+          "std": 0.0001584938588697322,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.5384109977646745,
+          "std": 0.0536505290360804,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9860119195975955,
+          "std": 0.0009023342870099349,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.5995505004883085,
+          "std": 0.06188486659330226,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.6013742622416954,
+          "std": 0.04122583240660008,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.19952792410482414,
+          "std": 0.04073376609719892,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.05600186944495367,
+          "std": 0.029684654652952995,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.28767142959207287,
+          "std": 0.020586884805361937,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 1.115931510925293,
+          "std": 5.3141377473258045,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9861976053894598,
+          "std": 0.000882343766093039,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9858776442329384,
+          "std": 0.0009276921815335481,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9874597390252454,
+          "std": 0.0007871042717009767,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9948734978334051,
+          "std": 0.00019895682411434623,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9968685420132765,
+          "std": 0.0001584938588697322,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.023516232740305103,
+          "std": 0.02022848272658804,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.12999199848106188,
+          "std": 0.0010234023358632216,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.12430355742818482,
+          "std": 0.0010564883937698825,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.11877226497261044,
+          "std": 0.0009073894792848931,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.024656795066210897,
+          "std": 1.6013256268532027e-05,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.1449278184002794,
+          "std": 9.30259819005698e-05,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.1036348766400234,
+          "std": 0.019687948921678727,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.12715110938032853,
+          "std": 0.0010332202979284567,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.11190200094353626,
+          "std": 0.04663657891448271,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.11048895708814355,
+          "std": 0.034511559596823733,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.5345469850913943,
+          "std": 0.10978953254098954,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.018565296672184435,
+          "std": 0.024440952595493934,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.2958215568587362,
+          "std": 0.07140075363178937,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -4.569133186340332,
+          "std": 0.18695418576692413,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.12999199848106188,
+          "std": 0.0010234023358632216,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.12430355742818482,
+          "std": 0.0010564883937698825,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.11877226497261044,
+          "std": 0.0009073894792848931,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.024656795066210897,
+          "std": 1.6013256268532027e-05,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.1449278184002794,
+          "std": 9.30259819005698e-05,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_2": {
+        "phenotype_bank_rate": 0.2,
+        "background_bank_rate": 0.8,
+        "best_bank_counts": {
+          "phenotype": 1,
+          "background": 4
+        },
+        "bank_margin": {
+          "mean": -0.05163827629174087,
+          "std": 0.03749591673192924,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.12335535731438745,
+          "std": 0.03427669822053004,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.14818706101398943,
+          "std": 0.028367028573158943,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.2246781223578927,
+          "std": 0.19500167208839211,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": -0.016772452984142372,
+          "std": 0.03228175217245053,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.12719657319358732,
+          "std": 0.1216137506329349,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.08539007899266197,
+          "std": 0.03737403086623045,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.13702835528440283,
+          "std": 0.000265711173334444,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.08818030718889305,
+          "std": 0.027919753778938843,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.0966560455274724,
+          "std": 0.060057767160787666,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.4241984296517658,
+          "std": 0.15496989804666675,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.12199531485439194,
+          "std": 0.051556027160727824,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.17309508564391218,
+          "std": 0.18384221318045846,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -0.7775276184082032,
+          "std": 5.293621207643859,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.13861386360703243,
+          "std": 0.00021207337663316914,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.13539920785903528,
+          "std": 0.0003221356043699529,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.1372649571462043,
+          "std": 0.0005309649337743689,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": -0.0023266178100025217,
+          "std": 8.429820403130545e-05,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.07288765328672842,
+          "std": 0.000806058637131202,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_phenotype_bank_rate": 1.0,
+      "risk_gamma_sign_consistency": 1.0,
+      "protective_phenotype_bank_rate": 1.0,
+      "protective_gamma_sign_consistency": 1.0,
+      "nuisance_background_bank_rate": 1.0,
+      "gradient_clip_events": 0,
+      "max_gradient_norm": 0.023863311856985092
+    },
+    "residual_jointft": {
+      "train_c_index": {
+        "mean": 0.801916386756238,
+        "std": 0.0016593394882383873,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.730885072655218,
+        "std": 0.0025639050077165995,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.7377882745207002,
+        "std": 0.0023752130207261627,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_test_c_index": {
+        "mean": 0.4595165323701028,
+        "std": 0.0008819433313756033,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_test_c_index": {
+        "mean": 0.7377882745207002,
+        "std": 0.0023752130207261627,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.00446794640738517,
+        "std": 3.6233336248467746e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.005414257501251995,
+        "std": 7.197282060535947e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk": {
+        "phenotype_bank_rate": 1.0,
+        "background_bank_rate": 0.0,
+        "best_bank_counts": {
+          "phenotype": 5,
+          "background": 0
+        },
+        "bank_margin": {
+          "mean": 0.17681452142141615,
+          "std": 0.03185288414932527,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.2647158390852161,
+          "std": 0.09691827693593069,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3152986801398838,
+          "std": 0.02258918386606992,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.5106653755074745,
+          "std": 0.13612170479952596,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9044143690128543,
+          "std": 0.01907181501763914,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3952109824066815,
+          "std": 0.1791237606290981,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.27293451176793915,
+          "std": 0.033484794588176894,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.096119990346523,
+          "std": 0.004242136382103206,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.2647158390852161,
+          "std": 0.09691827693593069,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.3152986801398838,
+          "std": 0.02258918386606992,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.5106653755074745,
+          "std": 0.13612170479952596,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.9044143690128543,
+          "std": 0.01907181501763914,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.3952109824066815,
+          "std": 0.1791237606290981,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 4.727292156219482,
+          "std": 0.19917495142119462,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.1008550774351595,
+          "std": 0.005413010175543576,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.09122710023299356,
+          "std": 0.003396406907851486,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.06987941770052358,
+          "std": 0.0006471074737630148,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": -0.06756662137629861,
+          "std": 0.0005172490257851955,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": -0.06129676024364321,
+          "std": 0.00039457558090815484,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "protective": {
+        "phenotype_bank_rate": 1.0,
+        "background_bank_rate": 0.0,
+        "best_bank_counts": {
+          "phenotype": 5,
+          "background": 0
+        },
+        "bank_margin": {
+          "mean": 0.1456009060315097,
+          "std": 0.03430385951059195,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.34932119118495153,
+          "std": 0.08143577328263944,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.21835136834715024,
+          "std": 0.024503900003228545,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.4547269296786607,
+          "std": 0.04613052366583817,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.8800577940626667,
+          "std": 0.027040542150826383,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.3772815735291665,
+          "std": 0.05283863592211219,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.25251969876905234,
+          "std": 0.04038394737172846,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.10691879273754257,
+          "std": 0.010625211009753764,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.34932119118495153,
+          "std": 0.08143577328263944,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.21835136834715024,
+          "std": 0.024503900003228545,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.4547269296786607,
+          "std": 0.04613052366583817,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.8800577940626667,
+          "std": 0.027040542150826383,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.3772815735291665,
+          "std": 0.05283863592211219,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -4.564297771453857,
+          "std": 0.06580443097476106,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.10302256000263994,
+          "std": 0.010802233193366121,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.1110391392229166,
+          "std": 0.01053139893140722,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.07195101391072227,
+          "std": 0.0005821687967962187,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.038798946428624276,
+          "std": 0.0014334290720928358,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": -0.01564464712405294,
+          "std": 0.0008495491446942821,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.4000829385740111,
+          "std": 0.0693037883438566,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9808357816220449,
+          "std": 0.0011256634891810202,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9811828701288918,
+          "std": 0.0009748870755579761,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9897241468743582,
+          "std": 0.0003500865302812624,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9955071552395307,
+          "std": 0.0007790635145256906,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9965216497873177,
+          "std": 0.0006471394271303106,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.5807984831282104,
+          "std": 0.06969902870497201,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9808814217022214,
+          "std": 0.0009681163626575704,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.8035694913949747,
+          "std": 0.09768192616796645,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.5267171222476486,
+          "std": 0.05498193345302349,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.10632855168638226,
+          "std": 0.022284088836585683,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.024967407410196603,
+          "std": 0.01646581593370489,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.2875432275570189,
+          "std": 0.04773465908354292,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 2.8221930503845214,
+          "std": 4.140720542133616,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.9808357816220449,
+          "std": 0.0011256634891810202,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9811828701288918,
+          "std": 0.0009748870755579761,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9897241468743582,
+          "std": 0.0003500865302812624,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9955071552395307,
+          "std": 0.0007790635145256906,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9965216497873177,
+          "std": 0.0006471394271303106,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_2": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.43957836957137336,
+          "std": 0.05928128809706222,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.985672053689963,
+          "std": 0.0008750443453883165,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9849138147285273,
+          "std": 0.0009467892543911095,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9925309090120529,
+          "std": 0.0005583350917113574,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9943936638294719,
+          "std": 0.00026043994370762805,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9970289384822728,
+          "std": 0.0001846715305753013,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.5455429129168067,
+          "std": 0.05912344776154957,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.9851212824881802,
+          "std": 0.000879525079340984,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.5552354950312026,
+          "std": 0.1017675467005091,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.6089448981816045,
+          "std": 0.07493790842169018,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.1016285216790084,
+          "std": 0.017672376799674653,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": 0.025675706014393857,
+          "std": 0.008277003714320339,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": -0.26562585881949735,
+          "std": 0.0450928171400005,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": 1.072118377685547,
+          "std": 5.176787403560008,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.985672053689963,
+          "std": 0.0008750443453883165,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.9849138147285273,
+          "std": 0.0009467892543911095,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.9925309090120529,
+          "std": 0.0005583350917113574,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.9943936638294719,
+          "std": 0.00026043994370762805,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.9970289384822728,
+          "std": 0.0001846715305753013,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_1": {
+        "phenotype_bank_rate": 0.0,
+        "background_bank_rate": 1.0,
+        "best_bank_counts": {
+          "phenotype": 0,
+          "background": 5
+        },
+        "bank_margin": {
+          "mean": -0.014077580029045184,
+          "std": 0.011827850950313185,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.131235725897823,
+          "std": 0.005239223505369534,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.12966864891258165,
+          "std": 0.0030248444915401567,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.09389800567159039,
+          "std": 0.0005996073236386744,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.025119841977660994,
+          "std": 0.0008866195238423623,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.14180649319848765,
+          "std": 0.0004610770435915723,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.11635168680632399,
+          "std": 0.012701674408917212,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.13042926683536915,
+          "std": 0.003976885805718837,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.12546886586395709,
+          "std": 0.06874465198300064,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.12266048207763844,
+          "std": 0.038367030800085244,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.6148070922586234,
+          "std": 0.12295018979195335,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.011109458386453816,
+          "std": 0.04084877689241536,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.48937643984436996,
+          "std": 0.18036927264552663,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -2.693780040740967,
+          "std": 4.182210045238732,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.131235725897823,
+          "std": 0.005239223505369534,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.12966864891258165,
+          "std": 0.0030248444915401567,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.09389800567159039,
+          "std": 0.0005996073236386744,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": 0.025119841977660994,
+          "std": 0.0008866195238423623,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.14180649319848765,
+          "std": 0.0004610770435915723,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_2": {
+        "phenotype_bank_rate": 0.2,
+        "background_bank_rate": 0.8,
+        "best_bank_counts": {
+          "phenotype": 1,
+          "background": 4
+        },
+        "bank_margin": {
+          "mean": -0.02448338389583926,
+          "std": 0.02487229330229764,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.11411809032812621,
+          "std": 0.03342293824852868,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.14158460424316194,
+          "std": 0.042179980919072574,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.20531611803067557,
+          "std": 0.22483415922808042,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": -0.018563759890684286,
+          "std": 0.031116149190790646,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.1534027817287029,
+          "std": 0.19884120869747987,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_phenotype_similarity": {
+          "mean": 0.10411920681641954,
+          "std": 0.032282217625732496,
+          "n": 5,
+          "undefined": 0
+        },
+        "best_background_similarity": {
+          "mean": 0.1286025907122588,
+          "std": 0.009044577918891732,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HC_cosine": {
+          "mean": 0.08381222910901154,
+          "std": 0.030981258261862234,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HI_cosine": {
+          "mean": 0.12331604461280624,
+          "std": 0.059493852696957936,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_HO_cosine": {
+          "mean": 0.47148149074168766,
+          "std": 0.2898736767520712,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WB_correlation": {
+          "mean": -0.09528712424055163,
+          "std": 0.03714864386815879,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_WS_correlation": {
+          "mean": 0.3154823487400158,
+          "std": 0.404122264936572,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_gamma": {
+          "mean": -2.7034984588623048,
+          "std": 4.208497077928478,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HC_cosine": {
+          "mean": 0.1316895372725228,
+          "std": 0.010237748197791408,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HI_cosine": {
+          "mean": 0.12541589284648907,
+          "std": 0.007912535112771601,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_HO_cosine": {
+          "mean": 0.10485127921174704,
+          "std": 0.0005099092675264579,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WB_correlation": {
+          "mean": -0.004040383638042483,
+          "std": 0.0019855831295572915,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_WS_correlation": {
+          "mean": 0.06511977939667955,
+          "std": 0.001659594198072195,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_phenotype_bank_rate": 1.0,
+      "risk_gamma_sign_consistency": 1.0,
+      "protective_phenotype_bank_rate": 1.0,
+      "protective_gamma_sign_consistency": 1.0,
+      "nuisance_background_bank_rate": 1.0,
+      "gradient_clip_events": 0,
+      "max_gradient_norm": 0.02826293557882309
+    }
+  },
+  "permutation": {
+    "train_c_index": {
+      "mean": 0.5218526659699951,
+      "std": 0.0046121914580267605,
+      "n": 5,
+      "undefined": 0
+    },
+    "validation_c_index": {
+      "mean": 0.452462701818925,
+      "std": 0.07605256777880481,
+      "n": 5,
+      "undefined": 0
+    },
+    "test_c_index": {
+      "mean": 0.46770959568139253,
+      "std": 0.05262556092778446,
+      "n": 5,
+      "undefined": 0
+    },
+    "background_test_c_index": {
+      "mean": 0.4943042855569021,
+      "std": 0.03919906589906159,
+      "n": 5,
+      "undefined": 0
+    },
+    "phenotype_test_c_index": {
+      "mean": 0.46770959568139253,
+      "std": 0.05262556092778446,
+      "n": 5,
+      "undefined": 0
+    },
+    "bulk_reconstruction": {
+      "mean": 0.0021119649056345223,
+      "std": 1.9311440065802512e-06,
+      "n": 5,
+      "undefined": 0
+    },
+    "spatial_reconstruction": {
+      "mean": 0.0030043456819839774,
+      "std": 1.1229204050292858e-06,
+      "n": 5,
+      "undefined": 0
+    },
+    "A": {
+      "phenotype_bank_rate": 0.0,
+      "background_bank_rate": 1.0,
+      "best_bank_counts": {
+        "phenotype": 0,
+        "background": 5
+      },
+      "bank_margin": {
+        "mean": -0.060062588329332776,
+        "std": 0.034288552700418744,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.6115100961291764,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.31456804257161436,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.29529280816150016,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.3618201460927485,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.3925970595472621,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_phenotype_similarity": {
+        "mean": 0.41567420539537514,
+        "std": 0.03428855270041874,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_background_similarity": {
+        "mean": 0.47573679372470784,
+        "std": 6.206335383118183e-17,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HC_cosine": {
+        "mean": 0.5191178627011749,
+        "std": 0.03635763448172145,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HI_cosine": {
+        "mean": 0.3691349351131682,
+        "std": 0.03496948749925074,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HO_cosine": {
+        "mean": 0.3911111566925257,
+        "std": 0.0012261565631986626,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WB_correlation": {
+        "mean": 0.40614455012398165,
+        "std": 0.22287883556581997,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WS_correlation": {
+        "mean": 0.10840965548533829,
+        "std": 0.01187854158034481,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_gamma": {
+        "mean": -0.1579933300614357,
+        "std": 0.10355982719174112,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HC_cosine": {
+        "mean": 0.6115100961291764,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HI_cosine": {
+        "mean": 0.31456804257161436,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HO_cosine": {
+        "mean": 0.29529280816150016,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WB_correlation": {
+        "mean": 0.3618201460927485,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WS_correlation": {
+        "mean": 0.3925970595472621,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "B": {
+      "phenotype_bank_rate": 0.0,
+      "background_bank_rate": 1.0,
+      "best_bank_counts": {
+        "phenotype": 0,
+        "background": 5
+      },
+      "bank_margin": {
+        "mean": -0.03771661642260107,
+        "std": 0.0029894515647453657,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.6115100961291764,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.3502164250652262,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.3802248186997852,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.28647070071578196,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.46479410525223963,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_phenotype_similarity": {
+        "mean": 0.45441597406511514,
+        "std": 0.002989451564745366,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_background_similarity": {
+        "mean": 0.4921325904877163,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HC_cosine": {
+        "mean": 0.4515625961000064,
+        "std": 0.09722010781986162,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HI_cosine": {
+        "mean": 0.48048004656275867,
+        "std": 0.06244732058860368,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HO_cosine": {
+        "mean": 0.3831627724629037,
+        "std": 0.027678804082808105,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WB_correlation": {
+        "mean": 0.3213500513385972,
+        "std": 0.06263480420163119,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WS_correlation": {
+        "mean": 0.08921676026934097,
+        "std": 0.006266168259124677,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_gamma": {
+        "mean": -0.0691408134996891,
+        "std": 0.29348507294878534,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HC_cosine": {
+        "mean": 0.6115100961291764,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HI_cosine": {
+        "mean": 0.3502164250652262,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HO_cosine": {
+        "mean": 0.3802248186997852,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WB_correlation": {
+        "mean": 0.28647070071578196,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WS_correlation": {
+        "mean": 0.46479410525223963,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "nuisance_1": {
+      "phenotype_bank_rate": 0.0,
+      "background_bank_rate": 1.0,
+      "best_bank_counts": {
+        "phenotype": 0,
+        "background": 5
+      },
+      "bank_margin": {
+        "mean": -0.6303760182378972,
+        "std": 0.00600261315182543,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.9971859024198244,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.9957335942325336,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.99620805998645,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.997015396261267,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.9975071870119759,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_phenotype_similarity": {
+        "mean": 0.3660775056600012,
+        "std": 0.00600261315182541,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_background_similarity": {
+        "mean": 0.9964535238978984,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HC_cosine": {
+        "mean": 0.42797750239972093,
+        "std": 0.0870070621814449,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HI_cosine": {
+        "mean": 0.3632770073371534,
+        "std": 0.03378301109922108,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HO_cosine": {
+        "mean": 0.36792835346297215,
+        "std": 0.06986887653462258,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WB_correlation": {
+        "mean": -0.28741834651390785,
+        "std": 0.11453597527116574,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WS_correlation": {
+        "mean": -0.10328102928067959,
+        "std": 0.07084662104224508,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_gamma": {
+        "mean": -0.03001553788781166,
+        "std": 0.16359598594506025,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HC_cosine": {
+        "mean": 0.9971859024198244,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HI_cosine": {
+        "mean": 0.9957335942325336,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HO_cosine": {
+        "mean": 0.99620805998645,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WB_correlation": {
+        "mean": 0.997015396261267,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WS_correlation": {
+        "mean": 0.9975071870119759,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "nuisance_2": {
+      "phenotype_bank_rate": 0.0,
+      "background_bank_rate": 1.0,
+      "best_bank_counts": {
+        "phenotype": 0,
+        "background": 5
+      },
+      "bank_margin": {
+        "mean": -0.5298975639807472,
+        "std": 0.008593772084660202,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.9987746021107577,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.9973725142313301,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.9968312063856976,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.9960242334783995,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.9975303916615765,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_phenotype_similarity": {
+        "mean": 0.4681518391025493,
+        "std": 0.00859377208466018,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_background_similarity": {
+        "mean": 0.9980494030832965,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HC_cosine": {
+        "mean": 0.48366032005389414,
+        "std": 0.006341234777153053,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HI_cosine": {
+        "mean": 0.4965002281635238,
+        "std": 0.01256109640572007,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HO_cosine": {
+        "mean": 0.5059083944989282,
+        "std": 0.0004077499955621743,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WB_correlation": {
+        "mean": -0.17891122701582757,
+        "std": 0.03762088483982489,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WS_correlation": {
+        "mean": -0.035709066776409816,
+        "std": 0.0024728000537208457,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_gamma": {
+        "mean": 0.08023810610175133,
+        "std": 0.24823898227771132,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HC_cosine": {
+        "mean": 0.9987746021107577,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HI_cosine": {
+        "mean": 0.9973725142313301,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HO_cosine": {
+        "mean": 0.9968312063856976,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WB_correlation": {
+        "mean": 0.9960242334783995,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WS_correlation": {
+        "mean": 0.9975303916615765,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "neutral_1": {
+      "phenotype_bank_rate": 0.0,
+      "background_bank_rate": 1.0,
+      "best_bank_counts": {
+        "phenotype": 0,
+        "background": 5
+      },
+      "bank_margin": {
+        "mean": -0.10925154105859698,
+        "std": 0.021436238003725235,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.4949632559164795,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.5225822510007129,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.47933337594483544,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.5064641653404905,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.4464158799810381,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_phenotype_similarity": {
+        "mean": 0.3949451164153247,
+        "std": 0.021436238003725235,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_background_similarity": {
+        "mean": 0.5041966574739216,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HC_cosine": {
+        "mean": 0.473287441357863,
+        "std": 0.05042265753659575,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HI_cosine": {
+        "mean": 0.37429556969704625,
+        "std": 0.019231048619912344,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HO_cosine": {
+        "mean": 0.465288843815042,
+        "std": 0.08169959303270571,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WB_correlation": {
+        "mean": 0.4625443259907568,
+        "std": 0.30297237518869313,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WS_correlation": {
+        "mean": 0.015790583741324457,
+        "std": 0.16549558177041837,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_gamma": {
+        "mean": 0.028807266056537627,
+        "std": 0.23839345317533034,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HC_cosine": {
+        "mean": 0.4949632559164795,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HI_cosine": {
+        "mean": 0.5225822510007129,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HO_cosine": {
+        "mean": 0.47933337594483544,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WB_correlation": {
+        "mean": 0.5064641653404905,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WS_correlation": {
+        "mean": 0.4464158799810381,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "neutral_2": {
+      "phenotype_bank_rate": 0.0,
+      "background_bank_rate": 1.0,
+      "best_bank_counts": {
+        "phenotype": 0,
+        "background": 5
+      },
+      "bank_margin": {
+        "mean": -0.13871567576854624,
+        "std": 0.012576404102727529,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.5012544116258092,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.5418968517885137,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.4697491440821101,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.506480756807587,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.3755379931725334,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_phenotype_similarity": {
+        "mean": 0.3778051130260903,
+        "std": 0.012576404102727529,
+        "n": 5,
+        "undefined": 0
+      },
+      "best_background_similarity": {
+        "mean": 0.5165207887946366,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HC_cosine": {
+        "mean": 0.35459569029481114,
+        "std": 0.06358278696429866,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HI_cosine": {
+        "mean": 0.4139407849378274,
+        "std": 0.026892539449933358,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_HO_cosine": {
+        "mean": 0.3981366287666186,
+        "std": 0.024347017518337635,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WB_correlation": {
+        "mean": -0.20583203407894263,
+        "std": 0.3980885706853277,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_WS_correlation": {
+        "mean": 0.042453845939296186,
+        "std": 0.008490390231267048,
+        "n": 5,
+        "undefined": 0
+      },
+      "phenotype_gamma": {
+        "mean": -0.0851613625884056,
+        "std": 0.19042420025363238,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HC_cosine": {
+        "mean": 0.5012544116258092,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HI_cosine": {
+        "mean": 0.5418968517885137,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_HO_cosine": {
+        "mean": 0.4697491440821101,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WB_correlation": {
+        "mean": 0.506480756807587,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "background_WS_correlation": {
+        "mean": 0.3755379931725334,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "A_B_different_bank_rate": 0.0,
+    "A_B_different_factor_rate": 0.0,
+    "risk_gamma_sign_consistency": 0.0,
+    "gradient_clip_events": 0,
+    "max_gradient_norm": 0.019245857372879982
+  },
+  "fit_count": 30,
+  "background_warmup_count": 10,
+  "generator_and_split_unchanged": true,
+  "all_lambda_collapse_zero": true,
+  "permutation_background_reused_exactly": true,
+  "frozen_data_audit": {
+    "same_composition": {
+      "ground_truth_equal": true,
+      "split_equal": true,
+      "feature_sha256": {
+        "CB": "79d71fa79bef43f1be8f4730f1558f27033e1e2023439252b66b0ee5aa09e77e",
+        "IB": "9f74dffba3d0bd0abfa07a6f06926f19d10900c47155ef94ef18dd85dd9c7d5e",
+        "CS": "fdd017af5ee8ebb08551035879f5da8d0ca4a0674b656e15794a72d5a472a03a",
+        "OS": "dcb247d903fd9989a9502ac1dbe27fb1f14bc1a058c54cceb2626e0403f81cf9",
+        "IS": "57afd6a9520b04818b0e3899803b3d5df0f2fe8fe6dcb6e69f0fcc479e46c888"
+      }
+    },
+    "capacity": {
+      "ground_truth_equal": true,
+      "split_equal": true,
+      "feature_sha256": {
+        "CB": "d8e70a31dd4ab33ed121a7be73557ae1472d48ff0ab36bb2c4c341942f73cdf9",
+        "IB": "9f74dffba3d0bd0abfa07a6f06926f19d10900c47155ef94ef18dd85dd9c7d5e",
+        "CS": "0b3422ae7fced31c979eb852fadde3ce33d550d6456a0db78b463252e44f7d7f",
+        "OS": "dcb247d903fd9989a9502ac1dbe27fb1f14bc1a058c54cceb2626e0403f81cf9",
+        "IS": "57afd6a9520b04818b0e3899803b3d5df0f2fe8fe6dcb6e69f0fcc479e46c888"
+      }
+    }
+  }
+}

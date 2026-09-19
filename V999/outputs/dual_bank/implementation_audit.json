@@ -1,0 +1,26 @@
+{
+  "prior_python_files_checked": 52,
+  "prior_python_files_changed": [],
+  "new_python_files": {
+    "src/phenoniche/inference/dual_bank.py": "e41d81290463da2423aa0c6762bc2fe95d9d97685f966ba8aecbd39d9105a211",
+    "src/phenoniche/model/dual_bank_factorization.py": "99d3489a439ab20773030cfd314589d33365ee8053a2aaa8f5d45a1d293f929a",
+    "src/phenoniche/training/dual_bank_trainer.py": "5c8fd4acf892a93762ae0bc8416f645dbaf0ef243ba1975d1feae895e691aec4",
+    "src/phenoniche/evaluation/bank_matching.py": "e87b200c091ad7291a29a7ca4357f17dc45b8b0f076df58bf07dd111fa431e41",
+    "src/phenoniche/evaluation/dual_bank_benchmark.py": "b050207d41d3db55f31597f1814d76dbe28be6cfd62d41915234de7e197732bc",
+    "scripts/run_dual_bank.py": "d2a575bc19308d5c40b7fb1958d5125a942bed01c403397833c6d013cef4b733",
+    "tests/test_dual_bank_shapes.py": "4d0fb739c97686093db0868953a6aa66ae176b9838d695ee8824510580e32c45",
+    "tests/test_dual_bank_inference.py": "1c9d2aabb95a05164387f9b6a24c091346dafce33107490236fddeead29972e2",
+    "tests/test_dual_bank_gradients.py": "2231c92fc8afcb42373d6429a9cb2501309c0baeae4a1e74f8e660186facb8f6",
+    "tests/test_dual_bank_training.py": "3d130a6986481c61dc51f6ca010ae1c002c2bb19fce77da6ba068b3ea67117e9",
+    "tests/test_bank_matching.py": "0c37b52401663e17e846a6b2208006beb75ef329ad825c0e5417bb1cd378f23f"
+  },
+  "frozen_generator_and_split_equal": true,
+  "all_lambda_collapse_zero": true,
+  "final_model_count": 30,
+  "checkpoint_count": 30,
+  "checkpoint_payloads_complete": true,
+  "permutation_background_reused_exactly": true,
+  "all_reconstruction_blocks_finite": true,
+  "maximum_reconstruction_conservation_error": 0.0,
+  "comments_todo_or_pass_in_new_python": false
+}

@@ -1,0 +1,16 @@
+{
+  "status": "oracle_failed_no_freeze",
+  "attempted_repairs": 5,
+  "last_variant": 5,
+  "primary": {
+    "purity": 0.5,
+    "size": 100,
+    "noise": 0.05,
+    "seeds": [
+      33700,
+      33701,
+      33702
+    ]
+  },
+  "heldout_protocol": "leave-one-independent-tissue-out; 2 tissues train, 1 tissue test; fixed common phenotype-free feature mask"
+}

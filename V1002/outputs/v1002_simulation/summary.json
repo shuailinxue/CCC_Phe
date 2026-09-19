@@ -1,0 +1,643 @@
+{
+  "filtering": {
+    "Raw_LR_count": 8408,
+    "Assay_measurable_LR_count": 849,
+    "Raw_directed_CCC_count": 538112,
+    "Coverage_filtered_directed_CCC_count": 17991,
+    "Opportunity_filtered_final_CCC_count": 17991,
+    "retained_LR_per_sender_receiver": [
+      [
+        310,
+        308,
+        372,
+        231,
+        337,
+        250,
+        317,
+        254
+      ],
+      [
+        320,
+        307,
+        363,
+        233,
+        324,
+        245,
+        330,
+        247
+      ],
+      [
+        385,
+        391,
+        443,
+        264,
+        383,
+        290,
+        377,
+        300
+      ],
+      [
+        191,
+        169,
+        212,
+        143,
+        194,
+        148,
+        193,
+        152
+      ],
+      [
+        340,
+        344,
+        407,
+        232,
+        358,
+        278,
+        352,
+        278
+      ],
+      [
+        329,
+        315,
+        371,
+        244,
+        333,
+        243,
+        327,
+        269
+      ],
+      [
+        325,
+        343,
+        391,
+        230,
+        354,
+        272,
+        350,
+        285
+      ],
+      [
+        189,
+        167,
+        219,
+        149,
+        198,
+        157,
+        193,
+        166
+      ]
+    ],
+    "signal_edge_precision": 0.024901339558668224,
+    "signal_edge_recall": 0.7724137931034483
+  },
+  "primary": {
+    "Full": {
+      "niche_sensitivity": {
+        "mean": 0.3253333333333333,
+        "SD": 0.09287267269403487
+      },
+      "localization_AUC": {
+        "mean": 0.6874345098039215,
+        "SD": 0.05693304772232653
+      },
+      "WS_recovery": {
+        "mean": 0.12860617655729392,
+        "SD": 0.05802864859057818
+      },
+      "HC_recovery": {
+        "mean": 0.625005626670885,
+        "SD": 0.021586377548144867
+      },
+      "HI_recovery": {
+        "mean": 0.12807655758505637,
+        "SD": 0.011478956592661162
+      },
+      "CCC_AUPRC": {
+        "mean": 0.03305012339466449,
+        "SD": 0.011609621965944013
+      },
+      "Risk_WB": {
+        "mean": 0.7177489839617185,
+        "SD": 0.056174306832855014
+      },
+      "Neutral_WB": {
+        "mean": 0.6596925976876689,
+        "SD": 0.076276074049367
+      },
+      "Protective_WB": {
+        "mean": 0.7429943563206708,
+        "SD": 0.17742786173375108
+      },
+      "Validation_C": {
+        "mean": 0.6316907017395472,
+        "SD": 0.041176679628980105
+      },
+      "Test_C": {
+        "mean": 0.568930159989525,
+        "SD": 0.020825725860479545
+      },
+      "gamma_1": {
+        "mean": 0.39891623457272846,
+        "SD": 0.2759168946810476
+      },
+      "gamma_2": {
+        "mean": 0.32427791754404706,
+        "SD": 0.06366733924376902
+      },
+      "gamma_3": {
+        "mean": -0.5065932621558508,
+        "SD": 0.3977832524273923
+      }
+    },
+    "No-filter": {
+      "niche_sensitivity": {
+        "mean": 0.2806666666666667,
+        "SD": 0.03971565602295062
+      },
+      "localization_AUC": {
+        "mean": 0.6635945098039215,
+        "SD": 0.05360125462474897
+      },
+      "WS_recovery": {
+        "mean": 0.1041785364893683,
+        "SD": 0.04687223252910101
+      },
+      "HC_recovery": {
+        "mean": 0.6207899476351864,
+        "SD": 0.005499633947437132
+      },
+      "HI_recovery": {
+        "mean": 0.12016697102919487,
+        "SD": 0.016404614484596913
+      },
+      "CCC_AUPRC": {
+        "mean": 0.027098214342885812,
+        "SD": 0.006195564902321492
+      },
+      "Risk_WB": {
+        "mean": 0.709596805366903,
+        "SD": 0.05211263048076896
+      },
+      "Neutral_WB": {
+        "mean": 0.6634330660538424,
+        "SD": 0.05836310241240409
+      },
+      "Protective_WB": {
+        "mean": 0.6140818526016706,
+        "SD": 0.1437394593169806
+      },
+      "Validation_C": {
+        "mean": 0.5972505467457648,
+        "SD": 0.03585400615106075
+      },
+      "Test_C": {
+        "mean": 0.5611866175291567,
+        "SD": 0.019182885679419153
+      },
+      "gamma_1": {
+        "mean": 0.3695506850878398,
+        "SD": 0.27993294819895465
+      },
+      "gamma_2": {
+        "mean": 0.2832176735003789,
+        "SD": 0.11093472767528627
+      },
+      "gamma_3": {
+        "mean": -0.1949325054883957,
+        "SD": 0.2752177358414844
+      }
+    },
+    "Composition-only": {
+      "niche_sensitivity": {
+        "mean": 0.272,
+        "SD": 0.019078784028338958
+      },
+      "localization_AUC": {
+        "mean": 0.5978549019607843,
+        "SD": 0.01889543151000399
+      },
+      "WS_recovery": {
+        "mean": 0.07298066407141167,
+        "SD": 0.010315052510410837
+      },
+      "HC_recovery": {
+        "mean": 0.5758229657206543,
+        "SD": 0.015495400265955772
+      },
+      "HI_recovery": {
+        "mean": null,
+        "SD": null
+      },
+      "CCC_AUPRC": {
+        "mean": null,
+        "SD": null
+      },
+      "Risk_WB": {
+        "mean": 0.5163358760957274,
+        "SD": 0.010464937654863792
+      },
+      "Neutral_WB": {
+        "mean": 0.1574778232469621,
+        "SD": 0.4156897891158605
+      },
+      "Protective_WB": {
+        "mean": 0.566181644048772,
+        "SD": 0.06856433796365101
+      },
+      "Validation_C": {
+        "mean": 0.5671902479058112,
+        "SD": 0.050174418753431
+      },
+      "Test_C": {
+        "mean": 0.5195758074621528,
+        "SD": 0.048903056542425785
+      },
+      "gamma_1": {
+        "mean": 0.08339971428116162,
+        "SD": 0.03298196798338128
+      },
+      "gamma_2": {
+        "mean": 0.0536125103632609,
+        "SD": 0.012007723081788102
+      },
+      "gamma_3": {
+        "mean": -0.15602917969226837,
+        "SD": 0.10989877020337012
+      }
+    },
+    "CCC-only": {
+      "niche_sensitivity": {
+        "mean": 0.9233333333333333,
+        "SD": 0.1189509702916851
+      },
+      "localization_AUC": {
+        "mean": 0.9518180392156862,
+        "SD": 0.07629604573130236
+      },
+      "WS_recovery": {
+        "mean": 0.6846386335534537,
+        "SD": 0.10504199035860065
+      },
+      "HC_recovery": {
+        "mean": null,
+        "SD": null
+      },
+      "HI_recovery": {
+        "mean": 0.23550803618246427,
+        "SD": 0.027042818280176815
+      },
+      "CCC_AUPRC": {
+        "mean": 0.11081099342168144,
+        "SD": 0.015677517178996764
+      },
+      "Risk_WB": {
+        "mean": 0.9878186393871357,
+        "SD": 0.003527899114536517
+      },
+      "Neutral_WB": {
+        "mean": 0.971325336828775,
+        "SD": 0.002061829307636367
+      },
+      "Protective_WB": {
+        "mean": 0.985092016657379,
+        "SD": 0.006761260742283592
+      },
+      "Validation_C": {
+        "mean": 0.628350065351901,
+        "SD": 0.01940024361509332
+      },
+      "Test_C": {
+        "mean": 0.6136940760335,
+        "SD": 0.06169138421616538
+      },
+      "gamma_1": {
+        "mean": 0.00041696565070499975,
+        "SD": 0.001168379731668361
+      },
+      "gamma_2": {
+        "mean": -0.0012744252356545378,
+        "SD": 0.000852012666646336
+      },
+      "gamma_3": {
+        "mean": -0.002425126925421258,
+        "SD": 0.001136829758747938
+      }
+    }
+  },
+  "hard_case": {
+    "Full": [
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.33,
+          "localization_AUC": 0.7655705882352941,
+          "WS_recovery": 0.1594832738901428,
+          "HI_recovery": 0.2058923920460016
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.08,
+          "localization_AUC": 0.6021941176470588,
+          "WS_recovery": 0.056933859289439864,
+          "HI_recovery": 0.08752966834429385
+        },
+        "collision": true
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.1,
+          "localization_AUC": 0.6176882352941176,
+          "WS_recovery": 0.09988373273863066,
+          "HI_recovery": 0.1389393333353754
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.35,
+          "localization_AUC": 0.7721823529411764,
+          "WS_recovery": 0.16449222914060266,
+          "HI_recovery": 0.16243194577296985
+        },
+        "collision": true
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.1,
+          "localization_AUC": 0.5746294117647058,
+          "WS_recovery": 0.00778411784336393,
+          "HI_recovery": 0.1244332347686765
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.08,
+          "localization_AUC": 0.6817647058823529,
+          "WS_recovery": 0.1039712122735407,
+          "HI_recovery": 0.14802270829350053
+        },
+        "collision": true
+      }
+    ],
+    "No-filter": [
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.35,
+          "localization_AUC": 0.7746529411764705,
+          "WS_recovery": 0.15980554652486556,
+          "HI_recovery": 0.1975438228780592
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.08,
+          "localization_AUC": 0.6028058823529412,
+          "WS_recovery": 0.057049584959753125,
+          "HI_recovery": 0.08691182054626077
+        },
+        "collision": true
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.12,
+          "localization_AUC": 0.6128882352941176,
+          "WS_recovery": 0.09509766548221672,
+          "HI_recovery": 0.13116972522385453
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.31,
+          "localization_AUC": 0.7832235294117647,
+          "WS_recovery": 0.1706221842232743,
+          "HI_recovery": 0.15555317543007802
+        },
+        "collision": true
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.11,
+          "localization_AUC": 0.5732529411764706,
+          "WS_recovery": 0.007744518683719876,
+          "HI_recovery": 0.12333501668122598
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.09,
+          "localization_AUC": 0.6801411764705882,
+          "WS_recovery": 0.10366153675316009,
+          "HI_recovery": 0.14264153200040114
+        },
+        "collision": true
+      }
+    ],
+    "Composition-only": [
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.47,
+          "localization_AUC": 0.6489941176470588,
+          "WS_recovery": 0.0934132226279535,
+          "HI_recovery": null
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.45,
+          "localization_AUC": 0.5286470588235294,
+          "WS_recovery": -0.05869579289546172,
+          "HI_recovery": null
+        },
+        "collision": true
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.43,
+          "localization_AUC": 0.6274823529411765,
+          "WS_recovery": 0.06951729115745701,
+          "HI_recovery": null
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.13,
+          "localization_AUC": 0.5017470588235294,
+          "WS_recovery": -0.010639173512798725,
+          "HI_recovery": null
+        },
+        "collision": true
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.29,
+          "localization_AUC": 0.5237,
+          "WS_recovery": 0.026934808487632553,
+          "HI_recovery": null
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.18,
+          "localization_AUC": 0.5655176470588236,
+          "WS_recovery": 0.08807247066360532,
+          "HI_recovery": null
+        },
+        "collision": true
+      }
+    ],
+    "CCC-only": [
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 1.0,
+          "localization_AUC": 0.9983882352941177,
+          "WS_recovery": 0.7478181214508018,
+          "HI_recovery": 0.2812357037251401
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.99,
+          "localization_AUC": 0.9879823529411764,
+          "WS_recovery": 0.7417414288403691,
+          "HI_recovery": 0.21243156881721012
+        },
+        "collision": false
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 0.97,
+          "localization_AUC": 0.9988529411764706,
+          "WS_recovery": 0.7045233080690995,
+          "HI_recovery": 0.2784830963962516
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 0.95,
+          "localization_AUC": 0.994064705882353,
+          "WS_recovery": 0.763548716170328,
+          "HI_recovery": 0.2397607725987937
+        },
+        "collision": false
+      },
+      {
+        "Niche1": {
+          "niche": 1,
+          "sensitivity": 1.0,
+          "localization_AUC": 0.9953529411764706,
+          "WS_recovery": 0.754340114670331,
+          "HI_recovery": 0.24847638027365201
+        },
+        "Niche2": {
+          "niche": 2,
+          "sensitivity": 1.0,
+          "localization_AUC": 0.9991941176470588,
+          "WS_recovery": 0.7515977751140072,
+          "HI_recovery": 0.23794696170551338
+        },
+        "collision": false
+      }
+    ]
+  },
+  "pseudobulk": {
+    "Composition-only": {
+      "overall": 0.19389650000531694,
+      "per_niche": [
+        0.05725204618068512,
+        -0.13863092804585292,
+        0.15810054282774247,
+        0.5007207719250846,
+        0.39204006713892536
+      ]
+    },
+    "Full": {
+      "overall": 0.4973508772524305,
+      "per_niche": [
+        0.6506503680998852,
+        0.2444734988075458,
+        0.9232047505097704,
+        0.657025294206204,
+        0.011400474638747217
+      ]
+    }
+  },
+  "robustness": [
+    {
+      "noise": 0.0,
+      "Full_sensitivity": {
+        "mean": 0.3317777777777778,
+        "SD": 0.08477884754732745
+      },
+      "Full_localization_AUC": {
+        "mean": 0.6883987038011613,
+        "SD": 0.06957823349592132
+      },
+      "Full_CCC_AUPRC": {
+        "mean": 0.031115924305379097,
+        "SD": 0.020850482643047796
+      },
+      "Full_Risk_WB": {
+        "mean": 0.6394252312665105,
+        "SD": 0.24031213367210807
+      },
+      "Full_Test_C": {
+        "mean": 0.5675732828396832,
+        "SD": 0.07707376180665065
+      }
+    },
+    {
+      "noise": 0.05,
+      "Full_sensitivity": {
+        "mean": 0.3387407407407408,
+        "SD": 0.09102030079435662
+      },
+      "Full_localization_AUC": {
+        "mean": 0.682635600964516,
+        "SD": 0.08469782628557752
+      },
+      "Full_CCC_AUPRC": {
+        "mean": 0.030418711063943147,
+        "SD": 0.020964677207020374
+      },
+      "Full_Risk_WB": {
+        "mean": 0.5782944902632482,
+        "SD": 0.3046149572217001
+      },
+      "Full_Test_C": {
+        "mean": 0.5746884809968366,
+        "SD": 0.08019817067000991
+      }
+    },
+    {
+      "noise": 0.1,
+      "Full_sensitivity": {
+        "mean": 0.3459753086419753,
+        "SD": 0.09705800212833902
+      },
+      "Full_localization_AUC": {
+        "mean": 0.6956879897512315,
+        "SD": 0.07954710635033671
+      },
+      "Full_CCC_AUPRC": {
+        "mean": 0.03080164351939199,
+        "SD": 0.022107299070473485
+      },
+      "Full_Risk_WB": {
+        "mean": 0.53849907206658,
+        "SD": 0.3823361666156418
+      },
+      "Full_Test_C": {
+        "mean": 0.5786664508352457,
+        "SD": 0.058927919469835964
+      }
+    }
+  ],
+  "judgement": {
+    "filter_better_than_no_filter": true,
+    "CCC_adds_over_composition": true,
+    "discovery_ok": false,
+    "transfer_ok": true,
+    "phenotype_ok": true
+  },
+  "conclusion": "C",
+  "pytest": "136 passed in 55.49s"
+}

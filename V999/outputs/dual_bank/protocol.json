@@ -1,0 +1,44 @@
+{
+  "seeds": [
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "permutation_seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "allocations": {
+    "same_composition": {
+      "Kp": 2,
+      "Kb": 4
+    },
+    "capacity": {
+      "Kp": 2,
+      "Kb": 2
+    }
+  },
+  "epochs": {
+    "background": 800,
+    "phenotype_residual": 800,
+    "jointft": 200,
+    "joint_scratch": 1600
+  },
+  "lambda_ph": 0.1,
+  "lambda_collapse": 0.0,
+  "regularization": 0.0001,
+  "inner": {
+    "steps": 100,
+    "learning_rate": 1.0
+  },
+  "jointft_learning_rate_factor": 0.1,
+  "background_probe": "Training-only Cox ridge=0.01; evaluation only",
+  "single_bank_source": "outputs/anti_collapse lambda_collapse=0 records",
+  "permutation_background": "Exact same_composition seed31 post-Stage-1 state reused for all five permutations",
+  "selection": "No hyperparameter selection, no K allocation scan, no test-guided changes"
+}

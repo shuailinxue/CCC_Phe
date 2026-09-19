@@ -1,0 +1,24 @@
+{
+  "same_composition": {
+    "ground_truth_equal": true,
+    "split_equal": true,
+    "feature_sha256": {
+      "CB": "79d71fa79bef43f1be8f4730f1558f27033e1e2023439252b66b0ee5aa09e77e",
+      "IB": "9f74dffba3d0bd0abfa07a6f06926f19d10900c47155ef94ef18dd85dd9c7d5e",
+      "CS": "fdd017af5ee8ebb08551035879f5da8d0ca4a0674b656e15794a72d5a472a03a",
+      "OS": "dcb247d903fd9989a9502ac1dbe27fb1f14bc1a058c54cceb2626e0403f81cf9",
+      "IS": "57afd6a9520b04818b0e3899803b3d5df0f2fe8fe6dcb6e69f0fcc479e46c888"
+    }
+  },
+  "capacity": {
+    "ground_truth_equal": true,
+    "split_equal": true,
+    "feature_sha256": {
+      "CB": "d8e70a31dd4ab33ed121a7be73557ae1472d48ff0ab36bb2c4c341942f73cdf9",
+      "IB": "9f74dffba3d0bd0abfa07a6f06926f19d10900c47155ef94ef18dd85dd9c7d5e",
+      "CS": "0b3422ae7fced31c979eb852fadde3ce33d550d6456a0db78b463252e44f7d7f",
+      "OS": "dcb247d903fd9989a9502ac1dbe27fb1f14bc1a058c54cceb2626e0403f81cf9",
+      "IS": "57afd6a9520b04818b0e3899803b3d5df0f2fe8fe6dcb6e69f0fcc479e46c888"
+    }
+  }
+}

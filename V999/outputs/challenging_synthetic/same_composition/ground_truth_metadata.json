@@ -1,0 +1,149 @@
+{
+  "config": {
+    "scenario": "same_composition",
+    "patients": 720,
+    "anchors": 300,
+    "cell_types": 12,
+    "contacts": 18,
+    "communications": 24,
+    "true_niches": 6,
+    "fit_niches": 4,
+    "beta_risk": 1.8,
+    "beta_protective": 1.8,
+    "noise_fraction": 0.025,
+    "seed": 20260917
+  },
+  "roles": [
+    "risk",
+    "neutral",
+    "nuisance",
+    "nuisance",
+    "neutral",
+    "neutral"
+  ],
+  "directional_features": [
+    {
+      "sender": "Tumor",
+      "receiver": "Macrophage",
+      "LR": "LR1"
+    },
+    {
+      "sender": "T_cell",
+      "receiver": "Tumor",
+      "LR": "LR2"
+    },
+    {
+      "sender": "Macrophage",
+      "receiver": "T_cell",
+      "LR": "LR3"
+    },
+    {
+      "sender": "Fibroblast",
+      "receiver": "Tumor",
+      "LR": "LR4"
+    },
+    {
+      "sender": "Tumor",
+      "receiver": "Macrophage",
+      "LR": "LR5"
+    },
+    {
+      "sender": "T_cell",
+      "receiver": "Tumor",
+      "LR": "LR6"
+    },
+    {
+      "sender": "Macrophage",
+      "receiver": "T_cell",
+      "LR": "LR7"
+    },
+    {
+      "sender": "Fibroblast",
+      "receiver": "Tumor",
+      "LR": "LR8"
+    },
+    {
+      "sender": "Tumor",
+      "receiver": "Macrophage",
+      "LR": "LR9"
+    },
+    {
+      "sender": "T_cell",
+      "receiver": "Tumor",
+      "LR": "LR10"
+    },
+    {
+      "sender": "Macrophage",
+      "receiver": "T_cell",
+      "LR": "LR11"
+    },
+    {
+      "sender": "Fibroblast",
+      "receiver": "Tumor",
+      "LR": "LR12"
+    },
+    {
+      "sender": "Tumor",
+      "receiver": "Macrophage",
+      "LR": "LR13"
+    },
+    {
+      "sender": "T_cell",
+      "receiver": "Tumor",
+      "LR": "LR14"
+    },
+    {
+      "sender": "Macrophage",
+      "receiver": "T_cell",
+      "LR": "LR15"
+    },
+    {
+      "sender": "Fibroblast",
+      "receiver": "Tumor",
+      "LR": "LR16"
+    },
+    {
+      "sender": "Tumor",
+      "receiver": "Macrophage",
+      "LR": "LR17"
+    },
+    {
+      "sender": "T_cell",
+      "receiver": "Tumor",
+      "LR": "LR18"
+    },
+    {
+      "sender": "Macrophage",
+      "receiver": "T_cell",
+      "LR": "LR19"
+    },
+    {
+      "sender": "Fibroblast",
+      "receiver": "Tumor",
+      "LR": "LR20"
+    },
+    {
+      "sender": "Tumor",
+      "receiver": "Macrophage",
+      "LR": "LR21"
+    },
+    {
+      "sender": "T_cell",
+      "receiver": "Tumor",
+      "LR": "LR22"
+    },
+    {
+      "sender": "Macrophage",
+      "receiver": "T_cell",
+      "LR": "LR23"
+    },
+    {
+      "sender": "Fibroblast",
+      "receiver": "Tumor",
+      "LR": "LR24"
+    }
+  ],
+  "baseline_hazard": 0.04,
+  "nuisance_coefficients_exactly_zero": true,
+  "independent_activity_columns": true
+}

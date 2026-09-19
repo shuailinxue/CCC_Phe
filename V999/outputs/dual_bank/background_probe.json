@@ -1,0 +1,560 @@
+{
+  "same_composition": {
+    "residual_frozen": {
+      "aggregate": {
+        "background_validation_c_index": {
+          "mean": 0.5568976088289392,
+          "std": 0.0036633646220207623,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_test_c_index": {
+          "mean": 0.5943593698358488,
+          "std": 0.005282349716750861,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_validation_c_index": {
+          "mean": 0.6761904761904762,
+          "std": 0.005866358836028047,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_test_c_index": {
+          "mean": 0.6479233226837061,
+          "std": 0.00543210314922955,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "runs": [
+        {
+          "seed": 31,
+          "background_beta": [
+            0.10430358350276947,
+            0.48303383588790894,
+            -0.11413773894309998,
+            -0.05140886828303337
+          ],
+          "background_validation_c_index": 0.555793991416309,
+          "background_test_c_index": 0.6035033601410158,
+          "phenotype_validation_c_index": 0.6851624770079706,
+          "phenotype_test_c_index": 0.6535198854246997,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 32,
+          "background_beta": [
+            0.14346686005592346,
+            -0.10567758232355118,
+            -0.12808071076869965,
+            0.4341093599796295
+          ],
+          "background_validation_c_index": 0.56325362763131,
+          "background_test_c_index": 0.5922661672358709,
+          "phenotype_validation_c_index": 0.6693235234007766,
+          "phenotype_test_c_index": 0.6401894899195769,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 33,
+          "background_beta": [
+            0.4276256859302521,
+            -0.1784001588821411,
+            -0.02358926832675934,
+            0.13611142337322235
+          ],
+          "background_validation_c_index": 0.5565092989985694,
+          "background_test_c_index": 0.5931475156990195,
+          "phenotype_validation_c_index": 0.6777028407929695,
+          "phenotype_test_c_index": 0.6527487055194447,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 34,
+          "background_beta": [
+            0.4426039755344391,
+            -0.1142752394080162,
+            -0.022677816450595856,
+            0.045104190707206726
+          ],
+          "background_validation_c_index": 0.5546699366441856,
+          "background_test_c_index": 0.5898424589622122,
+          "phenotype_validation_c_index": 0.6751481708563254,
+          "phenotype_test_c_index": 0.6465792662774045,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 35,
+          "background_beta": [
+            -0.01851390115916729,
+            0.09540370106697083,
+            -0.12377186119556427,
+            0.4400046467781067
+          ],
+          "background_validation_c_index": 0.5542611894543225,
+          "background_test_c_index": 0.5930373471411259,
+          "phenotype_validation_c_index": 0.6736153688943388,
+          "phenotype_test_c_index": 0.6465792662774045,
+          "probe_used_for_training_or_selection": false
+        }
+      ]
+    },
+    "residual_jointft": {
+      "aggregate": {
+        "background_validation_c_index": {
+          "mean": 0.5708767627222563,
+          "std": 0.01705457545965324,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_test_c_index": {
+          "mean": 0.6111049906356726,
+          "std": 0.024664351125096497,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_validation_c_index": {
+          "mean": 0.6768035969752708,
+          "std": 0.00492642116060525,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_test_c_index": {
+          "mean": 0.6925195549190262,
+          "std": 0.007631111274892142,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "runs": [
+        {
+          "seed": 31,
+          "background_beta": [
+            0.5403677225112915,
+            0.2363864928483963,
+            -0.2107727974653244,
+            -0.03960162773728371
+          ],
+          "background_validation_c_index": 0.5805231964030247,
+          "background_test_c_index": 0.630274319709155,
+          "phenotype_validation_c_index": 0.6802575107296137,
+          "phenotype_test_c_index": 0.7003415225294701,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 32,
+          "background_beta": [
+            0.1167532429099083,
+            -0.08608121424913406,
+            -0.13549800217151642,
+            0.40313681960105896
+          ],
+          "background_validation_c_index": 0.554465563049254,
+          "background_test_c_index": 0.5830120083728104,
+          "phenotype_validation_c_index": 0.6694257101982424,
+          "phenotype_test_c_index": 0.6833755646138592,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 33,
+          "background_beta": [
+            0.4324015974998474,
+            -0.06523078680038452,
+            -0.026355138048529625,
+            -0.10061908513307571
+          ],
+          "background_validation_c_index": 0.5541590026568567,
+          "background_test_c_index": 0.591715324446403,
+          "phenotype_validation_c_index": 0.6796443899448191,
+          "phenotype_test_c_index": 0.6909771951085161,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 34,
+          "background_beta": [
+            0.3973897099494934,
+            -0.1394234001636505,
+            -0.15493705868721008,
+            0.30126410722732544
+          ],
+          "background_validation_c_index": 0.5715307582260372,
+          "background_test_c_index": 0.6094524622672689,
+          "phenotype_validation_c_index": 0.6740241160842019,
+          "phenotype_test_c_index": 0.6875619698138151,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 35,
+          "background_beta": [
+            -0.03478241711854935,
+            0.5393154621124268,
+            -0.22575373947620392,
+            0.2456478476524353
+          ],
+          "background_validation_c_index": 0.5937052932761088,
+          "background_test_c_index": 0.6410708383827256,
+          "phenotype_validation_c_index": 0.6806662579194768,
+          "phenotype_test_c_index": 0.7003415225294701,
+          "probe_used_for_training_or_selection": false
+        }
+      ]
+    },
+    "joint_scratch": {
+      "aggregate": {
+        "background_validation_c_index": {
+          "mean": 0.5710402615982015,
+          "std": 0.016954603587573464,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_test_c_index": {
+          "mean": 0.612074473945136,
+          "std": 0.022516658341474642,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_validation_c_index": {
+          "mean": 0.653668506029021,
+          "std": 0.016671706326460412,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_test_c_index": {
+          "mean": 0.6621350666519776,
+          "std": 0.018368505117053603,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "runs": [
+        {
+          "seed": 31,
+          "background_beta": [
+            -0.3506704270839691,
+            0.3788529336452484,
+            0.2418796867132187,
+            -0.049502499401569366
+          ],
+          "background_validation_c_index": 0.5844062947067239,
+          "background_test_c_index": 0.6233337005618597,
+          "phenotype_validation_c_index": 0.6681994686286532,
+          "phenotype_test_c_index": 0.6856891043296244,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 32,
+          "background_beta": [
+            0.424940824508667,
+            -0.03257869929075241,
+            0.07183650135993958,
+            -0.2650025486946106
+          ],
+          "background_validation_c_index": 0.5634580012262416,
+          "background_test_c_index": 0.6097829679409497,
+          "phenotype_validation_c_index": 0.662987941957899,
+          "phenotype_test_c_index": 0.6781976423928611,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 33,
+          "background_beta": [
+            0.2863921523094177,
+            -0.1673499345779419,
+            -0.03559523820877075,
+            0.2761556804180145
+          ],
+          "background_validation_c_index": 0.5465971796443899,
+          "background_test_c_index": 0.5837831882780654,
+          "phenotype_validation_c_index": 0.6580829756795422,
+          "phenotype_test_c_index": 0.6461385920458301,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 34,
+          "background_beta": [
+            -0.30931389331817627,
+            0.5966941714286804,
+            -0.044629402458667755,
+            -0.06261295080184937
+          ],
+          "background_validation_c_index": 0.5888003269977519,
+          "background_test_c_index": 0.6430538724248099,
+          "phenotype_validation_c_index": 0.6254853872879624,
+          "phenotype_test_c_index": 0.6513165142668282,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 35,
+          "background_beta": [
+            -0.01018533855676651,
+            0.5805111527442932,
+            -0.1513725221157074,
+            -0.06377662718296051
+          ],
+          "background_validation_c_index": 0.5719395054159002,
+          "background_test_c_index": 0.6004186405199956,
+          "phenotype_validation_c_index": 0.6535867565910485,
+          "phenotype_test_c_index": 0.6493334802247439,
+          "probe_used_for_training_or_selection": false
+        }
+      ]
+    }
+  },
+  "capacity": {
+    "residual_frozen": {
+      "aggregate": {
+        "background_validation_c_index": {
+          "mean": 0.4757463672391017,
+          "std": 0.0012200528284299834,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_test_c_index": {
+          "mean": 0.4580161155876633,
+          "std": 0.0008753533760501997,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_validation_c_index": {
+          "mean": 0.7333685601056803,
+          "std": 0.0034857988162903097,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_test_c_index": {
+          "mean": 0.7308419005279244,
+          "std": 0.0037052247983017533,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "runs": [
+        {
+          "seed": 31,
+          "background_beta": [
+            -0.0258595310151577,
+            -0.1866142898797989
+          ],
+          "background_validation_c_index": 0.476221928665786,
+          "background_test_c_index": 0.4576271186440678,
+          "phenotype_validation_c_index": 0.7274768824306473,
+          "phenotype_test_c_index": 0.7361767157543763,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 32,
+          "background_beta": [
+            -0.025054164230823517,
+            -0.18699875473976135
+          ],
+          "background_validation_c_index": 0.47648612945838836,
+          "background_test_c_index": 0.4577660461239233,
+          "phenotype_validation_c_index": 0.7352708058124174,
+          "phenotype_test_c_index": 0.7322867463184218,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 33,
+          "background_beta": [
+            -0.1870262622833252,
+            -0.023448171094059944
+          ],
+          "background_validation_c_index": 0.47357992073976224,
+          "background_test_c_index": 0.459572103362045,
+          "phenotype_validation_c_index": 0.734214002642008,
+          "phenotype_test_c_index": 0.7274242845234787,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 34,
+          "background_beta": [
+            -0.02590375393629074,
+            -0.18664036691188812
+          ],
+          "background_validation_c_index": 0.4763540290620872,
+          "background_test_c_index": 0.4574881911642123,
+          "phenotype_validation_c_index": 0.7334214002642008,
+          "phenotype_test_c_index": 0.7310363989997222,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 35,
+          "background_beta": [
+            -0.025628745555877686,
+            -0.18670393526554108
+          ],
+          "background_validation_c_index": 0.4760898282694848,
+          "background_test_c_index": 0.4576271186440678,
+          "phenotype_validation_c_index": 0.7364597093791282,
+          "phenotype_test_c_index": 0.7272853570436232,
+          "probe_used_for_training_or_selection": false
+        }
+      ]
+    },
+    "residual_jointft": {
+      "aggregate": {
+        "background_validation_c_index": {
+          "mean": 0.47484808454425365,
+          "std": 0.0009275291773602063,
+          "n": 5,
+          "undefined": 0
+        },
+        "background_test_c_index": {
+          "mean": 0.4595165323701028,
+          "std": 0.0008819433313756033,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_validation_c_index": {
+          "mean": 0.730885072655218,
+          "std": 0.0025639050077165995,
+          "n": 5,
+          "undefined": 0
+        },
+        "phenotype_test_c_index": {
+          "mean": 0.7377882745207002,
+          "std": 0.0023752130207261627,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "runs": [
+        {
+          "seed": 31,
+          "background_beta": [
+            -0.027292955666780472,
+            -0.18348006904125214
+          ],
+          "background_validation_c_index": 0.4737120211360634,
+          "background_test_c_index": 0.45818282856348985,
+          "phenotype_validation_c_index": 0.7270805812417437,
+          "phenotype_test_c_index": 0.7379827729924979,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 32,
+          "background_beta": [
+            -0.026780951768159866,
+            -0.1886475682258606
+          ],
+          "background_validation_c_index": 0.4751651254953765,
+          "background_test_c_index": 0.46012781328146707,
+          "phenotype_validation_c_index": 0.7295904887714663,
+          "phenotype_test_c_index": 0.7407613225896083,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 33,
+          "background_beta": [
+            -0.18768960237503052,
+            -0.023343494161963463
+          ],
+          "background_validation_c_index": 0.4745046235138705,
+          "background_test_c_index": 0.45915532092247846,
+          "phenotype_validation_c_index": 0.7326287978863937,
+          "phenotype_test_c_index": 0.734787440955821,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 34,
+          "background_beta": [
+            -0.027630070224404335,
+            -0.18843519687652588
+          ],
+          "background_validation_c_index": 0.476221928665786,
+          "background_test_c_index": 0.4597110308419005,
+          "phenotype_validation_c_index": 0.7317040951122853,
+          "phenotype_test_c_index": 0.7392331203111976,
+          "probe_used_for_training_or_selection": false
+        },
+        {
+          "seed": 35,
+          "background_beta": [
+            -0.028538238257169724,
+            -0.18836474418640137
+          ],
+          "background_validation_c_index": 0.47463672391017175,
+          "background_test_c_index": 0.4604056682411781,
+          "phenotype_validation_c_index": 0.7334214002642008,
+          "phenotype_test_c_index": 0.7361767157543763,
+          "probe_used_for_training_or_selection": false
+        }
+      ]
+    }
+  },
+  "same_composition_permutation": {
+    "runs": [
+      {
+        "permutation_seed": 101,
+        "background_beta": [
+          -0.0809667706489563,
+          -0.0929991602897644,
+          0.021600991487503052,
+          -0.2223619967699051
+        ],
+        "background_validation_c_index": 0.4917228694052728,
+        "background_test_c_index": 0.4826484521317616,
+        "phenotype_validation_c_index": 0.5339260167586348,
+        "phenotype_test_c_index": 0.5219786272997686,
+        "probe_used_for_training_or_selection": false
+      },
+      {
+        "permutation_seed": 102,
+        "background_beta": [
+          -0.013037423603236675,
+          0.19407762587070465,
+          -0.09075905382633209,
+          0.18132427334785461
+        ],
+        "background_validation_c_index": 0.5315757204169221,
+        "background_test_c_index": 0.5451140244574199,
+        "phenotype_validation_c_index": 0.4347026364193746,
+        "phenotype_test_c_index": 0.4686570452792773,
+        "probe_used_for_training_or_selection": false
+      },
+      {
+        "permutation_seed": 103,
+        "background_beta": [
+          -0.045916926115751266,
+          -0.17205710709095,
+          0.16403861343860626,
+          0.1783565878868103
+        ],
+        "background_validation_c_index": 0.454731248722665,
+        "background_test_c_index": 0.45103007601630496,
+        "phenotype_validation_c_index": 0.38033926016758635,
+        "phenotype_test_c_index": 0.40553046160625755,
+        "probe_used_for_training_or_selection": false
+      },
+      {
+        "permutation_seed": 104,
+        "background_beta": [
+          0.07488298416137695,
+          -0.04722797870635986,
+          0.03639468178153038,
+          -0.23858976364135742
+        ],
+        "background_validation_c_index": 0.5184958103413039,
+        "background_test_c_index": 0.5241819984576402,
+        "phenotype_validation_c_index": 0.382689556509299,
+        "phenotype_test_c_index": 0.4251404649113143,
+        "probe_used_for_training_or_selection": false
+      },
+      {
+        "permutation_seed": 105,
+        "background_beta": [
+          -0.01604648306965828,
+          -0.058297574520111084,
+          0.11380541324615479,
+          0.10693799704313278
+        ],
+        "background_validation_c_index": 0.45861434702636417,
+        "background_test_c_index": 0.46854687672138373,
+        "phenotype_validation_c_index": 0.5306560392397303,
+        "phenotype_test_c_index": 0.5172413793103449,
+        "probe_used_for_training_or_selection": false
+      }
+    ]
+  }
+}

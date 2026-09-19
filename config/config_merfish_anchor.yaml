@@ -1,0 +1,62 @@
+project:
+  name: CCC_Phe_V0_LIHC_GSE327192_MERFISH_anchor
+  code_root: /home/xueshuailin/CCC_Phe
+  storage_root: /home/nas3/biod/xueshuailin/CCC_Phe
+  random_seed: 20260730
+
+paths:
+  processed: "{storage_root}/data/processed/lihc_v0_merfish_anchor"
+  results: "{storage_root}/results/lihc_v0_merfish_anchor"
+
+analysis_paths:
+  communication_tensor: /home/nas3/biod/xueshuailin/CCC_Phe/data/processed/lihc_v0_merfish_anchor/communication_tensor
+  clinical: /home/nas3/biod/xueshuailin/New_Projects/data/TCGA_LIHC/clinical_aligned_plus.tsv
+
+inputs:
+  bulk_expression: /home/nas3/biod/xueshuailin/New_Projects/data/TCGA_LIHC/expr_aligned_plus.tsv
+  st_samples_root: /home/nas3/biod/xueshuailin/New_Projects/data/GSE327192_HCC_MERFISH/raw
+  single_cell_reference: /home/nas3/biod/xueshuailin/New_Projects/data/GSE189903_scRNA/processed/GSE189903_liver_reference_raw_counts.h5ad
+
+spatial_anchor:
+  rule: current_st_is_the_only_anchor
+  methods: [MERFISH_panel_label_transfer, spatial_knn_contact]
+  samples: [GSM9651110, GSM9651111, GSM9651112, GSM9651113, GSM9651114, GSM9651115, GSM9651116, GSM9651117]
+  patient_ccc_formula: "W_ST * (M_RNA + epsilon) / (M_ST + epsilon)"
+  epsilon: 1.0e-8
+  tls_blind: true
+
+tcga:
+  endpoints:
+    OS: {event: OS.event, time: OS.time}
+    PFI: {event: PFI.event, time: PFI.time}
+    DSS: {event: DSS.event, time: DSS.time}
+    DFI: {event: DFI.event, time: DFI.time}
+
+phenotype:
+  primary_endpoint: OS
+
+network_cox:
+  device: "cuda:2"
+  minimum_coverage: 0.40
+  minimum_variance: 1.0e-8
+  winsor_quantile: 0.999
+  standardization_clip: 8.0
+  outer_folds: 5
+  inner_folds: 4
+  lambda_fractions: [0.075]
+  graph_lambdas: [0.05]
+  tuning_cindex_tolerance: 0.01
+  ridge_lambda: 1.0e-5
+  initial_step: 0.10
+  minimum_step: 1.0e-7
+  maximum_step: 1.0
+  max_iterations: 220
+  tuning_iterations: 120
+  stability_iterations: 100
+  minimum_iterations: 30
+  tolerance: 1.0e-6
+  coefficient_zero_tolerance: 1.0e-8
+  maximum_selected_ccc: 500
+  stability_replicates: 50
+  stability_threshold: 0.70
+  maximum_stable_ccc: 500

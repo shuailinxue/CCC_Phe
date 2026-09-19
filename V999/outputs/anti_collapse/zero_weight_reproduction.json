@@ -1,0 +1,124 @@
+{
+  "same_composition": {
+    "runs": [
+      {
+        "seed": 31,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 32,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 33,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 34,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 35,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      }
+    ],
+    "max_absolute_difference": 0.0,
+    "within_1e_minus7": true
+  },
+  "capacity": {
+    "runs": [
+      {
+        "seed": 31,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 32,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 33,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 34,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      },
+      {
+        "seed": 35,
+        "absolute_differences": {
+          "train_c_index": 0.0,
+          "validation_c_index": 0.0,
+          "test_c_index": 0.0,
+          "overall_dictionary_recovery": 0.0,
+          "bulk_reconstruction": 0.0,
+          "spatial_reconstruction": 0.0
+        }
+      }
+    ],
+    "max_absolute_difference": 0.0,
+    "within_1e_minus7": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "V1000": {
+    "construction_seconds": 0.007931009866297245,
+    "peak_python_memory_bytes": 18466272,
+    "anchors": 1200,
+    "features": 768
+  },
+  "V1001": {
+    "construction_seconds": 5.543048736639321,
+    "peak_python_memory_bytes": 33372455,
+    "cells": 14400,
+    "anchors": 1200,
+    "local_directed_cell_pair_instances": 11329926,
+    "mean_cells_per_neighborhood": 97.06416666666667,
+    "mean_directed_pairs_per_neighborhood": 9441.605
+  },
+  "construction_time_ratio_V1001_over_V1000": 698.9083143364197
+}

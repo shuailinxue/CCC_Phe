@@ -1,0 +1,40 @@
+{
+  "selection_rule": "smallest step count with relative objective excess to NNLS <= 0.001",
+  "records": [
+    {
+      "steps": 10,
+      "objective": 6.562363705597818e-05,
+      "relative_excess_to_NNLS": 0.5225883605750937,
+      "all_finite": true
+    },
+    {
+      "steps": 25,
+      "objective": 4.373090632725507e-05,
+      "relative_excess_to_NNLS": 0.01463698079520888,
+      "all_finite": true
+    },
+    {
+      "steps": 50,
+      "objective": 4.310295480536297e-05,
+      "relative_excess_to_NNLS": 6.735739224589803e-05,
+      "all_finite": true
+    },
+    {
+      "steps": 100,
+      "objective": 4.310031363274902e-05,
+      "relative_excess_to_NNLS": 6.077358698878019e-06,
+      "all_finite": true
+    },
+    {
+      "steps": 200,
+      "objective": 4.310005169827491e-05,
+      "relative_excess_to_NNLS": 0.0,
+      "all_finite": true
+    }
+  ],
+  "selected_steps": 50,
+  "reference_objective": 4.310005169827491e-05,
+  "gradient_norm_HC": 0.06277234852313995,
+  "gradient_norm_HI": 0.016520828008651733,
+  "gradients_finite": true
+}

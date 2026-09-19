@@ -1,0 +1,7 @@
+{
+  "stage": "post_discovery_tls_validation_complete",
+  "tls_annotation": "/home/nas3/biod/xueshuailin/New_Projects/data/SpaPheno_liver_cancer_ST/annotations/tls_spot_annotations.tsv",
+  "n_matched_spots": 4500,
+  "n_tls_spots": 212,
+  "permutations": 1000
+}

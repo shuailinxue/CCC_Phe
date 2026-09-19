@@ -1,0 +1,19 @@
+{
+  "WB_is_parameter": false,
+  "parameter_names": [
+    "raw_WS",
+    "raw_HC",
+    "raw_HO",
+    "raw_HI",
+    "phenotype_head.gamma"
+  ],
+  "cox_only_gradient_norms": {
+    "WB": 0.057545341551303864,
+    "HC": 0.15106847882270813,
+    "HI": 0.07921961694955826,
+    "gamma": 0.03419340401887894
+  },
+  "inference_steps": 100,
+  "inference_lr": 1.0,
+  "train_test_max_activity_difference": 0.0
+}

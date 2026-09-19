@@ -1,0 +1,52 @@
+{
+  "stage": "label_free_discovery_complete",
+  "stable_ccc": "/home/nas3/biod/xueshuailin/CCC_Phe/results/lihc_v0/stability_refinement/lambda_0.075/network_cox/stable_ccc.tsv",
+  "samples": [
+    "HCC-1L",
+    "HCC-2L",
+    "HCC-3L",
+    "HCC-4L",
+    "cHC-1L",
+    "ICC-1L"
+  ],
+  "n_protective_cccs": 23,
+  "n_locations": 25419,
+  "n_nmf_cccs": 23,
+  "selected_k": 6,
+  "n_candidate_niches": 370,
+  "tls_labels_used": false,
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/results/lihc_v0/st_functional_niche",
+  "minimum_niche_spots": 10,
+  "hotspot_quantile": 0.9,
+  "discovery_parameters": {
+    "stable_ccc_sha256": "e201439119914ed3805e5ea2f3b4917e97c213fdc08af99a3616349b71da0480",
+    "samples": [
+      "HCC-1L",
+      "HCC-2L",
+      "HCC-3L",
+      "HCC-4L",
+      "cHC-1L",
+      "ICC-1L"
+    ],
+    "stability_threshold": 0.7,
+    "k_values": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "nmf_restarts": 20,
+    "nmf_max_iter": 2000,
+    "selected_k": null,
+    "hotspot_quantile": 0.9,
+    "minimum_niche_spots": 10,
+    "distance_threshold": null,
+    "cot_eps_p": 0.1,
+    "cot_rho": 10.0,
+    "cot_nitermax": 10000,
+    "random_seed": 20260730
+  }
+}

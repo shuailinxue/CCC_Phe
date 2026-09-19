@@ -1,0 +1,61 @@
+project:
+  name: CCC_Phe_V0_LIHC
+  code_root: /home/xueshuailin/CCC_Phe
+  storage_root: /home/nas3/biod/xueshuailin/CCC_Phe
+  random_seed: 20260730
+
+paths:
+  processed: "{storage_root}/data/processed/lihc_v0"
+  results: "{storage_root}/results/lihc_v0"
+
+analysis_paths:
+  communication_tensor: /home/nas3/biod/xueshuailin/CCC_Phe/data/processed/lihc_v0/communication_tensor
+  clinical: /home/nas3/biod/xueshuailin/New_Projects/data/TCGA_LIHC/clinical_aligned_plus.tsv
+
+inputs:
+  bulk_expression: /home/nas3/biod/xueshuailin/New_Projects/data/TCGA_LIHC/expr_aligned_plus.tsv
+  st_samples_root: /home/nas3/biod/xueshuailin/New_Projects/data/SpaPheno_liver_cancer_ST/samples
+  single_cell_reference: /home/nas3/biod/xueshuailin/New_Projects/data/GSE189903_scRNA/processed/GSE189903_liver_reference_raw_counts.h5ad
+
+spatial_anchor:
+  rule: current_st_is_the_only_anchor
+  methods: [RCTD, COMMOT]
+  samples: [HCC-1L, HCC-2L, HCC-3L, HCC-4L, cHC-1L, ICC-1L]
+  patient_ccc_formula: "W_ST * (M_RNA + epsilon) / (M_ST + epsilon)"
+  epsilon: 1.0e-8
+
+tcga:
+  endpoints:
+    OS: {event: OS.event, time: OS.time}
+    PFI: {event: PFI.event, time: PFI.time}
+    DSS: {event: DSS.event, time: DSS.time}
+    DFI: {event: DFI.event, time: DFI.time}
+
+phenotype:
+  primary_endpoint: OS
+
+network_cox:
+  device: "cuda:2"
+  minimum_coverage: 0.40
+  minimum_variance: 1.0e-8
+  winsor_quantile: 0.999
+  standardization_clip: 8.0
+  outer_folds: 5
+  inner_folds: 4
+  lambda_fractions: [0.60, 0.40, 0.30, 0.20, 0.10]
+  graph_lambdas: [0.00, 0.01, 0.03, 0.05]
+  tuning_cindex_tolerance: 0.01
+  ridge_lambda: 1.0e-5
+  initial_step: 0.10
+  minimum_step: 1.0e-7
+  maximum_step: 1.0
+  max_iterations: 220
+  tuning_iterations: 120
+  stability_iterations: 100
+  minimum_iterations: 30
+  tolerance: 1.0e-6
+  coefficient_zero_tolerance: 1.0e-8
+  maximum_selected_ccc: 500
+  stability_replicates: 50
+  stability_threshold: 0.70
+  maximum_stable_ccc: 500

@@ -1,0 +1,58 @@
+{
+  "config": {
+    "lambdas": [
+      0.0,
+      0.0001,
+      0.001,
+      0.005,
+      0.01,
+      0.05,
+      0.1
+    ],
+    "seeds": [
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "permutation_seeds": [
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "warmup_epochs": 800,
+    "joint_epochs": 800,
+    "workers": 4,
+    "device": "cpu"
+  },
+  "K": {
+    "same_composition": 6,
+    "capacity": 4
+  },
+  "lambda_ph": 0.1,
+  "inner_steps": 100,
+  "inner_lr": 1.0,
+  "regularization": 0.0001,
+  "collapse_definition": "mean over k<l of cosine(HC_k,HC_l)*cosine(HO_k,HO_l)*cosine(HI_k,HI_l), eps=1e-8",
+  "collapse_schedule": "Same fixed lambda in warmup and joint stages; no other new loss",
+  "selection": "Among lambdas within 0.02 of best mean validation C-index, minimize mean_pair_collapse; ties select smaller lambda",
+  "selection_timing": "Selection JSON sealed before test or truth evaluation",
+  "permutation": "same_composition only, selected collapse weight, lambda_ph=0.1, model seed=31, joint time/event shuffle seeds=101..105",
+  "scaling": {
+    "same_composition": {
+      "composition": 7.062640161939125,
+      "communication": 5.000549086141425,
+      "topology": 6.11837066835744
+    },
+    "capacity": {
+      "composition": 7.019771102107991,
+      "communication": 5.000549086141425,
+      "topology": 6.11837066835744
+    }
+  },
+  "old_inferred_results": "/home/xueshuailin/CCC_Phe/V999/outputs/inferred_wb",
+  "frozen_data": "/home/xueshuailin/CCC_Phe/V999/outputs/challenging_synthetic"
+}

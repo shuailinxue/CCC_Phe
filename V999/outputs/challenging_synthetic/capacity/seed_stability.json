@@ -1,0 +1,2338 @@
+{
+  "unsupervised": {
+    "aggregate": {
+      "train_c_index": {
+        "mean": 0.508607245681382,
+        "std": 0.0073579851108397315,
+        "n": 5,
+        "undefined": 0
+      },
+      "train_fitted_c_index": {
+        "mean": 0.5079264635316698,
+        "std": 0.00988185829090991,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.5161162483487451,
+        "std": 0.007935375372691992,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.48810780772436785,
+        "std": 0.004752660150319321,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.0010389217699412257,
+        "std": 2.1911798470394032e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.0017528277589008213,
+        "std": 6.285186301562026e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "overall_dictionary_recovery": {
+        "mean": 0.619790770458804,
+        "std": 0.006070559941218728,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.2736033009963741,
+          "std": 0.014137474291994447,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.2791624623845738,
+          "std": 0.014156098871159917,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.26803501673664143,
+          "std": 0.014724893904479952,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.2727603386836674,
+          "std": 0.032669236606254086,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.11700248974869835,
+          "std": 0.04472403577220404,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.11344630052850882,
+          "std": 0.058569842257848795,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 0.07434514462947846,
+          "std": 0.19030942487149918,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_gamma_sign_consistency": 0.6,
+      "protective_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.29197270361097083,
+          "std": 0.029224973108296925,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.29347393941936073,
+          "std": 0.02840143520334446,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.29061992422361926,
+          "std": 0.030483812179223482,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.32389889229243696,
+          "std": 0.024340605536960568,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.11924370974527462,
+          "std": 0.06176905415885444,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.215713614932401,
+          "std": 0.03308024312746616,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.015357291698455811,
+          "std": 0.19051597897991293,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "protective_gamma_sign_consistency": 0.6,
+      "neutral_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.8626029875073586,
+          "std": 0.01805607099573857,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.8747242915850478,
+          "std": 0.012388123993981764,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.8512334761570065,
+          "std": 0.02408167645087834,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.8281288213930404,
+          "std": 0.017018509697966755,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9511337511034933,
+          "std": 0.007384148578747021,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9298611678909626,
+          "std": 0.016688612285806235,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 0.04749370366334915,
+          "std": 0.014650215368410924,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_gamma_sign_consistency": null,
+      "nuisance_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.9967693238690535,
+          "std": 0.0001951961931257662,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.997261019866896,
+          "std": 0.00013390566266008726,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9963353857439371,
+          "std": 0.00026708592786505917,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9958566030110368,
+          "std": 0.00012485190628751895,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9967579413463348,
+          "std": 0.00042403551747521065,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.998013892228381,
+          "std": 0.00026831661522614363,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.11163807157427072,
+          "std": 0.008490870702262582,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_gamma_sign_consistency": null
+    },
+    "runs": [
+      {
+        "seed": 31,
+        "lambda_ph": 0.0,
+        "epochs": 1600,
+        "train_c_index": 0.5173044625719769,
+        "train_fitted_c_index": 0.5216230806142035,
+        "validation_c_index": 0.5278731836195508,
+        "test_c_index": 0.49416504584606835,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2919577117070633,
+              "gamma": -0.15444567799568176,
+              "WB_correlation": 0.07576186296669749,
+              "WS_correlation": 0.18049432777286753,
+              "HC_cosine": 0.29772338101090995,
+              "HI_cosine": 0.28608212006241135,
+              "HO_cosine": 0.31910355434825355,
+              "gamma_sign_correct": false,
+              "WB_test_correlation": 0.22614044347777626
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.3426754161220857,
+              "gamma": -0.15444567799568176,
+              "WB_correlation": 0.18827368619036183,
+              "WS_correlation": 0.2746479921216973,
+              "HC_cosine": 0.3430165149652627,
+              "HI_cosine": 0.34247747148679114,
+              "HO_cosine": 0.36711760222948786,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.23113762103743168
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 2,
+              "best_match_collision": false,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.9962063961227542,
+              "gamma": -0.23049162328243256,
+              "WB_correlation": 0.9949630898644798,
+              "WS_correlation": 0.9968655218212041,
+              "HC_cosine": 0.9968153136496691,
+              "HI_cosine": 0.9956604972131582,
+              "HO_cosine": 0.9954616668242768,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9958991226267746
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.9967374233257023,
+              "gamma": -0.01970694214105606,
+              "WB_correlation": 0.9972830142151448,
+              "WS_correlation": 0.9983697576987749,
+              "HC_cosine": 0.997276328735834,
+              "HI_cosine": 0.9962528477702608,
+              "HO_cosine": 0.9960978041627793,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9973696306252072
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.8178714332894516,
+              "gamma": -0.15444567799568176,
+              "WB_correlation": 0.9329049569679501,
+              "WS_correlation": 0.8713342714913038,
+              "HC_cosine": 0.8357528923613609,
+              "HI_cosine": 0.7998770066327652,
+              "HO_cosine": 0.7784209617777504,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9261488633335517
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 1,
+              "best_match_collision": false,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.8431373056184972,
+              "gamma": 0.29096105694770813,
+              "WB_correlation": 0.9436004160065379,
+              "WS_correlation": 0.9315219289748585,
+              "HC_cosine": 0.869431778933721,
+              "HI_cosine": 0.8178187347266146,
+              "HO_cosine": 0.8179699409710113,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9471823776852548
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.2919577117070633,
+            "HC_cosine": 0.29772338101090995,
+            "HI_cosine": 0.28608212006241135,
+            "HO_cosine": 0.31910355434825355,
+            "WB_correlation": 0.07576186296669749,
+            "WS_correlation": 0.18049432777286753,
+            "gamma": -0.15444567799568176
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.3426754161220857,
+            "HC_cosine": 0.3430165149652627,
+            "HI_cosine": 0.34247747148679114,
+            "HO_cosine": 0.36711760222948786,
+            "WB_correlation": 0.18827368619036183,
+            "WS_correlation": 0.2746479921216973,
+            "gamma": -0.15444567799568176
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.8305043694539744,
+            "HC_cosine": 0.8525923356475409,
+            "HI_cosine": 0.8088478706796899,
+            "HO_cosine": 0.7981954513743809,
+            "WB_correlation": 0.938252686487244,
+            "WS_correlation": 0.9014281002330812,
+            "gamma": 0.06825768947601318
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9964719097242283,
+            "HC_cosine": 0.9970458211927515,
+            "HI_cosine": 0.9959566724917095,
+            "HO_cosine": 0.995779735493528,
+            "WB_correlation": 0.9961230520398123,
+            "WS_correlation": 0.9976176397599895,
+            "gamma": -0.1250992827117443
+          },
+          "overall_dictionary_recovery": 0.6089920930594009,
+          "matched_dictionary_cosine": 0.9134881395891014,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            0,
+            1
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0006856156978756189,
+            "IB": 0.0003921377065125853,
+            "CS": 0.0007930119754746556,
+            "OS": 0.0006063479813747108,
+            "IS": 0.00046527310041710734
+          },
+          "bulk_reconstruction": 0.0010777534043882042,
+          "spatial_reconstruction": 0.0018646330572664738
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0005917949019931257,
+            "IB": 0.0003370019840076566,
+            "CS": 0.0007930119754746556,
+            "OS": 0.0006063479813747108,
+            "IS": 0.00046527310041710734
+          },
+          "bulk_reconstruction": 0.0009287968860007823,
+          "spatial_reconstruction": 0.0018646330572664738
+        },
+        "factorization_gamma": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evaluation_gamma": [
+          -0.01970694214105606,
+          0.29096105694770813,
+          -0.23049162328243256,
+          -0.15444567799568176
+        ],
+        "gamma_source": "training-only frozen Cox head"
+      },
+      {
+        "seed": 32,
+        "lambda_ph": 0.0,
+        "epochs": 1600,
+        "train_c_index": 0.5040786948176583,
+        "train_fitted_c_index": 0.5020543426103646,
+        "validation_c_index": 0.5108322324966975,
+        "test_c_index": 0.48610725201444843,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2653332150921652,
+              "gamma": 0.200693279504776,
+              "WB_correlation": 0.1449048414278267,
+              "WS_correlation": 0.07086603440897372,
+              "HC_cosine": 0.2664272742825046,
+              "HI_cosine": 0.2647179293077001,
+              "HO_cosine": 0.25479272307163786,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.21982940827363576
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2744023161630516,
+              "gamma": 0.200693279504776,
+              "WB_correlation": 0.05111804119158041,
+              "WS_correlation": 0.19814121240907348,
+              "HC_cosine": 0.2726812465794459,
+              "HI_cosine": 0.2767572286551656,
+              "HO_cosine": 0.3159160889248453,
+              "gamma_sign_correct": false,
+              "WB_test_correlation": 0.028213075568367878
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.9958780665703529,
+              "gamma": -0.190953329205513,
+              "WB_correlation": 0.9968792187359585,
+              "WS_correlation": 0.99807969856444,
+              "HC_cosine": 0.996458071310842,
+              "HI_cosine": 0.9953579439804516,
+              "HO_cosine": 0.9945959745999123,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9974935668028607
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 1,
+              "best_match_collision": false,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.9976865851371681,
+              "gamma": -0.02099236287176609,
+              "WB_correlation": 0.997224445465548,
+              "WS_correlation": 0.9983128719482215,
+              "HC_cosine": 0.9980419391203115,
+              "HI_cosine": 0.9973806663668362,
+              "HO_cosine": 0.9968296833193014,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9973059159191647
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": false,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.8651481368069682,
+              "gamma": -0.12159480899572372,
+              "WB_correlation": 0.9527247553388688,
+              "WS_correlation": 0.9337910260930704,
+              "HC_cosine": 0.87252502331272,
+              "HI_cosine": 0.858958532384754,
+              "HO_cosine": 0.8310430583453722,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9529668991939374
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.8797286063419235,
+              "gamma": 0.200693279504776,
+              "WB_correlation": 0.9524857342234726,
+              "WS_correlation": 0.9272966439237055,
+              "HC_cosine": 0.8894299863158094,
+              "HI_cosine": 0.8706402083610971,
+              "HO_cosine": 0.8481434941202309,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9440472830378003
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.2653332150921652,
+            "HC_cosine": 0.2664272742825046,
+            "HI_cosine": 0.2647179293077001,
+            "HO_cosine": 0.25479272307163786,
+            "WB_correlation": 0.1449048414278267,
+            "WS_correlation": 0.07086603440897372,
+            "gamma": 0.200693279504776
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.2744023161630516,
+            "HC_cosine": 0.2726812465794459,
+            "HI_cosine": 0.2767572286551656,
+            "HO_cosine": 0.3159160889248453,
+            "WB_correlation": 0.05111804119158041,
+            "WS_correlation": 0.19814121240907348,
+            "gamma": 0.200693279504776
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.8724383715744459,
+            "HC_cosine": 0.8809775048142647,
+            "HI_cosine": 0.8647993703729255,
+            "HO_cosine": 0.8395932762328016,
+            "WB_correlation": 0.9526052447811707,
+            "WS_correlation": 0.9305438350083879,
+            "gamma": 0.03954923525452614
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9967823258537605,
+            "HC_cosine": 0.9972500052155767,
+            "HI_cosine": 0.996369305173644,
+            "HO_cosine": 0.9957128289596069,
+            "WB_correlation": 0.9970518321007533,
+            "WS_correlation": 0.9981962852563308,
+            "gamma": -0.10597284603863955
+          },
+          "overall_dictionary_recovery": 0.6230735658094021,
+          "matched_dictionary_cosine": 0.9346103487141031,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            0,
+            1
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0006748087471351027,
+            "IB": 0.0003565448278095573,
+            "CS": 0.0007398394518531859,
+            "OS": 0.0005731444689445198,
+            "IS": 0.00040994459413923323
+          },
+          "bulk_reconstruction": 0.00103135357494466,
+          "spatial_reconstruction": 0.0017229285149369389
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0005707544623874128,
+            "IB": 0.00030025921296328306,
+            "CS": 0.0007398394518531859,
+            "OS": 0.0005731444689445198,
+            "IS": 0.00040994459413923323
+          },
+          "bulk_reconstruction": 0.0008710136753506958,
+          "spatial_reconstruction": 0.0017229285149369389
+        },
+        "factorization_gamma": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evaluation_gamma": [
+          -0.190953329205513,
+          -0.02099236287176609,
+          -0.12159480899572372,
+          0.200693279504776
+        ],
+        "gamma_source": "training-only frozen Cox head"
+      },
+      {
+        "seed": 33,
+        "lambda_ph": 0.0,
+        "epochs": 1600,
+        "train_c_index": 0.5010196737044146,
+        "train_fitted_c_index": 0.498260556621881,
+        "validation_c_index": 0.5107001321003963,
+        "test_c_index": 0.4831897749374826,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2552868841128336,
+              "gamma": 0.18020355701446533,
+              "WB_correlation": 0.13762995270685036,
+              "WS_correlation": 0.060411149432041206,
+              "HC_cosine": 0.26378736352262605,
+              "HI_cosine": 0.2464887737394898,
+              "HO_cosine": 0.23733536438008346,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.21497333010320382
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.27029452850358,
+              "gamma": 0.18020355701446533,
+              "WB_correlation": 0.056757046461526836,
+              "WS_correlation": 0.19865775050275478,
+              "HC_cosine": 0.2775756454483158,
+              "HI_cosine": 0.2625833698914667,
+              "HO_cosine": 0.3124808953599034,
+              "gamma_sign_correct": false,
+              "WB_test_correlation": 0.023873123500741916
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 2,
+              "best_match_collision": false,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.9959921535929189,
+              "gamma": -0.20514851808547974,
+              "WB_correlation": 0.9972126263870884,
+              "WS_correlation": 0.9980948255818073,
+              "HC_cosine": 0.9966401851958144,
+              "HI_cosine": 0.9954020551961339,
+              "HO_cosine": 0.99479487274937,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9975953527585966
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 3,
+              "best_match_collision": false,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.9974985065553832,
+              "gamma": -0.013219265267252922,
+              "WB_correlation": 0.995824960488686,
+              "WS_correlation": 0.9976574313590453,
+              "HC_cosine": 0.9979934610502293,
+              "HI_cosine": 0.997055457085651,
+              "HO_cosine": 0.9968576576575201,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.996375341741452
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.8668425282791978,
+              "gamma": -0.0846286192536354,
+              "WB_correlation": 0.9569580573139338,
+              "WS_correlation": 0.9475561423551228,
+              "HC_cosine": 0.8751252461008331,
+              "HI_cosine": 0.8602901368061169,
+              "HO_cosine": 0.8245348506907973,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9563460058725852
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.878711207163823,
+              "gamma": 0.18020355701446533,
+              "WB_correlation": 0.9564256543034627,
+              "WS_correlation": 0.9382543293197214,
+              "HC_cosine": 0.884623207690149,
+              "HI_cosine": 0.8736520034318329,
+              "HO_cosine": 0.8468571418803575,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9500170110916706
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.2552868841128336,
+            "HC_cosine": 0.26378736352262605,
+            "HI_cosine": 0.2464887737394898,
+            "HO_cosine": 0.23733536438008346,
+            "WB_correlation": 0.13762995270685036,
+            "WS_correlation": 0.060411149432041206,
+            "gamma": 0.18020355701446533
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.27029452850358,
+            "HC_cosine": 0.2775756454483158,
+            "HI_cosine": 0.2625833698914667,
+            "HO_cosine": 0.3124808953599034,
+            "WB_correlation": 0.056757046461526836,
+            "WS_correlation": 0.19865775050275478,
+            "gamma": 0.18020355701446533
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.8727768677215104,
+            "HC_cosine": 0.8798742268954911,
+            "HI_cosine": 0.8669710701189749,
+            "HO_cosine": 0.8356959962855774,
+            "WB_correlation": 0.9566918558086983,
+            "WS_correlation": 0.9429052358374221,
+            "gamma": 0.04778746888041496
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9967453300741511,
+            "HC_cosine": 0.9973168231230218,
+            "HI_cosine": 0.9962287561408925,
+            "HO_cosine": 0.9958262652034451,
+            "WB_correlation": 0.9965187934378872,
+            "WS_correlation": 0.9978761284704263,
+            "gamma": -0.10918389167636633
+          },
+          "overall_dictionary_recovery": 0.6231740659318872,
+          "matched_dictionary_cosine": 0.9347610988978308,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            0,
+            1
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0006737805088050663,
+            "IB": 0.00035837775794789195,
+            "CS": 0.000740518094971776,
+            "OS": 0.0005730626289732754,
+            "IS": 0.0004157563962507993
+          },
+          "bulk_reconstruction": 0.0010321582667529583,
+          "spatial_reconstruction": 0.0017293371201958507
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.000577931699808687,
+            "IB": 0.000306805333821103,
+            "CS": 0.000740518094971776,
+            "OS": 0.0005730626289732754,
+            "IS": 0.0004157563962507993
+          },
+          "bulk_reconstruction": 0.00088473703362979,
+          "spatial_reconstruction": 0.0017293371201958507
+        },
+        "factorization_gamma": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evaluation_gamma": [
+          -0.0846286192536354,
+          0.18020355701446533,
+          -0.20514851808547974,
+          -0.013219265267252922
+        ],
+        "gamma_source": "training-only frozen Cox head"
+      },
+      {
+        "seed": 34,
+        "lambda_ph": 0.0,
+        "epochs": 1600,
+        "train_c_index": 0.5049784069097889,
+        "train_fitted_c_index": 0.5027891074856046,
+        "validation_c_index": 0.5103038309114928,
+        "test_c_index": 0.4849958321756043,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2741966203499828,
+              "gamma": -0.10812468826770782,
+              "WB_correlation": 0.06301125433162666,
+              "WS_correlation": 0.1735143461788609,
+              "HC_cosine": 0.2813975656910825,
+              "HI_cosine": 0.2667999669633448,
+              "HO_cosine": 0.29239110524755685,
+              "gamma_sign_correct": false,
+              "WB_test_correlation": 0.21733499664894323
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2854178031453535,
+              "gamma": -0.10812468826770782,
+              "WB_correlation": 0.1448078659832382,
+              "WS_correlation": 0.20145535346991297,
+              "HC_cosine": 0.2855605628714981,
+              "HI_cosine": 0.2855003096450875,
+              "HO_cosine": 0.30850703568757804,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.18937966306990595
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 3,
+              "best_match_collision": false,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.9969054887898486,
+              "gamma": -0.20706570148468018,
+              "WB_correlation": 0.9969467762161551,
+              "WS_correlation": 0.9978337523776155,
+              "HC_cosine": 0.9973315310473355,
+              "HI_cosine": 0.9965500532001744,
+              "HO_cosine": 0.9957269223261261,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9973065562268426
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 1,
+              "best_match_collision": false,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.9971184782795673,
+              "gamma": -0.021336693316698074,
+              "WB_correlation": 0.9970566074483233,
+              "WS_correlation": 0.9983618417914016,
+              "HC_cosine": 0.9974846710471864,
+              "HI_cosine": 0.9968066790855952,
+              "HO_cosine": 0.9963191983470615,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9973436618850461
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.8643181375999448,
+              "gamma": -0.10812468826770782,
+              "WB_correlation": 0.95268372383296,
+              "WS_correlation": 0.9303479990811316,
+              "HC_cosine": 0.87616897962515,
+              "HI_cosine": 0.8529972653914009,
+              "HO_cosine": 0.8246150644730676,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.951484531688953
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.8720320323616355,
+              "gamma": 0.21358661353588104,
+              "WB_correlation": 0.9574368065906829,
+              "WS_correlation": 0.9514084154009943,
+              "HC_cosine": 0.8853205292754673,
+              "HI_cosine": 0.8591187982642483,
+              "HO_cosine": 0.84790943135166,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9559690451691017
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.2741966203499828,
+            "HC_cosine": 0.2813975656910825,
+            "HI_cosine": 0.2667999669633448,
+            "HO_cosine": 0.29239110524755685,
+            "WB_correlation": 0.06301125433162666,
+            "WS_correlation": 0.1735143461788609,
+            "gamma": -0.10812468826770782
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.2854178031453535,
+            "HC_cosine": 0.2855605628714981,
+            "HI_cosine": 0.2855003096450875,
+            "HO_cosine": 0.30850703568757804,
+            "WB_correlation": 0.1448078659832382,
+            "WS_correlation": 0.20145535346991297,
+            "gamma": -0.10812468826770782
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.8681750849807901,
+            "HC_cosine": 0.8807447544503086,
+            "HI_cosine": 0.8560580318278246,
+            "HO_cosine": 0.8362622479123638,
+            "WB_correlation": 0.9550602652118214,
+            "WS_correlation": 0.940878207241063,
+            "gamma": 0.05273096263408661
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.997011983534708,
+            "HC_cosine": 0.997408101047261,
+            "HI_cosine": 0.9966783661428849,
+            "HO_cosine": 0.9960230603365938,
+            "WB_correlation": 0.9970016918322392,
+            "WS_correlation": 0.9980977970845086,
+            "gamma": -0.11420119740068913
+          },
+          "overall_dictionary_recovery": 0.6217290228384994,
+          "matched_dictionary_cosine": 0.932593534257749,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            0,
+            1
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0006691474700346589,
+            "IB": 0.00035534880589693785,
+            "CS": 0.00073864875594154,
+            "OS": 0.000566120957955718,
+            "IS": 0.0004102176462765783
+          },
+          "bulk_reconstruction": 0.0010244962759315968,
+          "spatial_reconstruction": 0.0017149873601738364
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0005752243450842798,
+            "IB": 0.0003034989640582353,
+            "CS": 0.00073864875594154,
+            "OS": 0.000566120957955718,
+            "IS": 0.0004102176462765783
+          },
+          "bulk_reconstruction": 0.0008787233091425151,
+          "spatial_reconstruction": 0.0017149873601738364
+        },
+        "factorization_gamma": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evaluation_gamma": [
+          0.21358661353588104,
+          -0.021336693316698074,
+          -0.10812468826770782,
+          -0.20706570148468018
+        ],
+        "gamma_source": "training-only frozen Cox head"
+      },
+      {
+        "seed": 35,
+        "lambda_ph": 0.0,
+        "epochs": 1600,
+        "train_c_index": 0.5156549904030711,
+        "train_fitted_c_index": 0.5149052303262955,
+        "validation_c_index": 0.5208718626155878,
+        "test_c_index": 0.49208113364823564,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.28124207371982546,
+              "gamma": 0.2533992528915405,
+              "WB_correlation": 0.16370453731049067,
+              "WS_correlation": 0.08194564484980062,
+              "HC_cosine": 0.28647672741574615,
+              "HI_cosine": 0.276086293610261,
+              "HO_cosine": 0.26017894637080496,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.2370415339531586
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.2870734541207833,
+              "gamma": -0.1951129287481308,
+              "WB_correlation": 0.1552619088996659,
+              "WS_correlation": 0.20566576615856652,
+              "HC_cosine": 0.28853572723228105,
+              "HI_cosine": 0.2857812414395852,
+              "HO_cosine": 0.3154728392603702,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.1938509548891733
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.9960507942270149,
+              "gamma": -0.19209420680999756,
+              "WB_correlation": 0.9973241293965324,
+              "WS_correlation": 0.9982953438976889,
+              "HC_cosine": 0.9965836860977069,
+              "HI_cosine": 0.9955799736639587,
+              "HO_cosine": 0.9950655362298193,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9977801107179981
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 3,
+              "best_match_collision": false,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.9976193460898235,
+              "gamma": -0.015372073277831078,
+              "WB_correlation": 0.9968645452454323,
+              "WS_correlation": 0.9982678772436102,
+              "HC_cosine": 0.9979850114140318,
+              "HI_cosine": 0.9973076838771499,
+              "HO_cosine": 0.9968167138942029,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9971635381459086
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.8637859108757102,
+              "gamma": -0.1951129287481308,
+              "WB_correlation": 0.9534692419114701,
+              "WS_correlation": 0.9321239761361757,
+              "HC_cosine": 0.8757522575179011,
+              "HI_cosine": 0.8525522819931325,
+              "HO_cosine": 0.8154927060408091,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9520265403100887
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.8744545767364338,
+              "gamma": 0.2533992528915405,
+              "WB_correlation": 0.9526481645455941,
+              "WS_correlation": 0.934976946133543,
+              "HC_cosine": 0.883113014717366,
+              "HI_cosine": 0.8664297935781026,
+              "HO_cosine": 0.8463015642793463,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9456782794047595
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.28124207371982546,
+            "HC_cosine": 0.28647672741574615,
+            "HI_cosine": 0.276086293610261,
+            "HO_cosine": 0.26017894637080496,
+            "WB_correlation": 0.16370453731049067,
+            "WS_correlation": 0.08194564484980062,
+            "gamma": 0.2533992528915405
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.2870734541207833,
+            "HC_cosine": 0.28853572723228105,
+            "HI_cosine": 0.2857812414395852,
+            "HO_cosine": 0.3154728392603702,
+            "WB_correlation": 0.1552619088996659,
+            "WS_correlation": 0.20566576615856652,
+            "gamma": -0.1951129287481308
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.869120243806072,
+            "HC_cosine": 0.8794326361176336,
+            "HI_cosine": 0.8594910377856175,
+            "HO_cosine": 0.8308971351600778,
+            "WB_correlation": 0.953058703228532,
+            "WS_correlation": 0.9335504611348593,
+            "gamma": 0.029143162071704865
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9968350701584192,
+            "HC_cosine": 0.9972843487558694,
+            "HI_cosine": 0.9964438287705543,
+            "HO_cosine": 0.9959411250620112,
+            "WB_correlation": 0.9970943373209824,
+            "WS_correlation": 0.9982816105706496,
+            "gamma": -0.10373314004391432
+          },
+          "overall_dictionary_recovery": 0.6219851046548305,
+          "matched_dictionary_cosine": 0.9329776569822457,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 2,
+          "unmatched_true_niches": [
+            0,
+            1
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0006722405669279397,
+            "IB": 0.00035660676076076925,
+            "CS": 0.0007483906229026616,
+            "OS": 0.0005727860843762755,
+            "IS": 0.0004110760346520692
+          },
+          "bulk_reconstruction": 0.001028847327688709,
+          "spatial_reconstruction": 0.0017322527419310063
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0005734922015108168,
+            "IB": 0.00030110421357676387,
+            "CS": 0.0007483906229026616,
+            "OS": 0.0005727860843762755,
+            "IS": 0.0004110760346520692
+          },
+          "bulk_reconstruction": 0.0008745964150875807,
+          "spatial_reconstruction": 0.0017322527419310063
+        },
+        "factorization_gamma": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "evaluation_gamma": [
+          -0.19209420680999756,
+          -0.1951129287481308,
+          0.2533992528915405,
+          -0.015372073277831078
+        ],
+        "gamma_source": "training-only frozen Cox head"
+      }
+    ]
+  },
+  "supervised": {
+    "aggregate": {
+      "train_c_index": {
+        "mean": 0.6995201535508637,
+        "std": 0.04244938762401749,
+        "n": 5,
+        "undefined": 0
+      },
+      "train_fitted_c_index": {
+        "mean": 0.9999940019193858,
+        "std": 1.3412115987900055e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.663223249669749,
+        "std": 0.053843965967394436,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6560155598777438,
+        "std": 0.055557097457192825,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.0020657560788095,
+        "std": 6.90456118505878e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.004091157088987529,
+        "std": 7.618992324315421e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "overall_dictionary_recovery": {
+        "mean": 0.47741019229861026,
+        "std": 0.004716585127440871,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.38718034060898365,
+          "std": 0.0338422537431653,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.4034189281472072,
+          "std": 0.015701415308787346,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3706368907196832,
+          "std": 0.055019234998747904,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.31877947683503016,
+          "std": 0.14917339141391756,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6193940490058614,
+          "std": 0.2527803964007857,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.25075678976725113,
+          "std": 0.25931795454238526,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 11.957169151306152,
+          "std": 2.045276107046658,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_gamma_sign_consistency": 1.0,
+      "protective_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.3668196577668678,
+          "std": 0.11291839610167313,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.365232143934024,
+          "std": 0.11944035154286688,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3687665629370492,
+          "std": 0.10623197235722129,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.3729344477899713,
+          "std": 0.054636243793694424,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.34558698265370386,
+          "std": 0.1997663349925126,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.34095299452052685,
+          "std": 0.08585565919290755,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -5.544815444946289,
+          "std": 7.73898956896196,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "protective_gamma_sign_consistency": 0.8,
+      "neutral_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.4493682634093041,
+          "std": 0.029690373815410166,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.4575801478441684,
+          "std": 0.03800931224025593,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.44119889979474325,
+          "std": 0.022038433618973854,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.6950319357128254,
+          "std": 0.17955389151588141,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5444294550814659,
+          "std": 0.05944700484628363,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.6250966072457131,
+          "std": 0.20410180565110728,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -1.1660638809204102,
+          "std": 7.58180158710767,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_gamma_sign_consistency": null,
+      "nuisance_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.9921431958437925,
+          "std": 0.0010243259086845438,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9922346051906196,
+          "std": 0.0009700506033379153,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.992130893918139,
+          "std": 0.0010871303614285617,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9958330959123955,
+          "std": 0.00020086599740900938,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9871571385174317,
+          "std": 0.0029405796040518246,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9990774293444439,
+          "std": 0.00010415542353754992,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.4383676081895828,
+          "std": 0.4448633777943482,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_gamma_sign_consistency": null
+    },
+    "runs": [
+      {
+        "seed": 31,
+        "lambda_ph": 0.05,
+        "epochs": 1600,
+        "train_c_index": 0.7306261996161229,
+        "train_fitted_c_index": 1.0,
+        "validation_c_index": 0.6887714663143989,
+        "test_c_index": 0.6810225062517365,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 1,
+              "best_match_collision": false,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.3950417074844338,
+              "gamma": 12.916501998901367,
+              "WB_correlation": 0.8209790119175083,
+              "WS_correlation": 0.7128193020938598,
+              "HC_cosine": 0.4010256266773865,
+              "HI_cosine": 0.3892071887294971,
+              "HO_cosine": 0.5841864800073574,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.762345544117095
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.4244041604827373,
+              "gamma": -8.937050819396973,
+              "WB_correlation": 0.39033085981045446,
+              "WS_correlation": 0.3457430634221378,
+              "HC_cosine": 0.4251795760802065,
+              "HI_cosine": 0.4239235047177153,
+              "HO_cosine": 0.37608002495466675,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.4491099017852156
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 2,
+              "best_match_collision": false,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.9922227334926936,
+              "gamma": -0.6915106177330017,
+              "WB_correlation": 0.9839748896238573,
+              "WS_correlation": 0.9993664252642759,
+              "HC_cosine": 0.9922495398203884,
+              "HI_cosine": 0.9922978953376019,
+              "HO_cosine": 0.9948758291500902,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9889383488330676
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.9932772298248919,
+              "gamma": 0.08067716658115387,
+              "WB_correlation": 0.9925333784589261,
+              "WS_correlation": 0.9989095339951194,
+              "HC_cosine": 0.9932984462223389,
+              "HI_cosine": 0.9933250223730117,
+              "HO_cosine": 0.9961449143334613,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9945808672720736
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.46157159196664777,
+              "gamma": -8.937050819396973,
+              "WB_correlation": 0.5994396759145604,
+              "WS_correlation": 0.456140164822541,
+              "HC_cosine": 0.4661193902506627,
+              "HI_cosine": 0.45730910681180315,
+              "HO_cosine": 0.5880298966287612,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.5284063175039436
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.45475154705740345,
+              "gamma": -8.937050819396973,
+              "WB_correlation": 0.43649354152746933,
+              "WS_correlation": 0.6134174644269121,
+              "HC_cosine": 0.4586917615932986,
+              "HI_cosine": 0.451135965636041,
+              "HO_cosine": 0.6899195164739163,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.35889704425257457
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.3950417074844338,
+            "HC_cosine": 0.4010256266773865,
+            "HI_cosine": 0.3892071887294971,
+            "HO_cosine": 0.5841864800073574,
+            "WB_correlation": 0.8209790119175083,
+            "WS_correlation": 0.7128193020938598,
+            "gamma": 12.916501998901367
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.4244041604827373,
+            "HC_cosine": 0.4251795760802065,
+            "HI_cosine": 0.4239235047177153,
+            "HO_cosine": 0.37608002495466675,
+            "WB_correlation": 0.39033085981045446,
+            "WS_correlation": 0.3457430634221378,
+            "gamma": -8.937050819396973
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.4581615695120256,
+            "HC_cosine": 0.4624055759219806,
+            "HI_cosine": 0.45422253622392206,
+            "HO_cosine": 0.6389747065513387,
+            "WB_correlation": 0.5179666087210149,
+            "WS_correlation": 0.5347788146247265,
+            "gamma": -8.937050819396973
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9927499816587928,
+            "HC_cosine": 0.9927739930213637,
+            "HI_cosine": 0.9928114588553067,
+            "HO_cosine": 0.9955103717417757,
+            "WB_correlation": 0.9882541340413917,
+            "WS_correlation": 0.9991379796296976,
+            "gamma": -0.3054167255759239
+          },
+          "overall_dictionary_recovery": 0.47368554379477784,
+          "matched_dictionary_cosine": 0.7105283156921668,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            1,
+            5
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0013382688630372286,
+            "IB": 0.0006809902843087912,
+            "CS": 0.0022431809920817614,
+            "OS": 0.0008320959168486297,
+            "IS": 0.0011222956236451864
+          },
+          "bulk_reconstruction": 0.0020192591473460197,
+          "spatial_reconstruction": 0.0041975725325755775
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0012181581696495414,
+            "IB": 0.0006235705222934484,
+            "CS": 0.0022431809920817614,
+            "OS": 0.0008320959168486297,
+            "IS": 0.0011222956236451864
+          },
+          "bulk_reconstruction": 0.0018417286919429898,
+          "spatial_reconstruction": 0.0041975725325755775
+        },
+        "factorization_gamma": [
+          0.08067716658115387,
+          12.916501998901367,
+          -0.6915106177330017,
+          -8.937050819396973
+        ],
+        "evaluation_gamma": [
+          0.08067716658115387,
+          12.916501998901367,
+          -0.6915106177330017,
+          -8.937050819396973
+        ],
+        "gamma_source": "joint training"
+      },
+      {
+        "seed": 32,
+        "lambda_ph": 0.05,
+        "epochs": 1600,
+        "train_c_index": 0.7119271833013435,
+        "train_fitted_c_index": 1.0,
+        "validation_c_index": 0.6895640686922061,
+        "test_c_index": 0.684078910808558,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.41343086060911344,
+              "gamma": 12.848668098449707,
+              "WB_correlation": 0.6907107851936475,
+              "WS_correlation": 0.14610514247990433,
+              "HC_cosine": 0.41997829145349874,
+              "HI_cosine": 0.40709605526689036,
+              "HO_cosine": 0.25264568780046964,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.6773566216290906
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.4028636644678528,
+              "gamma": -9.04613971710205,
+              "WB_correlation": 0.45498835048361796,
+              "WS_correlation": 0.334512977799748,
+              "HC_cosine": 0.4006071971610097,
+              "HI_cosine": 0.4053187078507123,
+              "HO_cosine": 0.31205688521028824,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.5390909983752787
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.991494615915826,
+              "gamma": -0.36000707745552063,
+              "WB_correlation": 0.9843118733523861,
+              "WS_correlation": 0.9994992442482475,
+              "HC_cosine": 0.9915798002569045,
+              "HI_cosine": 0.991505474465328,
+              "HO_cosine": 0.9948597819148401,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9886913828642541
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 1,
+              "best_match_collision": false,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.9934813311466743,
+              "gamma": 0.02676861360669136,
+              "WB_correlation": 0.9929134200125211,
+              "WS_correlation": 0.9986869475233721,
+              "HC_cosine": 0.99348182680277,
+              "HI_cosine": 0.9935507353722611,
+              "HO_cosine": 0.9968748303881245,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9944853780096587
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.4577694909976828,
+              "gamma": -9.04613971710205,
+              "WB_correlation": 0.7154946914282515,
+              "WS_correlation": 0.8413396071958732,
+              "HC_cosine": 0.4643569892855321,
+              "HI_cosine": 0.45150874634390564,
+              "HO_cosine": 0.8753860211067427,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.6285547870867586
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 3,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.39335950164172256,
+              "gamma": 12.848668098449707,
+              "WB_correlation": 0.4988257669175505,
+              "WS_correlation": 0.8742583553457218,
+              "HC_cosine": 0.39797745312703803,
+              "HI_cosine": 0.3889168562769753,
+              "HO_cosine": 0.9122726288912957,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.529937143539267
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.41343086060911344,
+            "HC_cosine": 0.41997829145349874,
+            "HI_cosine": 0.40709605526689036,
+            "HO_cosine": 0.25264568780046964,
+            "WB_correlation": 0.6907107851936475,
+            "WS_correlation": 0.14610514247990433,
+            "gamma": 12.848668098449707
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.4028636644678528,
+            "HC_cosine": 0.4006071971610097,
+            "HI_cosine": 0.4053187078507123,
+            "HO_cosine": 0.31205688521028824,
+            "WB_correlation": 0.45498835048361796,
+            "WS_correlation": 0.334512977799748,
+            "gamma": -9.04613971710205
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.4255644963197027,
+            "HC_cosine": 0.43116722120628503,
+            "HI_cosine": 0.4202128013104405,
+            "HO_cosine": 0.8938293249990192,
+            "WB_correlation": 0.607160229172901,
+            "WS_correlation": 0.8577989812707976,
+            "gamma": 1.9012641906738281
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9924879735312502,
+            "HC_cosine": 0.9925308135298372,
+            "HI_cosine": 0.9925281049187946,
+            "HO_cosine": 0.9958673061514823,
+            "WB_correlation": 0.9886126466824536,
+            "WS_correlation": 0.9990930958858097,
+            "gamma": -0.16661923192441463
+          },
+          "overall_dictionary_recovery": 0.4760293831115494,
+          "matched_dictionary_cosine": 0.7140440746673241,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 2,
+          "unmatched_true_niches": [
+            1,
+            5
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.001362003618851304,
+            "IB": 0.0006986524676904082,
+            "CS": 0.002312709577381611,
+            "OS": 0.0006010646466165781,
+            "IS": 0.0011577042751014233
+          },
+          "bulk_reconstruction": 0.0020606560865417123,
+          "spatial_reconstruction": 0.004071478499099612
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0012280470691621304,
+            "IB": 0.000631466624327004,
+            "CS": 0.002312709577381611,
+            "OS": 0.0006010646466165781,
+            "IS": 0.0011577042751014233
+          },
+          "bulk_reconstruction": 0.0018595136934891343,
+          "spatial_reconstruction": 0.004071478499099612
+        },
+        "factorization_gamma": [
+          -0.36000707745552063,
+          0.02676861360669136,
+          -9.04613971710205,
+          12.848668098449707
+        ],
+        "evaluation_gamma": [
+          -0.36000707745552063,
+          0.02676861360669136,
+          -9.04613971710205,
+          12.848668098449707
+        ],
+        "gamma_source": "joint training"
+      },
+      {
+        "seed": 33,
+        "lambda_ph": 0.05,
+        "epochs": 1600,
+        "train_c_index": 0.6247300863723608,
+        "train_fitted_c_index": 0.9999700095969289,
+        "validation_c_index": 0.5669749009247028,
+        "test_c_index": 0.5568213392609058,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.32912662187370384,
+              "gamma": 8.298856735229492,
+              "WB_correlation": 0.17719678358995716,
+              "WS_correlation": 0.10333763341010374,
+              "HC_cosine": 0.3825821402761513,
+              "HI_cosine": 0.27349841399837455,
+              "HO_cosine": 0.2613320786379542,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.22137138827027097
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.16546083099345726,
+              "gamma": 8.298856735229492,
+              "WB_correlation": -0.008495756385103132,
+              "WS_correlation": 0.20546584938291354,
+              "HC_cosine": 0.1525707361746497,
+              "HI_cosine": 0.17912746619281852,
+              "HO_cosine": 0.3292370510622101,
+              "gamma_sign_correct": false,
+              "WB_test_correlation": -0.022775734396753535
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 2,
+              "best_match_collision": false,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.9889150613220329,
+              "gamma": -1.5891646146774292,
+              "WB_correlation": 0.9824095730202221,
+              "WS_correlation": 0.9993109056333604,
+              "HC_cosine": 0.989191007050299,
+              "HI_cosine": 0.9887093220041494,
+              "HO_cosine": 0.9944574297712969,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9832293788565366
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 3,
+              "best_match_collision": false,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.9917258282440978,
+              "gamma": -0.8656932711601257,
+              "WB_correlation": 0.981405396138035,
+              "WS_correlation": 0.998483616994835,
+              "HC_cosine": 0.9918229859722648,
+              "HI_cosine": 0.9916915844465406,
+              "HO_cosine": 0.9971409814586111,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.981375758989415
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.3347210891452414,
+              "gamma": 8.298856735229492,
+              "WB_correlation": 0.332560967389704,
+              "WS_correlation": 0.0243638776942617,
+              "HC_cosine": 0.38646933298398256,
+              "HI_cosine": 0.2812927733254022,
+              "HO_cosine": 0.2317808988835554,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.34259687305941294
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.6580906477444322,
+              "gamma": 8.298856735229492,
+              "WB_correlation": 0.7845551408386753,
+              "WS_correlation": 0.8720727260168747,
+              "HC_cosine": 0.6562401738259853,
+              "HI_cosine": 0.6602043099637162,
+              "HO_cosine": 0.8826990874161736,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.7296158313951608
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.32912662187370384,
+            "HC_cosine": 0.3825821402761513,
+            "HI_cosine": 0.27349841399837455,
+            "HO_cosine": 0.2613320786379542,
+            "WB_correlation": 0.17719678358995716,
+            "WS_correlation": 0.10333763341010374,
+            "gamma": 8.298856735229492
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.16546083099345726,
+            "HC_cosine": 0.1525707361746497,
+            "HI_cosine": 0.17912746619281852,
+            "HO_cosine": 0.3292370510622101,
+            "WB_correlation": -0.008495756385103132,
+            "WS_correlation": 0.20546584938291354,
+            "gamma": 8.298856735229492
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.4964058684448368,
+            "HC_cosine": 0.5213547534049839,
+            "HI_cosine": 0.47074854164455915,
+            "HO_cosine": 0.5572399931498645,
+            "WB_correlation": 0.5585580541141897,
+            "WS_correlation": 0.4482183018555682,
+            "gamma": 8.298856735229492
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9903204447830654,
+            "HC_cosine": 0.9905069965112819,
+            "HI_cosine": 0.990200453225345,
+            "HO_cosine": 0.995799205614954,
+            "WB_correlation": 0.9819074845791286,
+            "WS_correlation": 0.9988972613140977,
+            "gamma": -1.2274289429187775
+          },
+          "overall_dictionary_recovery": 0.4856660524278737,
+          "matched_dictionary_cosine": 0.7284990786418105,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            1,
+            4
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0014603773597627878,
+            "IB": 0.000723751843906939,
+            "CS": 0.002335755852982402,
+            "OS": 0.0006125721847638488,
+            "IS": 0.0011838305508717895
+          },
+          "bulk_reconstruction": 0.002184129203669727,
+          "spatial_reconstruction": 0.00413215858861804
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0013646810548380017,
+            "IB": 0.0006764709251001477,
+            "CS": 0.002335755852982402,
+            "OS": 0.0006125721847638488,
+            "IS": 0.0011838305508717895
+          },
+          "bulk_reconstruction": 0.0020411519799381495,
+          "spatial_reconstruction": 0.00413215858861804
+        },
+        "factorization_gamma": [
+          13.028345108032227,
+          8.298856735229492,
+          -1.5891646146774292,
+          -0.8656932711601257
+        ],
+        "evaluation_gamma": [
+          13.028345108032227,
+          8.298856735229492,
+          -1.5891646146774292,
+          -0.8656932711601257
+        ],
+        "gamma_source": "joint training"
+      },
+      {
+        "seed": 34,
+        "lambda_ph": 0.05,
+        "epochs": 1600,
+        "train_c_index": 0.7138165786948176,
+        "train_fitted_c_index": 1.0,
+        "validation_c_index": 0.6842800528401585,
+        "test_c_index": 0.6751875520978049,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.389838315305113,
+              "gamma": 12.880717277526855,
+              "WB_correlation": 0.7043773594164224,
+              "WS_correlation": 0.12641142514836454,
+              "HC_cosine": 0.39557895349480815,
+              "HI_cosine": 0.3842124261126225,
+              "HO_cosine": 0.22738776463322144,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.6679994787868078
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.42509069786469633,
+              "gamma": -8.988137245178223,
+              "WB_correlation": 0.4334397544788401,
+              "WS_correlation": 0.3807092115504894,
+              "HC_cosine": 0.43131158459485613,
+              "HI_cosine": 0.41922318304001455,
+              "HO_cosine": 0.399451184397378,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.4997726289558429
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 3,
+              "best_match_collision": false,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.9921126178427717,
+              "gamma": -0.6389415860176086,
+              "WB_correlation": 0.9845619005798292,
+              "WS_correlation": 0.9991257827015569,
+              "HC_cosine": 0.9922388297470031,
+              "HI_cosine": 0.9920811982131086,
+              "HO_cosine": 0.9957004543640965,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9897675480347861
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 1,
+              "best_match_collision": false,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.9931715179480095,
+              "gamma": 0.06164860352873802,
+              "WB_correlation": 0.9920754833181524,
+              "WS_correlation": 0.9990761380724221,
+              "HC_cosine": 0.9931977479391247,
+              "HI_cosine": 0.9932140560243454,
+              "HO_cosine": 0.9963649084690572,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9941414377738977
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.47866287543760677,
+              "gamma": -8.988137245178223,
+              "WB_correlation": 0.6993799276868113,
+              "WS_correlation": 0.781771250260018,
+              "HC_cosine": 0.48715653591780245,
+              "HI_cosine": 0.47057404525378277,
+              "HO_cosine": 0.8493183759216241,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.6266428833320618
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.4057511035653999,
+              "gamma": -8.988137245178223,
+              "WB_correlation": 0.21234784307940874,
+              "WS_correlation": 0.12228030803208899,
+              "HC_cosine": 0.4000171812960794,
+              "HI_cosine": 0.41152292185015804,
+              "HO_cosine": 0.16892748348674289,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.12757899819614704
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.389838315305113,
+            "HC_cosine": 0.39557895349480815,
+            "HI_cosine": 0.3842124261126225,
+            "HO_cosine": 0.22738776463322144,
+            "WB_correlation": 0.7043773594164224,
+            "WS_correlation": 0.12641142514836454,
+            "gamma": 12.880717277526855
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.42509069786469633,
+            "HC_cosine": 0.43131158459485613,
+            "HI_cosine": 0.41922318304001455,
+            "HO_cosine": 0.399451184397378,
+            "WB_correlation": 0.4334397544788401,
+            "WS_correlation": 0.3807092115504894,
+            "gamma": -8.988137245178223
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.44220698950150333,
+            "HC_cosine": 0.4435868586069409,
+            "HI_cosine": 0.4410484835519704,
+            "HO_cosine": 0.5091229297041835,
+            "WB_correlation": 0.45586388538311007,
+            "WS_correlation": 0.4520257791460535,
+            "gamma": -8.988137245178223
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9926420678953907,
+            "HC_cosine": 0.9927182888430639,
+            "HI_cosine": 0.992647627118727,
+            "HO_cosine": 0.9960326814165769,
+            "WB_correlation": 0.9883186919489908,
+            "WS_correlation": 0.9991009603869896,
+            "gamma": -0.2886464912444353
+          },
+          "overall_dictionary_recovery": 0.4756308877555835,
+          "matched_dictionary_cosine": 0.7134463316333752,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 1,
+          "unmatched_true_niches": [
+            1,
+            5
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.001338012982159853,
+            "IB": 0.0006764736608602107,
+            "CS": 0.0022717295214533806,
+            "OS": 0.0005900721880607307,
+            "IS": 0.0011366031831130385
+          },
+          "bulk_reconstruction": 0.0020144866430200636,
+          "spatial_reconstruction": 0.00399840489262715
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0012202905490994453,
+            "IB": 0.0006194622255861759,
+            "CS": 0.0022717295214533806,
+            "OS": 0.0005900721880607307,
+            "IS": 0.0011366031831130385
+          },
+          "bulk_reconstruction": 0.0018397527746856213,
+          "spatial_reconstruction": 0.00399840489262715
+        },
+        "factorization_gamma": [
+          12.880717277526855,
+          0.06164860352873802,
+          -8.988137245178223,
+          -0.6389415860176086
+        ],
+        "evaluation_gamma": [
+          12.880717277526855,
+          0.06164860352873802,
+          -8.988137245178223,
+          -0.6389415860176086
+        ],
+        "gamma_source": "joint training"
+      },
+      {
+        "seed": 35,
+        "lambda_ph": 0.05,
+        "epochs": 1600,
+        "train_c_index": 0.7165007197696737,
+        "train_fitted_c_index": 1.0,
+        "validation_c_index": 0.6865257595772787,
+        "test_c_index": 0.6829674909697138,
+        "recovery": {
+          "per_true_niche": [
+            {
+              "true_niche": 0,
+              "role": "risk",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": 2,
+              "dictionary_cosine": 0.40846419777255394,
+              "gamma": 12.84110164642334,
+              "WB_correlation": 0.7037063049117714,
+              "WS_correlation": 0.16511044570402328,
+              "HC_cosine": 0.4179296288341914,
+              "HI_cosine": 0.3991703694910316,
+              "HO_cosine": 0.26834537309614825,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.6787439260386525
+            },
+            {
+              "true_niche": 1,
+              "role": "protective",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.4162789350255952,
+              "gamma": -9.051606178283691,
+              "WB_correlation": 0.45767170488070996,
+              "WS_correlation": 0.43833387044734573,
+              "HC_cosine": 0.41649162565939807,
+              "HI_cosine": 0.41623995288398513,
+              "HO_cosine": 0.44784709332531353,
+              "gamma_sign_correct": true,
+              "WB_test_correlation": 0.5370868513010171
+            },
+            {
+              "true_niche": 2,
+              "role": "nuisance",
+              "learned_niche": 0,
+              "best_match_collision": false,
+              "hungarian_match": 0,
+              "dictionary_cosine": 0.991515364076209,
+              "gamma": -0.4920140504837036,
+              "WB_correlation": 0.9850290096428425,
+              "WS_correlation": 0.999410204258473,
+              "HC_cosine": 0.9917494202688312,
+              "HI_cosine": 0.991368979507178,
+              "HO_cosine": 0.9950866486025124,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9895862088181073
+            },
+            {
+              "true_niche": 3,
+              "role": "nuisance",
+              "learned_niche": 3,
+              "best_match_collision": false,
+              "hungarian_match": 3,
+              "dictionary_cosine": 0.9935156586247182,
+              "gamma": 0.08456075191497803,
+              "WB_correlation": 0.9923564610275445,
+              "WS_correlation": 0.9989054947527767,
+              "HC_cosine": 0.9935364478262722,
+              "HI_cosine": 0.9935646714378665,
+              "HO_cosine": 0.9968251806718652,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.9940531454768442
+            },
+            {
+              "true_niche": 4,
+              "role": "neutral",
+              "learned_niche": 1,
+              "best_match_collision": true,
+              "hungarian_match": 1,
+              "dictionary_cosine": 0.4627393459461191,
+              "gamma": -9.051606178283691,
+              "WB_correlation": 0.6990007546981112,
+              "WS_correlation": 0.7811861540987447,
+              "HC_cosine": 0.4677524224626667,
+              "HI_cosine": 0.45791683926682875,
+              "HO_cosine": 0.8255641684165635,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.6158430390039844
+            },
+            {
+              "true_niche": 5,
+              "role": "neutral",
+              "learned_niche": 2,
+              "best_match_collision": true,
+              "hungarian_match": null,
+              "dictionary_cosine": 0.38626544059078555,
+              "gamma": 12.84110164642334,
+              "WB_correlation": 0.4661962413341157,
+              "WS_correlation": 0.8841361645640964,
+              "HC_cosine": 0.3910202376986357,
+              "HI_cosine": 0.38160743321881896,
+              "HO_cosine": 0.9264212799028787,
+              "gamma_sign_correct": null,
+              "WB_test_correlation": 0.47985277168313234
+            }
+          ],
+          "risk_niche_recovery": {
+            "dictionary_cosine": 0.40846419777255394,
+            "HC_cosine": 0.4179296288341914,
+            "HI_cosine": 0.3991703694910316,
+            "HO_cosine": 0.26834537309614825,
+            "WB_correlation": 0.7037063049117714,
+            "WS_correlation": 0.16511044570402328,
+            "gamma": 12.84110164642334
+          },
+          "protective_niche_recovery": {
+            "dictionary_cosine": 0.4162789350255952,
+            "HC_cosine": 0.41649162565939807,
+            "HI_cosine": 0.41623995288398513,
+            "HO_cosine": 0.44784709332531353,
+            "WB_correlation": 0.45767170488070996,
+            "WS_correlation": 0.43833387044734573,
+            "gamma": -9.051606178283691
+          },
+          "neutral_niche_recovery": {
+            "dictionary_cosine": 0.4245023932684523,
+            "HC_cosine": 0.4293863300806512,
+            "HI_cosine": 0.4197621362428239,
+            "HO_cosine": 0.8759927241597212,
+            "WB_correlation": 0.5825984980161134,
+            "WS_correlation": 0.8326611593314206,
+            "gamma": 1.8947477340698242
+          },
+          "nuisance_niche_recovery": {
+            "dictionary_cosine": 0.9925155113504636,
+            "HC_cosine": 0.9926429340475517,
+            "HI_cosine": 0.9924668254725222,
+            "HO_cosine": 0.9959559146371888,
+            "WB_correlation": 0.9886927353351935,
+            "WS_correlation": 0.9991578495056248,
+            "gamma": -0.2037266492843628
+          },
+          "overall_dictionary_recovery": 0.4760390944032667,
+          "matched_dictionary_cosine": 0.7140586416049001,
+          "hungarian_coverage": 0.6666666666666666,
+          "best_match_collisions": 2,
+          "unmatched_true_niches": [
+            1,
+            5
+          ]
+        },
+        "train_reconstruction": {
+          "block_mse": {
+            "CB": 0.0013564351247623563,
+            "IB": 0.0006938141887076199,
+            "CS": 0.0022897834423929453,
+            "OS": 0.0006182624492794275,
+            "IS": 0.001148125040344894
+          },
+          "bulk_reconstruction": 0.002050249313469976,
+          "spatial_reconstruction": 0.004056170932017267
+        },
+        "test_reconstruction": {
+          "block_mse": {
+            "CB": 0.0012303089024499059,
+            "IB": 0.0006311890901997685,
+            "CS": 0.0022897834423929453,
+            "OS": 0.0006182624492794275,
+            "IS": 0.001148125040344894
+          },
+          "bulk_reconstruction": 0.0018614979926496744,
+          "spatial_reconstruction": 0.004056170932017267
+        },
+        "factorization_gamma": [
+          -0.4920140504837036,
+          -9.051606178283691,
+          12.84110164642334,
+          0.08456075191497803
+        ],
+        "evaluation_gamma": [
+          -0.4920140504837036,
+          -9.051606178283691,
+          12.84110164642334,
+          0.08456075191497803
+        ],
+        "gamma_source": "joint training"
+      }
+    ]
+  }
+}

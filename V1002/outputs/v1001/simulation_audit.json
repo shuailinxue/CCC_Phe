@@ -1,0 +1,37 @@
+{
+  "dimensions": {
+    "patients": 320,
+    "rows": 30,
+    "columns": 40,
+    "cell_types": 8,
+    "programs": 12,
+    "topology_features": 24,
+    "niches": 6,
+    "active_fraction": 0.0625,
+    "opportunity_tau": 0.0001,
+    "communication_baseline": 0.001,
+    "observation_noise": 0.005,
+    "beta_risk": 10.0,
+    "beta_protective": -10.0,
+    "seed": 20260918
+  },
+  "truth_preserved": {
+    "HC": true,
+    "HI": true,
+    "HO": true,
+    "WB": true,
+    "WS": true,
+    "beta": true,
+    "eta": true
+  },
+  "bulk_observations_preserved": {
+    "CB": true,
+    "IB": true,
+    "Iraw_B": true,
+    "Opp_B": true,
+    "time": true,
+    "event": true
+  },
+  "composition_expected_correlation": 0.9557696801748827,
+  "feature_mapping_preserved": true
+}

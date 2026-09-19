@@ -1,0 +1,1802 @@
+{
+  "aggregates": {
+    "K4_lambda0.0": {
+      "train_c_index": {
+        "mean": 0.5005225036935605,
+        "std": 0.015991237785586306,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.5300429184549356,
+        "std": 0.01750245372379005,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.5159193566156219,
+        "std": 0.047895645921740136,
+        "n": 5,
+        "undefined": 0
+      },
+      "collision_rate": 0.6,
+      "HI_only_collision_rate": 0.6,
+      "learned_pair_HI_cosine": {
+        "mean": 0.8479274880903945,
+        "std": 0.3283316926228409,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_recovery": {
+        "mean": 0.22605952045848482,
+        "std": 0.11457543757283402,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HI_cosine": {
+        "mean": 0.22605952045848482,
+        "std": 0.11457543757283402,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HC_cosine": null,
+      "A_WS_correlation": {
+        "mean": 0.08780051875553699,
+        "std": 0.11326964521740514,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_gamma": {
+        "mean": 0.12021014839410782,
+        "std": 0.1099268406170168,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_recovery": {
+        "mean": 0.2434570501499902,
+        "std": 0.12076136989177369,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HI_cosine": {
+        "mean": 0.2434570501499902,
+        "std": 0.12076136989177369,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HC_cosine": null,
+      "B_WS_correlation": {
+        "mean": 0.16556252529268775,
+        "std": 0.1788417668575786,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_gamma": {
+        "mean": 0.09838393358513713,
+        "std": 0.1406249784364784,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_gamma_sign_consistency": 0.8
+    },
+    "K4_lambda0.1": {
+      "train_c_index": {
+        "mean": 0.7276854888112141,
+        "std": 0.0028264243738436124,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.6579807888820765,
+        "std": 0.002830039326410417,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6664757078329846,
+        "std": 0.0074710204623621625,
+        "n": 5,
+        "undefined": 0
+      },
+      "collision_rate": 0.0,
+      "HI_only_collision_rate": 0.0,
+      "learned_pair_HI_cosine": {
+        "mean": 0.6659835804503202,
+        "std": 0.1663059242548191,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_recovery": {
+        "mean": 0.4048089626870146,
+        "std": 0.13466814465545363,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HI_cosine": {
+        "mean": 0.4048089626870146,
+        "std": 0.13466814465545363,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HC_cosine": null,
+      "A_WS_correlation": {
+        "mean": 0.33779445468858127,
+        "std": 0.14468940560257168,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_gamma": {
+        "mean": 5.674590682983398,
+        "std": 0.38268270819169636,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_recovery": {
+        "mean": 0.2428579317459124,
+        "std": 0.1301539288806585,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HI_cosine": {
+        "mean": 0.2428579317459124,
+        "std": 0.1301539288806585,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HC_cosine": null,
+      "B_WS_correlation": {
+        "mean": 0.16261112092877866,
+        "std": 0.17558659062359788,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_gamma": {
+        "mean": 0.9338909447193146,
+        "std": 0.867121069323082,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_gamma_sign_consistency": 1.0
+    },
+    "K6_lambda0.0": {
+      "train_c_index": {
+        "mean": 0.5153544016431841,
+        "std": 0.00246160310882984,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.5425097077457594,
+        "std": 0.004689472268785533,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.5552935992067864,
+        "std": 0.0038461293617882415,
+        "n": 5,
+        "undefined": 0
+      },
+      "collision_rate": 1.0,
+      "HI_only_collision_rate": 1.0,
+      "learned_pair_HI_cosine": {
+        "mean": 1.0,
+        "std": 1.2412670766236366e-16,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_recovery": {
+        "mean": 0.31312667922634674,
+        "std": 0.008808936828541987,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HI_cosine": {
+        "mean": 0.31312667922634674,
+        "std": 0.008808936828541987,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HC_cosine": null,
+      "A_WS_correlation": {
+        "mean": 0.16471885515891968,
+        "std": 0.015950280062408215,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_gamma": {
+        "mean": 0.13633884638547897,
+        "std": 0.04013307789406307,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_recovery": {
+        "mean": 0.3343526796616457,
+        "std": 0.012231352439147568,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HI_cosine": {
+        "mean": 0.3343526796616457,
+        "std": 0.012231352439147568,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HC_cosine": null,
+      "B_WS_correlation": {
+        "mean": 0.29481706211938485,
+        "std": 0.011965736989593991,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_gamma": {
+        "mean": 0.13633884638547897,
+        "std": 0.04013307789406307,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_gamma_sign_consistency": 1.0
+    },
+    "K6_lambda0.1": {
+      "train_c_index": {
+        "mean": 0.7452536244940121,
+        "std": 0.0019284963482255459,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.6570202329858982,
+        "std": 0.01083917282441488,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.669912966839264,
+        "std": 0.012659896529442797,
+        "n": 5,
+        "undefined": 0
+      },
+      "collision_rate": 0.0,
+      "HI_only_collision_rate": 0.0,
+      "learned_pair_HI_cosine": {
+        "mean": 0.6587172181658936,
+        "std": 0.16349653654045251,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_recovery": {
+        "mean": 0.5320169095797308,
+        "std": 0.07194410944611386,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HI_cosine": {
+        "mean": 0.5320169095797308,
+        "std": 0.07194410944611386,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HC_cosine": null,
+      "A_WS_correlation": {
+        "mean": 0.4165657128805481,
+        "std": 0.06251909032172379,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_gamma": {
+        "mean": 3.721812444925308,
+        "std": 2.439506919497271,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_recovery": {
+        "mean": 0.38540044094158954,
+        "std": 0.08162264860153327,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HI_cosine": {
+        "mean": 0.38540044094158954,
+        "std": 0.08162264860153327,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HC_cosine": null,
+      "B_WS_correlation": {
+        "mean": 0.3522551368454542,
+        "std": 0.07259618123022937,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_gamma": {
+        "mean": 0.507754273340106,
+        "std": 0.6720442211144576,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_gamma_sign_consistency": 0.8
+    }
+  },
+  "runs": [
+    {
+      "seed": 31,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5130505807598525,
+      "validation_c_index": 0.5418965869609647,
+      "test_c_index": 0.5544783518783739,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.05321672186255455,
+          "IB": 0.0006794001092202961,
+          "CS": 0.07031355798244476,
+          "OS": 0.040760498493909836,
+          "IS": 0.0007761097513139248
+        },
+        "bulk_reconstruction": 0.0006794001092202961,
+        "spatial_reconstruction": 0.0007761097513139248
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05925890430808067,
+          "IB": 0.0005873572663404047,
+          "CS": 0.07031355798244476,
+          "OS": 0.040760498493909836,
+          "IS": 0.0007761097513139248
+        },
+        "bulk_reconstruction": 0.05984626157442108,
+        "spatial_reconstruction": 0.11185016622766852
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        0.17390070855617523,
+        -0.1289806067943573,
+        -0.02338111586868763,
+        0.16307306289672852
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 3,
+        "B_best_factor": 3,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0,
+        "A_recovery": 0.30542029572689466,
+        "A_HI_cosine": 0.30542029572689466,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.16974210436823944,
+        "A_gamma": 0.16307306289672852,
+        "B_recovery": 0.3302185504382411,
+        "B_HI_cosine": 0.3302185504382411,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.29183531459620093,
+        "B_gamma": 0.16307306289672852
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006794001092202961,
+        "nnls_reconstruction": 0.0006793997017666698,
+        "relative_improvement": 0.9819964483413047,
+        "relative_excess_over_initial": 1.0797190509331241e-08
+      }
+    },
+    {
+      "seed": 32,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.4798986222718701,
+      "validation_c_index": 0.5016349887594522,
+      "test_c_index": 0.454665638426793,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.045080654323101044,
+          "IB": 0.001457006437703967,
+          "CS": 0.058508217334747314,
+          "OS": 0.03582613170146942,
+          "IS": 0.0014943329151719809
+        },
+        "bulk_reconstruction": 0.001457006437703967,
+        "spatial_reconstruction": 0.0014943329151719809
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.049492523074150085,
+          "IB": 0.0013770625228062272,
+          "CS": 0.058508217334747314,
+          "OS": 0.03582613170146942,
+          "IS": 0.0014943329151719809
+        },
+        "bulk_reconstruction": 0.05086958559695631,
+        "spatial_reconstruction": 0.09582868195138872
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        0.04681070148944855,
+        -0.00957235787063837,
+        -0.029628179967403412,
+        -0.10135339945554733
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 0,
+        "B_best_factor": 3,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.2608191137264872,
+        "A_recovery": 0.09063777102928854,
+        "A_HI_cosine": 0.09063777102928854,
+        "A_HC_cosine": null,
+        "A_WS_correlation": -0.016905097200486482,
+        "A_gamma": 0.04681070148944855,
+        "B_recovery": 0.1017318551603538,
+        "B_HI_cosine": 0.1017318551603538,
+        "B_HC_cosine": null,
+        "B_WS_correlation": -0.011626944956243383,
+        "B_gamma": -0.10135339945554733
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.001457006437703967,
+        "nnls_reconstruction": 0.0014570062048733234,
+        "relative_improvement": 0.9613905115523769,
+        "relative_excess_over_initial": 6.16982314818928e-09
+      }
+    },
+    {
+      "seed": 33,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.4865290139694666,
+      "validation_c_index": 0.52462701818925,
+      "test_c_index": 0.47339429326870114,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.052647653967142105,
+          "IB": 0.008681545034050941,
+          "CS": 0.06884101778268814,
+          "OS": 0.035280585289001465,
+          "IS": 0.011802547611296177
+        },
+        "bulk_reconstruction": 0.008681545034050941,
+        "spatial_reconstruction": 0.011802547611296177
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05833764374256134,
+          "IB": 0.009753106161952019,
+          "CS": 0.06884101778268814,
+          "OS": 0.035280585289001465,
+          "IS": 0.011802547611296177
+        },
+        "bulk_reconstruction": 0.06809074990451336,
+        "spatial_reconstruction": 0.11592415068298578
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        0.007810586132109165,
+        -0.03451380878686905,
+        0.004519218113273382,
+        -0.07165054231882095
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 2,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.978818326725485,
+        "A_recovery": 0.1110171193700458,
+        "A_HI_cosine": 0.1110171193700458,
+        "A_HC_cosine": null,
+        "A_WS_correlation": -0.053982756799966974,
+        "A_gamma": -0.03451380878686905,
+        "B_recovery": 0.12104297562421484,
+        "B_HI_cosine": 0.12104297562421484,
+        "B_HC_cosine": null,
+        "B_WS_correlation": -0.0479219540310616,
+        "B_gamma": 0.004519218113273382
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.008681545034050941,
+        "nnls_reconstruction": 0.008681545034050941,
+        "relative_improvement": 0.7699461004249775,
+        "relative_excess_over_initial": 0.0
+      }
+    },
+    {
+      "seed": 34,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5109365428272855,
+      "validation_c_index": 0.5429184549356223,
+      "test_c_index": 0.549520766773163,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.048770722001791,
+          "IB": 0.0006782709970138967,
+          "CS": 0.06316105276346207,
+          "OS": 0.0369650237262249,
+          "IS": 0.0007821801118552685
+        },
+        "bulk_reconstruction": 0.0006782709970138967,
+        "spatial_reconstruction": 0.0007821801118552685
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05342547968029976,
+          "IB": 0.0005926662706770003,
+          "CS": 0.06316105276346207,
+          "OS": 0.0369650237262249,
+          "IS": 0.0007821801118552685
+        },
+        "bulk_reconstruction": 0.05401814595097676,
+        "spatial_reconstruction": 0.10090825660154223
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        -0.008376464247703552,
+        0.21052679419517517,
+        -0.13020995259284973,
+        0.005172611679881811
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 1,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0000000000000002,
+        "A_recovery": 0.31156564863528613,
+        "A_HI_cosine": 0.31156564863528613,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.16908536466500437,
+        "A_gamma": 0.21052679419517517,
+        "B_recovery": 0.33092060716890354,
+        "B_HI_cosine": 0.33092060716890354,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.2919762704804979,
+        "B_gamma": 0.21052679419517517
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006782709970138967,
+        "nnls_reconstruction": 0.0006782705313526094,
+        "relative_improvement": 0.9820263688986619,
+        "relative_excess_over_initial": 1.233964629637856e-08
+      }
+    },
+    {
+      "seed": 35,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5121977586393283,
+      "validation_c_index": 0.5391375434293889,
+      "test_c_index": 0.5475377327310785,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.0471791997551918,
+          "IB": 0.0006809880724176764,
+          "CS": 0.06220110505819321,
+          "OS": 0.03500233218073845,
+          "IS": 0.0007757408893667161
+        },
+        "bulk_reconstruction": 0.0006809880724176764,
+        "spatial_reconstruction": 0.0007757408893667161
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05226622521877289,
+          "IB": 0.0005916844820603728,
+          "CS": 0.06220110505819321,
+          "OS": 0.03500233218073845,
+          "IS": 0.0007757408893667161
+        },
+        "bulk_reconstruction": 0.05285790970083326,
+        "spatial_reconstruction": 0.09797917812829837
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        -0.012793028727173805,
+        0.0034489391837269068,
+        -0.14235365390777588,
+        0.2151539921760559
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 3,
+        "B_best_factor": 3,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0,
+        "A_recovery": 0.311656767530909,
+        "A_HI_cosine": 0.311656767530909,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.17106297874489457,
+        "A_gamma": 0.2151539921760559,
+        "B_recovery": 0.33337126235823755,
+        "B_HI_cosine": 0.33337126235823755,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.3035499403740449,
+        "B_gamma": 0.2151539921760559
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006809880724176764,
+        "nnls_reconstruction": 0.0006809879560023546,
+        "relative_improvement": 0.9819543686049783,
+        "relative_excess_over_initial": 3.08491157409464e-09
+      }
+    },
+    {
+      "seed": 31,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7247546634956098,
+      "validation_c_index": 0.6582873492744737,
+      "test_c_index": 0.6639858984245897,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.049131136387586594,
+          "IB": 0.0006567107047885656,
+          "CS": 0.06880906224250793,
+          "OS": 0.04028759524226189,
+          "IS": 0.0008390368311665952
+        },
+        "bulk_reconstruction": 0.0006567107047885656,
+        "spatial_reconstruction": 0.0008390368311665952
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05476273596286774,
+          "IB": 0.0005699467728845775,
+          "CS": 0.06880906224250793,
+          "OS": 0.04028759524226189,
+          "IS": 0.0008390368311665952
+        },
+        "bulk_reconstruction": 0.055332682735752314,
+        "spatial_reconstruction": 0.10993569431593642
+      },
+      "factorization_gamma": [
+        5.796498775482178,
+        -0.2241826355457306,
+        0.9813252687454224,
+        1.3503103256225586
+      ],
+      "evaluation_gamma": [
+        5.796498775482178,
+        -0.2241826355457306,
+        0.9813252687454224,
+        1.3503103256225586
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 0,
+        "B_best_factor": 3,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.6243752852452668,
+        "A_recovery": 0.38669219050685943,
+        "A_HI_cosine": 0.38669219050685943,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.33218695691124417,
+        "A_gamma": 5.796498775482178,
+        "B_recovery": 0.28025992963966256,
+        "B_HI_cosine": 0.28025992963966256,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.244834781839823,
+        "B_gamma": 1.3503103256225586
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006567107629962265,
+        "nnls_reconstruction": 0.0006535668508149683,
+        "relative_improvement": 0.9825976976070958,
+        "relative_excess_over_initial": 8.331112196999986e-05
+      }
+    },
+    {
+      "seed": 32,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7293430867356131,
+      "validation_c_index": 0.6582873492744737,
+      "test_c_index": 0.6765451140244574,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04306876286864281,
+          "IB": 0.0013496845494955778,
+          "CS": 0.05758265033364296,
+          "OS": 0.0356316976249218,
+          "IS": 0.0015818171668797731
+        },
+        "bulk_reconstruction": 0.0013496845494955778,
+        "spatial_reconstruction": 0.0015818171668797731
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.04632461443543434,
+          "IB": 0.001322493888437748,
+          "CS": 0.05758265033364296,
+          "OS": 0.0356316976249218,
+          "IS": 0.0015818171668797731
+        },
+        "bulk_reconstruction": 0.04764710832387209,
+        "spatial_reconstruction": 0.09479616512544453
+      },
+      "factorization_gamma": [
+        6.111766815185547,
+        0.7136757373809814,
+        -0.4738442003726959,
+        0.0282916147261858
+      ],
+      "evaluation_gamma": [
+        6.111766815185547,
+        0.7136757373809814,
+        -0.4738442003726959,
+        0.0282916147261858
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 0,
+        "B_best_factor": 1,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.562567818166134,
+        "A_recovery": 0.5644701623363472,
+        "A_HI_cosine": 0.5644701623363472,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.5611219363380217,
+        "A_gamma": 6.111766815185547,
+        "B_recovery": 0.12090368779971353,
+        "B_HI_cosine": 0.12090368779971353,
+        "B_HC_cosine": null,
+        "B_WS_correlation": -0.035588430097814636,
+        "B_gamma": 0.7136757373809814
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0013496845494955778,
+        "nnls_reconstruction": 0.0013465638039633632,
+        "relative_improvement": 0.9642344545135958,
+        "relative_excess_over_initial": 8.269722456675501e-05
+      }
+    },
+    {
+      "seed": 33,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7314090783515309,
+      "validation_c_index": 0.6613529531984468,
+      "test_c_index": 0.6713671918034593,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.050777312368154526,
+          "IB": 0.001391163794323802,
+          "CS": 0.06882582604885101,
+          "OS": 0.035351309925317764,
+          "IS": 0.0016866429941728711
+        },
+        "bulk_reconstruction": 0.001391163794323802,
+        "spatial_reconstruction": 0.0016866429941728711
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.056488629430532455,
+          "IB": 0.001365625998005271,
+          "CS": 0.06882582604885101,
+          "OS": 0.035351309925317764,
+          "IS": 0.0016866429941728711
+        },
+        "bulk_reconstruction": 0.057854255428537726,
+        "spatial_reconstruction": 0.10586377896834165
+      },
+      "factorization_gamma": [
+        5.076362609863281,
+        3.961975336074829,
+        -0.47305843234062195,
+        0.13605131208896637
+      ],
+      "evaluation_gamma": [
+        5.076362609863281,
+        3.961975336074829,
+        -0.47305843234062195,
+        0.13605131208896637
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 0,
+        "B_best_factor": 2,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.9608203388884623,
+        "A_recovery": 0.21232896592796185,
+        "A_HI_cosine": 0.21232896592796185,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.19559239752155866,
+        "A_gamma": 5.076362609863281,
+        "B_recovery": 0.10792816814978026,
+        "B_HI_cosine": 0.10792816814978026,
+        "B_HC_cosine": null,
+        "B_WS_correlation": -0.012050966126029617,
+        "B_gamma": -0.47305843234062195
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.001391163794323802,
+        "nnls_reconstruction": 0.0013902189675718546,
+        "relative_improvement": 0.9631352881800996,
+        "relative_excess_over_initial": 2.50371423353521e-05
+      }
+    },
+    {
+      "seed": 34,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7278296277611618,
+      "validation_c_index": 0.6534845697935827,
+      "test_c_index": 0.6575961220667621,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04641992598772049,
+          "IB": 0.000683471851516515,
+          "CS": 0.06552683562040329,
+          "OS": 0.038368869572877884,
+          "IS": 0.0009037338895723224
+        },
+        "bulk_reconstruction": 0.000683471851516515,
+        "spatial_reconstruction": 0.0009037338895723224
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.050769876688718796,
+          "IB": 0.0006286244024522603,
+          "CS": 0.06552683562040329,
+          "OS": 0.038368869572877884,
+          "IS": 0.0009037338895723224
+        },
+        "bulk_reconstruction": 0.051398501091171056,
+        "spatial_reconstruction": 0.1047994390828535
+      },
+      "factorization_gamma": [
+        0.6484649777412415,
+        1.730623722076416,
+        0.10240489989519119,
+        5.591311454772949
+      ],
+      "evaluation_gamma": [
+        0.6484649777412415,
+        1.730623722076416,
+        0.10240489989519119,
+        5.591311454772949
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 3,
+        "B_best_factor": 1,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.5858842134539214,
+        "A_recovery": 0.4949928789000175,
+        "A_HI_cosine": 0.4949928789000175,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.3733859671144838,
+        "A_gamma": 5.591311454772949,
+        "B_recovery": 0.42040828830561977,
+        "B_HI_cosine": 0.42040828830561977,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.355557566119041,
+        "B_gamma": 1.730623722076416
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.000683471851516515,
+        "nnls_reconstruction": 0.0006823749281466007,
+        "relative_improvement": 0.9818885504740892,
+        "relative_excess_over_initial": 2.9067579306906747e-05
+      }
+    },
+    {
+      "seed": 35,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7250909877121545,
+      "validation_c_index": 0.6584917228694053,
+      "test_c_index": 0.6628842128456538,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04512045159935951,
+          "IB": 0.0006550807738676667,
+          "CS": 0.06164305657148361,
+          "OS": 0.034430183470249176,
+          "IS": 0.000834809965454042
+        },
+        "bulk_reconstruction": 0.0006550807738676667,
+        "spatial_reconstruction": 0.000834809965454042
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.049294039607048035,
+          "IB": 0.0005677160806953907,
+          "CS": 0.06164305657148361,
+          "OS": 0.034430183470249176,
+          "IS": 0.000834809965454042
+        },
+        "bulk_reconstruction": 0.049861755687743425,
+        "spatial_reconstruction": 0.09690805000718683
+      },
+      "factorization_gamma": [
+        0.9876104593276978,
+        5.797013759613037,
+        -0.24120353162288666,
+        1.3479033708572388
+      ],
+      "evaluation_gamma": [
+        0.9876104593276978,
+        5.797013759613037,
+        -0.24120353162288666,
+        1.3479033708572388
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 4,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 3,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.5962702464978173,
+        "A_recovery": 0.3655606157638871,
+        "A_HI_cosine": 0.3655606157638871,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.22668501555759799,
+        "A_gamma": 5.797013759613037,
+        "B_recovery": 0.2847895848347859,
+        "B_HI_cosine": 0.2847895848347859,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.2603026529088736,
+        "B_gamma": 1.3479033708572388
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006550808320753276,
+        "nnls_reconstruction": 0.0006521063041873276,
+        "relative_improvement": 0.9826408894540447,
+        "relative_excess_over_initial": 7.882257562969214e-05
+      }
+    },
+    {
+      "seed": 31,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5169062976709548,
+      "validation_c_index": 0.5444512568976089,
+      "test_c_index": 0.5578935771730748,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.052103735506534576,
+          "IB": 0.000672577356453985,
+          "CS": 0.06893196702003479,
+          "OS": 0.03408470004796982,
+          "IS": 0.0007826774381101131
+        },
+        "bulk_reconstruction": 0.000672577356453985,
+        "spatial_reconstruction": 0.0007826774381101131
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.058036092668771744,
+          "IB": 0.0005831517046317458,
+          "CS": 0.06893196702003479,
+          "OS": 0.03408470004796982,
+          "IS": 0.0007826774381101131
+        },
+        "bulk_reconstruction": 0.05861924437340349,
+        "spatial_reconstruction": 0.10379934450611472
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        -0.03282788023352623,
+        0.15391933917999268,
+        0.10914887487888336,
+        0.0324210487306118,
+        -0.15944640338420868,
+        0.16042231023311615
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 5,
+        "B_best_factor": 5,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0,
+        "A_recovery": 0.32245885759978266,
+        "A_HI_cosine": 0.32245885759978266,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.1743707244678313,
+        "A_gamma": 0.16042231023311615,
+        "B_recovery": 0.3479318125737593,
+        "B_HI_cosine": 0.3479318125737593,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.29941090272612403,
+        "B_gamma": 0.16042231023311615
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.000672577356453985,
+        "nnls_reconstruction": 0.0006725728162564337,
+        "relative_improvement": 0.9821772457539277,
+        "relative_excess_over_initial": 1.2031155138969097e-07
+      }
+    },
+    {
+      "seed": 32,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5178432008456152,
+      "validation_c_index": 0.5487431023911711,
+      "test_c_index": 0.5575630714993941,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04497867077589035,
+          "IB": 0.000673296395689249,
+          "CS": 0.060802869498729706,
+          "OS": 0.03518230468034744,
+          "IS": 0.0007716272957623005
+        },
+        "bulk_reconstruction": 0.000673296395689249,
+        "spatial_reconstruction": 0.0007716272957623005
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05064637213945389,
+          "IB": 0.0005803743842989206,
+          "CS": 0.060802869498729706,
+          "OS": 0.03518230468034744,
+          "IS": 0.0007716272957623005
+        },
+        "bulk_reconstruction": 0.05122674652375281,
+        "spatial_reconstruction": 0.09675680147483945
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        0.14231204986572266,
+        0.0965079739689827,
+        -0.00811736285686493,
+        0.1374271661043167,
+        -0.16257894039154053,
+        0.14349445700645447
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 1,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0,
+        "A_recovery": 0.31993958694068275,
+        "A_HI_cosine": 0.31993958694068275,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.1575650795067269,
+        "A_gamma": 0.0965079739689827,
+        "B_recovery": 0.34412489873296864,
+        "B_HI_cosine": 0.34412489873296864,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.3050124666783141,
+        "B_gamma": 0.0965079739689827
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.000673296395689249,
+        "nnls_reconstruction": 0.0006732940091751516,
+        "relative_improvement": 0.9821581917975903,
+        "relative_excess_over_initial": 6.324068726894013e-08
+      }
+    },
+    {
+      "seed": 33,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5130746039181772,
+      "validation_c_index": 0.5358675659104843,
+      "test_c_index": 0.548969923983695,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04224737733602524,
+          "IB": 0.0006758904200978577,
+          "CS": 0.05614640191197395,
+          "OS": 0.034500885754823685,
+          "IS": 0.0007884713704697788
+        },
+        "bulk_reconstruction": 0.0006758904200978577,
+        "spatial_reconstruction": 0.0007884713704697788
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.047084733843803406,
+          "IB": 0.0005824044346809387,
+          "CS": 0.05614640191197395,
+          "OS": 0.034500885754823685,
+          "IS": 0.0007884713704697788
+        },
+        "bulk_reconstruction": 0.047667138278484344,
+        "spatial_reconstruction": 0.09143575903726742
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        -0.12212807685136795,
+        0.05396253615617752,
+        0.1834423840045929,
+        0.1092672273516655,
+        -0.03487030789256096,
+        -0.02852543070912361
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 2,
+        "B_best_factor": 2,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 0.9999999999999999,
+        "A_recovery": 0.315321185078957,
+        "A_HI_cosine": 0.315321185078957,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.14355766414140594,
+        "A_gamma": 0.1834423840045929,
+        "B_recovery": 0.3276732378041199,
+        "B_HI_cosine": 0.3276732378041199,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.27491974325618623,
+        "B_gamma": 0.1834423840045929
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006758904200978577,
+        "nnls_reconstruction": 0.0006758852396160364,
+        "relative_improvement": 0.9820894522554405,
+        "relative_excess_over_initial": 1.3727856504721148e-07
+      }
+    },
+    {
+      "seed": 34,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5165819850335723,
+      "validation_c_index": 0.5418965869609647,
+      "test_c_index": 0.5577834086151813,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04997866973280907,
+          "IB": 0.0006775509682483971,
+          "CS": 0.06596910953521729,
+          "OS": 0.03488187864422798,
+          "IS": 0.000777381588704884
+        },
+        "bulk_reconstruction": 0.0006775509682483971,
+        "spatial_reconstruction": 0.000777381588704884
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05561879649758339,
+          "IB": 0.0005859782104380429,
+          "CS": 0.06596910953521729,
+          "OS": 0.03488187864422798,
+          "IS": 0.000777381588704884
+        },
+        "bulk_reconstruction": 0.05620477470802143,
+        "spatial_reconstruction": 0.10162836976815015
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        0.12570855021476746,
+        0.1488427370786667,
+        -0.13908183574676514,
+        0.1351141333580017,
+        0.09268045425415039,
+        -0.019940152764320374
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 4,
+        "B_best_factor": 4,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0000000000000002,
+        "A_recovery": 0.30535295547353597,
+        "A_HI_cosine": 0.30535295547353597,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.18526109164626842,
+        "A_gamma": 0.09268045425415039,
+        "B_recovery": 0.3178026033252826,
+        "B_HI_cosine": 0.3178026033252826,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.30177088843940253,
+        "B_gamma": 0.09268045425415039
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006775509682483971,
+        "nnls_reconstruction": 0.0006775493384338915,
+        "relative_improvement": 0.9820454490767476,
+        "relative_excess_over_initial": 4.3188762037324964e-08
+      }
+    },
+    {
+      "seed": 35,
+      "lambda_ph": 0.0,
+      "epochs": 1600,
+      "train_c_index": 0.5123659207476007,
+      "validation_c_index": 0.5415900265685674,
+      "test_c_index": 0.5542580147625867,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04843218997120857,
+          "IB": 0.0006786937592551112,
+          "CS": 0.06518922746181488,
+          "OS": 0.034366175532341,
+          "IS": 0.0007784584304317832
+        },
+        "bulk_reconstruction": 0.0006786937592551112,
+        "spatial_reconstruction": 0.0007784584304317832
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.054582834243774414,
+          "IB": 0.000585559697356075,
+          "CS": 0.06518922746181488,
+          "OS": 0.034366175532341,
+          "IS": 0.0007784584304317832
+        },
+        "bulk_reconstruction": 0.05516839394113049,
+        "spatial_reconstruction": 0.10033386142458767
+      },
+      "factorization_gamma": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_gamma": [
+        0.015603010542690754,
+        0.0821474939584732,
+        -0.01637413166463375,
+        0.15056808292865753,
+        -0.142643541097641,
+        0.14864110946655273
+      ],
+      "gamma_source": "training-only frozen Cox head",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 5,
+        "B_best_factor": 5,
+        "same_factor_boolean": true,
+        "collision": true,
+        "HI_only_collision": true,
+        "learned_pair_HI_cosine": 1.0,
+        "A_recovery": 0.3025608110387753,
+        "A_HI_cosine": 0.3025608110387753,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.16283971603236577,
+        "A_gamma": 0.14864110946655273,
+        "B_recovery": 0.33423084587209845,
+        "B_HI_cosine": 0.33423084587209845,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.2929713094968972,
+        "B_gamma": 0.14864110946655273
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006786937592551112,
+        "nnls_reconstruction": 0.0006786907906644046,
+        "relative_improvement": 0.9820151660422806,
+        "relative_excess_over_initial": 7.866524513941332e-08
+      }
+    },
+    {
+      "seed": 31,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7441533638427444,
+      "validation_c_index": 0.6433680768444717,
+      "test_c_index": 0.6494436487826374,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.05222772806882858,
+          "IB": 0.0006679118960164487,
+          "CS": 0.06840042024850845,
+          "OS": 0.03370225057005882,
+          "IS": 0.000961066922172904
+        },
+        "bulk_reconstruction": 0.0006679118960164487,
+        "spatial_reconstruction": 0.000961066922172904
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05751565098762512,
+          "IB": 0.0006104786298237741,
+          "CS": 0.06840042024850845,
+          "OS": 0.03370225057005882,
+          "IS": 0.000961066922172904
+        },
+        "bulk_reconstruction": 0.058126129617448896,
+        "spatial_reconstruction": 0.10306373774074018
+      },
+      "factorization_gamma": [
+        0.4643469452857971,
+        3.148601770401001,
+        6.029049396514893,
+        0.7449154853820801,
+        -0.18143005669116974,
+        0.33075207471847534
+      ],
+      "evaluation_gamma": [
+        0.4643469452857971,
+        3.148601770401001,
+        6.029049396514893,
+        0.7449154853820801,
+        -0.18143005669116974,
+        0.33075207471847534
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 5,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.7961176017622466,
+        "A_recovery": 0.47330138522659077,
+        "A_HI_cosine": 0.47330138522659077,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.33905154327015946,
+        "A_gamma": 3.148601770401001,
+        "B_recovery": 0.2938950592107418,
+        "B_HI_cosine": 0.2938950592107418,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.2586239467051943,
+        "B_gamma": 0.33075207471847534
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006679118960164487,
+        "nnls_reconstruction": 0.0006624984671361744,
+        "relative_improvement": 0.9823008766701711,
+        "relative_excess_over_initial": 0.00014345147310697485
+      }
+    },
+    {
+      "seed": 32,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7484535091828523,
+      "validation_c_index": 0.6638054363376252,
+      "test_c_index": 0.6769857882560317,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04257696866989136,
+          "IB": 0.0006666350527666509,
+          "CS": 0.058449886739254,
+          "OS": 0.035232748836278915,
+          "IS": 0.0009240334038622677
+        },
+        "bulk_reconstruction": 0.0006666350527666509,
+        "spatial_reconstruction": 0.0009240334038622677
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.04746710881590843,
+          "IB": 0.0006310102762654424,
+          "CS": 0.058449886739254,
+          "OS": 0.035232748836278915,
+          "IS": 0.0009240334038622677
+        },
+        "bulk_reconstruction": 0.048098119092173874,
+        "spatial_reconstruction": 0.09460666897939518
+      },
+      "factorization_gamma": [
+        4.012491226196289,
+        -0.1612718403339386,
+        0.6153926253318787,
+        5.793739318847656,
+        -0.38712838292121887,
+        -0.4458222985267639
+      ],
+      "evaluation_gamma": [
+        4.012491226196289,
+        -0.1612718403339386,
+        0.6153926253318787,
+        5.793739318847656,
+        -0.38712838292121887,
+        -0.4458222985267639
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 3,
+        "B_best_factor": 1,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.48131881795211157,
+        "A_recovery": 0.5791690244342136,
+        "A_HI_cosine": 0.5791690244342136,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.46902016579380695,
+        "A_gamma": 5.793739318847656,
+        "B_recovery": 0.5077517313657319,
+        "B_HI_cosine": 0.5077517313657319,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.4523170324111318,
+        "B_gamma": -0.1612718403339386
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006666350527666509,
+        "nnls_reconstruction": 0.0006644397508352995,
+        "relative_improvement": 0.9823347119803157,
+        "relative_excess_over_initial": 5.817372000848968e-05
+      }
+    },
+    {
+      "seed": 33,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7434927269888172,
+      "validation_c_index": 0.6489883507050889,
+      "test_c_index": 0.6668502809298227,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.040573228150606155,
+          "IB": 0.000722884142305702,
+          "CS": 0.053183529525995255,
+          "OS": 0.03467760980129242,
+          "IS": 0.0009271748131141067
+        },
+        "bulk_reconstruction": 0.000722884142305702,
+        "spatial_reconstruction": 0.0009271748131141067
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.04351973906159401,
+          "IB": 0.0006461499724537134,
+          "CS": 0.053183529525995255,
+          "OS": 0.03467760980129242,
+          "IS": 0.0009271748131141067
+        },
+        "bulk_reconstruction": 0.04416588903404772,
+        "spatial_reconstruction": 0.08878831414040178
+      },
+      "factorization_gamma": [
+        -1.7010135650634766,
+        4.856118202209473,
+        0.9597371220588684,
+        1.9572128057479858,
+        0.25991368293762207,
+        4.34535551071167
+      ],
+      "evaluation_gamma": [
+        -1.7010135650634766,
+        4.856118202209473,
+        0.9597371220588684,
+        1.9572128057479858,
+        0.25991368293762207,
+        4.34535551071167
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 2,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.7241267649095314,
+        "A_recovery": 0.6170380701962629,
+        "A_HI_cosine": 0.6170380701962629,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.3583549997038416,
+        "A_gamma": 4.856118202209473,
+        "B_recovery": 0.3393095085828037,
+        "B_HI_cosine": 0.3393095085828037,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.31145176685727166,
+        "B_gamma": 0.9597371220588684
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.000722884142305702,
+        "nnls_reconstruction": 0.0007207560120150447,
+        "relative_improvement": 0.980844156745591,
+        "relative_excess_over_initial": 5.639372603023707e-05
+      }
+    },
+    {
+      "seed": 34,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7454506143922741,
+      "validation_c_index": 0.6589004700592683,
+      "test_c_index": 0.6744519114244795,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.050534967333078384,
+          "IB": 0.000615798169746995,
+          "CS": 0.06374992430210114,
+          "OS": 0.033224571496248245,
+          "IS": 0.0008843606919981539
+        },
+        "bulk_reconstruction": 0.000615798169746995,
+        "spatial_reconstruction": 0.0008843606919981539
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.05539233237504959,
+          "IB": 0.0005655493005178869,
+          "CS": 0.06374992430210114,
+          "OS": 0.033224571496248245,
+          "IS": 0.0008843606919981539
+        },
+        "bulk_reconstruction": 0.05595788167556748,
+        "spatial_reconstruction": 0.09785885649034753
+      },
+      "factorization_gamma": [
+        4.354590892791748,
+        -0.28079912066459656,
+        0.11798059940338135,
+        5.8031816482543945,
+        -0.01831483282148838,
+        0.48730385303497314
+      ],
+      "evaluation_gamma": [
+        4.354590892791748,
+        -0.28079912066459656,
+        0.11798059940338135,
+        5.8031816482543945,
+        -0.01831483282148838,
+        0.48730385303497314
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 4,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.8072164938043352,
+        "A_recovery": 0.4447590005428356,
+        "A_HI_cosine": 0.4447590005428356,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.45510567955775755,
+        "A_gamma": -0.28079912066459656,
+        "B_recovery": 0.41610297103444116,
+        "B_HI_cosine": 0.41610297103444116,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.36464645251547523,
+        "B_gamma": -0.01831483282148838
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.000615798169746995,
+        "nnls_reconstruction": 0.0006134193390607834,
+        "relative_improvement": 0.9836818481335051,
+        "relative_excess_over_initial": 6.303708310504987e-05
+      }
+    },
+    {
+      "seed": 35,
+      "lambda_ph": 0.1,
+      "epochs": 1600,
+      "train_c_index": 0.7447179080633731,
+      "validation_c_index": 0.670038830983037,
+      "test_c_index": 0.6818332048033491,
+      "recovery": null,
+      "train_reconstruction": {
+        "block_mse": {
+          "CB": 0.04378413036465645,
+          "IB": 0.0006817299872636795,
+          "CS": 0.06276794523000717,
+          "OS": 0.033262643963098526,
+          "IS": 0.0009235470788553357
+        },
+        "bulk_reconstruction": 0.0006817299872636795,
+        "spatial_reconstruction": 0.0009235470788553357
+      },
+      "test_reconstruction": {
+        "block_mse": {
+          "CB": 0.04797821491956711,
+          "IB": 0.0006149823311716318,
+          "CS": 0.06276794523000717,
+          "OS": 0.033262643963098526,
+          "IS": 0.0009235470788553357
+        },
+        "bulk_reconstruction": 0.04859319725073874,
+        "spatial_reconstruction": 0.09695413627196103
+      },
+      "factorization_gamma": [
+        4.539515972137451,
+        5.091402053833008,
+        -0.09432148188352585,
+        1.4278688430786133,
+        -1.3091601133346558,
+        -0.16906505823135376
+      ],
+      "evaluation_gamma": [
+        4.539515972137451,
+        5.091402053833008,
+        -0.09432148188352585,
+        1.4278688430786133,
+        -1.3091601133346558,
+        -0.16906505823135376
+      ],
+      "gamma_source": "joint training",
+      "K_fit": 6,
+      "ccc_only": true,
+      "pair": {
+        "matching_basis": "HI",
+        "A_best_factor": 1,
+        "B_best_factor": 3,
+        "same_factor_boolean": false,
+        "collision": false,
+        "HI_only_collision": false,
+        "learned_pair_HI_cosine": 0.48480641240124317,
+        "A_recovery": 0.5458170674987511,
+        "A_HI_cosine": 0.5458170674987511,
+        "A_HC_cosine": null,
+        "A_WS_correlation": 0.46129617607717543,
+        "A_gamma": 5.091402053833008,
+        "B_recovery": 0.36994293451422894,
+        "B_HI_cosine": 0.36994293451422894,
+        "B_HC_cosine": null,
+        "B_WS_correlation": 0.3742364857381979,
+        "B_gamma": 1.4278688430786133
+      },
+      "inner_audit": {
+        "initial_reconstruction": 0.037737004458904266,
+        "final_reconstruction": 0.0006817299872636795,
+        "nnls_reconstruction": 0.0006798029644414783,
+        "relative_improvement": 0.9819347084635166,
+        "relative_excess_over_initial": 5.1064541285988577e-05
+      }
+    }
+  ]
+}

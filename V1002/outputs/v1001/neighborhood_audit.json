@@ -1,0 +1,14 @@
+{
+  "anchors": 1200,
+  "cells": 14400,
+  "mean_cells_per_neighborhood": 97.06416666666667,
+  "mean_directed_pairs_per_neighborhood": 9441.605,
+  "neighborhood": {
+    "radius": 1.6,
+    "k": null,
+    "kernel": "gaussian",
+    "sigma": 0.8,
+    "cells_per_anchor": 12
+  },
+  "composition_row_sum_max_error": 4.440892098500626e-16
+}

@@ -1,0 +1,92 @@
+{
+  "train_c_index": 0.7117260787992495,
+  "validation_c_index": 0.608346709470305,
+  "test_c_index": 0.6884480746791132,
+  "gamma": [
+    1.999464511871338,
+    -0.20058082044124603,
+    0.0017538414103910327,
+    -1.0044233798980713,
+    0.4576767385005951,
+    -1.2607969045639038
+  ],
+  "per_niche": [
+    {
+      "true_index": 0,
+      "learned_index": 0,
+      "WB_recovery": 0.9275048379626424,
+      "WS_truth_recovery": 0.8652901089204331,
+      "WS_anchor_correlation": 0.9999999999998525,
+      "gamma": 1.999464511871338,
+      "HC_anchor_cosine": 1.0,
+      "HI_anchor_cosine": 1.0
+    },
+    {
+      "true_index": 1,
+      "learned_index": 2,
+      "WB_recovery": 0.9828927048707237,
+      "WS_truth_recovery": 0.9956702006730805,
+      "WS_anchor_correlation": 0.9999999999999779,
+      "gamma": 0.0017538414103910327,
+      "HC_anchor_cosine": 0.9999999999999999,
+      "HI_anchor_cosine": 0.9999999999999997
+    },
+    {
+      "true_index": 2,
+      "learned_index": 5,
+      "WB_recovery": 0.9944351078252163,
+      "WS_truth_recovery": 0.9981311089994572,
+      "WS_anchor_correlation": 0.9999999999999815,
+      "gamma": -1.2607969045639038,
+      "HC_anchor_cosine": 1.0,
+      "HI_anchor_cosine": 0.9999999999999997
+    },
+    {
+      "true_index": 3,
+      "learned_index": 3,
+      "WB_recovery": 0.7549461062889268,
+      "WS_truth_recovery": 0.48691641788665674,
+      "WS_anchor_correlation": 0.9999999999996787,
+      "gamma": -1.0044233798980713,
+      "HC_anchor_cosine": 1.0000000000000002,
+      "HI_anchor_cosine": 1.0
+    },
+    {
+      "true_index": 4,
+      "learned_index": 1,
+      "WB_recovery": 0.9890698928790469,
+      "WS_truth_recovery": 0.9954041183834019,
+      "WS_anchor_correlation": 0.999999999999993,
+      "gamma": -0.20058082044124603,
+      "HC_anchor_cosine": 1.0000000000000002,
+      "HI_anchor_cosine": 1.0000000000000002
+    },
+    {
+      "true_index": 5,
+      "learned_index": 4,
+      "WB_recovery": 0.9669607250603224,
+      "WS_truth_recovery": 0.9935244466866288,
+      "WS_anchor_correlation": 0.9999999999999916,
+      "gamma": 0.4576767385005951,
+      "HC_anchor_cosine": 1.0,
+      "HI_anchor_cosine": 1.0
+    }
+  ],
+  "HC_anchor_cosine": 1.0,
+  "HI_anchor_cosine": 1.0,
+  "WS_anchor_correlation": 0.9999999999999124,
+  "spatial_reconstruction": {
+    "composition": 8.91435774974525e-06,
+    "communication": 8.711128430149984e-06,
+    "topology": 1.0788243343995418e-05,
+    "total": 2.8413729523890652e-05
+  },
+  "training_diagnostics": {
+    "selected_validation_c_index": 0.608346709470305,
+    "max_gradient_norm": 0.002625349210575223,
+    "gradient_clip_count": 0,
+    "all_finite": true,
+    "HC_anchor_cosine": 1.0,
+    "HI_anchor_cosine": 1.0
+  }
+}

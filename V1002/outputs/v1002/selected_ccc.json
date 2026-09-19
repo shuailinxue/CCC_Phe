@@ -1,0 +1,11 @@
+{
+  "top_m_per_niche": 100,
+  "selected_CCC": 556,
+  "true_signal_CCC": 810,
+  "signal_edge_precision": 1.0,
+  "signal_edge_recall": 0.6864197530864198,
+  "selection_inputs": [
+    "ST-derived HI"
+  ],
+  "phenotype_free": true
+}

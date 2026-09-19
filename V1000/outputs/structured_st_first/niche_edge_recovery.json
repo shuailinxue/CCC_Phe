@@ -1,0 +1,4262 @@
+{
+  "A": {
+    "top_20_precision": 0.9,
+    "top_20_recall": 0.375,
+    "top_50_precision": 0.66,
+    "top_50_recall": 0.6875,
+    "learned_top_edges": [
+      {
+        "index": 15,
+        "sender": 0,
+        "receiver": 1,
+        "program": 3,
+        "weight": 0.5978408455848694
+      },
+      {
+        "index": 384,
+        "sender": 4,
+        "receiver": 0,
+        "program": 0,
+        "weight": 0.5850130915641785
+      },
+      {
+        "index": 92,
+        "sender": 0,
+        "receiver": 7,
+        "program": 8,
+        "weight": 0.5795674324035645
+      },
+      {
+        "index": 736,
+        "sender": 7,
+        "receiver": 5,
+        "program": 4,
+        "weight": 0.578271210193634
+      },
+      {
+        "index": 758,
+        "sender": 7,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.5690548419952393
+      },
+      {
+        "index": 238,
+        "sender": 2,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.5681331753730774
+      },
+      {
+        "index": 337,
+        "sender": 3,
+        "receiver": 4,
+        "program": 1,
+        "weight": 0.5644701719284058
+      },
+      {
+        "index": 181,
+        "sender": 1,
+        "receiver": 7,
+        "program": 1,
+        "weight": 0.5612879395484924
+      },
+      {
+        "index": 49,
+        "sender": 0,
+        "receiver": 4,
+        "program": 1,
+        "weight": 0.5605099201202393
+      },
+      {
+        "index": 326,
+        "sender": 3,
+        "receiver": 3,
+        "program": 2,
+        "weight": 0.5525538325309753
+      },
+      {
+        "index": 310,
+        "sender": 3,
+        "receiver": 1,
+        "program": 10,
+        "weight": 0.5497488975524902
+      },
+      {
+        "index": 697,
+        "sender": 7,
+        "receiver": 2,
+        "program": 1,
+        "weight": 0.5443854331970215
+      },
+      {
+        "index": 514,
+        "sender": 5,
+        "receiver": 2,
+        "program": 10,
+        "weight": 0.5440178513526917
+      },
+      {
+        "index": 463,
+        "sender": 4,
+        "receiver": 6,
+        "program": 7,
+        "weight": 0.5366696715354919
+      },
+      {
+        "index": 57,
+        "sender": 0,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.5348163843154907
+      },
+      {
+        "index": 522,
+        "sender": 5,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.5242038369178772
+      },
+      {
+        "index": 595,
+        "sender": 6,
+        "receiver": 1,
+        "program": 7,
+        "weight": 0.5233553051948547
+      },
+      {
+        "index": 107,
+        "sender": 1,
+        "receiver": 0,
+        "program": 11,
+        "weight": 0.522226870059967
+      },
+      {
+        "index": 727,
+        "sender": 7,
+        "receiver": 4,
+        "program": 7,
+        "weight": 0.5190173387527466
+      },
+      {
+        "index": 534,
+        "sender": 5,
+        "receiver": 4,
+        "program": 6,
+        "weight": 0.5136706829071045
+      },
+      {
+        "index": 435,
+        "sender": 4,
+        "receiver": 4,
+        "program": 3,
+        "weight": 0.5135923624038696
+      },
+      {
+        "index": 475,
+        "sender": 4,
+        "receiver": 7,
+        "program": 7,
+        "weight": 0.5111134648323059
+      },
+      {
+        "index": 186,
+        "sender": 1,
+        "receiver": 7,
+        "program": 6,
+        "weight": 0.5096427798271179
+      },
+      {
+        "index": 523,
+        "sender": 5,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.5090314149856567
+      },
+      {
+        "index": 753,
+        "sender": 7,
+        "receiver": 6,
+        "program": 9,
+        "weight": 0.5088785886764526
+      },
+      {
+        "index": 472,
+        "sender": 4,
+        "receiver": 7,
+        "program": 4,
+        "weight": 0.5078326463699341
+      },
+      {
+        "index": 362,
+        "sender": 3,
+        "receiver": 6,
+        "program": 2,
+        "weight": 0.5027371644973755
+      },
+      {
+        "index": 506,
+        "sender": 5,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.501726508140564
+      },
+      {
+        "index": 622,
+        "sender": 6,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.5015810132026672
+      },
+      {
+        "index": 461,
+        "sender": 4,
+        "receiver": 6,
+        "program": 5,
+        "weight": 0.49920448660850525
+      },
+      {
+        "index": 490,
+        "sender": 5,
+        "receiver": 0,
+        "program": 10,
+        "weight": 0.49773702025413513
+      },
+      {
+        "index": 173,
+        "sender": 1,
+        "receiver": 6,
+        "program": 5,
+        "weight": 0.496463805437088
+      },
+      {
+        "index": 151,
+        "sender": 1,
+        "receiver": 4,
+        "program": 7,
+        "weight": 0.4925764501094818
+      },
+      {
+        "index": 723,
+        "sender": 7,
+        "receiver": 4,
+        "program": 3,
+        "weight": 0.49090760946273804
+      },
+      {
+        "index": 667,
+        "sender": 6,
+        "receiver": 7,
+        "program": 7,
+        "weight": 0.48576778173446655
+      },
+      {
+        "index": 142,
+        "sender": 1,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.48353686928749084
+      },
+      {
+        "index": 679,
+        "sender": 7,
+        "receiver": 0,
+        "program": 7,
+        "weight": 0.48305603861808777
+      },
+      {
+        "index": 656,
+        "sender": 6,
+        "receiver": 6,
+        "program": 8,
+        "weight": 0.48214730620384216
+      },
+      {
+        "index": 421,
+        "sender": 4,
+        "receiver": 3,
+        "program": 1,
+        "weight": 0.4775053560733795
+      },
+      {
+        "index": 354,
+        "sender": 3,
+        "receiver": 5,
+        "program": 6,
+        "weight": 0.4681374132633209
+      },
+      {
+        "index": 734,
+        "sender": 7,
+        "receiver": 5,
+        "program": 2,
+        "weight": 0.46745067834854126
+      },
+      {
+        "index": 533,
+        "sender": 5,
+        "receiver": 4,
+        "program": 5,
+        "weight": 0.4659537076950073
+      },
+      {
+        "index": 224,
+        "sender": 2,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.46531596779823303
+      },
+      {
+        "index": 91,
+        "sender": 0,
+        "receiver": 7,
+        "program": 7,
+        "weight": 0.46476566791534424
+      },
+      {
+        "index": 702,
+        "sender": 7,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.4609653651714325
+      },
+      {
+        "index": 675,
+        "sender": 7,
+        "receiver": 0,
+        "program": 3,
+        "weight": 0.4586259126663208
+      },
+      {
+        "index": 292,
+        "sender": 3,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.45738863945007324
+      },
+      {
+        "index": 276,
+        "sender": 2,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.4544832408428192
+      },
+      {
+        "index": 599,
+        "sender": 6,
+        "receiver": 1,
+        "program": 11,
+        "weight": 0.45151475071907043
+      },
+      {
+        "index": 301,
+        "sender": 3,
+        "receiver": 1,
+        "program": 1,
+        "weight": 0.45002585649490356
+      }
+    ],
+    "truth_top_edges": [
+      {
+        "index": 15,
+        "sender": 0,
+        "receiver": 1,
+        "program": 3,
+        "weight": 1.1594456434249878
+      },
+      {
+        "index": 384,
+        "sender": 4,
+        "receiver": 0,
+        "program": 0,
+        "weight": 1.1318104267120361
+      },
+      {
+        "index": 92,
+        "sender": 0,
+        "receiver": 7,
+        "program": 8,
+        "weight": 1.1236982345581055
+      },
+      {
+        "index": 736,
+        "sender": 7,
+        "receiver": 5,
+        "program": 4,
+        "weight": 1.121246337890625
+      },
+      {
+        "index": 758,
+        "sender": 7,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.1060034036636353
+      },
+      {
+        "index": 238,
+        "sender": 2,
+        "receiver": 3,
+        "program": 10,
+        "weight": 1.0997974872589111
+      },
+      {
+        "index": 337,
+        "sender": 3,
+        "receiver": 4,
+        "program": 1,
+        "weight": 1.090652346611023
+      },
+      {
+        "index": 181,
+        "sender": 1,
+        "receiver": 7,
+        "program": 1,
+        "weight": 1.086053729057312
+      },
+      {
+        "index": 49,
+        "sender": 0,
+        "receiver": 4,
+        "program": 1,
+        "weight": 1.0801591873168945
+      },
+      {
+        "index": 326,
+        "sender": 3,
+        "receiver": 3,
+        "program": 2,
+        "weight": 1.0682293176651
+      },
+      {
+        "index": 310,
+        "sender": 3,
+        "receiver": 1,
+        "program": 10,
+        "weight": 1.0595428943634033
+      },
+      {
+        "index": 697,
+        "sender": 7,
+        "receiver": 2,
+        "program": 1,
+        "weight": 1.0533806085586548
+      },
+      {
+        "index": 514,
+        "sender": 5,
+        "receiver": 2,
+        "program": 10,
+        "weight": 1.0483890771865845
+      },
+      {
+        "index": 463,
+        "sender": 4,
+        "receiver": 6,
+        "program": 7,
+        "weight": 1.0334227085113525
+      },
+      {
+        "index": 57,
+        "sender": 0,
+        "receiver": 4,
+        "program": 9,
+        "weight": 1.0264946222305298
+      },
+      {
+        "index": 522,
+        "sender": 5,
+        "receiver": 3,
+        "program": 6,
+        "weight": 1.0078423023223877
+      },
+      {
+        "index": 595,
+        "sender": 6,
+        "receiver": 1,
+        "program": 7,
+        "weight": 1.0065268278121948
+      },
+      {
+        "index": 727,
+        "sender": 7,
+        "receiver": 4,
+        "program": 7,
+        "weight": 0.9958137273788452
+      },
+      {
+        "index": 435,
+        "sender": 4,
+        "receiver": 4,
+        "program": 3,
+        "weight": 0.9816802144050598
+      },
+      {
+        "index": 475,
+        "sender": 4,
+        "receiver": 7,
+        "program": 7,
+        "weight": 0.9790419936180115
+      },
+      {
+        "index": 753,
+        "sender": 7,
+        "receiver": 6,
+        "program": 9,
+        "weight": 0.9759551882743835
+      },
+      {
+        "index": 523,
+        "sender": 5,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.9754729866981506
+      },
+      {
+        "index": 622,
+        "sender": 6,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.9620999693870544
+      },
+      {
+        "index": 173,
+        "sender": 1,
+        "receiver": 6,
+        "program": 5,
+        "weight": 0.9495030641555786
+      },
+      {
+        "index": 151,
+        "sender": 1,
+        "receiver": 4,
+        "program": 7,
+        "weight": 0.9373186826705933
+      },
+      {
+        "index": 723,
+        "sender": 7,
+        "receiver": 4,
+        "program": 3,
+        "weight": 0.9365485310554504
+      },
+      {
+        "index": 679,
+        "sender": 7,
+        "receiver": 0,
+        "program": 7,
+        "weight": 0.919304370880127
+      },
+      {
+        "index": 224,
+        "sender": 2,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.8810889720916748
+      },
+      {
+        "index": 702,
+        "sender": 7,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.8752255439758301
+      },
+      {
+        "index": 675,
+        "sender": 7,
+        "receiver": 0,
+        "program": 3,
+        "weight": 0.867351233959198
+      },
+      {
+        "index": 292,
+        "sender": 3,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.864220142364502
+      },
+      {
+        "index": 599,
+        "sender": 6,
+        "receiver": 1,
+        "program": 11,
+        "weight": 0.853701114654541
+      },
+      {
+        "index": 301,
+        "sender": 3,
+        "receiver": 1,
+        "program": 1,
+        "weight": 0.8489483594894409
+      },
+      {
+        "index": 305,
+        "sender": 3,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.8476954102516174
+      },
+      {
+        "index": 438,
+        "sender": 4,
+        "receiver": 4,
+        "program": 6,
+        "weight": 0.8134174346923828
+      },
+      {
+        "index": 177,
+        "sender": 1,
+        "receiver": 6,
+        "program": 9,
+        "weight": 0.7924311757087708
+      },
+      {
+        "index": 56,
+        "sender": 0,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.3342353403568268
+      },
+      {
+        "index": 500,
+        "sender": 5,
+        "receiver": 1,
+        "program": 8,
+        "weight": 0.33294397592544556
+      },
+      {
+        "index": 132,
+        "sender": 1,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.3272445797920227
+      },
+      {
+        "index": 417,
+        "sender": 4,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.3226563036441803
+      },
+      {
+        "index": 70,
+        "sender": 0,
+        "receiver": 5,
+        "program": 10,
+        "weight": 0.3145163059234619
+      },
+      {
+        "index": 619,
+        "sender": 6,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.3017682135105133
+      },
+      {
+        "index": 167,
+        "sender": 1,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.2952466309070587
+      },
+      {
+        "index": 521,
+        "sender": 5,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.2923527956008911
+      },
+      {
+        "index": 694,
+        "sender": 7,
+        "receiver": 1,
+        "program": 10,
+        "weight": 0.2858102321624756
+      },
+      {
+        "index": 252,
+        "sender": 2,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.25187382102012634
+      },
+      {
+        "index": 2,
+        "sender": 0,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.2497030645608902
+      },
+      {
+        "index": 477,
+        "sender": 4,
+        "receiver": 7,
+        "program": 9,
+        "weight": 0.23608244955539703
+      },
+      {
+        "index": 760,
+        "sender": 7,
+        "receiver": 7,
+        "program": 4,
+        "weight": 7.850679217824563e-09
+      },
+      {
+        "index": 761,
+        "sender": 7,
+        "receiver": 7,
+        "program": 5,
+        "weight": 7.850679217824563e-09
+      }
+    ]
+  },
+  "B": {
+    "top_20_precision": 1.0,
+    "top_20_recall": 0.4166666666666667,
+    "top_50_precision": 0.96,
+    "top_50_recall": 1.0,
+    "learned_top_edges": [
+      {
+        "index": 505,
+        "sender": 5,
+        "receiver": 2,
+        "program": 1,
+        "weight": 0.8974853754043579
+      },
+      {
+        "index": 296,
+        "sender": 3,
+        "receiver": 0,
+        "program": 8,
+        "weight": 0.8875551819801331
+      },
+      {
+        "index": 528,
+        "sender": 5,
+        "receiver": 4,
+        "program": 0,
+        "weight": 0.8812823295593262
+      },
+      {
+        "index": 695,
+        "sender": 7,
+        "receiver": 1,
+        "program": 11,
+        "weight": 0.8746092319488525
+      },
+      {
+        "index": 202,
+        "sender": 2,
+        "receiver": 0,
+        "program": 10,
+        "weight": 0.8660461902618408
+      },
+      {
+        "index": 137,
+        "sender": 1,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.8537816405296326
+      },
+      {
+        "index": 221,
+        "sender": 2,
+        "receiver": 2,
+        "program": 5,
+        "weight": 0.8358348608016968
+      },
+      {
+        "index": 375,
+        "sender": 3,
+        "receiver": 7,
+        "program": 3,
+        "weight": 0.8357340097427368
+      },
+      {
+        "index": 28,
+        "sender": 0,
+        "receiver": 2,
+        "program": 4,
+        "weight": 0.8341259956359863
+      },
+      {
+        "index": 7,
+        "sender": 0,
+        "receiver": 0,
+        "program": 7,
+        "weight": 0.8319963812828064
+      },
+      {
+        "index": 638,
+        "sender": 6,
+        "receiver": 5,
+        "program": 2,
+        "weight": 0.831957221031189
+      },
+      {
+        "index": 747,
+        "sender": 7,
+        "receiver": 6,
+        "program": 3,
+        "weight": 0.826194167137146
+      },
+      {
+        "index": 127,
+        "sender": 1,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.7995583415031433
+      },
+      {
+        "index": 755,
+        "sender": 7,
+        "receiver": 6,
+        "program": 11,
+        "weight": 0.7947112917900085
+      },
+      {
+        "index": 347,
+        "sender": 3,
+        "receiver": 4,
+        "program": 11,
+        "weight": 0.7940101623535156
+      },
+      {
+        "index": 762,
+        "sender": 7,
+        "receiver": 7,
+        "program": 6,
+        "weight": 0.7883598208427429
+      },
+      {
+        "index": 246,
+        "sender": 2,
+        "receiver": 4,
+        "program": 6,
+        "weight": 0.784263014793396
+      },
+      {
+        "index": 527,
+        "sender": 5,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.7657590508460999
+      },
+      {
+        "index": 279,
+        "sender": 2,
+        "receiver": 7,
+        "program": 3,
+        "weight": 0.7615545392036438
+      },
+      {
+        "index": 36,
+        "sender": 0,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.7511733770370483
+      },
+      {
+        "index": 624,
+        "sender": 6,
+        "receiver": 4,
+        "program": 0,
+        "weight": 0.7429781556129456
+      },
+      {
+        "index": 216,
+        "sender": 2,
+        "receiver": 2,
+        "program": 0,
+        "weight": 0.7423490285873413
+      },
+      {
+        "index": 409,
+        "sender": 4,
+        "receiver": 2,
+        "program": 1,
+        "weight": 0.7341387867927551
+      },
+      {
+        "index": 32,
+        "sender": 0,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.7180538177490234
+      },
+      {
+        "index": 719,
+        "sender": 7,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.7151393890380859
+      },
+      {
+        "index": 304,
+        "sender": 3,
+        "receiver": 1,
+        "program": 4,
+        "weight": 0.7129871845245361
+      },
+      {
+        "index": 321,
+        "sender": 3,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.6989920139312744
+      },
+      {
+        "index": 690,
+        "sender": 7,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.687404453754425
+      },
+      {
+        "index": 16,
+        "sender": 0,
+        "receiver": 1,
+        "program": 4,
+        "weight": 0.6872742772102356
+      },
+      {
+        "index": 336,
+        "sender": 3,
+        "receiver": 4,
+        "program": 0,
+        "weight": 0.6823053956031799
+      },
+      {
+        "index": 247,
+        "sender": 2,
+        "receiver": 4,
+        "program": 7,
+        "weight": 0.6809888482093811
+      },
+      {
+        "index": 655,
+        "sender": 6,
+        "receiver": 6,
+        "program": 7,
+        "weight": 0.6713386178016663
+      },
+      {
+        "index": 569,
+        "sender": 5,
+        "receiver": 7,
+        "program": 5,
+        "weight": 0.6658400893211365
+      },
+      {
+        "index": 86,
+        "sender": 0,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.6395900249481201
+      },
+      {
+        "index": 87,
+        "sender": 0,
+        "receiver": 7,
+        "program": 3,
+        "weight": 0.6292100548744202
+      },
+      {
+        "index": 349,
+        "sender": 3,
+        "receiver": 5,
+        "program": 1,
+        "weight": 0.6202869415283203
+      },
+      {
+        "index": 715,
+        "sender": 7,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.28698039054870605
+      },
+      {
+        "index": 515,
+        "sender": 5,
+        "receiver": 2,
+        "program": 11,
+        "weight": 0.27038949728012085
+      },
+      {
+        "index": 659,
+        "sender": 6,
+        "receiver": 6,
+        "program": 11,
+        "weight": 0.27032220363616943
+      },
+      {
+        "index": 676,
+        "sender": 7,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.2640196681022644
+      },
+      {
+        "index": 428,
+        "sender": 4,
+        "receiver": 3,
+        "program": 8,
+        "weight": 0.2635675072669983
+      },
+      {
+        "index": 65,
+        "sender": 0,
+        "receiver": 5,
+        "program": 5,
+        "weight": 0.25881698727607727
+      },
+      {
+        "index": 113,
+        "sender": 1,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.23761175572872162
+      },
+      {
+        "index": 677,
+        "sender": 7,
+        "receiver": 0,
+        "program": 5,
+        "weight": 0.23605887591838837
+      },
+      {
+        "index": 440,
+        "sender": 4,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.22876456379890442
+      },
+      {
+        "index": 415,
+        "sender": 4,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.2285701334476471
+      },
+      {
+        "index": 401,
+        "sender": 4,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.2236049324274063
+      },
+      {
+        "index": 15,
+        "sender": 0,
+        "receiver": 1,
+        "program": 3,
+        "weight": 0.22007063031196594
+      },
+      {
+        "index": 674,
+        "sender": 7,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.22006948292255402
+      },
+      {
+        "index": 384,
+        "sender": 4,
+        "receiver": 0,
+        "program": 0,
+        "weight": 0.2147914469242096
+      }
+    ],
+    "truth_top_edges": [
+      {
+        "index": 505,
+        "sender": 5,
+        "receiver": 2,
+        "program": 1,
+        "weight": 1.16623854637146
+      },
+      {
+        "index": 528,
+        "sender": 5,
+        "receiver": 4,
+        "program": 0,
+        "weight": 1.148905873298645
+      },
+      {
+        "index": 296,
+        "sender": 3,
+        "receiver": 0,
+        "program": 8,
+        "weight": 1.147354245185852
+      },
+      {
+        "index": 695,
+        "sender": 7,
+        "receiver": 1,
+        "program": 11,
+        "weight": 1.1377341747283936
+      },
+      {
+        "index": 202,
+        "sender": 2,
+        "receiver": 0,
+        "program": 10,
+        "weight": 1.1174299716949463
+      },
+      {
+        "index": 747,
+        "sender": 7,
+        "receiver": 6,
+        "program": 3,
+        "weight": 1.1072375774383545
+      },
+      {
+        "index": 137,
+        "sender": 1,
+        "receiver": 3,
+        "program": 5,
+        "weight": 1.1021487712860107
+      },
+      {
+        "index": 638,
+        "sender": 6,
+        "receiver": 5,
+        "program": 2,
+        "weight": 1.1014456748962402
+      },
+      {
+        "index": 375,
+        "sender": 3,
+        "receiver": 7,
+        "program": 3,
+        "weight": 1.088212013244629
+      },
+      {
+        "index": 221,
+        "sender": 2,
+        "receiver": 2,
+        "program": 5,
+        "weight": 1.0781927108764648
+      },
+      {
+        "index": 28,
+        "sender": 0,
+        "receiver": 2,
+        "program": 4,
+        "weight": 1.0743829011917114
+      },
+      {
+        "index": 7,
+        "sender": 0,
+        "receiver": 0,
+        "program": 7,
+        "weight": 1.070448875427246
+      },
+      {
+        "index": 755,
+        "sender": 7,
+        "receiver": 6,
+        "program": 11,
+        "weight": 1.064235806465149
+      },
+      {
+        "index": 762,
+        "sender": 7,
+        "receiver": 7,
+        "program": 6,
+        "weight": 1.0575640201568604
+      },
+      {
+        "index": 127,
+        "sender": 1,
+        "receiver": 2,
+        "program": 7,
+        "weight": 1.0281381607055664
+      },
+      {
+        "index": 347,
+        "sender": 3,
+        "receiver": 4,
+        "program": 11,
+        "weight": 1.0239163637161255
+      },
+      {
+        "index": 246,
+        "sender": 2,
+        "receiver": 4,
+        "program": 6,
+        "weight": 1.0099045038223267
+      },
+      {
+        "index": 527,
+        "sender": 5,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.9891955852508545
+      },
+      {
+        "index": 279,
+        "sender": 2,
+        "receiver": 7,
+        "program": 3,
+        "weight": 0.9845851063728333
+      },
+      {
+        "index": 624,
+        "sender": 6,
+        "receiver": 4,
+        "program": 0,
+        "weight": 0.965017557144165
+      },
+      {
+        "index": 36,
+        "sender": 0,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.9628841280937195
+      },
+      {
+        "index": 216,
+        "sender": 2,
+        "receiver": 2,
+        "program": 0,
+        "weight": 0.9512031674385071
+      },
+      {
+        "index": 409,
+        "sender": 4,
+        "receiver": 2,
+        "program": 1,
+        "weight": 0.9414923191070557
+      },
+      {
+        "index": 719,
+        "sender": 7,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.9236472845077515
+      },
+      {
+        "index": 32,
+        "sender": 0,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.9172222018241882
+      },
+      {
+        "index": 304,
+        "sender": 3,
+        "receiver": 1,
+        "program": 4,
+        "weight": 0.9117668867111206
+      },
+      {
+        "index": 321,
+        "sender": 3,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.8936624526977539
+      },
+      {
+        "index": 655,
+        "sender": 6,
+        "receiver": 6,
+        "program": 7,
+        "weight": 0.8889268040657043
+      },
+      {
+        "index": 690,
+        "sender": 7,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.8821972012519836
+      },
+      {
+        "index": 16,
+        "sender": 0,
+        "receiver": 1,
+        "program": 4,
+        "weight": 0.875347912311554
+      },
+      {
+        "index": 336,
+        "sender": 3,
+        "receiver": 4,
+        "program": 0,
+        "weight": 0.8724231719970703
+      },
+      {
+        "index": 569,
+        "sender": 5,
+        "receiver": 7,
+        "program": 5,
+        "weight": 0.8712607026100159
+      },
+      {
+        "index": 247,
+        "sender": 2,
+        "receiver": 4,
+        "program": 7,
+        "weight": 0.8692160248756409
+      },
+      {
+        "index": 86,
+        "sender": 0,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.8165279030799866
+      },
+      {
+        "index": 87,
+        "sender": 0,
+        "receiver": 7,
+        "program": 3,
+        "weight": 0.8013800382614136
+      },
+      {
+        "index": 349,
+        "sender": 3,
+        "receiver": 5,
+        "program": 1,
+        "weight": 0.7911530137062073
+      },
+      {
+        "index": 715,
+        "sender": 7,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.34316298365592957
+      },
+      {
+        "index": 659,
+        "sender": 6,
+        "receiver": 6,
+        "program": 11,
+        "weight": 0.3342435657978058
+      },
+      {
+        "index": 515,
+        "sender": 5,
+        "receiver": 2,
+        "program": 11,
+        "weight": 0.3155531585216522
+      },
+      {
+        "index": 676,
+        "sender": 7,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.308500736951828
+      },
+      {
+        "index": 428,
+        "sender": 4,
+        "receiver": 3,
+        "program": 8,
+        "weight": 0.3066219389438629
+      },
+      {
+        "index": 65,
+        "sender": 0,
+        "receiver": 5,
+        "program": 5,
+        "weight": 0.30194562673568726
+      },
+      {
+        "index": 677,
+        "sender": 7,
+        "receiver": 0,
+        "program": 5,
+        "weight": 0.26776304841041565
+      },
+      {
+        "index": 113,
+        "sender": 1,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.2670050859451294
+      },
+      {
+        "index": 440,
+        "sender": 4,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.26495450735092163
+      },
+      {
+        "index": 415,
+        "sender": 4,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.2585618495941162
+      },
+      {
+        "index": 401,
+        "sender": 4,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.2528684437274933
+      },
+      {
+        "index": 674,
+        "sender": 7,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.2501658797264099
+      },
+      {
+        "index": 760,
+        "sender": 7,
+        "receiver": 7,
+        "program": 4,
+        "weight": 7.878656838045117e-09
+      },
+      {
+        "index": 761,
+        "sender": 7,
+        "receiver": 7,
+        "program": 5,
+        "weight": 7.878656838045117e-09
+      }
+    ]
+  },
+  "C": {
+    "top_20_precision": 1.0,
+    "top_20_recall": 0.4166666666666667,
+    "top_50_precision": 0.92,
+    "top_50_recall": 0.9583333333333334,
+    "learned_top_edges": [
+      {
+        "index": 165,
+        "sender": 1,
+        "receiver": 5,
+        "program": 9,
+        "weight": 0.781102180480957
+      },
+      {
+        "index": 227,
+        "sender": 2,
+        "receiver": 2,
+        "program": 11,
+        "weight": 0.7791085839271545
+      },
+      {
+        "index": 277,
+        "sender": 2,
+        "receiver": 7,
+        "program": 1,
+        "weight": 0.7773942351341248
+      },
+      {
+        "index": 290,
+        "sender": 3,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.7746060490608215
+      },
+      {
+        "index": 333,
+        "sender": 3,
+        "receiver": 3,
+        "program": 9,
+        "weight": 0.7714372873306274
+      },
+      {
+        "index": 609,
+        "sender": 6,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.7591407299041748
+      },
+      {
+        "index": 623,
+        "sender": 6,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.7537420392036438
+      },
+      {
+        "index": 378,
+        "sender": 3,
+        "receiver": 7,
+        "program": 6,
+        "weight": 0.7415655851364136
+      },
+      {
+        "index": 553,
+        "sender": 5,
+        "receiver": 6,
+        "program": 1,
+        "weight": 0.7333969473838806
+      },
+      {
+        "index": 548,
+        "sender": 5,
+        "receiver": 5,
+        "program": 8,
+        "weight": 0.7278397679328918
+      },
+      {
+        "index": 494,
+        "sender": 5,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.7224764227867126
+      },
+      {
+        "index": 190,
+        "sender": 1,
+        "receiver": 7,
+        "program": 10,
+        "weight": 0.711536705493927
+      },
+      {
+        "index": 196,
+        "sender": 2,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.7103031277656555
+      },
+      {
+        "index": 563,
+        "sender": 5,
+        "receiver": 6,
+        "program": 11,
+        "weight": 0.7055329084396362
+      },
+      {
+        "index": 205,
+        "sender": 2,
+        "receiver": 1,
+        "program": 1,
+        "weight": 0.7043177485466003
+      },
+      {
+        "index": 356,
+        "sender": 3,
+        "receiver": 5,
+        "program": 8,
+        "weight": 0.6894280910491943
+      },
+      {
+        "index": 359,
+        "sender": 3,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.6793875694274902
+      },
+      {
+        "index": 660,
+        "sender": 6,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.6691163778305054
+      },
+      {
+        "index": 54,
+        "sender": 0,
+        "receiver": 4,
+        "program": 6,
+        "weight": 0.6690908074378967
+      },
+      {
+        "index": 269,
+        "sender": 2,
+        "receiver": 6,
+        "program": 5,
+        "weight": 0.6640992164611816
+      },
+      {
+        "index": 474,
+        "sender": 4,
+        "receiver": 7,
+        "program": 6,
+        "weight": 0.6457359194755554
+      },
+      {
+        "index": 217,
+        "sender": 2,
+        "receiver": 2,
+        "program": 1,
+        "weight": 0.6445788145065308
+      },
+      {
+        "index": 654,
+        "sender": 6,
+        "receiver": 6,
+        "program": 6,
+        "weight": 0.6296932101249695
+      },
+      {
+        "index": 346,
+        "sender": 3,
+        "receiver": 4,
+        "program": 10,
+        "weight": 0.6213381290435791
+      },
+      {
+        "index": 222,
+        "sender": 2,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.6137130260467529
+      },
+      {
+        "index": 462,
+        "sender": 4,
+        "receiver": 6,
+        "program": 6,
+        "weight": 0.6087365746498108
+      },
+      {
+        "index": 46,
+        "sender": 0,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.6032971143722534
+      },
+      {
+        "index": 644,
+        "sender": 6,
+        "receiver": 5,
+        "program": 8,
+        "weight": 0.6023174524307251
+      },
+      {
+        "index": 398,
+        "sender": 4,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.593321681022644
+      },
+      {
+        "index": 363,
+        "sender": 3,
+        "receiver": 6,
+        "program": 3,
+        "weight": 0.5799692273139954
+      },
+      {
+        "index": 464,
+        "sender": 4,
+        "receiver": 6,
+        "program": 8,
+        "weight": 0.5700042247772217
+      },
+      {
+        "index": 206,
+        "sender": 2,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.5642840266227722
+      },
+      {
+        "index": 511,
+        "sender": 5,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.5623003244400024
+      },
+      {
+        "index": 311,
+        "sender": 3,
+        "receiver": 1,
+        "program": 11,
+        "weight": 0.5559847354888916
+      },
+      {
+        "index": 714,
+        "sender": 7,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.5554002523422241
+      },
+      {
+        "index": 682,
+        "sender": 7,
+        "receiver": 0,
+        "program": 10,
+        "weight": 0.5510770082473755
+      },
+      {
+        "index": 417,
+        "sender": 4,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.32165443897247314
+      },
+      {
+        "index": 167,
+        "sender": 1,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.31338903307914734
+      },
+      {
+        "index": 500,
+        "sender": 5,
+        "receiver": 1,
+        "program": 8,
+        "weight": 0.3128637671470642
+      },
+      {
+        "index": 56,
+        "sender": 0,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.2955590784549713
+      },
+      {
+        "index": 252,
+        "sender": 2,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.28302040696144104
+      },
+      {
+        "index": 694,
+        "sender": 7,
+        "receiver": 1,
+        "program": 10,
+        "weight": 0.26503944396972656
+      },
+      {
+        "index": 15,
+        "sender": 0,
+        "receiver": 1,
+        "program": 3,
+        "weight": 0.26461341977119446
+      },
+      {
+        "index": 619,
+        "sender": 6,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.2639881670475006
+      },
+      {
+        "index": 384,
+        "sender": 4,
+        "receiver": 0,
+        "program": 0,
+        "weight": 0.2596796452999115
+      },
+      {
+        "index": 521,
+        "sender": 5,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.25687849521636963
+      },
+      {
+        "index": 2,
+        "sender": 0,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.2548663914203644
+      },
+      {
+        "index": 238,
+        "sender": 2,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.2548198401927948
+      },
+      {
+        "index": 132,
+        "sender": 1,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.25473740696907043
+      },
+      {
+        "index": 92,
+        "sender": 0,
+        "receiver": 7,
+        "program": 8,
+        "weight": 0.25327616930007935
+      }
+    ],
+    "truth_top_edges": [
+      {
+        "index": 165,
+        "sender": 1,
+        "receiver": 5,
+        "program": 9,
+        "weight": 1.1641331911087036
+      },
+      {
+        "index": 277,
+        "sender": 2,
+        "receiver": 7,
+        "program": 1,
+        "weight": 1.162799596786499
+      },
+      {
+        "index": 227,
+        "sender": 2,
+        "receiver": 2,
+        "program": 11,
+        "weight": 1.154159426689148
+      },
+      {
+        "index": 290,
+        "sender": 3,
+        "receiver": 0,
+        "program": 2,
+        "weight": 1.1493290662765503
+      },
+      {
+        "index": 333,
+        "sender": 3,
+        "receiver": 3,
+        "program": 9,
+        "weight": 1.1427804231643677
+      },
+      {
+        "index": 609,
+        "sender": 6,
+        "receiver": 2,
+        "program": 9,
+        "weight": 1.1324892044067383
+      },
+      {
+        "index": 623,
+        "sender": 6,
+        "receiver": 3,
+        "program": 11,
+        "weight": 1.1257449388504028
+      },
+      {
+        "index": 378,
+        "sender": 3,
+        "receiver": 7,
+        "program": 6,
+        "weight": 1.1083319187164307
+      },
+      {
+        "index": 553,
+        "sender": 5,
+        "receiver": 6,
+        "program": 1,
+        "weight": 1.107324481010437
+      },
+      {
+        "index": 548,
+        "sender": 5,
+        "receiver": 5,
+        "program": 8,
+        "weight": 1.0840963125228882
+      },
+      {
+        "index": 494,
+        "sender": 5,
+        "receiver": 1,
+        "program": 2,
+        "weight": 1.072542667388916
+      },
+      {
+        "index": 190,
+        "sender": 1,
+        "receiver": 7,
+        "program": 10,
+        "weight": 1.0670360326766968
+      },
+      {
+        "index": 563,
+        "sender": 5,
+        "receiver": 6,
+        "program": 11,
+        "weight": 1.062896490097046
+      },
+      {
+        "index": 196,
+        "sender": 2,
+        "receiver": 0,
+        "program": 4,
+        "weight": 1.0484428405761719
+      },
+      {
+        "index": 205,
+        "sender": 2,
+        "receiver": 1,
+        "program": 1,
+        "weight": 1.0394091606140137
+      },
+      {
+        "index": 660,
+        "sender": 6,
+        "receiver": 7,
+        "program": 0,
+        "weight": 1.033969521522522
+      },
+      {
+        "index": 356,
+        "sender": 3,
+        "receiver": 5,
+        "program": 8,
+        "weight": 1.0179351568222046
+      },
+      {
+        "index": 359,
+        "sender": 3,
+        "receiver": 5,
+        "program": 11,
+        "weight": 1.0026121139526367
+      },
+      {
+        "index": 54,
+        "sender": 0,
+        "receiver": 4,
+        "program": 6,
+        "weight": 0.9851232767105103
+      },
+      {
+        "index": 269,
+        "sender": 2,
+        "receiver": 6,
+        "program": 5,
+        "weight": 0.9823490381240845
+      },
+      {
+        "index": 654,
+        "sender": 6,
+        "receiver": 6,
+        "program": 6,
+        "weight": 0.9660606980323792
+      },
+      {
+        "index": 474,
+        "sender": 4,
+        "receiver": 7,
+        "program": 6,
+        "weight": 0.9584065079689026
+      },
+      {
+        "index": 217,
+        "sender": 2,
+        "receiver": 2,
+        "program": 1,
+        "weight": 0.9442978501319885
+      },
+      {
+        "index": 346,
+        "sender": 3,
+        "receiver": 4,
+        "program": 10,
+        "weight": 0.9090104699134827
+      },
+      {
+        "index": 462,
+        "sender": 4,
+        "receiver": 6,
+        "program": 6,
+        "weight": 0.8989947438240051
+      },
+      {
+        "index": 644,
+        "sender": 6,
+        "receiver": 5,
+        "program": 8,
+        "weight": 0.8984559774398804
+      },
+      {
+        "index": 222,
+        "sender": 2,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.8963495492935181
+      },
+      {
+        "index": 46,
+        "sender": 0,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.8820719718933105
+      },
+      {
+        "index": 398,
+        "sender": 4,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.8668482303619385
+      },
+      {
+        "index": 363,
+        "sender": 3,
+        "receiver": 6,
+        "program": 3,
+        "weight": 0.8530954122543335
+      },
+      {
+        "index": 464,
+        "sender": 4,
+        "receiver": 6,
+        "program": 8,
+        "weight": 0.8379950523376465
+      },
+      {
+        "index": 206,
+        "sender": 2,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.8204302191734314
+      },
+      {
+        "index": 511,
+        "sender": 5,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.8185777068138123
+      },
+      {
+        "index": 714,
+        "sender": 7,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.8150444030761719
+      },
+      {
+        "index": 682,
+        "sender": 7,
+        "receiver": 0,
+        "program": 10,
+        "weight": 0.8118600845336914
+      },
+      {
+        "index": 311,
+        "sender": 3,
+        "receiver": 1,
+        "program": 11,
+        "weight": 0.8082278966903687
+      },
+      {
+        "index": 417,
+        "sender": 4,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.35037434101104736
+      },
+      {
+        "index": 167,
+        "sender": 1,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.34841346740722656
+      },
+      {
+        "index": 500,
+        "sender": 5,
+        "receiver": 1,
+        "program": 8,
+        "weight": 0.33567914366722107
+      },
+      {
+        "index": 252,
+        "sender": 2,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.3118019998073578
+      },
+      {
+        "index": 56,
+        "sender": 0,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.3061470091342926
+      },
+      {
+        "index": 694,
+        "sender": 7,
+        "receiver": 1,
+        "program": 10,
+        "weight": 0.2783864438533783
+      },
+      {
+        "index": 619,
+        "sender": 6,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.2686646282672882
+      },
+      {
+        "index": 477,
+        "sender": 4,
+        "receiver": 7,
+        "program": 9,
+        "weight": 0.2683716118335724
+      },
+      {
+        "index": 2,
+        "sender": 0,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.268329381942749
+      },
+      {
+        "index": 521,
+        "sender": 5,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.2573401927947998
+      },
+      {
+        "index": 132,
+        "sender": 1,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.24253235757350922
+      },
+      {
+        "index": 70,
+        "sender": 0,
+        "receiver": 5,
+        "program": 10,
+        "weight": 0.2386748194694519
+      },
+      {
+        "index": 760,
+        "sender": 7,
+        "receiver": 7,
+        "program": 4,
+        "weight": 7.871706841910964e-09
+      },
+      {
+        "index": 761,
+        "sender": 7,
+        "receiver": 7,
+        "program": 5,
+        "weight": 7.871706841910964e-09
+      }
+    ]
+  },
+  "D": {
+    "top_20_precision": 1.0,
+    "top_20_recall": 0.4166666666666667,
+    "top_50_precision": 0.72,
+    "top_50_recall": 0.75,
+    "learned_top_edges": [
+      {
+        "index": 107,
+        "sender": 1,
+        "receiver": 0,
+        "program": 11,
+        "weight": 0.6231497526168823
+      },
+      {
+        "index": 534,
+        "sender": 5,
+        "receiver": 4,
+        "program": 6,
+        "weight": 0.6186483502388
+      },
+      {
+        "index": 472,
+        "sender": 4,
+        "receiver": 7,
+        "program": 4,
+        "weight": 0.6140448451042175
+      },
+      {
+        "index": 186,
+        "sender": 1,
+        "receiver": 7,
+        "program": 6,
+        "weight": 0.6127378940582275
+      },
+      {
+        "index": 362,
+        "sender": 3,
+        "receiver": 6,
+        "program": 2,
+        "weight": 0.6088299751281738
+      },
+      {
+        "index": 506,
+        "sender": 5,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.6039571762084961
+      },
+      {
+        "index": 461,
+        "sender": 4,
+        "receiver": 6,
+        "program": 5,
+        "weight": 0.603730320930481
+      },
+      {
+        "index": 490,
+        "sender": 5,
+        "receiver": 0,
+        "program": 10,
+        "weight": 0.5994232296943665
+      },
+      {
+        "index": 667,
+        "sender": 6,
+        "receiver": 7,
+        "program": 7,
+        "weight": 0.5918988585472107
+      },
+      {
+        "index": 656,
+        "sender": 6,
+        "receiver": 6,
+        "program": 8,
+        "weight": 0.5877873301506042
+      },
+      {
+        "index": 142,
+        "sender": 1,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.580368161201477
+      },
+      {
+        "index": 421,
+        "sender": 4,
+        "receiver": 3,
+        "program": 1,
+        "weight": 0.5761190056800842
+      },
+      {
+        "index": 734,
+        "sender": 7,
+        "receiver": 5,
+        "program": 2,
+        "weight": 0.5682347416877747
+      },
+      {
+        "index": 354,
+        "sender": 3,
+        "receiver": 5,
+        "program": 6,
+        "weight": 0.5677534937858582
+      },
+      {
+        "index": 533,
+        "sender": 5,
+        "receiver": 4,
+        "program": 5,
+        "weight": 0.5650491118431091
+      },
+      {
+        "index": 91,
+        "sender": 0,
+        "receiver": 7,
+        "program": 7,
+        "weight": 0.5626255869865417
+      },
+      {
+        "index": 276,
+        "sender": 2,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.5528742074966431
+      },
+      {
+        "index": 245,
+        "sender": 2,
+        "receiver": 4,
+        "program": 5,
+        "weight": 0.5408691167831421
+      },
+      {
+        "index": 444,
+        "sender": 4,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.5350320339202881
+      },
+      {
+        "index": 508,
+        "sender": 5,
+        "receiver": 2,
+        "program": 4,
+        "weight": 0.5321994423866272
+      },
+      {
+        "index": 735,
+        "sender": 7,
+        "receiver": 5,
+        "program": 3,
+        "weight": 0.5209057331085205
+      },
+      {
+        "index": 192,
+        "sender": 2,
+        "receiver": 0,
+        "program": 0,
+        "weight": 0.5164147615432739
+      },
+      {
+        "index": 530,
+        "sender": 5,
+        "receiver": 4,
+        "program": 2,
+        "weight": 0.5157350301742554
+      },
+      {
+        "index": 501,
+        "sender": 5,
+        "receiver": 1,
+        "program": 9,
+        "weight": 0.5110411047935486
+      },
+      {
+        "index": 568,
+        "sender": 5,
+        "receiver": 7,
+        "program": 4,
+        "weight": 0.4984171986579895
+      },
+      {
+        "index": 171,
+        "sender": 1,
+        "receiver": 6,
+        "program": 3,
+        "weight": 0.4963799715042114
+      },
+      {
+        "index": 129,
+        "sender": 1,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.4845607876777649
+      },
+      {
+        "index": 645,
+        "sender": 6,
+        "receiver": 5,
+        "program": 9,
+        "weight": 0.4811652898788452
+      },
+      {
+        "index": 596,
+        "sender": 6,
+        "receiver": 1,
+        "program": 8,
+        "weight": 0.4683138132095337
+      },
+      {
+        "index": 99,
+        "sender": 1,
+        "receiver": 0,
+        "program": 3,
+        "weight": 0.4663192927837372
+      },
+      {
+        "index": 608,
+        "sender": 6,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.4638291001319885
+      },
+      {
+        "index": 249,
+        "sender": 2,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.4605838656425476
+      },
+      {
+        "index": 324,
+        "sender": 3,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.4577777683734894
+      },
+      {
+        "index": 26,
+        "sender": 0,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.45548585057258606
+      },
+      {
+        "index": 18,
+        "sender": 0,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.4547630846500397
+      },
+      {
+        "index": 317,
+        "sender": 3,
+        "receiver": 2,
+        "program": 5,
+        "weight": 0.4543033838272095
+      },
+      {
+        "index": 650,
+        "sender": 6,
+        "receiver": 6,
+        "program": 2,
+        "weight": 0.2795265018939972
+      },
+      {
+        "index": 125,
+        "sender": 1,
+        "receiver": 2,
+        "program": 5,
+        "weight": 0.2780359089374542
+      },
+      {
+        "index": 278,
+        "sender": 2,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.27679112553596497
+      },
+      {
+        "index": 332,
+        "sender": 3,
+        "receiver": 3,
+        "program": 8,
+        "weight": 0.27358904480934143
+      },
+      {
+        "index": 413,
+        "sender": 4,
+        "receiver": 2,
+        "program": 5,
+        "weight": 0.27036038041114807
+      },
+      {
+        "index": 126,
+        "sender": 1,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.26969796419143677
+      },
+      {
+        "index": 489,
+        "sender": 5,
+        "receiver": 0,
+        "program": 9,
+        "weight": 0.26934728026390076
+      },
+      {
+        "index": 392,
+        "sender": 4,
+        "receiver": 0,
+        "program": 8,
+        "weight": 0.2690166234970093
+      },
+      {
+        "index": 38,
+        "sender": 0,
+        "receiver": 3,
+        "program": 2,
+        "weight": 0.2681489586830139
+      },
+      {
+        "index": 662,
+        "sender": 6,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.2671586275100708
+      },
+      {
+        "index": 351,
+        "sender": 3,
+        "receiver": 5,
+        "program": 3,
+        "weight": 0.2666741609573364
+      },
+      {
+        "index": 185,
+        "sender": 1,
+        "receiver": 7,
+        "program": 5,
+        "weight": 0.26589953899383545
+      },
+      {
+        "index": 74,
+        "sender": 0,
+        "receiver": 6,
+        "program": 2,
+        "weight": 0.2581888735294342
+      },
+      {
+        "index": 369,
+        "sender": 3,
+        "receiver": 6,
+        "program": 9,
+        "weight": 0.2571342885494232
+      }
+    ],
+    "truth_top_edges": [
+      {
+        "index": 107,
+        "sender": 1,
+        "receiver": 0,
+        "program": 11,
+        "weight": 1.1806367635726929
+      },
+      {
+        "index": 534,
+        "sender": 5,
+        "receiver": 4,
+        "program": 6,
+        "weight": 1.1638792753219604
+      },
+      {
+        "index": 186,
+        "sender": 1,
+        "receiver": 7,
+        "program": 6,
+        "weight": 1.1571733951568604
+      },
+      {
+        "index": 472,
+        "sender": 4,
+        "receiver": 7,
+        "program": 4,
+        "weight": 1.1543049812316895
+      },
+      {
+        "index": 362,
+        "sender": 3,
+        "receiver": 6,
+        "program": 2,
+        "weight": 1.1439167261123657
+      },
+      {
+        "index": 506,
+        "sender": 5,
+        "receiver": 2,
+        "program": 2,
+        "weight": 1.135132074356079
+      },
+      {
+        "index": 461,
+        "sender": 4,
+        "receiver": 6,
+        "program": 5,
+        "weight": 1.1303759813308716
+      },
+      {
+        "index": 490,
+        "sender": 5,
+        "receiver": 0,
+        "program": 10,
+        "weight": 1.123321533203125
+      },
+      {
+        "index": 667,
+        "sender": 6,
+        "receiver": 7,
+        "program": 7,
+        "weight": 1.1048641204833984
+      },
+      {
+        "index": 656,
+        "sender": 6,
+        "receiver": 6,
+        "program": 8,
+        "weight": 1.094733715057373
+      },
+      {
+        "index": 142,
+        "sender": 1,
+        "receiver": 3,
+        "program": 10,
+        "weight": 1.0877031087875366
+      },
+      {
+        "index": 421,
+        "sender": 4,
+        "receiver": 3,
+        "program": 1,
+        "weight": 1.0736298561096191
+      },
+      {
+        "index": 354,
+        "sender": 3,
+        "receiver": 5,
+        "program": 6,
+        "weight": 1.05459725856781
+      },
+      {
+        "index": 734,
+        "sender": 7,
+        "receiver": 5,
+        "program": 2,
+        "weight": 1.0543553829193115
+      },
+      {
+        "index": 533,
+        "sender": 5,
+        "receiver": 4,
+        "program": 5,
+        "weight": 1.0459977388381958
+      },
+      {
+        "index": 91,
+        "sender": 0,
+        "receiver": 7,
+        "program": 7,
+        "weight": 1.0444546937942505
+      },
+      {
+        "index": 276,
+        "sender": 2,
+        "receiver": 7,
+        "program": 0,
+        "weight": 1.023130178451538
+      },
+      {
+        "index": 245,
+        "sender": 2,
+        "receiver": 4,
+        "program": 5,
+        "weight": 0.9984167218208313
+      },
+      {
+        "index": 444,
+        "sender": 4,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.9797561168670654
+      },
+      {
+        "index": 508,
+        "sender": 5,
+        "receiver": 2,
+        "program": 4,
+        "weight": 0.9764464497566223
+      },
+      {
+        "index": 735,
+        "sender": 7,
+        "receiver": 5,
+        "program": 3,
+        "weight": 0.9490835666656494
+      },
+      {
+        "index": 192,
+        "sender": 2,
+        "receiver": 0,
+        "program": 0,
+        "weight": 0.9434462189674377
+      },
+      {
+        "index": 530,
+        "sender": 5,
+        "receiver": 4,
+        "program": 2,
+        "weight": 0.9374271631240845
+      },
+      {
+        "index": 501,
+        "sender": 5,
+        "receiver": 1,
+        "program": 9,
+        "weight": 0.9315237998962402
+      },
+      {
+        "index": 568,
+        "sender": 5,
+        "receiver": 7,
+        "program": 4,
+        "weight": 0.8986919522285461
+      },
+      {
+        "index": 171,
+        "sender": 1,
+        "receiver": 6,
+        "program": 3,
+        "weight": 0.8967797160148621
+      },
+      {
+        "index": 129,
+        "sender": 1,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.8785498142242432
+      },
+      {
+        "index": 645,
+        "sender": 6,
+        "receiver": 5,
+        "program": 9,
+        "weight": 0.8577632904052734
+      },
+      {
+        "index": 596,
+        "sender": 6,
+        "receiver": 1,
+        "program": 8,
+        "weight": 0.8357843160629272
+      },
+      {
+        "index": 99,
+        "sender": 1,
+        "receiver": 0,
+        "program": 3,
+        "weight": 0.8333761692047119
+      },
+      {
+        "index": 608,
+        "sender": 6,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.8247889280319214
+      },
+      {
+        "index": 249,
+        "sender": 2,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.8196253180503845
+      },
+      {
+        "index": 324,
+        "sender": 3,
+        "receiver": 3,
+        "program": 0,
+        "weight": 0.8157116174697876
+      },
+      {
+        "index": 26,
+        "sender": 0,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.8095051646232605
+      },
+      {
+        "index": 317,
+        "sender": 3,
+        "receiver": 2,
+        "program": 5,
+        "weight": 0.8083090782165527
+      },
+      {
+        "index": 18,
+        "sender": 0,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.8081545233726501
+      },
+      {
+        "index": 440,
+        "sender": 4,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.3536396324634552
+      },
+      {
+        "index": 428,
+        "sender": 4,
+        "receiver": 3,
+        "program": 8,
+        "weight": 0.34150460362434387
+      },
+      {
+        "index": 674,
+        "sender": 7,
+        "receiver": 0,
+        "program": 2,
+        "weight": 0.3326868414878845
+      },
+      {
+        "index": 515,
+        "sender": 5,
+        "receiver": 2,
+        "program": 11,
+        "weight": 0.32044434547424316
+      },
+      {
+        "index": 401,
+        "sender": 4,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.31431204080581665
+      },
+      {
+        "index": 113,
+        "sender": 1,
+        "receiver": 1,
+        "program": 5,
+        "weight": 0.29204919934272766
+      },
+      {
+        "index": 715,
+        "sender": 7,
+        "receiver": 3,
+        "program": 7,
+        "weight": 0.28316834568977356
+      },
+      {
+        "index": 677,
+        "sender": 7,
+        "receiver": 0,
+        "program": 5,
+        "weight": 0.27615904808044434
+      },
+      {
+        "index": 676,
+        "sender": 7,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.26690369844436646
+      },
+      {
+        "index": 659,
+        "sender": 6,
+        "receiver": 6,
+        "program": 11,
+        "weight": 0.25327491760253906
+      },
+      {
+        "index": 415,
+        "sender": 4,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.2526955306529999
+      },
+      {
+        "index": 65,
+        "sender": 0,
+        "receiver": 5,
+        "program": 5,
+        "weight": 0.2417619228363037
+      },
+      {
+        "index": 760,
+        "sender": 7,
+        "receiver": 7,
+        "program": 4,
+        "weight": 7.97946775321634e-09
+      },
+      {
+        "index": 761,
+        "sender": 7,
+        "receiver": 7,
+        "program": 5,
+        "weight": 7.97946775321634e-09
+      }
+    ]
+  },
+  "E": {
+    "top_20_precision": 1.0,
+    "top_20_recall": 0.4166666666666667,
+    "top_50_precision": 0.96,
+    "top_50_recall": 1.0,
+    "learned_top_edges": [
+      {
+        "index": 650,
+        "sender": 6,
+        "receiver": 6,
+        "program": 2,
+        "weight": 1.1508032083511353
+      },
+      {
+        "index": 278,
+        "sender": 2,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.134868860244751
+      },
+      {
+        "index": 332,
+        "sender": 3,
+        "receiver": 3,
+        "program": 8,
+        "weight": 1.1089335680007935
+      },
+      {
+        "index": 662,
+        "sender": 6,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.0987523794174194
+      },
+      {
+        "index": 489,
+        "sender": 5,
+        "receiver": 0,
+        "program": 9,
+        "weight": 1.0985639095306396
+      },
+      {
+        "index": 351,
+        "sender": 3,
+        "receiver": 5,
+        "program": 3,
+        "weight": 1.0896210670471191
+      },
+      {
+        "index": 392,
+        "sender": 4,
+        "receiver": 0,
+        "program": 8,
+        "weight": 1.08467435836792
+      },
+      {
+        "index": 38,
+        "sender": 0,
+        "receiver": 3,
+        "program": 2,
+        "weight": 1.0818116664886475
+      },
+      {
+        "index": 185,
+        "sender": 1,
+        "receiver": 7,
+        "program": 5,
+        "weight": 1.0808031558990479
+      },
+      {
+        "index": 125,
+        "sender": 1,
+        "receiver": 2,
+        "program": 5,
+        "weight": 1.0786713361740112
+      },
+      {
+        "index": 413,
+        "sender": 4,
+        "receiver": 2,
+        "program": 5,
+        "weight": 1.0762338638305664
+      },
+      {
+        "index": 74,
+        "sender": 0,
+        "receiver": 6,
+        "program": 2,
+        "weight": 1.0548772811889648
+      },
+      {
+        "index": 369,
+        "sender": 3,
+        "receiver": 6,
+        "program": 9,
+        "weight": 1.0532029867172241
+      },
+      {
+        "index": 126,
+        "sender": 1,
+        "receiver": 2,
+        "program": 6,
+        "weight": 1.0414742231369019
+      },
+      {
+        "index": 19,
+        "sender": 0,
+        "receiver": 1,
+        "program": 7,
+        "weight": 0.9786608815193176
+      },
+      {
+        "index": 583,
+        "sender": 6,
+        "receiver": 0,
+        "program": 7,
+        "weight": 0.9777868390083313
+      },
+      {
+        "index": 513,
+        "sender": 5,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.9774523973464966
+      },
+      {
+        "index": 261,
+        "sender": 2,
+        "receiver": 5,
+        "program": 9,
+        "weight": 0.9614487290382385
+      },
+      {
+        "index": 717,
+        "sender": 7,
+        "receiver": 3,
+        "program": 9,
+        "weight": 0.9429937601089478
+      },
+      {
+        "index": 456,
+        "sender": 4,
+        "receiver": 6,
+        "program": 0,
+        "weight": 0.9375220537185669
+      },
+      {
+        "index": 44,
+        "sender": 0,
+        "receiver": 3,
+        "program": 8,
+        "weight": 0.9253235459327698
+      },
+      {
+        "index": 319,
+        "sender": 3,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.9183814525604248
+      },
+      {
+        "index": 130,
+        "sender": 1,
+        "receiver": 2,
+        "program": 10,
+        "weight": 0.8991503119468689
+      },
+      {
+        "index": 156,
+        "sender": 1,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.8979484438896179
+      },
+      {
+        "index": 455,
+        "sender": 4,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.8978453874588013
+      },
+      {
+        "index": 713,
+        "sender": 7,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.8958441615104675
+      },
+      {
+        "index": 402,
+        "sender": 4,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.8945786952972412
+      },
+      {
+        "index": 374,
+        "sender": 3,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.8678803443908691
+      },
+      {
+        "index": 128,
+        "sender": 1,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.8552634716033936
+      },
+      {
+        "index": 355,
+        "sender": 3,
+        "receiver": 5,
+        "program": 7,
+        "weight": 0.8520153760910034
+      },
+      {
+        "index": 358,
+        "sender": 3,
+        "receiver": 5,
+        "program": 10,
+        "weight": 0.8303759098052979
+      },
+      {
+        "index": 437,
+        "sender": 4,
+        "receiver": 4,
+        "program": 5,
+        "weight": 0.8289466500282288
+      },
+      {
+        "index": 122,
+        "sender": 1,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.8240213990211487
+      },
+      {
+        "index": 178,
+        "sender": 1,
+        "receiver": 6,
+        "program": 10,
+        "weight": 0.8161101937294006
+      },
+      {
+        "index": 643,
+        "sender": 6,
+        "receiver": 5,
+        "program": 7,
+        "weight": 0.8112525939941406
+      },
+      {
+        "index": 484,
+        "sender": 5,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.8042129874229431
+      },
+      {
+        "index": 312,
+        "sender": 3,
+        "receiver": 2,
+        "program": 0,
+        "weight": 0.37823283672332764
+      },
+      {
+        "index": 618,
+        "sender": 6,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.37139561772346497
+      },
+      {
+        "index": 168,
+        "sender": 1,
+        "receiver": 6,
+        "program": 0,
+        "weight": 0.3659032881259918
+      },
+      {
+        "index": 328,
+        "sender": 3,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.3540326654911041
+      },
+      {
+        "index": 47,
+        "sender": 0,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.35078197717666626
+      },
+      {
+        "index": 647,
+        "sender": 6,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.3451005518436432
+      },
+      {
+        "index": 712,
+        "sender": 7,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.331229567527771
+      },
+      {
+        "index": 718,
+        "sender": 7,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.3190819323062897
+      },
+      {
+        "index": 410,
+        "sender": 4,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.31798890233039856
+      },
+      {
+        "index": 193,
+        "sender": 2,
+        "receiver": 0,
+        "program": 1,
+        "weight": 0.29467877745628357
+      },
+      {
+        "index": 372,
+        "sender": 3,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.291020929813385
+      },
+      {
+        "index": 300,
+        "sender": 3,
+        "receiver": 1,
+        "program": 0,
+        "weight": 0.2832857668399811
+      },
+      {
+        "index": 598,
+        "sender": 6,
+        "receiver": 1,
+        "program": 10,
+        "weight": 0.07233425974845886
+      },
+      {
+        "index": 325,
+        "sender": 3,
+        "receiver": 3,
+        "program": 1,
+        "weight": 0.07231448590755463
+      }
+    ],
+    "truth_top_edges": [
+      {
+        "index": 650,
+        "sender": 6,
+        "receiver": 6,
+        "program": 2,
+        "weight": 1.1645241975784302
+      },
+      {
+        "index": 278,
+        "sender": 2,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.1574143171310425
+      },
+      {
+        "index": 332,
+        "sender": 3,
+        "receiver": 3,
+        "program": 8,
+        "weight": 1.1364939212799072
+      },
+      {
+        "index": 125,
+        "sender": 1,
+        "receiver": 2,
+        "program": 5,
+        "weight": 1.1284657716751099
+      },
+      {
+        "index": 489,
+        "sender": 5,
+        "receiver": 0,
+        "program": 9,
+        "weight": 1.1167901754379272
+      },
+      {
+        "index": 662,
+        "sender": 6,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.1107808351516724
+      },
+      {
+        "index": 392,
+        "sender": 4,
+        "receiver": 0,
+        "program": 8,
+        "weight": 1.1082513332366943
+      },
+      {
+        "index": 351,
+        "sender": 3,
+        "receiver": 5,
+        "program": 3,
+        "weight": 1.1075756549835205
+      },
+      {
+        "index": 38,
+        "sender": 0,
+        "receiver": 3,
+        "program": 2,
+        "weight": 1.1074341535568237
+      },
+      {
+        "index": 413,
+        "sender": 4,
+        "receiver": 2,
+        "program": 5,
+        "weight": 1.1070119142532349
+      },
+      {
+        "index": 185,
+        "sender": 1,
+        "receiver": 7,
+        "program": 5,
+        "weight": 1.1015621423721313
+      },
+      {
+        "index": 126,
+        "sender": 1,
+        "receiver": 2,
+        "program": 6,
+        "weight": 1.0885637998580933
+      },
+      {
+        "index": 74,
+        "sender": 0,
+        "receiver": 6,
+        "program": 2,
+        "weight": 1.0676895380020142
+      },
+      {
+        "index": 369,
+        "sender": 3,
+        "receiver": 6,
+        "program": 9,
+        "weight": 1.0658221244812012
+      },
+      {
+        "index": 19,
+        "sender": 0,
+        "receiver": 1,
+        "program": 7,
+        "weight": 1.0072739124298096
+      },
+      {
+        "index": 513,
+        "sender": 5,
+        "receiver": 2,
+        "program": 9,
+        "weight": 0.9935940504074097
+      },
+      {
+        "index": 583,
+        "sender": 6,
+        "receiver": 0,
+        "program": 7,
+        "weight": 0.986645519733429
+      },
+      {
+        "index": 261,
+        "sender": 2,
+        "receiver": 5,
+        "program": 9,
+        "weight": 0.9765329360961914
+      },
+      {
+        "index": 717,
+        "sender": 7,
+        "receiver": 3,
+        "program": 9,
+        "weight": 0.9518159031867981
+      },
+      {
+        "index": 456,
+        "sender": 4,
+        "receiver": 6,
+        "program": 0,
+        "weight": 0.9439660906791687
+      },
+      {
+        "index": 319,
+        "sender": 3,
+        "receiver": 2,
+        "program": 7,
+        "weight": 0.9412410855293274
+      },
+      {
+        "index": 44,
+        "sender": 0,
+        "receiver": 3,
+        "program": 8,
+        "weight": 0.9411264061927795
+      },
+      {
+        "index": 130,
+        "sender": 1,
+        "receiver": 2,
+        "program": 10,
+        "weight": 0.9353307485580444
+      },
+      {
+        "index": 402,
+        "sender": 4,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.9145494103431702
+      },
+      {
+        "index": 156,
+        "sender": 1,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.9100842475891113
+      },
+      {
+        "index": 455,
+        "sender": 4,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.9047248959541321
+      },
+      {
+        "index": 713,
+        "sender": 7,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.9021703004837036
+      },
+      {
+        "index": 128,
+        "sender": 1,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.8875045776367188
+      },
+      {
+        "index": 374,
+        "sender": 3,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.8729501366615295
+      },
+      {
+        "index": 355,
+        "sender": 3,
+        "receiver": 5,
+        "program": 7,
+        "weight": 0.8571711182594299
+      },
+      {
+        "index": 122,
+        "sender": 1,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.8534965515136719
+      },
+      {
+        "index": 437,
+        "sender": 4,
+        "receiver": 4,
+        "program": 5,
+        "weight": 0.8363606929779053
+      },
+      {
+        "index": 358,
+        "sender": 3,
+        "receiver": 5,
+        "program": 10,
+        "weight": 0.8345048427581787
+      },
+      {
+        "index": 178,
+        "sender": 1,
+        "receiver": 6,
+        "program": 10,
+        "weight": 0.8193749785423279
+      },
+      {
+        "index": 643,
+        "sender": 6,
+        "receiver": 5,
+        "program": 7,
+        "weight": 0.8101174831390381
+      },
+      {
+        "index": 484,
+        "sender": 5,
+        "receiver": 0,
+        "program": 4,
+        "weight": 0.8067595362663269
+      },
+      {
+        "index": 312,
+        "sender": 3,
+        "receiver": 2,
+        "program": 0,
+        "weight": 0.35385194420814514
+      },
+      {
+        "index": 618,
+        "sender": 6,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.34087222814559937
+      },
+      {
+        "index": 168,
+        "sender": 1,
+        "receiver": 6,
+        "program": 0,
+        "weight": 0.3371945321559906
+      },
+      {
+        "index": 328,
+        "sender": 3,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.3267536163330078
+      },
+      {
+        "index": 47,
+        "sender": 0,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.32420751452445984
+      },
+      {
+        "index": 647,
+        "sender": 6,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.3128489553928375
+      },
+      {
+        "index": 712,
+        "sender": 7,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.29995569586753845
+      },
+      {
+        "index": 410,
+        "sender": 4,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.28998303413391113
+      },
+      {
+        "index": 718,
+        "sender": 7,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.286965936422348
+      },
+      {
+        "index": 193,
+        "sender": 2,
+        "receiver": 0,
+        "program": 1,
+        "weight": 0.2659183740615845
+      },
+      {
+        "index": 372,
+        "sender": 3,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.25735822319984436
+      },
+      {
+        "index": 300,
+        "sender": 3,
+        "receiver": 1,
+        "program": 0,
+        "weight": 0.25236108899116516
+      },
+      {
+        "index": 760,
+        "sender": 7,
+        "receiver": 7,
+        "program": 4,
+        "weight": 7.889036979236153e-09
+      },
+      {
+        "index": 761,
+        "sender": 7,
+        "receiver": 7,
+        "program": 5,
+        "weight": 7.889036979236153e-09
+      }
+    ]
+  },
+  "F": {
+    "top_20_precision": 1.0,
+    "top_20_recall": 0.4166666666666667,
+    "top_50_precision": 0.96,
+    "top_50_recall": 1.0,
+    "learned_top_edges": [
+      {
+        "index": 237,
+        "sender": 2,
+        "receiver": 3,
+        "program": 9,
+        "weight": 1.104339361190796
+      },
+      {
+        "index": 598,
+        "sender": 6,
+        "receiver": 1,
+        "program": 10,
+        "weight": 1.0941145420074463
+      },
+      {
+        "index": 174,
+        "sender": 1,
+        "receiver": 6,
+        "program": 6,
+        "weight": 1.088796854019165
+      },
+      {
+        "index": 491,
+        "sender": 5,
+        "receiver": 0,
+        "program": 11,
+        "weight": 1.0815931558609009
+      },
+      {
+        "index": 325,
+        "sender": 3,
+        "receiver": 3,
+        "program": 1,
+        "weight": 1.0799269676208496
+      },
+      {
+        "index": 254,
+        "sender": 2,
+        "receiver": 5,
+        "program": 2,
+        "weight": 1.0728827714920044
+      },
+      {
+        "index": 764,
+        "sender": 7,
+        "receiver": 7,
+        "program": 8,
+        "weight": 1.0582363605499268
+      },
+      {
+        "index": 201,
+        "sender": 2,
+        "receiver": 0,
+        "program": 9,
+        "weight": 1.0252636671066284
+      },
+      {
+        "index": 470,
+        "sender": 4,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.0203107595443726
+      },
+      {
+        "index": 273,
+        "sender": 2,
+        "receiver": 6,
+        "program": 9,
+        "weight": 1.0143651962280273
+      },
+      {
+        "index": 230,
+        "sender": 2,
+        "receiver": 3,
+        "program": 2,
+        "weight": 1.014236569404602
+      },
+      {
+        "index": 665,
+        "sender": 6,
+        "receiver": 7,
+        "program": 5,
+        "weight": 1.0116022825241089
+      },
+      {
+        "index": 543,
+        "sender": 5,
+        "receiver": 5,
+        "program": 3,
+        "weight": 1.0091766119003296
+      },
+      {
+        "index": 180,
+        "sender": 1,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.989601194858551
+      },
+      {
+        "index": 740,
+        "sender": 7,
+        "receiver": 5,
+        "program": 8,
+        "weight": 0.9787142872810364
+      },
+      {
+        "index": 48,
+        "sender": 0,
+        "receiver": 4,
+        "program": 0,
+        "weight": 0.97754967212677
+      },
+      {
+        "index": 233,
+        "sender": 2,
+        "receiver": 3,
+        "program": 5,
+        "weight": 0.9618309736251831
+      },
+      {
+        "index": 248,
+        "sender": 2,
+        "receiver": 4,
+        "program": 8,
+        "weight": 0.9454225897789001
+      },
+      {
+        "index": 105,
+        "sender": 1,
+        "receiver": 0,
+        "program": 9,
+        "weight": 0.9375442862510681
+      },
+      {
+        "index": 287,
+        "sender": 2,
+        "receiver": 7,
+        "program": 11,
+        "weight": 0.9355964660644531
+      },
+      {
+        "index": 416,
+        "sender": 4,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.9015682935714722
+      },
+      {
+        "index": 610,
+        "sender": 6,
+        "receiver": 2,
+        "program": 10,
+        "weight": 0.8935365080833435
+      },
+      {
+        "index": 732,
+        "sender": 7,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.8869373202323914
+      },
+      {
+        "index": 143,
+        "sender": 1,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.879368007183075
+      },
+      {
+        "index": 765,
+        "sender": 7,
+        "receiver": 7,
+        "program": 9,
+        "weight": 0.8658418655395508
+      },
+      {
+        "index": 256,
+        "sender": 2,
+        "receiver": 5,
+        "program": 4,
+        "weight": 0.8636233806610107
+      },
+      {
+        "index": 169,
+        "sender": 1,
+        "receiver": 6,
+        "program": 1,
+        "weight": 0.8595123887062073
+      },
+      {
+        "index": 241,
+        "sender": 2,
+        "receiver": 4,
+        "program": 1,
+        "weight": 0.8437565565109253
+      },
+      {
+        "index": 318,
+        "sender": 3,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.8432168364524841
+      },
+      {
+        "index": 210,
+        "sender": 2,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.8394320011138916
+      },
+      {
+        "index": 558,
+        "sender": 5,
+        "receiver": 6,
+        "program": 6,
+        "weight": 0.8315514326095581
+      },
+      {
+        "index": 633,
+        "sender": 6,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.8225171566009521
+      },
+      {
+        "index": 575,
+        "sender": 5,
+        "receiver": 7,
+        "program": 11,
+        "weight": 0.8054832220077515
+      },
+      {
+        "index": 537,
+        "sender": 5,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.8029574155807495
+      },
+      {
+        "index": 182,
+        "sender": 1,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.7983163595199585
+      },
+      {
+        "index": 302,
+        "sender": 3,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.7940340042114258
+      },
+      {
+        "index": 300,
+        "sender": 3,
+        "receiver": 1,
+        "program": 0,
+        "weight": 0.34705638885498047
+      },
+      {
+        "index": 312,
+        "sender": 3,
+        "receiver": 2,
+        "program": 0,
+        "weight": 0.3439668118953705
+      },
+      {
+        "index": 193,
+        "sender": 2,
+        "receiver": 0,
+        "program": 1,
+        "weight": 0.30785199999809265
+      },
+      {
+        "index": 410,
+        "sender": 4,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.30278101563453674
+      },
+      {
+        "index": 618,
+        "sender": 6,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.3019687235355377
+      },
+      {
+        "index": 647,
+        "sender": 6,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.29713574051856995
+      },
+      {
+        "index": 372,
+        "sender": 3,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.2930845618247986
+      },
+      {
+        "index": 328,
+        "sender": 3,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.2880403995513916
+      },
+      {
+        "index": 718,
+        "sender": 7,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.28790128231048584
+      },
+      {
+        "index": 712,
+        "sender": 7,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.2803264260292053
+      },
+      {
+        "index": 168,
+        "sender": 1,
+        "receiver": 6,
+        "program": 0,
+        "weight": 0.2725013792514801
+      },
+      {
+        "index": 47,
+        "sender": 0,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.26005634665489197
+      },
+      {
+        "index": 277,
+        "sender": 2,
+        "receiver": 7,
+        "program": 1,
+        "weight": 0.07260481268167496
+      },
+      {
+        "index": 165,
+        "sender": 1,
+        "receiver": 5,
+        "program": 9,
+        "weight": 0.07204712182283401
+      }
+    ],
+    "truth_top_edges": [
+      {
+        "index": 237,
+        "sender": 2,
+        "receiver": 3,
+        "program": 9,
+        "weight": 1.1847282648086548
+      },
+      {
+        "index": 325,
+        "sender": 3,
+        "receiver": 3,
+        "program": 1,
+        "weight": 1.1562639474868774
+      },
+      {
+        "index": 598,
+        "sender": 6,
+        "receiver": 1,
+        "program": 10,
+        "weight": 1.153442144393921
+      },
+      {
+        "index": 174,
+        "sender": 1,
+        "receiver": 6,
+        "program": 6,
+        "weight": 1.1477086544036865
+      },
+      {
+        "index": 491,
+        "sender": 5,
+        "receiver": 0,
+        "program": 11,
+        "weight": 1.1395553350448608
+      },
+      {
+        "index": 254,
+        "sender": 2,
+        "receiver": 5,
+        "program": 2,
+        "weight": 1.138350009918213
+      },
+      {
+        "index": 764,
+        "sender": 7,
+        "receiver": 7,
+        "program": 8,
+        "weight": 1.107964038848877
+      },
+      {
+        "index": 230,
+        "sender": 2,
+        "receiver": 3,
+        "program": 2,
+        "weight": 1.0856328010559082
+      },
+      {
+        "index": 201,
+        "sender": 2,
+        "receiver": 0,
+        "program": 9,
+        "weight": 1.0831732749938965
+      },
+      {
+        "index": 470,
+        "sender": 4,
+        "receiver": 7,
+        "program": 2,
+        "weight": 1.0711840391159058
+      },
+      {
+        "index": 273,
+        "sender": 2,
+        "receiver": 6,
+        "program": 9,
+        "weight": 1.0683317184448242
+      },
+      {
+        "index": 543,
+        "sender": 5,
+        "receiver": 5,
+        "program": 3,
+        "weight": 1.0614397525787354
+      },
+      {
+        "index": 665,
+        "sender": 6,
+        "receiver": 7,
+        "program": 5,
+        "weight": 1.0576125383377075
+      },
+      {
+        "index": 180,
+        "sender": 1,
+        "receiver": 7,
+        "program": 0,
+        "weight": 1.0387623310089111
+      },
+      {
+        "index": 48,
+        "sender": 0,
+        "receiver": 4,
+        "program": 0,
+        "weight": 1.0276654958724976
+      },
+      {
+        "index": 233,
+        "sender": 2,
+        "receiver": 3,
+        "program": 5,
+        "weight": 1.0268056392669678
+      },
+      {
+        "index": 740,
+        "sender": 7,
+        "receiver": 5,
+        "program": 8,
+        "weight": 1.0242018699645996
+      },
+      {
+        "index": 248,
+        "sender": 2,
+        "receiver": 4,
+        "program": 8,
+        "weight": 1.0034282207489014
+      },
+      {
+        "index": 105,
+        "sender": 1,
+        "receiver": 0,
+        "program": 9,
+        "weight": 0.984302282333374
+      },
+      {
+        "index": 287,
+        "sender": 2,
+        "receiver": 7,
+        "program": 11,
+        "weight": 0.9818530678749084
+      },
+      {
+        "index": 416,
+        "sender": 4,
+        "receiver": 2,
+        "program": 8,
+        "weight": 0.9542261362075806
+      },
+      {
+        "index": 610,
+        "sender": 6,
+        "receiver": 2,
+        "program": 10,
+        "weight": 0.9363662004470825
+      },
+      {
+        "index": 143,
+        "sender": 1,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.9299201369285583
+      },
+      {
+        "index": 732,
+        "sender": 7,
+        "receiver": 5,
+        "program": 0,
+        "weight": 0.9245043992996216
+      },
+      {
+        "index": 256,
+        "sender": 2,
+        "receiver": 5,
+        "program": 4,
+        "weight": 0.9085797071456909
+      },
+      {
+        "index": 765,
+        "sender": 7,
+        "receiver": 7,
+        "program": 9,
+        "weight": 0.8987142443656921
+      },
+      {
+        "index": 169,
+        "sender": 1,
+        "receiver": 6,
+        "program": 1,
+        "weight": 0.8969424366950989
+      },
+      {
+        "index": 318,
+        "sender": 3,
+        "receiver": 2,
+        "program": 6,
+        "weight": 0.8948079347610474
+      },
+      {
+        "index": 241,
+        "sender": 2,
+        "receiver": 4,
+        "program": 1,
+        "weight": 0.8899346590042114
+      },
+      {
+        "index": 210,
+        "sender": 2,
+        "receiver": 1,
+        "program": 6,
+        "weight": 0.8863528966903687
+      },
+      {
+        "index": 558,
+        "sender": 5,
+        "receiver": 6,
+        "program": 6,
+        "weight": 0.8640156984329224
+      },
+      {
+        "index": 633,
+        "sender": 6,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.8554971218109131
+      },
+      {
+        "index": 537,
+        "sender": 5,
+        "receiver": 4,
+        "program": 9,
+        "weight": 0.8380117416381836
+      },
+      {
+        "index": 575,
+        "sender": 5,
+        "receiver": 7,
+        "program": 11,
+        "weight": 0.8356635570526123
+      },
+      {
+        "index": 302,
+        "sender": 3,
+        "receiver": 1,
+        "program": 2,
+        "weight": 0.8351911306381226
+      },
+      {
+        "index": 182,
+        "sender": 1,
+        "receiver": 7,
+        "program": 2,
+        "weight": 0.8297605514526367
+      },
+      {
+        "index": 300,
+        "sender": 3,
+        "receiver": 1,
+        "program": 0,
+        "weight": 0.3365229070186615
+      },
+      {
+        "index": 312,
+        "sender": 3,
+        "receiver": 2,
+        "program": 0,
+        "weight": 0.3360220193862915
+      },
+      {
+        "index": 193,
+        "sender": 2,
+        "receiver": 0,
+        "program": 1,
+        "weight": 0.2901734411716461
+      },
+      {
+        "index": 410,
+        "sender": 4,
+        "receiver": 2,
+        "program": 2,
+        "weight": 0.2888692021369934
+      },
+      {
+        "index": 618,
+        "sender": 6,
+        "receiver": 3,
+        "program": 6,
+        "weight": 0.2845457196235657
+      },
+      {
+        "index": 647,
+        "sender": 6,
+        "receiver": 5,
+        "program": 11,
+        "weight": 0.2779447138309479
+      },
+      {
+        "index": 328,
+        "sender": 3,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.2747848331928253
+      },
+      {
+        "index": 372,
+        "sender": 3,
+        "receiver": 7,
+        "program": 0,
+        "weight": 0.27446627616882324
+      },
+      {
+        "index": 718,
+        "sender": 7,
+        "receiver": 3,
+        "program": 10,
+        "weight": 0.26856568455696106
+      },
+      {
+        "index": 712,
+        "sender": 7,
+        "receiver": 3,
+        "program": 4,
+        "weight": 0.26052576303482056
+      },
+      {
+        "index": 168,
+        "sender": 1,
+        "receiver": 6,
+        "program": 0,
+        "weight": 0.2516931891441345
+      },
+      {
+        "index": 47,
+        "sender": 0,
+        "receiver": 3,
+        "program": 11,
+        "weight": 0.23893892765045166
+      },
+      {
+        "index": 760,
+        "sender": 7,
+        "receiver": 7,
+        "program": 4,
+        "weight": 7.934731094394465e-09
+      },
+      {
+        "index": 761,
+        "sender": 7,
+        "receiver": 7,
+        "program": 5,
+        "weight": 7.934731094394465e-09
+      }
+    ]
+  }
+}

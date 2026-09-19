@@ -1,0 +1,48 @@
+{
+  "model": "inferred WB via unrolled accelerated projected gradient, same train/validation/test path",
+  "seeds": [
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "capacity_lambdas": [
+    0.0,
+    0.001,
+    0.005,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "diagnostic_positive_lambda": 0.1,
+  "diagnostic_lambda_source": "Fixed from previous same_composition validation selection, identical across all K and modes",
+  "inner": {
+    "steps": 100,
+    "learning_rate": 1.0,
+    "max_relative_excess": 0.0015582551616740458,
+    "mean_relative_excess": 0.00024794796178838444,
+    "finite": true
+  },
+  "warmup_epochs": 800,
+  "joint_epochs": 800,
+  "workers": 4,
+  "device": "cpu",
+  "regularization": 0.0001,
+  "new_regularizers": [],
+  "scaling": {
+    "capacity": {
+      "composition": 7.019771102107991,
+      "communication": 5.000549086141425,
+      "topology": 6.11837066835744
+    },
+    "same_composition": {
+      "composition": 7.062640161939125,
+      "communication": 5.000549086141425,
+      "topology": 6.11837066835744
+    }
+  },
+  "ccc_only": "bc=sc=so=0; HC/HO excluded from existing L2; inference bi only; pair matching HI only",
+  "old_results": "/home/xueshuailin/CCC_Phe/V999/outputs/challenging_synthetic",
+  "nnls": "Numerical reference only, never used for training or held-out prediction"
+}

@@ -1,0 +1,2451 @@
+{
+  "selections": {
+    "same_composition": {
+      "lambda_collapse": 0.1,
+      "best_validation": 0.6684855916615573,
+      "minimum_eligible_validation": 0.6484855916615573,
+      "eligible_lambdas": [
+        0.0,
+        0.0001,
+        0.001,
+        0.005,
+        0.01,
+        0.05,
+        0.1
+      ],
+      "validation_scores": {
+        "0.0": 0.6634580012262417,
+        "0.0001": 0.6680768444716944,
+        "0.001": 0.6684855916615573,
+        "0.005": 0.6658082975679542,
+        "0.01": 0.6639689352135704,
+        "0.05": 0.66137339055794,
+        "0.1": 0.6601675863478439
+      },
+      "mean_pair_collapse": {
+        "0.0": 0.17585704028606414,
+        "0.0001": 0.1641308456659317,
+        "0.001": 0.13290461897850037,
+        "0.005": 0.06450470015406609,
+        "0.01": 0.038377555832266805,
+        "0.05": 0.006840244587510824,
+        "0.1": 0.003897732263430953
+      },
+      "test_or_truth_used": false,
+      "tie_break": "smaller lambda",
+      "excluded_incomplete_lambdas": []
+    },
+    "capacity": {
+      "lambda_collapse": 0.1,
+      "best_validation": 0.7314927344782035,
+      "minimum_eligible_validation": 0.7114927344782035,
+      "eligible_lambdas": [
+        0.0,
+        0.0001,
+        0.001,
+        0.005,
+        0.01,
+        0.05,
+        0.1
+      ],
+      "validation_scores": {
+        "0.0": 0.7282694848084544,
+        "0.0001": 0.7310171730515191,
+        "0.001": 0.7296961690885072,
+        "0.005": 0.7314927344782035,
+        "0.01": 0.7307265521796565,
+        "0.05": 0.7253632760898283,
+        "0.1": 0.7302509907529723
+      },
+      "mean_pair_collapse": {
+        "0.0": 0.13118043839931487,
+        "0.0001": 0.13976772725582123,
+        "0.001": 0.09726357758045197,
+        "0.005": 0.03660065829753876,
+        "0.01": 0.023790479823946952,
+        "0.05": 0.004417813895270228,
+        "0.1": 0.0022976174019277095
+      },
+      "test_or_truth_used": false,
+      "tie_break": "smaller lambda",
+      "excluded_incomplete_lambdas": []
+    }
+  },
+  "scenarios": {
+    "same_composition": {
+      "baseline": {
+        "train_c_index": {
+          "mean": 0.7471442470541602,
+          "std": 0.004103523578826053,
+          "n": 5,
+          "undefined": 0
+        },
+        "validation_c_index": {
+          "mean": 0.6634580012262417,
+          "std": 0.0052333210226724386,
+          "n": 5,
+          "undefined": 0
+        },
+        "test_c_index": {
+          "mean": 0.6744298777129007,
+          "std": 0.008983433611243078,
+          "n": 5,
+          "undefined": 0
+        },
+        "bulk_reconstruction": {
+          "mean": 0.001426199881825596,
+          "std": 0.00016406411121904337,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_reconstruction": {
+          "mean": 0.00237244195304811,
+          "std": 0.00016853974906409482,
+          "n": 5,
+          "undefined": 0
+        },
+        "overall_dictionary_recovery": {
+          "mean": 0.6959090926214005,
+          "std": 0.014107453941178369,
+          "n": 5,
+          "undefined": 0
+        },
+        "risk_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.639458113448784,
+            "std": 0.07408189688269438,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.7874571940381807,
+            "std": 0.05464324212198851,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.47928724219149627,
+            "std": 0.08887882876526347,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.3711174590788606,
+            "std": 0.05524423166149167,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.8898634957015445,
+            "std": 0.02551857297704878,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.4925818492675553,
+            "std": 0.13150504639693059,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": 5.494714450836182,
+            "std": 0.6386801150234543,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "risk_gamma_sign_consistency": 1.0,
+        "protective_niche_recovery": null,
+        "protective_gamma_sign_consistency": null,
+        "neutral_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.6703101335250963,
+            "std": 0.024626976814030234,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.7091066559616832,
+            "std": 0.04565490686120821,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.6293576948646936,
+            "std": 0.020153913635357096,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.6201048341252811,
+            "std": 0.03429677213308463,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.6751756955227483,
+            "std": 0.12059256340985439,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.6450780362957372,
+            "std": 0.03308091777560985,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": 0.8273186010619004,
+            "std": 0.908526994442995,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "neutral_gamma_sign_consistency": null,
+        "nuisance_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.9971415094207646,
+            "std": 0.0009555269622257707,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.9976898713898045,
+            "std": 0.0009172705465581794,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.9967309982850037,
+            "std": 0.0012821685288820325,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.9972774664745966,
+            "std": 0.00041062680645433244,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.9786513900490774,
+            "std": 0.023232490684039223,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.9978260223842513,
+            "std": 0.0011780063308326136,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -0.19393864646553993,
+            "std": 0.31174211104728355,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "nuisance_gamma_sign_consistency": null,
+        "collision_rate": 0.2,
+        "HI_only_collision_rate": 0.0,
+        "pair": {
+          "learned_pair_HI_cosine": {
+            "mean": 0.8618385862578595,
+            "std": 0.08296451366580807,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_recovery": {
+            "mean": 0.6394581134487838,
+            "std": 0.07408189688269436,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HI_cosine": {
+            "mean": 0.47928724219149627,
+            "std": 0.08887882876526347,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HC_cosine": {
+            "mean": 0.7874571940381807,
+            "std": 0.05464324212198851,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WS_correlation": {
+            "mean": 0.4925818492675553,
+            "std": 0.13150504639693059,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_gamma": {
+            "mean": 5.494714450836182,
+            "std": 0.6386801150234543,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_recovery": {
+            "mean": 0.6827680982822357,
+            "std": 0.034420635653242965,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HI_cosine": {
+            "mean": 0.5571756107798413,
+            "std": 0.04543455634320188,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HC_cosine": {
+            "mean": 0.7930857892338988,
+            "std": 0.07429768324679195,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WS_correlation": {
+            "mean": 0.7162942097142436,
+            "std": 0.1111170800595761,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_gamma": {
+            "mean": 0.7932918675243854,
+            "std": 2.673590999145628,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HO_cosine": {
+            "mean": 0.3711174590788606,
+            "std": 0.05524423166149167,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WB_correlation": {
+            "mean": 0.8898634957015445,
+            "std": 0.02551857297704878,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HO_cosine": {
+            "mean": 0.5486924797221805,
+            "std": 0.11671772342647783,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WB_correlation": {
+            "mean": 0.7127973553339542,
+            "std": 0.3562149555359975,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "redundancy": {
+          "mean_pair_collapse": {
+            "mean": 0.17585704028606414,
+            "std": 0.012087585172177737,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_pair_collapse": {
+            "mean": 0.7267607927322388,
+            "std": 0.21243947516285697,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HC_cosine": {
+            "mean": 0.40689154863357546,
+            "std": 0.042496419668560104,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HC_cosine": {
+            "mean": 0.3248132526874542,
+            "std": 0.12911204982665403,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HC_cosine": {
+            "mean": 0.08267843574285508,
+            "std": 0.021985916597706046,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HC_cosine": {
+            "mean": 0.9669455647468567,
+            "std": 0.01717039246171589,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HO_cosine": {
+            "mean": 0.4839555859565735,
+            "std": 0.020354479987096753,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HO_cosine": {
+            "mean": 0.48023954033851624,
+            "std": 0.10782996690673959,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HO_cosine": {
+            "mean": 0.12269918322563171,
+            "std": 0.014894630326761162,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HO_cosine": {
+            "mean": 0.8793777823448181,
+            "std": 0.10491568387197686,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HI_cosine": {
+            "mean": 0.4389070749282837,
+            "std": 0.02473053857354837,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HI_cosine": {
+            "mean": 0.37946479916572573,
+            "std": 0.09882750129956447,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HI_cosine": {
+            "mean": 0.10508403778076172,
+            "std": 0.025353458731788816,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HI_cosine": {
+            "mean": 0.8825446128845215,
+            "std": 0.09197705796011009,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "matched_pair": {
+          "matched_A_B_HC_cosine": {
+            "mean": 0.9582656621932983,
+            "std": 0.0390914452705006,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HO_cosine": {
+            "mean": 0.8310933828353881,
+            "std": 0.12544791289542798,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HI_cosine": {
+            "mean": 0.8618385910987854,
+            "std": 0.08296451691918791,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_joint_collapse_score": {
+            "mean": 0.6963318299376275,
+            "std": 0.19155053853983606,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "final_losses": {
+          "total_loss": {
+            "mean": 0.5019671797752381,
+            "std": 0.0007126627132942414,
+            "n": 5,
+            "undefined": 0
+          },
+          "bulk_recon": {
+            "mean": 0.0014261998701840639,
+            "std": 0.00016406407831711498,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_recon": {
+            "mean": 0.002372441999614239,
+            "std": 0.00016853982808609985,
+            "n": 5,
+            "undefined": 0
+          },
+          "cox_loss": {
+            "mean": 4.768987655639648,
+            "std": 0.013040925084041616,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_loss": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n": 5,
+            "undefined": 0
+          },
+          "regularization": {
+            "mean": 212.69772338867188,
+            "std": 3.9062135193432597,
+            "n": 5,
+            "undefined": 0
+          },
+          "collapse_loss": {
+            "mean": 0.17585703432559968,
+            "std": 0.012087583605150784,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "stability": {
+          "total_clip_events": 0,
+          "clipped_runs": 0,
+          "max_gradient_norm": 0.07379128783941269,
+          "nonfinite_runs": 0
+        }
+      },
+      "selected": {
+        "train_c_index": {
+          "mean": 0.7367902658162467,
+          "std": 0.0038466414170157037,
+          "n": 5,
+          "undefined": 0
+        },
+        "validation_c_index": {
+          "mean": 0.6601675863478439,
+          "std": 0.00999619854675672,
+          "n": 5,
+          "undefined": 0
+        },
+        "test_c_index": {
+          "mean": 0.6793213616833755,
+          "std": 0.00558468750405214,
+          "n": 5,
+          "undefined": 0
+        },
+        "bulk_reconstruction": {
+          "mean": 0.0014158620149828493,
+          "std": 0.0004019184242324319,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_reconstruction": {
+          "mean": 0.002646429685410112,
+          "std": 0.00042081951599441913,
+          "n": 5,
+          "undefined": 0
+        },
+        "overall_dictionary_recovery": {
+          "mean": 0.6596934252804539,
+          "std": 0.08747589189572076,
+          "n": 5,
+          "undefined": 0
+        },
+        "risk_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.6287317191319618,
+            "std": 0.14663872429783797,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.7347087720302433,
+            "std": 0.17391420977776204,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.5050266930411913,
+            "std": 0.24071591725292513,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.3227441848899869,
+            "std": 0.19590059377330069,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.6754222031664622,
+            "std": 0.4396203398234536,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.3577508666869047,
+            "std": 0.2272500946098178,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": 4.0905807107687,
+            "std": 2.5235867931952107,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "risk_gamma_sign_consistency": 1.0,
+        "protective_niche_recovery": null,
+        "protective_gamma_sign_consistency": null,
+        "neutral_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.6643157951852142,
+            "std": 0.078288215079303,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.6974621871118002,
+            "std": 0.07093697474397086,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.6289274745558362,
+            "std": 0.0939132576528994,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.39025921377584305,
+            "std": 0.1892075320242666,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.6512428682604693,
+            "std": 0.09522314576944445,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.6151695554956331,
+            "std": 0.10181385633700078,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": 0.947799700498581,
+            "std": 0.7968480159900895,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "neutral_gamma_sign_consistency": null,
+        "nuisance_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.9639386956130377,
+            "std": 0.037539848346241016,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.9899113748543096,
+            "std": 0.012504599998800608,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.954267586515096,
+            "std": 0.06099588168054537,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.8372072101025442,
+            "std": 0.11659355608180028,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.9809034500103391,
+            "std": 0.022832520493468584,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.9991373322756261,
+            "std": 0.0004175439330143539,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -0.11026432774960995,
+            "std": 0.5760580463230147,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "nuisance_gamma_sign_consistency": null,
+        "collision_rate": 0.4,
+        "HI_only_collision_rate": 0.2,
+        "pair": {
+          "learned_pair_HI_cosine": {
+            "mean": 0.7176506848502552,
+            "std": 0.3693772427685091,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_recovery": {
+            "mean": 0.6287317191319619,
+            "std": 0.14663872429783803,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HI_cosine": {
+            "mean": 0.5050266930411913,
+            "std": 0.24071591725292513,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HC_cosine": {
+            "mean": 0.7347087720302433,
+            "std": 0.17391420977776204,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WS_correlation": {
+            "mean": 0.3577508666869047,
+            "std": 0.2272500946098178,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_gamma": {
+            "mean": 4.0905807107687,
+            "std": 2.5235867931952107,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_recovery": {
+            "mean": 0.5371369950940924,
+            "std": 0.14977955170394994,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HI_cosine": {
+            "mean": 0.3568509039731535,
+            "std": 0.1349960142934356,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HC_cosine": {
+            "mean": 0.6879706378029747,
+            "std": 0.1634400312490059,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WS_correlation": {
+            "mean": 0.4066022476189962,
+            "std": 0.13469154258889282,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_gamma": {
+            "mean": 0.9414470970630646,
+            "std": 1.2953949723322082,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HO_cosine": {
+            "mean": 0.3227441848899869,
+            "std": 0.19590059377330069,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WB_correlation": {
+            "mean": 0.6754222031664622,
+            "std": 0.4396203398234536,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HO_cosine": {
+            "mean": 0.13736520238762012,
+            "std": 0.12210008334920905,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WB_correlation": {
+            "mean": 0.40198385350272997,
+            "std": 0.3040337914026669,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "redundancy": {
+          "mean_pair_collapse": {
+            "mean": 0.003897732263430953,
+            "std": 0.0009193478627673095,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_pair_collapse": {
+            "mean": 0.016458921320736408,
+            "std": 0.007200592274350295,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HC_cosine": {
+            "mean": 0.2753693997859955,
+            "std": 0.044022756341628166,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HC_cosine": {
+            "mean": 0.1266632154583931,
+            "std": 0.03234568257923216,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HC_cosine": {
+            "mean": 0.05763985589146614,
+            "std": 0.021872436712666945,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HC_cosine": {
+            "mean": 0.9608935713768005,
+            "std": 0.06324650694384248,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HO_cosine": {
+            "mean": 0.14886843264102936,
+            "std": 0.05474658785472501,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HO_cosine": {
+            "mean": 0.08885907381772995,
+            "std": 0.018718221141592405,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HO_cosine": {
+            "mean": 0.012000876478850842,
+            "std": 0.005907079642445391,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HO_cosine": {
+            "mean": 0.6969826549291611,
+            "std": 0.4109342074724013,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HI_cosine": {
+            "mean": 0.22473492324352265,
+            "std": 0.053425349312984954,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HI_cosine": {
+            "mean": 0.13133412450551987,
+            "std": 0.046525197781355734,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HI_cosine": {
+            "mean": 0.03897277191281319,
+            "std": 0.03181050632926243,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HI_cosine": {
+            "mean": 0.8783838868141174,
+            "std": 0.1447260624810638,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "matched_pair": {
+          "matched_A_B_HC_cosine": {
+            "mean": 0.9420332074165344,
+            "std": 0.06285645228999359,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HO_cosine": {
+            "mean": 0.4302746973931789,
+            "std": 0.5208684069082807,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HI_cosine": {
+            "mean": 0.7176507130265236,
+            "std": 0.3693772839297999,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_joint_collapse_score": {
+            "mean": 0.40921185359492596,
+            "std": 0.5393373356845135,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "final_losses": {
+          "total_loss": {
+            "mean": 0.5066248536109924,
+            "std": 0.0012287387213048772,
+            "n": 5,
+            "undefined": 0
+          },
+          "bulk_recon": {
+            "mean": 0.001415862049907446,
+            "std": 0.0004019184188109556,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_recon": {
+            "mean": 0.0026464298367500304,
+            "std": 0.00042081953037869854,
+            "n": 5,
+            "undefined": 0
+          },
+          "cox_loss": {
+            "mean": 4.799790477752685,
+            "std": 0.00847434013806368,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_loss": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n": 5,
+            "undefined": 0
+          },
+          "regularization": {
+            "mean": 221.93719177246095,
+            "std": 5.344352116232848,
+            "n": 5,
+            "undefined": 0
+          },
+          "collapse_loss": {
+            "mean": 0.0038977324962615966,
+            "std": 0.0009193480227652638,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "stability": {
+          "total_clip_events": 0,
+          "clipped_runs": 0,
+          "max_gradient_norm": 0.07313503324985504,
+          "nonfinite_runs": 0
+        }
+      }
+    },
+    "capacity": {
+      "baseline": {
+        "train_c_index": {
+          "mean": 0.8008877159309021,
+          "std": 0.0029147755905562208,
+          "n": 5,
+          "undefined": 0
+        },
+        "validation_c_index": {
+          "mean": 0.7282694848084544,
+          "std": 0.004832961196810257,
+          "n": 5,
+          "undefined": 0
+        },
+        "test_c_index": {
+          "mean": 0.7270352875798832,
+          "std": 0.0039483277765502,
+          "n": 5,
+          "undefined": 0
+        },
+        "bulk_reconstruction": {
+          "mean": 0.0026229158393107355,
+          "std": 0.0008502458031432863,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_reconstruction": {
+          "mean": 0.003588188975118101,
+          "std": 0.0008927993319386775,
+          "n": 5,
+          "undefined": 0
+        },
+        "overall_dictionary_recovery": {
+          "mean": 0.4865628636310264,
+          "std": 0.042750690629166845,
+          "n": 5,
+          "undefined": 0
+        },
+        "risk_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.44670881107060423,
+            "std": 0.13573492567260825,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.445063131360892,
+            "std": 0.14206293461796013,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.4516471825512879,
+            "std": 0.1465553936604062,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.3265677326455939,
+            "std": 0.10908604893568362,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.6357263598311966,
+            "std": 0.4793850312574962,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.3148847596043991,
+            "std": 0.178934430242481,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": 4.230752038955688,
+            "std": 4.014177078669439,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "risk_gamma_sign_consistency": 0.8,
+        "protective_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.3684999381628196,
+            "std": 0.1204870289217393,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.34917855119187685,
+            "std": 0.11722702109114007,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.3879786427930658,
+            "std": 0.1241440301001361,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.3245183558056365,
+            "std": 0.06852750063555618,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.6328768899319532,
+            "std": 0.23845511598905902,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.3768251994870909,
+            "std": 0.12221031093627356,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -4.304402875900268,
+            "std": 1.4287662952009486,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "protective_gamma_sign_consistency": 1.0,
+        "neutral_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.41929745145981706,
+            "std": 0.17807158930497236,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.41160887808278035,
+            "std": 0.19582209112051072,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.4260770746957017,
+            "std": 0.16208323866325772,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.3949865792083916,
+            "std": 0.18701545407833456,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.38324678765987896,
+            "std": 0.24506659545275022,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.3312995169442975,
+            "std": 0.2791306361547587,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -3.1721503257751467,
+            "std": 2.280795596663105,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "neutral_gamma_sign_consistency": null,
+        "nuisance_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.9953824525269088,
+            "std": 0.00421775587204566,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.9955298474185437,
+            "std": 0.004245288610728862,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.9953931624897902,
+            "std": 0.004139834116437265,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.9972393984417897,
+            "std": 0.0011867076534016576,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.9901159516358421,
+            "std": 0.011481943202176709,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.9976987023206718,
+            "std": 0.0017847562207427032,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -0.40494548100978134,
+            "std": 1.0239021358364964,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "nuisance_gamma_sign_consistency": null,
+        "collision_rate": 0.2,
+        "HI_only_collision_rate": 0.2,
+        "pair": {
+          "learned_pair_HI_cosine": {
+            "mean": 0.7810012787013072,
+            "std": 0.18365791917277308,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_recovery": {
+            "mean": 0.44670881107060423,
+            "std": 0.13573492567260825,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HI_cosine": {
+            "mean": 0.4516471825512879,
+            "std": 0.1465553936604062,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HC_cosine": {
+            "mean": 0.445063131360892,
+            "std": 0.14206293461796013,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WS_correlation": {
+            "mean": 0.3148847596043991,
+            "std": 0.178934430242481,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_gamma": {
+            "mean": 4.230752038955688,
+            "std": 4.014177078669439,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_recovery": {
+            "mean": 0.36849993816281956,
+            "std": 0.12048702892173929,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HI_cosine": {
+            "mean": 0.3879786427930658,
+            "std": 0.1241440301001361,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HC_cosine": {
+            "mean": 0.34917855119187685,
+            "std": 0.11722702109114007,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WS_correlation": {
+            "mean": 0.3768251994870909,
+            "std": 0.12221031093627356,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_gamma": {
+            "mean": -4.304402875900268,
+            "std": 1.4287662952009486,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HO_cosine": {
+            "mean": 0.3265677326455939,
+            "std": 0.10908604893568362,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WB_correlation": {
+            "mean": 0.6357263598311966,
+            "std": 0.4793850312574962,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HO_cosine": {
+            "mean": 0.3245183558056365,
+            "std": 0.06852750063555618,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WB_correlation": {
+            "mean": 0.6328768899319532,
+            "std": 0.23845511598905902,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "redundancy": {
+          "mean_pair_collapse": {
+            "mean": 0.13118043839931487,
+            "std": 0.04172482699756256,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_pair_collapse": {
+            "mean": 0.4395553648471832,
+            "std": 0.09245850769291947,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HC_cosine": {
+            "mean": 0.41838049292564394,
+            "std": 0.06409416438960239,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HC_cosine": {
+            "mean": 0.3671527236700058,
+            "std": 0.1353608822543557,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HC_cosine": {
+            "mean": 0.0793730616569519,
+            "std": 0.032324603257681196,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HC_cosine": {
+            "mean": 0.8795306205749511,
+            "std": 0.07489839830859453,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HO_cosine": {
+            "mean": 0.3652961254119873,
+            "std": 0.05327263876056828,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HO_cosine": {
+            "mean": 0.3552047610282898,
+            "std": 0.0705390803667888,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HO_cosine": {
+            "mean": 0.11193654984235764,
+            "std": 0.017574374599183887,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HO_cosine": {
+            "mean": 0.6600960195064545,
+            "std": 0.19536928823930055,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HI_cosine": {
+            "mean": 0.440857857465744,
+            "std": 0.07690780005793879,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HI_cosine": {
+            "mean": 0.4276301026344299,
+            "std": 0.12066023236302409,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HI_cosine": {
+            "mean": 0.08926438391208649,
+            "std": 0.02643925221133883,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HI_cosine": {
+            "mean": 0.8267590641975403,
+            "std": 0.10101205487583807,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "matched_pair": {
+          "matched_A_B_HC_cosine": {
+            "mean": 0.8221765756607056,
+            "std": 0.20537003063675469,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HO_cosine": {
+            "mean": 0.6032156348228455,
+            "std": 0.2355837031611653,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HI_cosine": {
+            "mean": 0.7810012698173523,
+            "std": 0.1836578752402904,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_joint_collapse_score": {
+            "mean": 0.4247662761136355,
+            "std": 0.3325141523149349,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "final_losses": {
+          "total_loss": {
+            "mean": 0.4971495568752289,
+            "std": 0.0010778823895158753,
+            "n": 5,
+            "undefined": 0
+          },
+          "bulk_recon": {
+            "mean": 0.002622915850952268,
+            "std": 0.0008502458730425788,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_recon": {
+            "mean": 0.0035881890449672937,
+            "std": 0.00089279916250445,
+            "n": 5,
+            "undefined": 0
+          },
+          "cox_loss": {
+            "mean": 4.685825157165527,
+            "std": 0.026153849611458186,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_loss": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n": 5,
+            "undefined": 0
+          },
+          "regularization": {
+            "mean": 223.559326171875,
+            "std": 8.081547987278748,
+            "n": 5,
+            "undefined": 0
+          },
+          "collapse_loss": {
+            "mean": 0.13118045032024384,
+            "std": 0.04172483562532762,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "stability": {
+          "total_clip_events": 0,
+          "clipped_runs": 0,
+          "max_gradient_norm": 0.10815227776765823,
+          "nonfinite_runs": 0
+        }
+      },
+      "selected": {
+        "train_c_index": {
+          "mean": 0.8019403790786948,
+          "std": 0.0032582989189588268,
+          "n": 5,
+          "undefined": 0
+        },
+        "validation_c_index": {
+          "mean": 0.7302509907529723,
+          "std": 0.005093151294229055,
+          "n": 5,
+          "undefined": 0
+        },
+        "test_c_index": {
+          "mean": 0.7318699638788552,
+          "std": 0.007537375952795562,
+          "n": 5,
+          "undefined": 0
+        },
+        "bulk_reconstruction": {
+          "mean": 0.0021066456916742026,
+          "std": 8.498782714759116e-05,
+          "n": 5,
+          "undefined": 0
+        },
+        "spatial_reconstruction": {
+          "mean": 0.0038139244541525842,
+          "std": 0.0011990052763798007,
+          "n": 5,
+          "undefined": 0
+        },
+        "overall_dictionary_recovery": {
+          "mean": 0.5090893231846867,
+          "std": 0.029687672870058017,
+          "n": 5,
+          "undefined": 0
+        },
+        "risk_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.40178614307618943,
+            "std": 0.21973160236543982,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.36726493474441047,
+            "std": 0.21949626349157436,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.43723805135798355,
+            "std": 0.22423947647015147,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.11834705320730002,
+            "std": 0.12954118309360396,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.6335098276226713,
+            "std": 0.4048237524731184,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.06154170564975657,
+            "std": 0.1486117266862264,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": 4.85611732006073,
+            "std": 3.7205513353895903,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "risk_gamma_sign_consistency": 0.8,
+        "protective_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.40113669952815156,
+            "std": 0.14245132472862154,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.3926041271403421,
+            "std": 0.1382739765137483,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.41012909688947163,
+            "std": 0.14689432115847392,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.22562204384879028,
+            "std": 0.1716354263945985,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.43808622538051284,
+            "std": 0.21991110484129675,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.2962863387532997,
+            "std": 0.23274922632217737,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -3.315634608268738,
+            "std": 1.3628099724216602,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "protective_gamma_sign_consistency": 1.0,
+        "neutral_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.5854432378516334,
+            "std": 0.10133434960421156,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.5860688449348839,
+            "std": 0.10701734755630288,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.5850641341589079,
+            "std": 0.09649279872646087,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.40868095927300174,
+            "std": 0.33132478739083276,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.5481489523562215,
+            "std": 0.12488999971526478,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.47573792946079346,
+            "std": 0.19287467941578504,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -2.2372326612472535,
+            "std": 1.9842133299901348,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "neutral_gamma_sign_consistency": null,
+        "nuisance_niche_recovery": {
+          "dictionary_cosine": {
+            "mean": 0.9968777026524325,
+            "std": 0.0019140807796474502,
+            "n": 5,
+            "undefined": 0
+          },
+          "HC_cosine": {
+            "mean": 0.9971439841969876,
+            "std": 0.001722156371049056,
+            "n": 5,
+            "undefined": 0
+          },
+          "HI_cosine": {
+            "mean": 0.9966763807756639,
+            "std": 0.002131143990031449,
+            "n": 5,
+            "undefined": 0
+          },
+          "HO_cosine": {
+            "mean": 0.8326650310704633,
+            "std": 0.16585072821271823,
+            "n": 5,
+            "undefined": 0
+          },
+          "WB_correlation": {
+            "mean": 0.9924418848729571,
+            "std": 0.009932266568943394,
+            "n": 5,
+            "undefined": 0
+          },
+          "WS_correlation": {
+            "mean": 0.9987437253967156,
+            "std": 0.0005882125783913233,
+            "n": 5,
+            "undefined": 0
+          },
+          "gamma": {
+            "mean": -1.1987484753131867,
+            "std": 0.949141134129825,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "nuisance_gamma_sign_consistency": null,
+        "collision_rate": 0.2,
+        "HI_only_collision_rate": 0.2,
+        "pair": {
+          "learned_pair_HI_cosine": {
+            "mean": 0.6900425648876164,
+            "std": 0.26617669308583913,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_recovery": {
+            "mean": 0.40178614307618954,
+            "std": 0.21973160236543976,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HI_cosine": {
+            "mean": 0.43723805135798355,
+            "std": 0.22423947647015147,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HC_cosine": {
+            "mean": 0.36726493474441047,
+            "std": 0.21949626349157436,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WS_correlation": {
+            "mean": 0.06154170564975657,
+            "std": 0.1486117266862264,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_gamma": {
+            "mean": 4.85611732006073,
+            "std": 3.7205513353895903,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_recovery": {
+            "mean": 0.40113669952815145,
+            "std": 0.1424513247286215,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HI_cosine": {
+            "mean": 0.41012909688947163,
+            "std": 0.14689432115847392,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HC_cosine": {
+            "mean": 0.3926041271403421,
+            "std": 0.1382739765137483,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WS_correlation": {
+            "mean": 0.2962863387532997,
+            "std": 0.23274922632217737,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_gamma": {
+            "mean": -3.315634608268738,
+            "std": 1.3628099724216602,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_HO_cosine": {
+            "mean": 0.11834705320730002,
+            "std": 0.12954118309360396,
+            "n": 5,
+            "undefined": 0
+          },
+          "A_WB_correlation": {
+            "mean": 0.6335098276226713,
+            "std": 0.4048237524731184,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_HO_cosine": {
+            "mean": 0.22562204384879028,
+            "std": 0.1716354263945985,
+            "n": 5,
+            "undefined": 0
+          },
+          "B_WB_correlation": {
+            "mean": 0.43808622538051284,
+            "std": 0.21991110484129675,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "redundancy": {
+          "mean_pair_collapse": {
+            "mean": 0.0022976174019277095,
+            "std": 0.0003337336696743943,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_pair_collapse": {
+            "mean": 0.005901354597881436,
+            "std": 0.0018287132909732193,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HC_cosine": {
+            "mean": 0.30509377717971803,
+            "std": 0.057490387571983964,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HC_cosine": {
+            "mean": 0.19402921795845032,
+            "std": 0.12406592888410514,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HC_cosine": {
+            "mean": 0.05905555859208107,
+            "std": 0.02627203597991279,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HC_cosine": {
+            "mean": 0.9118557214736939,
+            "std": 0.054545673531470364,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HO_cosine": {
+            "mean": 0.08007374480366707,
+            "std": 0.043413529177249326,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HO_cosine": {
+            "mean": 0.05314110461622477,
+            "std": 0.025989100693362046,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HO_cosine": {
+            "mean": 0.005586710898205638,
+            "std": 0.0038969251498229213,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HO_cosine": {
+            "mean": 0.2279820665717125,
+            "std": 0.22539475807290404,
+            "n": 5,
+            "undefined": 0
+          },
+          "mean_HI_cosine": {
+            "mean": 0.30272998213768004,
+            "std": 0.06477890699791146,
+            "n": 5,
+            "undefined": 0
+          },
+          "median_HI_cosine": {
+            "mean": 0.22792311906814575,
+            "std": 0.12069703726903445,
+            "n": 5,
+            "undefined": 0
+          },
+          "min_HI_cosine": {
+            "mean": 0.07077911645174026,
+            "std": 0.02333699637882721,
+            "n": 5,
+            "undefined": 0
+          },
+          "max_HI_cosine": {
+            "mean": 0.8043627381324768,
+            "std": 0.16834651439796014,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "matched_pair": {
+          "matched_A_B_HC_cosine": {
+            "mean": 0.8208366930484772,
+            "std": 0.22065073592666687,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HO_cosine": {
+            "mean": 0.21664177756756545,
+            "std": 0.4383034272470966,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_HI_cosine": {
+            "mean": 0.6900425672531127,
+            "std": 0.2661766959806214,
+            "n": 5,
+            "undefined": 0
+          },
+          "matched_A_B_joint_collapse_score": {
+            "mean": 0.20503349414973643,
+            "std": 0.44440269141189437,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "final_losses": {
+          "total_loss": {
+            "mean": 0.4990081012248993,
+            "std": 0.0012441464796154225,
+            "n": 5,
+            "undefined": 0
+          },
+          "bulk_recon": {
+            "mean": 0.002106645703315735,
+            "std": 8.498781971516757e-05,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_recon": {
+            "mean": 0.003813924500718713,
+            "std": 0.0011990051819234006,
+            "n": 5,
+            "undefined": 0
+          },
+          "cox_loss": {
+            "mean": 4.6909280776977536,
+            "std": 0.02008080841674727,
+            "n": 5,
+            "undefined": 0
+          },
+          "spatial_loss": {
+            "mean": 0.0,
+            "std": 0.0,
+            "n": 5,
+            "undefined": 0
+          },
+          "regularization": {
+            "mean": 237.64935607910155,
+            "std": 5.665950626618833,
+            "n": 5,
+            "undefined": 0
+          },
+          "collapse_loss": {
+            "mean": 0.0022976174019277095,
+            "std": 0.0003337336696743943,
+            "n": 5,
+            "undefined": 0
+          }
+        },
+        "stability": {
+          "total_clip_events": 0,
+          "clipped_runs": 0,
+          "max_gradient_norm": 0.06364256888628006,
+          "nonfinite_runs": 0
+        }
+      }
+    }
+  },
+  "permutation": {
+    "train_c_index": {
+      "mean": 0.4795022401595137,
+      "std": 0.06996132554028248,
+      "n": 5,
+      "undefined": 0
+    },
+    "validation_c_index": {
+      "mean": 0.48916819946862866,
+      "std": 0.04541999114013234,
+      "n": 5,
+      "undefined": 0
+    },
+    "test_c_index": {
+      "mean": 0.48820094744959786,
+      "std": 0.03991095309308503,
+      "n": 5,
+      "undefined": 0
+    },
+    "bulk_reconstruction": {
+      "mean": 0.0011040405777748674,
+      "std": 7.991277319786346e-05,
+      "n": 5,
+      "undefined": 0
+    },
+    "spatial_reconstruction": {
+      "mean": 0.0022647725825663658,
+      "std": 6.422141430139088e-05,
+      "n": 5,
+      "undefined": 0
+    },
+    "overall_dictionary_recovery": {
+      "mean": 0.6679709113224154,
+      "std": 0.011618330029036231,
+      "n": 5,
+      "undefined": 0
+    },
+    "risk_niche_recovery": {
+      "dictionary_cosine": {
+        "mean": 0.3601571646350762,
+        "std": 0.02824946243800702,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.43618683869980995,
+        "std": 0.0983856377392829,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.27078631978026163,
+        "std": 0.1190659448295554,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.29496636388214925,
+        "std": 0.11043434806676196,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.16652160813304334,
+        "std": 0.051926479026996014,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.20360007323963755,
+        "std": 0.06108505404201406,
+        "n": 5,
+        "undefined": 0
+      },
+      "gamma": {
+        "mean": -0.061936935782432555,
+        "std": 0.6760010255956524,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "risk_gamma_sign_consistency": 0.4,
+    "protective_niche_recovery": null,
+    "protective_gamma_sign_consistency": null,
+    "neutral_niche_recovery": {
+      "dictionary_cosine": {
+        "mean": 0.7342163148073807,
+        "std": 0.017392099524745408,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.7549796334662695,
+        "std": 0.024120505557761775,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.7153156240546644,
+        "std": 0.012354947886892296,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.6381186424909767,
+        "std": 0.04675271332833252,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.6591169384998451,
+        "std": 0.017945575516203918,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.6787065191724317,
+        "std": 0.01724225552422817,
+        "n": 5,
+        "undefined": 0
+      },
+      "gamma": {
+        "mean": -0.011648134887218473,
+        "std": 0.41920724743441756,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "neutral_gamma_sign_consistency": null,
+    "nuisance_niche_recovery": {
+      "dictionary_cosine": {
+        "mean": 0.9917686869159207,
+        "std": 0.002598103364071165,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.9943329559460237,
+        "std": 0.001334159308592778,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.9898177424847561,
+        "std": 0.004651109658019117,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.7511247975677569,
+        "std": 0.04064501530243017,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.9546759609856517,
+        "std": 0.008378140126136599,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.9984868979239241,
+        "std": 0.00018197088902123878,
+        "n": 5,
+        "undefined": 0
+      },
+      "gamma": {
+        "mean": 1.0084233343601228,
+        "std": 0.8521132817873861,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "nuisance_gamma_sign_consistency": null,
+    "collision_rate": 0.6,
+    "HI_only_collision_rate": 0.2,
+    "pair": {
+      "learned_pair_HI_cosine": {
+        "mean": 0.6638477068002261,
+        "std": 0.4603586514573761,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_recovery": {
+        "mean": 0.36015716463507624,
+        "std": 0.028249462438007047,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HI_cosine": {
+        "mean": 0.27078631978026163,
+        "std": 0.1190659448295554,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HC_cosine": {
+        "mean": 0.43618683869980995,
+        "std": 0.0983856377392829,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_WS_correlation": {
+        "mean": 0.20360007323963755,
+        "std": 0.06108505404201406,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_gamma": {
+        "mean": -0.061936935782432555,
+        "std": 0.6760010255956524,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_recovery": {
+        "mean": 0.38660514350353675,
+        "std": 0.020420877503109388,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HI_cosine": {
+        "mean": 0.26238756812816666,
+        "std": 0.01639574302615855,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HC_cosine": {
+        "mean": 0.492862187737776,
+        "std": 0.03610161408724327,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_WS_correlation": {
+        "mean": 0.30355448169009824,
+        "std": 0.046549734063545095,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_gamma": {
+        "mean": 0.1866286389529705,
+        "std": 0.43261789247242577,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_HO_cosine": {
+        "mean": 0.29496636388214925,
+        "std": 0.11043434806676196,
+        "n": 5,
+        "undefined": 0
+      },
+      "A_WB_correlation": {
+        "mean": 0.16652160813304334,
+        "std": 0.051926479026996014,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_HO_cosine": {
+        "mean": 0.37892579871886795,
+        "std": 0.1456307965669578,
+        "n": 5,
+        "undefined": 0
+      },
+      "B_WB_correlation": {
+        "mean": 0.15123117576278627,
+        "std": 0.030604757676490367,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "redundancy": {
+      "mean_pair_collapse": {
+        "mean": 0.0026965977158397436,
+        "std": 0.0002672979452562196,
+        "n": 5,
+        "undefined": 0
+      },
+      "max_pair_collapse": {
+        "mean": 0.010571201704442501,
+        "std": 0.0029275918841875233,
+        "n": 5,
+        "undefined": 0
+      },
+      "mean_HC_cosine": {
+        "mean": 0.23583796620368958,
+        "std": 0.010485326589200787,
+        "n": 5,
+        "undefined": 0
+      },
+      "median_HC_cosine": {
+        "mean": 0.11172108799219131,
+        "std": 0.007699197295662366,
+        "n": 5,
+        "undefined": 0
+      },
+      "min_HC_cosine": {
+        "mean": 0.050313694030046464,
+        "std": 0.01361781993025049,
+        "n": 5,
+        "undefined": 0
+      },
+      "max_HC_cosine": {
+        "mean": 0.9939147710800171,
+        "std": 0.002927258907853533,
+        "n": 5,
+        "undefined": 0
+      },
+      "mean_HO_cosine": {
+        "mean": 0.10026117861270904,
+        "std": 0.0046954399461335535,
+        "n": 5,
+        "undefined": 0
+      },
+      "median_HO_cosine": {
+        "mean": 0.09840774983167648,
+        "std": 0.003127699117338737,
+        "n": 5,
+        "undefined": 0
+      },
+      "min_HO_cosine": {
+        "mean": 0.00719022136181593,
+        "std": 0.00024215307271743185,
+        "n": 5,
+        "undefined": 0
+      },
+      "max_HO_cosine": {
+        "mean": 0.3278780460357666,
+        "std": 0.030280067550715474,
+        "n": 5,
+        "undefined": 0
+      },
+      "mean_HI_cosine": {
+        "mean": 0.24852276146411895,
+        "std": 0.011903463074734583,
+        "n": 5,
+        "undefined": 0
+      },
+      "median_HI_cosine": {
+        "mean": 0.13815041929483413,
+        "std": 0.01622761731889289,
+        "n": 5,
+        "undefined": 0
+      },
+      "min_HI_cosine": {
+        "mean": 0.07341488748788834,
+        "std": 0.012517886366539032,
+        "n": 5,
+        "undefined": 0
+      },
+      "max_HI_cosine": {
+        "mean": 0.9895246982574463,
+        "std": 0.0036860046361259836,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "matched_pair": {
+      "matched_A_B_HC_cosine": {
+        "mean": 0.6538881659507751,
+        "std": 0.4740955869722226,
+        "n": 5,
+        "undefined": 0
+      },
+      "matched_A_B_HO_cosine": {
+        "mean": 0.7379564046859741,
+        "std": 0.3588275057992178,
+        "n": 5,
+        "undefined": 0
+      },
+      "matched_A_B_HI_cosine": {
+        "mean": 0.6638476938009262,
+        "std": 0.46035864195556675,
+        "n": 5,
+        "undefined": 0
+      },
+      "matched_A_B_joint_collapse_score": {
+        "mean": 0.6029383802461494,
+        "std": 0.5436988383960107,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "final_losses": {
+      "total_loss": {
+        "mean": 0.5305056095123291,
+        "std": 0.0009719239495865574,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_recon": {
+        "mean": 0.0011040405835956336,
+        "std": 7.991273677532975e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_recon": {
+        "mean": 0.0022647726349532605,
+        "std": 6.422138914174038e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "cox_loss": {
+        "mean": 5.093781280517578,
+        "std": 0.01668391160677652,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_loss": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5,
+        "undefined": 0
+      },
+      "regularization": {
+        "mean": 174.88992309570312,
+        "std": 6.245839544632303,
+        "n": 5,
+        "undefined": 0
+      },
+      "collapse_loss": {
+        "mean": 0.002696597669273615,
+        "std": 0.0002672976952379609,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "stability": {
+      "total_clip_events": 0,
+      "clipped_runs": 0,
+      "max_gradient_norm": 0.06845768541097641,
+      "nonfinite_runs": 0
+    }
+  },
+  "zero_weight_reproduction": {
+    "same_composition": {
+      "runs": [
+        {
+          "seed": 31,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 32,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 33,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 34,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 35,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        }
+      ],
+      "max_absolute_difference": 0.0,
+      "within_1e_minus7": true
+    },
+    "capacity": {
+      "runs": [
+        {
+          "seed": 31,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 32,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 33,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 34,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        },
+        {
+          "seed": 35,
+          "absolute_differences": {
+            "train_c_index": 0.0,
+            "validation_c_index": 0.0,
+            "test_c_index": 0.0,
+            "overall_dictionary_recovery": 0.0,
+            "bulk_reconstruction": 0.0,
+            "spatial_reconstruction": 0.0
+          }
+        }
+      ],
+      "max_absolute_difference": 0.0,
+      "within_1e_minus7": true
+    }
+  },
+  "numerical_failures": {
+    "same_composition": [],
+    "capacity": []
+  },
+  "fit_count": 75,
+  "generator_and_split_unchanged": true
+}

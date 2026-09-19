@@ -1,0 +1,54 @@
+{
+  "data": {
+    "scenario": "capacity",
+    "patients": 720,
+    "anchors": 300,
+    "cell_types": 12,
+    "contacts": 18,
+    "communications": 24,
+    "true_niches": 6,
+    "fit_niches": 4,
+    "beta_risk": 1.8,
+    "beta_protective": 1.8,
+    "noise_fraction": 0.025,
+    "seed": 20260917
+  },
+  "benchmark": {
+    "model_seeds": [
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "permutation_seeds": [
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "lambdas": [
+      0.0,
+      0.001,
+      0.005,
+      0.01,
+      0.05,
+      0.1
+    ],
+    "warmup_epochs": 800,
+    "joint_epochs": 800,
+    "split_seed": 90210,
+    "regularization": 0.0001,
+    "frozen_cox_ridge": 0.01,
+    "device": "cpu"
+  },
+  "selection": "Highest mean validation C-index across fixed model seeds; positive lambdas only; ties choose smaller lambda.",
+  "test_policy": "Test outcomes are scored only after selection.json is written; no refitting or selection uses them.",
+  "inference": "Deterministic nonnegative least squares; fixed dictionaries; no phenotype arguments.",
+  "unsupervised_head": "Additional training-only frozen-dictionary Cox evaluation head, ridge fixed in advance; factorization gamma remains zero.",
+  "recovery": "Best match per true niche plus collisions and rectangular Hungarian coverage; unmatched true niches count zero overall.",
+  "epochs": "Identical fixed epochs; no early stopping or ground-truth tuning.",
+  "spatial": "Independent spatial cohort without phenotype; used in training and scaling only.",
+  "scope": "One fixed synthetic cohort per scenario; model seeds measure initialization variation, not independent cohorts."
+}

@@ -1,0 +1,139 @@
+sample_id	ccc_id	n_positive	log_q95	used_in_slice	used_globally
+HCC-1L	Endothelial->Endothelial|RETN--TLR4|RESISTIN	16	1.884396703235	True	True
+HCC-1L	Endothelial->Cancer epithelial|RETN--TLR4|RESISTIN	16	1.3911741337458787	True	True
+HCC-1L	Endothelial->Endothelial|TNFSF8--TNFRSF8|CD30	0		False	True
+HCC-1L	Cancer epithelial->Endothelial|TNFSF8--TNFRSF8|CD30	0		False	True
+HCC-1L	Cancer epithelial->Endothelial|RETN--TLR4|RESISTIN	16	1.2667157432952005	True	True
+HCC-1L	Cancer epithelial->Cancer epithelial|RETN--TLR4|RESISTIN	16	1.0619885208207116	True	True
+HCC-1L	Endothelial->Cancer epithelial|JAM2--JAM3|JAM	429	1.5364711458755844	True	True
+HCC-1L	Cancer epithelial->Endothelial|JAM3--JAM2|JAM	429	1.537086822444477	True	True
+HCC-1L	Endothelial->Endothelial|JAM2--JAM3|JAM	429	3.064261395289313	True	True
+HCC-1L	Endothelial->Endothelial|JAM3--JAM2|JAM	429	3.064261395289313	True	True
+HCC-1L	Cancer epithelial->Endothelial|JAM2--JAM3|JAM	429	1.5846609376908516	True	True
+HCC-1L	Endothelial->Cancer epithelial|JAM3--JAM2|JAM	429	1.5846609376908514	True	True
+HCC-1L	Cancer epithelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	2582	10.73657757702265	True	True
+HCC-1L	Endothelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	2582	10.538418375975079	True	True
+HCC-1L	Endothelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	15	6.111395681002027	True	True
+HCC-1L	Cancer epithelial->Cancer epithelial|JAM2--JAM3|JAM	429	1.2872741503521565	True	True
+HCC-1L	Cancer epithelial->Cancer epithelial|JAM3--JAM2|JAM	429	1.2872741503521565	True	True
+HCC-1L	Cancer epithelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	2582	10.671556250025393	True	True
+HCC-1L	Cancer epithelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	15	6.3689737018994945	True	True
+HCC-1L	Endothelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	2582	10.81095063870099	True	True
+HCC-1L	Endothelial->Cancer epithelial|RETN--CAP1|RESISTIN	51	2.6556621317317677	True	True
+HCC-1L	Endothelial->Endothelial|RETN--CAP1|RESISTIN	51	3.4310885601498087	True	True
+HCC-1L	Cancer epithelial->Endothelial|RETN--CAP1|RESISTIN	51	3.3282406340004878	True	True
+HCC-2L	Endothelial->Endothelial|RETN--TLR4|RESISTIN	40	1.5717332022895227	True	True
+HCC-2L	Endothelial->Cancer epithelial|RETN--TLR4|RESISTIN	40	1.4171318832599606	True	True
+HCC-2L	Endothelial->Endothelial|TNFSF8--TNFRSF8|CD30	8		False	True
+HCC-2L	Cancer epithelial->Endothelial|TNFSF8--TNFRSF8|CD30	8		False	True
+HCC-2L	Cancer epithelial->Endothelial|RETN--TLR4|RESISTIN	40	1.4214444142905525	True	True
+HCC-2L	Cancer epithelial->Cancer epithelial|RETN--TLR4|RESISTIN	40	1.2331667522577805	True	True
+HCC-2L	Endothelial->Cancer epithelial|JAM2--JAM3|JAM	219	1.232326226884513	True	True
+HCC-2L	Cancer epithelial->Endothelial|JAM3--JAM2|JAM	219	1.2323262268845145	True	True
+HCC-2L	Endothelial->Endothelial|JAM2--JAM3|JAM	219	1.6462400916693876	True	True
+HCC-2L	Endothelial->Endothelial|JAM3--JAM2|JAM	219	1.6405905714856193	True	True
+HCC-2L	Cancer epithelial->Endothelial|JAM2--JAM3|JAM	219	1.3889800709790525	True	True
+HCC-2L	Endothelial->Cancer epithelial|JAM3--JAM2|JAM	219	1.388980070979051	True	True
+HCC-2L	Cancer epithelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	3752	17.952950471450343	True	True
+HCC-2L	Endothelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	3752	17.929427168795577	True	True
+HCC-2L	Endothelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	7		False	True
+HCC-2L	Cancer epithelial->Cancer epithelial|JAM2--JAM3|JAM	219	1.1768243058673666	True	True
+HCC-2L	Cancer epithelial->Cancer epithelial|JAM3--JAM2|JAM	219	1.1768243058673655	True	True
+HCC-2L	Cancer epithelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	3752	17.751715309947	True	True
+HCC-2L	Cancer epithelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	7		False	True
+HCC-2L	Endothelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	3752	18.144069511689295	True	True
+HCC-2L	Endothelial->Cancer epithelial|RETN--CAP1|RESISTIN	125	6.293255170362527	True	True
+HCC-2L	Endothelial->Endothelial|RETN--CAP1|RESISTIN	125	6.384275863618256	True	True
+HCC-2L	Cancer epithelial->Endothelial|RETN--CAP1|RESISTIN	125	6.327798522656475	True	True
+HCC-3L	Endothelial->Endothelial|RETN--TLR4|RESISTIN	234	1.9518409441580256	True	True
+HCC-3L	Endothelial->Cancer epithelial|RETN--TLR4|RESISTIN	234	1.52352977769037	True	True
+HCC-3L	Endothelial->Endothelial|TNFSF8--TNFRSF8|CD30	4		False	True
+HCC-3L	Cancer epithelial->Endothelial|TNFSF8--TNFRSF8|CD30	4		False	True
+HCC-3L	Cancer epithelial->Endothelial|RETN--TLR4|RESISTIN	234	1.4153106981170083	True	True
+HCC-3L	Cancer epithelial->Cancer epithelial|RETN--TLR4|RESISTIN	234	1.4864127954495492	True	True
+HCC-3L	Endothelial->Cancer epithelial|JAM2--JAM3|JAM	314	1.5848361179639399	True	True
+HCC-3L	Cancer epithelial->Endothelial|JAM3--JAM2|JAM	314	1.5848361179639436	True	True
+HCC-3L	Endothelial->Endothelial|JAM2--JAM3|JAM	314	2.7848138101962654	True	True
+HCC-3L	Endothelial->Endothelial|JAM3--JAM2|JAM	314	2.784813810196268	True	True
+HCC-3L	Cancer epithelial->Endothelial|JAM2--JAM3|JAM	314	1.4044805155699958	True	True
+HCC-3L	Endothelial->Cancer epithelial|JAM3--JAM2|JAM	314	1.4038146683214492	True	True
+HCC-3L	Cancer epithelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	4426	12.146463997121275	True	True
+HCC-3L	Endothelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	4426	12.078890677047173	True	True
+HCC-3L	Endothelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	18	1.2981778217716247	True	True
+HCC-3L	Cancer epithelial->Cancer epithelial|JAM2--JAM3|JAM	314	1.6019525767704024	True	True
+HCC-3L	Cancer epithelial->Cancer epithelial|JAM3--JAM2|JAM	314	1.6019525767704015	True	True
+HCC-3L	Cancer epithelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	4426	11.931889400222722	True	True
+HCC-3L	Cancer epithelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	18	1.1378835087052654	True	True
+HCC-3L	Endothelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	4426	12.064297875909741	True	True
+HCC-3L	Endothelial->Cancer epithelial|RETN--CAP1|RESISTIN	569	5.857292279267223	True	True
+HCC-3L	Endothelial->Endothelial|RETN--CAP1|RESISTIN	569	5.812536412573398	True	True
+HCC-3L	Cancer epithelial->Endothelial|RETN--CAP1|RESISTIN	569	5.867546608467182	True	True
+HCC-4L	Endothelial->Endothelial|RETN--TLR4|RESISTIN	4		False	True
+HCC-4L	Endothelial->Cancer epithelial|RETN--TLR4|RESISTIN	4		False	True
+HCC-4L	Endothelial->Endothelial|TNFSF8--TNFRSF8|CD30	2		False	True
+HCC-4L	Cancer epithelial->Endothelial|TNFSF8--TNFRSF8|CD30	2		False	True
+HCC-4L	Cancer epithelial->Endothelial|RETN--TLR4|RESISTIN	4		False	True
+HCC-4L	Cancer epithelial->Cancer epithelial|RETN--TLR4|RESISTIN	4		False	True
+HCC-4L	Endothelial->Cancer epithelial|JAM2--JAM3|JAM	331	1.2382615739369505	True	True
+HCC-4L	Cancer epithelial->Endothelial|JAM3--JAM2|JAM	331	1.2382615739369505	True	True
+HCC-4L	Endothelial->Endothelial|JAM2--JAM3|JAM	331	1.5952818717198083	True	True
+HCC-4L	Endothelial->Endothelial|JAM3--JAM2|JAM	331	1.5952818717198083	True	True
+HCC-4L	Cancer epithelial->Endothelial|JAM2--JAM3|JAM	331	1.273699226420356	True	True
+HCC-4L	Endothelial->Cancer epithelial|JAM3--JAM2|JAM	331	1.2696287779145212	True	True
+HCC-4L	Cancer epithelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	3982	12.751440796023413	True	True
+HCC-4L	Endothelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	3982	12.672970404960433	True	True
+HCC-4L	Endothelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	33	1.642564542572152	True	True
+HCC-4L	Cancer epithelial->Cancer epithelial|JAM2--JAM3|JAM	331	1.1588949322453221	True	True
+HCC-4L	Cancer epithelial->Cancer epithelial|JAM3--JAM2|JAM	331	1.1588949134076185	True	True
+HCC-4L	Cancer epithelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	3982	12.738189258169664	True	True
+HCC-4L	Cancer epithelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	33	1.9681183138615466	True	True
+HCC-4L	Endothelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	3982	12.537180290288259	True	True
+HCC-4L	Endothelial->Cancer epithelial|RETN--CAP1|RESISTIN	31	8.668307567676843	True	True
+HCC-4L	Endothelial->Endothelial|RETN--CAP1|RESISTIN	31	8.728932284337795	True	True
+HCC-4L	Cancer epithelial->Endothelial|RETN--CAP1|RESISTIN	31	8.846370308600424	True	True
+cHC-1L	Endothelial->Endothelial|RETN--TLR4|RESISTIN	833	2.0346192236513225	True	True
+cHC-1L	Endothelial->Cancer epithelial|RETN--TLR4|RESISTIN	833	1.6973999822552024	True	True
+cHC-1L	Endothelial->Endothelial|TNFSF8--TNFRSF8|CD30	34	1.889831345132489	True	True
+cHC-1L	Cancer epithelial->Endothelial|TNFSF8--TNFRSF8|CD30	34	1.12886742314774	True	True
+cHC-1L	Cancer epithelial->Endothelial|RETN--TLR4|RESISTIN	833	1.6900806946588038	True	True
+cHC-1L	Cancer epithelial->Cancer epithelial|RETN--TLR4|RESISTIN	833	1.9394651590084449	True	True
+cHC-1L	Endothelial->Cancer epithelial|JAM2--JAM3|JAM	471	1.3042111438128263	True	True
+cHC-1L	Cancer epithelial->Endothelial|JAM3--JAM2|JAM	471	1.3042111438128265	True	True
+cHC-1L	Endothelial->Endothelial|JAM2--JAM3|JAM	471	2.0492306206734137	True	True
+cHC-1L	Endothelial->Endothelial|JAM3--JAM2|JAM	471	2.054484649851754	True	True
+cHC-1L	Cancer epithelial->Endothelial|JAM2--JAM3|JAM	471	1.3261165186564763	True	True
+cHC-1L	Endothelial->Cancer epithelial|JAM3--JAM2|JAM	471	1.326116518656476	True	True
+cHC-1L	Cancer epithelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	4475	10.04845920394849	True	True
+cHC-1L	Endothelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	4475	10.091628691045601	True	True
+cHC-1L	Endothelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	97	2.3516779349713857	True	True
+cHC-1L	Cancer epithelial->Cancer epithelial|JAM2--JAM3|JAM	471	1.4508075557090212	True	True
+cHC-1L	Cancer epithelial->Cancer epithelial|JAM3--JAM2|JAM	471	1.4491623079702058	True	True
+cHC-1L	Cancer epithelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	4475	9.975112282196989	True	True
+cHC-1L	Cancer epithelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	97	1.826788136077314	True	True
+cHC-1L	Endothelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	4475	10.162561234227336	True	True
+cHC-1L	Endothelial->Cancer epithelial|RETN--CAP1|RESISTIN	1624	4.987946063789103	True	True
+cHC-1L	Endothelial->Endothelial|RETN--CAP1|RESISTIN	1624	5.047224978745563	True	True
+cHC-1L	Cancer epithelial->Endothelial|RETN--CAP1|RESISTIN	1624	5.260100809869839	True	True
+ICC-1L	Endothelial->Endothelial|RETN--TLR4|RESISTIN	654	2.1468824780769586	True	True
+ICC-1L	Endothelial->Cancer epithelial|RETN--TLR4|RESISTIN	654	1.7286587130530429	True	True
+ICC-1L	Endothelial->Endothelial|TNFSF8--TNFRSF8|CD30	6		False	True
+ICC-1L	Cancer epithelial->Endothelial|TNFSF8--TNFRSF8|CD30	6		False	True
+ICC-1L	Cancer epithelial->Endothelial|RETN--TLR4|RESISTIN	654	1.7758121092556023	True	True
+ICC-1L	Cancer epithelial->Cancer epithelial|RETN--TLR4|RESISTIN	654	1.7038185163930295	True	True
+ICC-1L	Endothelial->Cancer epithelial|JAM2--JAM3|JAM	533	1.4569585243652883	True	True
+ICC-1L	Cancer epithelial->Endothelial|JAM3--JAM2|JAM	533	1.4569585513745904	True	True
+ICC-1L	Endothelial->Endothelial|JAM2--JAM3|JAM	533	2.0279796267817467	True	True
+ICC-1L	Endothelial->Endothelial|JAM3--JAM2|JAM	533	2.0279796267818577	True	True
+ICC-1L	Cancer epithelial->Endothelial|JAM2--JAM3|JAM	533	1.4996113473410182	True	True
+ICC-1L	Endothelial->Cancer epithelial|JAM3--JAM2|JAM	533	1.49961134734117	True	True
+ICC-1L	Cancer epithelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	4631	9.848729482602456	True	True
+ICC-1L	Endothelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	4631	9.896956552301917	True	True
+ICC-1L	Endothelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	30	6.389338354791949	True	True
+ICC-1L	Cancer epithelial->Cancer epithelial|JAM2--JAM3|JAM	533	1.2811548486134698	True	True
+ICC-1L	Cancer epithelial->Cancer epithelial|JAM3--JAM2|JAM	533	1.2819226406678892	True	True
+ICC-1L	Cancer epithelial->Cancer epithelial|CDH1--ITGAE_ITGB7|CDH1	4631	10.087062729447158	True	True
+ICC-1L	Cancer epithelial->Cancer epithelial|COL6A3--GP6|COLLAGEN	30	6.475451810537866	True	True
+ICC-1L	Endothelial->Endothelial|CDH1--ITGAE_ITGB7|CDH1	4631	9.781323052559458	True	True
+ICC-1L	Endothelial->Cancer epithelial|RETN--CAP1|RESISTIN	1330	8.24227952141134	True	True
+ICC-1L	Endothelial->Endothelial|RETN--CAP1|RESISTIN	1330	8.237264996541846	True	True
+ICC-1L	Cancer epithelial->Endothelial|RETN--CAP1|RESISTIN	1330	8.240881036472206	True	True

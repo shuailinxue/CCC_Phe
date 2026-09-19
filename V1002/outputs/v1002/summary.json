@@ -1,0 +1,33 @@
+{
+  "pytest": "132 passed in 43.01s",
+  "selected_CCC": 556,
+  "signal_edge_precision": 1.0,
+  "signal_edge_recall": 0.6864197530864198,
+  "methods": [
+    {
+      "Method": "Full-CCC",
+      "nCCC": 538112,
+      "Risk_A_WB": 0.10170453074633443,
+      "Neutral_B_WB": 0.6429366139932383,
+      "Protective_C_WB": 0.9929874672711876,
+      "Validation_C": 0.6605136436597111,
+      "Test_C": 0.7036172695449242,
+      "gamma_A": -0.11268949508666992,
+      "gamma_B": 1.1236004829406738,
+      "gamma_C": -1.2901803255081177
+    },
+    {
+      "Method": "ST-selected-CCC",
+      "nCCC": 556,
+      "Risk_A_WB": 0.5247895021873014,
+      "Neutral_B_WB": 0.8211951258418935,
+      "Protective_C_WB": 0.8322169264361167,
+      "Validation_C": 0.6637239165329053,
+      "Test_C": 0.6569428238039673,
+      "gamma_A": 1.024359107017517,
+      "gamma_B": 0.5154925584793091,
+      "gamma_C": -1.148763656616211
+    }
+  ],
+  "conclusion": "B"
+}

@@ -1,0 +1,7 @@
+id	path	scope	evidence
+processed	/home/nas3/biod/xueshuailin/CCC_Phe/data/processed	既有处理数据：ST anchor、细胞标签、RCTD、BayesPrism、CCC 张量等；恢复后进一步排除可重建缓存及废弃试跑	config/*.yaml; src/cccphe/workflow.py
+results	/home/nas3/biod/xueshuailin/CCC_Phe/results	既有分析结果；恢复后确认有效运行版本	config/*.yaml
+clinical	/home/nas3/biod/xueshuailin/New_Projects/data/TCGA_LIHC/clinical_aligned_plus.tsv	直接使用的已整理临床及生存信息	config/*.yaml
+bulk_expression	/home/nas3/biod/xueshuailin/New_Projects/data/TCGA_LIHC/expr_aligned_plus.tsv	配置引用的已对齐表达矩阵	config/*.yaml
+scrna_reference	/home/nas3/biod/xueshuailin/New_Projects/data/GSE189903_scRNA/processed/GSE189903_liver_reference_raw_counts.h5ad	已经整理好的单细胞参考；文件名虽有 raw_counts，但不是原始测序文件	config/*.yaml
+merfish_processed	/home/nas3/biod/xueshuailin/New_Projects/data/GSE327192_HCC_MERFISH/processed	已整理 panel、坐标及数据清单；恢复后核实哪些是继续分析必需项	scripts/prepare_gse327192_hcc_merfish.py

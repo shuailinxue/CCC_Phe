@@ -1,0 +1,635 @@
+{
+  "scenario": "same_composition",
+  "selected_lambda": 0.1,
+  "selection": {
+    "lambda_ph": 0.1,
+    "validation_scores": {
+      "0.0": [
+        0.5973840179848764,
+        0.5987124463519313,
+        0.5536480686695279,
+        0.554465563049254,
+        0.5568158593909667
+      ],
+      "0.001": [
+        0.5889025137952176,
+        0.5910484365419988,
+        0.5517065195176784,
+        0.5490496627835684,
+        0.5522174535050072
+      ],
+      "0.005": [
+        0.5993255671367259,
+        0.5968730839975476,
+        0.5529327610872675,
+        0.5498671571632945,
+        0.5535458818720621
+      ],
+      "0.01": [
+        0.5941140404659718,
+        0.5886981402002861,
+        0.5563049254036379,
+        0.5591661557326794,
+        0.5638667484161046
+      ],
+      "0.05": [
+        0.6160842019211118,
+        0.6178213774780298,
+        0.5541590026568567,
+        0.5921724913141222,
+        0.6025955446556305
+      ],
+      "0.1": [
+        0.6156754547312487,
+        0.6238503985285101,
+        0.5629470672389127,
+        0.617310443490701,
+        0.5713263846311056
+      ]
+    },
+    "protocol_sha256": "c8563b2ef54e482c64419d9ae49c547a5c2532644b4507990f52d45452843334",
+    "test_outcomes_used": false
+  },
+  "scaling": {
+    "composition": 7.062640161939125,
+    "communication": 5.000549086141425,
+    "topology": 6.11837066835744
+  },
+  "patient_counts": {
+    "train": 432,
+    "validation": 144,
+    "test": 144
+  },
+  "event_fractions": {
+    "train": 0.8564814925193787,
+    "validation": 0.8958333134651184,
+    "test": 0.8611111044883728
+  },
+  "comparison": {
+    "unsupervised": {
+      "train_c_index": {
+        "mean": 0.5799142373247811,
+        "std": 0.049303655685099215,
+        "n": 5,
+        "undefined": 0
+      },
+      "train_fitted_c_index": {
+        "mean": 0.5794097509999641,
+        "std": 0.0476706199693891,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.5722051910893112,
+        "std": 0.023624672648624258,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.6055084278946788,
+        "std": 0.025713846464628584,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.0011160412745084614,
+        "std": 0.00015073972379028676,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.0018579516210593284,
+        "std": 0.000197080123052849,
+        "n": 5,
+        "undefined": 0
+      },
+      "overall_dictionary_recovery": {
+        "mean": 0.5920897419651839,
+        "std": 0.022710049714141197,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.536166936850397,
+          "std": 0.1523351262885321,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.6823845751040607,
+          "std": 0.19516210207428822,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.35393031959634175,
+          "std": 0.08355402897528331,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.35259618329027304,
+          "std": 0.07605409794339804,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.3876298229822036,
+          "std": 0.2731255848900865,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.40036791617640005,
+          "std": 0.2203637732127542,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 0.6086129128932953,
+          "std": 0.34268161448735246,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_gamma_sign_consistency": 1.0,
+      "protective_niche_recovery": null,
+      "protective_gamma_sign_consistency": null,
+      "neutral_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.687804479531306,
+          "std": 0.020191013360437746,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.7311868621794462,
+          "std": 0.014948566760788094,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.6361531920038235,
+          "std": 0.046415957391620556,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.6326276997843497,
+          "std": 0.04965042728899055,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.6609217994089853,
+          "std": 0.021703234531413748,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.671517677166527,
+          "std": 0.039025126146766245,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 0.32604973266522086,
+          "std": 0.02306510602160819,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_gamma_sign_consistency": null,
+      "nuisance_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.9965419625295556,
+          "std": 0.0003270920115462696,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9969076477059355,
+          "std": 0.00022609978168198867,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9962433287703746,
+          "std": 0.0004460305989727334,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9956702809290621,
+          "std": 0.0003899774903656833,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9969632511786646,
+          "std": 0.0005094430222938487,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.998014030073961,
+          "std": 0.00034379226272188276,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.09894010210409761,
+          "std": 0.03138216209302076,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_gamma_sign_consistency": null
+    },
+    "supervised": {
+      "train_c_index": {
+        "mean": 0.6220052130253564,
+        "std": 0.022612615917475536,
+        "n": 5,
+        "undefined": 0
+      },
+      "train_fitted_c_index": {
+        "mean": 0.9999303328408585,
+        "std": 9.163504557320667e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "validation_c_index": {
+        "mean": 0.5982219497240957,
+        "std": 0.02869451853337004,
+        "n": 5,
+        "undefined": 0
+      },
+      "test_c_index": {
+        "mean": 0.5990525504021151,
+        "std": 0.006848905545132375,
+        "n": 5,
+        "undefined": 0
+      },
+      "bulk_reconstruction": {
+        "mean": 0.002133705548476428,
+        "std": 0.00011906602712233894,
+        "n": 5,
+        "undefined": 0
+      },
+      "spatial_reconstruction": {
+        "mean": 0.0049540151609107855,
+        "std": 0.0002673100435369597,
+        "n": 5,
+        "undefined": 0
+      },
+      "overall_dictionary_recovery": {
+        "mean": 0.4694735291149116,
+        "std": 0.017690295368615046,
+        "n": 5,
+        "undefined": 0
+      },
+      "risk_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.546695725854123,
+          "std": 0.12325833694386355,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.6125910442446758,
+          "std": 0.15936231147398205,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.476719100013647,
+          "std": 0.08544801953948919,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.34358285038324615,
+          "std": 0.03519233186559638,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.5206542203062476,
+          "std": 0.14896024912454967,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.2528295697086841,
+          "std": 0.02399942645426791,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 15.331719398498535,
+          "std": 1.3514625806420015,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "risk_gamma_sign_consistency": 1.0,
+      "protective_niche_recovery": null,
+      "protective_gamma_sign_consistency": null,
+      "neutral_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.43322503720094596,
+          "std": 0.06820873381517678,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.4757277829763254,
+          "std": 0.0755998194270034,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.3895719989550609,
+          "std": 0.06038847588377828,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.5683514173506301,
+          "std": 0.0817629808453858,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.28522562133962437,
+          "std": 0.139064564924069,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.4797485437216501,
+          "std": 0.11299247377085542,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": 15.323492431640625,
+          "std": 1.3569767558538166,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "neutral_gamma_sign_consistency": null,
+      "nuisance_niche_recovery": {
+        "dictionary_cosine": {
+          "mean": 0.9908153324405362,
+          "std": 0.001596063402502226,
+          "n": 5,
+          "undefined": 0
+        },
+        "HC_cosine": {
+          "mean": 0.9896157950417654,
+          "std": 0.0012938910615327558,
+          "n": 5,
+          "undefined": 0
+        },
+        "HI_cosine": {
+          "mean": 0.9921139842691534,
+          "std": 0.001929428752209129,
+          "n": 5,
+          "undefined": 0
+        },
+        "HO_cosine": {
+          "mean": 0.9960422031431808,
+          "std": 0.0009530345419478826,
+          "n": 5,
+          "undefined": 0
+        },
+        "WB_correlation": {
+          "mean": 0.9566061799551729,
+          "std": 0.02284605317109371,
+          "n": 5,
+          "undefined": 0
+        },
+        "WS_correlation": {
+          "mean": 0.9988298483999805,
+          "std": 0.0003046096340924255,
+          "n": 5,
+          "undefined": 0
+        },
+        "gamma": {
+          "mean": -0.16238813679665326,
+          "std": 3.0621353129891626,
+          "n": 5,
+          "undefined": 0
+        }
+      },
+      "nuisance_gamma_sign_consistency": null
+    }
+  },
+  "permutation": {
+    "train_c_index": {
+      "mean": 0.5321465893120968,
+      "std": 0.041034200678113975,
+      "n": 5,
+      "undefined": 0
+    },
+    "train_fitted_c_index": {
+      "mean": 0.48615185038376996,
+      "std": 0.010352025339561609,
+      "n": 5,
+      "undefined": 0
+    },
+    "validation_c_index": {
+      "mean": 0.5317596566523606,
+      "std": 0.028446994799043484,
+      "n": 5,
+      "undefined": 0
+    },
+    "test_c_index": {
+      "mean": 0.5222430318387132,
+      "std": 0.02852670099061486,
+      "n": 5,
+      "undefined": 0
+    },
+    "bulk_reconstruction": {
+      "mean": 0.00213340058689937,
+      "std": 3.4786019793839645e-05,
+      "n": 5,
+      "undefined": 0
+    },
+    "spatial_reconstruction": {
+      "mean": 0.0049358804011717435,
+      "std": 4.062536758183836e-05,
+      "n": 5,
+      "undefined": 0
+    },
+    "overall_dictionary_recovery": {
+      "mean": 0.46523583143415015,
+      "std": 0.013492815986486446,
+      "n": 5,
+      "undefined": 0
+    },
+    "risk_niche_recovery": {
+      "dictionary_cosine": {
+        "mean": 0.44487735353101315,
+        "std": 0.0382123144766468,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.5557481558635489,
+        "std": 0.05761487974438391,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.32844406174081053,
+        "std": 0.026337841725367732,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.3172920472602683,
+        "std": 0.02495554099779014,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.11817390003832709,
+        "std": 0.12351157306800868,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.1693525535424786,
+        "std": 0.036551824573327694,
+        "n": 5,
+        "undefined": 0
+      },
+      "gamma": {
+        "mean": -2.5929147720336916,
+        "std": 15.855879422205588,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "risk_gamma_sign_consistency": 0.4,
+    "protective_niche_recovery": null,
+    "protective_gamma_sign_consistency": null,
+    "neutral_niche_recovery": {
+      "dictionary_cosine": {
+        "mean": 0.4764665684270592,
+        "std": 0.06260476740182831,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.5053540411137634,
+        "std": 0.06132421523978427,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.4481075425763291,
+        "std": 0.06523312269358363,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.5334646879384677,
+        "std": 0.011415388536683996,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.3400097682256496,
+        "std": 0.03901293817964744,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.4382318463363676,
+        "std": 0.010110519756953552,
+        "n": 5,
+        "undefined": 0
+      },
+      "gamma": {
+        "mean": -2.5929147720336916,
+        "std": 15.855879422205588,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "neutral_gamma_sign_consistency": null,
+    "nuisance_niche_recovery": {
+      "dictionary_cosine": {
+        "mean": 0.989721940193214,
+        "std": 0.0004532704750290229,
+        "n": 5,
+        "undefined": 0
+      },
+      "HC_cosine": {
+        "mean": 0.9887034678066478,
+        "std": 0.0005037334010579773,
+        "n": 5,
+        "undefined": 0
+      },
+      "HI_cosine": {
+        "mean": 0.9908507387695316,
+        "std": 0.0004321722880218648,
+        "n": 5,
+        "undefined": 0
+      },
+      "HO_cosine": {
+        "mean": 0.9952787101358291,
+        "std": 0.0005032027161795513,
+        "n": 5,
+        "undefined": 0
+      },
+      "WB_correlation": {
+        "mean": 0.9779577240343652,
+        "std": 0.018163297457995716,
+        "n": 5,
+        "undefined": 0
+      },
+      "WS_correlation": {
+        "mean": 0.9985716059335934,
+        "std": 6.44169242713649e-05,
+        "n": 5,
+        "undefined": 0
+      },
+      "gamma": {
+        "mean": -0.5670568615198135,
+        "std": 1.2565051096515376,
+        "n": 5,
+        "undefined": 0
+      }
+    },
+    "nuisance_gamma_sign_consistency": null
+  },
+  "oracle": {
+    "test_c_index_true_risk": 0.7004516910873637,
+    "test_c_index_true_dictionary_inference": 0.6946127575190041,
+    "phenotype_activity_correlations": {
+      "0": 0.9971076453698974
+    }
+  },
+  "truth_pair_similarity": {
+    "HC": 1.0000000000000002,
+    "HI": 0.025034973006863356,
+    "HO": 0.028848137183106606
+  },
+  "roles": [
+    "risk",
+    "neutral",
+    "nuisance",
+    "nuisance",
+    "neutral",
+    "neutral"
+  ],
+  "torch_version": "2.3.1+cu121",
+  "factor_export_seed": 31
+}

@@ -1,0 +1,12 @@
+{
+  "WB_A_B": -0.02928055888246083,
+  "WS_A_B": 0.07850284553065877,
+  "WB_B_eta": -0.029280554704680162,
+  "WB_B_observed_survival_proxy": -0.0066047643346933,
+  "WB_A_eta": 0.9999999999999979,
+  "WB_A_observed_survival_proxy": 0.5984980566841633,
+  "WB_B_uncensored_proxy": -0.01727280602472363,
+  "observed_survival_proxy": "-log(min(failure_time, censoring_time)); descriptive and censoring-confounded, not a survival effect estimate",
+  "true_gamma_A": 1.7999999523162842,
+  "true_gamma_B": 0.0
+}

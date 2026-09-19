@@ -1,0 +1,15 @@
+{
+  "Level1_observable_identifiable": false,
+  "selected_generator_repair": null,
+  "oracle_attempts": 6,
+  "Level2_ST": "not_run",
+  "Level3_bulk": "not_run",
+  "Level4_ALR_Cox": "not_run",
+  "conclusion": "B",
+  "pytest": "146 passed in 39.57s",
+  "figures": [
+    "Figure_simulation_truth_vs_observed.pdf",
+    "Figure_final_niche_recovery.pdf"
+  ],
+  "notebook_diagnostic": "pipeline.ipynb repair=4 core oracle passes; all-anchor oracle fails in 2/3 seeds; Full-balanced ST remains poor in 3/3."
+}
