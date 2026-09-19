@@ -23,6 +23,18 @@ def relative_gradient_norm(w, h, x, eps=1e-12):
     return float((2 * ((w @ h - x) @ h.T) / (x.square().sum() + eps)).norm())
 
 
+def canonicalize_factors(w, dictionaries):
+    """Set each factor's combined per-view dictionary RMS to one.
+
+    The reciprocal rescaling of W and every dictionary preserves each W @ H
+    exactly up to floating-point roundoff. Views are averaged over their own
+    features, so a wide CCC block does not define the factor scale by width.
+    """
+    scale = torch.sqrt(sum(h.square().mean(1) for h in dictionaries.values()))
+    scale = torch.where(scale > 0, scale, torch.ones_like(scale))
+    return w * scale[None, :], {name: h / scale[:, None] for name, h in dictionaries.items()}
+
+
 def fit_balanced(blocks, seed, iterations=500, balanced=True, device="cuda", niches=6):
     if not isinstance(niches, int) or niches < 2:
         raise ValueError("niches must be an integer of at least two")
@@ -64,6 +76,7 @@ def fit_balanced(blocks, seed, iterations=500, balanced=True, device="cuda", nic
     audit = {"RMS": rms, "initial_gradient_norm": initial, "alpha": alpha,
              "weighted_initial_gradient_norm": weighted_initial, "final_gradient_norm": final,
              "loss": {name: float((x[name] - w @ h[name]).square().sum() / energy[name]) for name in names}}
+    w, h = canonicalize_factors(w, h)
     return BalancedFit(w.cpu(), {name: (value * rms[name]).cpu() for name, value in h.items()}, audit)
 
 

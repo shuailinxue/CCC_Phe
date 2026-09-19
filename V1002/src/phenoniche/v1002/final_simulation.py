@@ -4,7 +4,7 @@ import math
 import numpy as np
 from scipy.ndimage import distance_transform_edt
 from phenoniche.v1001.neighborhoods import build_neighborhoods
-from phenoniche.v1002.simulation_cells import _layout, _side_expression, build_simulation_spec, bulk_potential
+from phenoniche.v1002.simulation_cells import _layout, _side_expression, aggregate_pairwise_ccc, build_simulation_spec, bulk_potential
 
 ALR_EPS = 1e-6
 TRUE_BETA = np.array([.8, 0, -.8, 0, 0], dtype=np.float32)
@@ -93,26 +93,6 @@ def _boundary_rho(labels):
     return rho.ravel()
 
 
-def _local_views(types, positions, expression, spec):
-    """Type aggregation avoids an anchor x cell x cell x LR tensor."""
-    ligand,receptor = _side_expression(expression,spec.genes,spec.atlas)
-    mean_l = np.zeros((8,len(spec.atlas)),dtype=np.float32)
-    mean_r = np.zeros_like(mean_l)
-    for t in range(8):
-        present = types==t
-        if present.any():
-            mean_l[t] = ligand[present].mean(0)
-            mean_r[t] = receptor[present].mean(0)
-    difference = positions[:,None]-positions[None]
-    kernel = np.exp(-np.sum(difference*difference,axis=2)/(2*.45**2))
-    np.fill_diagonal(kernel,0)  # same type allowed, same physical cell excluded
-    onehot = np.eye(8,dtype=np.float32)[types]
-    opp = onehot.T@kernel@onehot
-    signal = np.sqrt(mean_l[:,None,:]*mean_r[None,:,:])
-    communication = opp[:,:,None]*signal/(opp[:,:,None]+1e-4)
-    return communication.reshape(-1),opp.reshape(-1),ligand,receptor
-
-
 def simulate_final_spatial(spec,purity=.5,niche_size=100,noise=.05,seed=40700,device=None,n_anchors=1800):
     """Each anchor has 48 local cells. n_anchors limits rows for smoke tests only."""
     if not 1 <= n_anchors <= 1800:
@@ -128,12 +108,6 @@ def simulate_final_spatial(spec,purity=.5,niche_size=100,noise=.05,seed=40700,de
     cell_types = np.empty((n_anchors,48),dtype=np.int8)
     relative_positions = np.empty((n_anchors,48,2),dtype=np.float32)
     expression = np.empty((n_anchors,48,len(spec.genes)),dtype=np.float32)
-    cs = np.empty((n_anchors,8),dtype=np.float32)
-    opportunity = np.empty((n_anchors,64),dtype=np.float32)
-    communication = np.empty((n_anchors,64*len(spec.atlas)),dtype=np.float32)
-    observed_l = np.zeros((8,len(spec.atlas)),dtype=np.int64)
-    observed_r = np.zeros_like(observed_l)
-    total = np.zeros(8,dtype=np.int64)
     for i in range(n_anchors):
         types = rng.choice(8,48,p=theta[i]).astype(np.int8)
         positions = rng.normal(0,.3,(48,2)).astype(np.float32)
@@ -146,14 +120,16 @@ def simulate_final_spatial(spec,purity=.5,niche_size=100,noise=.05,seed=40700,de
         if noise:
             counts[rng.random(counts.shape)<noise] = 0
         cell_types[i],relative_positions[i],expression[i] = types,positions,counts
-        cs[i] = np.bincount(types,minlength=8)/48
-        communication[i],opportunity[i],ligand,receptor = _local_views(types,positions,counts,spec)
-        for t in range(8):
-            present = types==t
-            total[t] += present.sum()
-            if present.any():
-                observed_l[t] += (ligand[present]>0).sum(0)
-                observed_r[t] += (receptor[present]>0).sum(0)
+    ligand,receptor = _side_expression(expression.reshape(-1,len(spec.genes)),spec.genes,spec.atlas)
+    ligand = ligand.reshape(n_anchors,48,-1)
+    receptor = receptor.reshape(n_anchors,48,-1)
+    cs,communication,opportunity = aggregate_pairwise_ccc(
+        relative_positions,cell_types,ligand,receptor,8,sigma=.45,
+        device=device or 'cpu',
+    )
+    observed_l = np.stack([(ligand[cell_types==t]>0).sum(0) for t in range(8)])
+    observed_r = np.stack([(receptor[cell_types==t]>0).sum(0) for t in range(8)])
+    total = np.bincount(cell_types.ravel(),minlength=8)
     coverage_l = observed_l/np.maximum(total[:,None],1)
     coverage_r = observed_r/np.maximum(total[:,None],1)
     coverage = ((coverage_l[:,None,:]>=.10)&(coverage_r[None,:,:]>=.10)).reshape(64,-1)
