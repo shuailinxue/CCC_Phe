@@ -55,3 +55,22 @@ def test_pair_cutoff_applies_to_opportunity_and_signal_together():
     assert opp[0, 0] > 0
     assert opp[0, 1] == 0 and opp[0, 2] == 0
     assert i[0, 1] == 0 and i[0, 2] == 0
+
+
+def test_virtual_anchor_uses_real_cells_without_adding_an_anchor_cell():
+    cells = np.array([[0., 0.], [4., 0.], [8., 0.], [100., 0.]], dtype=np.float32)
+    anchors = np.array([[2., 0.], [6., 0.]], dtype=np.float32)
+    types = np.array([0, 1, 0, 1], dtype=np.int16)
+    expression = np.ones((4, 1), dtype=np.float32)
+    context = build_radius_context(anchors, radius_um=10, anchor_sigma_um=20,
+                                   cell_coordinates=cells)
+    assert len(context.counts) == 2 and context.n_cells == 4
+    assert context.members(0)[0].tolist() == [0, 1, 2]
+    np.testing.assert_array_equal(context.members(1)[0], context.members(0)[0])
+    composition = radius_composition(context, types, 2)
+    assert composition.shape == (2, 2)
+    signal, opportunity = aggregate_radius_pairwise_ccc(
+        anchors, types, expression, expression, 2, context,
+        cell_coordinates=cells, pair_cutoff_um=None, batch_size=2)
+    assert signal.shape == (2, 4) and opportunity.shape == (2, 4)
+    assert np.all(opportunity[:, 0] > 0)  # two distinct type-0 cells

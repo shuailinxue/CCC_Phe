@@ -20,6 +20,7 @@ class RadiusContext:
     weights: np.ndarray
     radius_um: float
     anchor_sigma_um: float
+    n_cells: int
 
     @property
     def counts(self):
@@ -31,14 +32,16 @@ class RadiusContext:
 
 
 def build_radius_context(coordinates, radius_um=200.0, anchor_sigma_um=20.0,
-                         query_batch_size=512):
-    """Pack all radius-neighbor indices in CSR form without a global list of lists."""
+                         query_batch_size=512, cell_coordinates=None):
+    """Pack radius members for real or virtual anchors in CSR form."""
     xy = np.asarray(coordinates, dtype=np.float64)
-    if xy.ndim != 2 or xy.shape[1] != 2 or not np.isfinite(xy).all():
+    cells = xy if cell_coordinates is None else np.asarray(cell_coordinates, dtype=np.float64)
+    if (xy.ndim != 2 or xy.shape[1] != 2 or not np.isfinite(xy).all()
+            or cells.ndim != 2 or cells.shape[1] != 2 or not np.isfinite(cells).all()):
         raise ValueError("coordinates must be a finite N-by-2 array")
     if radius_um <= 0 or anchor_sigma_um <= 0 or query_batch_size < 1:
         raise ValueError("radius, sigma and query batch size must be positive")
-    tree = cKDTree(xy)
+    tree = cKDTree(cells)
     counts = tree.query_ball_point(xy, radius_um, return_length=True, workers=-1)
     offsets = np.empty(len(xy) + 1, dtype=np.int64)
     offsets[0] = 0
@@ -56,23 +59,23 @@ def build_radius_context(coordinates, radius_um=200.0, anchor_sigma_um=20.0,
         flat = np.fromiter((j for row in selections for j in row), dtype=np.int32,
                            count=int(lengths.sum()))
         owner = np.repeat(np.arange(start, stop), lengths)
-        distance2 = np.sum((xy[flat] - xy[owner]) ** 2, axis=1)
+        distance2 = np.sum((cells[flat] - xy[owner]) ** 2, axis=1)
         if np.any(distance2 > (radius_um + 1e-6) ** 2):
             raise RuntimeError("Radius query returned an out-of-radius cell")
         section = slice(offsets[start], offsets[stop])
         indices[section] = flat
         weights[section] = np.exp(-distance2 / (2 * anchor_sigma_um ** 2))
     return RadiusContext(offsets, indices, weights, float(radius_um),
-                         float(anchor_sigma_um))
+                         float(anchor_sigma_um), len(cells))
 
 
 def radius_composition(context, cell_types, n_types):
     """Original anchor-weighted composition over every radius member."""
     types = np.asarray(cell_types)
-    if types.ndim != 1 or len(types) != len(context.counts):
-        raise ValueError("cell types must match anchor order")
-    result = np.empty((len(types), n_types), dtype=np.float32)
-    for anchor in range(len(types)):
+    if types.ndim != 1 or len(types) != context.n_cells:
+        raise ValueError("cell types must match real-cell order")
+    result = np.empty((len(context.counts), n_types), dtype=np.float32)
+    for anchor in range(len(context.counts)):
         ids, w = context.members(anchor)
         result[anchor] = np.bincount(types[ids], weights=w,
                                      minlength=n_types).astype(np.float32)
@@ -86,7 +89,7 @@ def _pair_batch(coordinates, cell_types, ligand, receptor, context, start, stop,
     lengths = context.counts[start:stop]
     width = int(lengths.max())
     size = stop - start
-    ids = np.repeat(np.arange(start, stop, dtype=np.int32)[:, None], width, axis=1)
+    ids = np.zeros((size, width), dtype=np.int32)
     weights = np.zeros((size, width), dtype=np.float32)
     for row, anchor in enumerate(range(start, stop)):
         local, w = context.members(anchor)
@@ -113,7 +116,8 @@ def aggregate_radius_pairwise_ccc(coordinates, cell_types, ligand, receptor,
                                   feature_mask=None, batch_size=16,
                                   lr_batch_size=8, pair_cutoff_um=100.0,
                                   tau=1e-4, device="cpu", compute_signal=True,
-                                  communication_out=None, opportunity_input=None):
+                                  communication_out=None, opportunity_input=None,
+                                  cell_coordinates=None):
     """Opportunity and directed CCC from identical, distinct physical pairs.
 
     ``pair_cutoff_um=5*sigma`` is a numerical Gaussian-tail approximation.
@@ -121,12 +125,15 @@ def aggregate_radius_pairwise_ccc(coordinates, cell_types, ligand, receptor,
     membership and weighted composition are unaffected by this cutoff.
     """
     xy = np.asarray(coordinates, dtype=np.float32)
+    cell_xy = xy if cell_coordinates is None else np.asarray(cell_coordinates, dtype=np.float32)
     types = np.asarray(cell_types)
     ligand = np.asarray(ligand, dtype=np.float32)
     receptor = np.asarray(receptor, dtype=np.float32)
     n = len(xy)
-    if len(types) != n or len(context.counts) != n or ligand.shape != receptor.shape or ligand.shape[0] != n:
-        raise ValueError("Cell arrays and radius contexts must share their row order")
+    if (len(context.counts) != n or len(types) != context.n_cells
+            or len(cell_xy) != context.n_cells or ligand.shape != receptor.shape
+            or ligand.shape[0] != context.n_cells):
+        raise ValueError("Anchor and real-cell arrays do not match the radius context")
     if sigma_um <= 0 or tau < 0 or batch_size < 1 or lr_batch_size < 1:
         raise ValueError("Invalid CCC parameters")
     if pair_cutoff_um is not None and pair_cutoff_um <= 0:
@@ -162,7 +169,7 @@ def aggregate_radius_pairwise_ccc(coordinates, cell_types, ligand, receptor,
     for start in range(0, n, batch_size):
         stop = min(start + batch_size, n)
         ids, b, u, v, pw, (sender_type, receiver_type) = _pair_batch(
-            xy, types, ligand, receptor, context, start, stop,
+            cell_xy, types, ligand, receptor, context, start, stop,
             sigma_um, pair_cutoff_um, device)
         group = b * pair_count + sender_type * n_types + receiver_type
         if opportunity_input is None:
