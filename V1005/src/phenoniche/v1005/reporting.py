@@ -63,21 +63,33 @@ def tensor_audit():
         display(pd.DataFrame([{k:a[k] for k in ['coverage','pair_support_fraction','pair_support_min','dense_tensor_bytes_avoided']}]))
 
 def config():
-    display(Markdown('Directed tensor → sender/receiver/LR mode projections → LayerNorm/MLP/Softplus → nonnegative Z. Decoder: nonnegative retained-edge H. Composition NMF is independent; fusion acts only on normalized graphs.'))
+    display(Markdown('Directed tensor → sender/receiver/LR mode projections → LayerNorm/MLP/Softmax → simplex Z. Decoder: H normalized to sum one on every decode. Fixed observed row mass retains CCC intensity; no learned scale. Low-rank penalty is disabled. Composition NMF is independent; fusion acts only on normalized graphs.'))
     for ds in ['hbc1','xenium5k']:
         display(Markdown(f'**{ds} frozen configuration**'));display(pd.Series(json.loads((folder(ds)/'config.json').read_text())).to_frame('value'))
 
 def training(dataset):
-    display(pd.read_csv(folder(dataset)/'baseline_metrics.csv'))
-    if (folder(dataset)/'representation_diagnostics.csv').exists():
-        display(pd.read_csv(folder(dataset)/'representation_diagnostics.csv'))
-    fig,axes=plt.subplots(1,2,figsize=(11,3.5))
-    for tag,ax in zip(['no_prior','tensor'],axes):
+    table(folder(dataset)/'baseline_metrics.csv')
+    if (folder(dataset)/'representation_diagnostics.csv').exists():table(folder(dataset)/'representation_diagnostics.csv')
+    checkpoints=[]
+    for p in sorted(folder(dataset).glob('seed_*_training.json')):
+        checkpoints.append({'model':p.stem,**json.loads(p.read_text())})
+    display(pd.DataFrame(checkpoints))
+    for tag in ['no_prior','tensor']:
         t=pd.read_csv(folder(dataset)/f'seed_40700_{tag}_loss.csv')
-        for col in ['total','reconstruction','lowrank','graph','sparse','group']:
-            ax.plot(t.epoch,t[col],label=col)
-        ax.set(xlabel='Epoch',ylabel='Unweighted component (total is weighted)',title=tag,yscale='symlog');ax.legend(fontsize=7)
-    save(fig,dataset,'loss_curves')
+        fig,axes=plt.subplots(2,3,figsize=(15,8))
+        for col in ['total','reconstruction','validation_reconstruction']:
+            axes[0,0].plot(t.epoch,t[col],label=col)
+        axes[0,0].set(title=tag+' · training / validation',ylabel='Density-scaled Huber loss');axes[0,0].legend(fontsize=7)
+        axes[0,1].plot(t.epoch,t.neighbor_distance,label='G0 neighbors');axes[0,1].plot(t.epoch,t.random_distance,label='Random pairs');axes[0,1].set_title('Latent squared distance');axes[0,1].legend()
+        axes[0,2].plot(t.epoch,t.Z_entropy,label='Mean Z entropy');axes[0,2].plot(t.epoch,t.effective_active_programs,label='Effective active programs');axes[0,2].set_title('Program usage');axes[0,2].legend()
+        variance=[c for c in t if c.startswith('Z_variance_')]
+        im=axes[1,0].imshow(np.log10(np.maximum(t[variance].to_numpy().T,1e-15)),aspect='auto',origin='lower',extent=[.5,len(t)+.5,.5,len(variance)+.5],cmap='viridis')
+        axes[1,0].set(title='Per-dimension Z variance',ylabel='Program');fig.colorbar(im,ax=axes[1,0],label='log10 variance')
+        axes[1,1].plot(t.epoch,t.singular_max,label='Maximum');axes[1,1].plot(t.epoch,t.singular_min,label='Minimum');axes[1,1].set(title='Sampled Z singular values',yscale='symlog');axes[1,1].legend()
+        axes[1,2].plot(t.epoch,t.near_constant_fraction,label='Near-constant fraction');axes[1,2].plot(t.epoch,t.graph_weight,label='Graph weight');axes[1,2].set_title('Collapse and graph ramp');axes[1,2].legend()
+        for ax in axes.ravel():ax.set_xlabel('Epoch');ax.axvline(15.5,color='grey',ls=':',lw=.8)
+        fig.tight_layout();save(fig,dataset,tag+'_training_diagnostics')
+    display(Markdown('Near-constant means variance < 1e-8 on the fixed 4,096-anchor audit sample. Validation chooses the best checkpoint; separate test entries are never used for early stopping.'))
 
 def latent_map(dataset):
     from umap import UMAP
@@ -99,6 +111,7 @@ def programs(dataset):
     fig,ax=plt.subplots(figsize=(max(10,len(names)*.16),5));im=ax.imshow(normalized,aspect='auto',cmap='magma')
     ax.set_xticks(np.arange(len(names)),names,rotation=90,fontsize=6);ax.set_yticks(np.arange(len(h)),np.arange(1,len(h)+1));ax.set_ylabel('CCC program');ax.set_title(dataset+' · program × sender→receiver');fig.colorbar(im,ax=ax,label='Fraction of program weight')
     save(fig,dataset,'program_pair_heatmap')
+    table(folder(dataset)/'tensor_program_summary.csv')
     edges=table(folder(dataset)/'tensor_top_edges.csv')
     fig,axes=plt.subplots(4,4,figsize=(20,17))
     for k,ax in enumerate(axes.ravel(),1):
@@ -136,15 +149,39 @@ def matching():
     if (out/'program_coverage.csv').exists():table(out/'program_coverage.csv')
 
 def summary():
-    baselines()
-    for ds in ['hbc1','xenium5k']:
-        warnings=[line for line in (folder(ds)/'run.log').read_text().splitlines() if 'Warning:' in line]
-        if warnings:display(Markdown(f'**{ds} runtime warnings:** '+ '; '.join(sorted(set(warnings)))))
-    for ds in ['hbc1','xenium5k']:
-        s=pd.read_csv(folder(ds)/'stability.csv').groupby('method')[['ARI','program_matched_cosine']].mean()
-        display(Markdown(f"**{ds}:** five seeds completed. Proposed mean ARI = {s.loc['Proposed','ARI']:.3f}; tensor program matched cosine = {s.loc['CCC-tensor','program_matched_cosine']:.3f}."))
-    for ds in ['hbc1','xenium5k']:
-        d=pd.read_csv(folder(ds)/'representation_diagnostics.csv')
-        d=d[d.model.str.endswith('tensor')]
-        display(Markdown(f"**{ds} redundancy audit:** median within-model H cosine = {d.H_other_program_cosine_median.median():.3f}; median centered latent first-PC fraction = {d.centered_Z_first_component_variance_fraction.median():.3f}. Tensor latent maximum column std ranges from {d.maximum_latent_column_std.min():.2e} to {d.maximum_latent_column_std.max():.2e}; near-zero variation indicates collapse, not meaningful stability."))
-    display(Markdown('Cross-dataset analysis is paused at the user’s request. Results above are within-dataset only. Near-constant latents and redundant programs prevent interpreting high clustering agreement as biological success. Five fixed epochs are not a convergence guarantee.'))
+    metrics={ds:pd.read_csv(folder(ds)/'baseline_metrics.csv').groupby('method').mean(numeric_only=True) for ds in ['hbc1','xenium5k']}
+    stability={ds:pd.read_csv(folder(ds)/'stability.csv').groupby('method').mean(numeric_only=True) for ds in metrics}
+    sections=[];collapse=[]
+    for ds in metrics:
+        d=pd.read_csv(folder(ds)/'representation_diagnostics.csv');d=d[d.model.str.endswith('tensor')]
+        maximum=d.near_constant_fraction.max()
+        state='仍有大面积近常数维度' if maximum>=.5 else '未见大面积近常数坍缩'
+        collapse.append(f'{ds}: {state}；各 seed 的近常数维度比例 {d.near_constant_fraction.min():.1%}–{maximum:.1%}')
+    sections.append('1. **Latent collapse：** Z/H 尺度自由度已被约束；'+ '；'.join(collapse)+'。阈值仅作诊断，不能替代空间与重构评估。')
+    def comparison(a,b):
+        values=[]
+        for ds,t in metrics.items():
+            x,y=t.loc[a],t.loc[b]
+            values.append(f'{ds}: {a}/{b} 的 test MSE={x.heldout_MSE:.5f}/{y.heldout_MSE:.5f}，空间一致率={x.spatial_agreement:.3f}/{y.spatial_agreement:.3f}，seed ARI={stability[ds].loc[a,"ARI"]:.3f}/{stability[ds].loc[b,"ARI"]:.3f}')
+        return '；'.join(values)
+    warm_checkpoints=[]
+    for ds in metrics:
+        checkpoints=[json.loads(p.read_text()) for p in folder(ds).glob('seed_*_tensor_training.json')]
+        count=sum(c['best_graph_weight']==0 for c in checkpoints)
+        warm_checkpoints.append(f'{ds}: {count}/{len(checkpoints)} 个 tensor 最佳 checkpoint 来自未加 graph loss 的 warm-up')
+    sections.append('2. **无 prior vs graph prior：** '+comparison('CCC-autoencoder-no-prior','CCC-tensor')+'。'+ '；'.join(warm_checkpoints)+'。这些 warm-up checkpoint 不能作为 graph prior 有效的证据；不把单个指标当作生物学准确率。')
+    sections.append('3. **Tensor vs flat：** '+comparison('CCC-tensor','CCC-flat')+'。')
+    gains=[]
+    for ds,t in metrics.items():
+        gains.append(f'{ds}: 弱融合的空间一致率变化 {t.loc["Proposed","spatial_agreement"]-t.loc["CCC-tensor","spatial_agreement"]:+.3f}；ARI 变化 {stability[ds].loc["Proposed","ARI"]-stability[ds].loc["CCC-tensor","ARI"]:+.3f}')
+    sections.append('4. **Composition 弱融合：** '+'；'.join(gains)+'。重构与 Z/H 不因图融合改变。')
+    per_dataset=[];fragmentation=[]
+    for ds,t in metrics.items():
+        q=t.loc['Proposed'];r=t.loc['CCC-tensor']
+        per_dataset.append(f'{ds}: Proposed 平均 {q.n_niches:.1f} 个 niche，空间一致率 {q.spatial_agreement:.3f}，test MSE {q.heldout_MSE:.5f}')
+        fragmentation.append(f'{ds}: tensor 图平均 {r.graph_connected_components:.1f} 个连通分量，小于20 cells 的 niche 所占细胞比例 {r.fraction_cells_niches_lt20:.2%}；融合后 {q.fraction_cells_niches_lt20:.2%}')
+    sections.append('5. **各自结果：** '+'；'.join(per_dataset)+'。两个数据不做跨数据集共享验证。')
+    sections.append('6. **碎片化：** '+'；'.join(fragmentation)+'。连通分量较多属于表示/邻接图问题；resolution 固定为1.0，没有用它掩盖问题。')
+    failed=[ds for ds,t in metrics.items() if t.loc['CCC-tensor','heldout_MSE']>t.loc['CCC-flat','heldout_MSE'] and t.loc['CCC-tensor','spatial_agreement']<t.loc['CCC-flat','spatial_agreement']]
+    sections.append('7. **失败与限制：** '+(('、'.join(failed)+' 的 tensor 在重构和空间一致率上仍不如 CCC-flat，明确记录失败。') if failed else '指标需综合解释，不能仅凭单项改善宣称成功。')+'不继续调参美化结果；所有 NMF 收敛警告与 early-stopping checkpoint 信息保留在训练结果中。')
+    for text in sections:display(Markdown(text))

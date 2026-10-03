@@ -8,11 +8,13 @@ def test_small_training_both_ablation_and_prior(tmp_path):
     rng=np.random.default_rng(9);x=sparse.csr_matrix(rng.random((20,12)).astype('float32'));train=training_only(x)
     context={'features':pd.DataFrame(list(np.ndindex(2,2,3)),columns=['sender_id','receiver_id','lr_index']),'shape':(2,2,3)}
     g=sparse.csr_matrix(np.ones((20,20),np.float32)-np.eye(20,dtype='float32'))
-    config={**DEFAULT,'device':'cpu','K':3,'epochs':1,'batch_size':8,'feature_chunk':5}
+    config={**DEFAULT,'device':'cpu','K':3,'warmup_epochs':1,'graph_epochs':2,'graph_ramp_epochs':2,'patience':2,'batch_size':8,'feature_chunk':5}
     for prior in [False,True]:
         m,z,h=train_model(x,train,context,g,config,40700,prior,tmp_path)
         assert z.shape==(20,3) and h.shape==(3,12)
         assert np.isfinite(z).all() and (z>=0).all() and (h>=0).all()
+        np.testing.assert_allclose(z.sum(1),1,atol=1e-6)
+        np.testing.assert_allclose(h.sum(1),1,atol=1e-6)
         _,zr,hr=train_model(x,train,context,g,config,40700,prior,tmp_path)
         np.testing.assert_array_equal(z,zr);np.testing.assert_array_equal(h,hr)
     z,v,mean=randomized_pca(train,k=3)

@@ -20,3 +20,11 @@ def test_guard_and_direction():
     with pytest.raises(MemoryError):m.dense_dictionary(max_elements=1)
     a=sparse.csr_matrix([[0.,1.,0.,0.]]);b=sparse.csr_matrix([[0.,0.,1.,0.]])
     assert not torch.allclose(m(sparse_tensor(a,'cpu')),m(sparse_tensor(b,'cpu')))
+
+def test_simplex_dictionary_is_used_in_every_decode():
+    modes=np.array(list(np.ndindex(2,2,3)));m=DeepTensorCCC(2,3,modes,K=4)
+    x=sparse.csr_matrix(np.ones((3,12),dtype=np.float32));z=m(sparse_tensor(x,'cpu'))
+    torch.testing.assert_close(z.sum(1),torch.ones(3))
+    torch.testing.assert_close(m.H.sum(1),torch.ones(4))
+    torch.testing.assert_close(m.decode(z).sum(1),torch.ones(3))
+    torch.testing.assert_close(torch.cat([m.decode(z,0,5),m.decode(z,5,12)],dim=1),m.decode(z))

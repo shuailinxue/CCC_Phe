@@ -1,3 +1,4 @@
 {
-  "scale": 0.09487769453371088
+  "scale": 1.0,
+  "convention": "fixed observed row mass; H and Z sum to one"
 }

@@ -44,7 +44,11 @@ def representation_diagnostics(dataset):
         sv=np.linalg.svd(z-z.mean(0),compute_uv=False);energy=sv**2
         sv_sum=float(sv.sum());energy_sum=float(energy.sum())
         p=sv/sv_sum if sv_sum>0 else np.zeros_like(sv)
-        rows.append({'model':path.name[:-6], 'H_other_program_cosine_median':float(np.median(offdiag)),
+        from .diagnostics import latent_audit
+        sampled=np.random.default_rng(789).choice(len(z),min(4096,len(z)),replace=False)
+        rows.append({'model':path.name[:-6],**latent_audit(z[sampled]), 'H_row_sum_max_error':float(np.max(np.abs(h.sum(1)-1))),
+                     'Z_row_sum_max_error':float(np.max(np.abs(z.sum(1)-1))),
+                     'H_other_program_cosine_median':float(np.median(offdiag)),
                      'H_other_program_cosine_max':float(np.max(offdiag)),
                      'centered_Z_first_component_variance_fraction':float(energy[0]/energy_sum) if energy_sum>0 else np.nan,
                      'centered_Z_effective_rank':float(np.exp(-np.sum(p*np.log(np.maximum(p,1e-12))))) if sv_sum>0 else 0.,

@@ -12,10 +12,12 @@ class DeepTensorCCC(nn.Module):
         self.A_r=nn.Parameter(torch.randn(C,min(C,8))/C**.5)
         self.A_l=nn.Parameter(torch.randn(L,r_l)/max(L,1)**.5)
         dim=min(C,8)**2*r_l
-        self.encoder=nn.Sequential(nn.LayerNorm(dim),nn.Linear(dim,64),nn.GELU(),nn.Linear(64,K),nn.Softplus())
+        self.encoder=nn.Sequential(nn.LayerNorm(dim),nn.Linear(dim,64),nn.GELU(),nn.Linear(64,K),nn.Softmax(dim=-1))
         self.h_raw=nn.Parameter(torch.full((K,len(s)),-4.)+torch.randn(K,len(s))*.1)
     @property
-    def H(self):return F.softplus(self.h_raw)
+    def H(self):
+        h=F.softplus(self.h_raw)
+        return h/h.sum(dim=1,keepdim=True)
     def encode_sparse(self,x):
         x=x.coalesce();rows,cols=x.indices();pair=self.s[cols]*self.C+self.r[cols]
         unfolded=torch.sparse_coo_tensor(torch.stack([rows*self.C**2+pair,self.l[cols]]),x.values(),
@@ -24,7 +26,7 @@ class DeepTensorCCC(nn.Module):
         g=torch.einsum('nsrl,sa,rb->nabl',g,self.A_s,self.A_r)
         return self.encoder(g.flatten(1))
     def forward(self,x):return self.encode_sparse(x)
-    def decode(self,z,start=0,stop=None):return z @ F.softplus(self.h_raw[:,start:stop])
+    def decode(self,z,start=0,stop=None):return z @ self.H[:,start:stop]
     def dense_dictionary(self,max_elements=20_000_000):
         if self.K*self.C*self.C*self.L>max_elements:raise MemoryError('Guarded dictionary materialization')
         h=torch.zeros((self.K,self.C,self.C,self.L),device=self.h_raw.device)
