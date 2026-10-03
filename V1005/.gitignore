@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+outputs/**/cache/
+outputs/**/*.npz
+outputs/**/*.npy
+outputs/**/*.pt
+outputs/**/*.png
+outputs/**/*.pdf
+outputs/**/*.h5ad
+outputs/pytest_tmp/
+outputs/pytest_cache/

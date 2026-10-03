@@ -1,0 +1,3 @@
+index_a,sender_id_a,receiver_id_a,lr_index_a,sender,receiver,ligand,receptor,lr_id_a,index_b,sender_id_b,receiver_id_b,lr_index_b,lr_id_b
+326,2,2,29,Endothelial,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139,7,1,1,2069,CommuSpace_HS_06139
+470,3,3,9,Epithelial,Epithelial,CDH1,CDH1,CommuSpace_HS_01239,95,2,2,505,CommuSpace_HS_01239

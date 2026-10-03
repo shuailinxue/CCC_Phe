@@ -1,0 +1,495 @@
+sender_id,receiver_id,lr_index,sender,receiver,ligand,receptor,lr_id
+1,1,131,Endothelial,Endothelial,APP,FLT1,CommuSpace_HS_00391
+1,1,404,Endothelial,Endothelial,CCN1,ITGB3,CommuSpace_HS_01082
+1,1,585,Endothelial,Endothelial,COL4A1,CD93,CommuSpace_HS_01731
+1,1,593,Endothelial,Endothelial,COL4A2,CD93,CommuSpace_HS_01751
+1,1,599,Endothelial,Endothelial,COL4A2,ITGB3,CommuSpace_HS_01767
+1,1,890,Endothelial,Endothelial,ENG,BMPR2,CommuSpace_HS_02648
+1,1,2068,Endothelial,Endothelial,PECAM1,ITGB3,CommuSpace_HS_06138
+1,1,2069,Endothelial,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+1,1,2206,Endothelial,Endothelial,PTPRM,PTPRM,CommuSpace_HS_06474
+1,1,2505,Endothelial,Endothelial,THBS1,ITGB3,CommuSpace_HS_07380
+1,1,2533,Endothelial,Endothelial,THY1,ITGB3,CommuSpace_HS_07430
+1,1,2545,Endothelial,Endothelial,TIMP3,ADAMTS4,CommuSpace_HS_07450
+1,1,2549,Endothelial,Endothelial,TIMP3,KDR,CommuSpace_HS_07454
+1,2,136,Endothelial,Epithelial,APP,NCSTN,CommuSpace_HS_00398
+1,2,138,Endothelial,Epithelial,APP,NOTCH2,CommuSpace_HS_00400
+1,2,405,Endothelial,Epithelial,CCN1,ITGB5,CommuSpace_HS_01083
+1,2,406,Endothelial,Epithelial,CCN1,SDC4,CommuSpace_HS_01084
+1,2,583,Endothelial,Epithelial,COL4A1,CD44,CommuSpace_HS_01729
+1,2,584,Endothelial,Epithelial,COL4A1,CD47,CommuSpace_HS_01730
+1,2,588,Endothelial,Epithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+1,2,590,Endothelial,Epithelial,COL4A1,SDC4,CommuSpace_HS_01748
+1,2,592,Endothelial,Epithelial,COL4A2,CD44,CommuSpace_HS_01750
+1,2,594,Endothelial,Epithelial,COL4A2,DDR1,CommuSpace_HS_01752
+1,2,598,Endothelial,Epithelial,COL4A2,ITGA2,CommuSpace_HS_01761
+1,2,600,Endothelial,Epithelial,COL4A2,ITGB5,CommuSpace_HS_01768
+1,2,601,Endothelial,Epithelial,COL4A2,SDC4,CommuSpace_HS_01770
+1,2,1355,Endothelial,Epithelial,GNAI2,ADORA1,CommuSpace_HS_03949
+1,2,1372,Endothelial,Epithelial,GNAI2,IGF1R,CommuSpace_HS_03967
+1,2,1453,Endothelial,Epithelial,HSPG2,DAG1,CommuSpace_HS_04281
+1,2,1454,Endothelial,Epithelial,HSPG2,FGFR1,CommuSpace_HS_04282
+1,2,1455,Endothelial,Epithelial,HSPG2,ITGA2,CommuSpace_HS_04283
+1,2,2205,Endothelial,Epithelial,PTPRM,CDH1,CommuSpace_HS_06473
+1,2,2306,Endothelial,Epithelial,SERPINE1,ITGB5,CommuSpace_HS_06864
+1,2,2498,Endothelial,Epithelial,THBS1,CD47,CommuSpace_HS_07371
+1,2,2501,Endothelial,Epithelial,THBS1,ITGA3,CommuSpace_HS_07374
+1,2,2510,Endothelial,Epithelial,THBS1,SDC4,CommuSpace_HS_07386
+1,2,2547,Endothelial,Epithelial,TIMP3,CD44,CommuSpace_HS_07452
+1,2,2548,Endothelial,Epithelial,TIMP3,DDR1,CommuSpace_HS_07453
+1,4,351,Endothelial,Macrophage,CCL2,CCR1,CommuSpace_HS_00946
+1,4,403,Endothelial,Macrophage,CCN1,ITGB2,CommuSpace_HS_01081
+1,4,583,Endothelial,Macrophage,COL4A1,CD44,CommuSpace_HS_01729
+1,4,592,Endothelial,Macrophage,COL4A2,CD44,CommuSpace_HS_01750
+1,4,1359,Endothelial,Macrophage,GNAI2,C5AR1,CommuSpace_HS_03953
+1,4,2311,Endothelial,Macrophage,SERPINE1,PLAUR,CommuSpace_HS_06869
+1,4,2530,Endothelial,Macrophage,THY1,ITGAX,CommuSpace_HS_07427
+1,4,2532,Endothelial,Macrophage,THY1,ITGB2,CommuSpace_HS_07429
+1,4,2547,Endothelial,Macrophage,TIMP3,CD44,CommuSpace_HS_07452
+1,5,583,Endothelial,Mast cell,COL4A1,CD44,CommuSpace_HS_01729
+1,5,592,Endothelial,Mast cell,COL4A2,CD44,CommuSpace_HS_01750
+1,5,2547,Endothelial,Mast cell,TIMP3,CD44,CommuSpace_HS_07452
+1,6,137,Endothelial,Myoepithelial,APP,NGFR,CommuSpace_HS_00399
+1,6,406,Endothelial,Myoepithelial,CCN1,SDC4,CommuSpace_HS_01084
+1,6,583,Endothelial,Myoepithelial,COL4A1,CD44,CommuSpace_HS_01729
+1,6,584,Endothelial,Myoepithelial,COL4A1,CD47,CommuSpace_HS_01730
+1,6,588,Endothelial,Myoepithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+1,6,590,Endothelial,Myoepithelial,COL4A1,SDC4,CommuSpace_HS_01748
+1,6,592,Endothelial,Myoepithelial,COL4A2,CD44,CommuSpace_HS_01750
+1,6,594,Endothelial,Myoepithelial,COL4A2,DDR1,CommuSpace_HS_01752
+1,6,598,Endothelial,Myoepithelial,COL4A2,ITGA2,CommuSpace_HS_01761
+1,6,601,Endothelial,Myoepithelial,COL4A2,SDC4,CommuSpace_HS_01770
+1,6,1454,Endothelial,Myoepithelial,HSPG2,FGFR1,CommuSpace_HS_04282
+1,6,1455,Endothelial,Myoepithelial,HSPG2,ITGA2,CommuSpace_HS_04283
+1,6,2257,Endothelial,Myoepithelial,RTN4,NGFR,CommuSpace_HS_06625
+1,6,2498,Endothelial,Myoepithelial,THBS1,CD47,CommuSpace_HS_07371
+1,6,2501,Endothelial,Myoepithelial,THBS1,ITGA3,CommuSpace_HS_07374
+1,6,2510,Endothelial,Myoepithelial,THBS1,SDC4,CommuSpace_HS_07386
+1,6,2547,Endothelial,Myoepithelial,TIMP3,CD44,CommuSpace_HS_07452
+1,6,2548,Endothelial,Myoepithelial,TIMP3,DDR1,CommuSpace_HS_07453
+1,6,2551,Endothelial,Myoepithelial,TIMP3,MMP14,CommuSpace_HS_07456
+1,7,2497,Endothelial,Pericyte,THBS1,CD36,CommuSpace_HS_07370
+1,7,2545,Endothelial,Pericyte,TIMP3,ADAMTS4,CommuSpace_HS_07450
+1,8,583,Endothelial,T cell,COL4A1,CD44,CommuSpace_HS_01729
+1,8,592,Endothelial,T cell,COL4A2,CD44,CommuSpace_HS_01750
+1,8,2547,Endothelial,T cell,TIMP3,CD44,CommuSpace_HS_07452
+2,1,131,Epithelial,Endothelial,APP,FLT1,CommuSpace_HS_00391
+2,1,288,Epithelial,Endothelial,CALM3,AQP1,CommuSpace_HS_00840
+2,1,515,Epithelial,Endothelial,CDH1,PTPRM,CommuSpace_HS_01250
+2,1,2020,Epithelial,Endothelial,OCLN,TGFBR2,CommuSpace_HS_05945
+2,1,2299,Epithelial,Endothelial,SERPINA5,THBD,CommuSpace_HS_06853
+2,1,2505,Epithelial,Endothelial,THBS1,ITGB3,CommuSpace_HS_07380
+2,1,2545,Epithelial,Endothelial,TIMP3,ADAMTS4,CommuSpace_HS_07450
+2,1,2549,Epithelial,Endothelial,TIMP3,KDR,CommuSpace_HS_07454
+2,1,2673,Epithelial,Endothelial,VEGFA,FLT1,CommuSpace_HS_07697
+2,1,2677,Epithelial,Endothelial,VEGFA,ITGB3,CommuSpace_HS_07704
+2,1,2678,Epithelial,Endothelial,VEGFA,KDR,CommuSpace_HS_07705
+2,1,2685,Epithelial,Endothelial,VEGFB,FLT1,CommuSpace_HS_07712
+2,1,2687,Epithelial,Endothelial,VEGFB,KDR,CommuSpace_HS_07714
+2,2,31,Epithelial,Epithelial,ADAM9,ITGA3,CommuSpace_HS_00082
+2,2,34,Epithelial,Epithelial,ADAM9,ITGB5,CommuSpace_HS_00086
+2,2,66,Epithelial,Epithelial,ALCAM,ALCAM,CommuSpace_HS_00190
+2,2,136,Epithelial,Epithelial,APP,NCSTN,CommuSpace_HS_00398
+2,2,138,Epithelial,Epithelial,APP,NOTCH2,CommuSpace_HS_00400
+2,2,292,Epithelial,Epithelial,CALM3,ESR1,CommuSpace_HS_00846
+2,2,467,Epithelial,Epithelial,CD44,CLDN7,CommuSpace_HS_01178
+2,2,468,Epithelial,Epithelial,CD44,EPCAM,CommuSpace_HS_01179
+2,2,505,Epithelial,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+2,2,508,Epithelial,Epithelial,CDH1,IGF1R,CommuSpace_HS_01242
+2,2,514,Epithelial,Epithelial,CDH1,PTPRF,CommuSpace_HS_01249
+2,2,899,Epithelial,Epithelial,EPCAM,CLDN7,CommuSpace_HS_02659
+2,2,916,Epithelial,Epithelial,F11R,F11R,CommuSpace_HS_02693
+2,2,1181,Epithelial,Epithelial,GJA1,GJA1,CommuSpace_HS_03530
+2,2,1355,Epithelial,Epithelial,GNAI2,ADORA1,CommuSpace_HS_03949
+2,2,1372,Epithelial,Epithelial,GNAI2,IGF1R,CommuSpace_HS_03967
+2,2,1825,Epithelial,Epithelial,LGALS8,ITGA3,CommuSpace_HS_05187
+2,2,1913,Epithelial,Epithelial,MPZL1,MPZL1,CommuSpace_HS_05526
+2,2,1945,Epithelial,Epithelial,NECTIN2,NECTIN2,CommuSpace_HS_05608
+2,2,2018,Epithelial,Epithelial,OCLN,OCLN,CommuSpace_HS_05943
+2,2,2085,Epithelial,Epithelial,PKM,CD44,CommuSpace_HS_06177
+2,2,2287,Epithelial,Epithelial,SEMA4B,PLXNB1,CommuSpace_HS_06809
+2,2,2288,Epithelial,Epithelial,SEMA4B,PLXNB2,CommuSpace_HS_06810
+2,2,2289,Epithelial,Epithelial,SEMA4C,PLXNB1,CommuSpace_HS_06811
+2,2,2290,Epithelial,Epithelial,SEMA4C,PLXNB2,CommuSpace_HS_06812
+2,2,2498,Epithelial,Epithelial,THBS1,CD47,CommuSpace_HS_07371
+2,2,2501,Epithelial,Epithelial,THBS1,ITGA3,CommuSpace_HS_07374
+2,2,2510,Epithelial,Epithelial,THBS1,SDC4,CommuSpace_HS_07386
+2,2,2541,Epithelial,Epithelial,TIMP2,CD44,CommuSpace_HS_07444
+2,2,2542,Epithelial,Epithelial,TIMP2,ITGA3,CommuSpace_HS_07445
+2,2,2547,Epithelial,Epithelial,TIMP3,CD44,CommuSpace_HS_07452
+2,2,2548,Epithelial,Epithelial,TIMP3,DDR1,CommuSpace_HS_07453
+2,2,2670,Epithelial,Epithelial,VEGFA,CD44,CommuSpace_HS_07694
+2,2,2681,Epithelial,Epithelial,VEGFA,RET,CommuSpace_HS_07708
+2,2,2689,Epithelial,Epithelial,VEGFB,RET,CommuSpace_HS_07716
+2,4,473,Epithelial,Macrophage,CD47,SIRPA,CommuSpace_HS_01186
+2,4,919,Epithelial,Macrophage,F11R,ITGB2,CommuSpace_HS_02696
+2,4,941,Epithelial,Macrophage,FADD,ABCA1,CommuSpace_HS_02736
+2,4,1359,Epithelial,Macrophage,GNAI2,C5AR1,CommuSpace_HS_03953
+2,4,2085,Epithelial,Macrophage,PKM,CD44,CommuSpace_HS_06177
+2,4,2288,Epithelial,Macrophage,SEMA4B,PLXNB2,CommuSpace_HS_06810
+2,4,2290,Epithelial,Macrophage,SEMA4C,PLXNB2,CommuSpace_HS_06812
+2,4,2541,Epithelial,Macrophage,TIMP2,CD44,CommuSpace_HS_07444
+2,4,2547,Epithelial,Macrophage,TIMP3,CD44,CommuSpace_HS_07452
+2,4,2670,Epithelial,Macrophage,VEGFA,CD44,CommuSpace_HS_07694
+2,4,2682,Epithelial,Macrophage,VEGFA,SIRPA,CommuSpace_HS_07709
+2,5,1752,Epithelial,Mast cell,KITLG,KIT,CommuSpace_HS_04854
+2,5,2085,Epithelial,Mast cell,PKM,CD44,CommuSpace_HS_06177
+2,5,2541,Epithelial,Mast cell,TIMP2,CD44,CommuSpace_HS_07444
+2,5,2547,Epithelial,Mast cell,TIMP3,CD44,CommuSpace_HS_07452
+2,5,2670,Epithelial,Mast cell,VEGFA,CD44,CommuSpace_HS_07694
+2,6,31,Epithelial,Myoepithelial,ADAM9,ITGA3,CommuSpace_HS_00082
+2,6,137,Epithelial,Myoepithelial,APP,NGFR,CommuSpace_HS_00399
+2,6,299,Epithelial,Myoepithelial,CALM3,MYLK,CommuSpace_HS_00855
+2,6,471,Epithelial,Myoepithelial,CD46,JAG1,CommuSpace_HS_01182
+2,6,514,Epithelial,Myoepithelial,CDH1,PTPRF,CommuSpace_HS_01249
+2,6,849,Epithelial,Myoepithelial,ECM1,ITGB4,CommuSpace_HS_02502
+2,6,916,Epithelial,Myoepithelial,F11R,F11R,CommuSpace_HS_02693
+2,6,1825,Epithelial,Myoepithelial,LGALS8,ITGA3,CommuSpace_HS_05187
+2,6,2085,Epithelial,Myoepithelial,PKM,CD44,CommuSpace_HS_06177
+2,6,2257,Epithelial,Myoepithelial,RTN4,NGFR,CommuSpace_HS_06625
+2,6,2287,Epithelial,Myoepithelial,SEMA4B,PLXNB1,CommuSpace_HS_06809
+2,6,2288,Epithelial,Myoepithelial,SEMA4B,PLXNB2,CommuSpace_HS_06810
+2,6,2289,Epithelial,Myoepithelial,SEMA4C,PLXNB1,CommuSpace_HS_06811
+2,6,2290,Epithelial,Myoepithelial,SEMA4C,PLXNB2,CommuSpace_HS_06812
+2,6,2498,Epithelial,Myoepithelial,THBS1,CD47,CommuSpace_HS_07371
+2,6,2501,Epithelial,Myoepithelial,THBS1,ITGA3,CommuSpace_HS_07374
+2,6,2510,Epithelial,Myoepithelial,THBS1,SDC4,CommuSpace_HS_07386
+2,6,2541,Epithelial,Myoepithelial,TIMP2,CD44,CommuSpace_HS_07444
+2,6,2542,Epithelial,Myoepithelial,TIMP2,ITGA3,CommuSpace_HS_07445
+2,6,2547,Epithelial,Myoepithelial,TIMP3,CD44,CommuSpace_HS_07452
+2,6,2548,Epithelial,Myoepithelial,TIMP3,DDR1,CommuSpace_HS_07453
+2,6,2551,Epithelial,Myoepithelial,TIMP3,MMP14,CommuSpace_HS_07456
+2,6,2670,Epithelial,Myoepithelial,VEGFA,CD44,CommuSpace_HS_07694
+2,7,471,Epithelial,Pericyte,CD46,JAG1,CommuSpace_HS_01182
+2,7,2020,Epithelial,Pericyte,OCLN,TGFBR2,CommuSpace_HS_05945
+2,7,2497,Epithelial,Pericyte,THBS1,CD36,CommuSpace_HS_07370
+2,7,2545,Epithelial,Pericyte,TIMP3,ADAMTS4,CommuSpace_HS_07450
+2,8,2085,Epithelial,T cell,PKM,CD44,CommuSpace_HS_06177
+2,8,2541,Epithelial,T cell,TIMP2,CD44,CommuSpace_HS_07444
+2,8,2547,Epithelial,T cell,TIMP3,CD44,CommuSpace_HS_07452
+2,8,2670,Epithelial,T cell,VEGFA,CD44,CommuSpace_HS_07694
+3,1,131,Fibroblast,Endothelial,APP,FLT1,CommuSpace_HS_00391
+3,1,404,Fibroblast,Endothelial,CCN1,ITGB3,CommuSpace_HS_01082
+3,1,585,Fibroblast,Endothelial,COL4A1,CD93,CommuSpace_HS_01731
+3,1,635,Fibroblast,Endothelial,COL5A1,CD93,CommuSpace_HS_01860
+3,1,642,Fibroblast,Endothelial,COL5A2,CD93,CommuSpace_HS_01875
+3,1,785,Fibroblast,Endothelial,DCN,KDR,CommuSpace_HS_02342
+3,1,2143,Fibroblast,Endothelial,POSTN,ITGB3,CommuSpace_HS_06281
+3,1,2505,Fibroblast,Endothelial,THBS1,ITGB3,CommuSpace_HS_07380
+3,1,2533,Fibroblast,Endothelial,THY1,ITGB3,CommuSpace_HS_07430
+3,1,2545,Fibroblast,Endothelial,TIMP3,ADAMTS4,CommuSpace_HS_07450
+3,1,2549,Fibroblast,Endothelial,TIMP3,KDR,CommuSpace_HS_07454
+3,1,2561,Fibroblast,Endothelial,TNC,ITGB3,CommuSpace_HS_07477
+3,1,2563,Fibroblast,Endothelial,TNC,PTPRB,CommuSpace_HS_07479
+3,1,2673,Fibroblast,Endothelial,VEGFA,FLT1,CommuSpace_HS_07697
+3,1,2677,Fibroblast,Endothelial,VEGFA,ITGB3,CommuSpace_HS_07704
+3,1,2678,Fibroblast,Endothelial,VEGFA,KDR,CommuSpace_HS_07705
+3,2,136,Fibroblast,Epithelial,APP,NCSTN,CommuSpace_HS_00398
+3,2,138,Fibroblast,Epithelial,APP,NOTCH2,CommuSpace_HS_00400
+3,2,405,Fibroblast,Epithelial,CCN1,ITGB5,CommuSpace_HS_01083
+3,2,406,Fibroblast,Epithelial,CCN1,SDC4,CommuSpace_HS_01084
+3,2,583,Fibroblast,Epithelial,COL4A1,CD44,CommuSpace_HS_01729
+3,2,584,Fibroblast,Epithelial,COL4A1,CD47,CommuSpace_HS_01730
+3,2,588,Fibroblast,Epithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+3,2,590,Fibroblast,Epithelial,COL4A1,SDC4,CommuSpace_HS_01748
+3,2,636,Fibroblast,Epithelial,COL5A1,DDR1,CommuSpace_HS_01861
+3,2,639,Fibroblast,Epithelial,COL5A1,ITGA2,CommuSpace_HS_01869
+3,2,643,Fibroblast,Epithelial,COL5A2,DDR1,CommuSpace_HS_01876
+3,2,646,Fibroblast,Epithelial,COL5A2,ITGA2,CommuSpace_HS_01884
+3,2,784,Fibroblast,Epithelial,DCN,IGF1R,CommuSpace_HS_02341
+3,2,2144,Fibroblast,Epithelial,POSTN,ITGB5,CommuSpace_HS_06282
+3,2,2306,Fibroblast,Epithelial,SERPINE1,ITGB5,CommuSpace_HS_06864
+3,2,2498,Fibroblast,Epithelial,THBS1,CD47,CommuSpace_HS_07371
+3,2,2501,Fibroblast,Epithelial,THBS1,ITGA3,CommuSpace_HS_07374
+3,2,2510,Fibroblast,Epithelial,THBS1,SDC4,CommuSpace_HS_07386
+3,2,2541,Fibroblast,Epithelial,TIMP2,CD44,CommuSpace_HS_07444
+3,2,2542,Fibroblast,Epithelial,TIMP2,ITGA3,CommuSpace_HS_07445
+3,2,2547,Fibroblast,Epithelial,TIMP3,CD44,CommuSpace_HS_07452
+3,2,2548,Fibroblast,Epithelial,TIMP3,DDR1,CommuSpace_HS_07453
+3,2,2554,Fibroblast,Epithelial,TNC,ITGA2,CommuSpace_HS_07465
+3,2,2565,Fibroblast,Epithelial,TNC,SDC4,CommuSpace_HS_07482
+3,2,2670,Fibroblast,Epithelial,VEGFA,CD44,CommuSpace_HS_07694
+3,2,2681,Fibroblast,Epithelial,VEGFA,RET,CommuSpace_HS_07708
+3,4,351,Fibroblast,Macrophage,CCL2,CCR1,CommuSpace_HS_00946
+3,4,403,Fibroblast,Macrophage,CCN1,ITGB2,CommuSpace_HS_01081
+3,4,414,Fibroblast,Macrophage,CCN2,ITGB2,CommuSpace_HS_01093
+3,4,583,Fibroblast,Macrophage,COL4A1,CD44,CommuSpace_HS_01729
+3,4,2311,Fibroblast,Macrophage,SERPINE1,PLAUR,CommuSpace_HS_06869
+3,4,2530,Fibroblast,Macrophage,THY1,ITGAX,CommuSpace_HS_07427
+3,4,2532,Fibroblast,Macrophage,THY1,ITGB2,CommuSpace_HS_07429
+3,4,2541,Fibroblast,Macrophage,TIMP2,CD44,CommuSpace_HS_07444
+3,4,2547,Fibroblast,Macrophage,TIMP3,CD44,CommuSpace_HS_07452
+3,4,2670,Fibroblast,Macrophage,VEGFA,CD44,CommuSpace_HS_07694
+3,4,2682,Fibroblast,Macrophage,VEGFA,SIRPA,CommuSpace_HS_07709
+3,5,583,Fibroblast,Mast cell,COL4A1,CD44,CommuSpace_HS_01729
+3,5,2541,Fibroblast,Mast cell,TIMP2,CD44,CommuSpace_HS_07444
+3,5,2547,Fibroblast,Mast cell,TIMP3,CD44,CommuSpace_HS_07452
+3,5,2670,Fibroblast,Mast cell,VEGFA,CD44,CommuSpace_HS_07694
+3,6,137,Fibroblast,Myoepithelial,APP,NGFR,CommuSpace_HS_00399
+3,6,406,Fibroblast,Myoepithelial,CCN1,SDC4,CommuSpace_HS_01084
+3,6,583,Fibroblast,Myoepithelial,COL4A1,CD44,CommuSpace_HS_01729
+3,6,584,Fibroblast,Myoepithelial,COL4A1,CD47,CommuSpace_HS_01730
+3,6,588,Fibroblast,Myoepithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+3,6,590,Fibroblast,Myoepithelial,COL4A1,SDC4,CommuSpace_HS_01748
+3,6,636,Fibroblast,Myoepithelial,COL5A1,DDR1,CommuSpace_HS_01861
+3,6,639,Fibroblast,Myoepithelial,COL5A1,ITGA2,CommuSpace_HS_01869
+3,6,643,Fibroblast,Myoepithelial,COL5A2,DDR1,CommuSpace_HS_01876
+3,6,646,Fibroblast,Myoepithelial,COL5A2,ITGA2,CommuSpace_HS_01884
+3,6,2498,Fibroblast,Myoepithelial,THBS1,CD47,CommuSpace_HS_07371
+3,6,2501,Fibroblast,Myoepithelial,THBS1,ITGA3,CommuSpace_HS_07374
+3,6,2510,Fibroblast,Myoepithelial,THBS1,SDC4,CommuSpace_HS_07386
+3,6,2541,Fibroblast,Myoepithelial,TIMP2,CD44,CommuSpace_HS_07444
+3,6,2542,Fibroblast,Myoepithelial,TIMP2,ITGA3,CommuSpace_HS_07445
+3,6,2547,Fibroblast,Myoepithelial,TIMP3,CD44,CommuSpace_HS_07452
+3,6,2548,Fibroblast,Myoepithelial,TIMP3,DDR1,CommuSpace_HS_07453
+3,6,2551,Fibroblast,Myoepithelial,TIMP3,MMP14,CommuSpace_HS_07456
+3,6,2554,Fibroblast,Myoepithelial,TNC,ITGA2,CommuSpace_HS_07465
+3,6,2562,Fibroblast,Myoepithelial,TNC,ITGB6,CommuSpace_HS_07478
+3,6,2565,Fibroblast,Myoepithelial,TNC,SDC4,CommuSpace_HS_07482
+3,6,2670,Fibroblast,Myoepithelial,VEGFA,CD44,CommuSpace_HS_07694
+3,7,2497,Fibroblast,Pericyte,THBS1,CD36,CommuSpace_HS_07370
+3,7,2545,Fibroblast,Pericyte,TIMP3,ADAMTS4,CommuSpace_HS_07450
+3,7,2557,Fibroblast,Pericyte,TNC,ITGA7,CommuSpace_HS_07468
+3,8,583,Fibroblast,T cell,COL4A1,CD44,CommuSpace_HS_01729
+3,8,2541,Fibroblast,T cell,TIMP2,CD44,CommuSpace_HS_07444
+3,8,2547,Fibroblast,T cell,TIMP3,CD44,CommuSpace_HS_07452
+3,8,2670,Fibroblast,T cell,VEGFA,CD44,CommuSpace_HS_07694
+4,1,1733,Macrophage,Endothelial,ITGB2,THY1,CommuSpace_HS_04798
+4,2,467,Macrophage,Epithelial,CD44,CLDN7,CommuSpace_HS_01178
+4,2,468,Macrophage,Epithelial,CD44,EPCAM,CommuSpace_HS_01179
+4,2,1355,Macrophage,Epithelial,GNAI2,ADORA1,CommuSpace_HS_03949
+4,2,1372,Macrophage,Epithelial,GNAI2,IGF1R,CommuSpace_HS_03967
+4,2,2085,Macrophage,Epithelial,PKM,CD44,CommuSpace_HS_06177
+4,2,2344,Macrophage,Epithelial,SIRPA,CD47,CommuSpace_HS_06987
+4,3,1733,Macrophage,Fibroblast,ITGB2,THY1,CommuSpace_HS_04798
+4,4,351,Macrophage,Macrophage,CCL2,CCR1,CommuSpace_HS_00946
+4,4,771,Macrophage,Macrophage,CXCL9,FCGR2A,CommuSpace_HS_02275
+4,4,1359,Macrophage,Macrophage,GNAI2,C5AR1,CommuSpace_HS_03953
+4,4,2085,Macrophage,Macrophage,PKM,CD44,CommuSpace_HS_06177
+4,5,2085,Macrophage,Mast cell,PKM,CD44,CommuSpace_HS_06177
+4,6,2085,Macrophage,Myoepithelial,PKM,CD44,CommuSpace_HS_06177
+4,6,2257,Macrophage,Myoepithelial,RTN4,NGFR,CommuSpace_HS_06625
+4,6,2344,Macrophage,Myoepithelial,SIRPA,CD47,CommuSpace_HS_06987
+4,7,1733,Macrophage,Pericyte,ITGB2,THY1,CommuSpace_HS_04798
+4,8,2085,Macrophage,T cell,PKM,CD44,CommuSpace_HS_06177
+5,1,1835,Mast cell,Endothelial,LIF,IL6ST,CommuSpace_HS_05222
+5,1,2505,Mast cell,Endothelial,THBS1,ITGB3,CommuSpace_HS_07380
+5,2,467,Mast cell,Epithelial,CD44,CLDN7,CommuSpace_HS_01178
+5,2,468,Mast cell,Epithelial,CD44,EPCAM,CommuSpace_HS_01179
+5,2,1835,Mast cell,Epithelial,LIF,IL6ST,CommuSpace_HS_05222
+5,2,2498,Mast cell,Epithelial,THBS1,CD47,CommuSpace_HS_07371
+5,2,2501,Mast cell,Epithelial,THBS1,ITGA3,CommuSpace_HS_07374
+5,2,2510,Mast cell,Epithelial,THBS1,SDC4,CommuSpace_HS_07386
+5,3,1835,Mast cell,Fibroblast,LIF,IL6ST,CommuSpace_HS_05222
+5,4,351,Mast cell,Macrophage,CCL2,CCR1,CommuSpace_HS_00946
+5,4,1835,Mast cell,Macrophage,LIF,IL6ST,CommuSpace_HS_05222
+5,6,1835,Mast cell,Myoepithelial,LIF,IL6ST,CommuSpace_HS_05222
+5,6,2498,Mast cell,Myoepithelial,THBS1,CD47,CommuSpace_HS_07371
+5,6,2501,Mast cell,Myoepithelial,THBS1,ITGA3,CommuSpace_HS_07374
+5,6,2510,Mast cell,Myoepithelial,THBS1,SDC4,CommuSpace_HS_07386
+5,7,1835,Mast cell,Pericyte,LIF,IL6ST,CommuSpace_HS_05222
+5,7,2497,Mast cell,Pericyte,THBS1,CD36,CommuSpace_HS_07370
+6,1,131,Myoepithelial,Endothelial,APP,FLT1,CommuSpace_HS_00391
+6,1,404,Myoepithelial,Endothelial,CCN1,ITGB3,CommuSpace_HS_01082
+6,1,585,Myoepithelial,Endothelial,COL4A1,CD93,CommuSpace_HS_01731
+6,1,593,Myoepithelial,Endothelial,COL4A2,CD93,CommuSpace_HS_01751
+6,1,599,Myoepithelial,Endothelial,COL4A2,ITGB3,CommuSpace_HS_01767
+6,1,1835,Myoepithelial,Endothelial,LIF,IL6ST,CommuSpace_HS_05222
+6,1,2505,Myoepithelial,Endothelial,THBS1,ITGB3,CommuSpace_HS_07380
+6,1,2545,Myoepithelial,Endothelial,TIMP3,ADAMTS4,CommuSpace_HS_07450
+6,1,2549,Myoepithelial,Endothelial,TIMP3,KDR,CommuSpace_HS_07454
+6,1,2561,Myoepithelial,Endothelial,TNC,ITGB3,CommuSpace_HS_07477
+6,1,2563,Myoepithelial,Endothelial,TNC,PTPRB,CommuSpace_HS_07479
+6,2,136,Myoepithelial,Epithelial,APP,NCSTN,CommuSpace_HS_00398
+6,2,138,Myoepithelial,Epithelial,APP,NOTCH2,CommuSpace_HS_00400
+6,2,405,Myoepithelial,Epithelial,CCN1,ITGB5,CommuSpace_HS_01083
+6,2,406,Myoepithelial,Epithelial,CCN1,SDC4,CommuSpace_HS_01084
+6,2,467,Myoepithelial,Epithelial,CD44,CLDN7,CommuSpace_HS_01178
+6,2,468,Myoepithelial,Epithelial,CD44,EPCAM,CommuSpace_HS_01179
+6,2,564,Myoepithelial,Epithelial,COL17A1,ITGA2,CommuSpace_HS_01550
+6,2,583,Myoepithelial,Epithelial,COL4A1,CD44,CommuSpace_HS_01729
+6,2,584,Myoepithelial,Epithelial,COL4A1,CD47,CommuSpace_HS_01730
+6,2,588,Myoepithelial,Epithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+6,2,590,Myoepithelial,Epithelial,COL4A1,SDC4,CommuSpace_HS_01748
+6,2,592,Myoepithelial,Epithelial,COL4A2,CD44,CommuSpace_HS_01750
+6,2,594,Myoepithelial,Epithelial,COL4A2,DDR1,CommuSpace_HS_01752
+6,2,598,Myoepithelial,Epithelial,COL4A2,ITGA2,CommuSpace_HS_01761
+6,2,600,Myoepithelial,Epithelial,COL4A2,ITGB5,CommuSpace_HS_01768
+6,2,601,Myoepithelial,Epithelial,COL4A2,SDC4,CommuSpace_HS_01770
+6,2,916,Myoepithelial,Epithelial,F11R,F11R,CommuSpace_HS_02693
+6,2,1734,Myoepithelial,Epithelial,JAG1,CD46,CommuSpace_HS_04806
+6,2,1736,Myoepithelial,Epithelial,JAG1,NOTCH2,CommuSpace_HS_04808
+6,2,1783,Myoepithelial,Epithelial,LAMA3,CD44,CommuSpace_HS_04976
+6,2,1784,Myoepithelial,Epithelial,LAMA3,DAG1,CommuSpace_HS_04977
+6,2,1785,Myoepithelial,Epithelial,LAMA3,ITGA3,CommuSpace_HS_04980
+6,2,1789,Myoepithelial,Epithelial,LAMA3,SDC2,CommuSpace_HS_04990
+6,2,1792,Myoepithelial,Epithelial,LAMB3,CD44,CommuSpace_HS_05077
+6,2,1793,Myoepithelial,Epithelial,LAMB3,DAG1,CommuSpace_HS_05078
+6,2,1794,Myoepithelial,Epithelial,LAMB3,ITGA2,CommuSpace_HS_05080
+6,2,1795,Myoepithelial,Epithelial,LAMB3,ITGA3,CommuSpace_HS_05082
+6,2,1835,Myoepithelial,Epithelial,LIF,IL6ST,CommuSpace_HS_05222
+6,2,1885,Myoepithelial,Epithelial,MMP14,ADAM9,CommuSpace_HS_05462
+6,2,1886,Myoepithelial,Epithelial,MMP14,CD44,CommuSpace_HS_05463
+6,2,1887,Myoepithelial,Epithelial,MMP14,DDR1,CommuSpace_HS_05464
+6,2,2085,Myoepithelial,Epithelial,PKM,CD44,CommuSpace_HS_06177
+6,2,2306,Myoepithelial,Epithelial,SERPINE1,ITGB5,CommuSpace_HS_06864
+6,2,2498,Myoepithelial,Epithelial,THBS1,CD47,CommuSpace_HS_07371
+6,2,2501,Myoepithelial,Epithelial,THBS1,ITGA3,CommuSpace_HS_07374
+6,2,2510,Myoepithelial,Epithelial,THBS1,SDC4,CommuSpace_HS_07386
+6,2,2547,Myoepithelial,Epithelial,TIMP3,CD44,CommuSpace_HS_07452
+6,2,2548,Myoepithelial,Epithelial,TIMP3,DDR1,CommuSpace_HS_07453
+6,2,2554,Myoepithelial,Epithelial,TNC,ITGA2,CommuSpace_HS_07465
+6,2,2565,Myoepithelial,Epithelial,TNC,SDC4,CommuSpace_HS_07482
+6,3,1835,Myoepithelial,Fibroblast,LIF,IL6ST,CommuSpace_HS_05222
+6,4,351,Myoepithelial,Macrophage,CCL2,CCR1,CommuSpace_HS_00946
+6,4,403,Myoepithelial,Macrophage,CCN1,ITGB2,CommuSpace_HS_01081
+6,4,473,Myoepithelial,Macrophage,CD47,SIRPA,CommuSpace_HS_01186
+6,4,583,Myoepithelial,Macrophage,COL4A1,CD44,CommuSpace_HS_01729
+6,4,592,Myoepithelial,Macrophage,COL4A2,CD44,CommuSpace_HS_01750
+6,4,919,Myoepithelial,Macrophage,F11R,ITGB2,CommuSpace_HS_02696
+6,4,1783,Myoepithelial,Macrophage,LAMA3,CD44,CommuSpace_HS_04976
+6,4,1792,Myoepithelial,Macrophage,LAMB3,CD44,CommuSpace_HS_05077
+6,4,1835,Myoepithelial,Macrophage,LIF,IL6ST,CommuSpace_HS_05222
+6,4,1886,Myoepithelial,Macrophage,MMP14,CD44,CommuSpace_HS_05463
+6,4,2085,Myoepithelial,Macrophage,PKM,CD44,CommuSpace_HS_06177
+6,4,2311,Myoepithelial,Macrophage,SERPINE1,PLAUR,CommuSpace_HS_06869
+6,4,2547,Myoepithelial,Macrophage,TIMP3,CD44,CommuSpace_HS_07452
+6,5,583,Myoepithelial,Mast cell,COL4A1,CD44,CommuSpace_HS_01729
+6,5,592,Myoepithelial,Mast cell,COL4A2,CD44,CommuSpace_HS_01750
+6,5,1783,Myoepithelial,Mast cell,LAMA3,CD44,CommuSpace_HS_04976
+6,5,1792,Myoepithelial,Mast cell,LAMB3,CD44,CommuSpace_HS_05077
+6,5,1886,Myoepithelial,Mast cell,MMP14,CD44,CommuSpace_HS_05463
+6,5,2085,Myoepithelial,Mast cell,PKM,CD44,CommuSpace_HS_06177
+6,5,2547,Myoepithelial,Mast cell,TIMP3,CD44,CommuSpace_HS_07452
+6,6,137,Myoepithelial,Myoepithelial,APP,NGFR,CommuSpace_HS_00399
+6,6,406,Myoepithelial,Myoepithelial,CCN1,SDC4,CommuSpace_HS_01084
+6,6,517,Myoepithelial,Myoepithelial,CDH3,CDH3,CommuSpace_HS_01257
+6,6,564,Myoepithelial,Myoepithelial,COL17A1,ITGA2,CommuSpace_HS_01550
+6,6,583,Myoepithelial,Myoepithelial,COL4A1,CD44,CommuSpace_HS_01729
+6,6,584,Myoepithelial,Myoepithelial,COL4A1,CD47,CommuSpace_HS_01730
+6,6,588,Myoepithelial,Myoepithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+6,6,590,Myoepithelial,Myoepithelial,COL4A1,SDC4,CommuSpace_HS_01748
+6,6,592,Myoepithelial,Myoepithelial,COL4A2,CD44,CommuSpace_HS_01750
+6,6,594,Myoepithelial,Myoepithelial,COL4A2,DDR1,CommuSpace_HS_01752
+6,6,598,Myoepithelial,Myoepithelial,COL4A2,ITGA2,CommuSpace_HS_01761
+6,6,601,Myoepithelial,Myoepithelial,COL4A2,SDC4,CommuSpace_HS_01770
+6,6,916,Myoepithelial,Myoepithelial,F11R,F11R,CommuSpace_HS_02693
+6,6,1783,Myoepithelial,Myoepithelial,LAMA3,CD44,CommuSpace_HS_04976
+6,6,1785,Myoepithelial,Myoepithelial,LAMA3,ITGA3,CommuSpace_HS_04980
+6,6,1788,Myoepithelial,Myoepithelial,LAMA3,ITGB4,CommuSpace_HS_04989
+6,6,1792,Myoepithelial,Myoepithelial,LAMB3,CD44,CommuSpace_HS_05077
+6,6,1794,Myoepithelial,Myoepithelial,LAMB3,ITGA2,CommuSpace_HS_05080
+6,6,1795,Myoepithelial,Myoepithelial,LAMB3,ITGA3,CommuSpace_HS_05082
+6,6,1798,Myoepithelial,Myoepithelial,LAMB3,ITGB4,CommuSpace_HS_05091
+6,6,1835,Myoepithelial,Myoepithelial,LIF,IL6ST,CommuSpace_HS_05222
+6,6,1886,Myoepithelial,Myoepithelial,MMP14,CD44,CommuSpace_HS_05463
+6,6,1887,Myoepithelial,Myoepithelial,MMP14,DDR1,CommuSpace_HS_05464
+6,6,2085,Myoepithelial,Myoepithelial,PKM,CD44,CommuSpace_HS_06177
+6,6,2257,Myoepithelial,Myoepithelial,RTN4,NGFR,CommuSpace_HS_06625
+6,6,2498,Myoepithelial,Myoepithelial,THBS1,CD47,CommuSpace_HS_07371
+6,6,2501,Myoepithelial,Myoepithelial,THBS1,ITGA3,CommuSpace_HS_07374
+6,6,2510,Myoepithelial,Myoepithelial,THBS1,SDC4,CommuSpace_HS_07386
+6,6,2547,Myoepithelial,Myoepithelial,TIMP3,CD44,CommuSpace_HS_07452
+6,6,2548,Myoepithelial,Myoepithelial,TIMP3,DDR1,CommuSpace_HS_07453
+6,6,2551,Myoepithelial,Myoepithelial,TIMP3,MMP14,CommuSpace_HS_07456
+6,6,2554,Myoepithelial,Myoepithelial,TNC,ITGA2,CommuSpace_HS_07465
+6,6,2562,Myoepithelial,Myoepithelial,TNC,ITGB6,CommuSpace_HS_07478
+6,6,2565,Myoepithelial,Myoepithelial,TNC,SDC4,CommuSpace_HS_07482
+6,7,1737,Myoepithelial,Pericyte,JAG1,NOTCH3,CommuSpace_HS_04809
+6,7,1835,Myoepithelial,Pericyte,LIF,IL6ST,CommuSpace_HS_05222
+6,7,2497,Myoepithelial,Pericyte,THBS1,CD36,CommuSpace_HS_07370
+6,7,2545,Myoepithelial,Pericyte,TIMP3,ADAMTS4,CommuSpace_HS_07450
+6,7,2557,Myoepithelial,Pericyte,TNC,ITGA7,CommuSpace_HS_07468
+6,8,583,Myoepithelial,T cell,COL4A1,CD44,CommuSpace_HS_01729
+6,8,592,Myoepithelial,T cell,COL4A2,CD44,CommuSpace_HS_01750
+6,8,1783,Myoepithelial,T cell,LAMA3,CD44,CommuSpace_HS_04976
+6,8,1792,Myoepithelial,T cell,LAMB3,CD44,CommuSpace_HS_05077
+6,8,1886,Myoepithelial,T cell,MMP14,CD44,CommuSpace_HS_05463
+6,8,2085,Myoepithelial,T cell,PKM,CD44,CommuSpace_HS_06177
+6,8,2547,Myoepithelial,T cell,TIMP3,CD44,CommuSpace_HS_07452
+7,1,131,Pericyte,Endothelial,APP,FLT1,CommuSpace_HS_00391
+7,1,404,Pericyte,Endothelial,CCN1,ITGB3,CommuSpace_HS_01082
+7,1,569,Pericyte,Endothelial,COL18A1,ITGB3,CommuSpace_HS_01566
+7,1,571,Pericyte,Endothelial,COL18A1,KDR,CommuSpace_HS_01568
+7,1,585,Pericyte,Endothelial,COL4A1,CD93,CommuSpace_HS_01731
+7,1,593,Pericyte,Endothelial,COL4A2,CD93,CommuSpace_HS_01751
+7,1,599,Pericyte,Endothelial,COL4A2,ITGB3,CommuSpace_HS_01767
+7,1,1680,Pericyte,Endothelial,IL6,IL6ST,CommuSpace_HS_04683
+7,1,2505,Pericyte,Endothelial,THBS1,ITGB3,CommuSpace_HS_07380
+7,1,2533,Pericyte,Endothelial,THY1,ITGB3,CommuSpace_HS_07430
+7,1,2545,Pericyte,Endothelial,TIMP3,ADAMTS4,CommuSpace_HS_07450
+7,1,2549,Pericyte,Endothelial,TIMP3,KDR,CommuSpace_HS_07454
+7,1,2561,Pericyte,Endothelial,TNC,ITGB3,CommuSpace_HS_07477
+7,1,2563,Pericyte,Endothelial,TNC,PTPRB,CommuSpace_HS_07479
+7,2,136,Pericyte,Epithelial,APP,NCSTN,CommuSpace_HS_00398
+7,2,138,Pericyte,Epithelial,APP,NOTCH2,CommuSpace_HS_00400
+7,2,405,Pericyte,Epithelial,CCN1,ITGB5,CommuSpace_HS_01083
+7,2,406,Pericyte,Epithelial,CCN1,SDC4,CommuSpace_HS_01084
+7,2,566,Pericyte,Epithelial,COL18A1,ITGA2,CommuSpace_HS_01561
+7,2,567,Pericyte,Epithelial,COL18A1,ITGA3,CommuSpace_HS_01563
+7,2,570,Pericyte,Epithelial,COL18A1,ITGB5,CommuSpace_HS_01567
+7,2,583,Pericyte,Epithelial,COL4A1,CD44,CommuSpace_HS_01729
+7,2,584,Pericyte,Epithelial,COL4A1,CD47,CommuSpace_HS_01730
+7,2,588,Pericyte,Epithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+7,2,590,Pericyte,Epithelial,COL4A1,SDC4,CommuSpace_HS_01748
+7,2,592,Pericyte,Epithelial,COL4A2,CD44,CommuSpace_HS_01750
+7,2,594,Pericyte,Epithelial,COL4A2,DDR1,CommuSpace_HS_01752
+7,2,598,Pericyte,Epithelial,COL4A2,ITGA2,CommuSpace_HS_01761
+7,2,600,Pericyte,Epithelial,COL4A2,ITGB5,CommuSpace_HS_01768
+7,2,601,Pericyte,Epithelial,COL4A2,SDC4,CommuSpace_HS_01770
+7,2,1680,Pericyte,Epithelial,IL6,IL6ST,CommuSpace_HS_04683
+7,2,1734,Pericyte,Epithelial,JAG1,CD46,CommuSpace_HS_04806
+7,2,1736,Pericyte,Epithelial,JAG1,NOTCH2,CommuSpace_HS_04808
+7,2,2498,Pericyte,Epithelial,THBS1,CD47,CommuSpace_HS_07371
+7,2,2501,Pericyte,Epithelial,THBS1,ITGA3,CommuSpace_HS_07374
+7,2,2510,Pericyte,Epithelial,THBS1,SDC4,CommuSpace_HS_07386
+7,2,2547,Pericyte,Epithelial,TIMP3,CD44,CommuSpace_HS_07452
+7,2,2548,Pericyte,Epithelial,TIMP3,DDR1,CommuSpace_HS_07453
+7,2,2554,Pericyte,Epithelial,TNC,ITGA2,CommuSpace_HS_07465
+7,2,2565,Pericyte,Epithelial,TNC,SDC4,CommuSpace_HS_07482
+7,3,1680,Pericyte,Fibroblast,IL6,IL6ST,CommuSpace_HS_04683
+7,4,351,Pericyte,Macrophage,CCL2,CCR1,CommuSpace_HS_00946
+7,4,403,Pericyte,Macrophage,CCN1,ITGB2,CommuSpace_HS_01081
+7,4,583,Pericyte,Macrophage,COL4A1,CD44,CommuSpace_HS_01729
+7,4,592,Pericyte,Macrophage,COL4A2,CD44,CommuSpace_HS_01750
+7,4,1680,Pericyte,Macrophage,IL6,IL6ST,CommuSpace_HS_04683
+7,4,2530,Pericyte,Macrophage,THY1,ITGAX,CommuSpace_HS_07427
+7,4,2532,Pericyte,Macrophage,THY1,ITGB2,CommuSpace_HS_07429
+7,4,2547,Pericyte,Macrophage,TIMP3,CD44,CommuSpace_HS_07452
+7,5,583,Pericyte,Mast cell,COL4A1,CD44,CommuSpace_HS_01729
+7,5,592,Pericyte,Mast cell,COL4A2,CD44,CommuSpace_HS_01750
+7,5,2547,Pericyte,Mast cell,TIMP3,CD44,CommuSpace_HS_07452
+7,6,137,Pericyte,Myoepithelial,APP,NGFR,CommuSpace_HS_00399
+7,6,406,Pericyte,Myoepithelial,CCN1,SDC4,CommuSpace_HS_01084
+7,6,566,Pericyte,Myoepithelial,COL18A1,ITGA2,CommuSpace_HS_01561
+7,6,567,Pericyte,Myoepithelial,COL18A1,ITGA3,CommuSpace_HS_01563
+7,6,583,Pericyte,Myoepithelial,COL4A1,CD44,CommuSpace_HS_01729
+7,6,584,Pericyte,Myoepithelial,COL4A1,CD47,CommuSpace_HS_01730
+7,6,588,Pericyte,Myoepithelial,COL4A1,ITGA2,CommuSpace_HS_01739
+7,6,590,Pericyte,Myoepithelial,COL4A1,SDC4,CommuSpace_HS_01748
+7,6,592,Pericyte,Myoepithelial,COL4A2,CD44,CommuSpace_HS_01750
+7,6,594,Pericyte,Myoepithelial,COL4A2,DDR1,CommuSpace_HS_01752
+7,6,598,Pericyte,Myoepithelial,COL4A2,ITGA2,CommuSpace_HS_01761
+7,6,601,Pericyte,Myoepithelial,COL4A2,SDC4,CommuSpace_HS_01770
+7,6,1675,Pericyte,Myoepithelial,IL6,F3,CommuSpace_HS_04678
+7,6,1680,Pericyte,Myoepithelial,IL6,IL6ST,CommuSpace_HS_04683
+7,6,2498,Pericyte,Myoepithelial,THBS1,CD47,CommuSpace_HS_07371
+7,6,2501,Pericyte,Myoepithelial,THBS1,ITGA3,CommuSpace_HS_07374
+7,6,2510,Pericyte,Myoepithelial,THBS1,SDC4,CommuSpace_HS_07386
+7,6,2547,Pericyte,Myoepithelial,TIMP3,CD44,CommuSpace_HS_07452
+7,6,2548,Pericyte,Myoepithelial,TIMP3,DDR1,CommuSpace_HS_07453
+7,6,2551,Pericyte,Myoepithelial,TIMP3,MMP14,CommuSpace_HS_07456
+7,6,2554,Pericyte,Myoepithelial,TNC,ITGA2,CommuSpace_HS_07465
+7,6,2562,Pericyte,Myoepithelial,TNC,ITGB6,CommuSpace_HS_07478
+7,6,2565,Pericyte,Myoepithelial,TNC,SDC4,CommuSpace_HS_07482
+7,7,1680,Pericyte,Pericyte,IL6,IL6ST,CommuSpace_HS_04683
+7,7,1737,Pericyte,Pericyte,JAG1,NOTCH3,CommuSpace_HS_04809
+7,7,2041,Pericyte,Pericyte,PDGFA,PDGFRB,CommuSpace_HS_06109
+7,7,2497,Pericyte,Pericyte,THBS1,CD36,CommuSpace_HS_07370
+7,7,2545,Pericyte,Pericyte,TIMP3,ADAMTS4,CommuSpace_HS_07450
+7,7,2557,Pericyte,Pericyte,TNC,ITGA7,CommuSpace_HS_07468
+7,8,583,Pericyte,T cell,COL4A1,CD44,CommuSpace_HS_01729
+7,8,592,Pericyte,T cell,COL4A2,CD44,CommuSpace_HS_01750
+7,8,2547,Pericyte,T cell,TIMP3,CD44,CommuSpace_HS_07452
+8,2,467,T cell,Epithelial,CD44,CLDN7,CommuSpace_HS_01178
+8,2,468,T cell,Epithelial,CD44,EPCAM,CommuSpace_HS_01179

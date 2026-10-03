@@ -1,0 +1,10 @@
+{
+  "n_cells": 166363,
+  "n_genes": 313,
+  "nnz": 10604415,
+  "nnz_per_cell_median": 64.0,
+  "zero_cells": 0,
+  "counts_per_cell_mean": 192.9693140902725,
+  "nonnegative": true,
+  "integer_valued": true
+}

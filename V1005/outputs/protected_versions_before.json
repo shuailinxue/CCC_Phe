@@ -1,0 +1,3242 @@
+{
+  "V1000/STRUCTURED_ST_FIRST.md": {
+    "size": 895,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1000/.gitignore": {
+    "size": 47,
+    "mtime_ns": 1789814890398485173
+  },
+  "V1000/FILES.md": {
+    "size": 1623,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1000/pyproject.toml": {
+    "size": 400,
+    "mtime_ns": 1789698168623054869
+  },
+  "V1000/AGENTS.md": {
+    "size": 1318,
+    "mtime_ns": 1789698168623054869
+  },
+  "V1000/PROVENANCE.md": {
+    "size": 1334,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1000/README.md": {
+    "size": 872,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1000/src/phenoniche/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/evaluation/bank_matching.py": {
+    "size": 7386,
+    "mtime_ns": 1789657689703604377
+  },
+  "V1000/src/phenoniche/evaluation/phenotype_recovery.py": {
+    "size": 4090,
+    "mtime_ns": 1789628180196263871
+  },
+  "V1000/src/phenoniche/evaluation/inference_diagnostics.py": {
+    "size": 4274,
+    "mtime_ns": 1789629622210381785
+  },
+  "V1000/src/phenoniche/evaluation/metrics.py": {
+    "size": 1712,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1000/src/phenoniche/evaluation/matching.py": {
+    "size": 2646,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1000/src/phenoniche/evaluation/patient_protocol.py": {
+    "size": 4249,
+    "mtime_ns": 1789628180192263865
+  },
+  "V1000/src/phenoniche/evaluation/collapse_benchmark.py": {
+    "size": 13371,
+    "mtime_ns": 1789654422158805334
+  },
+  "V1000/src/phenoniche/evaluation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/evaluation/pair_diagnostics.py": {
+    "size": 3089,
+    "mtime_ns": 1789629839094700327
+  },
+  "V1000/src/phenoniche/evaluation/inferred_benchmark.py": {
+    "size": 9636,
+    "mtime_ns": 1789629839094700327
+  },
+  "V1000/src/phenoniche/evaluation/structured_st_first_benchmark.py": {
+    "size": 16628,
+    "mtime_ns": 1789701493559937974
+  },
+  "V1000/src/phenoniche/evaluation/dual_bank_benchmark.py": {
+    "size": 21561,
+    "mtime_ns": 1789657689703604377
+  },
+  "V1000/src/phenoniche/evaluation/challenging_benchmark.py": {
+    "size": 15982,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1000/src/phenoniche/evaluation/niche_stability.py": {
+    "size": 6859,
+    "mtime_ns": 1789701290447639678
+  },
+  "V1000/src/phenoniche/evaluation/collapse_diagnostics.py": {
+    "size": 3617,
+    "mtime_ns": 1789654422150805322
+  },
+  "V1000/src/phenoniche/losses/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/losses/collapse.py": {
+    "size": 1128,
+    "mtime_ns": 1789654145734399340
+  },
+  "V1000/src/phenoniche/losses/spatial.py": {
+    "size": 1592,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/losses/survival.py": {
+    "size": 731,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/losses/reconstruction.py": {
+    "size": 402,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/inference/bulk.py": {
+    "size": 2186,
+    "mtime_ns": 1789629536082255287
+  },
+  "V1000/src/phenoniche/inference/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789628092492135059
+  },
+  "V1000/src/phenoniche/inference/dual_bank.py": {
+    "size": 4615,
+    "mtime_ns": 1789656682530125132
+  },
+  "V1000/src/phenoniche/inference/nnls_reference.py": {
+    "size": 1737,
+    "mtime_ns": 1789629536074255275
+  },
+  "V1000/src/phenoniche/training/dual_bank_trainer.py": {
+    "size": 10842,
+    "mtime_ns": 1789656744270215809
+  },
+  "V1000/src/phenoniche/training/trainer.py": {
+    "size": 6297,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1000/src/phenoniche/training/config.py": {
+    "size": 2748,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1000/src/phenoniche/training/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/training/st_first.py": {
+    "size": 5383,
+    "mtime_ns": 1789701243615570900
+  },
+  "V1000/src/phenoniche/training/iterative_refinement.py": {
+    "size": 10341,
+    "mtime_ns": 1789701608672107028
+  },
+  "V1000/src/phenoniche/model/adapters.py": {
+    "size": 1774,
+    "mtime_ns": 1789701362099744901
+  },
+  "V1000/src/phenoniche/model/normalization.py": {
+    "size": 974,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/model/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/model/niche_factorization.py": {
+    "size": 3654,
+    "mtime_ns": 1789629536086255293
+  },
+  "V1000/src/phenoniche/model/phenotype_head.py": {
+    "size": 870,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/model/dual_bank_factorization.py": {
+    "size": 6537,
+    "mtime_ns": 1789656682534125138
+  },
+  "V1000/src/phenoniche/data/schema.py": {
+    "size": 1629,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/data/synthetic.py": {
+    "size": 2402,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1000/src/phenoniche/data/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/data/challenging_synthetic.py": {
+    "size": 4862,
+    "mtime_ns": 1789628092500135070
+  },
+  "V1000/src/phenoniche/data/scaling.py": {
+    "size": 1207,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/utils/validation.py": {
+    "size": 1455,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/utils/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1000/src/phenoniche/utils/seed.py": {
+    "size": 307,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1000/src/phenoniche/simulation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789701174243469022
+  },
+  "V1000/src/phenoniche/simulation/structured_ccc.py": {
+    "size": 10777,
+    "mtime_ns": 1789701190103492313
+  },
+  "V1000/tests/test_heldout_inference.py": {
+    "size": 5193,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1000/tests/test_shapes.py": {
+    "size": 2655,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1000/tests/test_gradients.py": {
+    "size": 2076,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1000/tests/test_dual_bank_training.py": {
+    "size": 1898,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1000/tests/test_inferred_wb.py": {
+    "size": 6579,
+    "mtime_ns": 1789629948802861458
+  },
+  "V1000/tests/test_st_first.py": {
+    "size": 1009,
+    "mtime_ns": 1789701534483998076
+  },
+  "V1000/tests/test_structured_simulation.py": {
+    "size": 1387,
+    "mtime_ns": 1789701534479998070
+  },
+  "V1000/tests/test_cox_loss.py": {
+    "size": 2587,
+    "mtime_ns": 1789626774566199416
+  },
+  "V1000/tests/test_bank_matching.py": {
+    "size": 1321,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1000/tests/test_iterative_refinement.py": {
+    "size": 3488,
+    "mtime_ns": 1789701553796026437
+  },
+  "V1000/tests/test_dual_bank_inference.py": {
+    "size": 2029,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1000/tests/test_dual_bank_gradients.py": {
+    "size": 1489,
+    "mtime_ns": 1789656987590573182
+  },
+  "V1000/tests/test_normalization_scaling.py": {
+    "size": 2037,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1000/tests/test_collapse_loss.py": {
+    "size": 5723,
+    "mtime_ns": 1789654221522510653
+  },
+  "V1000/tests/test_synthetic_recovery.py": {
+    "size": 1908,
+    "mtime_ns": 1789626774566199416
+  },
+  "V1000/tests/test_spatial_training.py": {
+    "size": 3934,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1000/tests/conftest.py": {
+    "size": 1023,
+    "mtime_ns": 1789626822758270198
+  },
+  "V1000/tests/test_phenotype_permutation.py": {
+    "size": 2208,
+    "mtime_ns": 1789628454476666712
+  },
+  "V1000/tests/test_collapse_evaluation.py": {
+    "size": 1838,
+    "mtime_ns": 1789654507422930561
+  },
+  "V1000/tests/test_dual_bank_shapes.py": {
+    "size": 1186,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1000/tests/test_challenging_synthetic.py": {
+    "size": 4630,
+    "mtime_ns": 1789628454472666706
+  },
+  "V1000/tests/fixtures/inferred_wb_zero_collapse.json": {
+    "size": 4899,
+    "mtime_ns": 1789654108758345031
+  },
+  "V1000/scripts/run_anti_collapse.py": {
+    "size": 933,
+    "mtime_ns": 1789654422158805334
+  },
+  "V1000/scripts/run_inferred_wb.py": {
+    "size": 895,
+    "mtime_ns": 1789629839098700333
+  },
+  "V1000/scripts/run_dual_bank.py": {
+    "size": 791,
+    "mtime_ns": 1789656905762452998
+  },
+  "V1000/scripts/run_synthetic.py": {
+    "size": 4529,
+    "mtime_ns": 1789630349895450548
+  },
+  "V1000/scripts/run_structured_st_first.py": {
+    "size": 734,
+    "mtime_ns": 1789701473091907913
+  },
+  "V1000/scripts/run_challenging_synthetic.py": {
+    "size": 1151,
+    "mtime_ns": 1789629622202381773
+  },
+  "V1000/outputs/structured_st_first_run.log": {
+    "size": 894,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1000/outputs/structured_st_first/st_iterative_primary.json": {
+    "size": 2730,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1000/outputs/structured_st_first/structured_truth.json": {
+    "size": 114586,
+    "mtime_ns": 1789701617096119402
+  },
+  "V1000/outputs/structured_st_first/ccc_dimension_sensitivity.json": {
+    "size": 2283,
+    "mtime_ns": 1789701668596195040
+  },
+  "V1000/outputs/structured_st_first/outer_iteration_history.json": {
+    "size": 4642,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1000/outputs/structured_st_first/phenotype_permutation.json": {
+    "size": 54063,
+    "mtime_ns": 1789701647992164779
+  },
+  "V1000/outputs/structured_st_first/st_only_primary.json": {
+    "size": 730057,
+    "mtime_ns": 1789701621856126392
+  },
+  "V1000/outputs/structured_st_first/iterative_adapter.pt": {
+    "size": 69938,
+    "mtime_ns": 1789701626244132837
+  },
+  "V1000/outputs/structured_st_first/stable_anchor.npz": {
+    "size": 41829,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1000/outputs/structured_st_first/niche_edge_recovery.json": {
+    "size": 86502,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1000/outputs/structured_st_first/protocol.json": {
+    "size": 1356,
+    "mtime_ns": 1789701617008119272
+  },
+  "V1000/outputs/structured_st_first/RESULTS.md": {
+    "size": 5045,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1000/outputs/structured_st_first/inner_inference_audit.json": {
+    "size": 1053,
+    "mtime_ns": 1789701621816126334
+  },
+  "V1000/outputs/structured_st_first/implementation_audit.json": {
+    "size": 1665,
+    "mtime_ns": 1789701869620490273
+  },
+  "V1000/outputs/structured_st_first/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789701820148417618
+  },
+  "V1000/outputs/structured_st_first/summary.json": {
+    "size": 981278,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1000/outputs/structured_st_first/st_frozen_primary.json": {
+    "size": 1342,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1000/outputs/structured_st_first/run.log": {
+    "size": 894,
+    "mtime_ns": 1789701780240359004
+  },
+  "V1001/STRUCTURED_ST_FIRST.md": {
+    "size": 895,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1001/.gitignore": {
+    "size": 47,
+    "mtime_ns": 1789814890398485173
+  },
+  "V1001/FILES.md": {
+    "size": 2396,
+    "mtime_ns": 1789716175409501070
+  },
+  "V1001/pyproject.toml": {
+    "size": 400,
+    "mtime_ns": 1789716175405501064
+  },
+  "V1001/AGENTS.md": {
+    "size": 1531,
+    "mtime_ns": 1789716175405501064
+  },
+  "V1001/PROVENANCE.md": {
+    "size": 1900,
+    "mtime_ns": 1789716175409501070
+  },
+  "V1001/README.md": {
+    "size": 826,
+    "mtime_ns": 1789716175409501070
+  },
+  "V1001/src/phenoniche/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/evaluation/bank_matching.py": {
+    "size": 7386,
+    "mtime_ns": 1789657689703604377
+  },
+  "V1001/src/phenoniche/evaluation/phenotype_recovery.py": {
+    "size": 4090,
+    "mtime_ns": 1789628180196263871
+  },
+  "V1001/src/phenoniche/evaluation/inference_diagnostics.py": {
+    "size": 4274,
+    "mtime_ns": 1789629622210381785
+  },
+  "V1001/src/phenoniche/evaluation/metrics.py": {
+    "size": 1712,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1001/src/phenoniche/evaluation/matching.py": {
+    "size": 2646,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1001/src/phenoniche/evaluation/patient_protocol.py": {
+    "size": 4249,
+    "mtime_ns": 1789628180192263865
+  },
+  "V1001/src/phenoniche/evaluation/collapse_benchmark.py": {
+    "size": 13371,
+    "mtime_ns": 1789654422158805334
+  },
+  "V1001/src/phenoniche/evaluation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/evaluation/pair_diagnostics.py": {
+    "size": 3089,
+    "mtime_ns": 1789629839094700327
+  },
+  "V1001/src/phenoniche/evaluation/inferred_benchmark.py": {
+    "size": 9636,
+    "mtime_ns": 1789629839094700327
+  },
+  "V1001/src/phenoniche/evaluation/structured_st_first_benchmark.py": {
+    "size": 16628,
+    "mtime_ns": 1789701493559937974
+  },
+  "V1001/src/phenoniche/evaluation/dual_bank_benchmark.py": {
+    "size": 21561,
+    "mtime_ns": 1789657689703604377
+  },
+  "V1001/src/phenoniche/evaluation/challenging_benchmark.py": {
+    "size": 15982,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1001/src/phenoniche/evaluation/niche_stability.py": {
+    "size": 6859,
+    "mtime_ns": 1789701290447639678
+  },
+  "V1001/src/phenoniche/evaluation/collapse_diagnostics.py": {
+    "size": 3617,
+    "mtime_ns": 1789654422150805322
+  },
+  "V1001/src/phenoniche/losses/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/losses/collapse.py": {
+    "size": 1128,
+    "mtime_ns": 1789654145734399340
+  },
+  "V1001/src/phenoniche/losses/spatial.py": {
+    "size": 1592,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/losses/survival.py": {
+    "size": 731,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/losses/reconstruction.py": {
+    "size": 402,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/inference/bulk.py": {
+    "size": 2186,
+    "mtime_ns": 1789629536082255287
+  },
+  "V1001/src/phenoniche/inference/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789628092492135059
+  },
+  "V1001/src/phenoniche/inference/dual_bank.py": {
+    "size": 4615,
+    "mtime_ns": 1789656682530125132
+  },
+  "V1001/src/phenoniche/inference/nnls_reference.py": {
+    "size": 1737,
+    "mtime_ns": 1789629536074255275
+  },
+  "V1001/src/phenoniche/training/dual_bank_trainer.py": {
+    "size": 10842,
+    "mtime_ns": 1789656744270215809
+  },
+  "V1001/src/phenoniche/training/trainer.py": {
+    "size": 6297,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1001/src/phenoniche/training/config.py": {
+    "size": 2748,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1001/src/phenoniche/training/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/training/st_first.py": {
+    "size": 5383,
+    "mtime_ns": 1789701243615570900
+  },
+  "V1001/src/phenoniche/training/iterative_refinement.py": {
+    "size": 10341,
+    "mtime_ns": 1789701608672107028
+  },
+  "V1001/src/phenoniche/model/adapters.py": {
+    "size": 1774,
+    "mtime_ns": 1789701362099744901
+  },
+  "V1001/src/phenoniche/model/normalization.py": {
+    "size": 974,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/model/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/model/niche_factorization.py": {
+    "size": 3654,
+    "mtime_ns": 1789629536086255293
+  },
+  "V1001/src/phenoniche/model/phenotype_head.py": {
+    "size": 870,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/model/dual_bank_factorization.py": {
+    "size": 6537,
+    "mtime_ns": 1789656682534125138
+  },
+  "V1001/src/phenoniche/data/schema.py": {
+    "size": 1629,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/data/synthetic.py": {
+    "size": 2402,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1001/src/phenoniche/data/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/data/challenging_synthetic.py": {
+    "size": 4862,
+    "mtime_ns": 1789628092500135070
+  },
+  "V1001/src/phenoniche/data/scaling.py": {
+    "size": 1207,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/utils/validation.py": {
+    "size": 1455,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/utils/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1001/src/phenoniche/utils/seed.py": {
+    "size": 307,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1001/src/phenoniche/v1001/experiment.py": {
+    "size": 18019,
+    "mtime_ns": 1789715980245214428
+  },
+  "V1001/src/phenoniche/v1001/__init__.py": {
+    "size": 553,
+    "mtime_ns": 1789715734652853722
+  },
+  "V1001/src/phenoniche/v1001/simulation.py": {
+    "size": 4660,
+    "mtime_ns": 1789716013557263355
+  },
+  "V1001/src/phenoniche/v1001/spatial_ccc.py": {
+    "size": 7974,
+    "mtime_ns": 1789715743384866548
+  },
+  "V1001/src/phenoniche/v1001/neighborhoods.py": {
+    "size": 3309,
+    "mtime_ns": 1789715787012930625
+  },
+  "V1001/src/phenoniche/simulation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789701174243469022
+  },
+  "V1001/src/phenoniche/simulation/structured_ccc.py": {
+    "size": 10777,
+    "mtime_ns": 1789701190103492313
+  },
+  "V1001/tests/test_heldout_inference.py": {
+    "size": 5193,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1001/tests/test_shapes.py": {
+    "size": 2655,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1001/tests/test_gradients.py": {
+    "size": 2076,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1001/tests/test_dual_bank_training.py": {
+    "size": 1898,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1001/tests/test_inferred_wb.py": {
+    "size": 6579,
+    "mtime_ns": 1789629948802861458
+  },
+  "V1001/tests/test_v1001_pipeline.py": {
+    "size": 1657,
+    "mtime_ns": 1789715835765002228
+  },
+  "V1001/tests/test_st_first.py": {
+    "size": 1009,
+    "mtime_ns": 1789701534483998076
+  },
+  "V1001/tests/test_structured_simulation.py": {
+    "size": 1387,
+    "mtime_ns": 1789701534479998070
+  },
+  "V1001/tests/test_cox_loss.py": {
+    "size": 2587,
+    "mtime_ns": 1789626774566199416
+  },
+  "V1001/tests/test_v1001_neighborhood_ccc.py": {
+    "size": 4684,
+    "mtime_ns": 1789716175405501064
+  },
+  "V1001/tests/test_bank_matching.py": {
+    "size": 1321,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1001/tests/test_iterative_refinement.py": {
+    "size": 3488,
+    "mtime_ns": 1789701553796026437
+  },
+  "V1001/tests/test_dual_bank_inference.py": {
+    "size": 2029,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1001/tests/test_dual_bank_gradients.py": {
+    "size": 1489,
+    "mtime_ns": 1789656987590573182
+  },
+  "V1001/tests/test_normalization_scaling.py": {
+    "size": 2037,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1001/tests/test_collapse_loss.py": {
+    "size": 5723,
+    "mtime_ns": 1789654221522510653
+  },
+  "V1001/tests/test_synthetic_recovery.py": {
+    "size": 1908,
+    "mtime_ns": 1789626774566199416
+  },
+  "V1001/tests/test_spatial_training.py": {
+    "size": 3934,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1001/tests/conftest.py": {
+    "size": 1023,
+    "mtime_ns": 1789626822758270198
+  },
+  "V1001/tests/test_phenotype_permutation.py": {
+    "size": 2208,
+    "mtime_ns": 1789628454476666712
+  },
+  "V1001/tests/test_collapse_evaluation.py": {
+    "size": 1838,
+    "mtime_ns": 1789654507422930561
+  },
+  "V1001/tests/test_dual_bank_shapes.py": {
+    "size": 1186,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1001/tests/test_challenging_synthetic.py": {
+    "size": 4630,
+    "mtime_ns": 1789628454472666706
+  },
+  "V1001/tests/fixtures/inferred_wb_zero_collapse.json": {
+    "size": 4899,
+    "mtime_ns": 1789654108758345031
+  },
+  "V1001/scripts/run_anti_collapse.py": {
+    "size": 933,
+    "mtime_ns": 1789654422158805334
+  },
+  "V1001/scripts/run_inferred_wb.py": {
+    "size": 895,
+    "mtime_ns": 1789629839098700333
+  },
+  "V1001/scripts/run_dual_bank.py": {
+    "size": 791,
+    "mtime_ns": 1789656905762452998
+  },
+  "V1001/scripts/run_synthetic.py": {
+    "size": 4529,
+    "mtime_ns": 1789630349895450548
+  },
+  "V1001/scripts/run_v1001.py": {
+    "size": 513,
+    "mtime_ns": 1789715980245214428
+  },
+  "V1001/scripts/run_structured_st_first.py": {
+    "size": 734,
+    "mtime_ns": 1789701473091907913
+  },
+  "V1001/scripts/run_challenging_synthetic.py": {
+    "size": 1151,
+    "mtime_ns": 1789629622202381773
+  },
+  "V1001/outputs/structured_st_first_run.log": {
+    "size": 894,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1001/outputs/structured_st_first/st_iterative_primary.json": {
+    "size": 2730,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1001/outputs/structured_st_first/structured_truth.json": {
+    "size": 114586,
+    "mtime_ns": 1789701617096119402
+  },
+  "V1001/outputs/structured_st_first/ccc_dimension_sensitivity.json": {
+    "size": 2283,
+    "mtime_ns": 1789701668596195040
+  },
+  "V1001/outputs/structured_st_first/outer_iteration_history.json": {
+    "size": 4642,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1001/outputs/structured_st_first/phenotype_permutation.json": {
+    "size": 54063,
+    "mtime_ns": 1789701647992164779
+  },
+  "V1001/outputs/structured_st_first/st_only_primary.json": {
+    "size": 730057,
+    "mtime_ns": 1789701621856126392
+  },
+  "V1001/outputs/structured_st_first/iterative_adapter.pt": {
+    "size": 69938,
+    "mtime_ns": 1789701626244132837
+  },
+  "V1001/outputs/structured_st_first/stable_anchor.npz": {
+    "size": 41829,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1001/outputs/structured_st_first/niche_edge_recovery.json": {
+    "size": 86502,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1001/outputs/structured_st_first/protocol.json": {
+    "size": 1356,
+    "mtime_ns": 1789701617008119272
+  },
+  "V1001/outputs/structured_st_first/RESULTS.md": {
+    "size": 5045,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1001/outputs/structured_st_first/inner_inference_audit.json": {
+    "size": 1053,
+    "mtime_ns": 1789701621816126334
+  },
+  "V1001/outputs/structured_st_first/implementation_audit.json": {
+    "size": 1665,
+    "mtime_ns": 1789701869620490273
+  },
+  "V1001/outputs/structured_st_first/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789701820148417618
+  },
+  "V1001/outputs/structured_st_first/summary.json": {
+    "size": 981278,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1001/outputs/structured_st_first/st_frozen_primary.json": {
+    "size": 1342,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1001/outputs/structured_st_first/run.log": {
+    "size": 894,
+    "mtime_ns": 1789701780240359004
+  },
+  "V1001/outputs/v1001/simulation_audit.json": {
+    "size": 757,
+    "mtime_ns": 1789716057661328131
+  },
+  "V1001/outputs/v1001/v1000_baseline.json": {
+    "size": 24085,
+    "mtime_ns": 1789716057657328125
+  },
+  "V1001/outputs/v1001/v1001_primary.json": {
+    "size": 24099,
+    "mtime_ns": 1789716057661328131
+  },
+  "V1001/outputs/v1001/ccc_dimension_sensitivity.json": {
+    "size": 4443,
+    "mtime_ns": 1789716075293354028
+  },
+  "V1001/outputs/v1001/peripheral_ccc_diagnostic.json": {
+    "size": 1228,
+    "mtime_ns": 1789716058789329788
+  },
+  "V1001/outputs/v1001/neighborhood_audit.json": {
+    "size": 331,
+    "mtime_ns": 1789716057661328131
+  },
+  "V1001/outputs/v1001/ccc_construction_audit.json": {
+    "size": 542,
+    "mtime_ns": 1789716057681328160
+  },
+  "V1001/outputs/v1001/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789716242293599304
+  },
+  "V1001/outputs/v1001/runtime_memory.json": {
+    "size": 525,
+    "mtime_ns": 1789716075301354039
+  },
+  "V1001/outputs/v1001/cox_results.json": {
+    "size": 614,
+    "mtime_ns": 1789716075293354028
+  },
+  "V1001/outputs/v1001/summary.json": {
+    "size": 4045,
+    "mtime_ns": 1789716075305354046
+  },
+  "V1001/outputs/v1001/bulk_projection.json": {
+    "size": 223,
+    "mtime_ns": 1789716075293354028
+  },
+  "V1001/outputs/v1001/run.log": {
+    "size": 0,
+    "mtime_ns": 1789716046149311223
+  },
+  "V1002/STRUCTURED_ST_FIRST.md": {
+    "size": 895,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1002/.gitignore": {
+    "size": 47,
+    "mtime_ns": 1789814890398485173
+  },
+  "V1002/FILES.md": {
+    "size": 1307,
+    "mtime_ns": 1789786891013362105
+  },
+  "V1002/HBC1_V1002_niche_walkthrough.ipynb": {
+    "size": 8658816,
+    "mtime_ns": 1789907297010204366
+  },
+  "V1002/pyproject.toml": {
+    "size": 400,
+    "mtime_ns": 1789718894389494487
+  },
+  "V1002/AGENTS.md": {
+    "size": 1941,
+    "mtime_ns": 1789813349188221568
+  },
+  "V1002/pipeline.ipynb": {
+    "size": 58100,
+    "mtime_ns": 1789813578476558328
+  },
+  "V1002/PROVENANCE.md": {
+    "size": 716,
+    "mtime_ns": 1789728101295016845
+  },
+  "V1002/README.md": {
+    "size": 925,
+    "mtime_ns": 1789813507616454254
+  },
+  "V1002/XeniumPrime5K_Breast_V1002_niche_walkthrough.ipynb": {
+    "size": 4998253,
+    "mtime_ns": 1790054358134195754
+  },
+  "V1002/V1002_end_to_end_walkthrough.ipynb": {
+    "size": 10434,
+    "mtime_ns": 1789821430952091411
+  },
+  "V1002/src/phenoniche/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/evaluation/bank_matching.py": {
+    "size": 7386,
+    "mtime_ns": 1789657689703604377
+  },
+  "V1002/src/phenoniche/evaluation/phenotype_recovery.py": {
+    "size": 4090,
+    "mtime_ns": 1789628180196263871
+  },
+  "V1002/src/phenoniche/evaluation/inference_diagnostics.py": {
+    "size": 4274,
+    "mtime_ns": 1789629622210381785
+  },
+  "V1002/src/phenoniche/evaluation/metrics.py": {
+    "size": 1712,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1002/src/phenoniche/evaluation/matching.py": {
+    "size": 2646,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1002/src/phenoniche/evaluation/patient_protocol.py": {
+    "size": 4249,
+    "mtime_ns": 1789628180192263865
+  },
+  "V1002/src/phenoniche/evaluation/collapse_benchmark.py": {
+    "size": 13371,
+    "mtime_ns": 1789654422158805334
+  },
+  "V1002/src/phenoniche/evaluation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/evaluation/pair_diagnostics.py": {
+    "size": 3089,
+    "mtime_ns": 1789629839094700327
+  },
+  "V1002/src/phenoniche/evaluation/inferred_benchmark.py": {
+    "size": 9636,
+    "mtime_ns": 1789629839094700327
+  },
+  "V1002/src/phenoniche/evaluation/structured_st_first_benchmark.py": {
+    "size": 16628,
+    "mtime_ns": 1789701493559937974
+  },
+  "V1002/src/phenoniche/evaluation/dual_bank_benchmark.py": {
+    "size": 21561,
+    "mtime_ns": 1789657689703604377
+  },
+  "V1002/src/phenoniche/evaluation/challenging_benchmark.py": {
+    "size": 15982,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1002/src/phenoniche/evaluation/niche_stability.py": {
+    "size": 6859,
+    "mtime_ns": 1789701290447639678
+  },
+  "V1002/src/phenoniche/evaluation/collapse_diagnostics.py": {
+    "size": 3617,
+    "mtime_ns": 1789654422150805322
+  },
+  "V1002/src/phenoniche/v1002/tensor_experiment.py": {
+    "size": 12340,
+    "mtime_ns": 1789721426461213389
+  },
+  "V1002/src/phenoniche/v1002/oracle_identifiability.py": {
+    "size": 8250,
+    "mtime_ns": 1789787605902412077
+  },
+  "V1002/src/phenoniche/v1002/selected_ccc.py": {
+    "size": 7467,
+    "mtime_ns": 1789722210390364761
+  },
+  "V1002/src/phenoniche/v1002/final_simulation.py": {
+    "size": 7973,
+    "mtime_ns": 1789821361963990086
+  },
+  "V1002/src/phenoniche/v1002/bulk_bridge.py": {
+    "size": 5377,
+    "mtime_ns": 1789718894389494487
+  },
+  "V1002/src/phenoniche/v1002/simulation_benchmark.py": {
+    "size": 13941,
+    "mtime_ns": 1789813325144186254
+  },
+  "V1002/src/phenoniche/v1002/stress_test.py": {
+    "size": 19065,
+    "mtime_ns": 1789719561594474424
+  },
+  "V1002/src/phenoniche/v1002/exact_loss.py": {
+    "size": 1906,
+    "mtime_ns": 1789718668389162556
+  },
+  "V1002/src/phenoniche/v1002/experiment.py": {
+    "size": 5282,
+    "mtime_ns": 1789719561594474424
+  },
+  "V1002/src/phenoniche/v1002/final_figures.py": {
+    "size": 8064,
+    "mtime_ns": 1789813600100590088
+  },
+  "V1002/src/phenoniche/v1002/__init__.py": {
+    "size": 648,
+    "mtime_ns": 1789718668389162556
+  },
+  "V1002/src/phenoniche/v1002/large_lr.py": {
+    "size": 7216,
+    "mtime_ns": 1789719181113915605
+  },
+  "V1002/src/phenoniche/v1002/simulation_cells.py": {
+    "size": 17392,
+    "mtime_ns": 1789821465112141582
+  },
+  "V1002/src/phenoniche/v1002/identifiability_figures.py": {
+    "size": 4521,
+    "mtime_ns": 1789787844770762908
+  },
+  "V1002/src/phenoniche/v1002/repair_figures.py": {
+    "size": 6163,
+    "mtime_ns": 1789785429363215391
+  },
+  "V1002/src/phenoniche/v1002/final_model.py": {
+    "size": 6173,
+    "mtime_ns": 1789821371936004733
+  },
+  "V1002/src/phenoniche/v1002/tensor_lr.py": {
+    "size": 7835,
+    "mtime_ns": 1789721254044960158
+  },
+  "V1002/src/phenoniche/v1002/repair_final.py": {
+    "size": 4244,
+    "mtime_ns": 1789785429387215426
+  },
+  "V1002/src/phenoniche/v1002/simulation_figures.py": {
+    "size": 12183,
+    "mtime_ns": 1789728180959133847
+  },
+  "V1002/src/phenoniche/v1002/final_experiment.py": {
+    "size": 13542,
+    "mtime_ns": 1789813658088675256
+  },
+  "V1002/src/phenoniche/v1002/identifiability_run.py": {
+    "size": 13217,
+    "mtime_ns": 1789813194675994633
+  },
+  "V1002/src/phenoniche/v1002/lr_atlas.py": {
+    "size": 5877,
+    "mtime_ns": 1789718935153554358
+  },
+  "V1002/src/phenoniche/v1002/simulation_model.py": {
+    "size": 8887,
+    "mtime_ns": 1789785181378851176
+  },
+  "V1002/src/phenoniche/v1002/repair_primary.py": {
+    "size": 9339,
+    "mtime_ns": 1789785372307131591
+  },
+  "V1002/src/phenoniche/losses/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/losses/collapse.py": {
+    "size": 1128,
+    "mtime_ns": 1789654145734399340
+  },
+  "V1002/src/phenoniche/losses/spatial.py": {
+    "size": 1592,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/losses/survival.py": {
+    "size": 731,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/losses/reconstruction.py": {
+    "size": 402,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/inference/bulk.py": {
+    "size": 2186,
+    "mtime_ns": 1789629536082255287
+  },
+  "V1002/src/phenoniche/inference/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789628092492135059
+  },
+  "V1002/src/phenoniche/inference/dual_bank.py": {
+    "size": 4615,
+    "mtime_ns": 1789656682530125132
+  },
+  "V1002/src/phenoniche/inference/nnls_reference.py": {
+    "size": 1737,
+    "mtime_ns": 1789629536074255275
+  },
+  "V1002/src/phenoniche/training/dual_bank_trainer.py": {
+    "size": 10842,
+    "mtime_ns": 1789656744270215809
+  },
+  "V1002/src/phenoniche/training/trainer.py": {
+    "size": 6297,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1002/src/phenoniche/training/config.py": {
+    "size": 2748,
+    "mtime_ns": 1789654145766399387
+  },
+  "V1002/src/phenoniche/training/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/training/st_first.py": {
+    "size": 5383,
+    "mtime_ns": 1789701243615570900
+  },
+  "V1002/src/phenoniche/training/iterative_refinement.py": {
+    "size": 10341,
+    "mtime_ns": 1789701608672107028
+  },
+  "V1002/src/phenoniche/model/adapters.py": {
+    "size": 1774,
+    "mtime_ns": 1789701362099744901
+  },
+  "V1002/src/phenoniche/model/normalization.py": {
+    "size": 974,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/model/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/model/niche_factorization.py": {
+    "size": 3654,
+    "mtime_ns": 1789629536086255293
+  },
+  "V1002/src/phenoniche/model/phenotype_head.py": {
+    "size": 870,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/model/dual_bank_factorization.py": {
+    "size": 6537,
+    "mtime_ns": 1789656682534125138
+  },
+  "V1002/src/phenoniche/data/schema.py": {
+    "size": 1629,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/data/synthetic.py": {
+    "size": 2402,
+    "mtime_ns": 1789626589329927363
+  },
+  "V1002/src/phenoniche/data/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/data/challenging_synthetic.py": {
+    "size": 4862,
+    "mtime_ns": 1789628092500135070
+  },
+  "V1002/src/phenoniche/data/scaling.py": {
+    "size": 1207,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/utils/validation.py": {
+    "size": 1455,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/utils/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789626363541595756
+  },
+  "V1002/src/phenoniche/utils/seed.py": {
+    "size": 307,
+    "mtime_ns": 1789626467133747897
+  },
+  "V1002/src/phenoniche/v1001/experiment.py": {
+    "size": 18019,
+    "mtime_ns": 1789715980245214428
+  },
+  "V1002/src/phenoniche/v1001/__init__.py": {
+    "size": 553,
+    "mtime_ns": 1789715734652853722
+  },
+  "V1002/src/phenoniche/v1001/simulation.py": {
+    "size": 4660,
+    "mtime_ns": 1789716013557263355
+  },
+  "V1002/src/phenoniche/v1001/spatial_ccc.py": {
+    "size": 7974,
+    "mtime_ns": 1789715743384866548
+  },
+  "V1002/src/phenoniche/v1001/neighborhoods.py": {
+    "size": 3309,
+    "mtime_ns": 1789715787012930625
+  },
+  "V1002/src/phenoniche/simulation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789701174243469022
+  },
+  "V1002/src/phenoniche/simulation/structured_ccc.py": {
+    "size": 10777,
+    "mtime_ns": 1789701190103492313
+  },
+  "V1002/tests/test_heldout_inference.py": {
+    "size": 5193,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1002/tests/test_shapes.py": {
+    "size": 2655,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1002/tests/test_gradients.py": {
+    "size": 2076,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1002/tests/test_dual_bank_training.py": {
+    "size": 1898,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1002/tests/test_v1002_selected_ccc.py": {
+    "size": 1269,
+    "mtime_ns": 1789722222854383067
+  },
+  "V1002/tests/test_inferred_wb.py": {
+    "size": 6579,
+    "mtime_ns": 1789629948802861458
+  },
+  "V1002/tests/test_v1001_pipeline.py": {
+    "size": 1657,
+    "mtime_ns": 1789715835765002228
+  },
+  "V1002/tests/test_v1002_final_simulation.py": {
+    "size": 4533,
+    "mtime_ns": 1789813543296506659
+  },
+  "V1002/tests/test_st_first.py": {
+    "size": 1009,
+    "mtime_ns": 1789701534483998076
+  },
+  "V1002/tests/test_structured_simulation.py": {
+    "size": 1387,
+    "mtime_ns": 1789701534479998070
+  },
+  "V1002/tests/test_cox_loss.py": {
+    "size": 2587,
+    "mtime_ns": 1789626774566199416
+  },
+  "V1002/tests/test_v1002_simulation_benchmark.py": {
+    "size": 1955,
+    "mtime_ns": 1789813549304515483
+  },
+  "V1002/tests/test_v1001_neighborhood_ccc.py": {
+    "size": 4684,
+    "mtime_ns": 1789716175405501064
+  },
+  "V1002/tests/test_bank_matching.py": {
+    "size": 1321,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1002/tests/test_pairwise_ccc_and_canonicalization.py": {
+    "size": 3644,
+    "mtime_ns": 1789821491672180591
+  },
+  "V1002/tests/test_iterative_refinement.py": {
+    "size": 3488,
+    "mtime_ns": 1789701553796026437
+  },
+  "V1002/tests/test_dual_bank_inference.py": {
+    "size": 2029,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1002/tests/test_dual_bank_gradients.py": {
+    "size": 1489,
+    "mtime_ns": 1789656987590573182
+  },
+  "V1002/tests/test_normalization_scaling.py": {
+    "size": 2037,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1002/tests/test_collapse_loss.py": {
+    "size": 5723,
+    "mtime_ns": 1789654221522510653
+  },
+  "V1002/tests/test_synthetic_recovery.py": {
+    "size": 1908,
+    "mtime_ns": 1789626774566199416
+  },
+  "V1002/tests/test_spatial_training.py": {
+    "size": 3934,
+    "mtime_ns": 1789629948794861446
+  },
+  "V1002/tests/conftest.py": {
+    "size": 1023,
+    "mtime_ns": 1789626822758270198
+  },
+  "V1002/tests/test_v1002_identifiability.py": {
+    "size": 1060,
+    "mtime_ns": 1789803352449539193
+  },
+  "V1002/tests/test_phenotype_permutation.py": {
+    "size": 2208,
+    "mtime_ns": 1789628454476666712
+  },
+  "V1002/tests/test_v1002_exact_loss.py": {
+    "size": 2805,
+    "mtime_ns": 1789719459030323786
+  },
+  "V1002/tests/test_collapse_evaluation.py": {
+    "size": 1838,
+    "mtime_ns": 1789654507422930561
+  },
+  "V1002/tests/test_dual_bank_shapes.py": {
+    "size": 1186,
+    "mtime_ns": 1789656970378547903
+  },
+  "V1002/tests/test_v1002_lr_atlas.py": {
+    "size": 2041,
+    "mtime_ns": 1789718727397249222
+  },
+  "V1002/tests/test_v1002_bulk_bridge.py": {
+    "size": 2766,
+    "mtime_ns": 1789718727397249222
+  },
+  "V1002/tests/test_v1002_tensor_lr.py": {
+    "size": 1447,
+    "mtime_ns": 1789721444741240237
+  },
+  "V1002/tests/test_challenging_synthetic.py": {
+    "size": 4630,
+    "mtime_ns": 1789628454472666706
+  },
+  "V1002/tests/test_v1002_repair.py": {
+    "size": 1457,
+    "mtime_ns": 1789785216386902592
+  },
+  "V1002/tests/fixtures/inferred_wb_zero_collapse.json": {
+    "size": 4899,
+    "mtime_ns": 1789654108758345031
+  },
+  "V1002/scripts/run_anti_collapse.py": {
+    "size": 933,
+    "mtime_ns": 1789654422158805334
+  },
+  "V1002/scripts/run_inferred_wb.py": {
+    "size": 895,
+    "mtime_ns": 1789629839098700333
+  },
+  "V1002/scripts/run_dual_bank.py": {
+    "size": 791,
+    "mtime_ns": 1789656905762452998
+  },
+  "V1002/scripts/prepare_xenium_prime_5k_breast.py": {
+    "size": 10268,
+    "mtime_ns": 1789880067674212266
+  },
+  "V1002/scripts/run_synthetic.py": {
+    "size": 4529,
+    "mtime_ns": 1789630349895450548
+  },
+  "V1002/scripts/run_v1001.py": {
+    "size": 513,
+    "mtime_ns": 1789715980245214428
+  },
+  "V1002/scripts/run_structured_st_first.py": {
+    "size": 734,
+    "mtime_ns": 1789701473091907913
+  },
+  "V1002/scripts/run_challenging_synthetic.py": {
+    "size": 1151,
+    "mtime_ns": 1789629622202381773
+  },
+  "V1002/scripts/run_v1002.py": {
+    "size": 296,
+    "mtime_ns": 1789813484244419927
+  },
+  "V1002/data/commuspace_human_lr_atlas.audit.json": {
+    "size": 766,
+    "mtime_ns": 1789719026749688887
+  },
+  "V1002/data/commuspace_human_lr_atlas.tsv": {
+    "size": 287052,
+    "mtime_ns": 1789719026741688875
+  },
+  "V1002/outputs/v1002_simulation_run.log": {
+    "size": 15403,
+    "mtime_ns": 1789728017542893837
+  },
+  "V1002/outputs/v1002_identifiability_run.log": {
+    "size": 595,
+    "mtime_ns": 1789787932898892343
+  },
+  "V1002/outputs/structured_st_first_run.log": {
+    "size": 894,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1002/outputs/v1002_final_sim_run.log": {
+    "size": 686,
+    "mtime_ns": 1789786762161172859
+  },
+  "V1002/outputs/v1002_identifiability/bulk_transfer.json": {
+    "size": 119,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1002/outputs/v1002_identifiability/figure.log": {
+    "size": 0,
+    "mtime_ns": 1789803358337547840
+  },
+  "V1002/outputs/v1002_identifiability/inferred_WB_ALR_Cox.json": {
+    "size": 119,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1002/outputs/v1002_identifiability/oracle_last_attempt_seed31.npz": {
+    "size": 12921657,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1002/outputs/v1002_identifiability/Figure_simulation_truth_vs_observed.png": {
+    "size": 1082380,
+    "mtime_ns": 1789803362165553463
+  },
+  "V1002/outputs/v1002_identifiability/oracle_identifiability.json": {
+    "size": 17884,
+    "mtime_ns": 1789787932898892343
+  },
+  "V1002/outputs/v1002_identifiability/primary_st_results.json": {
+    "size": 119,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1002/outputs/v1002_identifiability/Figure_final_niche_recovery.png": {
+    "size": 533303,
+    "mtime_ns": 1789803362893554532
+  },
+  "V1002/outputs/v1002_identifiability/pytest.log": {
+    "size": 261,
+    "mtime_ns": 1789803401369611042
+  },
+  "V1002/outputs/v1002_identifiability/summary.json": {
+    "size": 502,
+    "mtime_ns": 1789803413461628802
+  },
+  "V1002/outputs/v1002_identifiability/simulation_config.json": {
+    "size": 355,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1002/outputs/v1002_identifiability/Figure_simulation_truth_vs_observed.pdf": {
+    "size": 52561,
+    "mtime_ns": 1789803360921551635
+  },
+  "V1002/outputs/v1002_identifiability/Figure_final_niche_recovery.pdf": {
+    "size": 39720,
+    "mtime_ns": 1789803362409553821
+  },
+  "V1002/outputs/v1002_identifiability/true_exposure_ALR_Cox.json": {
+    "size": 119,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1002/outputs/v1002_repair/Figure_simulation_main.png": {
+    "size": 659378,
+    "mtime_ns": 1789785535435371179
+  },
+  "V1002/outputs/v1002_repair/rms_audit_seed32.json": {
+    "size": 1006488,
+    "mtime_ns": 1789785203670883916
+  },
+  "V1002/outputs/v1002_repair/final_seed31.pt": {
+    "size": 477688,
+    "mtime_ns": 1789785376411137618
+  },
+  "V1002/outputs/v1002_repair/final_run.log": {
+    "size": 459,
+    "mtime_ns": 1789785503879324834
+  },
+  "V1002/outputs/v1002_repair/rms_audit_seed31.json": {
+    "size": 1014054,
+    "mtime_ns": 1789785200418879140
+  },
+  "V1002/outputs/v1002_repair/optimization_seed31.json": {
+    "size": 1752387,
+    "mtime_ns": 1789785191514866063
+  },
+  "V1002/outputs/v1002_repair/final_grid_progress.json": {
+    "size": 36,
+    "mtime_ns": 1789785503879324834
+  },
+  "V1002/outputs/v1002_repair/k6.json": {
+    "size": 2304750,
+    "mtime_ns": 1789785188686861908
+  },
+  "V1002/outputs/v1002_repair/Figure_example_maps_fixed.pdf": {
+    "size": 136518,
+    "mtime_ns": 1789785529723362791
+  },
+  "V1002/outputs/v1002_repair/optimization_seed33.json": {
+    "size": 1746884,
+    "mtime_ns": 1789785197186874393
+  },
+  "V1002/outputs/v1002_repair/random_audit_seed32.json": {
+    "size": 2818,
+    "mtime_ns": 1789785493507309601
+  },
+  "V1002/outputs/v1002_repair/final_robustness_grid.json": {
+    "size": 1357463,
+    "mtime_ns": 1789785503931324910
+  },
+  "V1002/outputs/v1002_repair/rms_audit_seed33.json": {
+    "size": 1014386,
+    "mtime_ns": 1789785206854888593
+  },
+  "V1002/outputs/v1002_repair/Figure_twin_niche_diagnostic.png": {
+    "size": 2906440,
+    "mtime_ns": 1789785532379366690
+  },
+  "V1002/outputs/v1002_repair/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789785477515286112
+  },
+  "V1002/outputs/v1002_repair/random_audit_seed33.json": {
+    "size": 2828,
+    "mtime_ns": 1789785493507309601
+  },
+  "V1002/outputs/v1002_repair/summary.json": {
+    "size": 8875725,
+    "mtime_ns": 1789785565259414978
+  },
+  "V1002/outputs/v1002_repair/Figure_example_maps_fixed.png": {
+    "size": 1097714,
+    "mtime_ns": 1789785530183363465
+  },
+  "V1002/outputs/v1002_repair/Figure_twin_niche_diagnostic.pdf": {
+    "size": 269926,
+    "mtime_ns": 1789785531407365263
+  },
+  "V1002/outputs/v1002_repair/optimization_seed32.json": {
+    "size": 1746649,
+    "mtime_ns": 1789785194414870322
+  },
+  "V1002/outputs/v1002_repair/final_seed33.pt": {
+    "size": 462008,
+    "mtime_ns": 1789785380391143464
+  },
+  "V1002/outputs/v1002_repair/Figure_simulation_main.pdf": {
+    "size": 60836,
+    "mtime_ns": 1789785534067369170
+  },
+  "V1002/outputs/v1002_repair/final_seed32.pt": {
+    "size": 478456,
+    "mtime_ns": 1789785378735141032
+  },
+  "V1002/outputs/v1002_repair/run.log": {
+    "size": 732,
+    "mtime_ns": 1789785206854888593
+  },
+  "V1002/outputs/v1002_repair/random_audit_seed31.json": {
+    "size": 2821,
+    "mtime_ns": 1789785493503309595
+  },
+  "V1002/outputs/v1002_repair/primary_maps.npz": {
+    "size": 461960,
+    "mtime_ns": 1789785207150889027
+  },
+  "V1002/outputs/v1002_final_sim/robustness_grid.json": {
+    "size": 144,
+    "mtime_ns": 1789786762265173012
+  },
+  "V1002/outputs/v1002_final_sim/bulk_transfer.json": {
+    "size": 144,
+    "mtime_ns": 1789786762265173012
+  },
+  "V1002/outputs/v1002_final_sim/figure.log": {
+    "size": 0,
+    "mtime_ns": 1789786985629501068
+  },
+  "V1002/outputs/v1002_final_sim/Figure_filtering.png": {
+    "size": 83498,
+    "mtime_ns": 1789786991889510263
+  },
+  "V1002/outputs/v1002_final_sim/Figure_example_maps_v2.png": {
+    "size": 1870702,
+    "mtime_ns": 1789786988965505968
+  },
+  "V1002/outputs/v1002_final_sim/simulation_truth.json": {
+    "size": 198298,
+    "mtime_ns": 1789786762173172876
+  },
+  "V1002/outputs/v1002_final_sim/view_balance_audit.json": {
+    "size": 3315,
+    "mtime_ns": 1789787001677524638
+  },
+  "V1002/outputs/v1002_final_sim/Figure_view_complementarity.pdf": {
+    "size": 233056,
+    "mtime_ns": 1789786990245507848
+  },
+  "V1002/outputs/v1002_final_sim/Figure_simulation_main_v2.pdf": {
+    "size": 50639,
+    "mtime_ns": 1789786992533511208
+  },
+  "V1002/outputs/v1002_final_sim/primary_figure_data.npz": {
+    "size": 429283,
+    "mtime_ns": 1789786762333173112
+  },
+  "V1002/outputs/v1002_final_sim/filter_audit.json": {
+    "size": 501,
+    "mtime_ns": 1789786762161172859
+  },
+  "V1002/outputs/v1002_final_sim/primary_st_results.json": {
+    "size": 1690479,
+    "mtime_ns": 1789786762233172965
+  },
+  "V1002/outputs/v1002_final_sim/Figure_example_maps_v2.pdf": {
+    "size": 143853,
+    "mtime_ns": 1789786988197504839
+  },
+  "V1002/outputs/v1002_final_sim/Figure_view_complementarity.png": {
+    "size": 3355449,
+    "mtime_ns": 1789786991681509957
+  },
+  "V1002/outputs/v1002_final_sim/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789787030153566461
+  },
+  "V1002/outputs/v1002_final_sim/single_view_ablation.json": {
+    "size": 768164,
+    "mtime_ns": 1789786762261173006
+  },
+  "V1002/outputs/v1002_final_sim/summary.json": {
+    "size": 2692,
+    "mtime_ns": 1789787038837579217
+  },
+  "V1002/outputs/v1002_final_sim/cox_collinearity_audit.json": {
+    "size": 144,
+    "mtime_ns": 1789786762265173012
+  },
+  "V1002/outputs/v1002_final_sim/Figure_simulation_main_v2.png": {
+    "size": 957150,
+    "mtime_ns": 1789786993549512700
+  },
+  "V1002/outputs/v1002_final_sim/cox_raw_vs_alr.json": {
+    "size": 144,
+    "mtime_ns": 1789786762265173012
+  },
+  "V1002/outputs/v1002_final_sim/Figure_filtering.pdf": {
+    "size": 14893,
+    "mtime_ns": 1789786991745510051
+  },
+  "V1002/outputs/v1002_final_sim/bulk_truth_audit.json": {
+    "size": 1695,
+    "mtime_ns": 1789786939153432808
+  },
+  "V1002/outputs/v1002/tensor_shared_lr_abandoned_summary.json": {
+    "size": 22535,
+    "mtime_ns": 1789722296806491682
+  },
+  "V1002/outputs/v1002/full_vs_selected.json": {
+    "size": 3267,
+    "mtime_ns": 1789722261030439137
+  },
+  "V1002/outputs/v1002/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789722348194567156
+  },
+  "V1002/outputs/v1002/summary.json": {
+    "size": 939,
+    "mtime_ns": 1789722361730587037
+  },
+  "V1002/outputs/v1002/flat_large_lr_baseline_summary.json": {
+    "size": 39062,
+    "mtime_ns": 1789721204392887233
+  },
+  "V1002/outputs/v1002/selected_ccc.json": {
+    "size": 229,
+    "mtime_ns": 1789722261026439131
+  },
+  "V1002/outputs/structured_st_first/st_iterative_primary.json": {
+    "size": 2730,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1002/outputs/structured_st_first/structured_truth.json": {
+    "size": 114586,
+    "mtime_ns": 1789701617096119402
+  },
+  "V1002/outputs/structured_st_first/ccc_dimension_sensitivity.json": {
+    "size": 2283,
+    "mtime_ns": 1789701668596195040
+  },
+  "V1002/outputs/structured_st_first/outer_iteration_history.json": {
+    "size": 4642,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1002/outputs/structured_st_first/phenotype_permutation.json": {
+    "size": 54063,
+    "mtime_ns": 1789701647992164779
+  },
+  "V1002/outputs/structured_st_first/st_only_primary.json": {
+    "size": 730057,
+    "mtime_ns": 1789701621856126392
+  },
+  "V1002/outputs/structured_st_first/iterative_adapter.pt": {
+    "size": 69938,
+    "mtime_ns": 1789701626244132837
+  },
+  "V1002/outputs/structured_st_first/stable_anchor.npz": {
+    "size": 41829,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1002/outputs/structured_st_first/niche_edge_recovery.json": {
+    "size": 86502,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1002/outputs/structured_st_first/protocol.json": {
+    "size": 1356,
+    "mtime_ns": 1789701617008119272
+  },
+  "V1002/outputs/structured_st_first/RESULTS.md": {
+    "size": 5045,
+    "mtime_ns": 1789701772432347538
+  },
+  "V1002/outputs/structured_st_first/inner_inference_audit.json": {
+    "size": 1053,
+    "mtime_ns": 1789701621816126334
+  },
+  "V1002/outputs/structured_st_first/implementation_audit.json": {
+    "size": 1665,
+    "mtime_ns": 1789701869620490273
+  },
+  "V1002/outputs/structured_st_first/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789701820148417618
+  },
+  "V1002/outputs/structured_st_first/summary.json": {
+    "size": 981278,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1002/outputs/structured_st_first/st_frozen_primary.json": {
+    "size": 1342,
+    "mtime_ns": 1789701626232132819
+  },
+  "V1002/outputs/structured_st_first/run.log": {
+    "size": 894,
+    "mtime_ns": 1789701780240359004
+  },
+  "V1002/outputs/hbc1_ccc_niche_comparison/ccc_only_niche_0_vs_1.csv": {
+    "size": 1180,
+    "mtime_ns": 1789906699513326811
+  },
+  "V1002/outputs/hbc1_ccc_niche_comparison/ccc_only_niche_0_vs_1.png": {
+    "size": 807847,
+    "mtime_ns": 1789906702817331664
+  },
+  "V1002/outputs/hbc1_ccc_niche_comparison/ccc_only_niche_4_vs_7.png": {
+    "size": 780852,
+    "mtime_ns": 1789906818877502123
+  },
+  "V1002/outputs/hbc1_ccc_niche_comparison/ccc_only_niche_4_vs_7.csv": {
+    "size": 1063,
+    "mtime_ns": 1789906815437497071
+  },
+  "V1002/outputs/xenium_prime_5k_niche_mapping/composition_niche8_to_ccc_niches.png": {
+    "size": 577248,
+    "mtime_ns": 1789912020225141439
+  },
+  "V1002/outputs/xenium_prime_5k_niche_mapping/composition_only_niche_8_to_full_niche_all.csv": {
+    "size": 693,
+    "mtime_ns": 1790054353914189556
+  },
+  "V1002/outputs/xenium_prime_5k_niche_mapping/composition_niche8_to_ccc_niches.csv": {
+    "size": 514,
+    "mtime_ns": 1789912018513138924
+  },
+  "V1002/outputs/xenium_prime_5k_niche_mapping/composition_only_niche_8_to_full_niche_all.png": {
+    "size": 443934,
+    "mtime_ns": 1790054355678192147
+  },
+  "V1002/outputs/v1001/simulation_audit.json": {
+    "size": 757,
+    "mtime_ns": 1789716057661328131
+  },
+  "V1002/outputs/v1001/v1000_baseline.json": {
+    "size": 24085,
+    "mtime_ns": 1789716057657328125
+  },
+  "V1002/outputs/v1001/v1001_primary.json": {
+    "size": 24099,
+    "mtime_ns": 1789716057661328131
+  },
+  "V1002/outputs/v1001/ccc_dimension_sensitivity.json": {
+    "size": 4443,
+    "mtime_ns": 1789716075293354028
+  },
+  "V1002/outputs/v1001/peripheral_ccc_diagnostic.json": {
+    "size": 1228,
+    "mtime_ns": 1789716058789329788
+  },
+  "V1002/outputs/v1001/neighborhood_audit.json": {
+    "size": 331,
+    "mtime_ns": 1789716057661328131
+  },
+  "V1002/outputs/v1001/ccc_construction_audit.json": {
+    "size": 542,
+    "mtime_ns": 1789716057681328160
+  },
+  "V1002/outputs/v1001/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789716242293599304
+  },
+  "V1002/outputs/v1001/runtime_memory.json": {
+    "size": 525,
+    "mtime_ns": 1789716075301354039
+  },
+  "V1002/outputs/v1001/cox_results.json": {
+    "size": 614,
+    "mtime_ns": 1789716075293354028
+  },
+  "V1002/outputs/v1001/summary.json": {
+    "size": 4045,
+    "mtime_ns": 1789716075305354046
+  },
+  "V1002/outputs/v1001/bulk_projection.json": {
+    "size": 223,
+    "mtime_ns": 1789716075293354028
+  },
+  "V1002/outputs/v1001/run.log": {
+    "size": 0,
+    "mtime_ns": 1789716046149311223
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_composition_celltype_heatmap.png": {
+    "size": 134017,
+    "mtime_ns": 1789881116083752084
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_CCC_celltype_heatmap.csv": {
+    "size": 8778,
+    "mtime_ns": 1789881117827754645
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_full_each_niche.png": {
+    "size": 3343430,
+    "mtime_ns": 1789905195595117982
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_full_celltype_heatmap.csv": {
+    "size": 9033,
+    "mtime_ns": 1789905171935083235
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_composition_celltype_heatmap.csv": {
+    "size": 9326,
+    "mtime_ns": 1789881116299752402
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_full_top5_CCC.csv": {
+    "size": 3860,
+    "mtime_ns": 1790053780561347462
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_composition_each_niche.png": {
+    "size": 3531972,
+    "mtime_ns": 1789881120787758993
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_CCC_celltype_heatmap.png": {
+    "size": 138215,
+    "mtime_ns": 1789881117599754310
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_full_celltype_heatmap.png": {
+    "size": 137723,
+    "mtime_ns": 1789905171719082917
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_CCC_only_top10_CCC.csv": {
+    "size": 7250,
+    "mtime_ns": 1789911436756284487
+  },
+  "V1002/outputs/xenium_prime_5k_celltype_diagnostics/XeniumPrime5K_V1002_CCC_each_niche.png": {
+    "size": 4083641,
+    "mtime_ns": 1789881125111765343
+  },
+  "V1002/outputs/hbc1_celltype_diagnostics/HBC1_V1002_composition_each_niche.png": {
+    "size": 3318522,
+    "mtime_ns": 1789878533479958966
+  },
+  "V1002/outputs/hbc1_celltype_diagnostics/HBC1_V1002_composition_celltype_heatmap.png": {
+    "size": 177705,
+    "mtime_ns": 1789878530295954289
+  },
+  "V1002/outputs/hbc1_celltype_diagnostics/HBC1_V1002_CCC_celltype_heatmap.csv": {
+    "size": 17808,
+    "mtime_ns": 1789878531771956457
+  },
+  "V1002/outputs/hbc1_celltype_diagnostics/HBC1_V1002_CCC_celltype_heatmap.png": {
+    "size": 182670,
+    "mtime_ns": 1789878531515956081
+  },
+  "V1002/outputs/hbc1_celltype_diagnostics/HBC1_V1002_composition_celltype_heatmap.csv": {
+    "size": 18903,
+    "mtime_ns": 1789878530543954653
+  },
+  "V1002/outputs/hbc1_celltype_diagnostics/HBC1_V1002_CCC_each_niche.png": {
+    "size": 3653998,
+    "mtime_ns": 1789878535823962408
+  },
+  "V1002/outputs/v1002_simulation/robustness_grid.json": {
+    "size": 2410723,
+    "mtime_ns": 1789728010842883996
+  },
+  "V1002/outputs/v1002_simulation/Figure_CCC_precision_recall.pdf": {
+    "size": 15492,
+    "mtime_ns": 1789728196415156548
+  },
+  "V1002/outputs/v1002_simulation/bulk_transfer.json": {
+    "size": 181393,
+    "mtime_ns": 1789728010938884137
+  },
+  "V1002/outputs/v1002_simulation/Figure_simulation_main.png": {
+    "size": 721729,
+    "mtime_ns": 1789728193923152888
+  },
+  "V1002/outputs/v1002_simulation/ablation_results.json": {
+    "size": 2586862,
+    "mtime_ns": 1789728010930884126
+  },
+  "V1002/outputs/v1002_simulation/simulation_truth.json": {
+    "size": 529971,
+    "mtime_ns": 1789728010698883785
+  },
+  "V1002/outputs/v1002_simulation/Figure_example_maps.png": {
+    "size": 1725028,
+    "mtime_ns": 1789728195187154744
+  },
+  "V1002/outputs/v1002_simulation/Figure_risk_niche_CCC.png": {
+    "size": 241199,
+    "mtime_ns": 1789728196115156107
+  },
+  "V1002/outputs/v1002_simulation/Figure_CCC_precision_recall.png": {
+    "size": 60377,
+    "mtime_ns": 1789728196659156906
+  },
+  "V1002/outputs/v1002_simulation/filter_audit.json": {
+    "size": 1133,
+    "mtime_ns": 1789728010670883743
+  },
+  "V1002/outputs/v1002_simulation/primary_results.json": {
+    "size": 1546257,
+    "mtime_ns": 1789728010754883867
+  },
+  "V1002/outputs/v1002_simulation/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789728165171110660
+  },
+  "V1002/outputs/v1002_simulation/pseudobulk_bridge.json": {
+    "size": 434,
+    "mtime_ns": 1789728010938884137
+  },
+  "V1002/outputs/v1002_simulation/cox_results.json": {
+    "size": 126745,
+    "mtime_ns": 1789728010942884143
+  },
+  "V1002/outputs/v1002_simulation/summary.json": {
+    "size": 15416,
+    "mtime_ns": 1789728197071157511
+  },
+  "V1002/outputs/v1002_simulation/Figure_simulation_main.pdf": {
+    "size": 101454,
+    "mtime_ns": 1789728191879149886
+  },
+  "V1002/outputs/v1002_simulation/runtime.json": {
+    "size": 111,
+    "mtime_ns": 1789728010942884143
+  },
+  "V1002/outputs/v1002_simulation/Figure_risk_niche_CCC.pdf": {
+    "size": 16841,
+    "mtime_ns": 1789728195715155520
+  },
+  "V1002/outputs/v1002_simulation/Figure_example_maps.pdf": {
+    "size": 152459,
+    "mtime_ns": 1789728194663153976
+  },
+  "V1003/V1003_deep_niche_walkthrough.ipynb": {
+    "size": 18169,
+    "mtime_ns": 1789813128191896986
+  },
+  "V1004/STRUCTURED_ST_FIRST.md": {
+    "size": 895,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/.gitignore": {
+    "size": 47,
+    "mtime_ns": 1789823696467418816
+  },
+  "V1004/HBC1_V1004_niche_walkthrough.ipynb": {
+    "size": 7525218,
+    "mtime_ns": 1789877814774903390
+  },
+  "V1004/FILES.md": {
+    "size": 1307,
+    "mtime_ns": 1789823696471418823
+  },
+  "V1004/pyproject.toml": {
+    "size": 400,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/AGENTS.md": {
+    "size": 777,
+    "mtime_ns": 1789823696471418823
+  },
+  "V1004/pipeline.ipynb": {
+    "size": 58100,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/PROVENANCE.md": {
+    "size": 716,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/README.md": {
+    "size": 764,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/V1002_end_to_end_walkthrough.ipynb": {
+    "size": 10434,
+    "mtime_ns": 1789878417419788506
+  },
+  "V1004/src/phenoniche/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/evaluation/bank_matching.py": {
+    "size": 7386,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/evaluation/phenotype_recovery.py": {
+    "size": 4090,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/inference_diagnostics.py": {
+    "size": 4274,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/metrics.py": {
+    "size": 1712,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/matching.py": {
+    "size": 2646,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/patient_protocol.py": {
+    "size": 4249,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/collapse_benchmark.py": {
+    "size": 13371,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/evaluation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/evaluation/pair_diagnostics.py": {
+    "size": 3089,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/inferred_benchmark.py": {
+    "size": 9636,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/structured_st_first_benchmark.py": {
+    "size": 16628,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/dual_bank_benchmark.py": {
+    "size": 21561,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/evaluation/challenging_benchmark.py": {
+    "size": 15982,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/evaluation/niche_stability.py": {
+    "size": 6859,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/evaluation/collapse_diagnostics.py": {
+    "size": 3617,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/v1002/tensor_experiment.py": {
+    "size": 12340,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/oracle_identifiability.py": {
+    "size": 8250,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/selected_ccc.py": {
+    "size": 7467,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/final_simulation.py": {
+    "size": 7973,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/bulk_bridge.py": {
+    "size": 5377,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/simulation_benchmark.py": {
+    "size": 13941,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/stress_test.py": {
+    "size": 19065,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/exact_loss.py": {
+    "size": 1906,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/experiment.py": {
+    "size": 5282,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/final_figures.py": {
+    "size": 8064,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/__init__.py": {
+    "size": 648,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/large_lr.py": {
+    "size": 7216,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/simulation_cells.py": {
+    "size": 17392,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/identifiability_figures.py": {
+    "size": 4521,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/repair_figures.py": {
+    "size": 6163,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/final_model.py": {
+    "size": 6173,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/tensor_lr.py": {
+    "size": 7835,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/repair_final.py": {
+    "size": 4244,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/simulation_figures.py": {
+    "size": 12183,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/final_experiment.py": {
+    "size": 13542,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/identifiability_run.py": {
+    "size": 13217,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/lr_atlas.py": {
+    "size": 5877,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1002/simulation_model.py": {
+    "size": 8887,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1002/repair_primary.py": {
+    "size": 9339,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/losses/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/losses/collapse.py": {
+    "size": 1128,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/losses/spatial.py": {
+    "size": 1592,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/losses/survival.py": {
+    "size": 731,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/losses/reconstruction.py": {
+    "size": 402,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/inference/bulk.py": {
+    "size": 2186,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/inference/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/inference/dual_bank.py": {
+    "size": 4615,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/inference/nnls_reference.py": {
+    "size": 1737,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/training/dual_bank_trainer.py": {
+    "size": 10842,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/training/trainer.py": {
+    "size": 6297,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/training/config.py": {
+    "size": 2748,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/training/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/training/st_first.py": {
+    "size": 5383,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/training/iterative_refinement.py": {
+    "size": 10341,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/model/adapters.py": {
+    "size": 1774,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/model/normalization.py": {
+    "size": 974,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/model/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/model/niche_factorization.py": {
+    "size": 3654,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/model/phenotype_head.py": {
+    "size": 870,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/model/dual_bank_factorization.py": {
+    "size": 6537,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/data/schema.py": {
+    "size": 1629,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/data/synthetic.py": {
+    "size": 2402,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/data/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/data/challenging_synthetic.py": {
+    "size": 4862,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/data/scaling.py": {
+    "size": 1207,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/src/phenoniche/v1004/late_fusion.py": {
+    "size": 3649,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/v1004/radius_context.py": {
+    "size": 10148,
+    "mtime_ns": 1789835458052693270
+  },
+  "V1004/src/phenoniche/v1004/composition_ccc_hierarchy.py": {
+    "size": 1206,
+    "mtime_ns": 1789828129785930110
+  },
+  "V1004/src/phenoniche/v1004/__init__.py": {
+    "size": 46,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/src/phenoniche/utils/validation.py": {
+    "size": 1455,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/utils/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/utils/seed.py": {
+    "size": 307,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1001/experiment.py": {
+    "size": 18019,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1001/__init__.py": {
+    "size": 553,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1001/simulation.py": {
+    "size": 4660,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1001/spatial_ccc.py": {
+    "size": 7974,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/v1001/neighborhoods.py": {
+    "size": 3309,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/simulation/__init__.py": {
+    "size": 0,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/src/phenoniche/simulation/structured_ccc.py": {
+    "size": 10777,
+    "mtime_ns": 1789823696643419075
+  },
+  "V1004/tests/test_heldout_inference.py": {
+    "size": 5193,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_shapes.py": {
+    "size": 2655,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_gradients.py": {
+    "size": 2076,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_dual_bank_training.py": {
+    "size": 1898,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_selected_ccc.py": {
+    "size": 1269,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_inferred_wb.py": {
+    "size": 6579,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1001_pipeline.py": {
+    "size": 1657,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_radius_context.py": {
+    "size": 3922,
+    "mtime_ns": 1789835490788741351
+  },
+  "V1004/tests/test_v1002_final_simulation.py": {
+    "size": 4533,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_st_first.py": {
+    "size": 1009,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_structured_simulation.py": {
+    "size": 1387,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_cox_loss.py": {
+    "size": 2587,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_simulation_benchmark.py": {
+    "size": 1955,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1001_neighborhood_ccc.py": {
+    "size": 4684,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_bank_matching.py": {
+    "size": 1321,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_pairwise_ccc_and_canonicalization.py": {
+    "size": 3644,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_iterative_refinement.py": {
+    "size": 3488,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_dual_bank_inference.py": {
+    "size": 2029,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_dual_bank_gradients.py": {
+    "size": 1489,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_normalization_scaling.py": {
+    "size": 2037,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_collapse_loss.py": {
+    "size": 5723,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_synthetic_recovery.py": {
+    "size": 1908,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_spatial_training.py": {
+    "size": 3934,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1004_late_fusion.py": {
+    "size": 1823,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/conftest.py": {
+    "size": 1023,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_identifiability.py": {
+    "size": 1060,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_phenotype_permutation.py": {
+    "size": 2208,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_exact_loss.py": {
+    "size": 2805,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_collapse_evaluation.py": {
+    "size": 1838,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_dual_bank_shapes.py": {
+    "size": 1186,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_lr_atlas.py": {
+    "size": 2041,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_bulk_bridge.py": {
+    "size": 2766,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_tensor_lr.py": {
+    "size": 1447,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_challenging_synthetic.py": {
+    "size": 4630,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_v1002_repair.py": {
+    "size": 1457,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/tests/test_composition_ccc_hierarchy.py": {
+    "size": 1163,
+    "mtime_ns": 1789828129785930110
+  },
+  "V1004/tests/fixtures/inferred_wb_zero_collapse.json": {
+    "size": 4899,
+    "mtime_ns": 1789823696647419081
+  },
+  "V1004/scripts/run_anti_collapse.py": {
+    "size": 933,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_inferred_wb.py": {
+    "size": 895,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_dual_bank.py": {
+    "size": 791,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_synthetic.py": {
+    "size": 4529,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_v1001.py": {
+    "size": 513,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_structured_st_first.py": {
+    "size": 734,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_challenging_synthetic.py": {
+    "size": 1151,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/scripts/run_v1002.py": {
+    "size": 296,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/data/commuspace_human_lr_atlas.audit.json": {
+    "size": 766,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/data/commuspace_human_lr_atlas.tsv": {
+    "size": 287052,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/v1002_simulation_run.log": {
+    "size": 15403,
+    "mtime_ns": 1789728017542893837
+  },
+  "V1004/outputs/v1002_identifiability_run.log": {
+    "size": 595,
+    "mtime_ns": 1789787932898892343
+  },
+  "V1004/outputs/structured_st_first_run.log": {
+    "size": 894,
+    "mtime_ns": 1789701668652195123
+  },
+  "V1004/outputs/v1002_final_sim_run.log": {
+    "size": 686,
+    "mtime_ns": 1789786762161172859
+  },
+  "V1004/outputs/v1002_identifiability/bulk_transfer.json": {
+    "size": 119,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_identifiability/figure.log": {
+    "size": 0,
+    "mtime_ns": 1789803358337547840
+  },
+  "V1004/outputs/v1002_identifiability/inferred_WB_ALR_Cox.json": {
+    "size": 119,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_identifiability/oracle_last_attempt_seed31.npz": {
+    "size": 12921657,
+    "mtime_ns": 1789787934042894023
+  },
+  "V1004/outputs/v1002_identifiability/Figure_simulation_truth_vs_observed.png": {
+    "size": 1082380,
+    "mtime_ns": 1789803362165553463
+  },
+  "V1004/outputs/v1002_identifiability/oracle_identifiability.json": {
+    "size": 17884,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_identifiability/primary_st_results.json": {
+    "size": 119,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_identifiability/Figure_final_niche_recovery.png": {
+    "size": 533303,
+    "mtime_ns": 1789803362893554532
+  },
+  "V1004/outputs/v1002_identifiability/pytest.log": {
+    "size": 261,
+    "mtime_ns": 1789803401369611042
+  },
+  "V1004/outputs/v1002_identifiability/summary.json": {
+    "size": 502,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_identifiability/simulation_config.json": {
+    "size": 355,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_identifiability/Figure_simulation_truth_vs_observed.pdf": {
+    "size": 52561,
+    "mtime_ns": 1789803360921551635
+  },
+  "V1004/outputs/v1002_identifiability/Figure_final_niche_recovery.pdf": {
+    "size": 39720,
+    "mtime_ns": 1789803362409553821
+  },
+  "V1004/outputs/v1002_identifiability/true_exposure_ALR_Cox.json": {
+    "size": 119,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_repair/Figure_simulation_main.png": {
+    "size": 659378,
+    "mtime_ns": 1789785535435371179
+  },
+  "V1004/outputs/v1002_repair/rms_audit_seed32.json": {
+    "size": 1006488,
+    "mtime_ns": 1789823696571418969
+  },
+  "V1004/outputs/v1002_repair/final_seed31.pt": {
+    "size": 477688,
+    "mtime_ns": 1789785376411137618
+  },
+  "V1004/outputs/v1002_repair/final_run.log": {
+    "size": 459,
+    "mtime_ns": 1789785503879324834
+  },
+  "V1004/outputs/v1002_repair/rms_audit_seed31.json": {
+    "size": 1014054,
+    "mtime_ns": 1789823696567418963
+  },
+  "V1004/outputs/v1002_repair/optimization_seed31.json": {
+    "size": 1752387,
+    "mtime_ns": 1789823696551418939
+  },
+  "V1004/outputs/v1002_repair/final_grid_progress.json": {
+    "size": 36,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_repair/k6.json": {
+    "size": 2304750,
+    "mtime_ns": 1789823696543418927
+  },
+  "V1004/outputs/v1002_repair/Figure_example_maps_fixed.pdf": {
+    "size": 136518,
+    "mtime_ns": 1789785529723362791
+  },
+  "V1004/outputs/v1002_repair/optimization_seed33.json": {
+    "size": 1746884,
+    "mtime_ns": 1789823696563418957
+  },
+  "V1004/outputs/v1002_repair/random_audit_seed32.json": {
+    "size": 2818,
+    "mtime_ns": 1789823696563418957
+  },
+  "V1004/outputs/v1002_repair/final_robustness_grid.json": {
+    "size": 1357463,
+    "mtime_ns": 1789823696531418910
+  },
+  "V1004/outputs/v1002_repair/rms_audit_seed33.json": {
+    "size": 1014386,
+    "mtime_ns": 1789823696575418975
+  },
+  "V1004/outputs/v1002_repair/Figure_twin_niche_diagnostic.png": {
+    "size": 2906440,
+    "mtime_ns": 1789785532379366690
+  },
+  "V1004/outputs/v1002_repair/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789785477515286112
+  },
+  "V1004/outputs/v1002_repair/random_audit_seed33.json": {
+    "size": 2828,
+    "mtime_ns": 1789823696563418957
+  },
+  "V1004/outputs/v1002_repair/summary.json": {
+    "size": 8875725,
+    "mtime_ns": 1789823696611419027
+  },
+  "V1004/outputs/v1002_repair/Figure_example_maps_fixed.png": {
+    "size": 1097714,
+    "mtime_ns": 1789785530183363465
+  },
+  "V1004/outputs/v1002_repair/Figure_twin_niche_diagnostic.pdf": {
+    "size": 269926,
+    "mtime_ns": 1789785531407365263
+  },
+  "V1004/outputs/v1002_repair/optimization_seed32.json": {
+    "size": 1746649,
+    "mtime_ns": 1789823696555418945
+  },
+  "V1004/outputs/v1002_repair/final_seed33.pt": {
+    "size": 462008,
+    "mtime_ns": 1789785380391143464
+  },
+  "V1004/outputs/v1002_repair/Figure_simulation_main.pdf": {
+    "size": 60836,
+    "mtime_ns": 1789785534067369170
+  },
+  "V1004/outputs/v1002_repair/final_seed32.pt": {
+    "size": 478456,
+    "mtime_ns": 1789785378735141032
+  },
+  "V1004/outputs/v1002_repair/run.log": {
+    "size": 732,
+    "mtime_ns": 1789785206854888593
+  },
+  "V1004/outputs/v1002_repair/random_audit_seed31.json": {
+    "size": 2821,
+    "mtime_ns": 1789823696563418957
+  },
+  "V1004/outputs/v1002_repair/primary_maps.npz": {
+    "size": 461960,
+    "mtime_ns": 1789785207150889027
+  },
+  "V1004/outputs/v1002_final_sim/robustness_grid.json": {
+    "size": 144,
+    "mtime_ns": 1789823696523418898
+  },
+  "V1004/outputs/v1002_final_sim/bulk_transfer.json": {
+    "size": 144,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002_final_sim/figure.log": {
+    "size": 0,
+    "mtime_ns": 1789786985629501068
+  },
+  "V1004/outputs/v1002_final_sim/Figure_filtering.png": {
+    "size": 83498,
+    "mtime_ns": 1789786991889510263
+  },
+  "V1004/outputs/v1002_final_sim/Figure_example_maps_v2.png": {
+    "size": 1870702,
+    "mtime_ns": 1789786988965505968
+  },
+  "V1004/outputs/v1002_final_sim/simulation_truth.json": {
+    "size": 198298,
+    "mtime_ns": 1789823696523418898
+  },
+  "V1004/outputs/v1002_final_sim/view_balance_audit.json": {
+    "size": 3315,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_final_sim/Figure_view_complementarity.pdf": {
+    "size": 233056,
+    "mtime_ns": 1789786990245507848
+  },
+  "V1004/outputs/v1002_final_sim/Figure_simulation_main_v2.pdf": {
+    "size": 50639,
+    "mtime_ns": 1789786992533511208
+  },
+  "V1004/outputs/v1002_final_sim/primary_figure_data.npz": {
+    "size": 429283,
+    "mtime_ns": 1789786762333173112
+  },
+  "V1004/outputs/v1002_final_sim/filter_audit.json": {
+    "size": 501,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002_final_sim/primary_st_results.json": {
+    "size": 1690479,
+    "mtime_ns": 1789823696523418898
+  },
+  "V1004/outputs/v1002_final_sim/Figure_example_maps_v2.pdf": {
+    "size": 143853,
+    "mtime_ns": 1789786988197504839
+  },
+  "V1004/outputs/v1002_final_sim/Figure_view_complementarity.png": {
+    "size": 3355449,
+    "mtime_ns": 1789786991681509957
+  },
+  "V1004/outputs/v1002_final_sim/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789787030153566461
+  },
+  "V1004/outputs/v1002_final_sim/single_view_ablation.json": {
+    "size": 768164,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_final_sim/summary.json": {
+    "size": 2692,
+    "mtime_ns": 1789823696527418904
+  },
+  "V1004/outputs/v1002_final_sim/cox_collinearity_audit.json": {
+    "size": 144,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002_final_sim/Figure_simulation_main_v2.png": {
+    "size": 957150,
+    "mtime_ns": 1789786993549512700
+  },
+  "V1004/outputs/v1002_final_sim/cox_raw_vs_alr.json": {
+    "size": 144,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002_final_sim/Figure_filtering.pdf": {
+    "size": 14893,
+    "mtime_ns": 1789786991745510051
+  },
+  "V1004/outputs/v1002_final_sim/bulk_truth_audit.json": {
+    "size": 1695,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002/tensor_shared_lr_abandoned_summary.json": {
+    "size": 22535,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002/full_vs_selected.json": {
+    "size": 3267,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789722348194567156
+  },
+  "V1004/outputs/v1002/summary.json": {
+    "size": 939,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002/flat_large_lr_baseline_summary.json": {
+    "size": 39062,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/v1002/selected_ccc.json": {
+    "size": 229,
+    "mtime_ns": 1789823696515418887
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/cell_states.csv": {
+    "size": 7951545,
+    "mtime_ns": 1789836015661512241
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/joint_state_mapping.csv": {
+    "size": 739,
+    "mtime_ns": 1789836015665512247
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_CCC_celltype_heatmap.png": {
+    "size": 173205,
+    "mtime_ns": 1789877813442901434
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_composition_only.png": {
+    "size": 2549385,
+    "mtime_ns": 1789836018773516812
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_composition_celltype_enrichment.csv": {
+    "size": 24283,
+    "mtime_ns": 1789877812478900018
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_CCC_each_niche.png": {
+    "size": 3447400,
+    "mtime_ns": 1789876490432958304
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_composition_celltype_heatmap.png": {
+    "size": 177317,
+    "mtime_ns": 1789877812222899642
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_DCIS2_ecosystem_diagnostic.png": {
+    "size": 1788868,
+    "mtime_ns": 1789836024921525842
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_CCC_only.png": {
+    "size": 2793352,
+    "mtime_ns": 1789836020509519362
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/metadata.json": {
+    "size": 183,
+    "mtime_ns": 1789835658472987632
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_joint_hierarchical.png": {
+    "size": 2795694,
+    "mtime_ns": 1789836022233521894
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_composition_each_niche.png": {
+    "size": 3308914,
+    "mtime_ns": 1789876488008954743
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_DCIS_comparison.png": {
+    "size": 1053474,
+    "mtime_ns": 1789836023901524344
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_CCC_celltype_enrichment.csv": {
+    "size": 24238,
+    "mtime_ns": 1789877813690901798
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/HBC1_cell_types.png": {
+    "size": 2809327,
+    "mtime_ns": 1789836016977514174
+  },
+  "V1004/outputs/hbc1_hierarchical_niches_r200/neighborhood_size_summary.csv": {
+    "size": 208,
+    "mtime_ns": 1789835682825023398
+  },
+  "V1004/outputs/hbc1_virtual_anchor_diagnostic/grid_states.csv": {
+    "size": 200894,
+    "mtime_ns": 1789836033833538931
+  },
+  "V1004/outputs/hbc1_virtual_anchor_diagnostic/HBC1_DCIS2_virtual_anchor_comparison.png": {
+    "size": 1719658,
+    "mtime_ns": 1789836034937540553
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/cell_states.csv": {
+    "size": 7230221,
+    "mtime_ns": 1789828386890307725
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/joint_state_mapping.csv": {
+    "size": 740,
+    "mtime_ns": 1789828386894307730
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/HBC1_composition_only.png": {
+    "size": 2545047,
+    "mtime_ns": 1789828390366312830
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/HBC1_CCC_only.png": {
+    "size": 2802741,
+    "mtime_ns": 1789828392170315479
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/HBC1_joint_hierarchical.png": {
+    "size": 2728375,
+    "mtime_ns": 1789828394026318205
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/HBC1_DCIS_comparison.png": {
+    "size": 1483540,
+    "mtime_ns": 1789828395754320743
+  },
+  "V1004/outputs/hbc1_hierarchical_niches/HBC1_cell_types.png": {
+    "size": 2809327,
+    "mtime_ns": 1789828388466310039
+  },
+  "V1004/outputs/structured_st_first/st_iterative_primary.json": {
+    "size": 2730,
+    "mtime_ns": 1789823696507418875
+  },
+  "V1004/outputs/structured_st_first/structured_truth.json": {
+    "size": 114586,
+    "mtime_ns": 1789823696507418875
+  },
+  "V1004/outputs/structured_st_first/ccc_dimension_sensitivity.json": {
+    "size": 2283,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/structured_st_first/outer_iteration_history.json": {
+    "size": 4642,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/structured_st_first/phenotype_permutation.json": {
+    "size": 54063,
+    "mtime_ns": 1789823696507418875
+  },
+  "V1004/outputs/structured_st_first/st_only_primary.json": {
+    "size": 730057,
+    "mtime_ns": 1789823696507418875
+  },
+  "V1004/outputs/structured_st_first/iterative_adapter.pt": {
+    "size": 69938,
+    "mtime_ns": 1789701626244132837
+  },
+  "V1004/outputs/structured_st_first/stable_anchor.npz": {
+    "size": 41829,
+    "mtime_ns": 1789701626240132831
+  },
+  "V1004/outputs/structured_st_first/niche_edge_recovery.json": {
+    "size": 86502,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/structured_st_first/protocol.json": {
+    "size": 1356,
+    "mtime_ns": 1789823696507418875
+  },
+  "V1004/outputs/structured_st_first/RESULTS.md": {
+    "size": 5045,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/structured_st_first/inner_inference_audit.json": {
+    "size": 1053,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/structured_st_first/implementation_audit.json": {
+    "size": 1665,
+    "mtime_ns": 1789823696503418869
+  },
+  "V1004/outputs/structured_st_first/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789701820148417618
+  },
+  "V1004/outputs/structured_st_first/summary.json": {
+    "size": 981278,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/structured_st_first/st_frozen_primary.json": {
+    "size": 1342,
+    "mtime_ns": 1789823696507418875
+  },
+  "V1004/outputs/structured_st_first/run.log": {
+    "size": 894,
+    "mtime_ns": 1789701780240359004
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/spatial_region_raw_I_centroids.npz": {
+    "size": 2619904,
+    "mtime_ns": 1789826255523177345
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/spatial_region_pair_comparisons.csv": {
+    "size": 6714105,
+    "mtime_ns": 1789826260207184225
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/sampled_cell_pair_distances.csv": {
+    "size": 3363571,
+    "mtime_ns": 1789826251755171811
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/top3_connected_region_counterexamples.png": {
+    "size": 1889659,
+    "mtime_ns": 1789826263511189078
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/diagnostic_config.json": {
+    "size": 237,
+    "mtime_ns": 1789826243491159675
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/sampled_pair_distance_distributions.png": {
+    "size": 134653,
+    "mtime_ns": 1789826252627173092
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/spatial_region_components.csv": {
+    "size": 379118,
+    "mtime_ns": 1789826255351177093
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_05_spatial_refinement.png": {
+    "size": 334398,
+    "mtime_ns": 1789826248711167340
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_I_pair_availability_proxy.csv": {
+    "size": 1217669,
+    "mtime_ns": 1789826250047169302
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/sampled_pair_summary.csv": {
+    "size": 7759,
+    "mtime_ns": 1789826251899172023
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/composition_CCC_diagnostic_conclusion.csv": {
+    "size": 2232,
+    "mtime_ns": 1789826266327193213
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_02_spatial_refinement.png": {
+    "size": 273783,
+    "mtime_ns": 1789826246959164767
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_by_I_counts.csv": {
+    "size": 301,
+    "mtime_ns": 1789826243511159703
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/composition_state_summary.csv": {
+    "size": 618,
+    "mtime_ns": 1789826243511159703
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_01_spatial_refinement.png": {
+    "size": 936949,
+    "mtime_ns": 1789826246211163669
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_I_cell_type_availability.csv": {
+    "size": 71214,
+    "mtime_ns": 1789826249931169132
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_06_spatial_refinement.png": {
+    "size": 401155,
+    "mtime_ns": 1789826249355168287
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/P_I_given_C.csv": {
+    "size": 1341,
+    "mtime_ns": 1789826243515159709
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_I_opportunity_summary.csv": {
+    "size": 5148,
+    "mtime_ns": 1789826249923169120
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/cell_opportunity_summary.csv": {
+    "size": 3789031,
+    "mtime_ns": 1789826244359160949
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_04_spatial_refinement.png": {
+    "size": 401928,
+    "mtime_ns": 1789826248123166477
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_07_spatial_refinement.png": {
+    "size": 169451,
+    "mtime_ns": 1789826249911169103
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_00_spatial_refinement.png": {
+    "size": 1664430,
+    "mtime_ns": 1789826245327162370
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_state_03_spatial_refinement.png": {
+    "size": 305632,
+    "mtime_ns": 1789826247495165554
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/top3_region_differential_CCC.csv": {
+    "size": 2961,
+    "mtime_ns": 1789826266203193031
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/C_I_group_common_support.csv": {
+    "size": 18310,
+    "mtime_ns": 1789826253987175089
+  },
+  "V1004/outputs/hbc1_composition_ccc_refinement/P_I_given_C_heatmap.png": {
+    "size": 86941,
+    "mtime_ns": 1789826243763160074
+  },
+  "V1004/outputs/v1001/simulation_audit.json": {
+    "size": 757,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/v1000_baseline.json": {
+    "size": 24085,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/v1001_primary.json": {
+    "size": 24099,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/ccc_dimension_sensitivity.json": {
+    "size": 4443,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/peripheral_ccc_diagnostic.json": {
+    "size": 1228,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/neighborhood_audit.json": {
+    "size": 331,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/ccc_construction_audit.json": {
+    "size": 542,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789716242293599304
+  },
+  "V1004/outputs/v1001/runtime_memory.json": {
+    "size": 525,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/cox_results.json": {
+    "size": 614,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/summary.json": {
+    "size": 4045,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/bulk_projection.json": {
+    "size": 223,
+    "mtime_ns": 1789823696511418881
+  },
+  "V1004/outputs/v1001/run.log": {
+    "size": 0,
+    "mtime_ns": 1789716046149311223
+  },
+  "V1004/outputs/v1002_simulation/robustness_grid.json": {
+    "size": 2410723,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/outputs/v1002_simulation/Figure_CCC_precision_recall.pdf": {
+    "size": 15492,
+    "mtime_ns": 1789728196415156548
+  },
+  "V1004/outputs/v1002_simulation/bulk_transfer.json": {
+    "size": 181393,
+    "mtime_ns": 1789823696623419045
+  },
+  "V1004/outputs/v1002_simulation/Figure_simulation_main.png": {
+    "size": 721729,
+    "mtime_ns": 1789728193923152888
+  },
+  "V1004/outputs/v1002_simulation/ablation_results.json": {
+    "size": 2586862,
+    "mtime_ns": 1789823696619419039
+  },
+  "V1004/outputs/v1002_simulation/simulation_truth.json": {
+    "size": 529971,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/outputs/v1002_simulation/Figure_example_maps.png": {
+    "size": 1725028,
+    "mtime_ns": 1789728195187154744
+  },
+  "V1004/outputs/v1002_simulation/Figure_risk_niche_CCC.png": {
+    "size": 241199,
+    "mtime_ns": 1789728196115156107
+  },
+  "V1004/outputs/v1002_simulation/Figure_CCC_precision_recall.png": {
+    "size": 60377,
+    "mtime_ns": 1789728196659156906
+  },
+  "V1004/outputs/v1002_simulation/filter_audit.json": {
+    "size": 1133,
+    "mtime_ns": 1789823696623419045
+  },
+  "V1004/outputs/v1002_simulation/primary_results.json": {
+    "size": 1546257,
+    "mtime_ns": 1789823696627419051
+  },
+  "V1004/outputs/v1002_simulation/pytest.log": {
+    "size": 181,
+    "mtime_ns": 1789728165171110660
+  },
+  "V1004/outputs/v1002_simulation/pseudobulk_bridge.json": {
+    "size": 434,
+    "mtime_ns": 1789823696627419051
+  },
+  "V1004/outputs/v1002_simulation/cox_results.json": {
+    "size": 126745,
+    "mtime_ns": 1789823696623419045
+  },
+  "V1004/outputs/v1002_simulation/summary.json": {
+    "size": 15416,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/outputs/v1002_simulation/Figure_simulation_main.pdf": {
+    "size": 101454,
+    "mtime_ns": 1789728191879149886
+  },
+  "V1004/outputs/v1002_simulation/runtime.json": {
+    "size": 111,
+    "mtime_ns": 1789823696639419069
+  },
+  "V1004/outputs/v1002_simulation/Figure_risk_niche_CCC.pdf": {
+    "size": 16841,
+    "mtime_ns": 1789728195715155520
+  },
+  "V1004/outputs/v1002_simulation/Figure_example_maps.pdf": {
+    "size": 152459,
+    "mtime_ns": 1789728194663153976
+  }
+}

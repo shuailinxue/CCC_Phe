@@ -1,0 +1,1419 @@
+sender_id,receiver_id,lr_index,sender,receiver,ligand,receptor,lr_id
+0,0,4,B cell,B cell,CD69,KLRB1,CommuSpace_HS_01204
+0,0,9,B cell,B cell,CDH1,CDH1,CommuSpace_HS_01239
+0,0,11,B cell,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,0,16,B cell,B cell,CXCL12,CD4,CommuSpace_HS_02207
+0,0,17,B cell,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+0,0,22,B cell,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+0,0,25,B cell,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+0,0,29,B cell,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+0,0,32,B cell,B cell,PTPRC,CD4,CommuSpace_HS_06469
+0,0,33,B cell,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+0,0,35,B cell,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+0,0,38,B cell,B cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+0,1,0,B cell,Dendritic,C1QA,CD93,CommuSpace_HS_00682
+0,1,4,B cell,Dendritic,CD69,KLRB1,CommuSpace_HS_01204
+0,1,9,B cell,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+0,1,11,B cell,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,1,16,B cell,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+0,1,17,B cell,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+0,1,22,B cell,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+0,1,25,B cell,Dendritic,MRC1,PTPRC,CommuSpace_HS_05529
+0,1,29,B cell,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+0,1,32,B cell,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+0,1,33,B cell,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+0,1,35,B cell,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+0,1,38,B cell,Dendritic,SLAMF7,SLAMF7,CommuSpace_HS_06996
+0,2,0,B cell,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+0,2,4,B cell,Endothelial,CD69,KLRB1,CommuSpace_HS_01204
+0,2,9,B cell,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+0,2,10,B cell,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+0,2,11,B cell,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,2,13,B cell,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+0,2,15,B cell,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+0,2,16,B cell,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+0,2,17,B cell,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+0,2,21,B cell,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+0,2,22,B cell,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+0,2,25,B cell,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+0,2,29,B cell,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+0,2,32,B cell,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+0,2,33,B cell,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+0,2,34,B cell,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+0,2,35,B cell,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+0,3,1,B cell,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+0,3,9,B cell,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+0,3,10,B cell,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+0,3,11,B cell,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,3,12,B cell,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+0,3,13,B cell,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+0,3,17,B cell,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+0,3,18,B cell,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+0,3,21,B cell,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+0,3,34,B cell,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+0,3,35,B cell,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+0,4,0,B cell,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+0,4,1,B cell,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+0,4,4,B cell,Fibroblast,CD69,KLRB1,CommuSpace_HS_01204
+0,4,7,B cell,Fibroblast,CD86,CTLA4,CommuSpace_HS_01223
+0,4,9,B cell,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+0,4,10,B cell,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+0,4,11,B cell,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,4,13,B cell,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+0,4,16,B cell,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+0,4,17,B cell,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+0,4,18,B cell,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+0,4,21,B cell,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+0,4,22,B cell,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+0,4,25,B cell,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+0,4,29,B cell,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+0,4,31,B cell,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+0,4,32,B cell,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+0,4,33,B cell,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+0,4,34,B cell,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+0,4,35,B cell,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+0,4,38,B cell,Fibroblast,SLAMF7,SLAMF7,CommuSpace_HS_06996
+0,5,0,B cell,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+0,5,1,B cell,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+0,5,4,B cell,Macrophage,CD69,KLRB1,CommuSpace_HS_01204
+0,5,9,B cell,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+0,5,11,B cell,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,5,16,B cell,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+0,5,17,B cell,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+0,5,18,B cell,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+0,5,22,B cell,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+0,5,25,B cell,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+0,5,29,B cell,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+0,5,31,B cell,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+0,5,32,B cell,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+0,5,33,B cell,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+0,5,35,B cell,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+0,5,38,B cell,Macrophage,SLAMF7,SLAMF7,CommuSpace_HS_06996
+0,6,0,B cell,Mast cell,C1QA,CD93,CommuSpace_HS_00682
+0,6,4,B cell,Mast cell,CD69,KLRB1,CommuSpace_HS_01204
+0,6,8,B cell,Mast cell,CD9,KIT,CommuSpace_HS_01229
+0,6,9,B cell,Mast cell,CDH1,CDH1,CommuSpace_HS_01239
+0,6,11,B cell,Mast cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,6,16,B cell,Mast cell,CXCL12,CD4,CommuSpace_HS_02207
+0,6,17,B cell,Mast cell,CXCL12,CXCR4,CommuSpace_HS_02209
+0,6,22,B cell,Mast cell,MMP2,PECAM1,CommuSpace_HS_05481
+0,6,25,B cell,Mast cell,MRC1,PTPRC,CommuSpace_HS_05529
+0,6,29,B cell,Mast cell,PECAM1,PECAM1,CommuSpace_HS_06139
+0,6,32,B cell,Mast cell,PTPRC,CD4,CommuSpace_HS_06469
+0,6,33,B cell,Mast cell,PTPRC,MRC1,CommuSpace_HS_06471
+0,6,35,B cell,Mast cell,S100A4,ERBB2,CommuSpace_HS_06644
+0,7,1,B cell,Myoepithelial,CCL5,SDC4,CommuSpace_HS_01054
+0,7,8,B cell,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+0,7,9,B cell,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+0,7,10,B cell,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+0,7,11,B cell,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,7,13,B cell,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+0,7,16,B cell,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+0,7,17,B cell,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+0,7,18,B cell,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+0,7,21,B cell,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+0,7,25,B cell,Myoepithelial,MRC1,PTPRC,CommuSpace_HS_05529
+0,7,32,B cell,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+0,7,34,B cell,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+0,7,35,B cell,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+0,8,0,B cell,Pericyte,C1QA,CD93,CommuSpace_HS_00682
+0,8,4,B cell,Pericyte,CD69,KLRB1,CommuSpace_HS_01204
+0,8,10,B cell,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+0,8,11,B cell,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,8,13,B cell,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+0,8,15,B cell,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+0,8,16,B cell,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+0,8,17,B cell,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+0,8,21,B cell,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+0,8,22,B cell,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+0,8,25,B cell,Pericyte,MRC1,PTPRC,CommuSpace_HS_05529
+0,8,29,B cell,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+0,8,32,B cell,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+0,8,34,B cell,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+0,8,35,B cell,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+0,9,4,B cell,T cell,CD69,KLRB1,CommuSpace_HS_01204
+0,9,7,B cell,T cell,CD86,CTLA4,CommuSpace_HS_01223
+0,9,11,B cell,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,9,16,B cell,T cell,CXCL12,CD4,CommuSpace_HS_02207
+0,9,17,B cell,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+0,9,22,B cell,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+0,9,25,B cell,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+0,9,29,B cell,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+0,9,31,B cell,T cell,PTPRC,CD247,CommuSpace_HS_06468
+0,9,32,B cell,T cell,PTPRC,CD4,CommuSpace_HS_06469
+0,9,35,B cell,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+0,9,38,B cell,T cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+0,10,0,B cell,Unknown,C1QA,CD93,CommuSpace_HS_00682
+0,10,4,B cell,Unknown,CD69,KLRB1,CommuSpace_HS_01204
+0,10,7,B cell,Unknown,CD86,CTLA4,CommuSpace_HS_01223
+0,10,9,B cell,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+0,10,11,B cell,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+0,10,16,B cell,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+0,10,17,B cell,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+0,10,22,B cell,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+0,10,25,B cell,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+0,10,29,B cell,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+0,10,31,B cell,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+0,10,32,B cell,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+0,10,33,B cell,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+0,10,35,B cell,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+0,10,38,B cell,Unknown,SLAMF7,SLAMF7,CommuSpace_HS_06996
+1,0,9,Dendritic,B cell,CDH1,CDH1,CommuSpace_HS_01239
+1,0,11,Dendritic,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,0,16,Dendritic,B cell,CXCL12,CD4,CommuSpace_HS_02207
+1,0,17,Dendritic,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+1,0,22,Dendritic,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+1,0,25,Dendritic,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+1,0,29,Dendritic,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+1,0,32,Dendritic,B cell,PTPRC,CD4,CommuSpace_HS_06469
+1,0,33,Dendritic,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+1,0,35,Dendritic,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+1,0,38,Dendritic,B cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+1,1,0,Dendritic,Dendritic,C1QA,CD93,CommuSpace_HS_00682
+1,1,2,Dendritic,Dendritic,CD274,CD80,CommuSpace_HS_01135
+1,1,5,Dendritic,Dendritic,CD80,CD274,CommuSpace_HS_01216
+1,1,9,Dendritic,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+1,1,11,Dendritic,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,1,16,Dendritic,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+1,1,17,Dendritic,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+1,1,22,Dendritic,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+1,1,25,Dendritic,Dendritic,MRC1,PTPRC,CommuSpace_HS_05529
+1,1,29,Dendritic,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+1,1,32,Dendritic,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+1,1,33,Dendritic,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+1,1,35,Dendritic,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+1,1,38,Dendritic,Dendritic,SLAMF7,SLAMF7,CommuSpace_HS_06996
+1,2,0,Dendritic,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+1,2,9,Dendritic,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+1,2,10,Dendritic,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+1,2,11,Dendritic,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,2,13,Dendritic,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+1,2,15,Dendritic,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+1,2,16,Dendritic,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+1,2,17,Dendritic,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+1,2,21,Dendritic,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+1,2,22,Dendritic,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+1,2,25,Dendritic,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+1,2,29,Dendritic,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+1,2,32,Dendritic,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+1,2,33,Dendritic,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+1,2,34,Dendritic,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+1,2,35,Dendritic,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+1,3,1,Dendritic,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+1,3,9,Dendritic,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+1,3,10,Dendritic,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+1,3,11,Dendritic,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,3,12,Dendritic,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+1,3,13,Dendritic,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+1,3,17,Dendritic,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+1,3,18,Dendritic,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+1,3,21,Dendritic,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+1,3,34,Dendritic,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+1,3,35,Dendritic,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+1,4,0,Dendritic,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+1,4,1,Dendritic,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+1,4,6,Dendritic,Fibroblast,CD80,CTLA4,CommuSpace_HS_01218
+1,4,7,Dendritic,Fibroblast,CD86,CTLA4,CommuSpace_HS_01223
+1,4,9,Dendritic,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+1,4,10,Dendritic,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+1,4,11,Dendritic,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,4,13,Dendritic,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+1,4,16,Dendritic,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+1,4,17,Dendritic,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+1,4,18,Dendritic,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+1,4,21,Dendritic,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+1,4,22,Dendritic,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+1,4,25,Dendritic,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+1,4,29,Dendritic,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+1,4,31,Dendritic,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+1,4,32,Dendritic,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+1,4,33,Dendritic,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+1,4,34,Dendritic,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+1,4,35,Dendritic,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+1,4,38,Dendritic,Fibroblast,SLAMF7,SLAMF7,CommuSpace_HS_06996
+1,5,0,Dendritic,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+1,5,1,Dendritic,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+1,5,9,Dendritic,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+1,5,11,Dendritic,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,5,16,Dendritic,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+1,5,17,Dendritic,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+1,5,18,Dendritic,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+1,5,22,Dendritic,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+1,5,25,Dendritic,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+1,5,29,Dendritic,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+1,5,31,Dendritic,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+1,5,32,Dendritic,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+1,5,33,Dendritic,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+1,5,35,Dendritic,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+1,5,38,Dendritic,Macrophage,SLAMF7,SLAMF7,CommuSpace_HS_06996
+1,8,0,Dendritic,Pericyte,C1QA,CD93,CommuSpace_HS_00682
+1,8,10,Dendritic,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+1,8,11,Dendritic,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,8,13,Dendritic,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+1,8,15,Dendritic,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+1,8,16,Dendritic,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+1,8,17,Dendritic,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+1,8,21,Dendritic,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+1,8,22,Dendritic,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+1,8,25,Dendritic,Pericyte,MRC1,PTPRC,CommuSpace_HS_05529
+1,8,29,Dendritic,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+1,8,32,Dendritic,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+1,8,34,Dendritic,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+1,8,35,Dendritic,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+1,9,6,Dendritic,T cell,CD80,CTLA4,CommuSpace_HS_01218
+1,9,7,Dendritic,T cell,CD86,CTLA4,CommuSpace_HS_01223
+1,9,11,Dendritic,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,9,16,Dendritic,T cell,CXCL12,CD4,CommuSpace_HS_02207
+1,9,17,Dendritic,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+1,9,22,Dendritic,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+1,9,25,Dendritic,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+1,9,29,Dendritic,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+1,9,31,Dendritic,T cell,PTPRC,CD247,CommuSpace_HS_06468
+1,9,32,Dendritic,T cell,PTPRC,CD4,CommuSpace_HS_06469
+1,9,35,Dendritic,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+1,9,38,Dendritic,T cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+1,9,39,Dendritic,T cell,TYROBP,KLRD1,CommuSpace_HS_07640
+1,10,0,Dendritic,Unknown,C1QA,CD93,CommuSpace_HS_00682
+1,10,6,Dendritic,Unknown,CD80,CTLA4,CommuSpace_HS_01218
+1,10,7,Dendritic,Unknown,CD86,CTLA4,CommuSpace_HS_01223
+1,10,9,Dendritic,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+1,10,11,Dendritic,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+1,10,16,Dendritic,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+1,10,17,Dendritic,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+1,10,22,Dendritic,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+1,10,25,Dendritic,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+1,10,29,Dendritic,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+1,10,31,Dendritic,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+1,10,32,Dendritic,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+1,10,33,Dendritic,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+1,10,35,Dendritic,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+1,10,38,Dendritic,Unknown,SLAMF7,SLAMF7,CommuSpace_HS_06996
+2,0,9,Endothelial,B cell,CDH1,CDH1,CommuSpace_HS_01239
+2,0,11,Endothelial,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,0,16,Endothelial,B cell,CXCL12,CD4,CommuSpace_HS_02207
+2,0,17,Endothelial,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+2,0,22,Endothelial,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+2,0,25,Endothelial,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+2,0,29,Endothelial,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+2,0,32,Endothelial,B cell,PTPRC,CD4,CommuSpace_HS_06469
+2,0,33,Endothelial,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+2,0,35,Endothelial,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+2,1,0,Endothelial,Dendritic,C1QA,CD93,CommuSpace_HS_00682
+2,1,9,Endothelial,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+2,1,11,Endothelial,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,1,16,Endothelial,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+2,1,17,Endothelial,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+2,1,22,Endothelial,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+2,1,23,Endothelial,Dendritic,MMRN2,CD93,CommuSpace_HS_05501
+2,1,25,Endothelial,Dendritic,MRC1,PTPRC,CommuSpace_HS_05529
+2,1,29,Endothelial,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+2,1,32,Endothelial,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+2,1,33,Endothelial,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+2,1,35,Endothelial,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+2,2,0,Endothelial,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+2,2,9,Endothelial,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+2,2,10,Endothelial,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+2,2,11,Endothelial,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,2,13,Endothelial,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+2,2,15,Endothelial,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+2,2,16,Endothelial,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+2,2,17,Endothelial,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+2,2,19,Endothelial,Endothelial,EDN1,EDNRB,CommuSpace_HS_02514
+2,2,20,Endothelial,Endothelial,EDN1,EGFR,CommuSpace_HS_02515
+2,2,21,Endothelial,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+2,2,22,Endothelial,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+2,2,23,Endothelial,Endothelial,MMRN2,CD93,CommuSpace_HS_05501
+2,2,24,Endothelial,Endothelial,MMRN2,CLEC14A,CommuSpace_HS_05502
+2,2,25,Endothelial,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+2,2,29,Endothelial,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+2,2,32,Endothelial,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+2,2,33,Endothelial,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+2,2,34,Endothelial,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+2,2,35,Endothelial,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+2,3,1,Endothelial,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+2,3,9,Endothelial,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+2,3,10,Endothelial,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+2,3,11,Endothelial,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,3,12,Endothelial,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+2,3,13,Endothelial,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+2,3,17,Endothelial,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+2,3,18,Endothelial,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+2,3,20,Endothelial,Epithelial,EDN1,EGFR,CommuSpace_HS_02515
+2,3,21,Endothelial,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+2,3,30,Endothelial,Epithelial,PTN,SDC4,CommuSpace_HS_06461
+2,3,34,Endothelial,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+2,3,35,Endothelial,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+2,4,0,Endothelial,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+2,4,1,Endothelial,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+2,4,9,Endothelial,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+2,4,10,Endothelial,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+2,4,11,Endothelial,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,4,13,Endothelial,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+2,4,16,Endothelial,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+2,4,17,Endothelial,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+2,4,18,Endothelial,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+2,4,19,Endothelial,Fibroblast,EDN1,EDNRB,CommuSpace_HS_02514
+2,4,20,Endothelial,Fibroblast,EDN1,EGFR,CommuSpace_HS_02515
+2,4,21,Endothelial,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+2,4,22,Endothelial,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+2,4,23,Endothelial,Fibroblast,MMRN2,CD93,CommuSpace_HS_05501
+2,4,25,Endothelial,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+2,4,29,Endothelial,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+2,4,30,Endothelial,Fibroblast,PTN,SDC4,CommuSpace_HS_06461
+2,4,31,Endothelial,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+2,4,32,Endothelial,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+2,4,33,Endothelial,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+2,4,34,Endothelial,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+2,4,35,Endothelial,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+2,5,0,Endothelial,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+2,5,1,Endothelial,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+2,5,9,Endothelial,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+2,5,11,Endothelial,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,5,16,Endothelial,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+2,5,17,Endothelial,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+2,5,18,Endothelial,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+2,5,22,Endothelial,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+2,5,23,Endothelial,Macrophage,MMRN2,CD93,CommuSpace_HS_05501
+2,5,25,Endothelial,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+2,5,29,Endothelial,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+2,5,30,Endothelial,Macrophage,PTN,SDC4,CommuSpace_HS_06461
+2,5,31,Endothelial,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+2,5,32,Endothelial,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+2,5,33,Endothelial,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+2,5,35,Endothelial,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+2,6,0,Endothelial,Mast cell,C1QA,CD93,CommuSpace_HS_00682
+2,6,8,Endothelial,Mast cell,CD9,KIT,CommuSpace_HS_01229
+2,6,9,Endothelial,Mast cell,CDH1,CDH1,CommuSpace_HS_01239
+2,6,11,Endothelial,Mast cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,6,16,Endothelial,Mast cell,CXCL12,CD4,CommuSpace_HS_02207
+2,6,17,Endothelial,Mast cell,CXCL12,CXCR4,CommuSpace_HS_02209
+2,6,19,Endothelial,Mast cell,EDN1,EDNRB,CommuSpace_HS_02514
+2,6,22,Endothelial,Mast cell,MMP2,PECAM1,CommuSpace_HS_05481
+2,6,23,Endothelial,Mast cell,MMRN2,CD93,CommuSpace_HS_05501
+2,6,25,Endothelial,Mast cell,MRC1,PTPRC,CommuSpace_HS_05529
+2,6,29,Endothelial,Mast cell,PECAM1,PECAM1,CommuSpace_HS_06139
+2,6,32,Endothelial,Mast cell,PTPRC,CD4,CommuSpace_HS_06469
+2,6,33,Endothelial,Mast cell,PTPRC,MRC1,CommuSpace_HS_06471
+2,6,35,Endothelial,Mast cell,S100A4,ERBB2,CommuSpace_HS_06644
+2,7,1,Endothelial,Myoepithelial,CCL5,SDC4,CommuSpace_HS_01054
+2,7,8,Endothelial,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+2,7,9,Endothelial,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+2,7,10,Endothelial,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+2,7,11,Endothelial,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,7,13,Endothelial,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+2,7,16,Endothelial,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+2,7,17,Endothelial,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+2,7,18,Endothelial,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+2,7,20,Endothelial,Myoepithelial,EDN1,EGFR,CommuSpace_HS_02515
+2,7,21,Endothelial,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+2,7,25,Endothelial,Myoepithelial,MRC1,PTPRC,CommuSpace_HS_05529
+2,7,30,Endothelial,Myoepithelial,PTN,SDC4,CommuSpace_HS_06461
+2,7,32,Endothelial,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+2,7,34,Endothelial,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+2,7,35,Endothelial,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+2,8,0,Endothelial,Pericyte,C1QA,CD93,CommuSpace_HS_00682
+2,8,10,Endothelial,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+2,8,11,Endothelial,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,8,13,Endothelial,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+2,8,15,Endothelial,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+2,8,16,Endothelial,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+2,8,17,Endothelial,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+2,8,19,Endothelial,Pericyte,EDN1,EDNRB,CommuSpace_HS_02514
+2,8,20,Endothelial,Pericyte,EDN1,EGFR,CommuSpace_HS_02515
+2,8,21,Endothelial,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+2,8,22,Endothelial,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+2,8,23,Endothelial,Pericyte,MMRN2,CD93,CommuSpace_HS_05501
+2,8,24,Endothelial,Pericyte,MMRN2,CLEC14A,CommuSpace_HS_05502
+2,8,25,Endothelial,Pericyte,MRC1,PTPRC,CommuSpace_HS_05529
+2,8,29,Endothelial,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+2,8,32,Endothelial,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+2,8,34,Endothelial,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+2,8,35,Endothelial,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+2,9,11,Endothelial,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,9,16,Endothelial,T cell,CXCL12,CD4,CommuSpace_HS_02207
+2,9,17,Endothelial,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+2,9,22,Endothelial,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+2,9,25,Endothelial,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+2,9,29,Endothelial,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+2,9,31,Endothelial,T cell,PTPRC,CD247,CommuSpace_HS_06468
+2,9,32,Endothelial,T cell,PTPRC,CD4,CommuSpace_HS_06469
+2,9,35,Endothelial,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+2,10,0,Endothelial,Unknown,C1QA,CD93,CommuSpace_HS_00682
+2,10,9,Endothelial,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+2,10,11,Endothelial,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+2,10,16,Endothelial,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+2,10,17,Endothelial,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+2,10,22,Endothelial,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+2,10,23,Endothelial,Unknown,MMRN2,CD93,CommuSpace_HS_05501
+2,10,25,Endothelial,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+2,10,29,Endothelial,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+2,10,31,Endothelial,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+2,10,32,Endothelial,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+2,10,33,Endothelial,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+2,10,35,Endothelial,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+3,0,9,Epithelial,B cell,CDH1,CDH1,CommuSpace_HS_01239
+3,0,11,Epithelial,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,0,14,Epithelial,B cell,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,0,16,Epithelial,B cell,CXCL12,CD4,CommuSpace_HS_02207
+3,0,17,Epithelial,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+3,1,9,Epithelial,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+3,1,11,Epithelial,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,1,14,Epithelial,Dendritic,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,1,16,Epithelial,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+3,1,17,Epithelial,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+3,2,9,Epithelial,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+3,2,10,Epithelial,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+3,2,11,Epithelial,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,2,13,Epithelial,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+3,2,14,Epithelial,Endothelial,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,2,15,Epithelial,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+3,2,16,Epithelial,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+3,2,17,Epithelial,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+3,3,9,Epithelial,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+3,3,10,Epithelial,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+3,3,11,Epithelial,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,3,12,Epithelial,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+3,3,13,Epithelial,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+3,3,14,Epithelial,Epithelial,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,3,17,Epithelial,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+3,3,18,Epithelial,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+3,4,9,Epithelial,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+3,4,10,Epithelial,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+3,4,11,Epithelial,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,4,13,Epithelial,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+3,4,14,Epithelial,Fibroblast,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,4,16,Epithelial,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+3,4,17,Epithelial,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+3,4,18,Epithelial,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+3,5,9,Epithelial,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+3,5,11,Epithelial,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,5,14,Epithelial,Macrophage,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,5,16,Epithelial,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+3,5,17,Epithelial,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+3,5,18,Epithelial,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+3,7,8,Epithelial,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+3,7,9,Epithelial,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+3,7,10,Epithelial,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+3,7,11,Epithelial,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,7,13,Epithelial,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+3,7,14,Epithelial,Myoepithelial,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,7,16,Epithelial,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+3,7,17,Epithelial,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+3,7,18,Epithelial,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+3,8,10,Epithelial,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+3,8,11,Epithelial,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,8,13,Epithelial,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+3,8,14,Epithelial,Pericyte,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,8,15,Epithelial,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+3,8,16,Epithelial,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+3,8,17,Epithelial,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+3,9,11,Epithelial,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,9,14,Epithelial,T cell,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,9,16,Epithelial,T cell,CXCL12,CD4,CommuSpace_HS_02207
+3,9,17,Epithelial,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+3,10,9,Epithelial,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+3,10,11,Epithelial,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+3,10,14,Epithelial,Unknown,CEACAM8,CEACAM6,CommuSpace_HS_01304
+3,10,16,Epithelial,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+3,10,17,Epithelial,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+4,0,4,Fibroblast,B cell,CD69,KLRB1,CommuSpace_HS_01204
+4,0,9,Fibroblast,B cell,CDH1,CDH1,CommuSpace_HS_01239
+4,0,11,Fibroblast,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,0,16,Fibroblast,B cell,CXCL12,CD4,CommuSpace_HS_02207
+4,0,17,Fibroblast,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+4,0,22,Fibroblast,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+4,0,25,Fibroblast,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+4,0,29,Fibroblast,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+4,0,32,Fibroblast,B cell,PTPRC,CD4,CommuSpace_HS_06469
+4,0,33,Fibroblast,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+4,0,35,Fibroblast,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+4,0,38,Fibroblast,B cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+4,1,0,Fibroblast,Dendritic,C1QA,CD93,CommuSpace_HS_00682
+4,1,4,Fibroblast,Dendritic,CD69,KLRB1,CommuSpace_HS_01204
+4,1,9,Fibroblast,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+4,1,11,Fibroblast,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,1,16,Fibroblast,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+4,1,17,Fibroblast,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+4,1,22,Fibroblast,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+4,1,25,Fibroblast,Dendritic,MRC1,PTPRC,CommuSpace_HS_05529
+4,1,29,Fibroblast,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+4,1,32,Fibroblast,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+4,1,33,Fibroblast,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+4,1,35,Fibroblast,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+4,1,38,Fibroblast,Dendritic,SLAMF7,SLAMF7,CommuSpace_HS_06996
+4,2,0,Fibroblast,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+4,2,4,Fibroblast,Endothelial,CD69,KLRB1,CommuSpace_HS_01204
+4,2,9,Fibroblast,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+4,2,10,Fibroblast,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+4,2,11,Fibroblast,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,2,13,Fibroblast,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+4,2,15,Fibroblast,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+4,2,16,Fibroblast,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+4,2,17,Fibroblast,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+4,2,21,Fibroblast,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+4,2,22,Fibroblast,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+4,2,25,Fibroblast,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+4,2,29,Fibroblast,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+4,2,32,Fibroblast,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+4,2,33,Fibroblast,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+4,2,34,Fibroblast,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+4,2,35,Fibroblast,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+4,3,1,Fibroblast,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+4,3,9,Fibroblast,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+4,3,10,Fibroblast,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+4,3,11,Fibroblast,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,3,12,Fibroblast,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+4,3,13,Fibroblast,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+4,3,17,Fibroblast,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+4,3,18,Fibroblast,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+4,3,21,Fibroblast,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+4,3,30,Fibroblast,Epithelial,PTN,SDC4,CommuSpace_HS_06461
+4,3,34,Fibroblast,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+4,3,35,Fibroblast,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+4,4,0,Fibroblast,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+4,4,1,Fibroblast,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+4,4,4,Fibroblast,Fibroblast,CD69,KLRB1,CommuSpace_HS_01204
+4,4,7,Fibroblast,Fibroblast,CD86,CTLA4,CommuSpace_HS_01223
+4,4,9,Fibroblast,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+4,4,10,Fibroblast,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+4,4,11,Fibroblast,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,4,13,Fibroblast,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+4,4,16,Fibroblast,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+4,4,17,Fibroblast,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+4,4,18,Fibroblast,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+4,4,21,Fibroblast,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+4,4,22,Fibroblast,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+4,4,25,Fibroblast,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+4,4,29,Fibroblast,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+4,4,30,Fibroblast,Fibroblast,PTN,SDC4,CommuSpace_HS_06461
+4,4,31,Fibroblast,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+4,4,32,Fibroblast,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+4,4,33,Fibroblast,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+4,4,34,Fibroblast,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+4,4,35,Fibroblast,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+4,4,38,Fibroblast,Fibroblast,SLAMF7,SLAMF7,CommuSpace_HS_06996
+4,5,0,Fibroblast,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+4,5,1,Fibroblast,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+4,5,4,Fibroblast,Macrophage,CD69,KLRB1,CommuSpace_HS_01204
+4,5,9,Fibroblast,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+4,5,11,Fibroblast,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,5,16,Fibroblast,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+4,5,17,Fibroblast,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+4,5,18,Fibroblast,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+4,5,22,Fibroblast,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+4,5,25,Fibroblast,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+4,5,29,Fibroblast,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+4,5,30,Fibroblast,Macrophage,PTN,SDC4,CommuSpace_HS_06461
+4,5,31,Fibroblast,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+4,5,32,Fibroblast,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+4,5,33,Fibroblast,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+4,5,35,Fibroblast,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+4,5,38,Fibroblast,Macrophage,SLAMF7,SLAMF7,CommuSpace_HS_06996
+4,6,0,Fibroblast,Mast cell,C1QA,CD93,CommuSpace_HS_00682
+4,6,4,Fibroblast,Mast cell,CD69,KLRB1,CommuSpace_HS_01204
+4,6,8,Fibroblast,Mast cell,CD9,KIT,CommuSpace_HS_01229
+4,6,9,Fibroblast,Mast cell,CDH1,CDH1,CommuSpace_HS_01239
+4,6,11,Fibroblast,Mast cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,6,16,Fibroblast,Mast cell,CXCL12,CD4,CommuSpace_HS_02207
+4,6,17,Fibroblast,Mast cell,CXCL12,CXCR4,CommuSpace_HS_02209
+4,6,22,Fibroblast,Mast cell,MMP2,PECAM1,CommuSpace_HS_05481
+4,6,25,Fibroblast,Mast cell,MRC1,PTPRC,CommuSpace_HS_05529
+4,6,29,Fibroblast,Mast cell,PECAM1,PECAM1,CommuSpace_HS_06139
+4,6,32,Fibroblast,Mast cell,PTPRC,CD4,CommuSpace_HS_06469
+4,6,33,Fibroblast,Mast cell,PTPRC,MRC1,CommuSpace_HS_06471
+4,6,35,Fibroblast,Mast cell,S100A4,ERBB2,CommuSpace_HS_06644
+4,7,1,Fibroblast,Myoepithelial,CCL5,SDC4,CommuSpace_HS_01054
+4,7,8,Fibroblast,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+4,7,9,Fibroblast,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+4,7,10,Fibroblast,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+4,7,11,Fibroblast,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,7,13,Fibroblast,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+4,7,16,Fibroblast,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+4,7,17,Fibroblast,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+4,7,18,Fibroblast,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+4,7,21,Fibroblast,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+4,7,25,Fibroblast,Myoepithelial,MRC1,PTPRC,CommuSpace_HS_05529
+4,7,30,Fibroblast,Myoepithelial,PTN,SDC4,CommuSpace_HS_06461
+4,7,32,Fibroblast,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+4,7,34,Fibroblast,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+4,7,35,Fibroblast,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+4,8,0,Fibroblast,Pericyte,C1QA,CD93,CommuSpace_HS_00682
+4,8,4,Fibroblast,Pericyte,CD69,KLRB1,CommuSpace_HS_01204
+4,8,10,Fibroblast,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+4,8,11,Fibroblast,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,8,13,Fibroblast,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+4,8,15,Fibroblast,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+4,8,16,Fibroblast,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+4,8,17,Fibroblast,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+4,8,21,Fibroblast,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+4,8,22,Fibroblast,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+4,8,25,Fibroblast,Pericyte,MRC1,PTPRC,CommuSpace_HS_05529
+4,8,29,Fibroblast,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+4,8,32,Fibroblast,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+4,8,34,Fibroblast,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+4,8,35,Fibroblast,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+4,9,4,Fibroblast,T cell,CD69,KLRB1,CommuSpace_HS_01204
+4,9,7,Fibroblast,T cell,CD86,CTLA4,CommuSpace_HS_01223
+4,9,11,Fibroblast,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,9,16,Fibroblast,T cell,CXCL12,CD4,CommuSpace_HS_02207
+4,9,17,Fibroblast,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+4,9,22,Fibroblast,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+4,9,25,Fibroblast,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+4,9,29,Fibroblast,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+4,9,31,Fibroblast,T cell,PTPRC,CD247,CommuSpace_HS_06468
+4,9,32,Fibroblast,T cell,PTPRC,CD4,CommuSpace_HS_06469
+4,9,35,Fibroblast,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+4,9,38,Fibroblast,T cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+4,9,39,Fibroblast,T cell,TYROBP,KLRD1,CommuSpace_HS_07640
+4,10,0,Fibroblast,Unknown,C1QA,CD93,CommuSpace_HS_00682
+4,10,4,Fibroblast,Unknown,CD69,KLRB1,CommuSpace_HS_01204
+4,10,7,Fibroblast,Unknown,CD86,CTLA4,CommuSpace_HS_01223
+4,10,9,Fibroblast,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+4,10,11,Fibroblast,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+4,10,16,Fibroblast,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+4,10,17,Fibroblast,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+4,10,22,Fibroblast,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+4,10,25,Fibroblast,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+4,10,29,Fibroblast,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+4,10,31,Fibroblast,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+4,10,32,Fibroblast,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+4,10,33,Fibroblast,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+4,10,35,Fibroblast,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+4,10,38,Fibroblast,Unknown,SLAMF7,SLAMF7,CommuSpace_HS_06996
+5,0,4,Macrophage,B cell,CD69,KLRB1,CommuSpace_HS_01204
+5,0,9,Macrophage,B cell,CDH1,CDH1,CommuSpace_HS_01239
+5,0,11,Macrophage,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,0,16,Macrophage,B cell,CXCL12,CD4,CommuSpace_HS_02207
+5,0,17,Macrophage,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+5,0,22,Macrophage,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+5,0,25,Macrophage,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+5,0,29,Macrophage,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+5,0,32,Macrophage,B cell,PTPRC,CD4,CommuSpace_HS_06469
+5,0,33,Macrophage,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+5,0,35,Macrophage,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+5,0,38,Macrophage,B cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+5,1,0,Macrophage,Dendritic,C1QA,CD93,CommuSpace_HS_00682
+5,1,4,Macrophage,Dendritic,CD69,KLRB1,CommuSpace_HS_01204
+5,1,9,Macrophage,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+5,1,11,Macrophage,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,1,16,Macrophage,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+5,1,17,Macrophage,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+5,1,22,Macrophage,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+5,1,25,Macrophage,Dendritic,MRC1,PTPRC,CommuSpace_HS_05529
+5,1,29,Macrophage,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+5,1,32,Macrophage,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+5,1,33,Macrophage,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+5,1,35,Macrophage,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+5,1,38,Macrophage,Dendritic,SLAMF7,SLAMF7,CommuSpace_HS_06996
+5,2,0,Macrophage,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+5,2,4,Macrophage,Endothelial,CD69,KLRB1,CommuSpace_HS_01204
+5,2,9,Macrophage,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+5,2,10,Macrophage,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+5,2,11,Macrophage,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,2,13,Macrophage,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+5,2,15,Macrophage,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+5,2,16,Macrophage,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+5,2,17,Macrophage,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+5,2,21,Macrophage,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+5,2,22,Macrophage,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+5,2,25,Macrophage,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+5,2,29,Macrophage,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+5,2,32,Macrophage,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+5,2,33,Macrophage,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+5,2,34,Macrophage,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+5,2,35,Macrophage,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+5,3,1,Macrophage,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+5,3,9,Macrophage,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+5,3,10,Macrophage,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+5,3,11,Macrophage,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,3,12,Macrophage,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+5,3,13,Macrophage,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+5,3,17,Macrophage,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+5,3,18,Macrophage,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+5,3,21,Macrophage,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+5,3,34,Macrophage,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+5,3,35,Macrophage,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+5,4,0,Macrophage,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+5,4,1,Macrophage,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+5,4,4,Macrophage,Fibroblast,CD69,KLRB1,CommuSpace_HS_01204
+5,4,7,Macrophage,Fibroblast,CD86,CTLA4,CommuSpace_HS_01223
+5,4,9,Macrophage,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+5,4,10,Macrophage,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+5,4,11,Macrophage,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,4,13,Macrophage,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+5,4,16,Macrophage,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+5,4,17,Macrophage,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+5,4,18,Macrophage,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+5,4,21,Macrophage,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+5,4,22,Macrophage,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+5,4,25,Macrophage,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+5,4,29,Macrophage,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+5,4,31,Macrophage,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+5,4,32,Macrophage,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+5,4,33,Macrophage,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+5,4,34,Macrophage,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+5,4,35,Macrophage,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+5,4,38,Macrophage,Fibroblast,SLAMF7,SLAMF7,CommuSpace_HS_06996
+5,5,0,Macrophage,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+5,5,1,Macrophage,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+5,5,4,Macrophage,Macrophage,CD69,KLRB1,CommuSpace_HS_01204
+5,5,9,Macrophage,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+5,5,11,Macrophage,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,5,16,Macrophage,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+5,5,17,Macrophage,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+5,5,18,Macrophage,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+5,5,22,Macrophage,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+5,5,25,Macrophage,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+5,5,29,Macrophage,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+5,5,31,Macrophage,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+5,5,32,Macrophage,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+5,5,33,Macrophage,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+5,5,35,Macrophage,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+5,5,38,Macrophage,Macrophage,SLAMF7,SLAMF7,CommuSpace_HS_06996
+5,6,0,Macrophage,Mast cell,C1QA,CD93,CommuSpace_HS_00682
+5,6,4,Macrophage,Mast cell,CD69,KLRB1,CommuSpace_HS_01204
+5,6,8,Macrophage,Mast cell,CD9,KIT,CommuSpace_HS_01229
+5,6,9,Macrophage,Mast cell,CDH1,CDH1,CommuSpace_HS_01239
+5,6,11,Macrophage,Mast cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,6,16,Macrophage,Mast cell,CXCL12,CD4,CommuSpace_HS_02207
+5,6,17,Macrophage,Mast cell,CXCL12,CXCR4,CommuSpace_HS_02209
+5,6,22,Macrophage,Mast cell,MMP2,PECAM1,CommuSpace_HS_05481
+5,6,25,Macrophage,Mast cell,MRC1,PTPRC,CommuSpace_HS_05529
+5,6,29,Macrophage,Mast cell,PECAM1,PECAM1,CommuSpace_HS_06139
+5,6,32,Macrophage,Mast cell,PTPRC,CD4,CommuSpace_HS_06469
+5,6,33,Macrophage,Mast cell,PTPRC,MRC1,CommuSpace_HS_06471
+5,6,35,Macrophage,Mast cell,S100A4,ERBB2,CommuSpace_HS_06644
+5,7,1,Macrophage,Myoepithelial,CCL5,SDC4,CommuSpace_HS_01054
+5,7,8,Macrophage,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+5,7,9,Macrophage,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+5,7,10,Macrophage,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+5,7,11,Macrophage,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,7,13,Macrophage,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+5,7,16,Macrophage,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+5,7,17,Macrophage,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+5,7,18,Macrophage,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+5,7,21,Macrophage,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+5,7,25,Macrophage,Myoepithelial,MRC1,PTPRC,CommuSpace_HS_05529
+5,7,32,Macrophage,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+5,7,34,Macrophage,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+5,7,35,Macrophage,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+5,8,0,Macrophage,Pericyte,C1QA,CD93,CommuSpace_HS_00682
+5,8,4,Macrophage,Pericyte,CD69,KLRB1,CommuSpace_HS_01204
+5,8,10,Macrophage,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+5,8,11,Macrophage,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,8,13,Macrophage,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+5,8,15,Macrophage,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+5,8,16,Macrophage,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+5,8,17,Macrophage,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+5,8,21,Macrophage,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+5,8,22,Macrophage,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+5,8,25,Macrophage,Pericyte,MRC1,PTPRC,CommuSpace_HS_05529
+5,8,29,Macrophage,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+5,8,32,Macrophage,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+5,8,34,Macrophage,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+5,8,35,Macrophage,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+5,9,4,Macrophage,T cell,CD69,KLRB1,CommuSpace_HS_01204
+5,9,7,Macrophage,T cell,CD86,CTLA4,CommuSpace_HS_01223
+5,9,11,Macrophage,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,9,16,Macrophage,T cell,CXCL12,CD4,CommuSpace_HS_02207
+5,9,17,Macrophage,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+5,9,22,Macrophage,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+5,9,25,Macrophage,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+5,9,29,Macrophage,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+5,9,31,Macrophage,T cell,PTPRC,CD247,CommuSpace_HS_06468
+5,9,32,Macrophage,T cell,PTPRC,CD4,CommuSpace_HS_06469
+5,9,35,Macrophage,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+5,9,38,Macrophage,T cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+5,9,39,Macrophage,T cell,TYROBP,KLRD1,CommuSpace_HS_07640
+5,10,0,Macrophage,Unknown,C1QA,CD93,CommuSpace_HS_00682
+5,10,4,Macrophage,Unknown,CD69,KLRB1,CommuSpace_HS_01204
+5,10,7,Macrophage,Unknown,CD86,CTLA4,CommuSpace_HS_01223
+5,10,9,Macrophage,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+5,10,11,Macrophage,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+5,10,16,Macrophage,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+5,10,17,Macrophage,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+5,10,22,Macrophage,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+5,10,25,Macrophage,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+5,10,29,Macrophage,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+5,10,31,Macrophage,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+5,10,32,Macrophage,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+5,10,33,Macrophage,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+5,10,35,Macrophage,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+5,10,38,Macrophage,Unknown,SLAMF7,SLAMF7,CommuSpace_HS_06996
+6,0,4,Mast cell,B cell,CD69,KLRB1,CommuSpace_HS_01204
+6,0,9,Mast cell,B cell,CDH1,CDH1,CommuSpace_HS_01239
+6,0,11,Mast cell,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+6,0,16,Mast cell,B cell,CXCL12,CD4,CommuSpace_HS_02207
+6,0,17,Mast cell,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+6,0,22,Mast cell,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+6,0,25,Mast cell,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+6,0,29,Mast cell,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+6,0,32,Mast cell,B cell,PTPRC,CD4,CommuSpace_HS_06469
+6,0,33,Mast cell,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+6,0,35,Mast cell,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+6,2,0,Mast cell,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+6,2,4,Mast cell,Endothelial,CD69,KLRB1,CommuSpace_HS_01204
+6,2,9,Mast cell,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+6,2,10,Mast cell,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+6,2,11,Mast cell,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+6,2,13,Mast cell,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+6,2,15,Mast cell,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+6,2,16,Mast cell,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+6,2,17,Mast cell,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+6,2,21,Mast cell,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+6,2,22,Mast cell,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+6,2,25,Mast cell,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+6,2,29,Mast cell,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+6,2,32,Mast cell,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+6,2,33,Mast cell,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+6,2,34,Mast cell,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+6,2,35,Mast cell,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+6,4,0,Mast cell,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+6,4,1,Mast cell,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+6,4,4,Mast cell,Fibroblast,CD69,KLRB1,CommuSpace_HS_01204
+6,4,7,Mast cell,Fibroblast,CD86,CTLA4,CommuSpace_HS_01223
+6,4,9,Mast cell,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+6,4,10,Mast cell,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+6,4,11,Mast cell,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+6,4,13,Mast cell,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+6,4,16,Mast cell,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+6,4,17,Mast cell,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+6,4,18,Mast cell,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+6,4,21,Mast cell,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+6,4,22,Mast cell,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+6,4,25,Mast cell,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+6,4,29,Mast cell,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+6,4,30,Mast cell,Fibroblast,PTN,SDC4,CommuSpace_HS_06461
+6,4,31,Mast cell,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+6,4,32,Mast cell,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+6,4,33,Mast cell,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+6,4,34,Mast cell,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+6,4,35,Mast cell,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+6,5,0,Mast cell,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+6,5,1,Mast cell,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+6,5,4,Mast cell,Macrophage,CD69,KLRB1,CommuSpace_HS_01204
+6,5,9,Mast cell,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+6,5,11,Mast cell,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+6,5,16,Mast cell,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+6,5,17,Mast cell,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+6,5,18,Mast cell,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+6,5,22,Mast cell,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+6,5,25,Mast cell,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+6,5,29,Mast cell,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+6,5,30,Mast cell,Macrophage,PTN,SDC4,CommuSpace_HS_06461
+6,5,31,Mast cell,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+6,5,32,Mast cell,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+6,5,33,Mast cell,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+6,5,35,Mast cell,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+6,9,4,Mast cell,T cell,CD69,KLRB1,CommuSpace_HS_01204
+6,9,7,Mast cell,T cell,CD86,CTLA4,CommuSpace_HS_01223
+6,9,11,Mast cell,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+6,9,16,Mast cell,T cell,CXCL12,CD4,CommuSpace_HS_02207
+6,9,17,Mast cell,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+6,9,22,Mast cell,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+6,9,25,Mast cell,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+6,9,29,Mast cell,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+6,9,31,Mast cell,T cell,PTPRC,CD247,CommuSpace_HS_06468
+6,9,32,Mast cell,T cell,PTPRC,CD4,CommuSpace_HS_06469
+6,9,35,Mast cell,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+6,9,39,Mast cell,T cell,TYROBP,KLRD1,CommuSpace_HS_07640
+6,10,0,Mast cell,Unknown,C1QA,CD93,CommuSpace_HS_00682
+6,10,4,Mast cell,Unknown,CD69,KLRB1,CommuSpace_HS_01204
+6,10,7,Mast cell,Unknown,CD86,CTLA4,CommuSpace_HS_01223
+6,10,9,Mast cell,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+6,10,11,Mast cell,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+6,10,16,Mast cell,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+6,10,17,Mast cell,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+6,10,22,Mast cell,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+6,10,25,Mast cell,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+6,10,29,Mast cell,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+6,10,31,Mast cell,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+6,10,32,Mast cell,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+6,10,33,Mast cell,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+6,10,35,Mast cell,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+7,0,9,Myoepithelial,B cell,CDH1,CDH1,CommuSpace_HS_01239
+7,0,11,Myoepithelial,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,0,16,Myoepithelial,B cell,CXCL12,CD4,CommuSpace_HS_02207
+7,0,17,Myoepithelial,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+7,0,22,Myoepithelial,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+7,0,32,Myoepithelial,B cell,PTPRC,CD4,CommuSpace_HS_06469
+7,0,33,Myoepithelial,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+7,0,35,Myoepithelial,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+7,2,9,Myoepithelial,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+7,2,10,Myoepithelial,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+7,2,11,Myoepithelial,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,2,13,Myoepithelial,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+7,2,15,Myoepithelial,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+7,2,16,Myoepithelial,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+7,2,17,Myoepithelial,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+7,2,21,Myoepithelial,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+7,2,22,Myoepithelial,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+7,2,32,Myoepithelial,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+7,2,33,Myoepithelial,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+7,2,34,Myoepithelial,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+7,2,35,Myoepithelial,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+7,3,9,Myoepithelial,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+7,3,10,Myoepithelial,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+7,3,11,Myoepithelial,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,3,12,Myoepithelial,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+7,3,13,Myoepithelial,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+7,3,17,Myoepithelial,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+7,3,18,Myoepithelial,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+7,3,21,Myoepithelial,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+7,3,30,Myoepithelial,Epithelial,PTN,SDC4,CommuSpace_HS_06461
+7,3,34,Myoepithelial,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+7,3,35,Myoepithelial,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+7,4,9,Myoepithelial,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+7,4,10,Myoepithelial,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+7,4,11,Myoepithelial,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,4,13,Myoepithelial,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+7,4,16,Myoepithelial,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+7,4,17,Myoepithelial,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+7,4,18,Myoepithelial,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+7,4,21,Myoepithelial,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+7,4,22,Myoepithelial,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+7,4,30,Myoepithelial,Fibroblast,PTN,SDC4,CommuSpace_HS_06461
+7,4,31,Myoepithelial,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+7,4,32,Myoepithelial,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+7,4,33,Myoepithelial,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+7,4,34,Myoepithelial,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+7,4,35,Myoepithelial,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+7,5,9,Myoepithelial,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+7,5,11,Myoepithelial,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,5,16,Myoepithelial,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+7,5,17,Myoepithelial,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+7,5,18,Myoepithelial,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+7,5,22,Myoepithelial,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+7,5,30,Myoepithelial,Macrophage,PTN,SDC4,CommuSpace_HS_06461
+7,5,31,Myoepithelial,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+7,5,32,Myoepithelial,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+7,5,33,Myoepithelial,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+7,5,35,Myoepithelial,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+7,7,8,Myoepithelial,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+7,7,9,Myoepithelial,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+7,7,10,Myoepithelial,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+7,7,11,Myoepithelial,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,7,13,Myoepithelial,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+7,7,16,Myoepithelial,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+7,7,17,Myoepithelial,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+7,7,18,Myoepithelial,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+7,7,21,Myoepithelial,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+7,7,30,Myoepithelial,Myoepithelial,PTN,SDC4,CommuSpace_HS_06461
+7,7,32,Myoepithelial,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+7,7,34,Myoepithelial,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+7,7,35,Myoepithelial,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+7,8,10,Myoepithelial,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+7,8,11,Myoepithelial,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,8,13,Myoepithelial,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+7,8,15,Myoepithelial,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+7,8,16,Myoepithelial,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+7,8,17,Myoepithelial,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+7,8,21,Myoepithelial,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+7,8,22,Myoepithelial,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+7,8,32,Myoepithelial,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+7,8,34,Myoepithelial,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+7,8,35,Myoepithelial,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+7,9,11,Myoepithelial,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,9,16,Myoepithelial,T cell,CXCL12,CD4,CommuSpace_HS_02207
+7,9,17,Myoepithelial,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+7,9,22,Myoepithelial,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+7,9,31,Myoepithelial,T cell,PTPRC,CD247,CommuSpace_HS_06468
+7,9,32,Myoepithelial,T cell,PTPRC,CD4,CommuSpace_HS_06469
+7,9,35,Myoepithelial,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+7,10,9,Myoepithelial,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+7,10,11,Myoepithelial,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+7,10,16,Myoepithelial,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+7,10,17,Myoepithelial,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+7,10,22,Myoepithelial,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+7,10,31,Myoepithelial,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+7,10,32,Myoepithelial,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+7,10,33,Myoepithelial,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+7,10,35,Myoepithelial,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+8,0,11,Pericyte,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,0,16,Pericyte,B cell,CXCL12,CD4,CommuSpace_HS_02207
+8,0,17,Pericyte,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+8,0,22,Pericyte,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+8,0,29,Pericyte,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+8,0,32,Pericyte,B cell,PTPRC,CD4,CommuSpace_HS_06469
+8,0,33,Pericyte,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+8,0,35,Pericyte,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+8,1,11,Pericyte,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,1,16,Pericyte,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+8,1,17,Pericyte,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+8,1,22,Pericyte,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+8,1,23,Pericyte,Dendritic,MMRN2,CD93,CommuSpace_HS_05501
+8,1,29,Pericyte,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+8,1,32,Pericyte,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+8,1,33,Pericyte,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+8,1,35,Pericyte,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+8,2,11,Pericyte,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,2,13,Pericyte,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+8,2,15,Pericyte,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+8,2,16,Pericyte,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+8,2,17,Pericyte,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+8,2,21,Pericyte,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+8,2,22,Pericyte,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+8,2,23,Pericyte,Endothelial,MMRN2,CD93,CommuSpace_HS_05501
+8,2,24,Pericyte,Endothelial,MMRN2,CLEC14A,CommuSpace_HS_05502
+8,2,29,Pericyte,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+8,2,32,Pericyte,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+8,2,33,Pericyte,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+8,2,34,Pericyte,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+8,2,35,Pericyte,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+8,3,11,Pericyte,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,3,12,Pericyte,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+8,3,13,Pericyte,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+8,3,17,Pericyte,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+8,3,18,Pericyte,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+8,3,21,Pericyte,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+8,3,30,Pericyte,Epithelial,PTN,SDC4,CommuSpace_HS_06461
+8,3,34,Pericyte,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+8,3,35,Pericyte,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+8,4,11,Pericyte,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,4,13,Pericyte,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+8,4,16,Pericyte,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+8,4,17,Pericyte,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+8,4,18,Pericyte,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+8,4,21,Pericyte,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+8,4,22,Pericyte,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+8,4,23,Pericyte,Fibroblast,MMRN2,CD93,CommuSpace_HS_05501
+8,4,29,Pericyte,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+8,4,30,Pericyte,Fibroblast,PTN,SDC4,CommuSpace_HS_06461
+8,4,31,Pericyte,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+8,4,32,Pericyte,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+8,4,33,Pericyte,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+8,4,34,Pericyte,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+8,4,35,Pericyte,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+8,5,11,Pericyte,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,5,16,Pericyte,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+8,5,17,Pericyte,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+8,5,18,Pericyte,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+8,5,22,Pericyte,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+8,5,23,Pericyte,Macrophage,MMRN2,CD93,CommuSpace_HS_05501
+8,5,29,Pericyte,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+8,5,30,Pericyte,Macrophage,PTN,SDC4,CommuSpace_HS_06461
+8,5,31,Pericyte,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+8,5,32,Pericyte,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+8,5,33,Pericyte,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+8,5,35,Pericyte,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+8,7,8,Pericyte,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+8,7,11,Pericyte,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,7,13,Pericyte,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+8,7,16,Pericyte,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+8,7,17,Pericyte,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+8,7,18,Pericyte,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+8,7,21,Pericyte,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+8,7,30,Pericyte,Myoepithelial,PTN,SDC4,CommuSpace_HS_06461
+8,7,32,Pericyte,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+8,7,34,Pericyte,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+8,7,35,Pericyte,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+8,8,11,Pericyte,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,8,13,Pericyte,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+8,8,15,Pericyte,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+8,8,16,Pericyte,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+8,8,17,Pericyte,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+8,8,21,Pericyte,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+8,8,22,Pericyte,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+8,8,23,Pericyte,Pericyte,MMRN2,CD93,CommuSpace_HS_05501
+8,8,24,Pericyte,Pericyte,MMRN2,CLEC14A,CommuSpace_HS_05502
+8,8,29,Pericyte,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+8,8,32,Pericyte,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+8,8,34,Pericyte,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+8,8,35,Pericyte,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+8,9,11,Pericyte,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,9,16,Pericyte,T cell,CXCL12,CD4,CommuSpace_HS_02207
+8,9,17,Pericyte,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+8,9,22,Pericyte,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+8,9,29,Pericyte,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+8,9,31,Pericyte,T cell,PTPRC,CD247,CommuSpace_HS_06468
+8,9,32,Pericyte,T cell,PTPRC,CD4,CommuSpace_HS_06469
+8,9,35,Pericyte,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+8,10,11,Pericyte,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+8,10,16,Pericyte,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+8,10,17,Pericyte,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+8,10,22,Pericyte,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+8,10,23,Pericyte,Unknown,MMRN2,CD93,CommuSpace_HS_05501
+8,10,29,Pericyte,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+8,10,31,Pericyte,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+8,10,32,Pericyte,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+8,10,33,Pericyte,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+8,10,35,Pericyte,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+9,0,4,T cell,B cell,CD69,KLRB1,CommuSpace_HS_01204
+9,0,11,T cell,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,0,16,T cell,B cell,CXCL12,CD4,CommuSpace_HS_02207
+9,0,17,T cell,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+9,0,22,T cell,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+9,0,29,T cell,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+9,0,32,T cell,B cell,PTPRC,CD4,CommuSpace_HS_06469
+9,0,33,T cell,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+9,0,35,T cell,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+9,0,38,T cell,B cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+9,1,4,T cell,Dendritic,CD69,KLRB1,CommuSpace_HS_01204
+9,1,11,T cell,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,1,16,T cell,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+9,1,17,T cell,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+9,1,22,T cell,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+9,1,29,T cell,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+9,1,32,T cell,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+9,1,33,T cell,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+9,1,35,T cell,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+9,1,38,T cell,Dendritic,SLAMF7,SLAMF7,CommuSpace_HS_06996
+9,2,4,T cell,Endothelial,CD69,KLRB1,CommuSpace_HS_01204
+9,2,11,T cell,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,2,13,T cell,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+9,2,15,T cell,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+9,2,16,T cell,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+9,2,17,T cell,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+9,2,21,T cell,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+9,2,22,T cell,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+9,2,29,T cell,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+9,2,32,T cell,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+9,2,33,T cell,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+9,2,34,T cell,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+9,2,35,T cell,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+9,3,1,T cell,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+9,3,11,T cell,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,3,12,T cell,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+9,3,13,T cell,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+9,3,17,T cell,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+9,3,18,T cell,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+9,3,21,T cell,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+9,3,34,T cell,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+9,3,35,T cell,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+9,4,1,T cell,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+9,4,4,T cell,Fibroblast,CD69,KLRB1,CommuSpace_HS_01204
+9,4,11,T cell,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,4,13,T cell,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+9,4,16,T cell,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+9,4,17,T cell,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+9,4,18,T cell,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+9,4,21,T cell,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+9,4,22,T cell,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+9,4,29,T cell,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+9,4,31,T cell,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+9,4,32,T cell,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+9,4,33,T cell,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+9,4,34,T cell,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+9,4,35,T cell,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+9,4,38,T cell,Fibroblast,SLAMF7,SLAMF7,CommuSpace_HS_06996
+9,5,1,T cell,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+9,5,4,T cell,Macrophage,CD69,KLRB1,CommuSpace_HS_01204
+9,5,11,T cell,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,5,16,T cell,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+9,5,17,T cell,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+9,5,18,T cell,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+9,5,22,T cell,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+9,5,29,T cell,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+9,5,31,T cell,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+9,5,32,T cell,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+9,5,33,T cell,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+9,5,35,T cell,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+9,5,38,T cell,Macrophage,SLAMF7,SLAMF7,CommuSpace_HS_06996
+9,6,4,T cell,Mast cell,CD69,KLRB1,CommuSpace_HS_01204
+9,6,11,T cell,Mast cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,6,16,T cell,Mast cell,CXCL12,CD4,CommuSpace_HS_02207
+9,6,17,T cell,Mast cell,CXCL12,CXCR4,CommuSpace_HS_02209
+9,6,22,T cell,Mast cell,MMP2,PECAM1,CommuSpace_HS_05481
+9,6,29,T cell,Mast cell,PECAM1,PECAM1,CommuSpace_HS_06139
+9,6,32,T cell,Mast cell,PTPRC,CD4,CommuSpace_HS_06469
+9,6,33,T cell,Mast cell,PTPRC,MRC1,CommuSpace_HS_06471
+9,6,35,T cell,Mast cell,S100A4,ERBB2,CommuSpace_HS_06644
+9,7,1,T cell,Myoepithelial,CCL5,SDC4,CommuSpace_HS_01054
+9,7,11,T cell,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,7,13,T cell,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+9,7,16,T cell,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+9,7,17,T cell,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+9,7,18,T cell,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+9,7,21,T cell,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+9,7,32,T cell,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+9,7,34,T cell,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+9,7,35,T cell,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+9,8,4,T cell,Pericyte,CD69,KLRB1,CommuSpace_HS_01204
+9,8,11,T cell,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,8,13,T cell,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+9,8,15,T cell,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+9,8,16,T cell,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+9,8,17,T cell,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+9,8,21,T cell,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+9,8,22,T cell,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+9,8,29,T cell,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+9,8,32,T cell,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+9,8,34,T cell,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+9,8,35,T cell,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+9,9,4,T cell,T cell,CD69,KLRB1,CommuSpace_HS_01204
+9,9,11,T cell,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,9,16,T cell,T cell,CXCL12,CD4,CommuSpace_HS_02207
+9,9,17,T cell,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+9,9,22,T cell,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+9,9,29,T cell,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+9,9,31,T cell,T cell,PTPRC,CD247,CommuSpace_HS_06468
+9,9,32,T cell,T cell,PTPRC,CD4,CommuSpace_HS_06469
+9,9,35,T cell,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+9,9,38,T cell,T cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+9,10,4,T cell,Unknown,CD69,KLRB1,CommuSpace_HS_01204
+9,10,11,T cell,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+9,10,16,T cell,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+9,10,17,T cell,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+9,10,22,T cell,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+9,10,29,T cell,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+9,10,31,T cell,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+9,10,32,T cell,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+9,10,33,T cell,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+9,10,35,T cell,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+9,10,38,T cell,Unknown,SLAMF7,SLAMF7,CommuSpace_HS_06996
+10,0,4,Unknown,B cell,CD69,KLRB1,CommuSpace_HS_01204
+10,0,9,Unknown,B cell,CDH1,CDH1,CommuSpace_HS_01239
+10,0,11,Unknown,B cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,0,16,Unknown,B cell,CXCL12,CD4,CommuSpace_HS_02207
+10,0,17,Unknown,B cell,CXCL12,CXCR4,CommuSpace_HS_02209
+10,0,22,Unknown,B cell,MMP2,PECAM1,CommuSpace_HS_05481
+10,0,25,Unknown,B cell,MRC1,PTPRC,CommuSpace_HS_05529
+10,0,29,Unknown,B cell,PECAM1,PECAM1,CommuSpace_HS_06139
+10,0,32,Unknown,B cell,PTPRC,CD4,CommuSpace_HS_06469
+10,0,33,Unknown,B cell,PTPRC,MRC1,CommuSpace_HS_06471
+10,0,35,Unknown,B cell,S100A4,ERBB2,CommuSpace_HS_06644
+10,0,38,Unknown,B cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+10,1,0,Unknown,Dendritic,C1QA,CD93,CommuSpace_HS_00682
+10,1,4,Unknown,Dendritic,CD69,KLRB1,CommuSpace_HS_01204
+10,1,9,Unknown,Dendritic,CDH1,CDH1,CommuSpace_HS_01239
+10,1,11,Unknown,Dendritic,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,1,16,Unknown,Dendritic,CXCL12,CD4,CommuSpace_HS_02207
+10,1,17,Unknown,Dendritic,CXCL12,CXCR4,CommuSpace_HS_02209
+10,1,22,Unknown,Dendritic,MMP2,PECAM1,CommuSpace_HS_05481
+10,1,25,Unknown,Dendritic,MRC1,PTPRC,CommuSpace_HS_05529
+10,1,29,Unknown,Dendritic,PECAM1,PECAM1,CommuSpace_HS_06139
+10,1,32,Unknown,Dendritic,PTPRC,CD4,CommuSpace_HS_06469
+10,1,33,Unknown,Dendritic,PTPRC,MRC1,CommuSpace_HS_06471
+10,1,35,Unknown,Dendritic,S100A4,ERBB2,CommuSpace_HS_06644
+10,1,38,Unknown,Dendritic,SLAMF7,SLAMF7,CommuSpace_HS_06996
+10,2,0,Unknown,Endothelial,C1QA,CD93,CommuSpace_HS_00682
+10,2,4,Unknown,Endothelial,CD69,KLRB1,CommuSpace_HS_01204
+10,2,9,Unknown,Endothelial,CDH1,CDH1,CommuSpace_HS_01239
+10,2,10,Unknown,Endothelial,CDH1,EGFR,CommuSpace_HS_01241
+10,2,11,Unknown,Endothelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,2,13,Unknown,Endothelial,CEACAM6,EGFR,CommuSpace_HS_01294
+10,2,15,Unknown,Endothelial,CXCL12,AVPR1A,CommuSpace_HS_02205
+10,2,16,Unknown,Endothelial,CXCL12,CD4,CommuSpace_HS_02207
+10,2,17,Unknown,Endothelial,CXCL12,CXCR4,CommuSpace_HS_02209
+10,2,21,Unknown,Endothelial,MMP2,EGFR,CommuSpace_HS_05474
+10,2,22,Unknown,Endothelial,MMP2,PECAM1,CommuSpace_HS_05481
+10,2,25,Unknown,Endothelial,MRC1,PTPRC,CommuSpace_HS_05529
+10,2,29,Unknown,Endothelial,PECAM1,PECAM1,CommuSpace_HS_06139
+10,2,32,Unknown,Endothelial,PTPRC,CD4,CommuSpace_HS_06469
+10,2,33,Unknown,Endothelial,PTPRC,MRC1,CommuSpace_HS_06471
+10,2,34,Unknown,Endothelial,S100A4,EGFR,CommuSpace_HS_06643
+10,2,35,Unknown,Endothelial,S100A4,ERBB2,CommuSpace_HS_06644
+10,3,1,Unknown,Epithelial,CCL5,SDC4,CommuSpace_HS_01054
+10,3,9,Unknown,Epithelial,CDH1,CDH1,CommuSpace_HS_01239
+10,3,10,Unknown,Epithelial,CDH1,EGFR,CommuSpace_HS_01241
+10,3,11,Unknown,Epithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,3,12,Unknown,Epithelial,CEACAM6,CEACAM8,CommuSpace_HS_01293
+10,3,13,Unknown,Epithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+10,3,17,Unknown,Epithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+10,3,18,Unknown,Epithelial,CXCL12,SDC4,CommuSpace_HS_02218
+10,3,21,Unknown,Epithelial,MMP2,EGFR,CommuSpace_HS_05474
+10,3,34,Unknown,Epithelial,S100A4,EGFR,CommuSpace_HS_06643
+10,3,35,Unknown,Epithelial,S100A4,ERBB2,CommuSpace_HS_06644
+10,4,0,Unknown,Fibroblast,C1QA,CD93,CommuSpace_HS_00682
+10,4,1,Unknown,Fibroblast,CCL5,SDC4,CommuSpace_HS_01054
+10,4,4,Unknown,Fibroblast,CD69,KLRB1,CommuSpace_HS_01204
+10,4,9,Unknown,Fibroblast,CDH1,CDH1,CommuSpace_HS_01239
+10,4,10,Unknown,Fibroblast,CDH1,EGFR,CommuSpace_HS_01241
+10,4,11,Unknown,Fibroblast,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,4,13,Unknown,Fibroblast,CEACAM6,EGFR,CommuSpace_HS_01294
+10,4,16,Unknown,Fibroblast,CXCL12,CD4,CommuSpace_HS_02207
+10,4,17,Unknown,Fibroblast,CXCL12,CXCR4,CommuSpace_HS_02209
+10,4,18,Unknown,Fibroblast,CXCL12,SDC4,CommuSpace_HS_02218
+10,4,21,Unknown,Fibroblast,MMP2,EGFR,CommuSpace_HS_05474
+10,4,22,Unknown,Fibroblast,MMP2,PECAM1,CommuSpace_HS_05481
+10,4,25,Unknown,Fibroblast,MRC1,PTPRC,CommuSpace_HS_05529
+10,4,29,Unknown,Fibroblast,PECAM1,PECAM1,CommuSpace_HS_06139
+10,4,31,Unknown,Fibroblast,PTPRC,CD247,CommuSpace_HS_06468
+10,4,32,Unknown,Fibroblast,PTPRC,CD4,CommuSpace_HS_06469
+10,4,33,Unknown,Fibroblast,PTPRC,MRC1,CommuSpace_HS_06471
+10,4,34,Unknown,Fibroblast,S100A4,EGFR,CommuSpace_HS_06643
+10,4,35,Unknown,Fibroblast,S100A4,ERBB2,CommuSpace_HS_06644
+10,4,38,Unknown,Fibroblast,SLAMF7,SLAMF7,CommuSpace_HS_06996
+10,5,0,Unknown,Macrophage,C1QA,CD93,CommuSpace_HS_00682
+10,5,1,Unknown,Macrophage,CCL5,SDC4,CommuSpace_HS_01054
+10,5,4,Unknown,Macrophage,CD69,KLRB1,CommuSpace_HS_01204
+10,5,9,Unknown,Macrophage,CDH1,CDH1,CommuSpace_HS_01239
+10,5,11,Unknown,Macrophage,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,5,16,Unknown,Macrophage,CXCL12,CD4,CommuSpace_HS_02207
+10,5,17,Unknown,Macrophage,CXCL12,CXCR4,CommuSpace_HS_02209
+10,5,18,Unknown,Macrophage,CXCL12,SDC4,CommuSpace_HS_02218
+10,5,22,Unknown,Macrophage,MMP2,PECAM1,CommuSpace_HS_05481
+10,5,25,Unknown,Macrophage,MRC1,PTPRC,CommuSpace_HS_05529
+10,5,29,Unknown,Macrophage,PECAM1,PECAM1,CommuSpace_HS_06139
+10,5,31,Unknown,Macrophage,PTPRC,CD247,CommuSpace_HS_06468
+10,5,32,Unknown,Macrophage,PTPRC,CD4,CommuSpace_HS_06469
+10,5,33,Unknown,Macrophage,PTPRC,MRC1,CommuSpace_HS_06471
+10,5,35,Unknown,Macrophage,S100A4,ERBB2,CommuSpace_HS_06644
+10,5,38,Unknown,Macrophage,SLAMF7,SLAMF7,CommuSpace_HS_06996
+10,6,0,Unknown,Mast cell,C1QA,CD93,CommuSpace_HS_00682
+10,6,4,Unknown,Mast cell,CD69,KLRB1,CommuSpace_HS_01204
+10,6,8,Unknown,Mast cell,CD9,KIT,CommuSpace_HS_01229
+10,6,9,Unknown,Mast cell,CDH1,CDH1,CommuSpace_HS_01239
+10,6,11,Unknown,Mast cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,6,16,Unknown,Mast cell,CXCL12,CD4,CommuSpace_HS_02207
+10,6,17,Unknown,Mast cell,CXCL12,CXCR4,CommuSpace_HS_02209
+10,6,22,Unknown,Mast cell,MMP2,PECAM1,CommuSpace_HS_05481
+10,6,25,Unknown,Mast cell,MRC1,PTPRC,CommuSpace_HS_05529
+10,6,29,Unknown,Mast cell,PECAM1,PECAM1,CommuSpace_HS_06139
+10,6,32,Unknown,Mast cell,PTPRC,CD4,CommuSpace_HS_06469
+10,6,33,Unknown,Mast cell,PTPRC,MRC1,CommuSpace_HS_06471
+10,6,35,Unknown,Mast cell,S100A4,ERBB2,CommuSpace_HS_06644
+10,7,1,Unknown,Myoepithelial,CCL5,SDC4,CommuSpace_HS_01054
+10,7,8,Unknown,Myoepithelial,CD9,KIT,CommuSpace_HS_01229
+10,7,9,Unknown,Myoepithelial,CDH1,CDH1,CommuSpace_HS_01239
+10,7,10,Unknown,Myoepithelial,CDH1,EGFR,CommuSpace_HS_01241
+10,7,11,Unknown,Myoepithelial,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,7,13,Unknown,Myoepithelial,CEACAM6,EGFR,CommuSpace_HS_01294
+10,7,16,Unknown,Myoepithelial,CXCL12,CD4,CommuSpace_HS_02207
+10,7,17,Unknown,Myoepithelial,CXCL12,CXCR4,CommuSpace_HS_02209
+10,7,18,Unknown,Myoepithelial,CXCL12,SDC4,CommuSpace_HS_02218
+10,7,21,Unknown,Myoepithelial,MMP2,EGFR,CommuSpace_HS_05474
+10,7,25,Unknown,Myoepithelial,MRC1,PTPRC,CommuSpace_HS_05529
+10,7,32,Unknown,Myoepithelial,PTPRC,CD4,CommuSpace_HS_06469
+10,7,34,Unknown,Myoepithelial,S100A4,EGFR,CommuSpace_HS_06643
+10,7,35,Unknown,Myoepithelial,S100A4,ERBB2,CommuSpace_HS_06644
+10,8,0,Unknown,Pericyte,C1QA,CD93,CommuSpace_HS_00682
+10,8,4,Unknown,Pericyte,CD69,KLRB1,CommuSpace_HS_01204
+10,8,10,Unknown,Pericyte,CDH1,EGFR,CommuSpace_HS_01241
+10,8,11,Unknown,Pericyte,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,8,13,Unknown,Pericyte,CEACAM6,EGFR,CommuSpace_HS_01294
+10,8,15,Unknown,Pericyte,CXCL12,AVPR1A,CommuSpace_HS_02205
+10,8,16,Unknown,Pericyte,CXCL12,CD4,CommuSpace_HS_02207
+10,8,17,Unknown,Pericyte,CXCL12,CXCR4,CommuSpace_HS_02209
+10,8,21,Unknown,Pericyte,MMP2,EGFR,CommuSpace_HS_05474
+10,8,22,Unknown,Pericyte,MMP2,PECAM1,CommuSpace_HS_05481
+10,8,25,Unknown,Pericyte,MRC1,PTPRC,CommuSpace_HS_05529
+10,8,29,Unknown,Pericyte,PECAM1,PECAM1,CommuSpace_HS_06139
+10,8,32,Unknown,Pericyte,PTPRC,CD4,CommuSpace_HS_06469
+10,8,34,Unknown,Pericyte,S100A4,EGFR,CommuSpace_HS_06643
+10,8,35,Unknown,Pericyte,S100A4,ERBB2,CommuSpace_HS_06644
+10,9,4,Unknown,T cell,CD69,KLRB1,CommuSpace_HS_01204
+10,9,11,Unknown,T cell,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,9,16,Unknown,T cell,CXCL12,CD4,CommuSpace_HS_02207
+10,9,17,Unknown,T cell,CXCL12,CXCR4,CommuSpace_HS_02209
+10,9,22,Unknown,T cell,MMP2,PECAM1,CommuSpace_HS_05481
+10,9,25,Unknown,T cell,MRC1,PTPRC,CommuSpace_HS_05529
+10,9,29,Unknown,T cell,PECAM1,PECAM1,CommuSpace_HS_06139
+10,9,31,Unknown,T cell,PTPRC,CD247,CommuSpace_HS_06468
+10,9,32,Unknown,T cell,PTPRC,CD4,CommuSpace_HS_06469
+10,9,35,Unknown,T cell,S100A4,ERBB2,CommuSpace_HS_06644
+10,9,38,Unknown,T cell,SLAMF7,SLAMF7,CommuSpace_HS_06996
+10,10,0,Unknown,Unknown,C1QA,CD93,CommuSpace_HS_00682
+10,10,4,Unknown,Unknown,CD69,KLRB1,CommuSpace_HS_01204
+10,10,9,Unknown,Unknown,CDH1,CDH1,CommuSpace_HS_01239
+10,10,11,Unknown,Unknown,CEACAM6,CEACAM6,CommuSpace_HS_01291
+10,10,16,Unknown,Unknown,CXCL12,CD4,CommuSpace_HS_02207
+10,10,17,Unknown,Unknown,CXCL12,CXCR4,CommuSpace_HS_02209
+10,10,22,Unknown,Unknown,MMP2,PECAM1,CommuSpace_HS_05481
+10,10,25,Unknown,Unknown,MRC1,PTPRC,CommuSpace_HS_05529
+10,10,29,Unknown,Unknown,PECAM1,PECAM1,CommuSpace_HS_06139
+10,10,31,Unknown,Unknown,PTPRC,CD247,CommuSpace_HS_06468
+10,10,32,Unknown,Unknown,PTPRC,CD4,CommuSpace_HS_06469
+10,10,33,Unknown,Unknown,PTPRC,MRC1,CommuSpace_HS_06471
+10,10,35,Unknown,Unknown,S100A4,ERBB2,CommuSpace_HS_06644
+10,10,38,Unknown,Unknown,SLAMF7,SLAMF7,CommuSpace_HS_06996
