@@ -1,0 +1,115 @@
+from dataclasses import replace
+from pathlib import Path
+import json
+
+import numpy as np
+import pandas as pd
+import torch
+
+from phenoniche.v1006.config import ExperimentConfig
+from phenoniche.v1006.data import PreparedInput, prepare_input
+from phenoniche.v1006.interpretation import empirical_profiles, export_results
+from phenoniche.v1006.losses import consistency_loss, dec_target, minimum_usage_loss
+from phenoniche.v1006.model import PrototypeHead, RepresentationAutoencoder
+from phenoniche.v1006.pipeline import REQUIRED, results_complete
+from phenoniche.v1006.training import load_stage1_checkpoint, load_stage2_checkpoint, train_all
+
+
+def fake_source(tmp_path, x):
+    cache = tmp_path / "source/cache"; cache.mkdir(parents=True)
+    np.save(cache / "ccc.npy", x.astype(np.float32))
+    pd.DataFrame({"feature_id": range(x.shape[1]), "sender": "A", "receiver": "B",
+                  "ligand": [f"L{i}" for i in range(x.shape[1])],
+                  "receptor": [f"R{i}" for i in range(x.shape[1])],
+                  "ccc": [f"A → B | L{i}–R{i}" for i in range(x.shape[1])] }).to_csv(cache / "features.csv", index=False)
+    pd.DataFrame({"cell_id": [f"c{i}" for i in range(len(x))], "cell_type": "T"}).to_csv(cache / "cells.csv.gz", index=False)
+    np.save(cache / "coordinates.npy", np.arange(len(x) * 2).reshape(len(x), 2).astype(np.float32))
+    (cache / "input_manifest.json").write_text("{}")
+    return cache.parent
+
+
+def config_for(tmp_path, source, **kwargs):
+    return replace(ExperimentConfig(), v1003_output=str(source), output_dir=str(tmp_path / "out"), device="cpu", **kwargs)
+
+
+def test_filtering_scaling_and_removed_feature(tmp_path):
+    rng = np.random.default_rng(1); x = rng.gamma(1, 1, (100, 12)).astype(np.float32)
+    x[:, 0] = 0; x[:, 1] = 3
+    source = fake_source(tmp_path, x); cfg = config_for(tmp_path, source)
+    prepared = prepare_input(cfg)
+    assert 0 not in prepared.retained_indices and 1 not in prepared.retained_indices
+    assert len(prepared.retained_indices) == 10
+    assert np.all(prepared.scale > 0)
+    audit = pd.read_csv(Path(cfg.output_dir) / "feature_filter_audit.csv")
+    assert audit.retained.sum() == 10
+
+
+def test_model_nonnegative_shapes_and_prototype_assignments():
+    x = torch.rand(7, 13); model = RepresentationAutoencoder(13)
+    z, reconstruction = model(x); head = PrototypeHead(8, 32)
+    q = head(z)
+    assert z.shape == (7, 32) and reconstruction.shape == x.shape
+    assert torch.all(z >= 0) and torch.all(reconstruction >= 0)
+    assert q.shape == (7, 8) and torch.all(q >= 0) and torch.allclose(q.sum(1), torch.ones(7), atol=1e-6)
+    assert torch.allclose(torch.linalg.vector_norm(head.normalized_prototypes, dim=1), torch.ones(8), atol=1e-6)
+
+
+def test_prototype_losses():
+    q = torch.softmax(torch.randn(16, 8), dim=1)
+    assert torch.allclose(dec_target(q).sum(1), torch.ones(16), atol=1e-6)
+    assert consistency_loss(q, q).item() == 0
+    assert minimum_usage_loss(torch.full((16, 8), 1 / 8), .02).item() == 0
+
+
+def test_empirical_profiles_are_soft_weighted(tmp_path):
+    x = np.asarray([[1, 0], [3, 2], [0, 4]], dtype=np.float32); path = tmp_path / "x.npy"; np.save(path, x)
+    q = np.asarray([[1, 0], [1, 0], [0, 1]], dtype=np.float32)
+    prepared = PreparedInput(path, x.shape, np.arange(2), np.ones(2), np.arange(2), np.array([2]),
+                             pd.DataFrame(index=range(2)), pd.DataFrame(index=range(3)), np.zeros((3,2)), tmp_path)
+    mean, presentation, enrichment, usage = empirical_profiles(prepared, q)
+    assert np.allclose(mean, [[2, 1], [0, 4]]) and np.allclose(usage, [2, 1])
+    assert np.allclose(presentation.sum(1), 1)
+
+
+def test_checkpoint_loading(tmp_path):
+    model = RepresentationAutoencoder(12); head = PrototypeHead(8, 32)
+    p1 = tmp_path / "s1.pt"; p2 = tmp_path / "s2.pt"
+    torch.save({"features": 12, "model_state": model.state_dict()}, p1)
+    torch.save({"features": 12, "model_state": model.state_dict(), "prototype_state": head.state_dict()}, p2)
+    load_stage1_checkpoint(p1, RepresentationAutoencoder(12))
+    load_stage2_checkpoint(p2, RepresentationAutoencoder(12), PrototypeHead(8, 32))
+
+
+def test_result_cache_detection(tmp_path):
+    cfg = replace(ExperimentConfig(), output_dir=str(tmp_path))
+    for name in REQUIRED: (tmp_path / name).write_bytes(b"x")
+    (tmp_path / "summary.json").write_text(json.dumps({"revision": cfg.revision}))
+    assert results_complete(cfg)
+    (tmp_path / "H8.npy").unlink(); assert not results_complete(cfg)
+
+
+def test_tiny_end_to_end_smoke(tmp_path):
+    rng = np.random.default_rng(4); x = rng.gamma(1, .2, (64, 12)).astype(np.float32)
+    matrix = tmp_path / "x.npy"; np.save(matrix, x)
+    features = pd.DataFrame({"sender": "A", "receiver": "B", "ligand": [f"L{i}" for i in range(12)],
+                             "receptor": [f"R{i}" for i in range(12)], "ccc": [f"c{i}" for i in range(12)]})
+    prepared = PreparedInput(matrix, x.shape, np.arange(12), np.ones(12, np.float32), np.arange(48), np.arange(48,64),
+                             features, pd.DataFrame({"cell_id": range(64), "cell_type": "T"}), np.zeros((64,2)), tmp_path)
+    cfg = replace(ExperimentConfig(), output_dir=str(tmp_path / "run"), device="cpu", batch_size=16,
+                  stage1_max_epochs=2, stage1_patience=2, stage2_max_epochs=2, stage2_patience=2,
+                  kmeans_sample_size=48)
+    output = Path(cfg.output_dir); output.mkdir()
+    _, _, z, q, prototypes, checkpoints = train_all(prepared, cfg, output)
+    assert z.shape == (64, 32) and q.shape == (64, 8)
+    assert prototypes.shape[0] == 8 and 8 <= prototypes.shape[1] <= 32
+    assert np.all(z >= 0) and np.all(q >= 0) and np.allclose(np.asarray(q).sum(1), 1, atol=1e-5)
+    export_results(prepared, cfg, output, z, q, prototypes, checkpoints)
+    assert results_complete(cfg)
+
+
+def test_notebook_code_is_syntactically_valid():
+    notebook = Path(__file__).resolve().parents[1] / "XeniumPrime5K_Breast_V1006_niche_walkthrough.ipynb"
+    payload = json.loads(notebook.read_text())
+    for index, cell in enumerate(payload["cells"]):
+        if cell["cell_type"] == "code":
+            compile("".join(cell["source"]), f"cell-{index}", "exec")

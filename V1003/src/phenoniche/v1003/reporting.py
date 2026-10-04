@@ -136,6 +136,114 @@ def niche_counts(artifacts):
     _display(table)
 
 
+def _local_composition(artifacts):
+    cache = artifacts["root"] / "cache/local_composition.npy"
+    table = artifacts["assignments"]
+    cell_types = sorted(table.cell_type.astype(str).unique())
+    if cache.is_file():
+        values = np.load(cache, mmap_mode="r")
+        if values.shape == (len(table), len(cell_types)):
+            return values, cell_types
+    from scipy.spatial import cKDTree
+    coordinates = table[["x", "y"]].to_numpy(np.float32)
+    codes = pd.Categorical(table.cell_type.astype(str), categories=cell_types).codes
+    tree = cKDTree(coordinates)
+    temporary = cache.with_name("local_composition.incomplete.npy")
+    values = np.lib.format.open_memmap(temporary, mode="w+", dtype=np.float32,
+                                       shape=(len(table), len(cell_types)))
+    for start in range(0, len(table), 50000):
+        stop = min(start + 50000, len(table))
+        distance, neighbors = tree.query(coordinates[start:stop], k=30)
+        weights = np.exp(-(distance ** 2) / (2 * 20.0 ** 2))
+        denominator = weights.sum(1)
+        for cell_type in range(len(cell_types)):
+            values[start:stop, cell_type] = (
+                weights * (codes[neighbors] == cell_type)
+            ).sum(1) / denominator
+    values.flush(); del values
+    temporary.replace(cache)
+    return np.load(cache, mmap_mode="r"), cell_types
+
+
+def niche_celltype_enrichment(artifacts):
+    """V1002-style niche by local-cell-type enrichment with entropy dots."""
+    from scipy.stats import norm, rankdata, tiecorrect
+    composition, cell_types = _local_composition(artifacts)
+    labels = artifacts["assignments"].niche_label.to_numpy(np.int64) - 1
+    k = artifacts["config"].niches
+    sizes = np.bincount(labels, minlength=k)
+    baseline = np.asarray(composition).mean(0)
+    means = np.empty((k, len(cell_types)), dtype=float)
+    pvalues = np.ones_like(means)
+    for column in range(len(cell_types)):
+        values = np.asarray(composition[:, column], dtype=np.float64)
+        ranks = rankdata(values, method="average")
+        rank_sum = np.bincount(labels, weights=ranks, minlength=k)
+        abundance = np.bincount(labels, weights=values, minlength=k)
+        means[:, column] = abundance / sizes
+        outside = len(labels) - sizes
+        u = rank_sum - sizes * (sizes + 1) / 2
+        sd = np.sqrt(sizes * outside * (len(labels) + 1) * tiecorrect(ranks) / 12)
+        valid = sd > 0
+        pvalues[valid, column] = norm.sf((u[valid] - sizes[valid] * outside[valid] / 2 - .5) / sd[valid])
+    enrichment = np.clip((means - baseline[None, :]) /
+                         np.maximum(1 - baseline[None, :], 1e-12), 0, 1)
+    mass = sizes[:, None] * means
+    share = mass / np.maximum(mass.sum(0, keepdims=True), 1e-12)
+    entropy = -np.sum(np.where(share > 0, share * np.log(np.maximum(share, 1e-300)), 0), axis=0) / np.log(k)
+    order = np.argsort(-entropy, kind="stable")
+    enrichment, pvalues, entropy = enrichment[:, order], pvalues[:, order], entropy[order]
+    ordered_types = [cell_types[index] for index in order]
+    fig = plt.figure(figsize=(11.5, 5.2), layout="constrained")
+    grid = fig.add_gridspec(2, 2, width_ratios=[20, 1.2], height_ratios=[.8, 4.2], hspace=.02, wspace=.08)
+    axis = fig.add_subplot(grid[1, 0]); dots = fig.add_subplot(grid[0, 0], sharex=axis)
+    colorbar_axis = fig.add_subplot(grid[1, 1]); legend_axis = fig.add_subplot(grid[0, 1])
+    image = axis.imshow(enrichment, cmap="YlOrBr", vmin=0, vmax=1, aspect="auto", interpolation="nearest")
+    for row, column in np.ndindex(enrichment.shape):
+        p = pvalues[row, column]
+        stars = "***" if p <= 1e-4 else "**" if p <= 1e-3 else "*" if p <= .05 else ""
+        if stars and enrichment[row, column] > 0:
+            axis.text(column, row, stars, ha="center", va="center", fontsize=8,
+                      color="white" if enrichment[row, column] > .65 else "#252525")
+    axis.set_xticks(np.arange(len(ordered_types)), ordered_types, rotation=90, fontsize=8)
+    axis.set_yticks(np.arange(k), [f"Niche {index}" for index in range(1, k + 1)])
+    axis.set(xlabel="Provisional cell type", ylabel="V1003 niche")
+    dots.scatter(np.arange(len(entropy)), np.zeros(len(entropy)), s=12 + 70 * entropy,
+                 color="#70bde0", linewidths=0); dots.set_axis_off()
+    dots.set_title("V1003 niche × local cell-type enrichment")
+    fig.colorbar(image, cax=colorbar_axis, label="Relative enrichment (0–1)")
+    legend_axis.scatter([.2, .5, .8], [.65] * 3, s=[12, 47, 82], color="#70bde0", linewidths=0)
+    legend_axis.text(.5, .12, "Entropy", ha="center", fontsize=8); legend_axis.set_axis_off()
+    figure_dir = artifacts["root"] / "figures"; figure_dir.mkdir(exist_ok=True)
+    fig.savefig(figure_dir / "niche_celltype_enrichment.png", dpi=600, bbox_inches="tight")
+    records = []
+    for niche in range(k):
+        for rank, original in enumerate(order, 1):
+            records.append({"niche": niche + 1, "cell_type": cell_types[original],
+                            "mean_local_fraction": means[niche, original],
+                            "relative_enrichment_0to1": enrichment[niche, rank - 1],
+                            "p_greater_raw": pvalues[niche, rank - 1],
+                            "across_niche_entropy": entropy[rank - 1]})
+    pd.DataFrame(records).to_csv(artifacts["root"] / "niche_celltype_enrichment.csv", index=False)
+    _display(fig); plt.close(fig)
+
+
+def top_ccc_table(artifacts, top=10):
+    table = artifacts["top_ccc"]
+    _display(table[table["rank"] <= top][["niche", "rank", "ccc", "weight"]].reset_index(drop=True))
+
+
+def compact_results(artifacts):
+    summary = artifacts["summary"]; training = summary["training"]
+    _display(pd.DataFrame([{"best_epoch": training["best_epoch"],
+                           "train_reconstruction": training["final_train_reconstruction"],
+                           "validation_reconstruction": training["final_validation_reconstruction"],
+                           "mean_confidence": summary["assignment_confidence"]["mean"],
+                           "niche_collapse": summary["niche_collapse"],
+                           "duplicated_H": summary["duplicated_H"]}]))
+    _display(artifacts["counts"])
+
+
 def representative_ccc(artifacts, top=15):
     table = artifacts["top_ccc"]
     counts = artifacts["counts"].set_index("niche")

@@ -17,22 +17,19 @@ notebook.cells = [
         "sys.path.insert(0,str(ROOT/'src'))\n"
         "from phenoniche.v1003.pipeline import ensure_results\n"
         "from phenoniche.v1003 import reporting as report\n"
+        "import importlib\nreport=importlib.reload(report)\n"
         "summary=ensure_results()  # trains only when a complete cached result is absent\n"
         "artifacts=report.load_artifacts()"
     ),
 ]
 sections = [
     ("1. Prime 5K data summary", "report.dataset_summary(artifacts)"),
-    ("2. Model and final training result", "report.model_and_training(artifacts)"),
-    ("3. Cell types and V1003 niche overview",
-     "import importlib\nreport=importlib.reload(report)  # pick up reporting updates in an existing Jupyter kernel\nreport.overview_map(artifacts)"),
-    ("4. Spatial distribution of eight niches", "report.spatial_niches(artifacts)"),
-    ("5. Niche size and proportion", "report.niche_counts(artifacts)"),
-    ("6. Top representative CCC",
-     "import importlib\nreport=importlib.reload(report)\nartifacts=report.load_artifacts()\nreport.representative_ccc(artifacts,top=15)"),
-    ("7. Representative H heatmap", "report.dictionary_heatmap(artifacts,per_niche=3)"),
-    ("8. Assignment confidence and niche usage", "report.confidence_and_usage(artifacts)"),
-    ("9. Final summary", "report.final_summary(artifacts)"),
+    ("2. Cell types and V1003 niche spatial maps", "report.overview_map(artifacts)"),
+    ("3. V1003 niche × local cell-type enrichment", "report.niche_celltype_enrichment(artifacts)"),
+    ("4. Spatial distribution of each niche", "report.spatial_niches(artifacts)"),
+    ("5. Top representative CCC", "report.top_ccc_table(artifacts,top=10)"),
+    ("6. Representative H heatmap", "report.dictionary_heatmap(artifacts,per_niche=3)"),
+    ("7. Final model and niche summary", "report.compact_results(artifacts)"),
 ]
 for title, code in sections:
     notebook.cells.extend([nbf.v4.new_markdown_cell("## " + title), nbf.v4.new_code_cell(code)])

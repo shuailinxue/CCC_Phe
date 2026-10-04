@@ -1,0 +1,5 @@
+outputs/xenium_prime_5k/*
+!outputs/xenium_prime_5k/.gitkeep
+__pycache__/
+.pytest_cache/
+*.pyc
