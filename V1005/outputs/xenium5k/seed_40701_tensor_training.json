@@ -1,9 +1,0 @@
-{
-  "best_epoch": 12,
-  "epochs_run": 25,
-  "best_validation": 1.258183680681426,
-  "lowrank_enabled": false,
-  "prior": true,
-  "warmup_reused": true,
-  "best_graph_weight": 0.0
-}

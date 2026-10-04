@@ -1,6 +1,0 @@
-{
-  "pytest": "passed",
-  "notebook": "executed",
-  "protected_versions": "unchanged",
-  "cross_dataset": "deferred_by_user"
-}

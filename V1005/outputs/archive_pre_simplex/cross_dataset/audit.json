@@ -1,6 +1,0 @@
-{
-  "n_shared_features": 2,
-  "n_shared_measurable_LR": 20,
-  "mean_matched_cosine": 0.3324532219486079,
-  "limitation": "Matching only shared retained measurable features; absent panel features do not demonstrate dataset-specific biology; provisional 5K labels."
-}
