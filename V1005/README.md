@@ -1,5 +1,7 @@
 # V1005 — simplex TensorCCC + CompGraph
 
+The current post-training niche definition uses the already trained seed-40700 CCC latent representation and normalized graph fusion `G_ccc + 0.2 G_comp + 0.1 G_spatial`. It performs a deterministic Leiden resolution sweep and does not retrain DeepTensorCCC. Results are written under `outputs/<dataset>/graph_selection/`.
+
 Only V1005 is modified. V1000–V1004 remain read-only. This is the user-authorized isolated spatial experiment, not a change to the repository's bulk/Cox mainline.
 
 HBC1 and Prime 5K are analyzed independently. Their panels, annotations and retained CCC spaces differ substantially. There is **no cross-dataset/cross-slice program matching** in the runners or notebook. Shared validation is deferred until consecutive sections or technically comparable data are available. Old results, including historical matching, are preserved under `outputs/archive_pre_simplex/` and are not current evidence.

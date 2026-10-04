@@ -18,3 +18,19 @@ def fuse_graphs(ccc,comp,alpha=.2):
     # Common total edge-mass normalization makes alpha meaningful and symmetric.
     ccc=ccc/(ccc.sum()/ccc.shape[0]);comp=comp/(comp.sum()/comp.shape[0])
     return (ccc+alpha*comp).tocsr()
+
+def normalize_edge_mass(graph):
+    """Scale an undirected graph to total directed edge mass / n = 1."""
+    graph=graph.tocsr().astype(np.float32,copy=True)
+    mass=float(graph.sum(dtype=np.float64)/graph.shape[0])
+    if not np.isfinite(mass) or mass<=0:raise ValueError('Graph has no finite positive edge mass')
+    graph.data/=mass
+    return graph
+
+def fuse_three_graphs(ccc,comp,spatial,alpha=.2,beta=.1):
+    if not 0<=alpha<=.3:raise ValueError('Weak composition fusion alpha must be 0..0.3')
+    if not 0<=beta<=.2:raise ValueError('Weak spatial fusion beta must be 0..0.2')
+    graphs=[normalize_edge_mass(g) for g in [ccc,comp,spatial]]
+    result=(graphs[0]+alpha*graphs[1]+beta*graphs[2]).tocsr()
+    result.setdiag(0);result.eliminate_zeros()
+    return result

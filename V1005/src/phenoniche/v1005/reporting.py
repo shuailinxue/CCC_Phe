@@ -140,6 +140,45 @@ def stability():
 def sensitivity():
     for ds in ['hbc1','xenium5k']:display(Markdown(f'**{ds}**'));table(folder(ds)/'alpha_sensitivity.csv')
 
+def graph_selection(dataset):
+    out=folder(dataset)/'graph_selection';summary=json.loads((out/'summary.json').read_text())
+    display(Markdown(f'### {dataset} · normalized three-graph niche construction'))
+    display(pd.read_csv(out/'graph_statistics.csv'))
+    sweep=pd.read_csv(out/'resolution_sweep.csv');beta=pd.read_csv(out/'beta_sensitivity.csv')
+    display(Markdown('**Beta sensitivity at the automatically selected resolution**'));display(beta)
+    fig,axes=plt.subplots(2,2,figsize=(12,8))
+    axes[0,0].plot(sweep.resolution,sweep.n_niches,'o-');axes[0,0].axhspan(5,25,color='#4daf4a',alpha=.12)
+    axes[0,0].set(xscale='log',xlabel='Leiden resolution',ylabel='n niches',title='Resolution vs niche count')
+    axes[0,1].plot(sweep.resolution,sweep.spatial_agreement,'o-',color='#377eb8')
+    axes[0,1].set(xscale='log',xlabel='Leiden resolution',ylabel='Spatial agreement',title='Resolution vs local agreement')
+    axes[1,0].plot(sweep.resolution,sweep.ARI_previous,'o-',label='ARI to previous')
+    axes[1,0].plot(sweep.resolution,sweep.NMI_previous,'o-',label='NMI to previous')
+    axes[1,0].set(xscale='log',xlabel='Leiden resolution',ylabel='Score',title='Adjacent-resolution stability');axes[1,0].legend()
+    if summary['selected']:
+        labels=np.load(out/'selected_labels.npy');sizes=np.bincount(labels);sizes=sizes[sizes>0]
+        axes[1,1].hist(sizes,bins=min(50,len(sizes)),color='#984ea3');axes[1,1].set(xlabel='Niche size',ylabel='Count',title='Selected niche size distribution')
+        chosen=float(summary['resolution'])
+        for ax in axes.ravel()[:3]:ax.axvline(chosen,color='#e41a1c',ls='--',lw=1)
+    else:axes[1,1].text(.5,.5,'No eligible resolution',ha='center',va='center',transform=axes[1,1].transAxes)
+    fig.tight_layout();save(fig,dataset,'three_graph_resolution_diagnostics')
+    display(Markdown('**Selection rule:** '+summary['selection_reason']));display(pd.Series(summary).to_frame('value'))
+    historical=pd.read_csv(folder(dataset)/'baseline_metrics.csv')
+    historical=historical[(historical.seed==40700)&(historical.method=='Proposed')].iloc[0]
+    display(Markdown('**Before vs after graph construction (same seed 40700)**'))
+    display(pd.DataFrame([
+        {'result':'Before: CCC + composition, resolution=1','n_niches':historical.n_niches,
+         'spatial_agreement':historical.spatial_agreement,'median_niche_size':historical.median_niche_size,
+         'tiny_niche_fraction':historical.fraction_cells_niches_lt20},
+        {'result':'After: CCC + composition + spatial, selected resolution','n_niches':summary['n_niches'],
+         'spatial_agreement':summary['spatial_agreement'],'median_niche_size':summary['median_niche_size'],
+         'tiny_niche_fraction':summary['fraction_cells_niches_lt20']}]))
+    if summary['selected']:
+        xy=context(dataset)['coords'];labels=np.load(out/'selected_labels.npy')
+        fig,ax=plt.subplots(figsize=(8,7));points=ax.scatter(xy[:,0],xy[:,1],c=labels,cmap=plt.get_cmap('turbo',int(labels.max())+1),s=.15,linewidths=0,rasterized=True)
+        fig.colorbar(points,ax=ax,fraction=.025,pad=.02,label='Selected niche ID (0-based)')
+        ax.set_aspect('equal');ax.invert_yaxis();ax.set(xlabel='x (µm)',ylabel='y (µm)',title=f'{dataset} · CCC + 0.2 composition + 0.1 spatial')
+        save(fig,dataset,'three_graph_selected_spatial_niches')
+
 def matching():
     out=ROOT/'outputs/cross_dataset';table(out/'matched_programs.csv')
     s=np.load(out/'similarity.npy');fig,ax=plt.subplots(figsize=(7,6));im=ax.imshow(s,vmin=0,vmax=1,cmap='viridis');fig.colorbar(im,ax=ax,label='Cosine on shared retained CCC')
@@ -181,7 +220,7 @@ def summary():
         per_dataset.append(f'{ds}: Proposed 平均 {q.n_niches:.1f} 个 niche，空间一致率 {q.spatial_agreement:.3f}，test MSE {q.heldout_MSE:.5f}')
         fragmentation.append(f'{ds}: tensor 图平均 {r.graph_connected_components:.1f} 个连通分量，小于20 cells 的 niche 所占细胞比例 {r.fraction_cells_niches_lt20:.2%}；融合后 {q.fraction_cells_niches_lt20:.2%}')
     sections.append('5. **各自结果：** '+'；'.join(per_dataset)+'。两个数据不做跨数据集共享验证。')
-    sections.append('6. **碎片化：** '+'；'.join(fragmentation)+'。连通分量较多属于表示/邻接图问题；resolution 固定为1.0，没有用它掩盖问题。')
+    sections.append('6. **历史碎片化基线：** '+'；'.join(fragmentation)+'。这些是本轮三图融合与 resolution sweep 之前、resolution=1.0 的已保存结果。')
     failed=[ds for ds,t in metrics.items() if t.loc['CCC-tensor','heldout_MSE']>t.loc['CCC-flat','heldout_MSE'] and t.loc['CCC-tensor','spatial_agreement']<t.loc['CCC-flat','spatial_agreement']]
     sections.append('7. **失败与限制：** '+(('、'.join(failed)+' 的 tensor 在重构和空间一致率上仍不如 CCC-flat，明确记录失败。') if failed else '指标需综合解释，不能仅凭单项改善宣称成功。')+'不继续调参美化结果；所有 NMF 收敛警告与 early-stopping checkpoint 信息保留在训练结果中。')
     for text in sections:display(Markdown(text))
