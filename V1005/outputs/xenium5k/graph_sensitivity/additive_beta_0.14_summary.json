@@ -1,0 +1,13 @@
+{
+  "selected": true,
+  "selection_reason": "Selected within the upper quartile of eligible stability-plateau points. Equal fixed quality terms: stability 0.40, modularity 0.25, spatial agreement 0.25, tiny-niche control 0.10.",
+  "resolution": 0.2,
+  "n_niches": 5,
+  "modularity": 0.6227204166318425,
+  "leiden_objective": 830947.426872848,
+  "spatial_agreement": 0.8325326437209082,
+  "median_niche_size": 121123.0,
+  "min_niche_size": 69,
+  "fraction_cells_niches_lt20": 0.0,
+  "adjacent_stability": 0.9738048739195377
+}

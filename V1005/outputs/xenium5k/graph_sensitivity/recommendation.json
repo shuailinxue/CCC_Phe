@@ -1,0 +1,55 @@
+{
+  "seed": 40700,
+  "alpha": 0.2,
+  "diagnostic_betas": [
+    0.0,
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14,
+    0.15
+  ],
+  "fine_resolutions": [
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2,
+    0.22,
+    0.24,
+    0.26,
+    0.28,
+    0.3,
+    0.32,
+    0.34,
+    0.35
+  ],
+  "composition_distance_scale": 0.043347761034965515,
+  "spatial_distance_scale": 16.79535484313965,
+  "only_spatial_edge_fraction": 0.28287427121110603,
+  "additive_stable_beta_intervals": [
+    [
+      0.0,
+      0.15
+    ]
+  ],
+  "spatial_reweight_stable_beta_intervals_at_resolution_0.2": [],
+  "minimum_adjacent_beta_ARI_additive": 0.9316177861860262,
+  "minimum_adjacent_beta_ARI_spatial_reweight": 0.9605415745779183,
+  "recommended_construction": "additive G_ccc + 0.2 G_comp + beta G_spatial",
+  "reason": "Composition edges repair the disconnected CCC graph. Spatial-only edges change topology; conservative spatial reweighting remains outside the 5-25 niche range, so the additive graph is retained. Beta and resolution are selected from the predefined stability plateau rule.",
+  "recommended_beta": 0.14,
+  "recommended_resolution": 0.2,
+  "recommended_n_niches": 5
+}

@@ -1,0 +1,13 @@
+{
+  "selected": true,
+  "selection_reason": "No multi-resolution count plateau met the <=25% change rule; used the most stable eligible point. Equal fixed quality terms: stability 0.40, modularity 0.25, spatial agreement 0.25, tiny-niche control 0.10.",
+  "resolution": 0.24,
+  "n_niches": 8,
+  "modularity": 0.6441249387222793,
+  "leiden_objective": 824821.5826107654,
+  "spatial_agreement": 0.8086726522736544,
+  "median_niche_size": 9872.5,
+  "min_niche_size": 117,
+  "fraction_cells_niches_lt20": 0.0,
+  "adjacent_stability": 0.9515026089788886
+}

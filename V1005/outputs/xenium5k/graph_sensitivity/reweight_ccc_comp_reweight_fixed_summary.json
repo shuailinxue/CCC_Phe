@@ -1,0 +1,20 @@
+{
+  "selected": false,
+  "selection_reason": "Fixed-resolution fusion comparison at resolution=0.20.",
+  "resolution": 0.2,
+  "leiden_objective": 692065.7552390252,
+  "modularity": 0.9723118479639432,
+  "n_niches": 2298,
+  "median_niche_size": 58.0,
+  "min_niche_size": 17,
+  "fraction_cells_niches_lt20": 0.0004891934030410093,
+  "graph_connected_components": 2216,
+  "mean_degree": 21.0114373989787,
+  "degree_min": 9.0,
+  "degree_q25": 16.0,
+  "degree_median": 19.0,
+  "degree_q75": 22.0,
+  "degree_q95": 34.0,
+  "degree_max": 76.0,
+  "spatial_agreement": 0.3543535894652265
+}

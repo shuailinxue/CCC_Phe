@@ -179,6 +179,44 @@ def graph_selection(dataset):
         ax.set_aspect('equal');ax.invert_yaxis();ax.set(xlabel='x (µm)',ylabel='y (µm)',title=f'{dataset} · CCC + 0.2 composition + 0.1 spatial')
         save(fig,dataset,'three_graph_selected_spatial_niches')
 
+def prime_graph_sensitivity():
+    dataset='xenium5k';out=folder(dataset)/'graph_sensitivity';figdir=folder(dataset)/'figures';figdir.mkdir(parents=True,exist_ok=True)
+    def export(fig,name):
+        for suffix,kwargs in [('png',{'dpi':600}),('svg',{}),('pdf',{})]:fig.savefig(figdir/f'{name}.{suffix}',bbox_inches='tight',**kwargs)
+        display(fig);plt.close(fig)
+    pair=pd.read_csv(out/'graph_edge_overlap.csv');categories=pd.read_csv(out/'graph_edge_categories.csv').iloc[0];dist=pd.read_csv(out/'graph_distributions.csv')
+    display(Markdown('### Prime 5K graph topology audit'));display(pair);display(categories.to_frame('value'));display(dist)
+    fig,axes=plt.subplots(1,2,figsize=(7.2,3.0))
+    names=['Shared ≥2 graphs','CCC only','Composition only','Spatial only'];values=[categories.shared_edge_fraction,categories.only_ccc_edge_fraction,categories.only_comp_edge_fraction,categories.only_spatial_edge_fraction]
+    axes[0].bar(names,values,color=['#777777','#4c78a8','#f2a541','#59a14f']);axes[0].tick_params(axis='x',rotation=35);axes[0].set(ylabel='Fraction of union edges',title='Edge-set composition')
+    x=np.arange(3);width=.25
+    for offset,(column,label,color) in enumerate([('degree_median','Degree', '#4c78a8'),('weighted_degree_median','Weighted degree','#f2a541'),('edge_weight_median','Edge weight','#59a14f')]):
+        values=dist[column].to_numpy();values=values/np.maximum(values.max(),1e-12);axes[1].bar(x+(offset-1)*width,values,width,label=label,color=color)
+    axes[1].set_xticks(x,dist.graph);axes[1].set(ylabel='Median, scaled within metric',title='Graph distribution comparison');axes[1].legend(fontsize=6)
+    fig.tight_layout();export(fig,'prime_graph_overlap_and_distributions')
+    beta=pd.read_csv(out/'additive_beta_summary.csv');display(Markdown('### Additive beta sensitivity'));display(beta)
+    fig,axes=plt.subplots(2,2,figsize=(7.2,5.5),sharex=True)
+    axes[0,0].plot(beta.beta,beta.n_niches,'o-',color='#4c78a8');axes[0,0].axhspan(5,25,color='#59a14f',alpha=.12);axes[0,0].set(ylabel='n niches')
+    axes[0,1].plot(beta.beta,beta.ARI_previous_beta,'o-',label='ARI',color='#4c78a8');axes[0,1].plot(beta.beta,beta.NMI_previous_beta,'o-',label='NMI',color='#f2a541');axes[0,1].axhline(.8,color='#777777',ls=':');axes[0,1].set(ylabel='vs previous beta');axes[0,1].legend(fontsize=6)
+    axes[1,0].plot(beta.beta,beta.modularity,'o-',color='#7a5195');axes[1,0].set(xlabel='beta',ylabel='Modularity')
+    axes[1,1].plot(beta.beta,beta.spatial_agreement,'o-',color='#59a14f');axes[1,1].set(xlabel='beta',ylabel='Spatial agreement')
+    fig.tight_layout();export(fig,'prime_additive_beta_sensitivity')
+    fig,axes=plt.subplots(1,2,figsize=(7.2,3.0))
+    colors=plt.get_cmap('viridis')(np.linspace(.15,.85,5))
+    for color,b in zip(colors,[0,.03,.05,.08,.1]):
+        t=pd.read_csv(out/f'additive_beta_{b:.2f}_resolution.csv');axes[0].plot(t.resolution,t.n_niches,'o-',label=f'beta={b:.2f}',color=color)
+        axes[1].plot(t.resolution,t.ARI_previous,'o-',label=f'beta={b:.2f}',color=color)
+    axes[0].axhspan(5,25,color='#59a14f',alpha=.12);axes[0].set(xlabel='Resolution',ylabel='n niches',title='Fine resolution sweep')
+    axes[1].axhline(.8,color='#777777',ls=':');axes[1].set(xlabel='Resolution',ylabel='ARI to previous',title='Adjacent-resolution stability');axes[1].legend(fontsize=6,ncol=2)
+    fig.tight_layout();export(fig,'prime_fine_resolution_sensitivity')
+    ablation=pd.read_csv(out/'fusion_ablation.csv');comparison=pd.read_csv(out/'additive_vs_reweight.csv');rw=pd.read_csv(out/'reweight_beta_fixed_resolution.csv')
+    display(Markdown('### Fusion ablation and conservative edge reweighting'));display(ablation);display(comparison);display(rw)
+    fig,axes=plt.subplots(1,2,figsize=(7.2,3.2))
+    shown=ablation.dropna(subset=['n_niches']);axes[0].barh(shown.construction,shown.n_niches,color='#4c78a8');axes[0].axvspan(5,25,color='#59a14f',alpha=.12);axes[0].set(xlabel='Selected n niches',title='Fusion ablation')
+    axes[1].plot(beta.beta,beta.ARI_previous_beta,'o-',label='Additive',color='#d45087');axes[1].plot(rw.beta,rw.ARI_previous_beta,'o-',label='Spatial edge reweight',color='#4c78a8');axes[1].axhline(.8,color='#777777',ls=':');axes[1].set(xlabel='beta',ylabel='ARI to previous beta',title='Topology-changing vs support-preserving');axes[1].legend(fontsize=6)
+    fig.tight_layout();export(fig,'prime_fusion_ablation_reweight')
+    recommendation=json.loads((out/'recommendation.json').read_text());display(Markdown('### Final graph recommendation'));display(pd.Series(recommendation).to_frame('value'))
+
 def matching():
     out=ROOT/'outputs/cross_dataset';table(out/'matched_programs.csv')
     s=np.load(out/'similarity.npy');fig,ax=plt.subplots(figsize=(7,6));im=ax.imshow(s,vmin=0,vmax=1,cmap='viridis');fig.colorbar(im,ax=ax,label='Cosine on shared retained CCC')

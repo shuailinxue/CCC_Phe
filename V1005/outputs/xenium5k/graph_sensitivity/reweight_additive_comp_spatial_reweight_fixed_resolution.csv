@@ -1,0 +1,2 @@
+resolution,leiden_objective,modularity,n_niches,median_niche_size,min_niche_size,fraction_cells_niches_lt20,graph_connected_components,mean_degree,degree_min,degree_q25,degree_median,degree_q75,degree_q95,degree_max,spatial_agreement,eligible,selected
+0.2,632923.6083714641,0.7680694354429077,80,1677.0,286,0.0,1,39.532062193360126,25.0,35.0,37.0,41.0,55.0,104.0,0.6765621709178024,False,False
