@@ -6,13 +6,13 @@ import seaborn as sns
 
 
 def training_curves(output):
-    output = Path(output); s1 = pd.read_csv(output / "stage1_training_history.csv"); s2 = pd.read_csv(output / "stage2_training_history.csv")
+    output = Path(output); s1 = pd.read_csv(output / "stage1_training_history.csv"); s2 = pd.read_csv(output / "stage2B_training_history.csv")
     fig, axes = plt.subplots(1, 2, figsize=(9, 3.2))
     axes[0].plot(s1.epoch, s1.train_reconstruction, label="train"); axes[0].plot(s1.epoch, s1.validation_reconstruction, label="validation")
     axes[0].set(title="Stage 1 reconstruction", xlabel="Epoch", ylabel="Huber loss"); axes[0].legend(frameon=False)
-    axes[1].plot(s2.epoch, s2.validation_reconstruction, label="AE reconstruction")
-    axes[1].plot(s2.epoch, s2.validation_cluster, label="prototype cluster")
-    axes[1].set(title="Stage 2 validation", xlabel="Epoch", ylabel="Loss"); axes[1].legend(frameon=False)
+    axes[1].plot(s2.epoch, s2.validation_ae, label="nonlinear AE")
+    axes[1].plot(s2.epoch, s2.validation_linear, label="Z32 H32")
+    axes[1].set(title="Stage 2B validation", xlabel="Epoch", ylabel="Huber loss"); axes[1].legend(frameon=False)
     fig.tight_layout(); return fig
 
 
@@ -151,5 +151,5 @@ def representative_h_heatmap(h8, features, per_niche=3):
     labels = features.iloc[selected].get("ccc", pd.Series(selected.astype(str))).astype(str).tolist()
     fig, ax = plt.subplots(figsize=(max(7, .35 * len(selected)), 4))
     sns.heatmap(h8[:, selected], cmap="mako", xticklabels=labels, yticklabels=np.arange(1, 9), ax=ax)
-    ax.set(xlabel="Representative directed CCC", ylabel="Niche", title="Empirical niche CCC profiles")
+    ax.set(xlabel="Representative directed CCC", ylabel="Niche", title="Model-learned H8 CCC programs")
     ax.tick_params(axis="x", rotation=90); fig.tight_layout(); return fig

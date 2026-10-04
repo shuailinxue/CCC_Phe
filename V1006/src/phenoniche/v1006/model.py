@@ -21,31 +21,46 @@ class RepresentationAutoencoder(nn.Module):
         return z, self.decode(z)
 
 
-class PrototypeHead(nn.Module):
-    def __init__(self, niches, latent_dim, cluster_dim=None, temperature=.2, epsilon=1e-8):
+class ProgramDecoder(nn.Module):
+    """Magnitude-separated simplex exposures with an interpretable nonnegative dictionary."""
+    def __init__(self, latent_dim, programs, features, niches=8, temperature=.7, epsilon=1e-8):
         super().__init__()
-        self.niches, self.latent_dim = int(niches), int(latent_dim)
-        self.cluster_dim = int(cluster_dim or latent_dim)
+        self.latent_dim, self.programs, self.features = int(latent_dim), int(programs), int(features)
+        self.niches = int(niches)
+        if self.programs % self.niches: raise ValueError("program count must be divisible by niche count")
+        self.programs_per_niche = self.programs // self.niches
         self.temperature, self.epsilon = float(temperature), float(epsilon)
-        self.prototypes = nn.Parameter(torch.randn(niches, self.cluster_dim))
-        self.register_buffer("latent_center", torch.zeros(self.latent_dim))
-        self.register_buffer("whitening_projection", torch.eye(self.cluster_dim, self.latent_dim))
-
-    def set_whitening(self, center, projection):
-        if tuple(center.shape) != (self.latent_dim,) or tuple(projection.shape) != (self.cluster_dim, self.latent_dim):
-            raise ValueError("Invalid latent whitening shapes")
-        self.latent_center.copy_(center); self.whitening_projection.copy_(projection)
-
-    def transform(self, z):
-        return (z - self.latent_center) @ self.whitening_projection.T
+        self.niche_head = nn.Linear(latent_dim, niches)
+        self.subprogram_head = nn.Linear(latent_dim, programs)
+        self.activity_head = nn.Linear(latent_dim, 1)
+        self.raw_dictionary = nn.Parameter(torch.empty(programs, features))
+        nn.init.normal_(self.raw_dictionary, mean=-2., std=.1)
 
     @property
-    def normalized_prototypes(self):
-        return F.normalize(self.prototypes, p=2, dim=1, eps=self.epsilon)
+    def dictionary(self):
+        positive = F.softplus(self.raw_dictionary)
+        return positive / positive.sum(1, keepdim=True).clamp_min(self.epsilon)
 
-    def similarities(self, z):
-        transformed = self.transform(z)
-        return F.normalize(transformed, p=2, dim=1, eps=self.epsilon) @ self.normalized_prototypes.T
+    def initialize_dictionary(self, profiles):
+        profiles = profiles / profiles.sum(1, keepdim=True).clamp_min(self.epsilon)
+        target = profiles.clamp_min(1e-6)
+        with torch.no_grad():
+            self.raw_dictionary.copy_(torch.log(torch.expm1(target)))
 
-    def forward(self, z):
-        return F.softmax(self.similarities(z) / self.temperature, dim=1)
+    def mixtures(self, embedding):
+        niche = F.softmax(self.niche_head(embedding) / self.temperature, dim=1)
+        conditional = F.softmax(
+            self.subprogram_head(embedding).reshape(-1, self.niches, self.programs_per_niche) / self.temperature,
+            dim=2)
+        program = (niche[:, :, None] * conditional).reshape(-1, self.programs)
+        return niche, program
+
+    def mixture(self, embedding): return self.mixtures(embedding)[1]
+
+    def forward(self, embedding):
+        niche_mixture, mixture = self.mixtures(embedding)
+        activity = F.softplus(self.activity_head(embedding)) + self.epsilon
+        exposure = activity * mixture
+        reconstruction = exposure @ self.dictionary
+        return {"activity": activity, "niche_mixture": niche_mixture, "mixture": mixture, "exposure": exposure,
+                "reconstruction": reconstruction}

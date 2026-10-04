@@ -7,10 +7,11 @@ import pandas as pd
 import torch
 
 from phenoniche.v1006.config import ExperimentConfig
+from phenoniche.v1006.consolidation import consolidate_programs
 from phenoniche.v1006.data import PreparedInput, prepare_input
 from phenoniche.v1006.interpretation import empirical_profiles, export_results
-from phenoniche.v1006.losses import consistency_loss, dec_target, minimum_usage_loss
-from phenoniche.v1006.model import PrototypeHead, RepresentationAutoencoder
+from phenoniche.v1006.losses import consistency_loss, dictionary_diversity, minimum_usage_loss
+from phenoniche.v1006.model import ProgramDecoder, RepresentationAutoencoder
 from phenoniche.v1006.pipeline import REQUIRED, results_complete
 from phenoniche.v1006.training import load_stage1_checkpoint, load_stage2_checkpoint, train_all
 
@@ -44,21 +45,22 @@ def test_filtering_scaling_and_removed_feature(tmp_path):
     assert audit.retained.sum() == 10
 
 
-def test_model_nonnegative_shapes_and_prototype_assignments():
+def test_model_nonnegative_shapes_and_program_identifiability():
     x = torch.rand(7, 13); model = RepresentationAutoencoder(13)
-    z, reconstruction = model(x); head = PrototypeHead(8, 32)
-    q = head(z)
-    assert z.shape == (7, 32) and reconstruction.shape == x.shape
-    assert torch.all(z >= 0) and torch.all(reconstruction >= 0)
-    assert q.shape == (7, 8) and torch.all(q >= 0) and torch.allclose(q.sum(1), torch.ones(7), atol=1e-6)
-    assert torch.allclose(torch.linalg.vector_norm(head.normalized_prototypes, dim=1), torch.ones(8), atol=1e-6)
+    embedding, reconstruction = model(x); program = ProgramDecoder(32, 32, 13); result = program(embedding)
+    assert embedding.shape == (7, 32) and reconstruction.shape == x.shape
+    assert result["exposure"].shape == (7, 32) and result["reconstruction"].shape == x.shape
+    assert torch.all(embedding >= 0) and torch.all(reconstruction >= 0) and torch.all(result["exposure"] >= 0)
+    assert torch.allclose(result["mixture"].sum(1), torch.ones(7), atol=1e-6)
+    assert torch.allclose(program.dictionary.sum(1), torch.ones(32), atol=1e-6)
+    assert torch.allclose(result["exposure"].sum(1, keepdim=True), result["activity"], atol=1e-6)
 
 
-def test_prototype_losses():
-    q = torch.softmax(torch.randn(16, 8), dim=1)
-    assert torch.allclose(dec_target(q).sum(1), torch.ones(16), atol=1e-6)
+def test_program_losses():
+    q = torch.softmax(torch.randn(16, 32), dim=1)
     assert consistency_loss(q, q).item() == 0
-    assert minimum_usage_loss(torch.full((16, 8), 1 / 8), .02).item() == 0
+    assert minimum_usage_loss(torch.full((16, 32), 1 / 32), .005).item() == 0
+    assert dictionary_diversity(torch.eye(4), .5).item() == 0
 
 
 def test_empirical_profiles_are_soft_weighted(tmp_path):
@@ -66,18 +68,17 @@ def test_empirical_profiles_are_soft_weighted(tmp_path):
     q = np.asarray([[1, 0], [1, 0], [0, 1]], dtype=np.float32)
     prepared = PreparedInput(path, x.shape, np.arange(2), np.ones(2), np.arange(2), np.array([2]),
                              pd.DataFrame(index=range(2)), pd.DataFrame(index=range(3)), np.zeros((3,2)), tmp_path)
-    mean, presentation, enrichment, usage = empirical_profiles(prepared, q)
-    assert np.allclose(mean, [[2, 1], [0, 4]]) and np.allclose(usage, [2, 1])
-    assert np.allclose(presentation.sum(1), 1)
+    mean, enrichment = empirical_profiles(prepared, q)
+    assert np.allclose(mean, [[2, 1], [0, 4]]) and enrichment.shape == (2, 2)
 
 
 def test_checkpoint_loading(tmp_path):
-    model = RepresentationAutoencoder(12); head = PrototypeHead(8, 32)
+    model = RepresentationAutoencoder(12); program = ProgramDecoder(32, 32, 12)
     p1 = tmp_path / "s1.pt"; p2 = tmp_path / "s2.pt"
     torch.save({"features": 12, "model_state": model.state_dict()}, p1)
-    torch.save({"features": 12, "model_state": model.state_dict(), "prototype_state": head.state_dict()}, p2)
+    torch.save({"features": 12, "model_state": model.state_dict(), "program_state": program.state_dict()}, p2)
     load_stage1_checkpoint(p1, RepresentationAutoencoder(12))
-    load_stage2_checkpoint(p2, RepresentationAutoencoder(12), PrototypeHead(8, 32))
+    load_stage2_checkpoint(p2, RepresentationAutoencoder(12), ProgramDecoder(32, 32, 12))
 
 
 def test_result_cache_detection(tmp_path):
@@ -96,14 +97,18 @@ def test_tiny_end_to_end_smoke(tmp_path):
     prepared = PreparedInput(matrix, x.shape, np.arange(12), np.ones(12, np.float32), np.arange(48), np.arange(48,64),
                              features, pd.DataFrame({"cell_id": range(64), "cell_type": "T"}), np.zeros((64,2)), tmp_path)
     cfg = replace(ExperimentConfig(), output_dir=str(tmp_path / "run"), device="cpu", batch_size=16,
-                  stage1_max_epochs=2, stage1_patience=2, stage2_max_epochs=2, stage2_patience=2,
-                  kmeans_sample_size=48)
+                  stage1_max_epochs=2, stage1_patience=2, stage2a_max_epochs=2, stage2a_patience=2,
+                  stage2b_max_epochs=2, stage2b_patience=2)
     output = Path(cfg.output_dir); output.mkdir()
-    _, _, z, q, prototypes, checkpoints = train_all(prepared, cfg, output)
-    assert z.shape == (64, 32) and q.shape == (64, 8)
-    assert prototypes.shape[0] == 8 and 8 <= prototypes.shape[1] <= 32
-    assert np.all(z >= 0) and np.all(q >= 0) and np.allclose(np.asarray(q).sum(1), 1, atol=1e-5)
-    export_results(prepared, cfg, output, z, q, prototypes, checkpoints)
+    _, _, arrays, h32, checkpoints = train_all(prepared, cfg, output)
+    assert arrays["Z32"].shape == (64, 32) and arrays["P32"].shape == (64, 32) and h32.shape == (32, 12)
+    assert np.all(arrays["Z32"] >= 0) and np.allclose(np.asarray(arrays["P32"]).sum(1), 1, atol=1e-5)
+    assert np.allclose(h32.sum(1), 1, atol=1e-5)
+    groups = np.repeat(np.arange(8), 4)
+    q8, h8, labels, confidence, mapping = consolidate_programs(arrays["P32"], arrays["Z32"], h32, groups)
+    assert q8.shape == (64, 8) and h8.shape == (8, 12) and labels.max() <= 7
+    assert np.allclose(q8, arrays["Q8_direct"], atol=1e-5)
+    export_results(prepared, cfg, output, arrays, h32, q8, h8, labels, confidence, mapping, checkpoints)
     assert results_complete(cfg)
 
 
