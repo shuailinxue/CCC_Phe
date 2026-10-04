@@ -7,12 +7,14 @@ import pandas as pd
 import torch
 
 from phenoniche.v1006.config import ExperimentConfig
-from phenoniche.v1006.consolidation import consolidate_programs
+from phenoniche.v1006.consolidation import (consolidate_programs, evaluate_cell_latent_k_range, evaluate_k_range,
+                                            hierarchical_program_groups)
 from phenoniche.v1006.data import PreparedInput, prepare_input
 from phenoniche.v1006.interpretation import empirical_profiles, export_results
 from phenoniche.v1006.losses import consistency_loss, dictionary_diversity, minimum_usage_loss
 from phenoniche.v1006.model import ProgramDecoder, RepresentationAutoencoder
-from phenoniche.v1006.pipeline import REQUIRED, results_complete
+from phenoniche.v1006.pipeline import (NETWORK_REQUIRED, SELECTION_REQUIRED,
+                                      network_results_complete, results_complete)
 from phenoniche.v1006.training import load_stage1_checkpoint, load_stage2_checkpoint, train_all
 
 
@@ -83,10 +85,46 @@ def test_checkpoint_loading(tmp_path):
 
 def test_result_cache_detection(tmp_path):
     cfg = replace(ExperimentConfig(), output_dir=str(tmp_path))
-    for name in REQUIRED: (tmp_path / name).write_bytes(b"x")
+    for name in NETWORK_REQUIRED + SELECTION_REQUIRED:
+        path = tmp_path / name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(b"x")
     (tmp_path / "summary.json").write_text(json.dumps({"revision": cfg.revision}))
+    (tmp_path / "model_selection_summary.json").write_text(json.dumps({
+        "consolidation_revision": cfg.consolidation_revision}))
     assert results_complete(cfg)
-    (tmp_path / "H8.npy").unlink(); assert not results_complete(cfg)
+    (tmp_path / "selected_model/H.npy").unlink(); assert not results_complete(cfg)
+
+
+def test_hierarchical_selection_is_deterministic_and_keeps_k8():
+    rng = np.random.default_rng(12)
+    h32 = rng.gamma(1, 1, (32, 18)).astype(np.float32)
+    h32 /= h32.sum(1, keepdims=True)
+    p32 = rng.dirichlet(np.ones(32), size=120).astype(np.float32)
+    z32 = p32 * rng.gamma(2, 1, (120, 1)).astype(np.float32)
+    cfg = ExperimentConfig()
+    first = hierarchical_program_groups(h32, 8)
+    second = hierarchical_program_groups(h32, 8)
+    assert np.array_equal(first, second) and len(np.unique(first)) == 8
+    table, candidates, selected, reason = evaluate_k_range(p32, z32, h32, cfg)
+    assert table.K.tolist() == list(range(4, 16))
+    assert table.selected.sum() == 1 and selected in table.K.to_numpy()
+    assert 8 in candidates and "Q" in candidates[8] and candidates[8]["Q"].shape == (120, 8)
+    assert np.allclose(candidates[selected]["Q"].sum(1), 1)
+    assert reason
+
+
+def test_cell_latent_selection_materializes_selected_soft_membership():
+    rng = np.random.default_rng(31); n = 160
+    p32 = rng.dirichlet(np.ones(32) * .3, size=n).astype(np.float32)
+    activity = rng.gamma(2, 1, n).astype(np.float32)
+    h32 = rng.dirichlet(np.ones(18), size=32).astype(np.float32)
+    coordinates = rng.normal(size=(n, 2)).astype(np.float32)
+    cfg = replace(ExperimentConfig(), clustering_sample_size=120, silhouette_sample_size=80)
+    table, candidates, selected, reason = evaluate_cell_latent_k_range(
+        p32, activity, h32, coordinates, cfg, chunk_size=64)
+    chosen = candidates[selected]
+    assert table.K.tolist() == list(range(4, 16)) and table.selected.sum() == 1
+    assert chosen["Q"].shape == (n, selected) and np.allclose(chosen["Q"].sum(1), 1, atol=1e-5)
+    assert chosen["H"].shape == (selected, 18) and reason
 
 
 def test_tiny_end_to_end_smoke(tmp_path):
@@ -109,7 +147,7 @@ def test_tiny_end_to_end_smoke(tmp_path):
     assert q8.shape == (64, 8) and h8.shape == (8, 12) and labels.max() <= 7
     assert np.allclose(q8, arrays["Q8_direct"], atol=1e-5)
     export_results(prepared, cfg, output, arrays, h32, q8, h8, labels, confidence, mapping, checkpoints)
-    assert results_complete(cfg)
+    assert network_results_complete(cfg)
 
 
 def test_notebook_code_is_syntactically_valid():

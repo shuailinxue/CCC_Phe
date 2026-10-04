@@ -9,9 +9,20 @@ REPO = ROOT.parent
 @dataclass(frozen=True)
 class ExperimentConfig:
     revision: str = "v1006_dual_decoder_program_v4"
+    consolidation_revision: str = "v1006_cell_latent_model_selection_v2"
     seed: int = 40700
     latent_dim: int = 32
     final_niches: int = 8
+    k_min: int = 4
+    k_max: int = 15
+    max_dominant_cell_fraction: float = .75
+    max_tiny_cell_fraction: float = .01
+    tiny_niche_fraction_threshold: float = .005
+    tiny_niche_min_cells: int = 20
+    near_optimal_score_tolerance: float = .05
+    clustering_sample_size: int = 100000
+    silhouette_sample_size: int = 10000
+    activity_weight: float = .25
     validation_fraction: float = .10
     nonzero_fraction_min: float = .005
     encoder_hidden_1: int = 256
@@ -56,9 +67,11 @@ class ExperimentConfig:
 
     def __post_init__(self):
         if self.seed != 40700 or self.latent_dim != 32 or self.final_niches != 8:
-            raise ValueError("V1006 primary settings require seed=40700, D=32 and K=8")
+            raise ValueError("V1006 network settings require seed=40700, D=32 and K=8 comparator")
         if not 0 < self.validation_fraction < 1 or self.batch_size < 2:
             raise ValueError("invalid split or batch size")
+        if not 2 <= self.k_min <= self.final_niches <= self.k_max < self.latent_dim:
+            raise ValueError("invalid H32 model-selection range")
 
     def to_dict(self): return asdict(self)
 

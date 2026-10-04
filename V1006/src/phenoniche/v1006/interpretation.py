@@ -90,3 +90,76 @@ def export_results(prepared, config, output, arrays, h32, q8, h8, labels, confid
         "niche_collapse": bool(np.count_nonzero(counts) < config.final_niches),
         "severe_imbalance": bool(fractions.max() > .75 or np.count_nonzero(fractions < .005) > 0)}
     (output / "summary.json").write_text(json.dumps(summary, indent=2)); return summary
+
+
+def export_model_selection(prepared, config, output, table, candidates, selected_k, reason, comparator=None):
+    """Save post-training H32 consolidation results; this never touches AE checkpoints."""
+    from pathlib import Path
+
+    output = Path(output)
+    selection_dir = output / "model_selection"
+    selected_dir = output / "selected_model"
+    comparator_dir = output / "K8_comparator"
+    for directory in (selection_dir, selected_dir, comparator_dir):
+        directory.mkdir(parents=True, exist_ok=True)
+    table.to_csv(selection_dir / "K4_15_metrics.csv", index=False)
+    mappings = []
+    for k, result in candidates.items():
+        frame = result["mapping"].copy()
+        frame.insert(0, "K", k)
+        mappings.append(frame)
+    pd.concat(mappings, ignore_index=True).to_csv(selection_dir / "program_to_niche_mappings.csv", index=False)
+
+    def save_candidate(result, directory):
+        q, h = result["Q"], result["H"]
+        labels, confidence, mapping = result["labels"], result["confidence"], result["mapping"]
+        np.save(directory / "Q.npy", q)
+        np.save(directory / "H.npy", h)
+        np.save(directory / "niche_labels.npy", labels)
+        np.save(directory / "assignment_confidence.npy", confidence)
+        mapping.to_csv(directory / "program32_to_niche.csv", index=False)
+        counts = np.bincount(labels, minlength=h.shape[0])
+        count_table = pd.DataFrame({"niche": np.arange(1, h.shape[0] + 1), "n_cells": counts,
+                                    "fraction": counts / len(labels), "mean_soft_usage": q.mean(0)})
+        count_table.to_csv(directory / "niche_counts.csv", index=False)
+        assignments = prepared.cells.copy()
+        assignments["x"] = np.asarray(prepared.coordinates)[:, 0]
+        assignments["y"] = np.asarray(prepared.coordinates)[:, 1]
+        assignments["niche"] = labels + 1
+        assignments["assignment_confidence_relative"] = confidence
+        activity_path = output / "activity.npy"
+        if activity_path.is_file():
+            assignments["CCC_activity"] = np.load(activity_path, mmap_mode="r")
+        assignments.to_csv(directory / "niche_assignments.csv.gz", index=False, compression="gzip")
+        top = export_top_markers(h, prepared.features, directory, config.top_ccc)
+        return count_table, top
+
+    selected_counts, _ = save_candidate(candidates[selected_k], selected_dir)
+    comparator = candidates[config.final_niches] if comparator is None else comparator
+    k8_counts, _ = save_candidate(comparator, comparator_dir)
+    selected_row = table.loc[table.K == selected_k].iloc[0]
+    k8_row = table.loc[table.K == config.final_niches].iloc[0]
+    summary = {
+        "consolidation_revision": config.consolidation_revision,
+        "method": "MiniBatchKMeans on cell-level sqrt(P32) plus standardized log CCC activity",
+        "K8_comparator_method": "original trained Q8_direct architectural grouping",
+        "selected_K": int(selected_k), "comparison_K": int(config.final_niches),
+        "selection_reason": reason,
+        "selected_silhouette": float(selected_row.silhouette),
+        "selected_adjacent_K_stability": float(selected_row.adjacent_K_stability),
+        "selected_max_niche_cell_fraction": float(selected_row.max_niche_cell_fraction),
+        "selected_tiny_niche_fraction": float(selected_row.tiny_niche_fraction),
+        "selected_mean_assignment_confidence": float(selected_row.mean_assignment_confidence),
+        "selected_mean_H_program_separation": float(selected_row.mean_H_program_separation),
+        "selected_niche_cell_counts": selected_counts.n_cells.astype(int).tolist(),
+        "selected_niche_cell_fractions": selected_counts.fraction.tolist(),
+        "K8_silhouette": float(k8_row.silhouette),
+        "K8_adjacent_K_stability": float(k8_row.adjacent_K_stability),
+        "K8_max_niche_cell_fraction": float(k8_counts.fraction.max()),
+        "K8_tiny_niche_fraction": float(k8_counts.loc[k8_counts.fraction < config.tiny_niche_fraction_threshold, "fraction"].sum()),
+        "K8_mean_assignment_confidence": float(np.asarray(comparator["confidence"]).mean()),
+        "K8_niche_cell_counts": k8_counts.n_cells.astype(int).tolist(),
+        "network_retrained": False,
+    }
+    (output / "model_selection_summary.json").write_text(json.dumps(summary, indent=2))
+    return summary

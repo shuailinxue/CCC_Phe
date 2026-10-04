@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+def _niche_colors(k):
+    return plt.get_cmap("tab20", k)(np.arange(k))
+
+
 def training_curves(output):
     output = Path(output); s1 = pd.read_csv(output / "stage1_training_history.csv"); s2 = pd.read_csv(output / "stage2B_training_history.csv")
     fig, axes = plt.subplots(1, 2, figsize=(9, 3.2))
@@ -21,18 +25,19 @@ def spatial_overview(artifacts):
     cell_type = pd.Categorical(assignments.cell_type)
     niche = assignments.niche.to_numpy() - 1
     type_colors = plt.get_cmap("tab20", len(cell_type.categories))(np.arange(len(cell_type.categories)))
-    niche_colors = plt.get_cmap("tab10", 8)(np.arange(8))
+    k = artifacts["selected_K"]
+    niche_colors = _niche_colors(k)
     fig, axes = plt.subplots(1, 2, figsize=(13, 7.4), layout="constrained")
     axes[0].scatter(assignments.x, assignments.y, c=type_colors[cell_type.codes], s=.22, linewidths=0, rasterized=True)
     axes[0].set_title("Cell types")
     axes[1].scatter(assignments.x, assignments.y, c=niche_colors[niche], s=.22, linewidths=0, rasterized=True)
-    axes[1].set_title("V1006 niches")
+    axes[1].set_title(f"V1006 selected niches (K={k})")
     for ax in axes: ax.set_aspect("equal"); ax.invert_yaxis(); ax.set_xlabel("x (µm)"); ax.set_ylabel("y (µm)")
     type_handles = [plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=type_colors[i],
                                markeredgewidth=0, markersize=5, label=name)
                     for i, name in enumerate(cell_type.categories)]
     niche_handles = [plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=niche_colors[i],
-                                markeredgewidth=0, markersize=5, label=f"Niche {i + 1}") for i in range(8)]
+                                markeredgewidth=0, markersize=5, label=f"Niche {i + 1}") for i in range(k)]
     axes[0].legend(handles=type_handles, loc="upper center", bbox_to_anchor=(.5, -.10), ncol=4, frameon=False, fontsize=7)
     axes[1].legend(handles=niche_handles, loc="upper center", bbox_to_anchor=(.5, -.10), ncol=4, frameon=False, fontsize=7)
     figures = Path(artifacts["output"]) / "figures"; figures.mkdir(exist_ok=True)
@@ -73,7 +78,7 @@ def niche_celltype_enrichment(artifacts):
     """Match the V1002 one-sided Mann–Whitney U heatmap and entropy-dot definition."""
     from scipy.stats import norm, rankdata, tiecorrect
     composition, cell_types = _local_composition(artifacts)
-    labels = artifacts["labels"].astype(np.int64); n, k = len(labels), 8
+    labels = artifacts["labels"].astype(np.int64); n, k = len(labels), artifacts["selected_K"]
     sizes = np.bincount(labels, minlength=k); baseline = np.asarray(composition).mean(0)
     means = np.empty((k, len(cell_types))); pvalues = np.ones_like(means)
     for t in range(len(cell_types)):
@@ -125,13 +130,15 @@ def niche_celltype_enrichment(artifacts):
 
 def spatial_each_niche(artifacts):
     table = artifacts["assignments"]; labels = artifacts["labels"]
-    colors = plt.get_cmap("tab10", 8)(np.arange(8)); xlim = (table.x.min(), table.x.max()); ylim = (table.y.max(), table.y.min())
-    fig, axes = plt.subplots(2, 4, figsize=(17, 9), layout="constrained")
-    for niche, ax in enumerate(axes.flat):
+    k = artifacts["selected_K"]; columns = 4; rows = int(np.ceil(k / columns))
+    colors = _niche_colors(k); xlim = (table.x.min(), table.x.max()); ylim = (table.y.max(), table.y.min())
+    fig, axes = plt.subplots(rows, columns, figsize=(17, 4.2 * rows), squeeze=False, layout="constrained")
+    for niche, ax in enumerate(axes.flat[:k]):
         selected = labels == niche
         ax.scatter(table.x, table.y, c="#d9d9d9", s=.16, linewidths=0, rasterized=True)
         ax.scatter(table.loc[selected, "x"], table.loc[selected, "y"], c=[colors[niche]], s=.38, linewidths=0, rasterized=True)
         ax.set(xlim=xlim, ylim=ylim, title=f"Niche {niche + 1}  (n={selected.sum():,})"); ax.set_aspect("equal"); ax.set_axis_off()
+    for ax in axes.flat[k:]: ax.set_axis_off()
     fig.suptitle("V1006: spatial distribution of each niche", fontsize=15)
     figures = Path(artifacts["output"]) / "figures"; figures.mkdir(exist_ok=True)
     fig.savefig(figures / "v1006_each_niche_spatial.png", dpi=600, bbox_inches="tight")
@@ -141,15 +148,34 @@ def spatial_each_niche(artifacts):
 def niche_size_plot(artifacts):
     table = artifacts["counts"]
     fig, ax = plt.subplots(figsize=(6.5, 3.2))
-    ax.bar(table.niche.astype(str), table.fraction, color=plt.get_cmap("tab10", 8)(np.arange(8)))
+    ax.bar(table.niche.astype(str), table.fraction, color=_niche_colors(len(table)))
     ax.set(xlabel="Niche", ylabel="Cell fraction", title="V1006 niche size")
     fig.tight_layout(); return fig
 
 
-def representative_h_heatmap(h8, features, per_niche=3):
-    selected = np.unique(np.concatenate([np.argsort(-row)[:per_niche] for row in h8]))
+def representative_h_heatmap(h, features, per_niche=3):
+    selected = np.unique(np.concatenate([np.argsort(-row)[:per_niche] for row in h]))
     labels = features.iloc[selected].get("ccc", pd.Series(selected.astype(str))).astype(str).tolist()
-    fig, ax = plt.subplots(figsize=(max(7, .35 * len(selected)), 4))
-    sns.heatmap(h8[:, selected], cmap="mako", xticklabels=labels, yticklabels=np.arange(1, 9), ax=ax)
-    ax.set(xlabel="Representative directed CCC", ylabel="Niche", title="Model-learned H8 CCC programs")
+    fig, ax = plt.subplots(figsize=(max(7, .35 * len(selected)), max(4, .35 * len(h))))
+    sns.heatmap(h[:, selected], cmap="mako", xticklabels=labels, yticklabels=np.arange(1, len(h) + 1), ax=ax)
+    ax.set(xlabel="Representative directed CCC", ylabel="Niche", title=f"Selected H (K={len(h)}) CCC programs")
     ax.tick_params(axis="x", rotation=90); fig.tight_layout(); return fig
+
+
+def model_selection_plot(artifacts):
+    table = artifacts["model_selection"]; selected = artifacts["selected_K"]
+    fig, axes = plt.subplots(1, 3, figsize=(11.5, 3.2))
+    panels = [("silhouette", "H32 silhouette"),
+              ("adjacent_K_stability", "Adjacent-K stability"),
+              ("max_niche_cell_fraction", "Largest niche fraction")]
+    for ax, (column, label) in zip(axes, panels):
+        ax.plot(table.K, table[column], marker="o", ms=3, color="#4c78a8")
+        ax.axvline(selected, color="#d62728", ls="--", lw=1.2, label=f"selected K={selected}")
+        ax.axvline(8, color="#777777", ls=":", lw=1.1, label="K=8 comparator")
+        ax.set(xlabel="K", ylabel=label); ax.set_xticks(table.K)
+    axes[0].legend(frameon=False, fontsize=8)
+    fig.suptitle("Cell-level P32/activity niche selection: K=4–15")
+    fig.tight_layout()
+    figures = Path(artifacts["output"]) / "figures"; figures.mkdir(exist_ok=True)
+    fig.savefig(figures / "cell_latent_K_model_selection.png", dpi=600, bbox_inches="tight")
+    return fig
