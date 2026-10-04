@@ -1,0 +1,5 @@
+{
+  "revision": "v1002_ccc_autok32_cell_usage_v1",
+  "selected_K": 10,
+  "selection_reason": "smallest K on the near-optimal cell-latent stability/quality plateau"
+}

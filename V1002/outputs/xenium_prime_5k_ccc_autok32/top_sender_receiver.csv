@@ -1,0 +1,151 @@
+niche,sender,receiver,weight
+1,Fibroblast,Macrophage,0.5095487
+1,Macrophage,Fibroblast,0.061962113
+1,Endothelial,Macrophage,0.060971618
+1,Epithelial,Macrophage,0.048982628
+1,Pericyte,Macrophage,0.03714502
+1,Fibroblast,T cell,0.029465623
+1,Fibroblast,Epithelial,0.024292681
+1,Fibroblast,Mast cell,0.02145645
+1,Macrophage,Macrophage,0.020815335
+1,Macrophage,Pericyte,0.019314338
+1,Macrophage,Endothelial,0.016664065
+1,Fibroblast,Endothelial,0.015354007
+1,Fibroblast,Pericyte,0.014156992
+1,Epithelial,T cell,0.013450917
+1,Macrophage,Epithelial,0.010753979
+2,Fibroblast,Epithelial,0.122364506
+2,Epithelial,Epithelial,0.11427846
+2,Fibroblast,Endothelial,0.089807145
+2,Endothelial,Epithelial,0.07905692
+2,Fibroblast,Macrophage,0.06145171
+2,Pericyte,Epithelial,0.050257135
+2,Epithelial,Endothelial,0.04942542
+2,Pericyte,Endothelial,0.03686233
+2,Endothelial,Endothelial,0.035514772
+2,Myoepithelial,Epithelial,0.03211508
+2,Endothelial,Macrophage,0.031073844
+2,Epithelial,Macrophage,0.027332962
+2,Myoepithelial,Myoepithelial,0.025648933
+2,Pericyte,Macrophage,0.022248974
+2,Epithelial,Myoepithelial,0.020066237
+3,Epithelial,Epithelial,0.757618
+3,Myoepithelial,Epithelial,0.03905038
+3,Epithelial,Macrophage,0.038456786
+3,Macrophage,Epithelial,0.027950507
+3,Epithelial,Myoepithelial,0.020806147
+3,Endothelial,Epithelial,0.018629676
+3,Fibroblast,Epithelial,0.016323479
+3,Epithelial,T cell,0.014714646
+3,Epithelial,Endothelial,0.012597059
+3,Macrophage,Macrophage,0.007524681
+3,Pericyte,Epithelial,0.0072356826
+3,Myoepithelial,Myoepithelial,0.0064104204
+3,Mast cell,Epithelial,0.0053260364
+3,T cell,Epithelial,0.0048377486
+3,Epithelial,Mast cell,0.00471919
+4,Fibroblast,T cell,0.3687396
+4,Epithelial,T cell,0.21908179
+4,Endothelial,T cell,0.16164227
+4,Pericyte,T cell,0.089075886
+4,T cell,Epithelial,0.054101773
+4,Macrophage,T cell,0.029450612
+4,Myoepithelial,T cell,0.02884649
+4,Fibroblast,Epithelial,0.008685219
+4,Macrophage,Macrophage,0.008391097
+4,Fibroblast,Macrophage,0.0066431365
+4,Endothelial,Endothelial,0.0029436806
+4,Fibroblast,Pericyte,0.0024312385
+4,Pericyte,Endothelial,0.002374291
+4,Endothelial,Macrophage,0.0016037576
+4,Pericyte,Epithelial,0.0015731824
+5,Epithelial,Epithelial,0.22006644
+5,Endothelial,Epithelial,0.19674143
+5,Epithelial,Endothelial,0.11279147
+5,Fibroblast,Epithelial,0.0727862
+5,Endothelial,Endothelial,0.044007555
+5,Pericyte,Epithelial,0.043196317
+5,Fibroblast,Endothelial,0.04109675
+5,Myoepithelial,Epithelial,0.031359233
+5,Pericyte,Endothelial,0.022154955
+5,Endothelial,Macrophage,0.021323139
+5,Myoepithelial,Myoepithelial,0.020842679
+5,Epithelial,Macrophage,0.020364786
+5,Epithelial,Myoepithelial,0.019554025
+5,Endothelial,Myoepithelial,0.012451528
+5,Fibroblast,Myoepithelial,0.011664372
+6,Pericyte,Endothelial,0.4226524
+6,Endothelial,Endothelial,0.09855309
+6,Pericyte,Macrophage,0.07410117
+6,Fibroblast,Endothelial,0.07117883
+6,Fibroblast,Pericyte,0.05234242
+6,Pericyte,Epithelial,0.041595295
+6,Pericyte,T cell,0.030640684
+6,Endothelial,Macrophage,0.026523653
+6,Pericyte,Pericyte,0.018471451
+6,Epithelial,Pericyte,0.016509276
+6,Pericyte,Mast cell,0.015906246
+6,Fibroblast,Macrophage,0.015553554
+6,Endothelial,Pericyte,0.014716653
+6,Macrophage,Pericyte,0.01046723
+6,Pericyte,Myoepithelial,0.0100766355
+7,Fibroblast,Epithelial,0.37948874
+7,Epithelial,Epithelial,0.32570416
+7,Endothelial,Epithelial,0.04590569
+7,Fibroblast,Macrophage,0.035991974
+7,Epithelial,Macrophage,0.028033506
+7,Pericyte,Epithelial,0.024759386
+7,Myoepithelial,Epithelial,0.024346683
+7,Macrophage,Epithelial,0.018351331
+7,Epithelial,Myoepithelial,0.012118551
+7,Fibroblast,Myoepithelial,0.011057915
+7,Epithelial,T cell,0.009900655
+7,Fibroblast,T cell,0.009380974
+7,Epithelial,Endothelial,0.008839519
+7,Myoepithelial,Myoepithelial,0.0083580045
+7,Fibroblast,Endothelial,0.0076327436
+8,Endothelial,Endothelial,0.3575852
+8,Fibroblast,Endothelial,0.28035855
+8,Fibroblast,Macrophage,0.056351453
+8,Endothelial,Macrophage,0.03283114
+8,Pericyte,Endothelial,0.030334095
+8,Epithelial,Endothelial,0.021444518
+8,Fibroblast,T cell,0.020537604
+8,Fibroblast,Epithelial,0.01845743
+8,Endothelial,Epithelial,0.018421452
+8,Endothelial,T cell,0.01688222
+8,Endothelial,Myoepithelial,0.014767617
+8,Pericyte,Macrophage,0.014571499
+8,Epithelial,T cell,0.009293766
+8,Myoepithelial,Endothelial,0.007880086
+8,Macrophage,Macrophage,0.0075782663
+9,Fibroblast,Macrophage,0.6330482
+9,Fibroblast,T cell,0.061899513
+9,Endothelial,Macrophage,0.033919897
+9,Epithelial,Macrophage,0.028324388
+9,Macrophage,Macrophage,0.027979683
+9,Epithelial,T cell,0.024322152
+9,Fibroblast,Endothelial,0.02415987
+9,Pericyte,Macrophage,0.022716751
+9,Endothelial,T cell,0.019015275
+9,Macrophage,Epithelial,0.01435567
+9,Fibroblast,Epithelial,0.012934167
+9,Fibroblast,Myoepithelial,0.01160321
+9,Pericyte,T cell,0.010435095
+9,Fibroblast,Pericyte,0.008572701
+9,Macrophage,Fibroblast,0.008179051
+10,Endothelial,Macrophage,0.3858083
+10,Pericyte,Macrophage,0.18717329
+10,Fibroblast,Macrophage,0.06755427
+10,Endothelial,Endothelial,0.054121833
+10,Pericyte,Endothelial,0.048549492
+10,Endothelial,T cell,0.03041566
+10,Fibroblast,Endothelial,0.026604809
+10,Pericyte,Epithelial,0.022172073
+10,Macrophage,Macrophage,0.01941191
+10,Pericyte,T cell,0.0147363525
+10,Macrophage,Endothelial,0.013176633
+10,Endothelial,Mast cell,0.012762189
+10,Endothelial,Epithelial,0.01246276
+10,Fibroblast,T cell,0.011990269
+10,Epithelial,Macrophage,0.011354872

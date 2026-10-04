@@ -1,0 +1,151 @@
+niche,rank,feature_id,ccc,sender,receiver,lr,weight
+1,1,215,Fibroblast → Macrophage | CommuSpace_HS_06869,Fibroblast,Macrophage,CommuSpace_HS_06869,0.1691934
+1,2,213,Fibroblast → Macrophage | CommuSpace_HS_01093,Fibroblast,Macrophage,CommuSpace_HS_01093,0.117462665
+1,3,212,Fibroblast → Macrophage | CommuSpace_HS_01081,Fibroblast,Macrophage,CommuSpace_HS_01081,0.09039611
+1,4,217,Fibroblast → Macrophage | CommuSpace_HS_07429,Fibroblast,Macrophage,CommuSpace_HS_07429,0.061962113
+1,5,262,Macrophage → Fibroblast | CommuSpace_HS_04798,Macrophage,Fibroblast,CommuSpace_HS_04798,0.061962113
+1,6,216,Fibroblast → Macrophage | CommuSpace_HS_07427,Fibroblast,Macrophage,CommuSpace_HS_07427,0.03364222
+1,7,123,Epithelial → Macrophage | CommuSpace_HS_02696,Epithelial,Macrophage,CommuSpace_HS_02696,0.032290354
+1,8,271,Macrophage → Pericyte | CommuSpace_HS_04798,Macrophage,Pericyte,CommuSpace_HS_04798,0.019314338
+1,9,455,Pericyte → Macrophage | CommuSpace_HS_07429,Pericyte,Macrophage,CommuSpace_HS_07429,0.019314338
+1,10,39,Endothelial → Macrophage | CommuSpace_HS_01081,Endothelial,Macrophage,CommuSpace_HS_01081,0.017568132
+1,11,45,Endothelial → Macrophage | CommuSpace_HS_07429,Endothelial,Macrophage,CommuSpace_HS_07429,0.016664065
+1,12,255,Macrophage → Endothelial | CommuSpace_HS_04798,Macrophage,Endothelial,CommuSpace_HS_04798,0.016664065
+1,13,253,Fibroblast → T cell | CommuSpace_HS_07452,Fibroblast,T cell,CommuSpace_HS_07452,0.016175268
+1,14,224,Fibroblast → Mast cell | CommuSpace_HS_07452,Fibroblast,Mast cell,CommuSpace_HS_07452,0.013412865
+1,15,43,Endothelial → Macrophage | CommuSpace_HS_06869,Endothelial,Macrophage,CommuSpace_HS_06869,0.0125310365
+2,1,118,Epithelial → Epithelial | CommuSpace_HS_07453,Epithelial,Epithelial,CommuSpace_HS_07453,0.011581388
+2,2,206,Fibroblast → Epithelial | CommuSpace_HS_07453,Fibroblast,Epithelial,CommuSpace_HS_07453,0.011178165
+2,3,117,Epithelial → Epithelial | CommuSpace_HS_07452,Epithelial,Epithelial,CommuSpace_HS_07452,0.010891304
+2,4,205,Fibroblast → Epithelial | CommuSpace_HS_07452,Fibroblast,Epithelial,CommuSpace_HS_07452,0.010844243
+2,5,99,Epithelial → Epithelial | CommuSpace_HS_02693,Epithelial,Epithelial,CommuSpace_HS_02693,0.0105737625
+2,6,81,Epithelial → Endothelial | CommuSpace_HS_07454,Epithelial,Endothelial,CommuSpace_HS_07454,0.010503542
+2,7,215,Fibroblast → Macrophage | CommuSpace_HS_06869,Fibroblast,Macrophage,CommuSpace_HS_06869,0.010444648
+2,8,219,Fibroblast → Macrophage | CommuSpace_HS_07452,Fibroblast,Macrophage,CommuSpace_HS_07452,0.010267128
+2,9,179,Fibroblast → Endothelial | CommuSpace_HS_07454,Fibroblast,Endothelial,CommuSpace_HS_07454,0.010174164
+2,10,211,Fibroblast → Macrophage | CommuSpace_HS_00946,Fibroblast,Macrophage,CommuSpace_HS_00946,0.010121842
+2,11,178,Fibroblast → Endothelial | CommuSpace_HS_07450,Fibroblast,Endothelial,CommuSpace_HS_07450,0.010017699
+2,12,130,Epithelial → Macrophage | CommuSpace_HS_07452,Epithelial,Macrophage,CommuSpace_HS_07452,0.009759985
+2,13,193,Fibroblast → Epithelial | CommuSpace_HS_01861,Fibroblast,Epithelial,CommuSpace_HS_01861,0.009662621
+2,14,249,Fibroblast → Pericyte | CommuSpace_HS_07450,Fibroblast,Pericyte,CommuSpace_HS_07450,0.009588024
+2,15,202,Fibroblast → Epithelial | CommuSpace_HS_07386,Fibroblast,Epithelial,CommuSpace_HS_07386,0.009363018
+3,1,118,Epithelial → Epithelial | CommuSpace_HS_07453,Epithelial,Epithelial,CommuSpace_HS_07453,0.10957035
+3,2,117,Epithelial → Epithelial | CommuSpace_HS_07452,Epithelial,Epithelial,CommuSpace_HS_07452,0.07020666
+3,3,99,Epithelial → Epithelial | CommuSpace_HS_02693,Epithelial,Epithelial,CommuSpace_HS_02693,0.058108486
+3,4,114,Epithelial → Epithelial | CommuSpace_HS_07386,Epithelial,Epithelial,CommuSpace_HS_07386,0.040523224
+3,5,112,Epithelial → Epithelial | CommuSpace_HS_07371,Epithelial,Epithelial,CommuSpace_HS_07371,0.034992818
+3,6,95,Epithelial → Epithelial | CommuSpace_HS_01239,Epithelial,Epithelial,CommuSpace_HS_01239,0.030967852
+3,7,89,Epithelial → Epithelial | CommuSpace_HS_00190,Epithelial,Epithelial,CommuSpace_HS_00190,0.027662478
+3,8,97,Epithelial → Epithelial | CommuSpace_HS_01249,Epithelial,Epithelial,CommuSpace_HS_01249,0.026776016
+3,9,96,Epithelial → Epithelial | CommuSpace_HS_01242,Epithelial,Epithelial,CommuSpace_HS_01242,0.025873952
+3,10,107,Epithelial → Epithelial | CommuSpace_HS_06177,Epithelial,Epithelial,CommuSpace_HS_06177,0.024157017
+3,11,105,Epithelial → Epithelial | CommuSpace_HS_05608,Epithelial,Epithelial,CommuSpace_HS_05608,0.023131477
+3,12,94,Epithelial → Epithelial | CommuSpace_HS_01179,Epithelial,Epithelial,CommuSpace_HS_01179,0.021359224
+3,13,113,Epithelial → Epithelial | CommuSpace_HS_07374,Epithelial,Epithelial,CommuSpace_HS_07374,0.02056151
+3,14,92,Epithelial → Epithelial | CommuSpace_HS_00846,Epithelial,Epithelial,CommuSpace_HS_00846,0.020323144
+3,15,91,Epithelial → Epithelial | CommuSpace_HS_00400,Epithelial,Epithelial,CommuSpace_HS_00400,0.019690217
+4,1,253,Fibroblast → T cell | CommuSpace_HS_07452,Fibroblast,T cell,CommuSpace_HS_07452,0.2453238
+4,2,167,Epithelial → T cell | CommuSpace_HS_07452,Epithelial,T cell,CommuSpace_HS_07452,0.13226867
+4,3,71,Endothelial → T cell | CommuSpace_HS_01729,Endothelial,T cell,CommuSpace_HS_01729,0.08079071
+4,4,251,Fibroblast → T cell | CommuSpace_HS_01729,Fibroblast,T cell,CommuSpace_HS_01729,0.05585576
+4,5,72,Endothelial → T cell | CommuSpace_HS_01750,Endothelial,T cell,CommuSpace_HS_01750,0.043457
+4,6,489,Pericyte → T cell | CommuSpace_HS_01729,Pericyte,T cell,CommuSpace_HS_01729,0.043069948
+4,7,165,Epithelial → T cell | CommuSpace_HS_06177,Epithelial,T cell,CommuSpace_HS_06177,0.04246305
+4,8,73,Endothelial → T cell | CommuSpace_HS_07452,Endothelial,T cell,CommuSpace_HS_07452,0.037394557
+4,9,252,Fibroblast → T cell | CommuSpace_HS_07444,Fibroblast,T cell,CommuSpace_HS_07444,0.03687133
+4,10,493,T cell → Epithelial | CommuSpace_HS_01179,T cell,Epithelial,CommuSpace_HS_01179,0.0356346
+4,11,254,Fibroblast → T cell | CommuSpace_HS_07694,Fibroblast,T cell,CommuSpace_HS_07694,0.030688692
+4,12,272,Macrophage → T cell | CommuSpace_HS_06177,Macrophage,T cell,CommuSpace_HS_06177,0.029450612
+4,13,490,Pericyte → T cell | CommuSpace_HS_01750,Pericyte,T cell,CommuSpace_HS_01750,0.025584906
+4,14,168,Epithelial → T cell | CommuSpace_HS_07694,Epithelial,T cell,CommuSpace_HS_07694,0.025263345
+4,15,491,Pericyte → T cell | CommuSpace_HS_07452,Pericyte,T cell,CommuSpace_HS_07452,0.02042103
+5,1,118,Epithelial → Epithelial | CommuSpace_HS_07453,Epithelial,Epithelial,CommuSpace_HS_07453,0.034638114
+5,2,74,Epithelial → Endothelial | CommuSpace_HS_00391,Epithelial,Endothelial,CommuSpace_HS_00391,0.032389823
+5,3,117,Epithelial → Epithelial | CommuSpace_HS_07452,Epithelial,Epithelial,CommuSpace_HS_07452,0.022713022
+5,4,17,Endothelial → Epithelial | CommuSpace_HS_01729,Endothelial,Epithelial,CommuSpace_HS_01729,0.021979839
+5,5,20,Endothelial → Epithelial | CommuSpace_HS_01748,Endothelial,Epithelial,CommuSpace_HS_01748,0.021612788
+5,6,22,Endothelial → Epithelial | CommuSpace_HS_01752,Endothelial,Epithelial,CommuSpace_HS_01752,0.018680869
+5,7,18,Endothelial → Epithelial | CommuSpace_HS_01730,Endothelial,Epithelial,CommuSpace_HS_01730,0.01772605
+5,8,81,Epithelial → Endothelial | CommuSpace_HS_07454,Epithelial,Endothelial,CommuSpace_HS_07454,0.017100213
+5,9,85,Epithelial → Endothelial | CommuSpace_HS_07712,Epithelial,Endothelial,CommuSpace_HS_07712,0.015507991
+5,10,99,Epithelial → Epithelial | CommuSpace_HS_02693,Epithelial,Epithelial,CommuSpace_HS_02693,0.015287953
+5,11,0,Endothelial → Endothelial | CommuSpace_HS_00391,Endothelial,Endothelial,CommuSpace_HS_00391,0.014594044
+5,12,82,Epithelial → Endothelial | CommuSpace_HS_07697,Epithelial,Endothelial,CommuSpace_HS_07697,0.013839249
+5,13,21,Endothelial → Epithelial | CommuSpace_HS_01750,Endothelial,Epithelial,CommuSpace_HS_01750,0.012666769
+5,14,25,Endothelial → Epithelial | CommuSpace_HS_01770,Endothelial,Epithelial,CommuSpace_HS_01770,0.012480584
+5,15,114,Epithelial → Epithelial | CommuSpace_HS_07386,Epithelial,Epithelial,CommuSpace_HS_07386,0.012066429
+6,1,412,Pericyte → Endothelial | CommuSpace_HS_01731,Pericyte,Endothelial,CommuSpace_HS_01731,0.13833015
+6,2,408,Pericyte → Endothelial | CommuSpace_HS_00391,Pericyte,Endothelial,CommuSpace_HS_00391,0.077512234
+6,3,413,Pericyte → Endothelial | CommuSpace_HS_01751,Pericyte,Endothelial,CommuSpace_HS_01751,0.074231565
+6,4,249,Fibroblast → Pericyte | CommuSpace_HS_07450,Fibroblast,Pericyte,CommuSpace_HS_07450,0.030192442
+6,5,2,Endothelial → Endothelial | CommuSpace_HS_01731,Endothelial,Endothelial,CommuSpace_HS_01731,0.02801322
+6,6,0,Endothelial → Endothelial | CommuSpace_HS_00391,Endothelial,Endothelial,CommuSpace_HS_00391,0.024082057
+6,7,417,Pericyte → Endothelial | CommuSpace_HS_07430,Pericyte,Endothelial,CommuSpace_HS_07430,0.020816654
+6,8,411,Pericyte → Endothelial | CommuSpace_HS_01568,Pericyte,Endothelial,CommuSpace_HS_01568,0.018681072
+6,9,454,Pericyte → Macrophage | CommuSpace_HS_07427,Pericyte,Macrophage,CommuSpace_HS_07427,0.017929958
+6,10,414,Pericyte → Endothelial | CommuSpace_HS_01767,Pericyte,Endothelial,CommuSpace_HS_01767,0.017552115
+6,11,451,Pericyte → Macrophage | CommuSpace_HS_01729,Pericyte,Macrophage,CommuSpace_HS_01729,0.016484423
+6,12,489,Pericyte → T cell | CommuSpace_HS_01729,Pericyte,T cell,CommuSpace_HS_01729,0.015487212
+6,13,3,Endothelial → Endothelial | CommuSpace_HS_01751,Endothelial,Endothelial,CommuSpace_HS_01751,0.015359734
+6,14,248,Fibroblast → Pericyte | CommuSpace_HS_07370,Fibroblast,Pericyte,CommuSpace_HS_07370,0.01459855
+6,15,419,Pericyte → Endothelial | CommuSpace_HS_07454,Pericyte,Endothelial,CommuSpace_HS_07454,0.014118867
+7,1,206,Fibroblast → Epithelial | CommuSpace_HS_07453,Fibroblast,Epithelial,CommuSpace_HS_07453,0.08998233
+7,2,205,Fibroblast → Epithelial | CommuSpace_HS_07452,Fibroblast,Epithelial,CommuSpace_HS_07452,0.06337196
+7,3,118,Epithelial → Epithelial | CommuSpace_HS_07453,Epithelial,Epithelial,CommuSpace_HS_07453,0.044898245
+7,4,117,Epithelial → Epithelial | CommuSpace_HS_07452,Epithelial,Epithelial,CommuSpace_HS_07452,0.031328827
+7,5,193,Fibroblast → Epithelial | CommuSpace_HS_01861,Fibroblast,Epithelial,CommuSpace_HS_01861,0.02774373
+7,6,202,Fibroblast → Epithelial | CommuSpace_HS_07386,Fibroblast,Epithelial,CommuSpace_HS_07386,0.023021469
+7,7,99,Epithelial → Epithelial | CommuSpace_HS_02693,Epithelial,Epithelial,CommuSpace_HS_02693,0.022125801
+7,8,114,Epithelial → Epithelial | CommuSpace_HS_07386,Epithelial,Epithelial,CommuSpace_HS_07386,0.01868375
+7,9,195,Fibroblast → Epithelial | CommuSpace_HS_01876,Fibroblast,Epithelial,CommuSpace_HS_01876,0.01668535
+7,10,200,Fibroblast → Epithelial | CommuSpace_HS_07371,Fibroblast,Epithelial,CommuSpace_HS_07371,0.016554223
+7,11,112,Epithelial → Epithelial | CommuSpace_HS_07371,Epithelial,Epithelial,CommuSpace_HS_07371,0.015656503
+7,12,188,Fibroblast → Epithelial | CommuSpace_HS_01084,Fibroblast,Epithelial,CommuSpace_HS_01084,0.015406984
+7,13,95,Epithelial → Epithelial | CommuSpace_HS_01239,Epithelial,Epithelial,CommuSpace_HS_01239,0.012121096
+7,14,107,Epithelial → Epithelial | CommuSpace_HS_06177,Epithelial,Epithelial,CommuSpace_HS_06177,0.012011318
+7,15,189,Fibroblast → Epithelial | CommuSpace_HS_01729,Fibroblast,Epithelial,CommuSpace_HS_01729,0.011686481
+8,1,0,Endothelial → Endothelial | CommuSpace_HS_00391,Endothelial,Endothelial,CommuSpace_HS_00391,0.118975066
+8,2,2,Endothelial → Endothelial | CommuSpace_HS_01731,Endothelial,Endothelial,CommuSpace_HS_01731,0.080913074
+8,3,182,Fibroblast → Endothelial | CommuSpace_HS_07697,Fibroblast,Endothelial,CommuSpace_HS_07697,0.046372578
+8,4,3,Endothelial → Endothelial | CommuSpace_HS_01751,Endothelial,Endothelial,CommuSpace_HS_01751,0.045247573
+8,5,179,Fibroblast → Endothelial | CommuSpace_HS_07454,Fibroblast,Endothelial,CommuSpace_HS_07454,0.034533564
+8,6,211,Fibroblast → Macrophage | CommuSpace_HS_00946,Fibroblast,Macrophage,CommuSpace_HS_00946,0.030549169
+8,7,172,Fibroblast → Endothelial | CommuSpace_HS_01860,Fibroblast,Endothelial,CommuSpace_HS_01860,0.025316363
+8,8,169,Fibroblast → Endothelial | CommuSpace_HS_00391,Fibroblast,Endothelial,CommuSpace_HS_00391,0.024136068
+8,9,175,Fibroblast → Endothelial | CommuSpace_HS_06281,Fibroblast,Endothelial,CommuSpace_HS_06281,0.021137817
+8,10,181,Fibroblast → Endothelial | CommuSpace_HS_07479,Fibroblast,Endothelial,CommuSpace_HS_07479,0.019773006
+8,11,7,Endothelial → Endothelial | CommuSpace_HS_06139,Endothelial,Endothelial,CommuSpace_HS_06139,0.019670282
+8,12,5,Endothelial → Endothelial | CommuSpace_HS_02648,Endothelial,Endothelial,CommuSpace_HS_02648,0.015220324
+8,13,12,Endothelial → Endothelial | CommuSpace_HS_07454,Endothelial,Endothelial,CommuSpace_HS_07454,0.015168914
+8,14,4,Endothelial → Endothelial | CommuSpace_HS_01767,Endothelial,Endothelial,CommuSpace_HS_01767,0.01510562
+8,15,173,Fibroblast → Endothelial | CommuSpace_HS_01875,Fibroblast,Endothelial,CommuSpace_HS_01875,0.014463647
+9,1,219,Fibroblast → Macrophage | CommuSpace_HS_07452,Fibroblast,Macrophage,CommuSpace_HS_07452,0.36044294
+9,2,214,Fibroblast → Macrophage | CommuSpace_HS_01729,Fibroblast,Macrophage,CommuSpace_HS_01729,0.067307144
+9,3,220,Fibroblast → Macrophage | CommuSpace_HS_07694,Fibroblast,Macrophage,CommuSpace_HS_07694,0.045818243
+9,4,253,Fibroblast → T cell | CommuSpace_HS_07452,Fibroblast,T cell,CommuSpace_HS_07452,0.045144327
+9,5,218,Fibroblast → Macrophage | CommuSpace_HS_07444,Fibroblast,Macrophage,CommuSpace_HS_07444,0.04499404
+9,6,215,Fibroblast → Macrophage | CommuSpace_HS_06869,Fibroblast,Macrophage,CommuSpace_HS_06869,0.025996802
+9,7,216,Fibroblast → Macrophage | CommuSpace_HS_07427,Fibroblast,Macrophage,CommuSpace_HS_07427,0.022432916
+9,8,213,Fibroblast → Macrophage | CommuSpace_HS_01093,Fibroblast,Macrophage,CommuSpace_HS_01093,0.020380313
+9,9,266,Macrophage → Macrophage | CommuSpace_HS_06177,Macrophage,Macrophage,CommuSpace_HS_06177,0.017469874
+9,10,211,Fibroblast → Macrophage | CommuSpace_HS_00946,Fibroblast,Macrophage,CommuSpace_HS_00946,0.016519167
+9,11,167,Epithelial → T cell | CommuSpace_HS_07452,Epithelial,T cell,CommuSpace_HS_07452,0.01469019
+9,12,212,Fibroblast → Macrophage | CommuSpace_HS_01081,Fibroblast,Macrophage,CommuSpace_HS_01081,0.011996958
+9,13,46,Endothelial → Macrophage | CommuSpace_HS_07452,Endothelial,Macrophage,CommuSpace_HS_07452,0.0104975505
+9,14,71,Endothelial → T cell | CommuSpace_HS_01729,Endothelial,T cell,CommuSpace_HS_01729,0.009612686
+9,15,126,Epithelial → Macrophage | CommuSpace_HS_06177,Epithelial,Macrophage,CommuSpace_HS_06177,0.009521204
+10,1,40,Endothelial → Macrophage | CommuSpace_HS_01729,Endothelial,Macrophage,CommuSpace_HS_01729,0.17023036
+10,2,41,Endothelial → Macrophage | CommuSpace_HS_01750,Endothelial,Macrophage,CommuSpace_HS_01750,0.092342205
+10,3,451,Pericyte → Macrophage | CommuSpace_HS_01729,Pericyte,Macrophage,CommuSpace_HS_01729,0.07545642
+10,4,46,Endothelial → Macrophage | CommuSpace_HS_07452,Endothelial,Macrophage,CommuSpace_HS_07452,0.050464038
+10,5,452,Pericyte → Macrophage | CommuSpace_HS_01750,Pericyte,Macrophage,CommuSpace_HS_01750,0.04634985
+10,6,456,Pericyte → Macrophage | CommuSpace_HS_07452,Pericyte,Macrophage,CommuSpace_HS_07452,0.039065756
+10,7,219,Fibroblast → Macrophage | CommuSpace_HS_07452,Fibroblast,Macrophage,CommuSpace_HS_07452,0.023756022
+10,8,43,Endothelial → Macrophage | CommuSpace_HS_06869,Endothelial,Macrophage,CommuSpace_HS_06869,0.020573197
+10,9,44,Endothelial → Macrophage | CommuSpace_HS_07427,Endothelial,Macrophage,CommuSpace_HS_07427,0.018362954
+10,10,71,Endothelial → T cell | CommuSpace_HS_01729,Endothelial,T cell,CommuSpace_HS_01729,0.017897626
+10,11,45,Endothelial → Macrophage | CommuSpace_HS_07429,Endothelial,Macrophage,CommuSpace_HS_07429,0.013176634
+10,12,255,Macrophage → Endothelial | CommuSpace_HS_04798,Macrophage,Endothelial,CommuSpace_HS_04798,0.013176633
+10,13,412,Pericyte → Endothelial | CommuSpace_HS_01731,Pericyte,Endothelial,CommuSpace_HS_01731,0.012333349
+10,14,454,Pericyte → Macrophage | CommuSpace_HS_07427,Pericyte,Macrophage,CommuSpace_HS_07427,0.011033132
+10,15,0,Endothelial → Endothelial | CommuSpace_HS_00391,Endothelial,Endothelial,CommuSpace_HS_00391,0.011014748

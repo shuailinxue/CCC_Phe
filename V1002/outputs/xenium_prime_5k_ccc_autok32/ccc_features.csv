@@ -1,0 +1,495 @@
+feature_id,flat_feature_index,sender,receiver,lr,ccc
+0,31701,Endothelial,Endothelial,CommuSpace_HS_00391,Endothelial → Endothelial | CommuSpace_HS_00391
+1,31974,Endothelial,Endothelial,CommuSpace_HS_01082,Endothelial → Endothelial | CommuSpace_HS_01082
+2,32155,Endothelial,Endothelial,CommuSpace_HS_01731,Endothelial → Endothelial | CommuSpace_HS_01731
+3,32163,Endothelial,Endothelial,CommuSpace_HS_01751,Endothelial → Endothelial | CommuSpace_HS_01751
+4,32169,Endothelial,Endothelial,CommuSpace_HS_01767,Endothelial → Endothelial | CommuSpace_HS_01767
+5,32460,Endothelial,Endothelial,CommuSpace_HS_02648,Endothelial → Endothelial | CommuSpace_HS_02648
+6,33638,Endothelial,Endothelial,CommuSpace_HS_06138,Endothelial → Endothelial | CommuSpace_HS_06138
+7,33639,Endothelial,Endothelial,CommuSpace_HS_06139,Endothelial → Endothelial | CommuSpace_HS_06139
+8,33776,Endothelial,Endothelial,CommuSpace_HS_06474,Endothelial → Endothelial | CommuSpace_HS_06474
+9,34075,Endothelial,Endothelial,CommuSpace_HS_07380,Endothelial → Endothelial | CommuSpace_HS_07380
+10,34103,Endothelial,Endothelial,CommuSpace_HS_07430,Endothelial → Endothelial | CommuSpace_HS_07430
+11,34115,Endothelial,Endothelial,CommuSpace_HS_07450,Endothelial → Endothelial | CommuSpace_HS_07450
+12,34119,Endothelial,Endothelial,CommuSpace_HS_07454,Endothelial → Endothelial | CommuSpace_HS_07454
+13,34576,Endothelial,Epithelial,CommuSpace_HS_00398,Endothelial → Epithelial | CommuSpace_HS_00398
+14,34578,Endothelial,Epithelial,CommuSpace_HS_00400,Endothelial → Epithelial | CommuSpace_HS_00400
+15,34845,Endothelial,Epithelial,CommuSpace_HS_01083,Endothelial → Epithelial | CommuSpace_HS_01083
+16,34846,Endothelial,Epithelial,CommuSpace_HS_01084,Endothelial → Epithelial | CommuSpace_HS_01084
+17,35023,Endothelial,Epithelial,CommuSpace_HS_01729,Endothelial → Epithelial | CommuSpace_HS_01729
+18,35024,Endothelial,Epithelial,CommuSpace_HS_01730,Endothelial → Epithelial | CommuSpace_HS_01730
+19,35028,Endothelial,Epithelial,CommuSpace_HS_01739,Endothelial → Epithelial | CommuSpace_HS_01739
+20,35030,Endothelial,Epithelial,CommuSpace_HS_01748,Endothelial → Epithelial | CommuSpace_HS_01748
+21,35032,Endothelial,Epithelial,CommuSpace_HS_01750,Endothelial → Epithelial | CommuSpace_HS_01750
+22,35034,Endothelial,Epithelial,CommuSpace_HS_01752,Endothelial → Epithelial | CommuSpace_HS_01752
+23,35038,Endothelial,Epithelial,CommuSpace_HS_01761,Endothelial → Epithelial | CommuSpace_HS_01761
+24,35040,Endothelial,Epithelial,CommuSpace_HS_01768,Endothelial → Epithelial | CommuSpace_HS_01768
+25,35041,Endothelial,Epithelial,CommuSpace_HS_01770,Endothelial → Epithelial | CommuSpace_HS_01770
+26,35795,Endothelial,Epithelial,CommuSpace_HS_03949,Endothelial → Epithelial | CommuSpace_HS_03949
+27,35812,Endothelial,Epithelial,CommuSpace_HS_03967,Endothelial → Epithelial | CommuSpace_HS_03967
+28,35893,Endothelial,Epithelial,CommuSpace_HS_04281,Endothelial → Epithelial | CommuSpace_HS_04281
+29,35894,Endothelial,Epithelial,CommuSpace_HS_04282,Endothelial → Epithelial | CommuSpace_HS_04282
+30,35895,Endothelial,Epithelial,CommuSpace_HS_04283,Endothelial → Epithelial | CommuSpace_HS_04283
+31,36645,Endothelial,Epithelial,CommuSpace_HS_06473,Endothelial → Epithelial | CommuSpace_HS_06473
+32,36746,Endothelial,Epithelial,CommuSpace_HS_06864,Endothelial → Epithelial | CommuSpace_HS_06864
+33,36938,Endothelial,Epithelial,CommuSpace_HS_07371,Endothelial → Epithelial | CommuSpace_HS_07371
+34,36941,Endothelial,Epithelial,CommuSpace_HS_07374,Endothelial → Epithelial | CommuSpace_HS_07374
+35,36950,Endothelial,Epithelial,CommuSpace_HS_07386,Endothelial → Epithelial | CommuSpace_HS_07386
+36,36987,Endothelial,Epithelial,CommuSpace_HS_07452,Endothelial → Epithelial | CommuSpace_HS_07452
+37,36988,Endothelial,Epithelial,CommuSpace_HS_07453,Endothelial → Epithelial | CommuSpace_HS_07453
+38,40531,Endothelial,Macrophage,CommuSpace_HS_00946,Endothelial → Macrophage | CommuSpace_HS_00946
+39,40583,Endothelial,Macrophage,CommuSpace_HS_01081,Endothelial → Macrophage | CommuSpace_HS_01081
+40,40763,Endothelial,Macrophage,CommuSpace_HS_01729,Endothelial → Macrophage | CommuSpace_HS_01729
+41,40772,Endothelial,Macrophage,CommuSpace_HS_01750,Endothelial → Macrophage | CommuSpace_HS_01750
+42,41539,Endothelial,Macrophage,CommuSpace_HS_03953,Endothelial → Macrophage | CommuSpace_HS_03953
+43,42491,Endothelial,Macrophage,CommuSpace_HS_06869,Endothelial → Macrophage | CommuSpace_HS_06869
+44,42710,Endothelial,Macrophage,CommuSpace_HS_07427,Endothelial → Macrophage | CommuSpace_HS_07427
+45,42712,Endothelial,Macrophage,CommuSpace_HS_07429,Endothelial → Macrophage | CommuSpace_HS_07429
+46,42727,Endothelial,Macrophage,CommuSpace_HS_07452,Endothelial → Macrophage | CommuSpace_HS_07452
+47,43633,Endothelial,Mast cell,CommuSpace_HS_01729,Endothelial → Mast cell | CommuSpace_HS_01729
+48,43642,Endothelial,Mast cell,CommuSpace_HS_01750,Endothelial → Mast cell | CommuSpace_HS_01750
+49,45597,Endothelial,Mast cell,CommuSpace_HS_07452,Endothelial → Mast cell | CommuSpace_HS_07452
+50,46057,Endothelial,Myoepithelial,CommuSpace_HS_00399,Endothelial → Myoepithelial | CommuSpace_HS_00399
+51,46326,Endothelial,Myoepithelial,CommuSpace_HS_01084,Endothelial → Myoepithelial | CommuSpace_HS_01084
+52,46503,Endothelial,Myoepithelial,CommuSpace_HS_01729,Endothelial → Myoepithelial | CommuSpace_HS_01729
+53,46504,Endothelial,Myoepithelial,CommuSpace_HS_01730,Endothelial → Myoepithelial | CommuSpace_HS_01730
+54,46508,Endothelial,Myoepithelial,CommuSpace_HS_01739,Endothelial → Myoepithelial | CommuSpace_HS_01739
+55,46510,Endothelial,Myoepithelial,CommuSpace_HS_01748,Endothelial → Myoepithelial | CommuSpace_HS_01748
+56,46512,Endothelial,Myoepithelial,CommuSpace_HS_01750,Endothelial → Myoepithelial | CommuSpace_HS_01750
+57,46514,Endothelial,Myoepithelial,CommuSpace_HS_01752,Endothelial → Myoepithelial | CommuSpace_HS_01752
+58,46518,Endothelial,Myoepithelial,CommuSpace_HS_01761,Endothelial → Myoepithelial | CommuSpace_HS_01761
+59,46521,Endothelial,Myoepithelial,CommuSpace_HS_01770,Endothelial → Myoepithelial | CommuSpace_HS_01770
+60,47374,Endothelial,Myoepithelial,CommuSpace_HS_04282,Endothelial → Myoepithelial | CommuSpace_HS_04282
+61,47375,Endothelial,Myoepithelial,CommuSpace_HS_04283,Endothelial → Myoepithelial | CommuSpace_HS_04283
+62,48177,Endothelial,Myoepithelial,CommuSpace_HS_06625,Endothelial → Myoepithelial | CommuSpace_HS_06625
+63,48418,Endothelial,Myoepithelial,CommuSpace_HS_07371,Endothelial → Myoepithelial | CommuSpace_HS_07371
+64,48421,Endothelial,Myoepithelial,CommuSpace_HS_07374,Endothelial → Myoepithelial | CommuSpace_HS_07374
+65,48430,Endothelial,Myoepithelial,CommuSpace_HS_07386,Endothelial → Myoepithelial | CommuSpace_HS_07386
+66,48467,Endothelial,Myoepithelial,CommuSpace_HS_07452,Endothelial → Myoepithelial | CommuSpace_HS_07452
+67,48468,Endothelial,Myoepithelial,CommuSpace_HS_07453,Endothelial → Myoepithelial | CommuSpace_HS_07453
+68,48471,Endothelial,Myoepithelial,CommuSpace_HS_07456,Endothelial → Myoepithelial | CommuSpace_HS_07456
+69,51287,Endothelial,Pericyte,CommuSpace_HS_07370,Endothelial → Pericyte | CommuSpace_HS_07370
+70,51335,Endothelial,Pericyte,CommuSpace_HS_07450,Endothelial → Pericyte | CommuSpace_HS_07450
+71,52243,Endothelial,T cell,CommuSpace_HS_01729,Endothelial → T cell | CommuSpace_HS_01729
+72,52252,Endothelial,T cell,CommuSpace_HS_01750,Endothelial → T cell | CommuSpace_HS_01750
+73,54207,Endothelial,T cell,CommuSpace_HS_07452,Endothelial → T cell | CommuSpace_HS_07452
+74,60401,Epithelial,Endothelial,CommuSpace_HS_00391,Epithelial → Endothelial | CommuSpace_HS_00391
+75,60558,Epithelial,Endothelial,CommuSpace_HS_00840,Epithelial → Endothelial | CommuSpace_HS_00840
+76,60785,Epithelial,Endothelial,CommuSpace_HS_01250,Epithelial → Endothelial | CommuSpace_HS_01250
+77,62290,Epithelial,Endothelial,CommuSpace_HS_05945,Epithelial → Endothelial | CommuSpace_HS_05945
+78,62569,Epithelial,Endothelial,CommuSpace_HS_06853,Epithelial → Endothelial | CommuSpace_HS_06853
+79,62775,Epithelial,Endothelial,CommuSpace_HS_07380,Epithelial → Endothelial | CommuSpace_HS_07380
+80,62815,Epithelial,Endothelial,CommuSpace_HS_07450,Epithelial → Endothelial | CommuSpace_HS_07450
+81,62819,Epithelial,Endothelial,CommuSpace_HS_07454,Epithelial → Endothelial | CommuSpace_HS_07454
+82,62943,Epithelial,Endothelial,CommuSpace_HS_07697,Epithelial → Endothelial | CommuSpace_HS_07697
+83,62947,Epithelial,Endothelial,CommuSpace_HS_07704,Epithelial → Endothelial | CommuSpace_HS_07704
+84,62948,Epithelial,Endothelial,CommuSpace_HS_07705,Epithelial → Endothelial | CommuSpace_HS_07705
+85,62955,Epithelial,Endothelial,CommuSpace_HS_07712,Epithelial → Endothelial | CommuSpace_HS_07712
+86,62957,Epithelial,Endothelial,CommuSpace_HS_07714,Epithelial → Endothelial | CommuSpace_HS_07714
+87,63171,Epithelial,Epithelial,CommuSpace_HS_00082,Epithelial → Epithelial | CommuSpace_HS_00082
+88,63174,Epithelial,Epithelial,CommuSpace_HS_00086,Epithelial → Epithelial | CommuSpace_HS_00086
+89,63206,Epithelial,Epithelial,CommuSpace_HS_00190,Epithelial → Epithelial | CommuSpace_HS_00190
+90,63276,Epithelial,Epithelial,CommuSpace_HS_00398,Epithelial → Epithelial | CommuSpace_HS_00398
+91,63278,Epithelial,Epithelial,CommuSpace_HS_00400,Epithelial → Epithelial | CommuSpace_HS_00400
+92,63432,Epithelial,Epithelial,CommuSpace_HS_00846,Epithelial → Epithelial | CommuSpace_HS_00846
+93,63607,Epithelial,Epithelial,CommuSpace_HS_01178,Epithelial → Epithelial | CommuSpace_HS_01178
+94,63608,Epithelial,Epithelial,CommuSpace_HS_01179,Epithelial → Epithelial | CommuSpace_HS_01179
+95,63645,Epithelial,Epithelial,CommuSpace_HS_01239,Epithelial → Epithelial | CommuSpace_HS_01239
+96,63648,Epithelial,Epithelial,CommuSpace_HS_01242,Epithelial → Epithelial | CommuSpace_HS_01242
+97,63654,Epithelial,Epithelial,CommuSpace_HS_01249,Epithelial → Epithelial | CommuSpace_HS_01249
+98,64039,Epithelial,Epithelial,CommuSpace_HS_02659,Epithelial → Epithelial | CommuSpace_HS_02659
+99,64056,Epithelial,Epithelial,CommuSpace_HS_02693,Epithelial → Epithelial | CommuSpace_HS_02693
+100,64321,Epithelial,Epithelial,CommuSpace_HS_03530,Epithelial → Epithelial | CommuSpace_HS_03530
+101,64495,Epithelial,Epithelial,CommuSpace_HS_03949,Epithelial → Epithelial | CommuSpace_HS_03949
+102,64512,Epithelial,Epithelial,CommuSpace_HS_03967,Epithelial → Epithelial | CommuSpace_HS_03967
+103,64965,Epithelial,Epithelial,CommuSpace_HS_05187,Epithelial → Epithelial | CommuSpace_HS_05187
+104,65053,Epithelial,Epithelial,CommuSpace_HS_05526,Epithelial → Epithelial | CommuSpace_HS_05526
+105,65085,Epithelial,Epithelial,CommuSpace_HS_05608,Epithelial → Epithelial | CommuSpace_HS_05608
+106,65158,Epithelial,Epithelial,CommuSpace_HS_05943,Epithelial → Epithelial | CommuSpace_HS_05943
+107,65225,Epithelial,Epithelial,CommuSpace_HS_06177,Epithelial → Epithelial | CommuSpace_HS_06177
+108,65427,Epithelial,Epithelial,CommuSpace_HS_06809,Epithelial → Epithelial | CommuSpace_HS_06809
+109,65428,Epithelial,Epithelial,CommuSpace_HS_06810,Epithelial → Epithelial | CommuSpace_HS_06810
+110,65429,Epithelial,Epithelial,CommuSpace_HS_06811,Epithelial → Epithelial | CommuSpace_HS_06811
+111,65430,Epithelial,Epithelial,CommuSpace_HS_06812,Epithelial → Epithelial | CommuSpace_HS_06812
+112,65638,Epithelial,Epithelial,CommuSpace_HS_07371,Epithelial → Epithelial | CommuSpace_HS_07371
+113,65641,Epithelial,Epithelial,CommuSpace_HS_07374,Epithelial → Epithelial | CommuSpace_HS_07374
+114,65650,Epithelial,Epithelial,CommuSpace_HS_07386,Epithelial → Epithelial | CommuSpace_HS_07386
+115,65681,Epithelial,Epithelial,CommuSpace_HS_07444,Epithelial → Epithelial | CommuSpace_HS_07444
+116,65682,Epithelial,Epithelial,CommuSpace_HS_07445,Epithelial → Epithelial | CommuSpace_HS_07445
+117,65687,Epithelial,Epithelial,CommuSpace_HS_07452,Epithelial → Epithelial | CommuSpace_HS_07452
+118,65688,Epithelial,Epithelial,CommuSpace_HS_07453,Epithelial → Epithelial | CommuSpace_HS_07453
+119,65810,Epithelial,Epithelial,CommuSpace_HS_07694,Epithelial → Epithelial | CommuSpace_HS_07694
+120,65821,Epithelial,Epithelial,CommuSpace_HS_07708,Epithelial → Epithelial | CommuSpace_HS_07708
+121,65829,Epithelial,Epithelial,CommuSpace_HS_07716,Epithelial → Epithelial | CommuSpace_HS_07716
+122,69353,Epithelial,Macrophage,CommuSpace_HS_01186,Epithelial → Macrophage | CommuSpace_HS_01186
+123,69799,Epithelial,Macrophage,CommuSpace_HS_02696,Epithelial → Macrophage | CommuSpace_HS_02696
+124,69821,Epithelial,Macrophage,CommuSpace_HS_02736,Epithelial → Macrophage | CommuSpace_HS_02736
+125,70239,Epithelial,Macrophage,CommuSpace_HS_03953,Epithelial → Macrophage | CommuSpace_HS_03953
+126,70965,Epithelial,Macrophage,CommuSpace_HS_06177,Epithelial → Macrophage | CommuSpace_HS_06177
+127,71168,Epithelial,Macrophage,CommuSpace_HS_06810,Epithelial → Macrophage | CommuSpace_HS_06810
+128,71170,Epithelial,Macrophage,CommuSpace_HS_06812,Epithelial → Macrophage | CommuSpace_HS_06812
+129,71421,Epithelial,Macrophage,CommuSpace_HS_07444,Epithelial → Macrophage | CommuSpace_HS_07444
+130,71427,Epithelial,Macrophage,CommuSpace_HS_07452,Epithelial → Macrophage | CommuSpace_HS_07452
+131,71550,Epithelial,Macrophage,CommuSpace_HS_07694,Epithelial → Macrophage | CommuSpace_HS_07694
+132,71562,Epithelial,Macrophage,CommuSpace_HS_07709,Epithelial → Macrophage | CommuSpace_HS_07709
+133,73502,Epithelial,Mast cell,CommuSpace_HS_04854,Epithelial → Mast cell | CommuSpace_HS_04854
+134,73835,Epithelial,Mast cell,CommuSpace_HS_06177,Epithelial → Mast cell | CommuSpace_HS_06177
+135,74291,Epithelial,Mast cell,CommuSpace_HS_07444,Epithelial → Mast cell | CommuSpace_HS_07444
+136,74297,Epithelial,Mast cell,CommuSpace_HS_07452,Epithelial → Mast cell | CommuSpace_HS_07452
+137,74420,Epithelial,Mast cell,CommuSpace_HS_07694,Epithelial → Mast cell | CommuSpace_HS_07694
+138,74651,Epithelial,Myoepithelial,CommuSpace_HS_00082,Epithelial → Myoepithelial | CommuSpace_HS_00082
+139,74757,Epithelial,Myoepithelial,CommuSpace_HS_00399,Epithelial → Myoepithelial | CommuSpace_HS_00399
+140,74919,Epithelial,Myoepithelial,CommuSpace_HS_00855,Epithelial → Myoepithelial | CommuSpace_HS_00855
+141,75091,Epithelial,Myoepithelial,CommuSpace_HS_01182,Epithelial → Myoepithelial | CommuSpace_HS_01182
+142,75134,Epithelial,Myoepithelial,CommuSpace_HS_01249,Epithelial → Myoepithelial | CommuSpace_HS_01249
+143,75469,Epithelial,Myoepithelial,CommuSpace_HS_02502,Epithelial → Myoepithelial | CommuSpace_HS_02502
+144,75536,Epithelial,Myoepithelial,CommuSpace_HS_02693,Epithelial → Myoepithelial | CommuSpace_HS_02693
+145,76445,Epithelial,Myoepithelial,CommuSpace_HS_05187,Epithelial → Myoepithelial | CommuSpace_HS_05187
+146,76705,Epithelial,Myoepithelial,CommuSpace_HS_06177,Epithelial → Myoepithelial | CommuSpace_HS_06177
+147,76877,Epithelial,Myoepithelial,CommuSpace_HS_06625,Epithelial → Myoepithelial | CommuSpace_HS_06625
+148,76907,Epithelial,Myoepithelial,CommuSpace_HS_06809,Epithelial → Myoepithelial | CommuSpace_HS_06809
+149,76908,Epithelial,Myoepithelial,CommuSpace_HS_06810,Epithelial → Myoepithelial | CommuSpace_HS_06810
+150,76909,Epithelial,Myoepithelial,CommuSpace_HS_06811,Epithelial → Myoepithelial | CommuSpace_HS_06811
+151,76910,Epithelial,Myoepithelial,CommuSpace_HS_06812,Epithelial → Myoepithelial | CommuSpace_HS_06812
+152,77118,Epithelial,Myoepithelial,CommuSpace_HS_07371,Epithelial → Myoepithelial | CommuSpace_HS_07371
+153,77121,Epithelial,Myoepithelial,CommuSpace_HS_07374,Epithelial → Myoepithelial | CommuSpace_HS_07374
+154,77130,Epithelial,Myoepithelial,CommuSpace_HS_07386,Epithelial → Myoepithelial | CommuSpace_HS_07386
+155,77161,Epithelial,Myoepithelial,CommuSpace_HS_07444,Epithelial → Myoepithelial | CommuSpace_HS_07444
+156,77162,Epithelial,Myoepithelial,CommuSpace_HS_07445,Epithelial → Myoepithelial | CommuSpace_HS_07445
+157,77167,Epithelial,Myoepithelial,CommuSpace_HS_07452,Epithelial → Myoepithelial | CommuSpace_HS_07452
+158,77168,Epithelial,Myoepithelial,CommuSpace_HS_07453,Epithelial → Myoepithelial | CommuSpace_HS_07453
+159,77171,Epithelial,Myoepithelial,CommuSpace_HS_07456,Epithelial → Myoepithelial | CommuSpace_HS_07456
+160,77290,Epithelial,Myoepithelial,CommuSpace_HS_07694,Epithelial → Myoepithelial | CommuSpace_HS_07694
+161,77961,Epithelial,Pericyte,CommuSpace_HS_01182,Epithelial → Pericyte | CommuSpace_HS_01182
+162,79510,Epithelial,Pericyte,CommuSpace_HS_05945,Epithelial → Pericyte | CommuSpace_HS_05945
+163,79987,Epithelial,Pericyte,CommuSpace_HS_07370,Epithelial → Pericyte | CommuSpace_HS_07370
+164,80035,Epithelial,Pericyte,CommuSpace_HS_07450,Epithelial → Pericyte | CommuSpace_HS_07450
+165,82445,Epithelial,T cell,CommuSpace_HS_06177,Epithelial → T cell | CommuSpace_HS_06177
+166,82901,Epithelial,T cell,CommuSpace_HS_07444,Epithelial → T cell | CommuSpace_HS_07444
+167,82907,Epithelial,T cell,CommuSpace_HS_07452,Epithelial → T cell | CommuSpace_HS_07452
+168,83030,Epithelial,T cell,CommuSpace_HS_07694,Epithelial → T cell | CommuSpace_HS_07694
+169,89101,Fibroblast,Endothelial,CommuSpace_HS_00391,Fibroblast → Endothelial | CommuSpace_HS_00391
+170,89374,Fibroblast,Endothelial,CommuSpace_HS_01082,Fibroblast → Endothelial | CommuSpace_HS_01082
+171,89555,Fibroblast,Endothelial,CommuSpace_HS_01731,Fibroblast → Endothelial | CommuSpace_HS_01731
+172,89605,Fibroblast,Endothelial,CommuSpace_HS_01860,Fibroblast → Endothelial | CommuSpace_HS_01860
+173,89612,Fibroblast,Endothelial,CommuSpace_HS_01875,Fibroblast → Endothelial | CommuSpace_HS_01875
+174,89755,Fibroblast,Endothelial,CommuSpace_HS_02342,Fibroblast → Endothelial | CommuSpace_HS_02342
+175,91113,Fibroblast,Endothelial,CommuSpace_HS_06281,Fibroblast → Endothelial | CommuSpace_HS_06281
+176,91475,Fibroblast,Endothelial,CommuSpace_HS_07380,Fibroblast → Endothelial | CommuSpace_HS_07380
+177,91503,Fibroblast,Endothelial,CommuSpace_HS_07430,Fibroblast → Endothelial | CommuSpace_HS_07430
+178,91515,Fibroblast,Endothelial,CommuSpace_HS_07450,Fibroblast → Endothelial | CommuSpace_HS_07450
+179,91519,Fibroblast,Endothelial,CommuSpace_HS_07454,Fibroblast → Endothelial | CommuSpace_HS_07454
+180,91531,Fibroblast,Endothelial,CommuSpace_HS_07477,Fibroblast → Endothelial | CommuSpace_HS_07477
+181,91533,Fibroblast,Endothelial,CommuSpace_HS_07479,Fibroblast → Endothelial | CommuSpace_HS_07479
+182,91643,Fibroblast,Endothelial,CommuSpace_HS_07697,Fibroblast → Endothelial | CommuSpace_HS_07697
+183,91647,Fibroblast,Endothelial,CommuSpace_HS_07704,Fibroblast → Endothelial | CommuSpace_HS_07704
+184,91648,Fibroblast,Endothelial,CommuSpace_HS_07705,Fibroblast → Endothelial | CommuSpace_HS_07705
+185,91976,Fibroblast,Epithelial,CommuSpace_HS_00398,Fibroblast → Epithelial | CommuSpace_HS_00398
+186,91978,Fibroblast,Epithelial,CommuSpace_HS_00400,Fibroblast → Epithelial | CommuSpace_HS_00400
+187,92245,Fibroblast,Epithelial,CommuSpace_HS_01083,Fibroblast → Epithelial | CommuSpace_HS_01083
+188,92246,Fibroblast,Epithelial,CommuSpace_HS_01084,Fibroblast → Epithelial | CommuSpace_HS_01084
+189,92423,Fibroblast,Epithelial,CommuSpace_HS_01729,Fibroblast → Epithelial | CommuSpace_HS_01729
+190,92424,Fibroblast,Epithelial,CommuSpace_HS_01730,Fibroblast → Epithelial | CommuSpace_HS_01730
+191,92428,Fibroblast,Epithelial,CommuSpace_HS_01739,Fibroblast → Epithelial | CommuSpace_HS_01739
+192,92430,Fibroblast,Epithelial,CommuSpace_HS_01748,Fibroblast → Epithelial | CommuSpace_HS_01748
+193,92476,Fibroblast,Epithelial,CommuSpace_HS_01861,Fibroblast → Epithelial | CommuSpace_HS_01861
+194,92479,Fibroblast,Epithelial,CommuSpace_HS_01869,Fibroblast → Epithelial | CommuSpace_HS_01869
+195,92483,Fibroblast,Epithelial,CommuSpace_HS_01876,Fibroblast → Epithelial | CommuSpace_HS_01876
+196,92486,Fibroblast,Epithelial,CommuSpace_HS_01884,Fibroblast → Epithelial | CommuSpace_HS_01884
+197,92624,Fibroblast,Epithelial,CommuSpace_HS_02341,Fibroblast → Epithelial | CommuSpace_HS_02341
+198,93984,Fibroblast,Epithelial,CommuSpace_HS_06282,Fibroblast → Epithelial | CommuSpace_HS_06282
+199,94146,Fibroblast,Epithelial,CommuSpace_HS_06864,Fibroblast → Epithelial | CommuSpace_HS_06864
+200,94338,Fibroblast,Epithelial,CommuSpace_HS_07371,Fibroblast → Epithelial | CommuSpace_HS_07371
+201,94341,Fibroblast,Epithelial,CommuSpace_HS_07374,Fibroblast → Epithelial | CommuSpace_HS_07374
+202,94350,Fibroblast,Epithelial,CommuSpace_HS_07386,Fibroblast → Epithelial | CommuSpace_HS_07386
+203,94381,Fibroblast,Epithelial,CommuSpace_HS_07444,Fibroblast → Epithelial | CommuSpace_HS_07444
+204,94382,Fibroblast,Epithelial,CommuSpace_HS_07445,Fibroblast → Epithelial | CommuSpace_HS_07445
+205,94387,Fibroblast,Epithelial,CommuSpace_HS_07452,Fibroblast → Epithelial | CommuSpace_HS_07452
+206,94388,Fibroblast,Epithelial,CommuSpace_HS_07453,Fibroblast → Epithelial | CommuSpace_HS_07453
+207,94394,Fibroblast,Epithelial,CommuSpace_HS_07465,Fibroblast → Epithelial | CommuSpace_HS_07465
+208,94405,Fibroblast,Epithelial,CommuSpace_HS_07482,Fibroblast → Epithelial | CommuSpace_HS_07482
+209,94510,Fibroblast,Epithelial,CommuSpace_HS_07694,Fibroblast → Epithelial | CommuSpace_HS_07694
+210,94521,Fibroblast,Epithelial,CommuSpace_HS_07708,Fibroblast → Epithelial | CommuSpace_HS_07708
+211,97931,Fibroblast,Macrophage,CommuSpace_HS_00946,Fibroblast → Macrophage | CommuSpace_HS_00946
+212,97983,Fibroblast,Macrophage,CommuSpace_HS_01081,Fibroblast → Macrophage | CommuSpace_HS_01081
+213,97994,Fibroblast,Macrophage,CommuSpace_HS_01093,Fibroblast → Macrophage | CommuSpace_HS_01093
+214,98163,Fibroblast,Macrophage,CommuSpace_HS_01729,Fibroblast → Macrophage | CommuSpace_HS_01729
+215,99891,Fibroblast,Macrophage,CommuSpace_HS_06869,Fibroblast → Macrophage | CommuSpace_HS_06869
+216,100110,Fibroblast,Macrophage,CommuSpace_HS_07427,Fibroblast → Macrophage | CommuSpace_HS_07427
+217,100112,Fibroblast,Macrophage,CommuSpace_HS_07429,Fibroblast → Macrophage | CommuSpace_HS_07429
+218,100121,Fibroblast,Macrophage,CommuSpace_HS_07444,Fibroblast → Macrophage | CommuSpace_HS_07444
+219,100127,Fibroblast,Macrophage,CommuSpace_HS_07452,Fibroblast → Macrophage | CommuSpace_HS_07452
+220,100250,Fibroblast,Macrophage,CommuSpace_HS_07694,Fibroblast → Macrophage | CommuSpace_HS_07694
+221,100262,Fibroblast,Macrophage,CommuSpace_HS_07709,Fibroblast → Macrophage | CommuSpace_HS_07709
+222,101033,Fibroblast,Mast cell,CommuSpace_HS_01729,Fibroblast → Mast cell | CommuSpace_HS_01729
+223,102991,Fibroblast,Mast cell,CommuSpace_HS_07444,Fibroblast → Mast cell | CommuSpace_HS_07444
+224,102997,Fibroblast,Mast cell,CommuSpace_HS_07452,Fibroblast → Mast cell | CommuSpace_HS_07452
+225,103120,Fibroblast,Mast cell,CommuSpace_HS_07694,Fibroblast → Mast cell | CommuSpace_HS_07694
+226,103457,Fibroblast,Myoepithelial,CommuSpace_HS_00399,Fibroblast → Myoepithelial | CommuSpace_HS_00399
+227,103726,Fibroblast,Myoepithelial,CommuSpace_HS_01084,Fibroblast → Myoepithelial | CommuSpace_HS_01084
+228,103903,Fibroblast,Myoepithelial,CommuSpace_HS_01729,Fibroblast → Myoepithelial | CommuSpace_HS_01729
+229,103904,Fibroblast,Myoepithelial,CommuSpace_HS_01730,Fibroblast → Myoepithelial | CommuSpace_HS_01730
+230,103908,Fibroblast,Myoepithelial,CommuSpace_HS_01739,Fibroblast → Myoepithelial | CommuSpace_HS_01739
+231,103910,Fibroblast,Myoepithelial,CommuSpace_HS_01748,Fibroblast → Myoepithelial | CommuSpace_HS_01748
+232,103956,Fibroblast,Myoepithelial,CommuSpace_HS_01861,Fibroblast → Myoepithelial | CommuSpace_HS_01861
+233,103959,Fibroblast,Myoepithelial,CommuSpace_HS_01869,Fibroblast → Myoepithelial | CommuSpace_HS_01869
+234,103963,Fibroblast,Myoepithelial,CommuSpace_HS_01876,Fibroblast → Myoepithelial | CommuSpace_HS_01876
+235,103966,Fibroblast,Myoepithelial,CommuSpace_HS_01884,Fibroblast → Myoepithelial | CommuSpace_HS_01884
+236,105818,Fibroblast,Myoepithelial,CommuSpace_HS_07371,Fibroblast → Myoepithelial | CommuSpace_HS_07371
+237,105821,Fibroblast,Myoepithelial,CommuSpace_HS_07374,Fibroblast → Myoepithelial | CommuSpace_HS_07374
+238,105830,Fibroblast,Myoepithelial,CommuSpace_HS_07386,Fibroblast → Myoepithelial | CommuSpace_HS_07386
+239,105861,Fibroblast,Myoepithelial,CommuSpace_HS_07444,Fibroblast → Myoepithelial | CommuSpace_HS_07444
+240,105862,Fibroblast,Myoepithelial,CommuSpace_HS_07445,Fibroblast → Myoepithelial | CommuSpace_HS_07445
+241,105867,Fibroblast,Myoepithelial,CommuSpace_HS_07452,Fibroblast → Myoepithelial | CommuSpace_HS_07452
+242,105868,Fibroblast,Myoepithelial,CommuSpace_HS_07453,Fibroblast → Myoepithelial | CommuSpace_HS_07453
+243,105871,Fibroblast,Myoepithelial,CommuSpace_HS_07456,Fibroblast → Myoepithelial | CommuSpace_HS_07456
+244,105874,Fibroblast,Myoepithelial,CommuSpace_HS_07465,Fibroblast → Myoepithelial | CommuSpace_HS_07465
+245,105882,Fibroblast,Myoepithelial,CommuSpace_HS_07478,Fibroblast → Myoepithelial | CommuSpace_HS_07478
+246,105885,Fibroblast,Myoepithelial,CommuSpace_HS_07482,Fibroblast → Myoepithelial | CommuSpace_HS_07482
+247,105990,Fibroblast,Myoepithelial,CommuSpace_HS_07694,Fibroblast → Myoepithelial | CommuSpace_HS_07694
+248,108687,Fibroblast,Pericyte,CommuSpace_HS_07370,Fibroblast → Pericyte | CommuSpace_HS_07370
+249,108735,Fibroblast,Pericyte,CommuSpace_HS_07450,Fibroblast → Pericyte | CommuSpace_HS_07450
+250,108747,Fibroblast,Pericyte,CommuSpace_HS_07468,Fibroblast → Pericyte | CommuSpace_HS_07468
+251,109643,Fibroblast,T cell,CommuSpace_HS_01729,Fibroblast → T cell | CommuSpace_HS_01729
+252,111601,Fibroblast,T cell,CommuSpace_HS_07444,Fibroblast → T cell | CommuSpace_HS_07444
+253,111607,Fibroblast,T cell,CommuSpace_HS_07452,Fibroblast → T cell | CommuSpace_HS_07452
+254,111730,Fibroblast,T cell,CommuSpace_HS_07694,Fibroblast → T cell | CommuSpace_HS_07694
+255,119403,Macrophage,Endothelial,CommuSpace_HS_04798,Macrophage → Endothelial | CommuSpace_HS_04798
+256,121007,Macrophage,Epithelial,CommuSpace_HS_01178,Macrophage → Epithelial | CommuSpace_HS_01178
+257,121008,Macrophage,Epithelial,CommuSpace_HS_01179,Macrophage → Epithelial | CommuSpace_HS_01179
+258,121895,Macrophage,Epithelial,CommuSpace_HS_03949,Macrophage → Epithelial | CommuSpace_HS_03949
+259,121912,Macrophage,Epithelial,CommuSpace_HS_03967,Macrophage → Epithelial | CommuSpace_HS_03967
+260,122625,Macrophage,Epithelial,CommuSpace_HS_06177,Macrophage → Epithelial | CommuSpace_HS_06177
+261,122884,Macrophage,Epithelial,CommuSpace_HS_06987,Macrophage → Epithelial | CommuSpace_HS_06987
+262,125143,Macrophage,Fibroblast,CommuSpace_HS_04798,Macrophage → Fibroblast | CommuSpace_HS_04798
+263,126631,Macrophage,Macrophage,CommuSpace_HS_00946,Macrophage → Macrophage | CommuSpace_HS_00946
+264,127051,Macrophage,Macrophage,CommuSpace_HS_02275,Macrophage → Macrophage | CommuSpace_HS_02275
+265,127639,Macrophage,Macrophage,CommuSpace_HS_03953,Macrophage → Macrophage | CommuSpace_HS_03953
+266,128365,Macrophage,Macrophage,CommuSpace_HS_06177,Macrophage → Macrophage | CommuSpace_HS_06177
+267,131235,Macrophage,Mast cell,CommuSpace_HS_06177,Macrophage → Mast cell | CommuSpace_HS_06177
+268,134105,Macrophage,Myoepithelial,CommuSpace_HS_06177,Macrophage → Myoepithelial | CommuSpace_HS_06177
+269,134277,Macrophage,Myoepithelial,CommuSpace_HS_06625,Macrophage → Myoepithelial | CommuSpace_HS_06625
+270,134364,Macrophage,Myoepithelial,CommuSpace_HS_06987,Macrophage → Myoepithelial | CommuSpace_HS_06987
+271,136623,Macrophage,Pericyte,CommuSpace_HS_04798,Macrophage → Pericyte | CommuSpace_HS_04798
+272,139845,Macrophage,T cell,CommuSpace_HS_06177,Macrophage → T cell | CommuSpace_HS_06177
+273,148205,Mast cell,Endothelial,CommuSpace_HS_05222,Mast cell → Endothelial | CommuSpace_HS_05222
+274,148875,Mast cell,Endothelial,CommuSpace_HS_07380,Mast cell → Endothelial | CommuSpace_HS_07380
+275,149707,Mast cell,Epithelial,CommuSpace_HS_01178,Mast cell → Epithelial | CommuSpace_HS_01178
+276,149708,Mast cell,Epithelial,CommuSpace_HS_01179,Mast cell → Epithelial | CommuSpace_HS_01179
+277,151075,Mast cell,Epithelial,CommuSpace_HS_05222,Mast cell → Epithelial | CommuSpace_HS_05222
+278,151738,Mast cell,Epithelial,CommuSpace_HS_07371,Mast cell → Epithelial | CommuSpace_HS_07371
+279,151741,Mast cell,Epithelial,CommuSpace_HS_07374,Mast cell → Epithelial | CommuSpace_HS_07374
+280,151750,Mast cell,Epithelial,CommuSpace_HS_07386,Mast cell → Epithelial | CommuSpace_HS_07386
+281,153945,Mast cell,Fibroblast,CommuSpace_HS_05222,Mast cell → Fibroblast | CommuSpace_HS_05222
+282,155331,Mast cell,Macrophage,CommuSpace_HS_00946,Mast cell → Macrophage | CommuSpace_HS_00946
+283,156815,Mast cell,Macrophage,CommuSpace_HS_05222,Mast cell → Macrophage | CommuSpace_HS_05222
+284,162555,Mast cell,Myoepithelial,CommuSpace_HS_05222,Mast cell → Myoepithelial | CommuSpace_HS_05222
+285,163218,Mast cell,Myoepithelial,CommuSpace_HS_07371,Mast cell → Myoepithelial | CommuSpace_HS_07371
+286,163221,Mast cell,Myoepithelial,CommuSpace_HS_07374,Mast cell → Myoepithelial | CommuSpace_HS_07374
+287,163230,Mast cell,Myoepithelial,CommuSpace_HS_07386,Mast cell → Myoepithelial | CommuSpace_HS_07386
+288,165425,Mast cell,Pericyte,CommuSpace_HS_05222,Mast cell → Pericyte | CommuSpace_HS_05222
+289,166087,Mast cell,Pericyte,CommuSpace_HS_07370,Mast cell → Pericyte | CommuSpace_HS_07370
+290,175201,Myoepithelial,Endothelial,CommuSpace_HS_00391,Myoepithelial → Endothelial | CommuSpace_HS_00391
+291,175474,Myoepithelial,Endothelial,CommuSpace_HS_01082,Myoepithelial → Endothelial | CommuSpace_HS_01082
+292,175655,Myoepithelial,Endothelial,CommuSpace_HS_01731,Myoepithelial → Endothelial | CommuSpace_HS_01731
+293,175663,Myoepithelial,Endothelial,CommuSpace_HS_01751,Myoepithelial → Endothelial | CommuSpace_HS_01751
+294,175669,Myoepithelial,Endothelial,CommuSpace_HS_01767,Myoepithelial → Endothelial | CommuSpace_HS_01767
+295,176905,Myoepithelial,Endothelial,CommuSpace_HS_05222,Myoepithelial → Endothelial | CommuSpace_HS_05222
+296,177575,Myoepithelial,Endothelial,CommuSpace_HS_07380,Myoepithelial → Endothelial | CommuSpace_HS_07380
+297,177615,Myoepithelial,Endothelial,CommuSpace_HS_07450,Myoepithelial → Endothelial | CommuSpace_HS_07450
+298,177619,Myoepithelial,Endothelial,CommuSpace_HS_07454,Myoepithelial → Endothelial | CommuSpace_HS_07454
+299,177631,Myoepithelial,Endothelial,CommuSpace_HS_07477,Myoepithelial → Endothelial | CommuSpace_HS_07477
+300,177633,Myoepithelial,Endothelial,CommuSpace_HS_07479,Myoepithelial → Endothelial | CommuSpace_HS_07479
+301,178076,Myoepithelial,Epithelial,CommuSpace_HS_00398,Myoepithelial → Epithelial | CommuSpace_HS_00398
+302,178078,Myoepithelial,Epithelial,CommuSpace_HS_00400,Myoepithelial → Epithelial | CommuSpace_HS_00400
+303,178345,Myoepithelial,Epithelial,CommuSpace_HS_01083,Myoepithelial → Epithelial | CommuSpace_HS_01083
+304,178346,Myoepithelial,Epithelial,CommuSpace_HS_01084,Myoepithelial → Epithelial | CommuSpace_HS_01084
+305,178407,Myoepithelial,Epithelial,CommuSpace_HS_01178,Myoepithelial → Epithelial | CommuSpace_HS_01178
+306,178408,Myoepithelial,Epithelial,CommuSpace_HS_01179,Myoepithelial → Epithelial | CommuSpace_HS_01179
+307,178504,Myoepithelial,Epithelial,CommuSpace_HS_01550,Myoepithelial → Epithelial | CommuSpace_HS_01550
+308,178523,Myoepithelial,Epithelial,CommuSpace_HS_01729,Myoepithelial → Epithelial | CommuSpace_HS_01729
+309,178524,Myoepithelial,Epithelial,CommuSpace_HS_01730,Myoepithelial → Epithelial | CommuSpace_HS_01730
+310,178528,Myoepithelial,Epithelial,CommuSpace_HS_01739,Myoepithelial → Epithelial | CommuSpace_HS_01739
+311,178530,Myoepithelial,Epithelial,CommuSpace_HS_01748,Myoepithelial → Epithelial | CommuSpace_HS_01748
+312,178532,Myoepithelial,Epithelial,CommuSpace_HS_01750,Myoepithelial → Epithelial | CommuSpace_HS_01750
+313,178534,Myoepithelial,Epithelial,CommuSpace_HS_01752,Myoepithelial → Epithelial | CommuSpace_HS_01752
+314,178538,Myoepithelial,Epithelial,CommuSpace_HS_01761,Myoepithelial → Epithelial | CommuSpace_HS_01761
+315,178540,Myoepithelial,Epithelial,CommuSpace_HS_01768,Myoepithelial → Epithelial | CommuSpace_HS_01768
+316,178541,Myoepithelial,Epithelial,CommuSpace_HS_01770,Myoepithelial → Epithelial | CommuSpace_HS_01770
+317,178856,Myoepithelial,Epithelial,CommuSpace_HS_02693,Myoepithelial → Epithelial | CommuSpace_HS_02693
+318,179674,Myoepithelial,Epithelial,CommuSpace_HS_04806,Myoepithelial → Epithelial | CommuSpace_HS_04806
+319,179676,Myoepithelial,Epithelial,CommuSpace_HS_04808,Myoepithelial → Epithelial | CommuSpace_HS_04808
+320,179723,Myoepithelial,Epithelial,CommuSpace_HS_04976,Myoepithelial → Epithelial | CommuSpace_HS_04976
+321,179724,Myoepithelial,Epithelial,CommuSpace_HS_04977,Myoepithelial → Epithelial | CommuSpace_HS_04977
+322,179725,Myoepithelial,Epithelial,CommuSpace_HS_04980,Myoepithelial → Epithelial | CommuSpace_HS_04980
+323,179729,Myoepithelial,Epithelial,CommuSpace_HS_04990,Myoepithelial → Epithelial | CommuSpace_HS_04990
+324,179732,Myoepithelial,Epithelial,CommuSpace_HS_05077,Myoepithelial → Epithelial | CommuSpace_HS_05077
+325,179733,Myoepithelial,Epithelial,CommuSpace_HS_05078,Myoepithelial → Epithelial | CommuSpace_HS_05078
+326,179734,Myoepithelial,Epithelial,CommuSpace_HS_05080,Myoepithelial → Epithelial | CommuSpace_HS_05080
+327,179735,Myoepithelial,Epithelial,CommuSpace_HS_05082,Myoepithelial → Epithelial | CommuSpace_HS_05082
+328,179775,Myoepithelial,Epithelial,CommuSpace_HS_05222,Myoepithelial → Epithelial | CommuSpace_HS_05222
+329,179825,Myoepithelial,Epithelial,CommuSpace_HS_05462,Myoepithelial → Epithelial | CommuSpace_HS_05462
+330,179826,Myoepithelial,Epithelial,CommuSpace_HS_05463,Myoepithelial → Epithelial | CommuSpace_HS_05463
+331,179827,Myoepithelial,Epithelial,CommuSpace_HS_05464,Myoepithelial → Epithelial | CommuSpace_HS_05464
+332,180025,Myoepithelial,Epithelial,CommuSpace_HS_06177,Myoepithelial → Epithelial | CommuSpace_HS_06177
+333,180246,Myoepithelial,Epithelial,CommuSpace_HS_06864,Myoepithelial → Epithelial | CommuSpace_HS_06864
+334,180438,Myoepithelial,Epithelial,CommuSpace_HS_07371,Myoepithelial → Epithelial | CommuSpace_HS_07371
+335,180441,Myoepithelial,Epithelial,CommuSpace_HS_07374,Myoepithelial → Epithelial | CommuSpace_HS_07374
+336,180450,Myoepithelial,Epithelial,CommuSpace_HS_07386,Myoepithelial → Epithelial | CommuSpace_HS_07386
+337,180487,Myoepithelial,Epithelial,CommuSpace_HS_07452,Myoepithelial → Epithelial | CommuSpace_HS_07452
+338,180488,Myoepithelial,Epithelial,CommuSpace_HS_07453,Myoepithelial → Epithelial | CommuSpace_HS_07453
+339,180494,Myoepithelial,Epithelial,CommuSpace_HS_07465,Myoepithelial → Epithelial | CommuSpace_HS_07465
+340,180505,Myoepithelial,Epithelial,CommuSpace_HS_07482,Myoepithelial → Epithelial | CommuSpace_HS_07482
+341,182645,Myoepithelial,Fibroblast,CommuSpace_HS_05222,Myoepithelial → Fibroblast | CommuSpace_HS_05222
+342,184031,Myoepithelial,Macrophage,CommuSpace_HS_00946,Myoepithelial → Macrophage | CommuSpace_HS_00946
+343,184083,Myoepithelial,Macrophage,CommuSpace_HS_01081,Myoepithelial → Macrophage | CommuSpace_HS_01081
+344,184153,Myoepithelial,Macrophage,CommuSpace_HS_01186,Myoepithelial → Macrophage | CommuSpace_HS_01186
+345,184263,Myoepithelial,Macrophage,CommuSpace_HS_01729,Myoepithelial → Macrophage | CommuSpace_HS_01729
+346,184272,Myoepithelial,Macrophage,CommuSpace_HS_01750,Myoepithelial → Macrophage | CommuSpace_HS_01750
+347,184599,Myoepithelial,Macrophage,CommuSpace_HS_02696,Myoepithelial → Macrophage | CommuSpace_HS_02696
+348,185463,Myoepithelial,Macrophage,CommuSpace_HS_04976,Myoepithelial → Macrophage | CommuSpace_HS_04976
+349,185472,Myoepithelial,Macrophage,CommuSpace_HS_05077,Myoepithelial → Macrophage | CommuSpace_HS_05077
+350,185515,Myoepithelial,Macrophage,CommuSpace_HS_05222,Myoepithelial → Macrophage | CommuSpace_HS_05222
+351,185566,Myoepithelial,Macrophage,CommuSpace_HS_05463,Myoepithelial → Macrophage | CommuSpace_HS_05463
+352,185765,Myoepithelial,Macrophage,CommuSpace_HS_06177,Myoepithelial → Macrophage | CommuSpace_HS_06177
+353,185991,Myoepithelial,Macrophage,CommuSpace_HS_06869,Myoepithelial → Macrophage | CommuSpace_HS_06869
+354,186227,Myoepithelial,Macrophage,CommuSpace_HS_07452,Myoepithelial → Macrophage | CommuSpace_HS_07452
+355,187133,Myoepithelial,Mast cell,CommuSpace_HS_01729,Myoepithelial → Mast cell | CommuSpace_HS_01729
+356,187142,Myoepithelial,Mast cell,CommuSpace_HS_01750,Myoepithelial → Mast cell | CommuSpace_HS_01750
+357,188333,Myoepithelial,Mast cell,CommuSpace_HS_04976,Myoepithelial → Mast cell | CommuSpace_HS_04976
+358,188342,Myoepithelial,Mast cell,CommuSpace_HS_05077,Myoepithelial → Mast cell | CommuSpace_HS_05077
+359,188436,Myoepithelial,Mast cell,CommuSpace_HS_05463,Myoepithelial → Mast cell | CommuSpace_HS_05463
+360,188635,Myoepithelial,Mast cell,CommuSpace_HS_06177,Myoepithelial → Mast cell | CommuSpace_HS_06177
+361,189097,Myoepithelial,Mast cell,CommuSpace_HS_07452,Myoepithelial → Mast cell | CommuSpace_HS_07452
+362,189557,Myoepithelial,Myoepithelial,CommuSpace_HS_00399,Myoepithelial → Myoepithelial | CommuSpace_HS_00399
+363,189826,Myoepithelial,Myoepithelial,CommuSpace_HS_01084,Myoepithelial → Myoepithelial | CommuSpace_HS_01084
+364,189937,Myoepithelial,Myoepithelial,CommuSpace_HS_01257,Myoepithelial → Myoepithelial | CommuSpace_HS_01257
+365,189984,Myoepithelial,Myoepithelial,CommuSpace_HS_01550,Myoepithelial → Myoepithelial | CommuSpace_HS_01550
+366,190003,Myoepithelial,Myoepithelial,CommuSpace_HS_01729,Myoepithelial → Myoepithelial | CommuSpace_HS_01729
+367,190004,Myoepithelial,Myoepithelial,CommuSpace_HS_01730,Myoepithelial → Myoepithelial | CommuSpace_HS_01730
+368,190008,Myoepithelial,Myoepithelial,CommuSpace_HS_01739,Myoepithelial → Myoepithelial | CommuSpace_HS_01739
+369,190010,Myoepithelial,Myoepithelial,CommuSpace_HS_01748,Myoepithelial → Myoepithelial | CommuSpace_HS_01748
+370,190012,Myoepithelial,Myoepithelial,CommuSpace_HS_01750,Myoepithelial → Myoepithelial | CommuSpace_HS_01750
+371,190014,Myoepithelial,Myoepithelial,CommuSpace_HS_01752,Myoepithelial → Myoepithelial | CommuSpace_HS_01752
+372,190018,Myoepithelial,Myoepithelial,CommuSpace_HS_01761,Myoepithelial → Myoepithelial | CommuSpace_HS_01761
+373,190021,Myoepithelial,Myoepithelial,CommuSpace_HS_01770,Myoepithelial → Myoepithelial | CommuSpace_HS_01770
+374,190336,Myoepithelial,Myoepithelial,CommuSpace_HS_02693,Myoepithelial → Myoepithelial | CommuSpace_HS_02693
+375,191203,Myoepithelial,Myoepithelial,CommuSpace_HS_04976,Myoepithelial → Myoepithelial | CommuSpace_HS_04976
+376,191205,Myoepithelial,Myoepithelial,CommuSpace_HS_04980,Myoepithelial → Myoepithelial | CommuSpace_HS_04980
+377,191208,Myoepithelial,Myoepithelial,CommuSpace_HS_04989,Myoepithelial → Myoepithelial | CommuSpace_HS_04989
+378,191212,Myoepithelial,Myoepithelial,CommuSpace_HS_05077,Myoepithelial → Myoepithelial | CommuSpace_HS_05077
+379,191214,Myoepithelial,Myoepithelial,CommuSpace_HS_05080,Myoepithelial → Myoepithelial | CommuSpace_HS_05080
+380,191215,Myoepithelial,Myoepithelial,CommuSpace_HS_05082,Myoepithelial → Myoepithelial | CommuSpace_HS_05082
+381,191218,Myoepithelial,Myoepithelial,CommuSpace_HS_05091,Myoepithelial → Myoepithelial | CommuSpace_HS_05091
+382,191255,Myoepithelial,Myoepithelial,CommuSpace_HS_05222,Myoepithelial → Myoepithelial | CommuSpace_HS_05222
+383,191306,Myoepithelial,Myoepithelial,CommuSpace_HS_05463,Myoepithelial → Myoepithelial | CommuSpace_HS_05463
+384,191307,Myoepithelial,Myoepithelial,CommuSpace_HS_05464,Myoepithelial → Myoepithelial | CommuSpace_HS_05464
+385,191505,Myoepithelial,Myoepithelial,CommuSpace_HS_06177,Myoepithelial → Myoepithelial | CommuSpace_HS_06177
+386,191677,Myoepithelial,Myoepithelial,CommuSpace_HS_06625,Myoepithelial → Myoepithelial | CommuSpace_HS_06625
+387,191918,Myoepithelial,Myoepithelial,CommuSpace_HS_07371,Myoepithelial → Myoepithelial | CommuSpace_HS_07371
+388,191921,Myoepithelial,Myoepithelial,CommuSpace_HS_07374,Myoepithelial → Myoepithelial | CommuSpace_HS_07374
+389,191930,Myoepithelial,Myoepithelial,CommuSpace_HS_07386,Myoepithelial → Myoepithelial | CommuSpace_HS_07386
+390,191967,Myoepithelial,Myoepithelial,CommuSpace_HS_07452,Myoepithelial → Myoepithelial | CommuSpace_HS_07452
+391,191968,Myoepithelial,Myoepithelial,CommuSpace_HS_07453,Myoepithelial → Myoepithelial | CommuSpace_HS_07453
+392,191971,Myoepithelial,Myoepithelial,CommuSpace_HS_07456,Myoepithelial → Myoepithelial | CommuSpace_HS_07456
+393,191974,Myoepithelial,Myoepithelial,CommuSpace_HS_07465,Myoepithelial → Myoepithelial | CommuSpace_HS_07465
+394,191982,Myoepithelial,Myoepithelial,CommuSpace_HS_07478,Myoepithelial → Myoepithelial | CommuSpace_HS_07478
+395,191985,Myoepithelial,Myoepithelial,CommuSpace_HS_07482,Myoepithelial → Myoepithelial | CommuSpace_HS_07482
+396,194027,Myoepithelial,Pericyte,CommuSpace_HS_04809,Myoepithelial → Pericyte | CommuSpace_HS_04809
+397,194125,Myoepithelial,Pericyte,CommuSpace_HS_05222,Myoepithelial → Pericyte | CommuSpace_HS_05222
+398,194787,Myoepithelial,Pericyte,CommuSpace_HS_07370,Myoepithelial → Pericyte | CommuSpace_HS_07370
+399,194835,Myoepithelial,Pericyte,CommuSpace_HS_07450,Myoepithelial → Pericyte | CommuSpace_HS_07450
+400,194847,Myoepithelial,Pericyte,CommuSpace_HS_07468,Myoepithelial → Pericyte | CommuSpace_HS_07468
+401,195743,Myoepithelial,T cell,CommuSpace_HS_01729,Myoepithelial → T cell | CommuSpace_HS_01729
+402,195752,Myoepithelial,T cell,CommuSpace_HS_01750,Myoepithelial → T cell | CommuSpace_HS_01750
+403,196943,Myoepithelial,T cell,CommuSpace_HS_04976,Myoepithelial → T cell | CommuSpace_HS_04976
+404,196952,Myoepithelial,T cell,CommuSpace_HS_05077,Myoepithelial → T cell | CommuSpace_HS_05077
+405,197046,Myoepithelial,T cell,CommuSpace_HS_05463,Myoepithelial → T cell | CommuSpace_HS_05463
+406,197245,Myoepithelial,T cell,CommuSpace_HS_06177,Myoepithelial → T cell | CommuSpace_HS_06177
+407,197707,Myoepithelial,T cell,CommuSpace_HS_07452,Myoepithelial → T cell | CommuSpace_HS_07452
+408,203901,Pericyte,Endothelial,CommuSpace_HS_00391,Pericyte → Endothelial | CommuSpace_HS_00391
+409,204174,Pericyte,Endothelial,CommuSpace_HS_01082,Pericyte → Endothelial | CommuSpace_HS_01082
+410,204339,Pericyte,Endothelial,CommuSpace_HS_01566,Pericyte → Endothelial | CommuSpace_HS_01566
+411,204341,Pericyte,Endothelial,CommuSpace_HS_01568,Pericyte → Endothelial | CommuSpace_HS_01568
+412,204355,Pericyte,Endothelial,CommuSpace_HS_01731,Pericyte → Endothelial | CommuSpace_HS_01731
+413,204363,Pericyte,Endothelial,CommuSpace_HS_01751,Pericyte → Endothelial | CommuSpace_HS_01751
+414,204369,Pericyte,Endothelial,CommuSpace_HS_01767,Pericyte → Endothelial | CommuSpace_HS_01767
+415,205450,Pericyte,Endothelial,CommuSpace_HS_04683,Pericyte → Endothelial | CommuSpace_HS_04683
+416,206275,Pericyte,Endothelial,CommuSpace_HS_07380,Pericyte → Endothelial | CommuSpace_HS_07380
+417,206303,Pericyte,Endothelial,CommuSpace_HS_07430,Pericyte → Endothelial | CommuSpace_HS_07430
+418,206315,Pericyte,Endothelial,CommuSpace_HS_07450,Pericyte → Endothelial | CommuSpace_HS_07450
+419,206319,Pericyte,Endothelial,CommuSpace_HS_07454,Pericyte → Endothelial | CommuSpace_HS_07454
+420,206331,Pericyte,Endothelial,CommuSpace_HS_07477,Pericyte → Endothelial | CommuSpace_HS_07477
+421,206333,Pericyte,Endothelial,CommuSpace_HS_07479,Pericyte → Endothelial | CommuSpace_HS_07479
+422,206776,Pericyte,Epithelial,CommuSpace_HS_00398,Pericyte → Epithelial | CommuSpace_HS_00398
+423,206778,Pericyte,Epithelial,CommuSpace_HS_00400,Pericyte → Epithelial | CommuSpace_HS_00400
+424,207045,Pericyte,Epithelial,CommuSpace_HS_01083,Pericyte → Epithelial | CommuSpace_HS_01083
+425,207046,Pericyte,Epithelial,CommuSpace_HS_01084,Pericyte → Epithelial | CommuSpace_HS_01084
+426,207206,Pericyte,Epithelial,CommuSpace_HS_01561,Pericyte → Epithelial | CommuSpace_HS_01561
+427,207207,Pericyte,Epithelial,CommuSpace_HS_01563,Pericyte → Epithelial | CommuSpace_HS_01563
+428,207210,Pericyte,Epithelial,CommuSpace_HS_01567,Pericyte → Epithelial | CommuSpace_HS_01567
+429,207223,Pericyte,Epithelial,CommuSpace_HS_01729,Pericyte → Epithelial | CommuSpace_HS_01729
+430,207224,Pericyte,Epithelial,CommuSpace_HS_01730,Pericyte → Epithelial | CommuSpace_HS_01730
+431,207228,Pericyte,Epithelial,CommuSpace_HS_01739,Pericyte → Epithelial | CommuSpace_HS_01739
+432,207230,Pericyte,Epithelial,CommuSpace_HS_01748,Pericyte → Epithelial | CommuSpace_HS_01748
+433,207232,Pericyte,Epithelial,CommuSpace_HS_01750,Pericyte → Epithelial | CommuSpace_HS_01750
+434,207234,Pericyte,Epithelial,CommuSpace_HS_01752,Pericyte → Epithelial | CommuSpace_HS_01752
+435,207238,Pericyte,Epithelial,CommuSpace_HS_01761,Pericyte → Epithelial | CommuSpace_HS_01761
+436,207240,Pericyte,Epithelial,CommuSpace_HS_01768,Pericyte → Epithelial | CommuSpace_HS_01768
+437,207241,Pericyte,Epithelial,CommuSpace_HS_01770,Pericyte → Epithelial | CommuSpace_HS_01770
+438,208320,Pericyte,Epithelial,CommuSpace_HS_04683,Pericyte → Epithelial | CommuSpace_HS_04683
+439,208374,Pericyte,Epithelial,CommuSpace_HS_04806,Pericyte → Epithelial | CommuSpace_HS_04806
+440,208376,Pericyte,Epithelial,CommuSpace_HS_04808,Pericyte → Epithelial | CommuSpace_HS_04808
+441,209138,Pericyte,Epithelial,CommuSpace_HS_07371,Pericyte → Epithelial | CommuSpace_HS_07371
+442,209141,Pericyte,Epithelial,CommuSpace_HS_07374,Pericyte → Epithelial | CommuSpace_HS_07374
+443,209150,Pericyte,Epithelial,CommuSpace_HS_07386,Pericyte → Epithelial | CommuSpace_HS_07386
+444,209187,Pericyte,Epithelial,CommuSpace_HS_07452,Pericyte → Epithelial | CommuSpace_HS_07452
+445,209188,Pericyte,Epithelial,CommuSpace_HS_07453,Pericyte → Epithelial | CommuSpace_HS_07453
+446,209194,Pericyte,Epithelial,CommuSpace_HS_07465,Pericyte → Epithelial | CommuSpace_HS_07465
+447,209205,Pericyte,Epithelial,CommuSpace_HS_07482,Pericyte → Epithelial | CommuSpace_HS_07482
+448,211190,Pericyte,Fibroblast,CommuSpace_HS_04683,Pericyte → Fibroblast | CommuSpace_HS_04683
+449,212731,Pericyte,Macrophage,CommuSpace_HS_00946,Pericyte → Macrophage | CommuSpace_HS_00946
+450,212783,Pericyte,Macrophage,CommuSpace_HS_01081,Pericyte → Macrophage | CommuSpace_HS_01081
+451,212963,Pericyte,Macrophage,CommuSpace_HS_01729,Pericyte → Macrophage | CommuSpace_HS_01729
+452,212972,Pericyte,Macrophage,CommuSpace_HS_01750,Pericyte → Macrophage | CommuSpace_HS_01750
+453,214060,Pericyte,Macrophage,CommuSpace_HS_04683,Pericyte → Macrophage | CommuSpace_HS_04683
+454,214910,Pericyte,Macrophage,CommuSpace_HS_07427,Pericyte → Macrophage | CommuSpace_HS_07427
+455,214912,Pericyte,Macrophage,CommuSpace_HS_07429,Pericyte → Macrophage | CommuSpace_HS_07429
+456,214927,Pericyte,Macrophage,CommuSpace_HS_07452,Pericyte → Macrophage | CommuSpace_HS_07452
+457,215833,Pericyte,Mast cell,CommuSpace_HS_01729,Pericyte → Mast cell | CommuSpace_HS_01729
+458,215842,Pericyte,Mast cell,CommuSpace_HS_01750,Pericyte → Mast cell | CommuSpace_HS_01750
+459,217797,Pericyte,Mast cell,CommuSpace_HS_07452,Pericyte → Mast cell | CommuSpace_HS_07452
+460,218257,Pericyte,Myoepithelial,CommuSpace_HS_00399,Pericyte → Myoepithelial | CommuSpace_HS_00399
+461,218526,Pericyte,Myoepithelial,CommuSpace_HS_01084,Pericyte → Myoepithelial | CommuSpace_HS_01084
+462,218686,Pericyte,Myoepithelial,CommuSpace_HS_01561,Pericyte → Myoepithelial | CommuSpace_HS_01561
+463,218687,Pericyte,Myoepithelial,CommuSpace_HS_01563,Pericyte → Myoepithelial | CommuSpace_HS_01563
+464,218703,Pericyte,Myoepithelial,CommuSpace_HS_01729,Pericyte → Myoepithelial | CommuSpace_HS_01729
+465,218704,Pericyte,Myoepithelial,CommuSpace_HS_01730,Pericyte → Myoepithelial | CommuSpace_HS_01730
+466,218708,Pericyte,Myoepithelial,CommuSpace_HS_01739,Pericyte → Myoepithelial | CommuSpace_HS_01739
+467,218710,Pericyte,Myoepithelial,CommuSpace_HS_01748,Pericyte → Myoepithelial | CommuSpace_HS_01748
+468,218712,Pericyte,Myoepithelial,CommuSpace_HS_01750,Pericyte → Myoepithelial | CommuSpace_HS_01750
+469,218714,Pericyte,Myoepithelial,CommuSpace_HS_01752,Pericyte → Myoepithelial | CommuSpace_HS_01752
+470,218718,Pericyte,Myoepithelial,CommuSpace_HS_01761,Pericyte → Myoepithelial | CommuSpace_HS_01761
+471,218721,Pericyte,Myoepithelial,CommuSpace_HS_01770,Pericyte → Myoepithelial | CommuSpace_HS_01770
+472,219795,Pericyte,Myoepithelial,CommuSpace_HS_04678,Pericyte → Myoepithelial | CommuSpace_HS_04678
+473,219800,Pericyte,Myoepithelial,CommuSpace_HS_04683,Pericyte → Myoepithelial | CommuSpace_HS_04683
+474,220618,Pericyte,Myoepithelial,CommuSpace_HS_07371,Pericyte → Myoepithelial | CommuSpace_HS_07371
+475,220621,Pericyte,Myoepithelial,CommuSpace_HS_07374,Pericyte → Myoepithelial | CommuSpace_HS_07374
+476,220630,Pericyte,Myoepithelial,CommuSpace_HS_07386,Pericyte → Myoepithelial | CommuSpace_HS_07386
+477,220667,Pericyte,Myoepithelial,CommuSpace_HS_07452,Pericyte → Myoepithelial | CommuSpace_HS_07452
+478,220668,Pericyte,Myoepithelial,CommuSpace_HS_07453,Pericyte → Myoepithelial | CommuSpace_HS_07453
+479,220671,Pericyte,Myoepithelial,CommuSpace_HS_07456,Pericyte → Myoepithelial | CommuSpace_HS_07456
+480,220674,Pericyte,Myoepithelial,CommuSpace_HS_07465,Pericyte → Myoepithelial | CommuSpace_HS_07465
+481,220682,Pericyte,Myoepithelial,CommuSpace_HS_07478,Pericyte → Myoepithelial | CommuSpace_HS_07478
+482,220685,Pericyte,Myoepithelial,CommuSpace_HS_07482,Pericyte → Myoepithelial | CommuSpace_HS_07482
+483,222670,Pericyte,Pericyte,CommuSpace_HS_04683,Pericyte → Pericyte | CommuSpace_HS_04683
+484,222727,Pericyte,Pericyte,CommuSpace_HS_04809,Pericyte → Pericyte | CommuSpace_HS_04809
+485,223031,Pericyte,Pericyte,CommuSpace_HS_06109,Pericyte → Pericyte | CommuSpace_HS_06109
+486,223487,Pericyte,Pericyte,CommuSpace_HS_07370,Pericyte → Pericyte | CommuSpace_HS_07370
+487,223535,Pericyte,Pericyte,CommuSpace_HS_07450,Pericyte → Pericyte | CommuSpace_HS_07450
+488,223547,Pericyte,Pericyte,CommuSpace_HS_07468,Pericyte → Pericyte | CommuSpace_HS_07468
+489,224443,Pericyte,T cell,CommuSpace_HS_01729,Pericyte → T cell | CommuSpace_HS_01729
+490,224452,Pericyte,T cell,CommuSpace_HS_01750,Pericyte → T cell | CommuSpace_HS_01750
+491,226407,Pericyte,T cell,CommuSpace_HS_07452,Pericyte → T cell | CommuSpace_HS_07452
+492,235807,T cell,Epithelial,CommuSpace_HS_01178,T cell → Epithelial | CommuSpace_HS_01178
+493,235808,T cell,Epithelial,CommuSpace_HS_01179,T cell → Epithelial | CommuSpace_HS_01179

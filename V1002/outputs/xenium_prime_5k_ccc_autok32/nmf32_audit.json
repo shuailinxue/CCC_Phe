@@ -1,0 +1,20 @@
+{
+  "RMS": {
+    "HI": 0.10002712644759773
+  },
+  "initial_gradient_norm": {
+    "HI": 0.019138691946864128
+  },
+  "alpha": {
+    "HI": 1.0
+  },
+  "weighted_initial_gradient_norm": {
+    "HI": 0.019138691946864128
+  },
+  "final_gradient_norm": {
+    "HI": 0.0009291162714362144
+  },
+  "loss": {
+    "HI": 0.3949781358242035
+  }
+}
