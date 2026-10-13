@@ -71,10 +71,10 @@ def export_reconstruction(data,arrays,h,b,config):
         r=records[fold];sst=r['square']-r['sum']**2/max(r['n'],1)
         r2=1-np.divide(r['sse'],sst,out=np.full_like(sst,np.nan),where=sst>1e-12);feature[name+'_R2']=r2
         metrics[name]={'n':r['n'],'scaled_huber':r['huber']/max(r['n']*mask.sum(),1),
-                       'median_feature_R2':float(np.nanmedian(r2[mask])),
-                       'composition_valid_n':r['comp_n'],
+                       'median_feature_R2':float(np.nanmedian(r2[mask]))}
+        if config.lambda_comp>0:metrics[name].update({'composition_valid_n':r['comp_n'],
                        'composition_KL':r['kl']/r['comp_n'] if r['comp_n'] else None,
-                       'composition_RMSE':float(np.sqrt(r['comp_sse']/(r['comp_n']*len(data.categories)))) if r['comp_n'] else None}
+                       'composition_RMSE':float(np.sqrt(r['comp_sse']/(r['comp_n']*len(data.categories)))) if r['comp_n'] else None})
     feature.to_csv(output/'reconstruction_feature_metrics.csv',index=False)
     (output/'reconstruction_metrics.json').write_text(json.dumps(metrics,indent=2)+'\n')
 

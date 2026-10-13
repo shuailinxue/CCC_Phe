@@ -47,7 +47,9 @@ def adapt(adata,lr,config,output):
     if not np.isfinite(matrix).all() or (matrix<0).any():raise ValueError('Invalid computed CCC')
     mean,ms,var,nz=feature_statistics(matrix,rows[0]);mask=(nz>=.005)&(var>np.maximum(np.finfo(np.float32).eps*ms,np.finfo(np.float32).tiny))
     if not mask.any():raise ValueError('No effective CCC features; adjust simulation strength/support')
-    scale=np.maximum(np.sqrt(ms),1e-6).astype(np.float32)
+    rms=np.maximum(np.sqrt(ms),1e-6).astype(np.float32)
+    global_scale=max(float(np.median(rms[mask])),1e-6)
+    scale=(global_scale*(rms/global_scale)**config.ccc_scale_power).astype(np.float32)
     train_cells=np.unique(members[rows[0]]);totals=raw.sum(1);x=sp.csr_matrix(raw)
     sample=expression_block(x,train_cells,np.arange(len(genes)),totals)
     encoder=np.argsort(-sample.var(0),kind='stable')[:min(len(genes),512)];selected=sample[:,encoder]
@@ -78,9 +80,13 @@ def adapt(adata,lr,config,output):
     audit['split_strategy']=config.split_strategy if config.replicates==1 else 'sample'
     audit['composition_initialization']=config.initialize_composition
     audit['rescale_activity']=config.rescale_activity
+    audit['ccc_scale_power']=config.ccc_scale_power
+    audit['ccc_error']=config.ccc_error
     (cache/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
     cells=adata.obs[['cell_id','cell_type']].reset_index(drop=True).copy()
-    return GraphData(x,totals,genes,encoder,selected.mean(0),np.maximum(selected.std(0),.1),types,TYPES,xy,members,weights,Targets(matrix,np.arange(len(features))),scale,mask,features,cells,rows,folds,blocks,comp,audit)
+    data=GraphData(x,totals,genes,encoder,selected.mean(0),np.maximum(selected.std(0),.1),types,TYPES,xy,members,weights,Targets(matrix,np.arange(len(features))),scale,mask,features,cells,rows,folds,blocks,comp,audit)
+    data.original_feature_scale=rms
+    return data
 
 def gnn_config(config,output):
     return replace(GNNConfig(),seed=config.seed,split_seed=config.seed,hidden=config.hidden,programs=config.programs,batch_size=config.batch_size,max_epochs=config.gnn_epochs,patience=config.patience,device=config.device,output_dir=str(output),lambda_comp=config.lambda_comp,lambda_reg=config.lambda_reg,k_min=config.k_min,k_max=config.k_max,clustering_sample_size=10000,silhouette_sample_size=1500)

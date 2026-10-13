@@ -77,7 +77,7 @@ def test_export_excludes_undefined_composition(synthetic,tmp_path):
     d=synthetic;d.composition_target[:]=.5;d.composition_target[d.rows[2][:3]]=0
     arrays={'Z':np.ones((120,4),np.float32),'P':np.full((120,4),.25,np.float32)}
     h=np.full((4,8),1/8,np.float32);b=np.full((4,2),.5,np.float32)
-    cfg=replace(GNNConfig(),output_dir=str(tmp_path))
+    cfg=replace(GNNConfig(),output_dir=str(tmp_path),lambda_comp=.05)
     export_reconstruction(d,arrays,h,b,cfg)
     metrics=json.loads((tmp_path/'reconstruction_metrics.json').read_text())['test']
     assert metrics['n']==len(d.rows[2]) and metrics['composition_valid_n']==len(d.rows[2])-3
@@ -107,6 +107,17 @@ def test_activity_reparameterization_exports_original_architecture(synthetic,tmp
     best=torch.load(tmp_path/'training_best.pt',map_location='cpu',weights_only=False)
     restored.load_state_dict(best['model_state'])
     torch.testing.assert_close(d.forward(model,batch)['Z'],d.forward(restored,batch)['Z'],rtol=1e-6,atol=1e-6)
+
+
+def test_no_composition_loss_when_disabled(synthetic,monkeypatch):
+    from phenoniche.gnn import training
+    def forbidden(*args,**kwargs):raise AssertionError('Composition loss was called')
+    monkeypatch.setattr(training,'composition_loss',forbidden)
+    d=synthetic;d.composition_target[:]=np.nan
+    cfg=replace(GNNConfig(),programs=4,hidden=12,device='cpu',lambda_comp=0.)
+    result=training.epoch(make_model(d),d,d.rows[0][:8],cfg)
+    assert 'composition' not in result and 'regularization' in result
+    assert result['total']==pytest.approx(result['ccc']+cfg.lambda_reg*result['regularization'])
 
 
 def test_exact_ccc_and_spatial_split(synthetic):
@@ -140,7 +151,7 @@ def test_synthetic_training_inference_and_export(synthetic,tmp_path,lambda_comp)
     assert arrays['Z'].shape==(120,4) and np.load(tmp_path/'B.npy').shape==(4,2)
     export_reconstruction(d,arrays,np.load(tmp_path/'H.npy'),np.load(tmp_path/'B.npy'),cfg)
     np.testing.assert_allclose(np.load(tmp_path/'composition_prediction.npy').sum(1),1,rtol=1e-5)
-    history=pd.read_csv(tmp_path/'training.csv');assert 'train_composition' in history and np.isfinite(history.select_dtypes('number')).all().all()
+    history=pd.read_csv(tmp_path/'training.csv');assert ('train_composition' in history)==(lambda_comp>0) and np.isfinite(history.select_dtypes('number')).all().all()
     assert not any('upstream' in c or 'downstream' in c for c in history)
     from phenoniche.gnn.evaluation import discover,diagnostics
     k,labels,table=discover(d,arrays,np.load(tmp_path/'H.npy'),cfg)
@@ -182,7 +193,8 @@ def test_notebook_has_valid_run_all_entry():
         if cell.cell_type=='code':
             ast.parse('\n'.join(s for s in cell.source.splitlines() if not s.startswith('%')));texts.append(cell.source)
     assert 'ensure_results(CONFIG)' in '\n'.join(texts)
-    assert 'composition_dictionary' in '\n'.join(texts) and 'biological_heatmaps' not in '\n'.join(texts)
+    assert 'composition_dictionary' not in '\n'.join(texts) and 'composition_reconstruction' not in '\n'.join(texts)
+    assert 'biological_heatmaps' not in '\n'.join(texts)
 
 
 def test_reuse_rejects_different_configuration(tmp_path):

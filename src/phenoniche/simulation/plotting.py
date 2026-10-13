@@ -59,10 +59,11 @@ class SimulationReport:
             self.spatial(axes[i,1],self.Z[:,p],f'Learned P{p+1:02d}; dictionary cosine={row.dictionary_cosine:.2f}',False)
         return self.save(fig,'true_vs_recovered_programs')
     def reconstruction(self):
-        history=pd.read_csv(self.output/'gnn/training.csv');fig,axes=plt.subplots(1,2,figsize=(9,3),layout='constrained')
-        for ax,key in zip(axes,['ccc','composition']):
+        history=pd.read_csv(self.output/'gnn/training.csv');keys=['ccc']+(['composition'] if 'train_composition' in history else [])
+        fig,axes=plt.subplots(1,len(keys),figsize=(5*len(keys),3),layout='constrained',squeeze=False)
+        for ax,key in zip(axes.ravel(),keys):
             for split,c in [('train',COLORS[0]),('validation',COLORS[1])]:ax.plot(history.epoch,history[split+'_'+key],label=split,c=c)
-            ax.set(xlabel='Epoch',ylabel='Scaled Huber' if key=='ccc' else 'KL divergence',title=key+' reconstruction');ax.legend()
+            ax.set(xlabel='Epoch',ylabel=('Scaled '+self.cfg.get('ccc_error','huber')) if key=='ccc' else 'KL divergence',title=key+' reconstruction');ax.legend()
         return self.save(fig,'training_curves')
     def dictionary(self):
         import seaborn as sns
@@ -74,13 +75,15 @@ class SimulationReport:
         ax.tick_params(axis='x',rotation=90,labelsize=6);return self.save(fig,'MI_dictionary_recovery')
     def composition_audit(self):
         import seaborn as sns
-        frame=pd.read_csv(self.output/'radial_composition_audit.csv');fig,axes=plt.subplots(1,2,figsize=(10,3.8),layout='constrained')
+        frame=pd.read_csv(self.output/'radial_composition_audit.csv');auxiliary=self.cfg['lambda_comp']>0
+        fig,axs=plt.subplots(1,2 if auxiliary else 1,figsize=(10 if auxiliary else 6,3.8),layout='constrained',squeeze=False);axes=axs.ravel()
         for name,part in frame.groupby('cell_type'):
             axes[0].plot(part.radial_bin,part.A,label=name);axes[0].plot(part.radial_bin,part.B,ls='--',lw=1)
         axes[0].set(xlabel='Radial bin',ylabel='Pair-weighted composition',title='A solid / B dashed');axes[0].legend(fontsize=6)
         from .generation import TYPES
-        sns.heatmap(self.B,cmap='Blues',ax=axes[1],xticklabels=TYPES,yticklabels=False,cbar_kws={'label':'Composition fraction'})
-        axes[1].set(title='Learned B (32 × 5)',ylabel='Communication programs');axes[1].tick_params(axis='x',rotation=65)
+        if auxiliary:
+            sns.heatmap(self.B,cmap='Blues',ax=axes[1],xticklabels=TYPES,yticklabels=False,cbar_kws={'label':'Composition fraction'})
+            axes[1].set(title='Learned B (32 × 5)',ylabel='Communication programs');axes[1].tick_params(axis='x',rotation=65)
         return self.save(fig,'composition_control')
     def adaptive_niches(self):
         fig,ax=plt.subplots(figsize=(5,4),layout='constrained');self.spatial(ax,self.labels['CCC_Phe GNN (selected K)'].to_numpy(),'GNN unsupervised K selection')

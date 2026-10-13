@@ -13,10 +13,21 @@ from ..model import RepresentationAutoencoder
 from ..training import (fit_stage1,load_stage1_checkpoint,infer_latent,initialize_program_decoder,fit_stage2a,fit_stage2b,load_stage2_checkpoint,infer_programs)
 from ..gnn.model import physical_weights
 
-def fixed_clustering(values,train,config):
-    scaler=StandardScaler().fit(values[train]);x=scaler.transform(values)
+def fixed_clustering(values,train,config,standardize=True):
+    x=StandardScaler().fit(values[train]).transform(values) if standardize else values
     model=MiniBatchKMeans(n_clusters=config.fixed_k,random_state=config.seed,n_init=10,batch_size=min(1024,len(train))).fit(x[train])
     return model.predict(x).astype(np.int16)
+
+
+def dictionary_program_projection(h,scale):
+    """Z metric equivalent to reconstructed scaled CCC distance, without C input.
+
+    Identical dictionaries define zero distance when their activities swap;
+    standardizing every program independently would amplify that ambiguity.
+    """
+    dictionary=np.asarray(h,np.float64)/np.asarray(scale)[None,:]
+    eigenvalues,vectors=np.linalg.eigh(dictionary@dictionary.T)
+    return (vectors*np.sqrt(np.maximum(eigenvalues,0))[None,:]).astype(np.float32)
 
 def expression_pca(data,config):
     # Pool raw expression by pair degree, without any cell-type labels.
@@ -35,7 +46,8 @@ def vector_ae(data,config,output):
     if all((output/n).is_file() for n in ('Z.npy','P.npy','H.npy','activity.npy','complete.json')):
         return {name:np.load(output/(name+'.npy'),mmap_mode='r') for name in ('Z','P','H','activity')}
     columns=np.flatnonzero(data.feature_mask);features=data.features.iloc[columns].reset_index(drop=True)
-    prepared=PreparedInput(Path(data.targets.matrix.filename),data.targets.matrix.shape,columns,data.feature_scale[columns],data.rows[0],data.rows[1],features,data.cells,data.coordinates,output)
+    original_scale=getattr(data,'original_feature_scale',data.feature_scale)[columns]
+    prepared=PreparedInput(Path(data.targets.matrix.filename),data.targets.matrix.shape,columns,original_scale,data.rows[0],data.rows[1],features,data.cells,data.coordinates,output)
     # Reuse the archived recipe verbatim; adapt its scalar configuration to
     # the same simulation seed/budgets without changing the model architecture.
     values=asdict(ExperimentConfig());values.update(seed=config.seed,device=config.device,batch_size=config.batch_size,stage1_max_epochs=config.ae_stage1_epochs,stage2a_max_epochs=config.ae_stage2_epochs,stage2b_max_epochs=config.ae_stage2_epochs,stage1_patience=config.patience,stage2a_patience=config.patience,stage2b_patience=config.patience,stage2a_head_warmup_epochs=min(2,config.ae_stage2_epochs-1))
@@ -53,7 +65,7 @@ def vector_ae(data,config,output):
         else:fit_stage2a(model,program,prepared,cfg,output)
         fit_stage2b(model,program,prepared,reference,cfg,output)
     arrays=infer_programs(model,program,prepared,cfg,{k:output/(k+'.npy') for k in ('E32','P32','Z32','Q8_direct','activity')})
-    native=program.dictionary.detach().cpu().numpy()*data.feature_scale[columns];mass=native.sum(1);native/=np.maximum(mass[:,None],1e-8)
+    native=program.dictionary.detach().cpu().numpy()*original_scale;mass=native.sum(1);native/=np.maximum(mass[:,None],1e-8)
     h=np.zeros((32,len(data.features)),np.float32);h[:,columns]=native
     z=np.asarray(arrays['Z32'])*mass;np.save(output/'Z.npy',z);np.save(output/'P.npy',np.asarray(arrays['P32']));np.save(output/'H.npy',h);np.save(output/'activity.npy',z.sum(1))
     (output/'complete.json').write_text(json.dumps({'model':'original CCC-vector dual-decoder AE','information':'precomputed CCC input','simulation_signature':config.signature(),'same_spatial_folds':True},indent=2))

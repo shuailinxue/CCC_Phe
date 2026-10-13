@@ -38,7 +38,7 @@ def initialize(data,config,initialize_composition=False):
     return model
 
 
-def epoch(model,data,rows,config,optimizer=None,epoch_number=0):
+def epoch(model,data,rows,config,optimizer=None,epoch_number=0,ccc_objective=None):
     training=optimizer is not None;model.train(training)
     device=next(model.parameters()).device
     rng=np.random.default_rng(config.seed+epoch_number);rows=rng.permutation(rows) if training else rows
@@ -47,10 +47,11 @@ def epoch(model,data,rows,config,optimizer=None,epoch_number=0):
         for start in range(0,len(rows),config.batch_size):
             chosen=rows[start:start+config.batch_size];batch=data.batch(chosen,device)
             result=data.forward(model,batch)
-            ccc=ccc_loss(result['reconstruction'],batch['target'],data.feature_scale,data.feature_mask)
+            ccc=(ccc_objective or ccc_loss)(result['reconstruction'],batch['target'],data.feature_scale,data.feature_mask)
             reg=regularization(result)
-            comp=composition_loss(result['composition'],batch['composition_target'])
-            metrics={'ccc':float(ccc.detach()),'composition':float(comp.detach()),'regularization':float(reg.detach())}
+            comp=composition_loss(result['composition'],batch['composition_target']) if config.lambda_comp>0 else ccc.new_zeros(())
+            metrics={'ccc':float(ccc.detach()),'regularization':float(reg.detach())}
+            if config.lambda_comp>0:metrics['composition']=float(comp.detach())
             auxiliary=config.lambda_reg*reg+config.lambda_comp*comp
             primary=ccc
             metrics['total']=float((primary+auxiliary).detach())
@@ -58,17 +59,17 @@ def epoch(model,data,rows,config,optimizer=None,epoch_number=0):
                 optimizer.zero_grad(set_to_none=True)
                 metrics.update(guarded_backward(primary,auxiliary,model.parameters(),config.gradient_clip))
                 optimizer.step()
-            valid_count=int((batch['composition_target'].sum(1)>0).sum())
+            valid_count=int((batch['composition_target'].sum(1)>0).sum()) if config.lambda_comp>0 else 0
             composition_count+=valid_count
             for key,value in metrics.items(): sums[key]=sums.get(key,0)+value*(valid_count if key=='composition' else len(chosen))
             count+=len(chosen)
     result={key:value/(max(composition_count,1) if key=='composition' else count) for key,value in sums.items()}
-    result['composition_valid_centers']=composition_count
-    result['total']=result['ccc']+config.lambda_reg*result['regularization']+config.lambda_comp*result['composition']
+    if config.lambda_comp>0:result['composition_valid_centers']=composition_count
+    result['total']=result['ccc']+config.lambda_reg*result['regularization']+config.lambda_comp*result.get('composition',0.)
     return result
 
 
-def fit(data,config,initialize_composition=False,rescale_activity=False):
+def fit(data,config,initialize_composition=False,rescale_activity=False,ccc_objective=None):
     output=Path(config.output_dir);output.mkdir(parents=True,exist_ok=True)
     if (output/'checkpoint.pt').exists(): raise FileExistsError('GNN checkpoint exists; use inference or a distinct experiment output')
     device=resolve_device(config.device);model=initialize(data,config,initialize_composition).to(device)
@@ -82,7 +83,7 @@ def fit(data,config,initialize_composition=False,rescale_activity=False):
             model.activity_head.weight.div_(activity_parameter_scale)
             model.activity_head.bias.div_(activity_parameter_scale)
         activity_hook=model.activity_head.register_forward_hook(lambda module,args,value:value*activity_parameter_scale)
-    if initialize_composition:
+    if initialize_composition or rescale_activity:
         np.save(output/'initial_H.npy',model.dictionary.detach().cpu().numpy())
         np.save(output/'initial_B.npy',model.composition_dictionary.detach().cpu().numpy())
     data.prepare_device(device,output/'cache')
@@ -90,10 +91,10 @@ def fit(data,config,initialize_composition=False,rescale_activity=False):
     history=[];best=float('inf');state=None;stale=0
     for e in range(config.max_epochs):
         print(f'Epoch {e+1}/{config.max_epochs}',flush=True)
-        tr=epoch(model,data,data.rows[0],config,optimizer,e)
-        va=epoch(model,data,data.rows[1],config,None,e)
+        tr=epoch(model,data,data.rows[0],config,optimizer,e,ccc_objective)
+        va=epoch(model,data,data.rows[1],config,None,e,ccc_objective)
         # Compare the same CCC-primary objective across all epochs.
-        score=va['ccc']+config.lambda_reg*va['regularization']+config.lambda_comp*va['composition']
+        score=va['ccc']+config.lambda_reg*va['regularization']+config.lambda_comp*va.get('composition',0.)
         print(f'Epoch {e+1}: train CCC={tr["ccc"]:.6f}, validation CCC={va["ccc"]:.6f}, selected loss={score:.6f}',flush=True)
         history.append({'epoch':e+1,**{'train_'+k:v for k,v in tr.items()},**{'validation_'+k:v for k,v in va.items()},'selection_loss':score})
         pd.DataFrame(history).to_csv(output/'training.csv',index=False)
@@ -119,7 +120,7 @@ def fit(data,config,initialize_composition=False,rescale_activity=False):
     torch.save(payload,output/'checkpoint.pt')
     pd.DataFrame(history).to_csv(output/'training.csv',index=False)
     (output/'config.json').write_text(json.dumps(config.to_dict(),indent=2)+'\n')
-    test=epoch(model,data,data.rows[2],config,None,config.max_epochs)
+    test=epoch(model,data,data.rows[2],config,None,config.max_epochs,ccc_objective)
     (output/'heldout_metrics.json').write_text(json.dumps({'best_epoch':best_epoch,'validation_loss':best,'test':test},indent=2)+'\n')
     return model
 

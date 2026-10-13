@@ -1,15 +1,17 @@
 """Restartable simulated benchmark. Full execution is invoked only by user Run All."""
 from pathlib import Path
 import json,hashlib
+from functools import partial
 import numpy as np,pandas as pd,anndata as ad
 from ..storage import STORAGE_ROOT
 from ..gnn.training import fit,infer
 from ..gnn.pipeline import load_checkpoint
 from ..gnn.evaluation import discover
+from ..gnn.losses import ccc_loss
 from .generation import generate,check_environment
 from .injection import inject
 from .adapter import adapt,gnn_config
-from .baselines import run_baselines,fixed_clustering
+from .baselines import run_baselines,fixed_clustering,dictionary_program_projection
 from .evaluation import evaluate
 from .config import SimulationConfig
 
@@ -45,21 +47,28 @@ def run_experiment(config):
     output=protect(config)
     required=('metrics.csv','diagnostics.json','MI_matches.csv','raw_clusters.csv','radial_composition_audit.csv','gnn/Z.npy','gnn/H.npy','gnn/B.npy','gnn/K_selection.csv','ground_truth/MI_activity.npy','complete.json')
     evaluation_signature=hashlib.sha256((Path(__file__).parent/'evaluation.py').read_bytes()).hexdigest()
-    if all((output/p).is_file() for p in required) and json.loads((output/'complete.json').read_text()).get('evaluation_signature')==evaluation_signature:return output
+    if all((output/p).is_file() for p in required):
+        completion=json.loads((output/'complete.json').read_text())
+        if completion.get('evaluation_signature')==evaluation_signature and completion.get('clustering_metric')=='CCC_dictionary':return output
+        if completion.get('clustering_metric')!='CCC_dictionary':
+            for name in ('metrics.csv','raw_clusters.csv'):
+                previous=output/('program_coordinate_'+name)
+                if not previous.exists() and (output/name).exists():previous.write_bytes((output/name).read_bytes())
     adata,lr=dataset(config);data=adapt(adata,lr,config,output)
     np.save(output/'ground_truth/composition_before.npy',data.composition_target)
     gcfg=gnn_config(config,output/'gnn');Path(gcfg.output_dir).mkdir(exist_ok=True)
     if (Path(gcfg.output_dir)/'checkpoint.pt').exists():model,_=load_checkpoint(data,gcfg)
-    else:model=fit(data,gcfg,initialize_composition=config.initialize_composition,rescale_activity=config.rescale_activity)
+    else:model=fit(data,gcfg,initialize_composition=config.initialize_composition,rescale_activity=config.rescale_activity,ccc_objective=partial(ccc_loss,kind=config.ccc_error,delta=config.ccc_huber_delta))
     arrays=infer(model,data,gcfg.output_dir,gcfg.batch_size);h=np.load(Path(gcfg.output_dir)/'H.npy');b=np.load(Path(gcfg.output_dir)/'B.npy')
-    k,adaptive,_=discover(data,arrays,h,gcfg)
+    projection=dictionary_program_projection(h,data.feature_scale)
+    k,adaptive,_=discover(data,arrays,h,gcfg,program_projection=projection)
     labels,ae=run_baselines(data,config,output/'baselines')
-    latent=np.column_stack((np.sqrt(np.asarray(arrays['P'])),.25*np.log1p(np.asarray(arrays['activity']))))
-    labels['CCC_Phe GNN (fixed K)']=fixed_clustering(latent,data.rows[0],config)
+    latent=np.asarray(arrays['Z'])@projection
+    labels['CCC_Phe GNN (fixed K)']=fixed_clustering(latent,data.rows[0],config,standardize=False)
     labels['CCC_Phe GNN (selected K)']=adaptive
     pd.DataFrame({'cell_id':adata.obs.cell_id.to_numpy(),**labels}).to_csv(output/'raw_clusters.csv',index=False)
     evaluate(adata,data,labels,arrays,h,b,ae,output)
-    (output/'complete.json').write_text(json.dumps({'simulation_signature':config.signature(),'evaluation_signature':evaluation_signature,'GNN_selected_K':k,'truth_used_in_training_or_K_selection':False,'raw_labels_are_unaligned':True,'scope':'synthetic independent downstream only'},indent=2)+'\n')
+    (output/'complete.json').write_text(json.dumps({'simulation_signature':config.signature(),'evaluation_signature':evaluation_signature,'clustering_metric':'CCC_dictionary','GNN_selected_K':k,'truth_used_in_training_or_K_selection':False,'raw_labels_are_unaligned':True,'scope':'synthetic independent downstream only'},indent=2)+'\n')
     return output
 
 

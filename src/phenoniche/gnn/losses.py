@@ -7,12 +7,15 @@ from .model import physical_weights
 from ..ccc.lr_atlas import canonicalize_complex
 
 
-def ccc_loss(prediction, target, scale, mask):
+def ccc_loss(prediction, target, scale, mask,kind='huber',delta=1.):
     mask = torch.as_tensor(mask,device=prediction.device,dtype=torch.bool)
     scale = torch.as_tensor(scale,device=prediction.device)
     if not mask.any(): raise ValueError('No effective CCC supervision')
     if not torch.isfinite(target).all() or (target<0).any(): raise ValueError('Invalid CCC target')
-    return F.smooth_l1_loss(prediction[:,mask]/scale[mask],target[:,mask]/scale[mask])
+    prediction=prediction[:,mask]/scale[mask];target=target[:,mask]/scale[mask]
+    if kind=='mse':return F.mse_loss(prediction,target)
+    if kind!='huber' or delta<=0:raise ValueError('Invalid CCC error objective')
+    return F.huber_loss(prediction,target,delta=delta)
 
 
 def regularization(result):

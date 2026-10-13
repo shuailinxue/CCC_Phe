@@ -23,8 +23,8 @@ def make_lr(config):
     for i in order:
         v=pool[i]
         if not ({v.ligand,v.receptor}&used):selected.append(v);used.update((v.ligand,v.receptor))
-        if len(selected)==2*config.mi_lr_count:break
-    if len(selected)<2*config.mi_lr_count:raise ValueError('Not enough gene-disjoint real LR pairs')
+        if len(selected)==2*config.mi_lr_count+5*config.basal_lr_per_type:break
+    if len(selected)<2*config.mi_lr_count+5*config.basal_lr_per_type:raise ValueError('Not enough gene-disjoint real LR pairs')
     keys={(v.ligand,v.receptor) for v in selected}
     for i in order:
         v=pool[i]
@@ -32,6 +32,10 @@ def make_lr(config):
         if len(selected)==config.n_lr:break
     table=pd.DataFrame([{'lr_id':v.lr_id,'ligand':v.ligand,'receptor':v.receptor,'mi':1 if i<config.mi_lr_count else 2 if i<2*config.mi_lr_count else 0,'loading':1/config.mi_lr_count if i<2*config.mi_lr_count else 0.,'source':'CommuSpace union; intended sender/receiver roles are simulation design'} for i,v in enumerate(selected)])
     table['sender_role']=config.sender_type;table['receiver_role']=config.receiver_type
+    table['basal_type']=''
+    for t,name in enumerate(TYPES):
+        ids=np.arange(2*config.mi_lr_count+t*config.basal_lr_per_type,2*config.mi_lr_count+(t+1)*config.basal_lr_per_type)
+        table.loc[ids,'basal_type']=name;table.loc[ids,['sender_role','receiver_role']]=name
     if config.mi_loadings is not None:
         for mi in (1,2):
             weights=np.asarray(config.mi_loadings[mi-1],float);table.loc[table.mi==mi,'loading']=weights/weights.sum()
@@ -45,6 +49,14 @@ def seed_reference(config,lr):
     n=config.reference_cells_per_type;types=np.repeat(TYPES,n);means=np.full((len(types),len(genes)),.3)
     markers=[genes.index('SYN_MARKER_'+str(i)) for i in range(25)]
     for i in range(5):means[i*n:(i+1)*n,np.asarray(markers[i*5:(i+1)*5])]=12.
+    # Type-specific real LR genes, not just synthetic markers, define basal
+    # communication. Roles/means are explicit synthetic assumptions, not
+    # experimentally curated cell-type expression priors. No region labels.
+    for i,name in enumerate(TYPES):
+        for row in lr[lr.basal_type==name].itertuples():
+            positions=[genes.index(row.ligand),genes.index(row.receptor)]
+            means[:,positions]=config.basal_lr_offtype_mean
+            means[i*n:(i+1)*n,np.asarray(positions)]=config.basal_lr_mean
     counts=rng.negative_binomial(3,3/(3+means)).astype(np.float32)
     obs=pd.DataFrame({'Cell_type':types,'Cell':['seed_'+str(i) for i in range(len(types))]},index=['seed_'+str(i) for i in range(len(types))])
     return ad.AnnData(counts,obs=obs,var=pd.DataFrame(index=genes))
@@ -78,6 +90,17 @@ def marker_audit(counts,labels,genes):
         own=[list(genes).index(f'SYN_MARKER_{j}') for j in range(5*index,5*index+5)]
         others=[list(genes).index(f'SYN_MARKER_{j}') for j in range(25) if j//5!=index]
         records.append({'cell_type':name,'own_marker_mean':float(counts[ids][:,own].mean()),'other_marker_mean':float(counts[ids][:,others].mean())})
+    return records
+
+
+def basal_lr_audit(counts,labels,genes,lr):
+    records=[]
+    for name in TYPES:
+        links=lr[lr.basal_type==name]
+        if links.empty:continue
+        positions=[list(genes).index(g) for g in sorted(set(links.ligand)|set(links.receptor))]
+        own=np.asarray(labels)==name
+        records.append({'cell_type':name,'LR_pairs':len(links),'own_LR_gene_mean':float(counts[own][:,positions].mean()),'other_type_LR_gene_mean':float(counts[~own][:,positions].mean())})
     return records
 
 def generate(config,output):
@@ -122,6 +145,7 @@ def generate(config,output):
     calibrated=calibrate_type_means(rates,generated_labels,ref) if config.expression_calibration=='type_mean' else rates
     counts_generated=rng.poisson(calibrated).astype(np.float32) if config.expression_calibration=='type_mean' else raw_counts
     fidelity={'mode':config.expression_calibration,'raw_scCube':marker_audit(raw_counts,generated_labels,ref.var_names),'final_counts':marker_audit(counts_generated,generated_labels,ref.var_names),'policy':'Seed type means only; no niche/MI labels, no CCC modification'}
+    fidelity['basal_LR_profiles']=basal_lr_audit(counts_generated,generated_labels,ref.var_names,lr)
     (output/'expression_fidelity.json').write_text(json.dumps(fidelity,indent=2)+'\n')
     half_expr=np.empty((half_total,len(ref.var_names)),np.float32)
     for i,name in enumerate(TYPES):
@@ -136,5 +160,6 @@ def generate(config,output):
     obs=pd.DataFrame({'cell_id':['sim_'+str(i) for i in range(config.n_cells)],'cell_type':np.asarray(TYPES)[types],'sample_id':samples,'mirror_pair':np.tile(np.arange(half_total),2),'radius_um':radius,'local_x':local_xy[:,0],'local_y':local_xy[:,1],'true_niche':truth},index=['sim_'+str(i) for i in range(config.n_cells)])
     a=ad.AnnData(np.tile(half_expr,(2,1)),obs=obs,var=pd.DataFrame(index=ref.var_names));a.obsm['spatial']=xy.astype(np.float32)
     a.uns['simulation_provenance']={'scCube_commit':SCCUBE_COMMIT,'SpiderNet_simulation_commit':SPIDERNET_COMMIT,'seed_reference':'synthetic negative-binomial profiles, not patient measurements','expression_transform':f'invert clipped log1p values; {config.expression_calibration} seed-type mean calibration; Poisson sample; duplicate paired control before MI injection','geometry':'scCube Poisson points -> uniform half-disc -> bilateral reflection; µm','versions':check_environment()}
+    a.uns['simulation_provenance']['basal_LR_profiles']='Real LR identities with synthetic type-specific basal expression; no anatomical/MI labels used for basal profiles'
     a.write_h5ad(output/'before_injection.incomplete.h5ad');(output/'before_injection.incomplete.h5ad').replace(output/'before_injection.h5ad');lr.to_csv(output/'lr.csv',index=False)
     return a,lr

@@ -12,6 +12,7 @@ from phenoniche.simulation.generation import make_lr,calibrate_type_means,seed_r
 from phenoniche.simulation.dependencies import prepare_environment
 from phenoniche.simulation.plotting import SimulationReport
 from phenoniche.simulation.evaluation import label_mapping,mapped,partition_scores
+from phenoniche.simulation.baselines import dictionary_program_projection
 from phenoniche.gnn.model import MicroenvironmentGNN
 from phenoniche.gnn.losses import ccc_loss,composition_loss
 
@@ -87,7 +88,7 @@ def test_configurable_dictionary_and_config_roundtrip(tmp_path):
     for mi in (1,2):
         weights=np.asarray(cfg.mi_loadings[mi-1],float)
         np.testing.assert_allclose(lr.loc[lr.mi==mi,'loading'],weights/weights.sum())
-    assert set(lr.sender_role)=={'Macrophage'} and set(lr.receiver_role)=={'T cell'}
+    assert set(lr.loc[lr.mi>0,'sender_role'])=={'Macrophage'} and set(lr.loc[lr.mi>0,'receiver_role'])=={'T cell'}
     path=tmp_path/'config.json';path.write_text(json.dumps(cfg.to_dict()))
     assert SimulationConfig.from_json(path).signature()==cfg.signature()
 
@@ -115,6 +116,15 @@ def test_degenerate_test_partition_is_not_reported_as_failed_recovery():
     scores=partition_scores(truth,pred,pred,rows,{0:2,1:3},np.array([0,1]))
     assert not scores['overall_evaluable'] and not scores['edge_detection_evaluable']
     assert np.isnan(scores['overall_ARI']) and np.isnan(scores['edge_F1'])
+
+
+def test_dictionary_metric_respects_reconstruction_and_redundancy():
+    h=np.array([[.7,.3],[.7,.3],[.1,.9]],np.float32);scale=np.array([.5,2.],np.float32)
+    projection=dictionary_program_projection(h,scale)
+    z=np.array([[1,0,0],[0,1,0],[0,0,1]],np.float32)
+    delta=z[0]-z[2]
+    np.testing.assert_allclose(np.sum((delta@projection)**2),np.sum((delta@h/scale)**2),rtol=1e-5)
+    np.testing.assert_allclose(z[0]@projection,z[1]@projection,atol=1e-7)
 
 
 def test_truth_labels_do_not_change_model_data(tiny):
@@ -148,17 +158,29 @@ def test_mini_end_to_end_and_checkpoint_reuse(tiny):
     with pytest.raises(ValueError):protect(replace(cfg,signal_strength=21.))
 
 
-def test_notebook_static_order_and_unexecuted():
+def test_notebook_static_order_and_valid_outputs():
     root=Path(__file__).resolve().parents[1];n=nbformat.read(root/'TumorEdge_Communication_Simulation.ipynb',as_version=4)
     sources=[]
     for c in n.cells:
         if c.cell_type=='code':
-            assert c.execution_count is None and not c.outputs
+            assert not any(o.output_type=='error' for o in c.outputs)
             ast.parse('\n'.join(v for v in c.source.splitlines() if not v.startswith('%')));sources.append(c.source)
     text='\n'.join(sources)
     assert text.index('dataset(config)')<text.index('adapt(adata')<text.index('run_experiment(config)')
     assert 'load_results=False' in text and 'prepare_environment()' in text
     cfg=SimulationConfig.from_json(root/'config/tumor_edge_simulation.json');assert cfg.n_cells==8000 and cfg.mode=='expression'
+
+
+def test_lr_background_is_type_specific_without_region_labels():
+    cfg=replace(SimulationConfig(),reference_cells_per_type=8);lr=make_lr(cfg);ref=seed_reference(cfg,lr)
+    mi_genes=set(lr.loc[lr.mi>0,'ligand'])|set(lr.loc[lr.mi>0,'receptor'])
+    basal=lr[lr.basal_type!=''];assert len(basal)==5*cfg.basal_lr_per_type
+    assert not mi_genes.intersection(set(basal.ligand)|set(basal.receptor))
+    for name in TYPES:
+        genes=sorted(set(basal.loc[basal.basal_type==name,'ligand'])|set(basal.loc[basal.basal_type==name,'receptor']))
+        ids=[ref.var_names.get_loc(g) for g in genes];own=ref.obs.Cell_type.to_numpy()==name
+        assert ref.X[own][:,ids].mean()>20*ref.X[~own][:,ids].mean()
+    assert 'true_niche' not in ref.obs
 
 
 def test_protected_real_data_outputs():

@@ -71,11 +71,12 @@ class GNNReport:
           'Clinical supervision':'None'}).to_frame('Value')
 
     def training_curves(self):
-        fig,axes=plt.subplots(1,2,figsize=(10,3.4),layout='constrained')
-        for ax,key,title in zip(axes,('ccc','composition'),('CCC reconstruction','Cell-type composition reconstruction')):
+        keys=['ccc']+(['composition'] if 'train_composition' in self.history else [])
+        fig,axes=plt.subplots(1,len(keys),figsize=(5*len(keys),3.4),layout='constrained',squeeze=False)
+        for ax,key in zip(axes.ravel(),keys):
             for prefix,color in (('train',COLORS[0]),('validation',COLORS[1])):
                 ax.plot(self.history.epoch,self.history[prefix+'_'+key],color=color,lw=1.5,label=prefix)
-            ax.set(xlabel='Epoch',ylabel='Scaled Huber' if key=='ccc' else 'KL(observed || predicted)',title=title);ax.legend()
+            ax.set(xlabel='Epoch',ylabel='Scaled Huber' if key=='ccc' else 'KL(observed || predicted)',title='CCC reconstruction' if key=='ccc' else 'Cell-type composition reconstruction');ax.legend()
         return self.save(fig,'training_curves')
 
     def composition_reconstruction(self):

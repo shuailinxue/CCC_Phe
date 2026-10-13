@@ -4,6 +4,9 @@
   "n_genes": 256,
   "n_lr": 75,
   "mi_lr_count": 6,
+  "basal_lr_per_type": 3,
+  "basal_lr_mean": 6.0,
+  "basal_lr_offtype_mean": 0.03,
   "core_radius_um": 250.0,
   "edge_width_um": 100.0,
   "outer_radius_um": 600.0,
@@ -43,8 +46,11 @@
   "expression_calibration": "type_mean",
   "split_strategy": "mirrored_sectors",
   "angular_sectors": 5,
-  "initialize_composition": true,
+  "initialize_composition": false,
   "rescale_activity": true,
+  "ccc_scale_power": 0.5,
+  "ccc_error": "huber",
+  "ccc_huber_delta": 3.0,
   "gnn_epochs": 40,
   "ae_stage1_epochs": 25,
   "ae_stage2_epochs": 8,
@@ -52,7 +58,7 @@
   "batch_size": 128,
   "programs": 32,
   "hidden": 64,
-  "lambda_comp": 0.005,
+  "lambda_comp": 0.0,
   "lambda_reg": 0.005,
   "fixed_k": 4,
   "k_min": 4,
@@ -60,5 +66,5 @@
   "device": "auto",
   "figure_dpi": 600,
   "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_simulation_seedcounts"
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_simulation_type_specific_lr"
 }

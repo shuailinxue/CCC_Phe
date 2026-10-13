@@ -5,7 +5,7 @@
   "batch_size": 512,
   "block_um": 400.0,
   "audit_file": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/audits/xenium_prime_5k_expr05/study_audit.json",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/microenvironment_gnn_composition_weak_expr05",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/microenvironment_gnn_ccc_only_expr05",
   "use_legacy_feature_mask": false,
   "max_epochs": 40,
   "patience": 6,
@@ -13,5 +13,5 @@
   "lambda_reg": 0.005,
   "device": "cuda:0",
   "architecture": "expression_gnn_composition_v1",
-  "lambda_comp": 0.005
+  "lambda_comp": 0.0
 }

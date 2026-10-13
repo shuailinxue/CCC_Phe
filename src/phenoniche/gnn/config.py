@@ -25,11 +25,11 @@ class GNNConfig:
     test_fraction: float = 0.2
     sample_column: str = ""
     architecture: str = "expression_gnn_composition_v1"
-    lambda_comp: float = 0.005
+    lambda_comp: float = 0.0
     lambda_reg: float = 0.005
     device: str = "auto"
     audit_file: str = ""
-    output_dir: str = str(STORAGE_ROOT / "outputs/microenvironment_gnn_composition_weak_expr05")
+    output_dir: str = str(STORAGE_ROOT / "outputs/microenvironment_gnn_ccc_only_expr05")
     legacy_output: str = str(OUTPUT_DIR)
     use_legacy_feature_mask: bool = False  # Optional fixed feature-universe comparison with the archived AE.
     k_min: int = 4

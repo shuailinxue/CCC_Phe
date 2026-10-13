@@ -92,13 +92,15 @@ def evaluate(adata,data,labels,arrays,h,b,ae,output):
             rho=float(spearmanr(true_z[rows,i],np.asarray(arrays['Z'][rows,p])).statistic) if len(rows)>2 and np.ptp(true_z[rows,i])>0 and np.ptp(np.asarray(arrays['Z'][rows,p]))>0 else np.nan
             matches.append({'MI':i+1,'program':p+1,'scope':name,'dictionary_cosine':float(cosine[i,p]),'initial_dictionary_cosine':float(initial_cosine[i,p]) if initial_cosine is not None else np.nan,'dictionary_cosine_gain':float(cosine[i,p]-initial_cosine[i,p]) if initial_cosine is not None else np.nan,'top_LR_precision':len(support&top)/max(len(support),1),'activity_Spearman':rho,'match_policy':'one-to-one dictionary matching only; no test activity used to choose programs'})
     pd.DataFrame(matches).to_csv(output/'MI_matches.csv',index=False)
+    use_composition=json.loads((output/'config.json').read_text())['lambda_comp']>0
     metrics={};weights=0.;ccc=0.;comp=0.;ae_ccc=0.
     for start in range(0,len(test),512):
         rows=test[start:start+512];target=torch.from_numpy(data.targets[rows]);reconstruction=torch.from_numpy(np.asarray(arrays['Z'][rows])@h)
         ccc+=float(ccc_loss(reconstruction,target,data.feature_scale,data.feature_mask))*len(rows)
-        comp+=float(composition_loss(torch.from_numpy(np.asarray(arrays['P'][rows])@b),torch.from_numpy(np.asarray(data.composition_target[rows]))))*len(rows)
+        if use_composition:comp+=float(composition_loss(torch.from_numpy(np.asarray(arrays['P'][rows])@b),torch.from_numpy(np.asarray(data.composition_target[rows]))))*len(rows)
         ae_ccc+=float(ccc_loss(torch.from_numpy(np.asarray(ae['Z'][rows])@ae['H']),target,data.feature_scale,data.feature_mask))*len(rows);weights+=len(rows)
-    metrics.update(gnn_test_CCC_Huber=ccc/weights,gnn_test_composition_KL=comp/weights,ae_test_CCC_Huber=ae_ccc/weights)
+    metrics.update(gnn_test_CCC_Huber=ccc/weights,ae_test_CCC_Huber=ae_ccc/weights)
+    if use_composition:metrics['gnn_test_composition_KL']=comp/weights
     split_counts=pd.crosstab(pd.Series(data.folds,name='fold'),pd.Series(truth,name='true_niche'))
     split_counts.to_csv(output/'evaluation_split_coverage.csv')
     metrics['test_contains_edge']=bool(edge[test].any())

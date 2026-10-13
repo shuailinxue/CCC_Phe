@@ -11,6 +11,9 @@ class SimulationConfig:
     n_genes:int=256
     n_lr:int=75
     mi_lr_count:int=6
+    basal_lr_per_type:int=3
+    basal_lr_mean:float=6.
+    basal_lr_offtype_mean:float=.03
     core_radius_um:float=250.
     edge_width_um:float=100.
     outer_radius_um:float=600.
@@ -32,8 +35,11 @@ class SimulationConfig:
     expression_calibration:str='type_mean'
     split_strategy:str='mirrored_sectors'
     angular_sectors:int=5
-    initialize_composition:bool=True
+    initialize_composition:bool=False
     rescale_activity:bool=True
+    ccc_scale_power:float=.5
+    ccc_error:str='huber'
+    ccc_huber_delta:float=3.
     gnn_epochs:int=40
     ae_stage1_epochs:int=25
     ae_stage2_epochs:int=8
@@ -41,7 +47,7 @@ class SimulationConfig:
     batch_size:int=128
     programs:int=32
     hidden:int=64
-    lambda_comp:float=.005
+    lambda_comp:float=0.
     lambda_reg:float=.005
     fixed_k:int=4
     k_min:int=4
@@ -49,7 +55,7 @@ class SimulationConfig:
     device:str='auto'
     figure_dpi:int=600
     lr_atlas:str=str(ROOT/'data/commuspace_human_lr_atlas.tsv')
-    output_dir:str=str(STORAGE_ROOT/'outputs/tumor_edge_simulation_seedcounts')
+    output_dir:str=str(STORAGE_ROOT/'outputs/tumor_edge_simulation_type_specific_lr')
     def __post_init__(self):
         if self.n_cells<100 or self.n_cells%2 or self.n_cells//(2*self.replicates)<20:raise ValueError('Use even n_cells >=100 and >=40 cells/replicate')
         if self.replicates not in (1,) and self.replicates<3:raise ValueError('Use one spatially split tissue or >=3 sample-split replicates')
@@ -57,7 +63,9 @@ class SimulationConfig:
         if self.mode not in ('expression','spatial_pairing_only'):raise ValueError('Unknown injection mode')
         if self.expression_calibration not in ('none','type_mean'):raise ValueError('Unknown expression calibration')
         if self.split_strategy not in ('grid','mirrored_sectors') or self.angular_sectors<5:raise ValueError('Invalid geometry-only split strategy')
+        if not 0<=self.ccc_scale_power<=1 or self.ccc_error not in ('huber','mse') or self.ccc_huber_delta<=0:raise ValueError('Invalid CCC supervision scaling/objective')
         if not 50<=self.n_lr<=100 or not 5<=self.mi_lr_count<=8 or self.n_genes<2*self.n_lr:raise ValueError('Use 50–100 LR, 5–8 LR/MI, and enough genes')
+        if self.basal_lr_per_type<0 or 2*self.mi_lr_count+5*self.basal_lr_per_type>self.n_lr or not 0<=self.basal_lr_offtype_mean<self.basal_lr_mean:raise ValueError('Invalid type-specific basal LR profile')
         if self.programs!=32 or min(self.gnn_epochs,self.ae_stage1_epochs,self.ae_stage2_epochs)<2 or self.sc_cube_epochs<1:raise ValueError('Require 32 programs and positive epoch budgets')
         if min(self.lambda_comp,self.lambda_reg)<0 or self.signal_strength<=0:raise ValueError('Invalid loss/signal weights')
         names=('Tumor','Normal epithelial','Fibroblast','Macrophage','T cell')

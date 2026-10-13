@@ -12,14 +12,14 @@ from ..consolidation import _latent_block,_soft_membership,_scale01,cosine_matri
 from ..interpretation import export_top_markers
 
 
-def discover(data,arrays,h,config):
+def discover(data,arrays,h,config,program_projection=None):
     train,val,test=data.rows
     rng=np.random.default_rng(config.seed)
     fit_rows=np.sort(rng.choice(train,min(len(train),config.clustering_sample_size),replace=False))
     val_rows=np.sort(rng.choice(val,min(len(val),config.silhouette_sample_size),replace=False))
     if min(len(fit_rows),len(val_rows))<=config.k_max: raise ValueError('Too few disjoint centers for K=4–15 evaluation')
     center=float(np.median(np.log1p(arrays['activity'][fit_rows])));scale=max(float(np.std(np.log1p(arrays['activity'][fit_rows]))),.1)
-    latent=lambda rows:_latent_block(arrays['P'],arrays['activity'],rows,center,scale,config.activity_weight)
+    latent=(lambda rows:np.asarray(arrays['Z'][rows])@program_projection) if program_projection is not None else (lambda rows:_latent_block(arrays['P'],arrays['activity'],rows,center,scale,config.activity_weight))
     train_x=latent(fit_rows);val_x=latent(val_rows);models={};records=[]
     for k in range(config.k_min,config.k_max+1):
         model=MiniBatchKMeans(n_clusters=k,random_state=config.seed,n_init=5,batch_size=4096).fit(train_x)
@@ -64,7 +64,7 @@ def discover(data,arrays,h,config):
     pd.DataFrame({'niche':np.arange(1,k+1),'n_cells':counts,'fraction':counts/len(labels)}).to_csv(selected/'niche_counts.csv',index=False)
     # Store the fitted clustering model for new-data inference without refitting K.
     import torch
-    torch.save({'model':model,'membership_scale':soft_scale,'activity_center':center,'activity_scale':scale,'K':k},output/'niche_model.pt')
+    torch.save({'model':model,'membership_scale':soft_scale,'activity_center':center,'activity_scale':scale,'K':k,'program_projection':program_projection},output/'niche_model.pt')
     return k,labels,table
 
 
