@@ -38,14 +38,14 @@ def dataset(config):
         a=inject(base,lr,config);a.write_h5ad(output/'injected.incomplete.h5ad');(output/'injected.incomplete.h5ad').replace(after)
     if len(a)!=config.n_cells or not np.array_equal(a.obs.cell_id,base.obs.cell_id):raise ValueError('Cached simulation identity/shape changed')
     gt=output/'ground_truth';gt.mkdir(exist_ok=True)
-    np.save(gt/'niche_labels_before.npy',base.obs.true_niche.to_numpy());np.save(gt/'MI_activity_before.npy',np.zeros((len(base),2),np.float32))
+    np.save(gt/'niche_labels_before.npy',base.obs.true_niche.to_numpy());np.save(gt/'MI_activity_before.npy',np.zeros((len(base),config.mi_count),np.float32))
     (output/'environment.json').write_text(json.dumps(versions,indent=2))
     return a,lr
 
 
 def run_experiment(config):
     output=protect(config)
-    required=('metrics.csv','diagnostics.json','MI_matches.csv','raw_clusters.csv','radial_composition_audit.csv','gnn/Z.npy','gnn/H.npy','gnn/B.npy','gnn/K_selection.csv','ground_truth/MI_activity.npy','complete.json')
+    required=('metrics.csv','diagnostics.json','MI_matches.csv','raw_clusters.csv','radial_composition_audit.csv','gnn/Z.npy','gnn/H.npy','gnn/B.npy','gnn/K_selection.csv','ground_truth/MI_activity.npy','ground_truth/MI_programs.csv','MI_projected_recovery.csv','complete.json')
     evaluation_signature=hashlib.sha256((Path(__file__).parent/'evaluation.py').read_bytes()).hexdigest()
     if all((output/p).is_file() for p in required):
         completion=json.loads((output/'complete.json').read_text())

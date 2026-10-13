@@ -83,12 +83,13 @@ def test_edge_mapping_cannot_assign_core_labels():
 
 
 def test_configurable_dictionary_and_config_roundtrip(tmp_path):
-    cfg=replace(SimulationConfig(),sender_type='Macrophage',receiver_type='T cell',mi_loadings=[[1,2,3,4,5,6],[6,5,4,3,2,1]])
+    cfg=replace(SimulationConfig(),sender_type='Macrophage',receiver_type='T cell',mi_loadings=[[1,2,3,4,5,6],[6,5,4,3,2,1],[1,2,3,4,5,6],[6,5,4,3,2,1]])
     lr=make_lr(cfg)
     for mi in (1,2):
         weights=np.asarray(cfg.mi_loadings[mi-1],float)
         np.testing.assert_allclose(lr.loc[lr.mi==mi,'loading'],weights/weights.sum())
-    assert set(lr.loc[lr.mi>0,'sender_role'])=={'Macrophage'} and set(lr.loc[lr.mi>0,'receiver_role'])=={'T cell'}
+    assert set(lr.loc[lr.mi.isin([1,2]),'sender_role'])=={'Macrophage'} and set(lr.loc[lr.mi.isin([1,2]),'receiver_role'])=={'T cell'}
+    assert set(lr.loc[lr.mi==3,'sender_role'])=={'Tumor'} and set(lr.loc[lr.mi==4,'receiver_role'])=={'Normal epithelial'}
     path=tmp_path/'config.json';path.write_text(json.dumps(cfg.to_dict()))
     assert SimulationConfig.from_json(path).signature()==cfg.signature()
 
@@ -152,9 +153,16 @@ def test_mini_end_to_end_and_checkpoint_reuse(tiny):
     assert run_experiment(cfg)==output and model.stat().st_mtime_ns==mtime and hashlib.sha256(model.read_bytes()).hexdigest()==before
     report=SimulationReport(output)
     import matplotlib.pyplot as plt
-    for name in ('ground_truth','main_figure','recovered_programs','dictionary','composition_audit','adaptive_niches','reconstruction'):
+    for name in ('ground_truth','main_figure','recovered_programs','dictionary','composition_audit','adaptive_niches','reconstruction','summary_figure'):
         fig=getattr(report,name)();assert fig.axes;plt.close(fig)
-    assert len(list((output/'figures').glob('*.png')))==7 and len(list((output/'figures').glob('*.pdf')))==7
+    assert len(list((output/'figures').glob('*.png')))==8 and len(list((output/'figures').glob('*.pdf')))==8
+    from phenoniche.simulation.summary_figure import regional_profiles
+    fractions,means,selected=regional_profiles(report)
+    assert fractions.shape==(4,5) and means.shape==(4,d.targets.shape[1])
+    np.testing.assert_allclose(fractions.sum(1),1,atol=1e-5)
+    assert len(selected)<=12 and np.isfinite(means).all()
+    metadata=json.loads((output/'report_tables/summary_figure_metadata.json').read_text())
+    assert metadata['n_planted_MIs']==4 and metadata['n_regions']==4 and metadata['removed_panels']==['b','d']
     with pytest.raises(ValueError):protect(replace(cfg,signal_strength=21.))
 
 
@@ -185,3 +193,25 @@ def test_lr_background_is_type_specific_without_region_labels():
 
 def test_protected_real_data_outputs():
     with pytest.raises(ValueError):protect(replace(SimulationConfig(),output_dir=str(STORAGE_ROOT/'outputs/xenium_prime_5k')))
+
+
+def test_four_program_truth_and_self_type_physical_pairs(tiny):
+    cfg,a,lr,d=tiny;out=Path(cfg.output_dir)
+    truth=np.load(out/'ground_truth/MI_dictionary.npy');activity=np.load(out/'ground_truth/MI_activity.npy')
+    assert cfg.mi_count==4 and truth.shape==(4,d.targets.shape[1]) and activity.shape==(180,4)
+    np.testing.assert_allclose(truth.sum(1),1)
+    assert np.all((truth>0).sum(1)==cfg.mi_lr_count) and np.isfinite(activity).all()
+    for mi,role in [(3,'Tumor'),(4,'Normal epithelial')]:
+        features=d.features.iloc[np.flatnonzero(truth[mi-1])]
+        assert set(features.sender)==set(features.receiver)=={role}
+        assert activity[:,mi-1].max()>0
+    np.testing.assert_array_equal(np.load(out/'ground_truth/MI_activity_before.npy'),np.zeros((180,4)))
+    # Self-type communication still requires different physical cells.
+    from phenoniche.gnn.model import physical_weights
+    from phenoniche.simulation.programs import program_specs
+    row=int(np.argmax(activity[:,2]));ids=np.asarray(d.members[row]);pair=physical_weights(torch.from_numpy(d.coordinates[ids][None]),torch.from_numpy(np.asarray(d.weights[row][None]).copy()),20.,torch.from_numpy(ids[None]))[0].numpy()
+    assert np.diag(pair).sum()==0
+    types=a.obs.cell_type.to_numpy()[ids];sender=a.obsm['injected_sender_activity'][ids,2]*(types=='Tumor');receiver=a.obsm['injected_receiver_activity'][ids,2]*(types=='Tumor')
+    exposure=(np.sqrt(sender[:,None]*receiver[None,:])*pair).sum();opportunity=(pair*(types[:,None]=='Tumor')*(types[None,:]=='Tumor')).sum()
+    assert activity[row,2]==pytest.approx(exposure/(opportunity+1e-4),rel=1e-5)
+    assert len(set(lr.ligand)|set(lr.receptor))==2*cfg.n_lr

@@ -17,28 +17,26 @@ def check_environment():
     return {p:metadata.version(p) for p in ('scCube','numpy','pandas','anndata','scanpy','torch','POT','scikit-learn')}
 
 def make_lr(config):
+    from .programs import program_specs
     atlas=load_lr_atlas(config.lr_atlas);rng=np.random.default_rng(config.seed)
     pool=[v for v in atlas.interactions if len(v.ligand_components)==len(v.receptor_components)==1 and v.ligand!=v.receptor]
-    order=rng.permutation(len(pool));selected=[];used=set()
-    for i in order:
+    selected=[];used=set()
+    for i in rng.permutation(len(pool)):
         v=pool[i]
         if not ({v.ligand,v.receptor}&used):selected.append(v);used.update((v.ligand,v.receptor))
-        if len(selected)==2*config.mi_lr_count+5*config.basal_lr_per_type:break
-    if len(selected)<2*config.mi_lr_count+5*config.basal_lr_per_type:raise ValueError('Not enough gene-disjoint real LR pairs')
-    keys={(v.ligand,v.receptor) for v in selected}
-    for i in order:
-        v=pool[i]
-        if (v.ligand,v.receptor) not in keys:selected.append(v);keys.add((v.ligand,v.receptor))
         if len(selected)==config.n_lr:break
-    table=pd.DataFrame([{'lr_id':v.lr_id,'ligand':v.ligand,'receptor':v.receptor,'mi':1 if i<config.mi_lr_count else 2 if i<2*config.mi_lr_count else 0,'loading':1/config.mi_lr_count if i<2*config.mi_lr_count else 0.,'source':'CommuSpace union; intended sender/receiver roles are simulation design'} for i,v in enumerate(selected)])
-    table['sender_role']=config.sender_type;table['receiver_role']=config.receiver_type
-    table['basal_type']=''
+    if len(selected)<config.n_lr:raise ValueError('Not enough gene-disjoint real LR pairs')
+    table=pd.DataFrame([{'lr_id':v.lr_id,'ligand':v.ligand,'receptor':v.receptor,'mi':0,'loading':0.,'source':'CommuSpace union; roles and spatial activations are synthetic assumptions'} for v in selected])
+    table['sender_role']='';table['receiver_role']='';table['program_name']='';table['basal_type']=''
+    for spec in program_specs(config):
+        mi=spec['MI'];ids=np.arange((mi-1)*config.mi_lr_count,mi*config.mi_lr_count)
+        weights=np.ones(config.mi_lr_count) if config.mi_loadings is None else np.asarray(config.mi_loadings[mi-1],float)
+        table.loc[ids,'mi']=mi;table.loc[ids,'loading']=weights/weights.sum()
+        table.loc[ids,'sender_role']=spec['sender'];table.loc[ids,'receiver_role']=spec['receiver'];table.loc[ids,'program_name']=spec['name']
     for t,name in enumerate(TYPES):
-        ids=np.arange(2*config.mi_lr_count+t*config.basal_lr_per_type,2*config.mi_lr_count+(t+1)*config.basal_lr_per_type)
+        start=config.mi_count*config.mi_lr_count+t*config.basal_lr_per_type
+        ids=np.arange(start,start+config.basal_lr_per_type)
         table.loc[ids,'basal_type']=name;table.loc[ids,['sender_role','receiver_role']]=name
-    if config.mi_loadings is not None:
-        for mi in (1,2):
-            weights=np.asarray(config.mi_loadings[mi-1],float);table.loc[table.mi==mi,'loading']=weights/weights.sum()
     return table
 
 def seed_reference(config,lr):

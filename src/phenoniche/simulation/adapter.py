@@ -10,6 +10,7 @@ from ..gnn.model import physical_weights
 from ..gnn.config import GNNConfig
 from ..data import feature_statistics,resolve_device
 from .generation import TYPES
+from .programs import program_specs
 
 def adapt(adata,lr,config,output):
     output=Path(output);cache=output/'input';cache.mkdir(exist_ok=True,parents=True)
@@ -53,27 +54,36 @@ def adapt(adata,lr,config,output):
     train_cells=np.unique(members[rows[0]]);totals=raw.sum(1);x=sp.csr_matrix(raw)
     sample=expression_block(x,train_cells,np.arange(len(genes)),totals)
     encoder=np.argsort(-sample.var(0),kind='stable')[:min(len(genes),512)];selected=sample[:,encoder]
-    comp=np.empty((n,5),np.float32);mi_activity=np.empty((n,2),np.float32)
+    specs=program_specs(config);send_types=np.asarray([TYPES.index(s['sender']) for s in specs]);receive_types=np.asarray([TYPES.index(s['receiver']) for s in specs])
+    comp=np.empty((n,5),np.float32);mi_activity=np.empty((n,config.mi_count),np.float32);mi_opportunity=np.empty_like(mi_activity)
     for start in range(0,n,config.batch_size):
         stop=min(start+config.batch_size,n);local=np.asarray(members[start:stop]);local_type=types[local]
         pair=physical_weights(torch.from_numpy(xy[local]),torch.from_numpy(np.asarray(weights[start:stop]).copy()),20.,torch.from_numpy(local))
         comp[start:stop]=pair_composition(torch.from_numpy(local_type),pair,5).numpy()
         # Ground truth is computed from known injection exposures + geometry,
         # not from final CCC and never passed to GraphData or clustering.
-        sending=adata.obsm['injected_sender_activity'][local]*((local_type==TYPES.index(config.sender_type))[...,None])
-        receiving=adata.obsm['injected_receiver_activity'][local]*((local_type==TYPES.index(config.receiver_type))[...,None])
-        opp=torch.einsum('bs,bsr,br->b',torch.from_numpy((local_type==TYPES.index(config.sender_type)).astype(np.float32)),pair,torch.from_numpy((local_type==TYPES.index(config.receiver_type)).astype(np.float32)))
+        sender_mask=(local_type[...,None]==send_types).astype(np.float32)
+        receiver_mask=(local_type[...,None]==receive_types).astype(np.float32)
+        sending=adata.obsm['injected_sender_activity'][local]*sender_mask
+        receiving=adata.obsm['injected_receiver_activity'][local]*receiver_mask
+        opp=torch.einsum('bsm,bsr,brm->bm',torch.from_numpy(sender_mask),pair,torch.from_numpy(receiver_mask))
         exposure=torch.einsum('bsm,bsr,brm->bm',torch.from_numpy(np.sqrt(sending)),pair,torch.from_numpy(np.sqrt(receiving)))
-        mi_activity[start:stop]=(exposure/(opp[:,None]+1e-4)).numpy()
-    true_h=np.zeros((2,len(features)),np.float32)
-    for mi in (1,2):
-        ids=np.flatnonzero((features.sender==config.sender_type)&(features.receiver==config.receiver_type)&features.lr_id.isin(lr[lr.mi==mi].lr_id))
-        loading=lr[lr.mi==mi].set_index('lr_id').loading
+        mi_activity[start:stop]=(exposure/(opp+1e-4)).numpy();mi_opportunity[start:stop]=opp.numpy()
+    true_h=np.zeros((config.mi_count,len(features)),np.float32)
+    for spec in specs:
+        mi=spec['MI'];links=lr[lr.mi==mi]
+        ids=np.flatnonzero((features.sender==spec['sender'])&(features.receiver==spec['receiver'])&features.lr_id.isin(links.lr_id))
+        loading=links.set_index('lr_id').loading
         true_h[mi-1,ids]=[loading.loc[v] for v in features.lr_id.iloc[ids]]
     np.save(cache/'composition_target.npy',comp);np.save(cache/'folds.npy',folds);features.to_csv(cache/'features.csv',index=False)
     np.savez(cache/'preprocessing.npz',encoder_indices=encoder,gene_mean=selected.mean(0),gene_scale=np.maximum(selected.std(0),.1),feature_scale=scale,feature_mask=mask,columns=np.arange(len(features)),folds=folds,blocks=blocks)
     truth=output/'ground_truth';truth.mkdir(exist_ok=True)
     np.save(truth/'MI_activity.npy',mi_activity);np.save(truth/'MI_dictionary.npy',true_h)
+    np.save(truth/'MI_opportunity.npy',mi_opportunity);np.save(truth/'MI_cell_activity.npy',adata.obsm['designed_MI_activity'])
+    pd.DataFrame(specs).to_csv(truth/'MI_programs.csv',index=False)
+    mi_weights=mi_activity.sum(0)
+    mi_composition=(mi_activity.T@comp)/np.maximum(mi_weights[:,None],1e-8)
+    pd.DataFrame(mi_composition,index=[s['name'] for s in specs],columns=TYPES).to_csv(truth/'MI_composition.csv')
     np.save(truth/'niche_labels.npy',adata.obs.true_niche.to_numpy());np.save(truth/'composition.npy',comp)
     adata.obs.to_csv(truth/'cells.csv.gz',index=False);lr.to_csv(truth/'MI_LR_loading.csv',index=False)
     audit={'scope':'synthetic downstream simulation only','architecture':GNNConfig().architecture,'source_signature':{'simulation_signature':config.signature()},'cell_order_sha256':hashlib.sha256(pd.util.hash_pandas_object(adata.obs.cell_id,index=False).to_numpy().tobytes()).hexdigest(),'CCC_matrix_path':str(ccc_path),'categories':list(TYPES),'fixed_features':len(features),'effective_features':int(mask.sum()),'truth_entered_training':False,'clinical_Cox_analysis':False,'split':'sample or mirror-paired spatial blocks with all-member boundary purge','split_sizes':[len(v) for v in rows]}
@@ -82,6 +92,8 @@ def adapt(adata,lr,config,output):
     audit['rescale_activity']=config.rescale_activity
     audit['ccc_scale_power']=config.ccc_scale_power
     audit['ccc_error']=config.ccc_error
+    audit['n_ground_truth_programs']=config.mi_count
+    audit['ground_truth_policy']='Four/edge-only dictionaries predeclared before injection; paired-cell activity from known injected exposures, independent of observed CCC and training'
     (cache/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
     cells=adata.obs[['cell_id','cell_type']].reset_index(drop=True).copy()
     data=GraphData(x,totals,genes,encoder,selected.mean(0),np.maximum(selected.std(0),.1),types,TYPES,xy,members,weights,Targets(matrix,np.arange(len(features))),scale,mask,features,cells,rows,folds,blocks,comp,audit)

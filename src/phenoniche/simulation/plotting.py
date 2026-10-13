@@ -16,6 +16,8 @@ class SimulationReport:
             self.Z=np.load(self.output/'gnn/Z.npy',mmap_mode='r');self.H=np.load(self.output/'gnn/H.npy');self.B=np.load(self.output/'gnn/B.npy')
             self.match=pd.read_csv(self.output/'MI_matches.csv')
         self.true_mi=np.load(self.output/'ground_truth/MI_activity.npy')
+        specs_path=self.output/'ground_truth/MI_programs.csv'
+        self.mi_specs=pd.read_csv(specs_path) if specs_path.exists() else pd.DataFrame({'MI':range(1,self.true_mi.shape[1]+1),'name':['Edge A','Edge B'][:self.true_mi.shape[1]]})
         self.features=pd.read_csv(self.output/'input/features.csv');self.cfg=json.loads((self.output/'config.json').read_text())
         self.figures=self.output/'figures';self.figures.mkdir(exist_ok=True);style()
         folds=np.load(self.output/'input/folds.npy');test=np.flatnonzero(folds==2)
@@ -35,10 +37,11 @@ class SimulationReport:
         ax.plot([xmin,xmin+bar],[ymin,ymin],c='#333333',lw=1.5);ax.text(xmin+bar/2,ymin+.025*np.ptp(xy[:,1]),f'{bar} µm',ha='center',fontsize=6)
     def ground_truth(self):
         from .generation import TYPES
-        fig,axes=plt.subplots(1,4,figsize=(14,3.7),layout='constrained')
+        count=self.true_mi.shape[1];fig,axes=plt.subplots(2,3,figsize=(11,7),layout='constrained');axes=axes.ravel()
         self.spatial(axes[0],pd.Categorical(self.cells.cell_type,categories=TYPES).codes,'Cell types')
         self.spatial(axes[1],self.truth,'Ground-truth niches')
-        for j in range(2):self.spatial(axes[j+2],self.true_mi[:,j],f'True MI-{j+1}',False)
+        for j in range(count):self.spatial(axes[j+2],self.true_mi[:,j],f'True MI-{j+1} · {self.mi_specs.name.iloc[j]}',False)
+        for ax in axes[count+2:]:ax.set_visible(False)
         axes[0].legend(handles=[plt.Line2D([],[],color=COLORS[i],marker='o',ls='',ms=4,label=t) for i,t in enumerate(TYPES)],loc='upper center',bbox_to_anchor=(.5,-.15),fontsize=6,ncol=2)
         axes[1].legend(handles=[plt.Line2D([],[],color=COLORS[i],marker='o',ls='',ms=4,label=t) for i,t in enumerate(NICHES)],loc='upper center',bbox_to_anchor=(.5,-.15),fontsize=6,ncol=2)
         return self.save(fig,'ground_truth')
@@ -52,10 +55,10 @@ class SimulationReport:
         fig.suptitle('Fixed-K comparison: unaligned raw cluster IDs; colors across methods do not imply matching',fontsize=10)
         return self.save(fig,'main_comparison')
     def recovered_programs(self):
-        fig,axes=plt.subplots(2,2,figsize=(8,7),layout='constrained')
-        for i in range(2):
+        count=self.true_mi.shape[1];fig,axes=plt.subplots(count,2,figsize=(8,3.25*count),layout='constrained',squeeze=False)
+        for i in range(count):
             row=self.match[(self.match.MI==i+1)&(self.match.scope=='test_all')].iloc[0];p=int(row.program)-1
-            self.spatial(axes[i,0],self.true_mi[:,i],f'True MI-{i+1}',False)
+            self.spatial(axes[i,0],self.true_mi[:,i],f'True MI-{i+1} · {self.mi_specs.name.iloc[i]}',False)
             self.spatial(axes[i,1],self.Z[:,p],f'Learned P{p+1:02d}; dictionary cosine={row.dictionary_cosine:.2f}',False)
         return self.save(fig,'true_vs_recovered_programs')
     def reconstruction(self):
@@ -71,7 +74,7 @@ class SimulationReport:
         true_h=np.load(self.output/'ground_truth/MI_dictionary.npy');chosen=np.unique(np.concatenate([np.flatnonzero(true_h.sum(0)),*[np.argsort(-self.H[p])[:6] for p in programs]]))
         f=self.features.iloc[chosen];labels=(f.sender+'→'+f.receiver+' | '+f.ligand+'–'+f.receptor).tolist()
         fig,ax=plt.subplots(figsize=(max(9,len(chosen)*.23),3.8),layout='constrained')
-        sns.heatmap(np.vstack((true_h[:,chosen],self.H[programs][:,chosen])),cmap='Blues',ax=ax,xticklabels=labels,yticklabels=['True MI-1','True MI-2']+[f'Learned P{i+1:02d}' for i in programs],cbar_kws={'label':'Native dictionary loading'})
+        sns.heatmap(np.vstack((true_h[:,chosen],self.H[programs][:,chosen])),cmap='Blues',ax=ax,xticklabels=labels,yticklabels=[f'True MI-{i+1} · {self.mi_specs.name.iloc[i]}' for i in range(len(true_h))]+[f'Learned P{i+1:02d}' for i in programs],cbar_kws={'label':'Native dictionary loading'})
         ax.tick_params(axis='x',rotation=90,labelsize=6);return self.save(fig,'MI_dictionary_recovery')
     def composition_audit(self):
         import seaborn as sns
@@ -88,3 +91,7 @@ class SimulationReport:
     def adaptive_niches(self):
         fig,ax=plt.subplots(figsize=(5,4),layout='constrained');self.spatial(ax,self.labels['CCC_Phe GNN (selected K)'].to_numpy(),'GNN unsupervised K selection')
         return self.save(fig,'adaptive_niches')
+
+    def summary_figure(self):
+        from .summary_figure import summary_figure
+        return summary_figure(self)

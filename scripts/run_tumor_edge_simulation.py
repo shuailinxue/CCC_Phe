@@ -17,5 +17,5 @@ if __name__=='__main__':
     elif not args.run_full:parser.error('Full simulation requires --run-full; use --smoke for lightweight validation')
     output=run_experiment(config);report=SimulationReport(output)
     import matplotlib.pyplot as plt
-    for method in ('ground_truth','main_figure','recovered_programs','dictionary','composition_audit','adaptive_niches','reconstruction'):plt.close(getattr(report,method)())
+    for method in ('ground_truth','main_figure','recovered_programs','dictionary','composition_audit','adaptive_niches','reconstruction','summary_figure'):plt.close(getattr(report,method)())
     print(output)

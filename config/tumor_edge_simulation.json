@@ -63,8 +63,9 @@
   "fixed_k": 4,
   "k_min": 4,
   "k_max": 15,
-  "device": "auto",
+  "device": "cuda:1",
   "figure_dpi": 600,
   "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_simulation_type_specific_lr"
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_simulation_four_programs",
+  "program_design": "four_programs"
 }

@@ -55,8 +55,8 @@ niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线
 
 ## Tumor-edge 模拟实验
 
-打开根目录 `TumorEdge_Communication_Simulation.ipynb`，选择 `cccphe` kernel，Run All。默认 8,000 cells、5 种类型、75 个真实 LR、两个各 6-LR 的 edge MI。调用已核验的 scCube API；合成种子除了类型 marker，还为每种细胞设置 3 个类型特异基础 LR。LR 身份来自现有数据库，类型表达分配是明确的合成假设，不冒充实验先验。计数均值校准保留原始 count reference；MI 仅注入 sender ligand / receiver receptor 表达，之后调用原 CCC 公式。
+打开根目录 `TumorEdge_Communication_Simulation.ipynb`，选择 `cccphe` kernel，Run All。默认 8,000 cells、5 种类型、75 个真实 LR、四个各 6-LR 的真值 MI（两个边缘、一个 Tumor→Tumor core、一个 Normal→Normal exterior）。调用已核验的 scCube API；合成种子除了类型 marker，还为每种细胞设置 3 个类型特异基础 LR。LR 身份来自现有数据库，类型表达分配是明确的合成假设，不冒充实验先验。计数均值校准保留原始 count reference；MI 仅注入 sender ligand / receiver receptor 表达，之后调用原 CCC 公式。
 
 训练目标为 CCC 重构 + 0.005 × program regularization；无 Composition loss、Cell Type Embedding 或旧调控损失。CCC 使用训练集部分 RMS 归一化和 Huber error；native activity 参数在优化时重参数化，保存前合并回原 Linear，GNN 推理架构不变。niche 使用由 H 推导的 Z 距离，避免重复程序维度被标准化放大。K=4–15 选择不使用真实标签，另报固定 K=4 对照。
 
-配置：`config/tumor_edge_simulation.json`。当前完整结果写入 NAS `outputs/tumor_edge_simulation_type_specific_lr/`；旧模拟和 Xenium 结果保留。镜像半环匹配径向/局部组成；单组织按镜像径向扇区划分并剔除共享细胞，真值仅用于生成和评估。Notebook 已执行并保存实际结果；匹配的完整结果复用。CLI：`python scripts/run_tumor_edge_simulation.py --run-full`。数值设置诊断入口 `scripts/tune_tumor_edge_simulation.py` 记录在较早的均一 LR 模拟上选择的参数；新旧模拟数据不同，不能声称分数提升全来自模型。
+配置：`config/tumor_edge_simulation.json`。当前完整结果写入 NAS `outputs/tumor_edge_simulation_four_programs/`；旧模拟和 Xenium 结果保留。镜像半环匹配径向/局部组成；单组织按镜像径向扇区划分并剔除共享细胞，真值仅用于生成和评估。Notebook 已执行并保存实际结果；匹配的完整结果复用。CLI：`python scripts/run_tumor_edge_simulation.py --run-full`。数值设置诊断入口 `scripts/tune_tumor_edge_simulation.py` 记录在较早的均一 LR 模拟上选择的参数；新旧模拟数据不同，不能声称分数提升全来自模型。

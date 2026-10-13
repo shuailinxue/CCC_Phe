@@ -71,6 +71,30 @@ def composition_audit(adata,data,output):
     pd.DataFrame({'cell_id':adata.obs.cell_id.iloc[edge].to_numpy(),'true_B':y,'cross_validated_B_probability':prediction}).to_csv(Path(output)/'composition_AUC_predictions.csv',index=False)
     return result
 
+def projected_mi_recovery(data,arrays,h,ae,true_h,true_z,specs,truth,test,output):
+    """Evaluate reconstructed communication along true H; not individual Z recovery.
+
+    A 32-program factorization can split one planted MI across multiple programs.
+    Projection sums their contributions; it never changes training or clustering.
+    """
+    denominator=np.maximum((true_h*true_h).sum(1),1e-12)
+    predictions={'GNN reconstructed CCC':np.asarray(arrays['Z'])@(h@true_h.T)/denominator,
+                 'AE reconstructed CCC':np.asarray(ae['Z'])@(ae['H']@true_h.T)/denominator}
+    observed=np.empty((len(truth),len(true_h)),np.float32)
+    for start in range(0,len(truth),512):
+        rows=np.arange(start,min(start+512,len(truth)))
+        observed[rows]=data.targets[rows]@true_h.T/denominator
+    predictions['Observed CCC']=observed;records=[]
+    for method,values in predictions.items():
+        for i in range(len(true_h)):
+            for scope,rows in [('test_all',test),('test_region',test[truth[test]==int(specs.loc[i+1,'region'])])]:
+                rho=float(spearmanr(true_z[rows,i],values[rows,i]).statistic) if len(rows)>2 and np.ptp(true_z[rows,i])>0 and np.ptp(values[rows,i])>0 else np.nan
+                records.append({'method':method,'MI':i+1,'MI_name':specs.loc[i+1,'name'],'scope':scope,'n':len(rows),'activity_Spearman':rho,'interpretation':'Projection of communication on true H; sums all learned programs, not single-program Z recovery'})
+    pd.DataFrame(records).to_csv(Path(output)/'MI_projected_recovery.csv',index=False)
+    contributions=h@true_h.T/denominator
+    pd.DataFrame(contributions,index=np.arange(1,len(h)+1),columns=[f'MI-{i+1}' for i in range(len(true_h))]).rename_axis('learned_program').to_csv(Path(output)/'MI_program_contributions.csv')
+
+
 def evaluate(adata,data,labels,arrays,h,b,ae,output):
     output=Path(output);truth=adata.obs.true_niche.to_numpy();train,test=data.rows[0],data.rows[2];edge=np.isin(truth,[2,3]);records=[];maps={}
     for method,pred in labels.items():
@@ -82,16 +106,18 @@ def evaluate(adata,data,labels,arrays,h,b,ae,output):
     pd.DataFrame(records).to_csv(output/'metrics.csv',index=False)
     (output/'evaluation_label_mapping.json').write_text(json.dumps({'mapping_fit_rows':'training rows only; evaluation mapping never used by clustering','mappings':maps},indent=2))
     true_h=np.load(output/'ground_truth/MI_dictionary.npy');true_z=np.load(output/'ground_truth/MI_activity.npy')
+    specs=pd.read_csv(output/'ground_truth/MI_programs.csv').set_index('MI')
     cosine=(true_h@h.T)/np.maximum(np.linalg.norm(true_h,axis=1)[:,None]*np.linalg.norm(h,axis=1)[None,:],1e-12)
     initial_path=output/'gnn/initial_H.npy';initial=np.load(initial_path) if initial_path.exists() else None
     initial_cosine=(true_h@initial.T)/np.maximum(np.linalg.norm(true_h,axis=1)[:,None]*np.linalg.norm(initial,axis=1)[None,:],1e-12) if initial is not None else None
     mi,program=linear_sum_assignment(-cosine);matches=[]
     for i,p in zip(mi,program):
         support=set(np.flatnonzero(true_h[i]));top=set(np.argsort(-h[p],kind='stable')[:len(support)])
-        for name,rows in [('test_all',test),('test_edge',test[edge[test]])]:
+        for name,rows in [('test_all',test),('test_edge',test[edge[test]]),('test_region',test[truth[test]==int(specs.loc[i+1,'region'])])]:
             rho=float(spearmanr(true_z[rows,i],np.asarray(arrays['Z'][rows,p])).statistic) if len(rows)>2 and np.ptp(true_z[rows,i])>0 and np.ptp(np.asarray(arrays['Z'][rows,p]))>0 else np.nan
-            matches.append({'MI':i+1,'program':p+1,'scope':name,'dictionary_cosine':float(cosine[i,p]),'initial_dictionary_cosine':float(initial_cosine[i,p]) if initial_cosine is not None else np.nan,'dictionary_cosine_gain':float(cosine[i,p]-initial_cosine[i,p]) if initial_cosine is not None else np.nan,'top_LR_precision':len(support&top)/max(len(support),1),'activity_Spearman':rho,'match_policy':'one-to-one dictionary matching only; no test activity used to choose programs'})
+            matches.append({'MI':i+1,'MI_name':specs.loc[i+1,'name'],'sender':specs.loc[i+1,'sender'],'receiver':specs.loc[i+1,'receiver'],'n':len(rows),'program':p+1,'scope':name,'dictionary_cosine':float(cosine[i,p]),'initial_dictionary_cosine':float(initial_cosine[i,p]) if initial_cosine is not None else np.nan,'dictionary_cosine_gain':float(cosine[i,p]-initial_cosine[i,p]) if initial_cosine is not None else np.nan,'top_LR_precision':len(support&top)/max(len(support),1),'activity_Spearman':rho,'match_policy':'one-to-one dictionary matching only; no test activity used to choose programs'})
     pd.DataFrame(matches).to_csv(output/'MI_matches.csv',index=False)
+    projected_mi_recovery(data,arrays,h,ae,true_h,true_z,specs,truth,test,output)
     use_composition=json.loads((output/'config.json').read_text())['lambda_comp']>0
     metrics={};weights=0.;ccc=0.;comp=0.;ae_ccc=0.
     for start in range(0,len(test),512):
@@ -100,6 +126,8 @@ def evaluate(adata,data,labels,arrays,h,b,ae,output):
         if use_composition:comp+=float(composition_loss(torch.from_numpy(np.asarray(arrays['P'][rows])@b),torch.from_numpy(np.asarray(data.composition_target[rows]))))*len(rows)
         ae_ccc+=float(ccc_loss(torch.from_numpy(np.asarray(ae['Z'][rows])@ae['H']),target,data.feature_scale,data.feature_mask))*len(rows);weights+=len(rows)
     metrics.update(gnn_test_CCC_Huber=ccc/weights,ae_test_CCC_Huber=ae_ccc/weights)
+    metrics['CCC_comparison_metric']='Huber delta=1 on training feature scales/mask, held-out test; common diagnostic for GNN and AE'
+    metrics['gnn_test_CCC_training_objective']=json.loads((output/'gnn/heldout_metrics.json').read_text())['test']['ccc']
     if use_composition:metrics['gnn_test_composition_KL']=comp/weights
     split_counts=pd.crosstab(pd.Series(data.folds,name='fold'),pd.Series(truth,name='true_niche'))
     split_counts.to_csv(output/'evaluation_split_coverage.csv')
