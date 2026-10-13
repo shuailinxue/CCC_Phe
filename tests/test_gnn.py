@@ -239,7 +239,7 @@ def test_synthetic_preparation_training_and_fair_AE_baseline(synthetic,tmp_path,
     inp=replace(CCCInputConfig(),processed_h5ad=str(input_file),lr_atlas=str(atlas_file),output_dir=str(cache.parent))
     (cache/'input_manifest.json').write_text(json.dumps({'signature':_manifest_signature(inp),'n_cells':180,'n_features':8}))
     legacy=tmp_path/'legacy/cache';legacy.mkdir(parents=True);np.save(legacy/'retained_indices.npy',np.arange(8))
-    cfg=replace(GNNConfig(),programs=4,hidden=12,encoder_genes=6,batch_size=16,max_epochs=8,patience=2,block_um=500.,device='cpu',output_dir=str(tmp_path/'gnn'),legacy_output=str(legacy.parent))
+    cfg=replace(GNNConfig(),programs=4,hidden=12,encoder_genes=6,batch_size=16,max_epochs=8,patience=2,block_um=500.,device='cpu',output_dir=str(tmp_path/'gnn'),legacy_output=str(legacy.parent),upstream_prior=str(tmp_path/'absent_upstream.tsv'),downstream_prior=str(tmp_path/'absent_downstream.tsv'),prior_manifest=str(tmp_path/'absent_manifest.json'))
     monkeypatch.setattr(graph_module,'ccc_config',lambda:inp)
     prepared=graph_module.prepare_graph_data(cfg)
     assert len(prepared.encoder_indices)==6 and prepared.targets.shape==(180,8)
@@ -264,3 +264,20 @@ def test_audit_gate_blocks_real_training_before_preparation(monkeypatch):
     def forbidden(*args): pytest.fail('Preparation/training must not run after failed audit')
     monkeypatch.setattr(pipeline,'prepare_graph_data',forbidden)
     with pytest.raises(RuntimeError,match='missing prior/audit'): pipeline.run(GNNConfig())
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason='CUDA runtime unavailable')
+def test_resident_gpu_inputs_and_regulatory_aggregation_match_cpu(synthetic,tmp_path):
+    d=synthetic;rows=d.rows[0][:12];cpu=d.batch(rows);model=make_model(d).eval()
+    with torch.no_grad():expected=d.forward(model,cpu)['Z']
+    d.prepare_device('cuda:0',tmp_path)
+    gpu=d.batch(rows,'cuda:0');model.cuda(0)
+    with torch.no_grad():actual=d.forward(model,gpu)['Z'].cpu()
+    torch.testing.assert_close(actual,expected,rtol=1e-4,atol=1e-5)
+    for key in ('expression','target','nuisance','upstream','downstream','upstream_mask','downstream_mask'):
+        torch.testing.assert_close(gpu[key].cpu(),cpu[key])
+    branch='upstream';prior=d.priors[branch];scores=activity_scores(d.expression,prior,np.unique(d.members[d.rows[0]]));local=d.members[rows]
+    args=[torch.from_numpy(a) for a in (scores[local],d.types[local],d.coordinates[local],d.weights[rows],local)]
+    expected,mask=aggregate_activity(*args,d.features,prior,d.categories)
+    actual,gpu_mask=aggregate_activity(*(a.cuda(0) for a in args),d.features,prior,d.categories)
+    torch.testing.assert_close(actual.cpu(),expected,rtol=1e-4,atol=1e-5)
+    assert torch.equal(gpu_mask.cpu(),mask)

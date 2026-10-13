@@ -2,12 +2,17 @@
   "programs": 32,
   "hidden": 64,
   "encoder_genes": 512,
-  "batch_size": 128,
-  "mode": "ccc_only",
+  "batch_size": 512,
+  "mode": "both",
   "prior_control": "none",
   "holdout_bio_genes": true,
   "block_um": 400.0,
   "contrastive": false,
-  "audit_file": "",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/microenvironment_gnn"
+  "audit_file": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/audits/xenium_prime_5k/study_audit.json",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/microenvironment_gnn",
+  "max_epochs": 40,
+  "patience": 6,
+  "lr": 0.003,
+  "lambda_reg": 0.005,
+  "device": "cuda:0"
 }

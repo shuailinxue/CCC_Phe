@@ -6,6 +6,8 @@
 
 在项目根目录打开 `XeniumPrime5K_Breast_niche_walkthrough.ipynb`。Notebook 直接读取 NAS 上的现有结果，不会因文件缺失自动启动训练。图片导出到 `/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/xenium_prime_5k/figures/`。
 
+新 GNN 的真实数据报告：[XeniumPrime5K_GNN_niche_analysis.ipynb](/home/xueshuailin/CCC_Phe/XeniumPrime5K_GNN_niche_analysis.ipynb)。已执行并读取单独保存的结果，打开时不会重新训练；图片和模型矩阵均在 NAS 输出目录。
+
 已有环境：`conda activate cccphe`。需要安装时执行 `python -m pip install -e '.[dev]'`；运行测试：`python -m pytest`。
 
 `python scripts/run_prime5k.py` 是计算入口；运行真实数据分析前，必须完成 `AGENTS.md` 要求的 ST anchor、BayesPrism 输出、临床终点、feature mask 和样本匹配审计。
@@ -33,7 +35,7 @@
 
 ## 分析边界
 
-本次整理保留已有下游 niche 工作内容，未重新运行真实数据分析。项目的 phenotype-associated CCC 主线仍遵循 `AGENTS.md`：
+niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线仍遵循 `AGENTS.md`：
 
 `current-study ST anchor -> BayesPrism bulk -> patient exact directed CCC -> graph-smoothed sparse Cox`
 
@@ -62,4 +64,4 @@ python scripts/run_gnn.py compare --output /home/nas3/biod/xueshuailin/CCC_Phe/w
 
 调控输入为 NAS `data/priors/upstream.tsv`（`tf,target,weight,source,evidence`）和 `downstream.tsv`（`ligand,target,weight,source,evidence`），tab 分隔，每条关系须有来源及证据。`manifest.json` 为 upstream/downstream 分别记录 `database,version,url,species,sha256`。建议核验 [CollecTRI](https://github.com/saezlab/CollecTRI) 的有符号 regulons 和 [NicheNet](https://github.com/saeyslab/nichenetr) 的 ligand-target prior；程序不自行猜测调控关系，也不把 TF mRNA 当 TF 活性。只有 ligand-target prior 时明确标注“受体特异性未证实”。覆盖、未覆盖基因/CCC、目标信息重叠及来源写入 NAS audit。
 
-`audit_file` 指向实际完成的研究审计 JSON：`st_anchor,bayesprism,clinical_endpoint,feature_mask,sample_matching,cell_labels` 分别提供 `status=verified,evidence_file,sha256`。独立下游、无临床输入时，可以明确设置 `scope=independent_downstream_niche`，将不适用的 BayesPrism/clinical endpoint/sample matching 记录为 `status=not_applicable,reason`；不得自动伪造通过审计。缺失有效先验时只能明确使用 CCC-only；请求启用的调控损失会报错。当前缺少这些审计证据和调控先验，真实训练未启动。
+`audit_file` 指向实际完成的研究审计 JSON：`st_anchor,bayesprism,clinical_endpoint,feature_mask,sample_matching,cell_labels` 分别提供 `status=verified,evidence_file,sha256`。独立下游、无临床输入时，可以明确设置 `scope=independent_downstream_niche`，将不适用的 BayesPrism/clinical endpoint/sample matching 记录为 `status=not_applicable,reason`；不得自动伪造通过审计。缺失有效先验时只能明确使用 CCC-only；请求启用的调控损失会报错。Xenium Prime 5K 的真实审计由 `scripts/audit_prime5k_gnn.py` 生成，CollecTRI/NicheNet 先验由 `scripts/prepare_gnn_priors.py` 下载并校验来源。`scripts/report_prime5k_gnn.py` 读取完成的 GNN 结果并执行报告 Notebook；不会在 Notebook 中训练模型。

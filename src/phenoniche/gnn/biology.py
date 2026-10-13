@@ -71,6 +71,8 @@ def compile_prior(table, features, panel, branch, min_targets=5, min_coverage=.2
                                np.zeros((len(panel), 0), np.float32), pd.DataFrame(), branch,
                                {'status': 'missing', 'modules': 0, 'TF_target_coverage': None, 'feature_match_rate': None})
     for entity, links in table.groupby(key, sort=True):
+        relations = links.set_index('target').weight if branch == 'upstream' else None
+        if branch == 'upstream' and not set(links.target).intersection(lr_genes): continue
         independent = links.loc[~links.target.isin(lr_genes | {entity})]
         covered = independent.loc[independent.target.isin(lookup)]
         coverage = len(covered) / max(len(independent), 1)
@@ -86,7 +88,6 @@ def compile_prior(table, features, panel, branch, min_targets=5, min_coverage=.2
             for f, row in enumerate(features.itertuples()):
                 ligand = canonicalize_complex(row.ligand)
                 if branch == 'upstream' and row.sender == cell_type:
-                    relations = links.set_index('target').weight
                     a[f] = sum(float(relations.get(g, 0)) for g in ligand) / len(ligand)
                 elif branch == 'downstream' and row.receiver == cell_type and entity in ligand:
                     # A ligand-target prior is ligand-level; do not invent receptor specificity.
@@ -142,17 +143,21 @@ def aggregate_activity(scores, local_types, coordinates, anchor_weights, cell_id
         pair = weight * (local_types == categories.index(sender))[:, :, None] * (local_types == categories.index(receiver))[:, None, :]
         denominator = pair.sum((1, 2))
         side = pair.sum(2) if prior.branch == 'upstream' else pair.sum(1)
-        observed = (scores * side[..., None]).sum(1) / (denominator[:, None] + 1e-4)
         feature_rows = (features.sender == sender) & (features.receiver == receiver)
-        contribution = torch.as_tensor(np.abs(prior.mapping[feature_rows]).sum(0), device=weight.device)
+        contributions = np.abs(prior.mapping[feature_rows]).sum(0)
+        selected = np.flatnonzero(contributions)
+        if not len(selected): continue
+        observed = (scores[:, :, selected] * side[..., None]).sum(1) / (denominator[:, None] + 1e-4)
+        contribution = torch.as_tensor(contributions[selected], device=weight.device)
         supported = (denominator > 1e-8)[:, None]
-        output += observed * contribution * supported
-        mass += contribution * supported
+        output[:, selected] += observed * contribution * supported
+        mass[:, selected] += contribution * supported
     return output / mass.clamp_min(1e-8), mass > 0
 
 
 def ridge(x, y, penalty=1e-3):
     # Fixed training-only nuisance model; unpenalized intercept.
+    x = np.asarray(x, dtype=np.float64); y = np.asarray(y, dtype=np.float64)
     regularizer = np.eye(x.shape[1]) * penalty; regularizer[0, 0] = 0
     return np.linalg.solve(x.T @ x + regularizer, x.T @ y)
 

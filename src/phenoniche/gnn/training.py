@@ -80,16 +80,21 @@ def fit(data,config):
     if (output/'checkpoint.pt').exists(): raise FileExistsError('GNN checkpoint exists; use inference or a distinct experiment output')
     device=resolve_device(config.device);model=initialize(data,config).to(device)
     alignments=fit_alignments(data,config)
+    if not config.contrastive and config.prior_control=='none': data.prepare_device(device,output/'cache')
     optimizer=torch.optim.AdamW(model.parameters(),lr=config.lr,weight_decay=config.weight_decay)
     history=[];best=float('inf');state=None;stale=0
     for e in range(config.max_epochs):
+        print(f'Epoch {e+1}/{config.max_epochs}',flush=True)
         tr=epoch(model,data,data.rows[0],config,alignments,optimizer,e)
         va=epoch(model,data,data.rows[1],config,alignments,None,e)
         # The warmup weight is not used to compare early-stopping scores across epochs.
         score=va['ccc']+config.lambda_reg*va['regularization']+config.lambda_bio*(config.alpha*va.get('upstream',0)+config.beta*va.get('downstream',0))
+        print(f'Epoch {e+1}: train CCC={tr["ccc"]:.6f}, validation CCC={va["ccc"]:.6f}, selected loss={score:.6f}',flush=True)
         history.append({'epoch':e+1,**{'train_'+k:v for k,v in tr.items()},**{'validation_'+k:v for k,v in va.items()},'selection_loss':score})
+        pd.DataFrame(history).to_csv(output/'training.csv',index=False)
         if score<best-1e-7:
             best=score;state=copy.deepcopy(model.state_dict());stale=0;best_epoch=e+1
+            torch.save({'model_state':state,'epoch':best_epoch,'config':config.to_dict()},output/'training_best.pt')
         else:
             stale+=1
             if stale>=config.patience: break

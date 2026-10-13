@@ -114,7 +114,43 @@ class GraphData:
     observed_masks: dict
     audit: dict
 
+    def prepare_device(self, device, cache_dir):
+        """Cache static cell inputs once; learned cell representations remain batch-local."""
+        if not str(device).startswith('cuda'): return
+        cache_dir=Path(cache_dir);cache_dir.mkdir(parents=True,exist_ok=True)
+        values=np.lib.format.open_memmap(cache_dir/'encoder_features.npy',mode='w+',dtype=np.float32,shape=(len(self.cells),len(self.encoder_indices)+1))
+        for start in range(0,len(values),8192):
+            rows=np.arange(start,min(start+8192,len(values)))
+            x=expression_block(self.expression,rows,self.encoder_indices,self.totals)
+            values[rows,:-1]=(x-self.gene_mean)/self.gene_scale
+            values[rows,-1]=np.log1p(self.totals[rows])/10
+        values.flush()
+        tensor=lambda a:torch.as_tensor(np.asarray(a).copy(),device=device)
+        self._resident={'expression':tensor(values),'types':tensor(self.types.astype(np.int64)),
+                        'coordinates':tensor(self.coordinates),'members':tensor(self.members),
+                        'weights':tensor(self.weights),'nuisance':tensor(self.nuisance)}
+        # Assemble targets in bounded chunks rather than a second full host copy.
+        target=torch.empty(self.targets.shape,dtype=torch.float32,device=device)
+        for start in range(0,len(self.cells),8192):
+            stop=min(start+8192,len(self.cells));target[start:stop]=tensor(self.targets[slice(start,stop)])
+        self._resident['target']=target
+        for branch in self.observations:
+            self._resident[branch]=tensor(self.observations[branch][:])
+            self._resident[branch+'_mask']=tensor(self.observed_masks[branch][:])
+        print(f'Static graph inputs resident on {device}',flush=True)
+
     def batch(self, rows, device='cpu', include_bio=True):
+        if hasattr(self,'_resident') and str(device).startswith('cuda'):
+            r=self._resident;row=torch.as_tensor(rows,device=device,dtype=torch.long);local=r['members'][row]
+            unique,inverse=torch.unique(local.reshape(-1),sorted=True,return_inverse=True)
+            batch={'expression':r['expression'][unique],'types':r['types'][unique],
+                   'local_index':inverse.reshape(local.shape),'coordinates':r['coordinates'][local],
+                   'anchor_weights':r['weights'][row],'cell_ids':local,
+                   'target':r['target'][row],'nuisance':r['nuisance'][row]}
+            if include_bio:
+                for branch in self.observations:
+                    batch[branch]=r[branch][row];batch[branch+'_mask']=r[branch+'_mask'][row]
+            return batch
         local = np.asarray(self.members[rows]); unique, inverse = np.unique(local, return_inverse=True)
         x = expression_block(self.expression, unique, self.encoder_indices, self.totals)
         x = (x - self.gene_mean) / self.gene_scale
@@ -213,15 +249,23 @@ def prepare_graph_data(config):
     data=GraphData(x,totals,genes,encoder_indices,gene_mean,gene_scale,types,categories,xy,members,weights,targets,scale,mask,features,cached['cells'],rows,folds,blocks,nuisance,priors,observations,observed_masks,audit)
     for branch,prior in priors.items():
         if not prior.mapping.shape[1]: continue
+        print(f'Preparing {branch}: {prior.mapping.shape[1]} verified modules',flush=True)
         scores=activity_scores(x,prior,sample,cache/(branch+'_cell_activity.npy'))
+        from ..data import resolve_device
+        aggregation_device=resolve_device(config.device)
+        # Reuse cell-level scores for all overlapping neighborhoods on the accelerator.
+        score_tensor=torch.as_tensor(np.asarray(scores).copy(),device=aggregation_device)
+        to_device=lambda value:torch.as_tensor(np.asarray(value).copy(),device=aggregation_device)
         shape=(len(xy),prior.mapping.shape[1])
         observed=np.lib.format.open_memmap(cache/(branch+'.npy'),mode='w+',dtype=np.float32,shape=shape)
         valid=np.lib.format.open_memmap(cache/(branch+'_mask.npy'),mode='w+',dtype=bool,shape=shape)
         for start in range(0,len(xy),config.batch_size):
             idx=np.arange(start,min(start+config.batch_size,len(xy))); local=members[idx]
-            value,good=aggregate_activity(torch.from_numpy(scores[local]),torch.from_numpy(types[local]),torch.from_numpy(xy[local]),torch.from_numpy(weights[idx]),torch.from_numpy(np.asarray(local)),features,prior,categories,config.sigma_um)
-            observed[idx]=value.numpy(); valid[idx]=good.numpy()
+            value,good=aggregate_activity(score_tensor[to_device(local)],to_device(types[local]),to_device(xy[local]),to_device(weights[idx]),to_device(local),features,prior,categories,config.sigma_um)
+            observed[idx]=value.cpu().numpy(); valid[idx]=good.cpu().numpy()
+            if start % (config.batch_size*100)==0: print(f'{branch} aggregation: {start:,}/{len(xy):,}',flush=True)
         observed.flush(); valid.flush(); observations[branch]=observed; observed_masks[branch]=valid
+        del score_tensor
     np.savez(cache/'preprocessing.npz',encoder_indices=encoder_indices,gene_mean=gene_mean,gene_scale=gene_scale,feature_scale=scale,feature_mask=mask,columns=columns,folds=folds,blocks=blocks,nuisance=nuisance)
     audit['cell_annotation']=str(adata.uns.get('cell_type_annotation','unspecified'))
     (cache/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
