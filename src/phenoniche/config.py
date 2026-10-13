@@ -1,0 +1,88 @@
+from dataclasses import asdict, dataclass
+from pathlib import Path
+import json
+
+from .storage import INPUT_DIR, OUTPUT_DIR, STORAGE_ROOT
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+@dataclass(frozen=True)
+class ExperimentConfig:
+    revision: str = "dual_decoder_program_v4"
+    consolidation_revision: str = "cell_latent_model_selection_v2"
+    seed: int = 40700
+    latent_dim: int = 32
+    final_niches: int = 8
+    k_min: int = 4
+    k_max: int = 15
+    max_dominant_cell_fraction: float = .75
+    max_tiny_cell_fraction: float = .01
+    tiny_niche_fraction_threshold: float = .005
+    tiny_niche_min_cells: int = 20
+    near_optimal_score_tolerance: float = .05
+    clustering_sample_size: int = 100000
+    silhouette_sample_size: int = 10000
+    activity_weight: float = .25
+    validation_fraction: float = .10
+    nonzero_fraction_min: float = .005
+    encoder_hidden_1: int = 256
+    encoder_hidden_2: int = 64
+    dropout: float = .1
+    batch_size: int = 1024
+    stage1_lr: float = 1e-3
+    stage1_max_epochs: int = 50
+    stage1_patience: int = 7
+    stage2a_lr: float = 1e-3
+    stage2a_max_epochs: int = 15
+    stage2a_patience: int = 5
+    stage2a_head_warmup_epochs: int = 5
+    stage2b_lr: float = 1e-4
+    stage2b_max_epochs: int = 20
+    stage2b_patience: int = 5
+    weight_decay: float = 1e-4
+    program_temperature: float = .7
+    feature_mask_fraction: float = .05
+    multiplicative_jitter: float = .05
+    lambda_linear: float = .30
+    lambda_preserve: float = .10
+    lambda_consistency: float = .05
+    lambda_program_sparsity: float = .01
+    lambda_usage: float = .05
+    lambda_niche_usage: float = .20
+    lambda_pseudo_stage2a: float = .20
+    lambda_pseudo_stage2b: float = .05
+    lambda_h_sparsity: float = .01
+    lambda_h_diversity: float = .05
+    minimum_program_usage: float = .005
+    minimum_niche_usage: float = .02
+    h_similarity_margin: float = .5
+    latent_drift_limit: float = .02
+    reconstruction_degradation_limit: float = 1.10
+    epsilon: float = 1e-8
+    top_ccc: int = 15
+    device: str = "auto"
+    input_dir: str = str(INPUT_DIR)
+    output_dir: str = str(OUTPUT_DIR)
+
+    def __post_init__(self):
+        if self.seed != 40700 or self.latent_dim != 32 or self.final_niches != 8:
+            raise ValueError("CCC_Phe network settings require seed=40700, D=32 and K=8 comparator")
+        if not 0 < self.validation_fraction < 1 or self.batch_size < 2:
+            raise ValueError("invalid split or batch size")
+        if not 2 <= self.k_min <= self.final_niches <= self.k_max < self.latent_dim:
+            raise ValueError("invalid H32 model-selection range")
+
+    def to_dict(self): return asdict(self)
+
+    @classmethod
+    def from_json(cls, path):
+        values = json.loads(Path(path).read_text())
+        for key in ("input_dir", "output_dir"):
+            if key in values and not Path(values[key]).is_absolute():
+                values[key] = str(STORAGE_ROOT / values[key])
+        return cls(**values)
+
+
+def default_config():
+    return ExperimentConfig.from_json(ROOT / "config/prime5k.json")

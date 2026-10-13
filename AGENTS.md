@@ -21,3 +21,13 @@ This repository has one analysis mainline only:
   endpoint, feature mask, and sample matching have been audited.
 - TLS labels, TLS regions, TLS gene lists, and downstream niche results must never enter
   ST-anchor construction, Cox screening, or hyperparameter selection.
+
+# Storage rule
+
+- Store all generated outputs, model checkpoints, matrix caches, processed datasets,
+  and other large files under `/home/nas3/biod/xueshuailin/CCC_Phe/workspace/`.
+- Use `outputs/` for results, `data/` for large inputs and caches, `artifacts/` for
+  other large files, and `tmp/` for large temporary files within that NAS directory.
+- Keep code, notebooks, configuration, and small reference tables in this repository.
+- Use direct NAS paths in code and configuration; do not create symbolic links.
+- Shared default storage paths are defined in `src/phenoniche/storage.py`.
