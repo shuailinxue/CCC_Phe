@@ -28,10 +28,13 @@ class GNNReport:
         self.config=json.loads((self.output/'config.json').read_text())
         self.summary=json.loads((self.output/'summary.json').read_text())
         self.audit=json.loads((self.output/'audit.json').read_text())
-        self.audit.update(self.audit.get('regulation',{}))
+        self.data_audit=json.loads((self.output/'cache/audit.json').read_text())
         self.prep=np.load(self.output/'cache/preprocessing.npz')
         self.features=pd.read_csv(self.output/'cache/features.csv')
         self.Z=np.load(self.output/'Z.npy',mmap_mode='r');self.P=np.load(self.output/'P.npy',mmap_mode='r');self.H=np.load(self.output/'H.npy')
+        self.B=np.load(self.output/'B.npy')
+        self.pi=np.load(self.output/'cache/composition_target.npy',mmap_mode='r')
+        self.pi_hat=np.load(self.output/'composition_prediction.npy',mmap_mode='r')
         self.C_hat=np.load(self.output/'CCC_reconstruction.npy',mmap_mode='r')
         self.history=pd.read_csv(self.output/'training.csv');self.selection=pd.read_csv(self.output/'K_selection.csv')
         self.assignments=pd.read_csv(self.output/'selected_model/niche_assignments.csv.gz')
@@ -59,27 +62,49 @@ class GNNReport:
     def overview(self):
         return pd.Series({'Cells / microenvironments':len(self.Z),'Xenium genes':self.audit['panel_genes'],
           'Fixed directed CCC features':len(self.features),'Effective training features':int(self.prep['feature_mask'].sum()),
-          'GNN input genes (excluding activity targets)':len(self.prep['encoder_indices']),
-          'Communication programs':self.Z.shape[1],'Selected niches':self.k,'Biological loss mode':self.config['mode'],
-          'Upstream prior modules':self.audit['upstream']['modules'],
-          'Downstream prior modules':self.audit['downstream']['modules'],
+          'Expression input genes':len(self.prep['encoder_indices']),'Cell-type encoder input':False,
+          'Communication programs':self.Z.shape[1],'Selected niches':self.k,'Composition weight':self.config['lambda_comp'],
+          'Undefined composition centers (masked)':self.data_audit.get('composition_undefined_centers',0),
           'Spatial blocks (µm)':self.config['block_um'],'Train centers':int((self.assignments['split']==0).sum()),
           'Validation centers':int((self.assignments['split']==1).sum()),'Test centers':int((self.assignments['split']==2).sum()),
-          'Purged boundary centers (mapped after training)':int((self.assignments['split']==-1).sum()),
-          'Annotation':'Provisional outcome-blind broad marker labels','Clinical supervision':'None'}).to_frame('Value')
+          'Purged centers (mapped after training)':int((self.assignments['split']==-1).sum()),
+          'Clinical supervision':'None'}).to_frame('Value')
 
     def training_curves(self):
-        fig,axes=plt.subplots(1,3,figsize=(12,3.4),layout='constrained')
-        for ax,key,title in zip(axes,('ccc','upstream','downstream'),('CCC reconstruction','Sender regulon alignment','Receiver response alignment')):
+        fig,axes=plt.subplots(1,2,figsize=(10,3.4),layout='constrained')
+        for ax,key,title in zip(axes,('ccc','composition'),('CCC reconstruction','Cell-type composition reconstruction')):
             for prefix,color in (('train',COLORS[0]),('validation',COLORS[1])):
-                column=prefix+'_'+key
-                if column in self.history: ax.plot(self.history.epoch,self.history[column],color=color,lw=1.5,label=prefix)
-            ax.set(xlabel='Epoch',ylabel='Masked standardized Huber loss',title=title)
-            ax.legend()
+                ax.plot(self.history.epoch,self.history[prefix+'_'+key],color=color,lw=1.5,label=prefix)
+            ax.set(xlabel='Epoch',ylabel='Scaled Huber' if key=='ccc' else 'KL(observed || predicted)',title=title);ax.legend()
         return self.save(fig,'training_curves')
 
+    def composition_reconstruction(self):
+        test=np.flatnonzero(self.assignments['split'].to_numpy()==2)
+        test=test[np.asarray(self.pi[test]).sum(1)>0]
+        if not len(test):
+            fig,ax=plt.subplots(figsize=(6,3));ax.text(.5,.5,'No defined held-out composition targets',ha='center',va='center');ax.axis('off')
+            return self.save(fig,'composition_reconstruction')
+        sample=np.sort(np.random.default_rng(40700).choice(test,min(10000,len(test)),replace=False))
+        actual=np.asarray(self.pi[sample]);pred=np.asarray(self.pi_hat[sample])
+        rmse=np.sqrt(((actual-pred)**2).mean(0));means=np.stack((actual.mean(0),pred.mean(0)))
+        fig,axes=plt.subplots(1,3,figsize=(13,3.7),layout='constrained')
+        image=axes[0].hexbin(actual.ravel(),pred.ravel(),gridsize=50,mincnt=1,bins='log',cmap='Blues',linewidths=0)
+        axes[0].plot([0,1],[0,1],ls='--',c='#555555',lw=.8);axes[0].set(xlabel='Observed pair-weighted fraction',ylabel='Predicted pB fraction',title='Held-out composition')
+        fig.colorbar(image,ax=axes[0],label='Entries per hexagon (log scale)')
+        axes[1].bar(range(len(rmse)),rmse,color=COLORS[0]);axes[1].set_xticks(range(len(rmse)),self.categories,rotation=70,ha='right');axes[1].set(ylabel='RMSE',title='Error by cell type')
+        sns.heatmap(means,ax=axes[2],cmap='Blues',xticklabels=self.categories,yticklabels=['observed','predicted']);axes[2].tick_params(axis='x',rotation=70);axes[2].set_title('Mean test composition')
+        pd.DataFrame({'cell_type':self.categories,'test_sample_RMSE':rmse,'observed_mean':means[0],'predicted_mean':means[1]}).to_csv(self.tables/'composition_reconstruction.csv',index=False)
+        return self.save(fig,'composition_reconstruction')
+
+    def composition_dictionary(self):
+        fig,ax=plt.subplots(figsize=(8,8),layout='constrained')
+        sns.heatmap(self.B,cmap='Blues',ax=ax,xticklabels=self.categories,yticklabels=[f'P{i:02d}' for i in range(1,len(self.B)+1)],cbar_kws={'label':'Cell-type fraction (row sum = 1)'})
+        ax.set(xlabel='Cell type',ylabel='Communication program',title='Learned nonnegative composition dictionary B');ax.tick_params(axis='x',rotation=60);ax.tick_params(axis='y',rotation=0)
+        pd.DataFrame(self.B,index=range(1,len(self.B)+1),columns=self.categories).to_csv(self.tables/'B_dictionary.csv',index_label='program')
+        return self.save(fig,'B_dictionary')
+
     def reconstruction(self):
-        source=np.load(STORAGE_ROOT/'data/ccc/cache/ccc.npy',mmap_mode='r');cols=self.prep['columns']
+        source=np.load(self.data_audit['CCC_matrix_path'],mmap_mode='r');cols=self.prep['columns']
         test=np.flatnonzero(self.assignments['split'].to_numpy()==2)
         sample=np.sort(np.random.default_rng(40700).choice(test,min(25000,len(test)),replace=False))
         actual=np.asarray(source[sample])[:,cols].sum(1);pred=np.asarray(self.C_hat[sample]).sum(1)
@@ -173,10 +198,10 @@ class GNNReport:
 
     def local_composition(self):
         # Existing frozen neighborhood-composition cache is report-only.
-        values=np.load(STORAGE_ROOT/'data/ccc/cache/local_composition.npy',mmap_mode='r')
-        manifest=json.loads((STORAGE_ROOT/'data/ccc/cache/input_manifest.json').read_text())
-        categories=manifest['cell_types'];mean=np.stack([np.asarray(values[self.labels==i]).mean(0) for i in range(self.k)])
-        global_mean=np.asarray(values).mean(0);enrich=np.log2((mean+1e-6)/(global_mean+1e-6))
+        values=self.pi
+        valid=np.asarray(values).sum(1)>0
+        categories=self.categories;mean=np.stack([np.asarray(values[(self.labels==i)&valid]).mean(0) if ((self.labels==i)&valid).any() else np.full(len(categories),np.nan) for i in range(self.k)])
+        global_mean=np.asarray(values[valid]).mean(0);enrich=np.log2((mean+1e-6)/(global_mean+1e-6))
         fig,ax=plt.subplots(figsize=(8,4.8),layout='constrained')
         sns.heatmap(enrich,cmap=sns.diverging_palette(240,30,as_cmap=True),center=0,vmin=-3,vmax=3,xticklabels=categories,yticklabels=range(1,self.k+1),ax=ax,cbar_kws={'label':'log₂ local-composition enrichment'})
         ax.set(xlabel='Neighbor cell type',ylabel='Niche',title='Physical-neighborhood composition (report only)');ax.tick_params(axis='x',rotation=55)
@@ -194,42 +219,13 @@ class GNNReport:
         return self.save(fig,'niche_program_activity'),frame
 
     def interpretation(self):
-        up=self.summary.get('upstream_residual_test_R2');down=self.summary.get('downstream_residual_test_R2')
-        if up is not None and down is not None:
-            print(f'Held-out biological residual R²: upstream {up:.4f}, downstream {down:.4f}.')
-            if max(up,down)<.01:
-                print('Regulatory predictive signal is very weak. These prior-linked annotations do not validate signaling mechanisms or establish benefit from biological losses; training ablations are still needed.')
-        ccc=pd.read_csv(self.output/'selected_model/top_ccc.csv')
-        tables={'CCC':ccc}
-        for branch in ('upstream','downstream'):
-            path=self.output/('niche_'+branch+'.csv')
-            tables[branch]=pd.read_csv(path) if path.is_file() else pd.DataFrame()
-        records=[]
+        ccc=pd.read_csv(self.output/'selected_model/top_ccc.csv');records=[]
         for niche in range(1,self.k+1):
-            row={'niche':niche,'cells':int((self.labels==niche-1).sum()),
+            records.append({'niche':niche,'cells':int((self.labels==niche-1).sum()),
                 'leading_programs':', '.join(f'P{i+1:02d}' for i in np.argsort(-self.contribution.iloc[niche-1].to_numpy())[:3]),
-                'representative_CCC':'; '.join(ccc.query('niche==@niche').ccc.head(3))}
-            for branch in ('upstream','downstream'):
-                table=tables[branch]
-                if len(table):
-                    selected=table.query('niche==@niche').head(3)
-                    row[branch]='; '.join(f'{x.cell_type}: {x.entity}' for x in selected.itertuples())
-                    if branch=='downstream': row['response_targets']='; '.join(', '.join(str(x).split(';')[:8]) for x in selected.targets)
-                else: row[branch]='No covered prior module'
-            records.append(row)
-        overview=pd.DataFrame(records);overview.to_csv(self.tables/'niche_biological_summary.csv',index=False)
-        return overview,tables
-
-    def biological_heatmaps(self):
-        fig,axes=plt.subplots(1,2,figsize=(13,5),layout='constrained')
-        for ax,branch,title in zip(axes,('upstream','downstream'),('Sender upstream regulators','Receiver ligand-linked response modules')):
-            table=pd.read_csv(self.output/('niche_'+branch+'.csv'))
-            top=(table.assign(absolute=table.prior_loading.abs()).groupby('module').absolute.max().sort_values(ascending=False).head(18).index)
-            values=table.pivot_table(index='niche',columns='module',values='prior_loading',aggfunc='first').reindex(index=range(1,self.k+1),columns=top).fillna(0)
-            labels=[str(x).replace('|',' | ') for x in top]
-            sns.heatmap(values,cmap=sns.diverging_palette(240,30,as_cmap=True),center=0,ax=ax,xticklabels=labels,yticklabels=range(1,self.k+1),cbar_kws={'label':'Signed prior-linked dictionary loading'})
-            ax.set(xlabel='Cell-type-specific module',ylabel='Niche',title=title);ax.tick_params(axis='x',rotation=90,labelsize=7)
-        return self.save(fig,'niche_regulatory_response_modules')
+                'representative_CCC':'; '.join(ccc.query('niche==@niche').ccc.head(5))})
+        overview=pd.DataFrame(records);overview.to_csv(self.tables/'niche_communication_summary.csv',index=False)
+        return overview,ccc
 
     def comparison(self):
         fig,axes=plt.subplots(1,3,figsize=(16,6.1),layout='constrained')

@@ -49,7 +49,7 @@ report={'threshold':.05,'cells':n,'candidate_features':f,'CCC_sample_microenviro
 # Compare only neural forward cost on identical real graph/expression inputs.
 rows=rows[:512];loc=np.asarray(members[rows]);unique,inv=np.unique(loc,return_inverse=True)
 enc=np.load(cache/'encoder_features.npy',mmap_mode='r')
-args=[torch.as_tensor(np.asarray(enc[unique]).copy(),device='cuda:0'),torch.as_tensor(types[unique].astype(np.int64),device='cuda:0'),torch.as_tensor(inv.reshape(loc.shape),device='cuda:0'),torch.as_tensor(xy[loc],device='cuda:0'),torch.as_tensor(np.asarray(weights[rows]).copy(),device='cuda:0'),torch.as_tensor(loc,device='cuda:0')]
+args=[torch.as_tensor(np.asarray(enc[unique]).copy(),device='cuda:0'),torch.as_tensor(inv.reshape(loc.shape),device='cuda:0'),torch.as_tensor(xy[loc],device='cuda:0'),torch.as_tensor(np.asarray(weights[rows]).copy(),device='cuda:0'),torch.as_tensor(loc,device='cuda:0')]
 results={}
 with torch.no_grad():
  for dim in (450,f):

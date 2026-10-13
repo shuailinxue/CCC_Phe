@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/ZJUFanLab/scCube",
+  "commit": "d5b423d296da17d0fd5b4d12e92262167a642445",
+  "files": {
+    "scCube/__init__.py": "f661f8a783bcd1d18d91ff31ffe61d627e67a158752c634a9988371de43f0760",
+    "scCube/model.py": "b2ebfcb0260d5607dd2ac478f73660d0a07872d671555706992243617fa8ad2e",
+    "scCube/sccube.py": "28486dd0aa3784b31319436ef85198e34338bec3dde6bd24cb172d846cd2d9ea",
+    "scCube/utils.py": "1bcc99f84ccdd7a8916aaea3ace6b1dd3940d39e4e8edbaa55cd94b6435b5b07",
+    "scCube/visualization.py": "79a9b7a966b50244280544eecc07f2d653acc1bdce3f20b097a59531e0b7c5d3"
+  }
+}

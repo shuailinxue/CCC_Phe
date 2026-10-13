@@ -45,24 +45,6 @@ def guarded_backward(primary, auxiliary, parameters, clip=5.):
             'ccc_gradient_norm':float(norm.sqrt().detach()),'aux_gradient_norm':float(anorm.sqrt().detach())}
 
 
-def rewire_weights(batch,sigma,generator=None):
-    weight=physical_weights(batch['coordinates'],batch['anchor_weights'],sigma,batch['cell_ids'])
-    local_types=batch['types'][batch['local_index']]
-    rewired=weight.clone()
-    # Type-stratified receiver rewiring preserves per-sender type-pair weight multisets,
-    # apart from newly forbidden self pairs (explicitly measured below).
-    for b in range(len(weight)):
-        permutation=torch.arange(weight.shape[1],device=weight.device)
-        for t in local_types[b].unique():
-            indices=torch.nonzero(local_types[b]==t).flatten()
-            permutation[indices]=indices[torch.randperm(len(indices),device=weight.device,generator=generator)]
-        rewired[b]=weight[b,:,permutation]
-    distinct=batch['cell_ids'][:,:,None]!=batch['cell_ids'][:,None,:]
-    rewired*=distinct
-    drift=(rewired.sum((1,2))-weight.sum((1,2))).abs()/weight.sum((1,2)).clamp_min(1e-8)
-    return weight,rewired,drift
-
-
 def pair_ccc(ligand,receptor,types,features,categories,weights,chunk=32):
     # Exact weighted sqrt(L_s R_r)/(opportunity+1e-4), feature order unchanged.
     output=weights.new_empty((len(weights),len(features)))
@@ -78,26 +60,12 @@ def pair_ccc(ligand,receptor,types,features,categories,weights,chunk=32):
     return output
 
 
-def contrastive_loss(data,model,batch,result,scale,threshold=.05):
-    original,negative,drift=rewire_weights(batch,model.sigma)
-    unique=batch['unique']; raw=data.expression[unique].toarray()
-    lookup={g:i for i,g in enumerate(data.genes)}
-    sides=[]
-    for column in ('ligand','receptor'):
-        values=np.column_stack([np.prod(raw[:,[lookup[g] for g in canonicalize_complex(value)]],axis=1)**(1/len(canonicalize_complex(value))) for value in data.features[column]])
-        sides.append(torch.as_tensor(values,device=original.device)[batch['local_index']])
-    types=batch['types'][batch['local_index']]
-    actual=pair_ccc(*sides,types,data.features,list(data.categories),original)
-    counter=pair_ccc(*sides,types,data.features,list(data.categories),negative)
-    scale=torch.as_tensor(scale,device=original.device)
-    mask=torch.as_tensor(data.feature_mask,device=original.device)
-    difference=((actual[:,mask]-counter[:,mask])/scale[mask]).square().mean(1).sqrt()
-    gate=(difference>threshold)&(drift<.1)
-    if not gate.any(): return result['Z'].sum()*0,0
-    # Positive: mild directed-edge thinning of the same physical microenvironment.
-    positive=original*(torch.rand_like(original)>.1)
-    pos=data.forward(model,batch,pair_override=positive)
-    neg=data.forward(model,batch,pair_override=negative)
-    embedding=lambda value:torch.cat((value['P'].sqrt(),.25*torch.log1p(value['activity'])[:,None]/10),dim=1)
-    pos_cos=F.cosine_similarity(embedding(result),embedding(pos)); neg_cos=F.cosine_similarity(embedding(result),embedding(neg))
-    return ((1-pos_cos)+F.relu(neg_cos-pos_cos+.1))[gate].mean(),int(gate.sum())
+
+def composition_loss(prediction,target):
+    """KL(target || prediction); zero-sum rows represent missing composition."""
+    if prediction.shape!=target.shape: raise ValueError('Composition shape mismatch')
+    if not torch.isfinite(target).all() or (target<0).any(): raise ValueError('Invalid composition target')
+    mass=target.sum(1);valid=mass>0
+    if not torch.allclose(mass[valid],torch.ones_like(mass[valid]),atol=1e-5): raise ValueError('Composition target is not a probability distribution')
+    if not valid.any():return prediction.sum()*0
+    return F.kl_div(prediction[valid].clamp_min(1e-8).log(),target[valid],reduction='batchmean')

@@ -20,8 +20,7 @@ class MicroenvironmentGNN(nn.Module):
         super().__init__()
         self.genes, self.types, self.features = genes, types, features
         self.programs, self.hidden, self.sigma = programs, hidden, sigma
-        self.type_embedding = nn.Embedding(types, min(16, hidden))
-        self.cell_encoder = nn.Sequential(nn.Linear(genes + min(16, hidden), hidden), nn.GELU(),
+        self.cell_encoder = nn.Sequential(nn.Linear(genes, hidden), nn.GELU(),
                                           nn.LayerNorm(hidden))
         self.sender = nn.Linear(hidden, hidden, bias=False)
         self.receiver = nn.Linear(hidden, hidden, bias=False)
@@ -31,6 +30,7 @@ class MicroenvironmentGNN(nn.Module):
         self.pool = nn.Sequential(nn.Linear(3 * hidden, hidden), nn.GELU())
         self.composition_head = nn.Linear(hidden, programs)
         self.activity_head = nn.Linear(hidden, 1)
+        self.raw_composition = nn.Parameter(torch.zeros(programs, types))
         self.raw_dictionary = nn.Parameter(torch.randn(programs, features) * .15 - 2)
         mask = torch.ones(features, dtype=torch.bool) if feature_mask is None else torch.as_tensor(feature_mask, dtype=torch.bool)
         if mask.shape != (features,) or not mask.any(): raise ValueError("Empty/invalid CCC feature mask")
@@ -41,9 +41,13 @@ class MicroenvironmentGNN(nn.Module):
         h = F.softplus(self.raw_dictionary) * self.feature_mask
         return h / h.sum(1, keepdim=True).clamp_min(1e-8)
 
-    def forward(self, expression, types, local_index, coordinates, anchor_weights, cell_ids=None, pair_override=None, reconstruct=True):
+    @property
+    def composition_dictionary(self):
+        return self.raw_composition.softmax(1)
+
+    def forward(self, expression, local_index, coordinates, anchor_weights, cell_ids=None, pair_override=None, reconstruct=True):
         # Encode each unique physical cell once in the batch, reuse overlapping members.
-        unique_h = self.cell_encoder(torch.cat((expression, self.type_embedding(types)), dim=1))
+        unique_h = self.cell_encoder(expression)
         h = unique_h[local_index]
         weight = physical_weights(coordinates, anchor_weights, self.sigma, cell_ids)
         if pair_override is not None: weight = pair_override
@@ -69,6 +73,8 @@ class MicroenvironmentGNN(nn.Module):
         z = activity * mixture
         result = {"Z": z, "P": mixture, "activity": activity.squeeze(1)}
         if reconstruct:
+            result['B'] = self.composition_dictionary
+            result['composition'] = mixture @ result['B']
             result['H'] = self.dictionary
             result['reconstruction'] = z @ result['H']
         return result

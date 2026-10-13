@@ -57,14 +57,6 @@ def discover(data,arrays,h,config):
     export_top_markers(h,data.features,program_dir)
     for path in program_dir.glob('*.csv'):
         frame=pd.read_csv(path).rename(columns={'niche':'program'});frame.to_csv(path,index=False)
-    for branch,prior in data.priors.items():
-        if prior.mapping.shape[1]:
-            loadings=h@prior.mapping
-            records=[]
-            for p in range(len(h)):
-                for j in np.argsort(-np.abs(loadings[p]))[:15]:
-                    if loadings[p,j]!=0: records.append({'program':p+1,**prior.modules.iloc[j].to_dict(),'prior_loading':float(loadings[p,j])})
-            pd.DataFrame(records).to_csv(program_dir/(branch+'.csv'),index=False)
     assignments=data.cells.copy();assignments['x']=data.coordinates[:,0];assignments['y']=data.coordinates[:,1]
     assignments['niche']=labels+1;assignments['assignment_confidence_relative']=q.max(1);assignments['CCC_activity']=arrays['activity'];assignments['split']=data.folds
     assignments.to_csv(selected/'niche_assignments.csv.gz',index=False)
@@ -77,22 +69,22 @@ def discover(data,arrays,h,config):
 
 
 def composition(data):
-    out=np.empty((len(data.cells),len(data.categories)),np.float32)
-    for start in range(0,len(out),50000):
-        stop=min(start+50000,len(out));types=data.types[data.members[start:stop]];w=data.weights[start:stop]
-        out[start:stop]=np.stack([((types==t)*w).sum(1)/w.sum(1) for t in range(len(data.categories))],axis=1)
-    return out
+    return data.composition_target
 
 
-def diagnostics(data,arrays,h,labels,alignments,config):
+def diagnostics(data,arrays,h,labels,config):
     train,val,test=data.rows;out={}; comp=composition(data)
     # Held-out R² and nuisance-only niche prediction quantify composition recovery.
     z=np.log1p(np.asarray(arrays['Z']))
-    estimator=Ridge(alpha=1).fit(comp[train],z[train])
-    out['composition_to_Z_test_R2']=float(r2_score(z[test],estimator.predict(comp[test]),multioutput='variance_weighted'))
-    if len(set(labels[train]))>1:
-        classifier=LogisticRegression(max_iter=500,random_state=config.seed).fit(comp[train],labels[train])
-        out['composition_only_niche_test_accuracy']=float(classifier.score(comp[test],labels[test]))
+    valid=np.asarray(comp).sum(1)>0;comp_train=train[valid[train]];comp_test=test[valid[test]]
+    out['composition_undefined_centers']=int((~valid).sum())
+    out['composition_to_Z_test_R2']=None
+    if len(comp_train)>=2 and len(comp_test)>=2:
+        estimator=Ridge(alpha=1).fit(comp[comp_train],z[comp_train])
+        out['composition_to_Z_test_R2']=float(r2_score(z[comp_test],estimator.predict(comp[comp_test]),multioutput='variance_weighted'))
+    if len(comp_train) and len(comp_test) and len(set(labels[comp_train]))>1:
+        classifier=LogisticRegression(max_iter=500,random_state=config.seed).fit(comp[comp_train],labels[comp_train])
+        out['composition_only_niche_test_accuracy']=float(classifier.score(comp[comp_test],labels[comp_test]))
     out['dominant_niche_test_fraction']=float(np.bincount(labels[test]).max()/len(test))
     tree=cKDTree(data.coordinates[test]);distance,neighbor=tree.query(data.coordinates[test],k=2)
     good=distance[:,1]<=3*config.sigma_um
@@ -101,33 +93,7 @@ def diagnostics(data,arrays,h,labels,alignments,config):
     out['effective_programs']=float(np.exp(-(mean*np.log(np.maximum(mean,1e-12))).sum()))
     cosine=cosine_matrix(h);out['maximum_dictionary_cosine']=float(cosine[np.triu_indices(len(h),1)].max())
     out['dictionary_entropy']=float((-(h*np.log(np.maximum(h,1e-12))).sum(1)).mean())
-    # Tests are evaluated once, after train/validation model and K selection.
-    sample=np.sort(np.random.default_rng(config.seed).choice(test,min(len(test),5000),replace=False))
-    import torch
-    reconstruction=torch.from_numpy(np.asarray(arrays['Z'][sample])@h);nuisance=torch.from_numpy(data.nuisance[sample])
-    for branch,alignment in alignments.items():
-        observed=torch.from_numpy(np.asarray(data.observations[branch][sample]));mask=np.asarray(data.observed_masks[branch][sample])&alignment.valid
-        pred,target,_=alignment.prediction_target(reconstruction,nuisance,observed)
-        truth_pred,_,_=alignment.prediction_target(torch.from_numpy(data.targets[sample]),nuisance,observed)
-        def score(a,b):
-            denominator=np.square(b[mask]).sum()
-            return float(1-np.square((a-b)[mask]).sum()/denominator) if denominator>1e-8 else None
-        prediction=pred.numpy();target=target.numpy()
-        out[branch+'_residual_test_R2']=score(prediction,target)
-        out[branch+'_CCC_only_projection_test_R2']=score(truth_pred.numpy(),target)
-        # Prior negative control preserves sender/receiver type-pair groups.
-        a=alignment.prior.mapping.copy();rng=np.random.default_rng(config.seed)
-        for _,indices in data.features.groupby(['sender','receiver']).groups.items():
-            indices=np.asarray(indices);a[indices]=a[rng.permutation(indices)]
-        null=((reconstruction.numpy()-data.nuisance[sample]@alignment.ccc_baseline)@a)*alignment.slope/alignment.scale
-        out[branch+'_shuffled_prior_test_R2']=score(null,target)
-        # Independently permute target labels within test block + center type strata.
-        perm=np.arange(len(sample))
-        keys=[(int(data.blocks[i]),int(data.types[i])) for i in sample]
-        for key in set(keys):
-            indices=np.asarray([j for j,k in enumerate(keys) if k==key]);perm[indices]=rng.permutation(indices)
-        out[branch+'_shuffled_activity_test_R2']=score(prediction,target[perm])
-    out['interpretation']='Association diagnostics; neither biological causality nor phenotype supervision. Held-out targets exclude LR genes; ablation/null training required for efficacy.'
+    out['interpretation']='Single-tissue association diagnostics; composition is auxiliary supervision, not evidence of causality or phenotype.'
     (Path(config.output_dir)/'diagnostics.json').write_text(json.dumps(out,indent=2)+'\n')
     return out
 

@@ -6,7 +6,7 @@
 
 在项目根目录打开 `XeniumPrime5K_Breast_niche_walkthrough.ipynb`。Notebook 直接读取 NAS 上的现有结果，不会因文件缺失自动启动训练。图片导出到 `/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/xenium_prime_5k/figures/`。
 
-新 GNN 的真实数据报告：[XeniumPrime5K_GNN_niche_analysis.ipynb](/home/xueshuailin/CCC_Phe/XeniumPrime5K_GNN_niche_analysis.ipynb)。已执行并读取单独保存的结果，打开时不会重新训练；图片和模型矩阵均在 NAS 输出目录。
+新 GNN 的真实数据报告：[XeniumPrime5K_GNN_niche_analysis.ipynb](/home/xueshuailin/CCC_Phe/XeniumPrime5K_GNN_niche_analysis.ipynb)。使用 cccphe kernel，Run All 将构建/审计输入、训练新版 GNN（完整结果存在时复用）并展示结果；图片和模型矩阵均在 NAS 独立输出目录。
 
 已有环境：`conda activate cccphe`。需要安装时执行 `python -m pip install -e '.[dev]'`；运行测试：`python -m pytest`。
 
@@ -43,29 +43,24 @@ niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线
 
 ## 微环境 GNN
 
-当前新分析配置的 LR 表达覆盖率为 5%，使用完整的初筛 CCC 特征集合，不再套用旧 AE 的 450 列。新的缓存、先验、审计和结果分别写入 NAS 中的 `ccc_expr05`、`priors_expr05`、`xenium_prime_5k_expr05` 和 `microenvironment_gnn_expr05` 分析目录；现有 Notebook 和 checkpoint 仍对应已完成的 10% 分析。旧模型按其原输入 manifest 读取冻结的缓存。推理 Z 时不读取 CCC 监督目标，也不计算完整 CCC 重构；完整预测可由保存的 `Z @ H` 按需分块计算。
+当前 Encoder 只输入细胞表达与空间图，删除细胞类型 embedding 和所有上下游调控训练分支。每个微环境输出 `Z = activity × softmax(program logits)`；CCC 重构为 `Z @ H`，空间加权细胞组成为 `P @ B`。H 非负、逐行和为 1；B 非负、逐行和为 1，分别学习并共享同一组通讯程序。
 
-`scripts/assess_ccc_storage.py` 使用 4,096 个真实微环境计算精确 CCC 样本，并核算 CSR 大小及 GPU forward 开销。它只做存储/性能评估，不训练模型；报告写入 NAS `artifacts/ccc_expr05_storage_assessment.json`。
+`L = masked scaled CCC Huber + lambda_comp × KL(pi || P @ B) + lambda_reg × regularization`，默认 `lambda_comp=0.005`。CCC 是主任务，冲突的辅助梯度仍按 CCC 梯度投影。pi 按原 CCC 的有向物理细胞对权重汇总 sender degree 后归一化；细胞类型只用于 CCC/组成标签及下游分析，不进入 Encoder。无 TF/ligand-target prior 训练依赖。
 
-`细胞表达 + 类型 + 空间关系 -> directed attention/message passing -> 微环境 Z >= 0 -> C_hat = Z @ H`。
-每个微环境一个向量，默认 32 个程序。批内重复细胞只编码一次；只缓存 30 个邻域成员和权重，不存储全部子图。H 在原始 CCC 单位下逐行和为 1，因此 `sum(Z_i) = sum(C_hat_i)`，强度与组成同时保留。CCC 只作监督，绝不进入 GNN forward。
+保持 5% LR 表达覆盖率、KNN=30、sigma=20 µm、原始 CCC 数值公式及训练集有效特征 mask。表达预处理、特征尺度和 mask 只在训练空间块拟合，邻域跨 fold 的中心被剔除，K=4–15 在训练块拟合、验证块选择。组成诊断及旧 AE 比较属于描述性分析，不证明 phenotype 或通讯因果。
 
-损失：`L = Huber(C_hat/s, C/s)[有效特征] + λ_bio(α L_up + β L_down) + λ_reg R`，可选 `+ λ_contrast L_contrast`。s、有效特征 mask、表达预处理、基线校正和生物学尺度全部仅由训练块拟合。R 包含温和 dictionary entropy、相似程序惩罚及很弱的最小使用率约束；辅助梯度与 CCC 主梯度冲突时投影，生物学权重逐步增加。
+打开根目录 `XeniumPrime5K_GNN_niche_analysis.ipynb`，选择 `cccphe` kernel，Run All。Notebook 调用项目模块完成 CCC 缓存构建、真实标签/特征/CCC 审计、训练、推理、niche 选择和可视化。完整且匹配配置的结果直接复用；已有不同配置/架构 checkpoint 拒绝覆盖。当前弱组成约束结果写入 NAS `outputs/microenvironment_gnn_composition_weak_expr05/`，已有 `outputs/microenvironment_gnn_composition_expr05/` 结果保留；旧 AE 和旧 GNN 结果保留。
 
-上游活动来自有符号 TF-target regulon，下游活动来自 ligand-target 模块；均排除 LR 基因和自身 regulator。以同一有向物理细胞对及空间权重聚合 sender/receiver 活动。固定先验矩阵 A 将 H 连接到调控模块，没有自由基因 decoder。训练集 Ridge 去除细胞类型、局部组成、中心及按细胞类型/物理配对权重汇总的参与细胞表达状态、library size 基线；固定的训练集校准将 `(C_hat - D B_C) @ A` 与观测增量活动比较。它是**增量关联约束，不证明因果**。默认把打分 target genes 从 encoder、其归一化分母及强度输入留出；四种消融应使用相同先验及留出基因集合。
+命令行等价入口：`python scripts/run_gnn.py ensure`；仅在审计已完成时训练用 `train`，推理用 `infer`。独立下游单组织分析明确审计 BayesPrism、临床终点与患者匹配不适用；结果不进入临床 CCC/Cox 主线。此次代码改造不执行真实训练或 Notebook。
 
-空间块/样本划分后，剔除邻域跨 fold 的中心，训练/验证/测试不共享物理细胞。K=4–15 仅在训练集拟合、验证集选择，测试用于最终诊断。导出 niche CCC、程序贡献、调控来源、空间图及 composition-only 对照。原 AE 的随机重叠划分结果只能做描述性比较；公平比较需在相同空间 fold 中重新训练原 AE。
+## Tumor-edge 模拟实验
 
-```bash
-python scripts/run_gnn.py audit
-python scripts/run_gnn.py train --mode both --output /home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/gnn_both
-python scripts/run_gnn.py infer --output /home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/gnn_both
-python scripts/run_gnn.py baseline --output /home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/gnn_both
-python scripts/run_gnn.py compare --output /home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/gnn_both
-```
+打开根目录 `TumorEdge_Communication_Simulation.ipynb`，选择 `cccphe` kernel，Run All。默认 8,000 cells、5 种类型、75 个真实 LR、两个各 6-LR 的设计 MI。调用已核验的 scCube VAE/Poisson 空间 API，使用自包含的合成种子表达，随后仅修改 sender ligand / receiver receptor 表达，再调用原 CCC 公式及最新版 expression-only GNN。镜像类型/空间布局匹配两半环的径向与局部组成；真值只在生成和评估模块中使用，不进入训练或 K 选择。可选 `spatial_pairing_only` 默认关闭。
 
-`config/gnn.json` 中配置路径、训练及消融。`split_seed` 固定空间划分和预处理，`seed` 改变模型初始化，可在相同 fold 上比较稳定性。mode 为 `ccc_only / upstream / downstream / both`；启用生物学分支时可使用负对照 `--prior-control shuffle_links / shuffle_activity`，必须使用独立实验输出；最终生物学诊断仍对照真实标签及原始先验。`--contrastive` 默认关闭：同类型 receiver 重排空间配对；仅在 CCC 差异可检测且 opportunity 总量漂移 <10% 时施加约束。所有真实输出在 NAS `workspace/outputs/`；已有 checkpoint 禁止覆盖。
+配置：`config/tumor_edge_simulation.json`。所有数据、模型、指标和 PNG/PDF 写入 NAS `outputs/tumor_edge_simulation_calibrated/`（已有未校准实验 `outputs/tumor_edge_simulation/` 保留）。主图显示未对齐的原始固定 K=4 聚类；GNN 自适应 K=4–15、训练标签拟合的评估匹配及 held-out/transductive 指标分别保存。对照信息条件不同：组成、无类型的邻域表达 PCA、原 CCC-vector AE、表达/空间 GNN。失败结果照实展示。默认单组织使用镜像配对的完整径向扇区并剔除跨 fold 邻域；微型测试使用三个样本级划分的独立小组织。
 
-调控输入为 NAS `data/priors/upstream.tsv`（`tf,target,weight,source,evidence`）和 `downstream.tsv`（`ligand,target,weight,source,evidence`），tab 分隔，每条关系须有来源及证据。`manifest.json` 为 upstream/downstream 分别记录 `database,version,url,species,sha256`。建议核验 [CollecTRI](https://github.com/saezlab/CollecTRI) 的有符号 regulons 和 [NicheNet](https://github.com/saeyslab/nichenetr) 的 ligand-target prior；程序不自行猜测调控关系，也不把 TF mRNA 当 TF 活性。只有 ligand-target prior 时明确标注“受体特异性未证实”。覆盖、未覆盖基因/CCC、目标信息重叠及来源写入 NAS audit。
+scCube source commit/模块校验记录在 `data/scCube_source_audit.json`，环境准备不会安装其旧 requirements 中的 NumPy/PyTorch 降级依赖。已有安装时 Run All 无需下载；缺失时安装固定源码及缺失依赖。CLI 完整运行必须显式 `python scripts/run_tumor_edge_simulation.py --run-full`；轻量验证用 `--smoke`。Notebook 生成器仅生成文件，不执行任何单元格。
 
-`audit_file` 指向实际完成的研究审计 JSON：`st_anchor,bayesprism,clinical_endpoint,feature_mask,sample_matching,cell_labels` 分别提供 `status=verified,evidence_file,sha256`。独立下游、无临床输入时，可以明确设置 `scope=independent_downstream_niche`，将不适用的 BayesPrism/clinical endpoint/sample matching 记录为 `status=not_applicable,reason`；不得自动伪造通过审计。缺失有效先验时只能明确使用 CCC-only；请求启用的调控损失会报错。Xenium Prime 5K 的真实审计由 `scripts/audit_prime5k_gnn.py` 生成，CollecTRI/NicheNet 先验由 `scripts/prepare_gnn_priors.py` 下载并校验来源。`scripts/report_prime5k_gnn.py` 读取完成的 GNN 结果并执行报告 Notebook；不会在 Notebook 中训练模型。
+模拟计数显式校准至合成种子的类型基因均值，保留 scCube 的类型内相对变化，并保存未校准计数及 marker audit；不使用 niche/MI 标签校准。B 可用训练集 CCC 原型对应的观测组成初始化，不改变 GNN 架构。H 初始化相似度与训练后相似度分别报告，避免把初始化成功当作 Encoder 学到 MI。
+
+同架构 CCC-only 对照：`config/gnn_ccc_only.json` 和 `config/tumor_edge_simulation_ccc_only.json`。在相应 Notebook 首个配置单元格切换配置文件，然后 Restart Kernel / Run All；各实验输出目录独立。

@@ -8,11 +8,9 @@ import pandas as pd
 import scipy.sparse as sp
 import torch
 from scipy.spatial import cKDTree
-from sklearn.decomposition import TruncatedSVD
 from ..ccc.config import default_config as ccc_config
 from ..ccc.data import load_cached_input, _cache_is_valid, _manifest_signature, cache_paths
 from ..data import feature_statistics
-from .biology import read_prior, compile_prior, activity_scores, aggregate_activity
 from .model import physical_weights
 from .inputs import resolve_input
 
@@ -109,10 +107,7 @@ class GraphData:
     rows: list
     folds: np.ndarray
     blocks: np.ndarray
-    nuisance: np.ndarray
-    priors: dict
-    observations: dict
-    observed_masks: dict
+    composition_target: np.ndarray
     audit: dict
 
     def prepare_device(self, device, cache_dir):
@@ -127,31 +122,26 @@ class GraphData:
             values[rows,-1]=np.log1p(self.totals[rows])/10
         values.flush()
         tensor=lambda a:torch.as_tensor(np.asarray(a).copy(),device=device)
-        self._resident={'expression':tensor(values),'types':tensor(self.types.astype(np.int64)),
+        self._resident={'expression':tensor(values),
                         'coordinates':tensor(self.coordinates),'members':tensor(self.members),
-                        'weights':tensor(self.weights),'nuisance':tensor(self.nuisance)}
+                        'weights':tensor(self.weights),'composition_target':tensor(self.composition_target)}
         # Assemble targets in bounded chunks rather than a second full host copy.
         target=torch.empty(self.targets.shape,dtype=torch.float32,device=device)
         for start in range(0,len(self.cells),8192):
             stop=min(start+8192,len(self.cells));target[start:stop]=tensor(self.targets[slice(start,stop)])
         self._resident['target']=target
-        for branch in self.observations:
-            self._resident[branch]=tensor(self.observations[branch][:])
-            self._resident[branch+'_mask']=tensor(self.observed_masks[branch][:])
         print(f'Static graph inputs resident on {device}',flush=True)
 
-    def batch(self, rows, device='cpu', include_bio=True, include_target=True):
+    def batch(self, rows, device='cpu', include_target=True):
         if hasattr(self,'_resident') and str(device).startswith('cuda'):
             r=self._resident;row=torch.as_tensor(rows,device=device,dtype=torch.long);local=r['members'][row]
             unique,inverse=torch.unique(local.reshape(-1),sorted=True,return_inverse=True)
-            batch={'expression':r['expression'][unique],'types':r['types'][unique],
+            batch={'expression':r['expression'][unique],
                    'local_index':inverse.reshape(local.shape),'coordinates':r['coordinates'][local],
                    'anchor_weights':r['weights'][row],'cell_ids':local}
-            if include_target: batch['target']=r['target'][row]
-            if include_target or include_bio: batch['nuisance']=r['nuisance'][row]
-            if include_bio:
-                for branch in self.observations:
-                    batch[branch]=r[branch][row];batch[branch+'_mask']=r[branch+'_mask'][row]
+            if include_target:
+                batch['target']=r['target'][row]
+                batch['composition_target']=r['composition_target'][row]
             return batch
         local = np.asarray(self.members[rows]); unique, inverse = np.unique(local, return_inverse=True)
         x = expression_block(self.expression, unique, self.encoder_indices, self.totals)
@@ -159,19 +149,16 @@ class GraphData:
         # Raw library size supplies intensity information lost by compositional expression normalization.
         x = np.column_stack((x,np.log1p(self.totals[unique])/10)).astype(np.float32)
         tensor = lambda x: torch.as_tensor(np.asarray(x).copy(),device=device)
-        batch = {'expression':tensor(x),'types':tensor(self.types[unique].astype(np.int64)),
+        batch = {'expression':tensor(x),
                  'local_index':tensor(inverse.reshape(local.shape)), 'coordinates':tensor(self.coordinates[local]),
                  'anchor_weights':tensor(self.weights[rows]), 'cell_ids':tensor(local),'unique':unique}
-        if include_target: batch['target']=tensor(self.targets[rows])
-        if include_target or include_bio: batch['nuisance']=tensor(self.nuisance[rows])
-        if include_bio:
-            for branch in self.observations:
-                batch[branch] = tensor(self.observations[branch][rows])
-                batch[branch+'_mask'] = tensor(self.observed_masks[branch][rows])
+        if include_target:
+            batch['target']=tensor(self.targets[rows])
+            batch['composition_target']=tensor(self.composition_target[rows])
         return batch
 
     def forward(self,model,batch,**kwargs):
-        return model(*(batch[k] for k in ('expression','types','local_index','coordinates','anchor_weights','cell_ids')),**kwargs)
+        return model(*(batch[k] for k in ('expression','local_index','coordinates','anchor_weights','cell_ids')),**kwargs)
 
 
 def prepare_graph_data(config):
@@ -199,79 +186,53 @@ def prepare_graph_data(config):
     mask=(nonzero[columns]>=.005)&(var[columns]>np.maximum(np.finfo(np.float32).eps*ms[columns],np.finfo(np.float32).tiny))
     if not mask.any(): raise ValueError('No effective training CCC features')
     scale=np.maximum(np.sqrt(ms[columns]),1e-6).astype(np.float32)
-    manifest=json.loads(Path(config.prior_manifest).read_text()) if Path(config.prior_manifest).is_file() else {}
-    priors={}; audit={'split':'spatial/sample blocks with all-member boundary purge','split_sizes':[len(r) for r in rows],
-                    'purged_centers':int((folds<0).sum()),'fixed_features':len(columns),'effective_features':int(mask.sum()),
-                    'source_signature':cached['manifest']['signature'],
-                    'cell_order_sha256':hashlib.sha256(pd.util.hash_pandas_object(cached['cells'].cell_id,index=False).to_numpy().tobytes()).hexdigest()}
-    for branch in ('upstream','downstream'):
-        table,provenance=read_prior(getattr(config,branch+'_prior'),manifest,branch)
-        priors[branch]=compile_prior(table,features,genes,branch,config.min_targets,config.min_target_coverage)
-        audit[branch]={'provenance':provenance,**priors[branch].audit}
-        if getattr(config,'use_'+branch) and not priors[branch].mapping.shape[1]: raise ValueError(f'{branch} requested but no audited independent targets are usable')
-    score_indices=set(i for p in priors.values() for i in np.flatnonzero(np.any(p.weights!=0,axis=1)))
-    available=np.asarray([i for i in range(len(genes)) if not config.holdout_bio_genes or i not in score_indices])
+    audit={'split':'spatial/sample blocks with all-member boundary purge',
+           'split_sizes':[len(r) for r in rows],'purged_centers':int((folds<0).sum()),
+           'fixed_features':len(columns),'effective_features':int(mask.sum()),
+           'source_signature':cached['manifest']['signature'],'CCC_matrix_path':str(cached['paths']['ccc']),
+           'cell_order_sha256':hashlib.sha256(pd.util.hash_pandas_object(cached['cells'].cell_id,index=False).to_numpy().tobytes()).hexdigest(),
+           'encoder_inputs':'expression and spatial graph only; cell types are supervision/analysis only',
+           'architecture':config.architecture}
+    available=np.arange(len(genes))
     train_cells=np.unique(members[rows[0]])
     sample=np.random.default_rng(config.split_seed).choice(train_cells,min(len(train_cells),20000),replace=False)
-    totals=np.asarray(x[:,available].sum(1)).ravel().astype(np.float32)
-    if len(available)<2: raise ValueError('Regulatory target holdout leaves fewer than two encoder genes')
+    totals=np.asarray(x.sum(1)).ravel().astype(np.float32)
     sample_x=expression_block(x,sample,available,totals)
     chosen=np.argsort(-sample_x.var(0),kind='stable')[:config.encoder_genes]
-    encoder_indices=available[chosen]; selected=sample_x[:,chosen]
-    gene_mean=selected.mean(0); gene_scale=np.maximum(selected.std(0),.1)
-    categories=tuple(sorted(cached['cells'].cell_type.unique())); types=pd.Categorical(cached['cells'].cell_type,categories=categories).codes.astype(np.int64)
-    svd=TruncatedSVD(n_components=min(4,len(encoder_indices)-1),random_state=config.seed).fit(selected)
-    state_shape=(len(xy),svd.n_components+1)
-    cell_state=np.lib.format.open_memmap(cache/'cell_state.npy',mode='w+',dtype=np.float32,shape=state_shape)
-    for start in range(0,len(xy),8192):
-        stop=min(start+8192,len(xy))
-        cell_state[start:stop]=np.column_stack((svd.transform(expression_block(x,np.arange(start,stop),encoder_indices,totals)),np.log1p(totals[start:stop])))
-    cell_state.flush()
-    # Type-specific local state baselines control endogenous states of participating
-    # senders/receivers, rather than only the center cell or a mixed expression vector.
-    nuisance=np.empty((len(xy),1+2*len(categories)+(1+len(categories))*state_shape[1]),np.float32)
-    for start in range(0,len(xy),2048):
-        stop=min(start+2048,len(xy));local=members[start:stop]
-        local_type=types[local];anchor=weights[start:stop]
-        composition=np.stack([((local_type==t)*anchor).sum(1)/anchor.sum(1) for t in range(len(categories))],axis=1)
-        pair=physical_weights(torch.from_numpy(xy[local]),torch.from_numpy(anchor),config.sigma_um,torch.from_numpy(np.asarray(local)))
-        degree=pair.sum(2).numpy();local_state=cell_state[local]
-        type_states=[]
-        for t in range(len(categories)):
-            role_weight=degree*(local_type==t)
-            type_states.append((local_state*role_weight[...,None]).sum(1)/np.maximum(role_weight.sum(1)[:,None],1e-8))
-        nuisance[start:stop]=np.column_stack((np.ones(stop-start),np.eye(len(categories))[types[start:stop]],composition,cell_state[start:stop],*type_states))
-    # Standardize nuisance columns on eligible training centers only.
-    mu=nuisance[rows[0],1:].mean(0); sd=np.maximum(nuisance[rows[0],1:].std(0),.1)
-    nuisance[:,1:]=(nuisance[:,1:]-mu)/sd
-    audit['nuisance_basis']='center type, local composition, center state/library size, physical-pair-weighted cell-type-specific state/library size'
+    encoder_indices=available[chosen];selected=sample_x[:,chosen]
+    gene_mean=selected.mean(0);gene_scale=np.maximum(selected.std(0),.1)
+    categories=tuple(sorted(cached['cells'].cell_type.unique()))
+    types=pd.Categorical(cached['cells'].cell_type,categories=categories).codes.astype(np.int64)
+    composition_target=np.lib.format.open_memmap(cache/'composition_target.npy',mode='w+',dtype=np.float32,shape=(len(xy),len(categories)))
+    for start in range(0,len(xy),config.batch_size):
+        stop=min(start+config.batch_size,len(xy));local=np.asarray(members[start:stop])
+        pair=physical_weights(torch.from_numpy(xy[local]),torch.from_numpy(np.asarray(weights[start:stop]).copy()),config.sigma_um,torch.from_numpy(local))
+        composition_target[start:stop]=pair_composition(torch.from_numpy(types[local]),pair,len(categories)).numpy()
+    composition_target.flush()
+    valid_composition=np.asarray(composition_target).sum(1)>0
+    audit['composition_undefined_centers']=int((~valid_composition).sum())
+    audit['composition_valid_by_split']=[int(valid_composition[r].sum()) for r in rows]
+    audit['composition_missing_policy']='Zero physical-pair opportunity: undefined composition, excluded from composition loss/metrics; CCC supervision unchanged'
+    if audit['composition_undefined_centers']:
+        print(f"Undefined composition for {audit['composition_undefined_centers']} centers with zero physical-pair opportunity; skipping their composition supervision",flush=True)
     audit['encoder_genes']=[genes[i] for i in encoder_indices]
-    audit['regulatory_score_genes_held_out']=config.holdout_bio_genes
-    audit['encoder_library_size']='sum of available encoder-side genes; held-out targets excluded from denominator and intensity input'
-    audit['activity_normalization_training_cells']=len(sample)
-    observations={}; observed_masks={}
-    data=GraphData(x,totals,genes,encoder_indices,gene_mean,gene_scale,types,categories,xy,members,weights,targets,scale,mask,features,cached['cells'],rows,folds,blocks,nuisance,priors,observations,observed_masks,audit)
-    for branch,prior in priors.items():
-        if not prior.mapping.shape[1]: continue
-        print(f'Preparing {branch}: {prior.mapping.shape[1]} verified modules',flush=True)
-        scores=activity_scores(x,prior,sample,cache/(branch+'_cell_activity.npy'))
-        from ..data import resolve_device
-        aggregation_device=resolve_device(config.device)
-        # Reuse cell-level scores for all overlapping neighborhoods on the accelerator.
-        score_tensor=torch.as_tensor(np.asarray(scores).copy(),device=aggregation_device)
-        to_device=lambda value:torch.as_tensor(np.asarray(value).copy(),device=aggregation_device)
-        shape=(len(xy),prior.mapping.shape[1])
-        observed=np.lib.format.open_memmap(cache/(branch+'.npy'),mode='w+',dtype=np.float32,shape=shape)
-        valid=np.lib.format.open_memmap(cache/(branch+'_mask.npy'),mode='w+',dtype=bool,shape=shape)
-        for start in range(0,len(xy),config.batch_size):
-            idx=np.arange(start,min(start+config.batch_size,len(xy))); local=members[idx]
-            value,good=aggregate_activity(score_tensor[to_device(local)],to_device(types[local]),to_device(xy[local]),to_device(weights[idx]),to_device(local),features,prior,categories,config.sigma_um)
-            observed[idx]=value.cpu().numpy(); valid[idx]=good.cpu().numpy()
-            if start % (config.batch_size*100)==0: print(f'{branch} aggregation: {start:,}/{len(xy):,}',flush=True)
-        observed.flush(); valid.flush(); observations[branch]=observed; observed_masks[branch]=valid
-        del score_tensor
-    np.savez(cache/'preprocessing.npz',encoder_indices=encoder_indices,gene_mean=gene_mean,gene_scale=gene_scale,feature_scale=scale,feature_mask=mask,columns=columns,folds=folds,blocks=blocks,nuisance=nuisance)
+    audit['composition_definition']='sum of outgoing physical-pair weights per cell type / total directed physical-pair weight'
+    audit['categories']=list(categories)
+    data=GraphData(x,totals,genes,encoder_indices,gene_mean,gene_scale,types,categories,xy,members,weights,targets,scale,mask,features,cached['cells'],rows,folds,blocks,composition_target,audit)
+    np.savez(cache/'preprocessing.npz',encoder_indices=encoder_indices,gene_mean=gene_mean,gene_scale=gene_scale,feature_scale=scale,feature_mask=mask,columns=columns,folds=folds,blocks=blocks)
     audit['cell_annotation']=str(adata.uns.get('cell_type_annotation','unspecified'))
     (cache/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
     features.to_csv(cache/'features.csv',index=False)
     return data
+
+
+def pair_composition(local_types, pair_weights, n_types):
+    """Exact CCC weights; all-zero rows mark undefined composition, not a distribution."""
+    if not torch.isfinite(pair_weights).all() or (pair_weights<0).any():
+        raise ValueError('Invalid physical-pair weights')
+    degree=pair_weights.sum(2)
+    total=degree.sum(1,keepdim=True)
+    # Gaussian weights can underflow for isolated cells. Do not invent a
+    # uniform composition or alter the original CCC weights to avoid this.
+    denominator=torch.where(total>0,total,torch.ones_like(total))
+    return torch.stack([(degree*(local_types==t)).sum(1) for t in range(n_types)],dim=1)/denominator

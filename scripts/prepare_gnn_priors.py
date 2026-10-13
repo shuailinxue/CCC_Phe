@@ -5,14 +5,16 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import numpy as np,pandas as pd
 from phenoniche.storage import STORAGE_ROOT,OUTPUT_DIR
 from phenoniche.gnn.biology import checksum
-from phenoniche.gnn.config import GNNConfig
+from types import SimpleNamespace
 from phenoniche.gnn.inputs import resolve_input
 from phenoniche.ccc.config import default_config
 
 if __name__=='__main__':
     import argparse
     parser=argparse.ArgumentParser();parser.add_argument('--config',default=str(Path(__file__).resolve().parents[1]/'config/gnn.json'));parser.add_argument('--upstream-only',action='store_true')
-    args=parser.parse_args();cfg=GNNConfig.from_json(args.config)
+    args=parser.parse_args();values=json.loads(Path(args.config).read_text())
+    if 'prior_manifest' not in values: raise ValueError('This archived prior-conversion utility is not used by the current composition GNN; supply an archived regulatory configuration explicitly')
+    cfg=SimpleNamespace(**values)
     root=Path(cfg.prior_manifest).parent;root.mkdir(parents=True,exist_ok=True)
     raw=STORAGE_ROOT/'data/priors/raw';manifest={};selection={}
     if Path(cfg.upstream_prior).parent!=root or Path(cfg.downstream_prior).parent!=root: raise ValueError('Prior TSV files and manifest must share their configured directory')
