@@ -9,6 +9,7 @@ from ..ccc.config import default_config
 from ..ccc.data import _cache_is_valid,_manifest_signature,cache_paths
 from ..ccc.lr_atlas import load_lr_atlas,canonicalize_complex
 from .biology import checksum,read_prior,compile_prior
+from .inputs import resolve_input
 
 REQUIRED = ('st_anchor','bayesprism','clinical_endpoint','feature_mask','sample_matching','cell_labels')
 
@@ -25,7 +26,7 @@ def protect_output(config):
 
 def audit_study(config,write=True):
     protect_output(config)
-    inp=default_config(); paths=cache_paths(inp); blockers=[]
+    inp=resolve_input(config,default_config()); paths=cache_paths(inp); blockers=[]
     source_valid=_cache_is_valid(paths,_manifest_signature(inp))
     if not source_valid: blockers.append('ST/CCC source cache signature mismatch')
     x=ad.read_h5ad(inp.processed_h5ad,backed='r')
@@ -37,7 +38,8 @@ def audit_study(config,write=True):
     panel=set(genes); atlas=load_lr_atlas(inp.lr_atlas)
     ligand={g for row in atlas.interactions for g in row.ligand_components}
     receptor={g for row in atlas.interactions for g in row.receptor_components}
-    cols=np.load(Path(config.legacy_output)/'cache/retained_indices.npy')
+    cols=(np.load(Path(config.legacy_output)/'cache/retained_indices.npy') if config.use_legacy_feature_mask
+          else np.arange(len(pd.read_csv(paths['features'])),dtype=np.int64))
     features=pd.read_csv(paths['features']).iloc[cols].reset_index(drop=True)
     manifest=json.loads(Path(config.prior_manifest).read_text()) if Path(config.prior_manifest).is_file() else {}
     coverage={}

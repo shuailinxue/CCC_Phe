@@ -281,3 +281,30 @@ def test_resident_gpu_inputs_and_regulatory_aggregation_match_cpu(synthetic,tmp_
     actual,gpu_mask=aggregate_activity(*(a.cuda(0) for a in args),d.features,prior,d.categories)
     torch.testing.assert_close(actual.cpu(),expected,rtol=1e-4,atol=1e-5)
     assert torch.equal(gpu_mask.cpu(),mask)
+
+
+def test_embedding_inference_does_not_read_CCC_targets(synthetic):
+    rows=synthetic.rows[0][:7];model=make_model(synthetic).eval()
+    with torch.no_grad(): expected=synthetic.forward(model,synthetic.batch(rows))
+    class UnreadableTargets:
+        def __getitem__(self,rows): raise AssertionError('Inference read CCC supervision')
+    synthetic.targets=UnreadableTargets()
+    batch=synthetic.batch(rows,include_target=False,include_bio=False)
+    assert 'target' not in batch and 'nuisance' not in batch
+    with torch.no_grad(): actual=synthetic.forward(model,batch,reconstruct=False)
+    assert 'reconstruction' not in actual and 'H' not in actual
+    torch.testing.assert_close(actual['Z'],expected['Z'],rtol=0,atol=0)
+
+
+def test_historical_input_configuration_is_frozen(tmp_path):
+    from phenoniche.gnn.inputs import resolve_input
+    from phenoniche.ccc.config import CCCInputConfig
+    source=tmp_path/'old/cache';source.mkdir(parents=True)
+    (source/'input_manifest.json').write_text(json.dumps({'signature':{'expression_coverage_fraction':.1,'n_neighbors':30,'sigma_um':20.}}))
+    legacy=tmp_path/'legacy/cache';legacy.mkdir(parents=True)
+    (legacy/'input_manifest.json').write_text(json.dumps({'signature':{'source':str(source/'ccc.npy')}}))
+    current=replace(CCCInputConfig(),expression_coverage_fraction=.05,output_dir=str(tmp_path/'new'))
+    old=replace(GNNConfig(),legacy_output=str(legacy.parent))
+    pinned=resolve_input(old,current)
+    assert pinned.expression_coverage_fraction==.1 and pinned.output_dir==str(source.parent)
+    assert resolve_input(replace(old,use_legacy_feature_mask=False),current)==current

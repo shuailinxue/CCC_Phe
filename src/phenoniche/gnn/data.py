@@ -14,6 +14,7 @@ from ..ccc.data import load_cached_input, _cache_is_valid, _manifest_signature, 
 from ..data import feature_statistics
 from .biology import read_prior, compile_prior, activity_scores, aggregate_activity
 from .model import physical_weights
+from .inputs import resolve_input
 
 
 def align_cells(adata, cached):
@@ -139,14 +140,15 @@ class GraphData:
             self._resident[branch+'_mask']=tensor(self.observed_masks[branch][:])
         print(f'Static graph inputs resident on {device}',flush=True)
 
-    def batch(self, rows, device='cpu', include_bio=True):
+    def batch(self, rows, device='cpu', include_bio=True, include_target=True):
         if hasattr(self,'_resident') and str(device).startswith('cuda'):
             r=self._resident;row=torch.as_tensor(rows,device=device,dtype=torch.long);local=r['members'][row]
             unique,inverse=torch.unique(local.reshape(-1),sorted=True,return_inverse=True)
             batch={'expression':r['expression'][unique],'types':r['types'][unique],
                    'local_index':inverse.reshape(local.shape),'coordinates':r['coordinates'][local],
-                   'anchor_weights':r['weights'][row],'cell_ids':local,
-                   'target':r['target'][row],'nuisance':r['nuisance'][row]}
+                   'anchor_weights':r['weights'][row],'cell_ids':local}
+            if include_target: batch['target']=r['target'][row]
+            if include_target or include_bio: batch['nuisance']=r['nuisance'][row]
             if include_bio:
                 for branch in self.observations:
                     batch[branch]=r[branch][row];batch[branch+'_mask']=r[branch+'_mask'][row]
@@ -159,8 +161,9 @@ class GraphData:
         tensor = lambda x: torch.as_tensor(np.asarray(x).copy(),device=device)
         batch = {'expression':tensor(x),'types':tensor(self.types[unique].astype(np.int64)),
                  'local_index':tensor(inverse.reshape(local.shape)), 'coordinates':tensor(self.coordinates[local]),
-                 'anchor_weights':tensor(self.weights[rows]), 'cell_ids':tensor(local),
-                 'target':tensor(self.targets[rows]),'nuisance':tensor(self.nuisance[rows]),'unique':unique}
+                 'anchor_weights':tensor(self.weights[rows]), 'cell_ids':tensor(local),'unique':unique}
+        if include_target: batch['target']=tensor(self.targets[rows])
+        if include_target or include_bio: batch['nuisance']=tensor(self.nuisance[rows])
         if include_bio:
             for branch in self.observations:
                 batch[branch] = tensor(self.observations[branch][rows])
@@ -174,7 +177,7 @@ class GraphData:
 def prepare_graph_data(config):
     """Called only after the audit gate. Reads legacy caches; never rebuilds or modifies them."""
     import anndata as ad
-    inp = ccc_config()
+    inp = resolve_input(config,ccc_config())
     if not _cache_is_valid(cache_paths(inp),_manifest_signature(inp)): raise ValueError('Source CCC cache has invalid provenance')
     cached = load_cached_input(inp); adata = ad.read_h5ad(inp.processed_h5ad)
     order = align_cells(adata,cached)
@@ -187,7 +190,8 @@ def prepare_graph_data(config):
     samples = adata.obs[config.sample_column].astype(str).to_numpy()[order] if config.sample_column else None
     if samples is not None and any(len(set(samples[m]))>1 for m in members): raise ValueError('Neighborhoods cross sample identities; audit spatial units')
     rows,folds,blocks=spatial_split(xy,members,config.split_seed,config.block_um,config.validation_fraction,config.test_fraction,samples)
-    columns=np.load(Path(config.legacy_output)/'cache/retained_indices.npy')
+    columns=(np.load(Path(config.legacy_output)/'cache/retained_indices.npy') if config.use_legacy_feature_mask
+             else np.arange(len(cached['features']),dtype=np.int64))
     if len(set(columns))!=len(columns) or np.any(np.diff(columns)<=0): raise ValueError('Legacy retained feature order is invalid')
     features=cached['features'].iloc[columns].reset_index(drop=True)
     targets=Targets(cached['matrix'],columns)

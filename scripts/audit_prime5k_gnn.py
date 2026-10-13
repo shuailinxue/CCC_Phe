@@ -15,10 +15,15 @@ from phenoniche.gnn.data import align_cells,neighborhoods
 from phenoniche.gnn.model import physical_weights
 from phenoniche.gnn.losses import pair_ccc
 from phenoniche.gnn.biology import checksum
+from phenoniche.gnn.config import GNNConfig
+from phenoniche.gnn.inputs import resolve_input
 
 if __name__=='__main__':
-    dest=STORAGE_ROOT/'data/audits/xenium_prime_5k';dest.mkdir(parents=True,exist_ok=True)
-    inp=default_config();assert _cache_is_valid(cache_paths(inp),_manifest_signature(inp))
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--config',default=str(Path(__file__).resolve().parents[1]/'config/gnn.json'))
+    cfg=GNNConfig.from_json(parser.parse_args().config)
+    dest=Path(cfg.audit_file).parent;dest.mkdir(parents=True,exist_ok=True)
+    inp=resolve_input(cfg,default_config());assert _cache_is_valid(cache_paths(inp),_manifest_signature(inp))
     cached=load_cached_input(inp);adata=ad.read_h5ad(inp.processed_h5ad);order=align_cells(adata,cached)
     assert np.array_equal(order,np.arange(adata.n_obs))
     assert adata.uns['dataset']=='Xenium_Prime_Breast_Cancer_FFPE'
@@ -37,8 +42,9 @@ if __name__=='__main__':
     labels,table,coverage=namespace['annotate_clusters'](adata.X,adata.var_names,clusters)
     assert np.array_equal(labels,adata.obs.cell_type_coarse.astype(str))
     table.to_csv(dest/'label_replay.csv',index=False)
-    columns=np.load(OUTPUT_DIR/'cache/retained_indices.npy');features=cached['features'].iloc[columns].reset_index(drop=True)
-    assert len(columns)==450 and len(set(columns))==450 and np.all(np.diff(columns)>0)
+    columns=(np.load(Path(cfg.legacy_output)/'cache/retained_indices.npy') if cfg.use_legacy_feature_mask else np.arange(len(cached['features'])))
+    features=cached['features'].iloc[columns].reset_index(drop=True)
+    assert len(columns)>0 and len(set(columns))==len(columns) and np.all(np.diff(columns)>0)
     panel={str(g).upper() for g in adata.var_names}
     assert all(set(canonicalize_complex(v))<=panel for col in ('ligand','receptor') for v in features[col])
     members,weights=neighborhoods(np.asarray(cached['coordinates']))
@@ -54,14 +60,15 @@ if __name__=='__main__':
     expected=np.asarray(cached['matrix'][rows])[:,columns]
     assert np.allclose(reproduced,expected,rtol=1e-4,atol=2e-5)
     evidence={'dataset':str(adata.uns['dataset']),'scope':'independent_downstream_niche','cells':adata.n_obs,'genes':adata.n_vars,
-              'cell_ID_coordinate_type_alignment':'exact','CCC_matrix_finite_nonnegative':True,'feature_count':450,'fully_measurable_feature_LR':True,
+              'cell_ID_coordinate_type_alignment':'exact','CCC_matrix_finite_nonnegative':True,'feature_count':len(columns),'fully_measurable_feature_LR':True,
               'CCC_exact_pairwise_replay_rows':rows.tolist(),'CCC_max_absolute_difference':float(np.abs(reproduced-expected).max()),
               'label_replay_match_fraction':float(np.mean(labels==adata.obs.cell_type_coarse.astype(str))),
               'label_source_sha256':checksum(label_source),'label_status':'provisional broad marker labels; not official 10x annotation',
               'label_method_inputs':['expression counts','official expression graph clusters','fixed broad cell-type markers'],
-              'outcome_or_TLS_input_used':False,'mask_source_sha256':checksum(OUTPUT_DIR/'cache/retained_indices.npy'),
+              'outcome_or_TLS_input_used':False,'mask_source_sha256':checksum(Path(cfg.legacy_output)/'cache/retained_indices.npy' if cfg.use_legacy_feature_mask else cached['paths']['features']),
               'clinical_Cox_analysis_run':False,'BayesPrism_and_patient_labels_used':False,
-              'feature_mask_policy':'fixed historical 450-feature universe; effective mask/RMS estimated only on GNN training spatial blocks'}
+              'expression_coverage_fraction':inp.expression_coverage_fraction,
+              'feature_mask_policy':'historical AE retained universe' if cfg.use_legacy_feature_mask else 'full source CCC universe; effective mask/RMS estimated only on GNN training spatial blocks'}
     ep=dest/'study_evidence.json';ep.write_text(json.dumps(evidence,indent=2)+'\n')
     proof={'status':'verified','evidence_file':str(ep),'sha256':checksum(ep)}
     study={k:proof.copy() for k in ('st_anchor','feature_mask','cell_labels')}

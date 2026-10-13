@@ -118,7 +118,7 @@ def infer(model,data,output,batch_size=128):
     with torch.no_grad():
         for start in range(0,len(data.cells),batch_size):
             rows=np.arange(start,min(start+batch_size,len(data.cells)))
-            batch=data.batch(rows,next(model.parameters()).device,include_bio=False);result=data.forward(model,batch)
+            batch=data.batch(rows,next(model.parameters()).device,include_bio=False,include_target=False);result=data.forward(model,batch,reconstruct=False)
             for key in arrays: arrays[key][rows]=result[key].cpu().numpy()
     for key,p in paths.items(): arrays[key].flush();del arrays[key];p.with_suffix('.incomplete.npy').replace(p)
     np.save(output/'H.npy',model.dictionary.detach().cpu().numpy())

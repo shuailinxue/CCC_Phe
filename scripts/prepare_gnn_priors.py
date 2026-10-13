@@ -5,9 +5,17 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import numpy as np,pandas as pd
 from phenoniche.storage import STORAGE_ROOT,OUTPUT_DIR
 from phenoniche.gnn.biology import checksum
+from phenoniche.gnn.config import GNNConfig
+from phenoniche.gnn.inputs import resolve_input
+from phenoniche.ccc.config import default_config
 
 if __name__=='__main__':
-    root=STORAGE_ROOT/'data/priors';raw=root/'raw';manifest={};selection={}
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--config',default=str(Path(__file__).resolve().parents[1]/'config/gnn.json'));parser.add_argument('--upstream-only',action='store_true')
+    args=parser.parse_args();cfg=GNNConfig.from_json(args.config)
+    root=Path(cfg.prior_manifest).parent;root.mkdir(parents=True,exist_ok=True)
+    raw=STORAGE_ROOT/'data/priors/raw';manifest={};selection={}
+    if Path(cfg.upstream_prior).parent!=root or Path(cfg.downstream_prior).parent!=root: raise ValueError('Prior TSV files and manifest must share their configured directory')
     ct=pd.read_csv(raw/'collectri.tsv',sep='\t')
     usable=ct.is_directed & (ct.is_stimulation ^ ct.is_inhibition) & ct.references.notna() & ct.source_genesymbol.notna() & ct.target_genesymbol.notna()
     up=ct.loc[usable].copy()
@@ -21,12 +29,13 @@ if __name__=='__main__':
     manifest['upstream']={'database':'CollecTRI','version':'OmniPath human snapshot 2026-10-13','url':'https://omnipathdb.org/interactions?datasets=collectri&genesymbols=1&fields=sources,references&format=tsv','species':'human','sha256':checksum(root/'upstream.tsv'),'raw_sha256':checksum(raw/'collectri.tsv')}
     selection['upstream']={'raw_rows':len(ct),'kept_rows':len(upstream),'ambiguous_signed_rows_excluded':int((ct.is_stimulation & ct.is_inhibition).sum()),'missing_evidence_excluded':int(ct.references.isna().sum())}
     nichenet=raw/'nichenet_alternate.rds'
-    if nichenet.is_file() and '--upstream-only' not in sys.argv:
+    if nichenet.is_file() and not args.upstream_only:
         md5=hashlib.md5(nichenet.read_bytes()).hexdigest()
         if md5!='b09606b04b2d4490418d9028c0e58b9f': raise ValueError('NicheNet official MD5 mismatch or incomplete download')
         import pyreadr
         matrix=pyreadr.read_r(str(nichenet))[None]
-        feature=pd.read_csv(STORAGE_ROOT/'data/ccc/cache/features.csv').iloc[np.load(OUTPUT_DIR/'cache/retained_indices.npy')]
+        inp=resolve_input(cfg,default_config());feature=pd.read_csv(Path(inp.output_dir)/'cache/features.csv')
+        if cfg.use_legacy_feature_mask: feature=feature.iloc[np.load(Path(cfg.legacy_output)/'cache/retained_indices.npy')]
         requested=set(feature.ligand.str.upper())
         selected_ligands=[ligand for ligand in matrix.columns if str(ligand).upper() in requested]
         rows=[]

@@ -41,7 +41,7 @@ class MicroenvironmentGNN(nn.Module):
         h = F.softplus(self.raw_dictionary) * self.feature_mask
         return h / h.sum(1, keepdim=True).clamp_min(1e-8)
 
-    def forward(self, expression, types, local_index, coordinates, anchor_weights, cell_ids=None, pair_override=None):
+    def forward(self, expression, types, local_index, coordinates, anchor_weights, cell_ids=None, pair_override=None, reconstruct=True):
         # Encode each unique physical cell once in the batch, reuse overlapping members.
         unique_h = self.cell_encoder(torch.cat((expression, self.type_embedding(types)), dim=1))
         h = unique_h[local_index]
@@ -67,5 +67,8 @@ class MicroenvironmentGNN(nn.Module):
         mixture = self.composition_head(pooled).softmax(1)
         activity = F.softplus(self.activity_head(pooled)) + 1e-8
         z = activity * mixture
-        return {"Z": z, "P": mixture, "activity": activity.squeeze(1), "H": self.dictionary,
-                "reconstruction": z @ self.dictionary}
+        result = {"Z": z, "P": mixture, "activity": activity.squeeze(1)}
+        if reconstruct:
+            result['H'] = self.dictionary
+            result['reconstruction'] = z @ result['H']
+        return result

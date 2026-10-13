@@ -43,6 +43,10 @@ niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线
 
 ## 微环境 GNN
 
+当前新分析配置的 LR 表达覆盖率为 5%，使用完整的初筛 CCC 特征集合，不再套用旧 AE 的 450 列。新的缓存、先验、审计和结果分别写入 NAS 中的 `ccc_expr05`、`priors_expr05`、`xenium_prime_5k_expr05` 和 `microenvironment_gnn_expr05` 分析目录；现有 Notebook 和 checkpoint 仍对应已完成的 10% 分析。旧模型按其原输入 manifest 读取冻结的缓存。推理 Z 时不读取 CCC 监督目标，也不计算完整 CCC 重构；完整预测可由保存的 `Z @ H` 按需分块计算。
+
+`scripts/assess_ccc_storage.py` 使用 4,096 个真实微环境计算精确 CCC 样本，并核算 CSR 大小及 GPU forward 开销。它只做存储/性能评估，不训练模型；报告写入 NAS `artifacts/ccc_expr05_storage_assessment.json`。
+
 `细胞表达 + 类型 + 空间关系 -> directed attention/message passing -> 微环境 Z >= 0 -> C_hat = Z @ H`。
 每个微环境一个向量，默认 32 个程序。批内重复细胞只编码一次；只缓存 30 个邻域成员和权重，不存储全部子图。H 在原始 CCC 单位下逐行和为 1，因此 `sum(Z_i) = sum(C_hat_i)`，强度与组成同时保留。CCC 只作监督，绝不进入 GNN forward。
 

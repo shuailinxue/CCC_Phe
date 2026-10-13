@@ -3,12 +3,12 @@
   "sigma_um": 20.0,
   "ccc_batch_size": 256,
   "lr_batch_size": 32,
-  "expression_coverage_fraction": 0.1,
+  "expression_coverage_fraction": 0.05,
   "opportunity_support_fraction": 0.01,
   "opportunity_support_minimum": 20,
   "device": "auto",
   "minimum_features": 8,
   "processed_h5ad": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/processed/xenium_prime_5k_breast.h5ad",
   "lr_atlas": "data/commuspace_human_lr_atlas.tsv",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/ccc"
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/ccc_expr05"
 }

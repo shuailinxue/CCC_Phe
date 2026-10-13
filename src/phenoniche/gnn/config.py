@@ -43,6 +43,7 @@ class GNNConfig:
     audit_file: str = ""
     output_dir: str = str(STORAGE_ROOT / "outputs/microenvironment_gnn")
     legacy_output: str = str(OUTPUT_DIR)
+    use_legacy_feature_mask: bool = True  # Missing in historical checkpoints: preserve their exact input.
     k_min: int = 4
     k_max: int = 15
     clustering_sample_size: int = 50000
