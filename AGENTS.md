@@ -22,6 +22,14 @@ This repository has one analysis mainline only:
 - TLS labels, TLS regions, TLS gene lists, and downstream niche results must never enter
   ST-anchor construction, Cox screening, or hyperparameter selection.
 
+# Editing and version management
+
+- When the user requests changes, edit the current project files directly.
+- Maintain a single working version; do not create version directories, duplicate
+  project trees, or version-suffixed copies of code or notebooks.
+- The user manages versions through Git. Do not create a new version or backup copy
+  for routine edits unless the user explicitly requests it.
+
 # Storage rule
 
 - Store all generated outputs, model checkpoints, matrix caches, processed datasets,

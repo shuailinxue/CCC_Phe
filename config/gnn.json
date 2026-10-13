@@ -1,0 +1,13 @@
+{
+  "programs": 32,
+  "hidden": 64,
+  "encoder_genes": 512,
+  "batch_size": 128,
+  "mode": "ccc_only",
+  "prior_control": "none",
+  "holdout_bio_genes": true,
+  "block_um": 400.0,
+  "contrastive": false,
+  "audit_file": "",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/microenvironment_gnn"
+}
