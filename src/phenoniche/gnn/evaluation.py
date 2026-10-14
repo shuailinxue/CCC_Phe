@@ -93,7 +93,7 @@ def diagnostics(data,arrays,h,labels,config):
     out['effective_programs']=float(np.exp(-(mean*np.log(np.maximum(mean,1e-12))).sum()))
     cosine=cosine_matrix(h);out['maximum_dictionary_cosine']=float(cosine[np.triu_indices(len(h),1)].max())
     out['dictionary_entropy']=float((-(h*np.log(np.maximum(h,1e-12))).sum(1)).mean())
-    out['interpretation']='Single-tissue association diagnostics; composition is auxiliary supervision, not evidence of causality or phenotype.'
+    out['interpretation']='Single-tissue association diagnostics; composition is downstream descriptive analysis, not evidence of causality or phenotype.'
     (Path(config.output_dir)/'diagnostics.json').write_text(json.dumps(out,indent=2)+'\n')
     return out
 

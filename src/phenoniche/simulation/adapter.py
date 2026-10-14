@@ -98,7 +98,8 @@ def adapt(adata,lr,config,output):
     cells=adata.obs[['cell_id','cell_type']].reset_index(drop=True).copy()
     data=GraphData(x,totals,genes,encoder,selected.mean(0),np.maximum(selected.std(0),.1),types,TYPES,xy,members,weights,Targets(matrix,np.arange(len(features))),scale,mask,features,cells,rows,folds,blocks,comp,audit)
     data.original_feature_scale=rms
+    data.feature_mean=mean;data.feature_nonzero_fraction=nz
     return data
 
 def gnn_config(config,output):
-    return replace(GNNConfig(),seed=config.seed,split_seed=config.seed,hidden=config.hidden,programs=config.programs,batch_size=config.batch_size,max_epochs=config.gnn_epochs,patience=config.patience,device=config.device,output_dir=str(output),lambda_comp=config.lambda_comp,lambda_reg=config.lambda_reg,k_min=config.k_min,k_max=config.k_max,clustering_sample_size=10000,silhouette_sample_size=1500)
+    return replace(GNNConfig(),seed=config.seed,split_seed=config.seed,hidden=config.hidden,programs=config.programs,batch_size=config.batch_size,max_epochs=config.gnn_epochs,patience=config.patience,device=config.device,output_dir=str(output),lambda_comp=config.lambda_comp,lambda_reg=config.lambda_reg,k_min=config.k_min,k_max=config.k_max,clustering_sample_size=10000,silhouette_sample_size=1500,dictionary_initialization=config.dictionary_initialization,nmf_initialization_sample_size=config.nmf_initialization_sample_size,nmf_initialization_max_iter=config.nmf_initialization_max_iter)

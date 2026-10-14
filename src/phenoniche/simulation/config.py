@@ -42,6 +42,9 @@ class SimulationConfig:
     ccc_error:str='huber'
     ccc_huber_delta:float=3.
     gnn_epochs:int=40
+    dictionary_initialization:str='rms_kmeans'
+    nmf_initialization_sample_size:int=8192
+    nmf_initialization_max_iter:int=500
     ae_stage1_epochs:int=25
     ae_stage2_epochs:int=8
     patience:int=6
@@ -58,6 +61,10 @@ class SimulationConfig:
     lr_atlas:str=str(ROOT/'data/commuspace_human_lr_atlas.tsv')
     output_dir:str=str(STORAGE_ROOT/'outputs/tumor_edge_simulation_four_programs')
     def __post_init__(self):
+        if self.dictionary_initialization not in ('rms_kmeans','log1p_active_kmeans','nmf'):
+            raise ValueError('Unknown communication dictionary initialization')
+        if self.nmf_initialization_sample_size<self.programs or self.nmf_initialization_max_iter<1:
+            raise ValueError('Invalid NMF initialization budget')
         if self.n_cells<100 or self.n_cells%2 or self.n_cells//(2*self.replicates)<20:raise ValueError('Use even n_cells >=100 and >=40 cells/replicate')
         if self.replicates not in (1,) and self.replicates<3:raise ValueError('Use one spatially split tissue or >=3 sample-split replicates')
         if not 0<self.core_radius_um<self.core_radius_um+self.edge_width_um<self.outer_radius_um:raise ValueError('Invalid radial geometry')

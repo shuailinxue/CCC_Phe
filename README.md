@@ -45,11 +45,11 @@ niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线
 
 当前 Encoder 只输入细胞表达与空间图，删除细胞类型 embedding 和所有上下游调控训练分支。每个微环境输出 `Z = activity × softmax(program logits)`；CCC 重构为 `Z @ H`，H 非负、逐行和为 1。当前不训练或展示细胞组成重构。
 
-`L = masked scaled CCC Huber + lambda_reg × regularization`，默认 `lambda_reg=0.005`，`lambda_comp=0`。组成重构损失不计算、不参与梯度和模型选择；细胞类型仅用于有向 CCC 标签及下游描述性分析，不进入 Encoder。无 TF/ligand-target prior 训练依赖。
+`L = bounded nonzero-weighted scaled CCC Huber + lambda_reg × regularization`，默认 `lambda_reg=0.005`，`lambda_comp=0`。组成重构损失不计算、不参与梯度和模型选择；细胞类型仅用于有向 CCC 标签及下游描述性分析，不进入 Encoder。无 TF/ligand-target prior 训练依赖。
 
-保持 5% LR 表达覆盖率、KNN=30、sigma=20 µm、原始 CCC 数值公式及训练集有效特征 mask。表达预处理、特征尺度和 mask 只在训练空间块拟合，邻域跨 fold 的中心被剔除，K=4–15 在训练块拟合、验证块选择。组成诊断及旧 AE 比较属于描述性分析，不证明 phenotype 或通讯因果。
+保持 10% LR 表达覆盖率、KNN=30、sigma=20 µm、原始 CCC 数值公式及训练集有效特征 mask。表达预处理、特征尺度和 mask 只在训练空间块拟合，邻域跨 fold 的中心被剔除，K=4–15 在训练块拟合、验证块选择。组成诊断及旧 AE 比较属于描述性分析，不证明 phenotype 或通讯因果。
 
-打开根目录 `XeniumPrime5K_GNN_niche_analysis.ipynb`，选择 `cccphe` kernel，Run All。Notebook 调用项目模块完成 CCC 缓存构建、真实标签/特征/CCC 审计、训练、推理、niche 选择和可视化。完整且匹配配置的结果直接复用；已有不同配置/架构 checkpoint 拒绝覆盖。当前 CCC＋正则模型写入 NAS `outputs/microenvironment_gnn_ccc_only_expr05/`；已有组成约束模型的输出与权重保留；旧 AE 和旧 GNN 结果保留。
+打开根目录 `XeniumPrime5K_GNN_niche_analysis.ipynb`，选择 `cccphe` kernel，Run All。Notebook 调用项目模块完成 CCC 缓存构建、真实标签/特征/CCC 审计、训练、推理、niche 选择和可视化。完整且匹配配置的结果直接复用；已有不同配置/架构 checkpoint 拒绝覆盖。当前 LR 完整输入＋残差 CCC 模型写入 NAS `outputs/microenvironment_gnn_nmf_expr10_5epochs/`；已有组成约束模型的输出与权重保留；旧 AE 和旧 GNN 结果保留。
 
 命令行等价入口：`python scripts/run_gnn.py ensure`；仅在审计已完成时训练用 `train`，推理用 `infer`。独立下游单组织分析明确审计 BayesPrism、临床终点与患者匹配不适用；结果不进入临床 CCC/Cox 主线。此次代码改造不执行真实训练或 Notebook。
 
@@ -60,3 +60,5 @@ niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线
 训练目标为 CCC 重构 + 0.005 × program regularization；无 Composition loss、Cell Type Embedding 或旧调控损失。CCC 使用训练集部分 RMS 归一化和 Huber error；native activity 参数在优化时重参数化，保存前合并回原 Linear，GNN 推理架构不变。niche 使用由 H 推导的 Z 距离，避免重复程序维度被标准化放大。K=4–15 选择不使用真实标签，另报固定 K=4 对照。
 
 配置：`config/tumor_edge_simulation.json`。当前完整结果写入 NAS `outputs/tumor_edge_simulation_four_programs/`；旧模拟和 Xenium 结果保留。镜像半环匹配径向/局部组成；单组织按镜像径向扇区划分并剔除共享细胞，真值仅用于生成和评估。Notebook 已执行并保存实际结果；匹配的完整结果复用。CLI：`python scripts/run_tumor_edge_simulation.py --run-full`。数值设置诊断入口 `scripts/tune_tumor_edge_simulation.py` 记录在较早的均一 LR 模拟上选择的参数；新旧模拟数据不同，不能声称分数提升全来自模型。
+
+当前 Xenium GNN 先在最多 8,192 个训练空间块微环境的有效 CCC 上做 NMF，初始化非负 H 和程序活性偏置，随后 GNN 与 H 联合训练最多 5 个 epoch；无编码器活性预训练或交替优化。配置采用 LR 必选＋训练集高变基因补充，总输入 2,048 基因；128 hidden、两层 residual directed message passing、32 个非负程序。CCC 使用训练支持率定义的非零加权 Huber（权重上限 8，按特征期望归一化），零项仍监督；正则保留，无细胞类型输入或组成 loss。训练报告同时显示未加权误差、非零项误差和零/训练均值基线改善。新模型写入 NAS `outputs/microenvironment_gnn_nmf_expr10_5epochs/`，旧结果保留。

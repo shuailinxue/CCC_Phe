@@ -63,9 +63,12 @@
   "fixed_k": 4,
   "k_min": 4,
   "k_max": 15,
-  "device": "cuda:1",
+  "device": "cuda:2",
   "figure_dpi": 600,
   "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_simulation_four_programs",
-  "program_design": "four_programs"
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_simulation_four_programs_nmf",
+  "program_design": "four_programs",
+  "dictionary_initialization": "nmf",
+  "nmf_initialization_sample_size": 8192,
+  "nmf_initialization_max_iter": 500
 }

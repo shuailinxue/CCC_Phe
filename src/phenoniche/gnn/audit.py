@@ -24,7 +24,8 @@ def protect_output(config):
     if (output/'checkpoint.pt').is_file():
         import torch
         payload=torch.load(output/'checkpoint.pt',map_location='cpu',weights_only=False)
-        if payload.get('architecture')!=config.architecture or payload.get('config')!=config.to_dict():
+        from .config import GNNConfig
+        if payload.get('architecture')!=config.architecture or GNNConfig(**payload['config']).to_dict()!=config.to_dict():
             raise ValueError('Existing checkpoint is protected: architecture/configuration differs')
 
 

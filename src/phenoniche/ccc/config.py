@@ -14,13 +14,13 @@ class CCCInputConfig:
     sigma_um: float = 20.0
     ccc_batch_size: int = 256
     lr_batch_size: int = 32
-    expression_coverage_fraction: float = 0.05
+    expression_coverage_fraction: float = 0.10
     opportunity_support_fraction: float = 0.01
     opportunity_support_minimum: int = 20
     device: str = "auto"
     processed_h5ad: str = str(PROCESSED_DIR / "xenium_prime_5k_breast.h5ad")
     lr_atlas: str = str(ROOT / "data/commuspace_human_lr_atlas.tsv")
-    output_dir: str = str(STORAGE_ROOT / 'data/ccc_expr05')
+    output_dir: str = str(STORAGE_ROOT / 'data/ccc_expr10')
 
     def to_dict(self):
         return asdict(self)

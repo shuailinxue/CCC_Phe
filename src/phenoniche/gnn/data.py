@@ -13,6 +13,7 @@ from ..ccc.data import load_cached_input, _cache_is_valid, _manifest_signature, 
 from ..data import feature_statistics
 from .model import physical_weights
 from .inputs import resolve_input
+from .genes import select_encoder_genes
 
 
 def align_cells(adata, cached):
@@ -75,9 +76,11 @@ def spatial_split(xy, members, seed=40700, block_um=400., validation=.2, test=.2
     return rows, folds, inverse
 
 
-def expression_block(x, rows, genes, totals):
+def expression_block(x, rows, genes, totals,mode='library_log'):
     block = x[rows][:,genes]
     if sp.issparse(block): block = block.toarray()
+    if mode=='log_counts':return np.log1p(block).astype(np.float32)
+    if mode!='library_log':raise ValueError('Unknown expression normalization')
     return np.log1p(block * (10000 / np.maximum(totals[rows,None],1))).astype(np.float32)
 
 
@@ -109,17 +112,33 @@ class GraphData:
     blocks: np.ndarray
     composition_target: np.ndarray
     audit: dict
+    feature_nonzero_fraction: np.ndarray | None = None
+    feature_mean: np.ndarray | None = None
+    expression_normalization: str = 'library_log'
+    library_mean: float = 0.
+    library_scale: float = 10.
+    raw_lr_indices: np.ndarray | None = None
+    cell_state_scores: object = None
+    cell_state_preprocessing: dict | None = None
+
+    def expression_features(self,rows):
+        x=expression_block(self.expression,rows,self.encoder_indices,self.totals,self.expression_normalization)
+        x=(x-self.gene_mean)/self.gene_scale
+        if self.cell_state_scores is not None:
+            states=np.asarray(self.cell_state_scores[rows],np.float32)
+            if not np.isfinite(states).all():raise ValueError('Cell-state RNA features were not projected for requested cells')
+            x=np.column_stack((x,states))
+        return np.column_stack((x,(np.log1p(self.totals[rows])-self.library_mean)/self.library_scale)).astype(np.float32)
 
     def prepare_device(self, device, cache_dir):
         """Cache static cell inputs once; learned cell representations remain batch-local."""
         if not str(device).startswith('cuda'): return
         cache_dir=Path(cache_dir);cache_dir.mkdir(parents=True,exist_ok=True)
-        values=np.lib.format.open_memmap(cache_dir/'encoder_features.npy',mode='w+',dtype=np.float32,shape=(len(self.cells),len(self.encoder_indices)+1))
+        components=0 if self.cell_state_scores is None else self.cell_state_scores.shape[1]
+        values=np.lib.format.open_memmap(cache_dir/'encoder_features.npy',mode='w+',dtype=np.float32,shape=(len(self.cells),len(self.encoder_indices)+components+1))
         for start in range(0,len(values),8192):
             rows=np.arange(start,min(start+8192,len(values)))
-            x=expression_block(self.expression,rows,self.encoder_indices,self.totals)
-            values[rows,:-1]=(x-self.gene_mean)/self.gene_scale
-            values[rows,-1]=np.log1p(self.totals[rows])/10
+            values[rows]=self.expression_features(rows)
         values.flush()
         tensor=lambda a:torch.as_tensor(np.asarray(a).copy(),device=device)
         self._resident={'expression':tensor(values),
@@ -130,11 +149,17 @@ class GraphData:
         for start in range(0,len(self.cells),8192):
             stop=min(start+8192,len(self.cells));target[start:stop]=tensor(self.targets[slice(start,stop)])
         self._resident['target']=target
+        self._resident_cell_ids=np.arange(len(self.cells))
+        if self.raw_lr_indices is not None:self.enable_lr_inputs(self.raw_lr_indices)
         print(f'Static graph inputs resident on {device}',flush=True)
 
     def batch(self, rows, device='cpu', include_target=True):
-        if hasattr(self,'_resident') and str(device).startswith('cuda'):
-            r=self._resident;row=torch.as_tensor(rows,device=device,dtype=torch.long);local=r['members'][row]
+        if hasattr(self,'_resident') and self._resident['expression'].device==torch.device(device):
+            r=self._resident;row=torch.as_tensor(rows,device=device,dtype=torch.long)
+            if 'center_lookup' in r:
+                row=r['center_lookup'][row]
+                if (row<0).any():raise ValueError('Requested center was not preloaded for the sampled experiment')
+            local=r['members'][row]
             unique,inverse=torch.unique(local.reshape(-1),sorted=True,return_inverse=True)
             batch={'expression':r['expression'][unique],
                    'local_index':inverse.reshape(local.shape),'coordinates':r['coordinates'][local],
@@ -142,12 +167,10 @@ class GraphData:
             if include_target:
                 batch['target']=r['target'][row]
                 batch['composition_target']=r['composition_target'][row]
+            if 'raw_lr_expression' in r:batch['raw_lr_expression']=r['raw_lr_expression'][unique]
             return batch
         local = np.asarray(self.members[rows]); unique, inverse = np.unique(local, return_inverse=True)
-        x = expression_block(self.expression, unique, self.encoder_indices, self.totals)
-        x = (x - self.gene_mean) / self.gene_scale
-        # Raw library size supplies intensity information lost by compositional expression normalization.
-        x = np.column_stack((x,np.log1p(self.totals[unique])/10)).astype(np.float32)
+        x=self.expression_features(unique)
         tensor = lambda x: torch.as_tensor(np.asarray(x).copy(),device=device)
         batch = {'expression':tensor(x),
                  'local_index':tensor(inverse.reshape(local.shape)), 'coordinates':tensor(self.coordinates[local]),
@@ -155,9 +178,37 @@ class GraphData:
         if include_target:
             batch['target']=tensor(self.targets[rows])
             batch['composition_target']=tensor(self.composition_target[rows])
+        if self.raw_lr_indices is not None:
+            raw=self.expression[unique][:,self.raw_lr_indices]
+            batch['raw_lr_expression']=tensor(raw.toarray() if sp.issparse(raw) else raw)
         return batch
 
+    def prepare_subset_device(self, centers, device):
+        """Preload only sampled centers and their physical cells, never all targets."""
+        centers=np.unique(np.asarray(centers,dtype=np.int64))
+        if len(centers)==0 or (centers<0).any() or (centers>=len(self.cells)).any():raise ValueError('Invalid sampled centers')
+        local=np.asarray(self.members[centers]);cells=np.unique(local)
+        values=self.expression_features(cells)
+        lookup=np.full(len(self.cells),-1,np.int64);lookup[centers]=np.arange(len(centers))
+        tensor=lambda a:torch.as_tensor(np.asarray(a).copy(),device=device)
+        self._resident={'expression':tensor(values),'coordinates':tensor(self.coordinates[cells]),
+            'members':tensor(np.searchsorted(cells,local)),'weights':tensor(self.weights[centers]),
+            'composition_target':tensor(self.composition_target[centers]),'target':tensor(self.targets[centers]),
+            'center_lookup':tensor(lookup)}
+        self._resident_cell_ids=cells
+        if self.raw_lr_indices is not None:self.enable_lr_inputs(self.raw_lr_indices)
+        print(f'Sampled inputs on {device}: {len(centers)} centers, {len(cells)} shared physical cells',flush=True)
+
+    def enable_lr_inputs(self,indices):
+        self.raw_lr_indices=np.asarray(indices,dtype=np.int64)
+        if hasattr(self,'_resident'):
+            cells=getattr(self,'_resident_cell_ids',np.arange(len(self.cells)))
+            raw=self.expression[cells][:,self.raw_lr_indices]
+            if sp.issparse(raw):raw=raw.toarray()
+            self._resident['raw_lr_expression']=torch.as_tensor(np.asarray(raw).copy(),device=self._resident['expression'].device)
+
     def forward(self,model,batch,**kwargs):
+        if getattr(model,'lr_pair_pooling',False):kwargs['raw_lr_expression']=batch['raw_lr_expression']
         return model(*(batch[k] for k in ('expression','local_index','coordinates','anchor_weights','cell_ids')),**kwargs)
 
 
@@ -197,8 +248,8 @@ def prepare_graph_data(config):
     train_cells=np.unique(members[rows[0]])
     sample=np.random.default_rng(config.split_seed).choice(train_cells,min(len(train_cells),20000),replace=False)
     totals=np.asarray(x.sum(1)).ravel().astype(np.float32)
-    sample_x=expression_block(x,sample,available,totals)
-    chosen=np.argsort(-sample_x.var(0),kind='stable')[:config.encoder_genes]
+    sample_x=expression_block(x,sample,available,totals,config.expression_normalization)
+    chosen,gene_audit=select_encoder_genes(genes,features,sample_x.var(0),config.encoder_genes,config.encoder_gene_selection)
     encoder_indices=available[chosen];selected=sample_x[:,chosen]
     gene_mean=selected.mean(0);gene_scale=np.maximum(selected.std(0),.1)
     categories=tuple(sorted(cached['cells'].cell_type.unique()))
@@ -216,10 +267,22 @@ def prepare_graph_data(config):
     if audit['composition_undefined_centers']:
         print(f"Undefined composition for {audit['composition_undefined_centers']} centers with zero physical-pair opportunity; skipping their composition supervision",flush=True)
     audit['encoder_genes']=[genes[i] for i in encoder_indices]
+    audit['encoder_gene_selection']=gene_audit
+    audit['CCC_nonzero_weighting']={'cap':config.ccc_nonzero_weight_max,'fit':'training feature support only','formula':'min(cap, sqrt((1-rho)/rho)), lower bounded by 1; feature expectation normalization'}
     audit['composition_definition']='sum of outgoing physical-pair weights per cell type / total directed physical-pair weight'
     audit['categories']=list(categories)
     data=GraphData(x,totals,genes,encoder_indices,gene_mean,gene_scale,types,categories,xy,members,weights,targets,scale,mask,features,cached['cells'],rows,folds,blocks,composition_target,audit)
-    np.savez(cache/'preprocessing.npz',encoder_indices=encoder_indices,gene_mean=gene_mean,gene_scale=gene_scale,feature_scale=scale,feature_mask=mask,columns=columns,folds=folds,blocks=blocks)
+    data.feature_nonzero_fraction=nonzero[columns];data.feature_mean=mean[columns]
+    data.expression_normalization=config.expression_normalization
+    if config.standardize_library_size:
+        library=np.log1p(totals[train_cells]);data.library_mean=float(library.mean());data.library_scale=max(float(library.std()),.1)
+    audit['expression_normalization']=data.expression_normalization
+    audit['library_feature']={'training_mean':data.library_mean,'training_scale':data.library_scale}
+    if config.cell_state_components:
+        from .cell_state import prepare_cell_states
+        prepare_cell_states(data,config,cache)
+    np.savez(cache/'preprocessing.npz',encoder_indices=encoder_indices,gene_mean=gene_mean,gene_scale=gene_scale,feature_scale=scale,feature_mask=mask,columns=columns,folds=folds,blocks=blocks,feature_nonzero_fraction=data.feature_nonzero_fraction,feature_mean=data.feature_mean,library_mean=data.library_mean,library_scale=data.library_scale)
+    pd.Series(gene_audit).to_json(cache/'encoder_gene_coverage.json',indent=2)
     audit['cell_annotation']=str(adata.uns.get('cell_type_annotation','unspecified'))
     (cache/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
     features.to_csv(cache/'features.csv',index=False)

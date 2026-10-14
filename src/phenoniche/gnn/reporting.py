@@ -60,9 +60,13 @@ class GNNReport:
         return fig
 
     def overview(self):
+        coverage=self.data_audit.get('encoder_gene_selection',{})
         return pd.Series({'Cells / microenvironments':len(self.Z),'Xenium genes':self.audit['panel_genes'],
           'Fixed directed CCC features':len(self.features),'Effective training features':int(self.prep['feature_mask'].sum()),
           'Expression input genes':len(self.prep['encoder_indices']),'Cell-type encoder input':False,
+          'LR members in encoder':coverage.get('LR_members_in_encoder','Not audited in archived run'),
+          'Required LR members':coverage.get('required_LR_members','Not audited in archived run'),
+          'Directed message layers':self.config.get('message_layers',1),'Hidden width':self.config['hidden'],
           'Communication programs':self.Z.shape[1],'Selected niches':self.k,'Composition weight':self.config['lambda_comp'],
           'Undefined composition centers (masked)':self.data_audit.get('composition_undefined_centers',0),
           'Spatial blocks (µm)':self.config['block_um'],'Train centers':int((self.assignments['split']==0).sum()),
@@ -71,6 +75,15 @@ class GNNReport:
           'Clinical supervision':'None'}).to_frame('Value')
 
     def training_curves(self):
+        if 'train_ccc_unweighted' in self.history:
+            fig,axes=plt.subplots(1,4,figsize=(15,3.5),layout='constrained')
+            for i,(key,title) in enumerate([('ccc','Training CCC objective'),('ccc_unweighted','Unweighted CCC Huber'),('ccc_positive_huber','CCC error on nonzero targets'),('ccc_gain_over_zero','Improvement over zero predictor')]):
+                for prefix,color in [('train',COLORS[0]),('validation',COLORS[1])]:
+                    axes[i].plot(self.history.epoch,self.history[prefix+'_'+key]*(100 if i==3 else 1),c=color,label=prefix)
+                axes[i].set(xlabel='Epoch',ylabel='Improvement (%)' if i==3 else 'Mean loss',title=title);axes[i].legend()
+            axes[3].axhline(0,c='#666666',lw=.7,ls='--')
+            fig.suptitle('Absolute loss is an entry-wise average; nonzero error and baseline improvement show signal recovery',fontsize=10)
+            return self.save(fig,'training_curves')
         keys=['ccc']+(['composition'] if 'train_composition' in self.history else [])
         fig,axes=plt.subplots(1,len(keys),figsize=(5*len(keys),3.4),layout='constrained',squeeze=False)
         for ax,key in zip(axes.ravel(),keys):

@@ -166,6 +166,28 @@ def test_mini_end_to_end_and_checkpoint_reuse(tiny):
     with pytest.raises(ValueError):protect(replace(cfg,signal_strength=21.))
 
 
+def test_nmf_joint_simulation_training_and_clustering(tiny):
+    from phenoniche.simulation.adapter import gnn_config
+    from phenoniche.gnn.training import fit,infer
+    from phenoniche.simulation.baselines import fixed_clustering
+    from functools import partial
+    cfg,adata,lr,data=tiny
+    cfg=replace(cfg,dictionary_initialization='nmf',output_dir=str(Path(cfg.output_dir)/'nmf_smoke'))
+    gcfg=gnn_config(cfg,Path(cfg.output_dir)/'gnn')
+    assert gcfg.dictionary_initialization=='nmf' and gcfg.max_epochs==cfg.gnn_epochs
+    model=fit(data,gcfg,rescale_activity=cfg.rescale_activity,
+        ccc_objective=partial(ccc_loss,kind=cfg.ccc_error,delta=cfg.ccc_huber_delta))
+    arrays=infer(model,data,gcfg.output_dir,gcfg.batch_size)
+    h=np.load(Path(gcfg.output_dir)/'H.npy')
+    projection=dictionary_program_projection(h,data.feature_scale)
+    labels=fixed_clustering(np.asarray(arrays['Z'])@projection,data.rows[0],cfg,standardize=False)
+    assert len(labels)==len(adata) and len(set(labels))==cfg.fixed_k
+    assert arrays['Z'].shape==(180,32) and np.isfinite(arrays['Z']).all()
+    audit=json.loads((Path(gcfg.output_dir)/'initialization_audit.json').read_text())
+    assert audit['method']=='nmf' and audit['encoder_pretraining'] is False
+    torch.testing.assert_close(model.dictionary.sum(1),torch.ones(32))
+
+
 def test_notebook_static_order_and_valid_outputs():
     root=Path(__file__).resolve().parents[1];n=nbformat.read(root/'TumorEdge_Communication_Simulation.ipynb',as_version=4)
     sources=[]
