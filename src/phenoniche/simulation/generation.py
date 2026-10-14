@@ -101,10 +101,10 @@ def basal_lr_audit(counts,labels,genes,lr):
         records.append({'cell_type':name,'LR_pairs':len(links),'own_LR_gene_mean':float(counts[own][:,positions].mean()),'other_type_LR_gene_mean':float(counts[~own][:,positions].mean())})
     return records
 
-def generate(config,output):
+def generate(config,output,reference=None):
     from scCube import scCube,SPatternGeneratorCustom
     set_seed(config.seed);output=Path(output);output.mkdir(parents=True,exist_ok=True)
-    lr=make_lr(config);ref=seed_reference(config,lr);ref.write_h5ad(output/'seed_reference.h5ad')
+    lr=make_lr(config);ref=seed_reference(config,lr) if reference is None else reference.copy();ref.write_h5ad(output/'seed_reference.h5ad')
     rng=np.random.default_rng(config.seed);halves=[];type_arrays=[];sample_arrays=[]
     half_total=config.n_cells//2;counts=np.full(config.replicates,half_total//config.replicates);counts[:half_total%config.replicates]+=1
     for sample,n in enumerate(counts):
@@ -156,7 +156,7 @@ def generate(config,output):
     radius=np.linalg.norm(local_xy,axis=1);edge=(radius>=config.core_radius_um)&(radius<config.core_radius_um+config.edge_width_um)
     truth=np.where(radius<config.core_radius_um,0,np.where(~edge,1,np.where(local_xy[:,0]<0,2,3)))
     obs=pd.DataFrame({'cell_id':['sim_'+str(i) for i in range(config.n_cells)],'cell_type':np.asarray(TYPES)[types],'sample_id':samples,'mirror_pair':np.tile(np.arange(half_total),2),'radius_um':radius,'local_x':local_xy[:,0],'local_y':local_xy[:,1],'true_niche':truth},index=['sim_'+str(i) for i in range(config.n_cells)])
-    a=ad.AnnData(np.tile(half_expr,(2,1)),obs=obs,var=pd.DataFrame(index=ref.var_names));a.obsm['spatial']=xy.astype(np.float32)
+    a=ad.AnnData(np.tile(half_expr,(2,1)),obs=obs,var=ref.var.copy());a.obsm['spatial']=xy.astype(np.float32)
     a.uns['simulation_provenance']={'scCube_commit':SCCUBE_COMMIT,'SpiderNet_simulation_commit':SPIDERNET_COMMIT,'seed_reference':'synthetic negative-binomial profiles, not patient measurements','expression_transform':f'invert clipped log1p values; {config.expression_calibration} seed-type mean calibration; Poisson sample; duplicate paired control before MI injection','geometry':'scCube Poisson points -> uniform half-disc -> bilateral reflection; µm','versions':check_environment()}
     a.uns['simulation_provenance']['basal_LR_profiles']='Real LR identities with synthetic type-specific basal expression; no anatomical/MI labels used for basal profiles'
     a.write_h5ad(output/'before_injection.incomplete.h5ad');(output/'before_injection.incomplete.h5ad').replace(output/'before_injection.h5ad');lr.to_csv(output/'lr.csv',index=False)

@@ -1,0 +1,12 @@
+{
+  "device": "cuda:2",
+  "seed": 40700,
+  "fixed_k": 4,
+  "graphst_epochs": 600,
+  "graphst_hidden": 64,
+  "cellcharter_representation": "PCA",
+  "pca_components": 32,
+  "cellcharter_layers": 1,
+  "gmm_epochs": 100,
+  "figure_dpi": 300
+}

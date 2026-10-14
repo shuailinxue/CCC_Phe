@@ -1,0 +1,6 @@
+cellcharter==0.3.7
+torchgmm==0.1.4
+sknw==0.15
+session-info==1.0.1
+# Uses the existing cccphe PyTorch/scanpy/anndata/squidpy packages.
+# GraphST upstream source and commit are under vendor/graphst.

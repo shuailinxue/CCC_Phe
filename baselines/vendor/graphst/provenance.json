@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/JinmiaoChenLab/GraphST",
+  "commit": "d62b0b7b6cd38ee285f3ac8cd67b7341a10bcc74",
+  "files_sha256": {
+    "LICENSE.md": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+    "preprocess.py": "5959887f0045fd545011b15c4ba3ddccab7b95fbd0a62ccc2d63ffb06ce4b321",
+    "GraphST.py": "2d1e033e2d759b81109c4a10993b835783880ef8823d2acb9e563f8047597f18",
+    "model.py": "014788892c21eccd7fdc939985079175898d7ba1e9fc90531598643b8ae88c95"
+  },
+  "modifications": "Upstream Python source unmodified; minimal initializer avoids optional R clustering imports.",
+  "license": [
+    "LICENSE.md"
+  ]
+}
