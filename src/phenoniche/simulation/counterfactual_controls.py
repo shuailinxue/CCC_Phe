@@ -14,12 +14,17 @@ from .programs import program_specs
 from .response_simulation import checksum
 
 
-def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None):
+def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None,program_rates=None):
     source,output=Path(source),Path(output)
     if source.resolve()==output.resolve():raise ValueError('Controls must not overwrite their source dataset')
     if mode not in ('single_nb','lr_expectation','structured_nb','structured_low_basal','program_latent','program_sparse','program_coherent'):
         raise ValueError('Unknown noise control')
     config=config or SimulationConfig.from_json(ROOT/"config/tumor_edge_gene_rich_simulation.json")
+    settings={'mi_baseline':.15,'mi_offtype':.02,'mi_signal':3.,'unused_baseline':.3,'unused_offtype':.01,'basal_offtype':.01,'program_dispersion':12.}
+    if program_rates:
+        if set(program_rates)-set(settings):raise ValueError('Unknown program expression-rate setting')
+        settings.update(program_rates)
+    if any(not np.isfinite(v) or v<=0 for v in settings.values()):raise ValueError('Positive finite program rates required')
     if mode.startswith("program_") and (role_mean is not None or fold_change is not None):
         raise ValueError("Additive program controls have explicit rate settings, not a fold-change override")
     before=ad.read_h5ad(source/'before_injection.h5ad');reference=ad.read_h5ad(source/'seed_reference.h5ad');lr=pd.read_csv(source/'lr.csv')
@@ -35,7 +40,7 @@ def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None
                 for gene in links[side]:rates[cells,genes.index(gene)]*=role_mean/profile['lr_role_mean']
         profile['lr_role_mean']=role_mean
     if fold_change is not None:profile['mi_fold_change']=fold_change
-    rng=np.random.default_rng(40700+5291)
+    rng=np.random.default_rng(config.seed+5291)
     if mode.startswith('program_'):
         # Program-specific genes have a weak constitutive baseline. Injected
         # program activity is an independent latent expression-rate component,
@@ -45,7 +50,7 @@ def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None
             for side,role in [('ligand',spec['sender']),('receptor',spec['receiver'])]:
                 cells=codes==['Tumor','Normal epithelial','Fibroblast','Macrophage','T cell'].index(role)
                 for gene in links[side]:
-                    g=genes.index(gene);rates[:,g]=.02;rates[cells,g]=.15
+                    g=genes.index(gene);rates[:,g]=settings['mi_offtype'];rates[cells,g]=settings['mi_baseline']
                     rates[:,g]*=before.obs.synthetic_library_factor.to_numpy()[:n]
         if mode in ('program_sparse','program_coherent'):
             for row in lr[lr.mi==0].itertuples():
@@ -54,11 +59,11 @@ def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None
                     if pd.isna(row.basal_type):rates[:,g]=.03
                     else:
                         role=['Tumor','Normal epithelial','Fibroblast','Macrophage','T cell'].index(row.basal_type)
-                        rates[codes!=role,g]=.01
+                        rates[codes!=role,g]=settings['basal_offtype']
             if mode=='program_coherent':
                 for k,row in enumerate(lr[(lr.mi==0)&lr.basal_type.isna()].itertuples()):
                     for gene in (row.ligand,row.receptor):
-                        g=genes.index(gene);rates[:,g]=.01;rates[codes==k%5,g]=.3
+                        g=genes.index(gene);rates[:,g]=settings['unused_offtype'];rates[codes==k%5,g]=settings['unused_baseline']
     if mode.startswith('structured'):
         unused=lr[(lr.mi==0)&(lr.basal_type.fillna('')=='')]
         for k,row in enumerate(unused.itertuples()):
@@ -80,14 +85,14 @@ def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None
     elif mode=='lr_expectation':latent=rates.astype(np.float32);baseline=latent.copy()
     else:raise ValueError('Unknown noise control')
     before.X[:,indices]=np.tile(baseline,(2,1));after=before.copy();rates_full=np.tile(latent,(2,1));activity=original.obsm['designed_MI_activity'];lookup={g:i for i,g in enumerate(genes)}
-    program_state=np.tile(rng.gamma(12.,1/12.,(n,4)),(2,1)) if mode.startswith('program_') else None
+    program_state=np.tile(rng.gamma(settings['program_dispersion'],1/settings['program_dispersion'],(n,config.mi_count)),(2,1)) if mode.startswith('program_') else None
     for spec in program_specs(config):
         links=lr[lr.mi==spec['MI']]
         for side,role in [('ligand',spec['sender']),('receptor',spec['receiver'])]:
             r=np.flatnonzero(types==role)
             for gene,loading in zip(links[side],links.loading):
                 g=lookup[gene];delta=rates_full[r,g]*(profile['mi_fold_change']-1)*activity[r,spec['MI']-1]*loading/max(links.loading)
-                if mode.startswith('program_'):delta=3.*program_state[r,spec['MI']-1]*before.obs.synthetic_library_factor.to_numpy()[r]*activity[r,spec['MI']-1]*loading/max(links.loading)
+                if mode.startswith('program_'):delta=settings['mi_signal']*program_state[r,spec['MI']-1]*before.obs.synthetic_library_factor.to_numpy()[r]*activity[r,spec['MI']-1]*loading/max(links.loading)
                 after.X[r,indices[g]]+=(delta if mode=='lr_expectation' else rng.poisson(delta)).astype(np.float32)
     for key in ('designed_MI_activity','injected_sender_activity','injected_receiver_activity'):after.obsm[key]=original.obsm[key].copy()
     after.uns['injection_mode']='expression';after.uns['noise_control']=mode
@@ -97,8 +102,8 @@ def noise_control(source,output,mode,role_mean=None,fold_change=None,config=None
     output.mkdir(exist_ok=True,parents=True);before.write_h5ad(output/'before_injection.h5ad');after.write_h5ad(output/'injected.h5ad');lr.to_csv(output/'lr.csv',index=False)
     provenance={'source':str(source),'mode':mode,'source_counts_sha256':checksum(source/'injected.h5ad'),'non_LR_counts_unchanged':True,'MI_peak_fold':profile['mi_fold_change'],'MI_role_mean':profile['lr_role_mean'],'background_role_structure':mode.startswith('structured'),'LR_rate_assumption':'Synthetic seed type means × existing cell library factors; no region labels in baseline rates','sampling':'One Gamma-Poisson measurement draw; independent Poisson increments conditional on shared latent rates. Expectation control is fractional diagnostic, not observed data.'}
     if mode.startswith('program_'):
-        provenance.update(MI_peak_fold=None,MI_role_mean=.15,MI_off_role_mean=.02,MI_additive_peak_rate=3.,MI_cell_program_state='Shared Gamma(shape=12, scale=1/12) across program genes; mirror-paired before region injection',background_role_structure=mode in ('program_sparse','program_coherent'),inactive_unassigned_LR_rate=.03 if mode=='program_sparse' else 'Original seed means',basal_LR_off_role_rate=.01 if mode in ('program_sparse','program_coherent') else 'Original seed means')
-        if mode=='program_coherent':provenance.update(unassigned_LR_role_assignment='Round-robin basal types, independent of region/MI',unassigned_LR_own_role_rate=.3,unassigned_LR_off_role_rate=.01,inactive_unassigned_LR_rate=None)
+        provenance.update(MI_peak_fold=None,MI_role_mean=settings['mi_baseline'],MI_off_role_mean=settings['mi_offtype'],MI_additive_peak_rate=settings['mi_signal'],MI_cell_program_state='Shared Gamma across program genes; mirror-paired before region injection',program_rates=settings,background_role_structure=mode in ('program_sparse','program_coherent'),inactive_unassigned_LR_rate=.03 if mode=='program_sparse' else 'Original seed means',basal_LR_off_role_rate=settings['basal_offtype'] if mode in ('program_sparse','program_coherent') else 'Original seed means')
+        if mode=='program_coherent':provenance.update(unassigned_LR_role_assignment='Round-robin basal types, independent of region/MI',unassigned_LR_own_role_rate=settings['unused_baseline'],unassigned_LR_off_role_rate=settings['unused_offtype'],inactive_unassigned_LR_rate=None)
         after.obsm['synthetic_MI_cell_state']=program_state.astype(np.float32)
         # Persist the explicit generative state; it remains evaluation-only.
         after.write_h5ad(output/'injected.h5ad')

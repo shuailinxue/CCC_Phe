@@ -13,6 +13,7 @@ from .generation import TYPES
 from .programs import program_specs
 
 def adapt(adata,lr,config,output,expression_coverage=None):
+    if expression_coverage is None:expression_coverage=getattr(config,'expression_coverage',None)
     output=Path(output);cache=output/'input';cache.mkdir(exist_ok=True,parents=True)
     xy=np.asarray(adata.obsm['spatial'],np.float32);n=len(adata)
     types=pd.Categorical(adata.obs.cell_type,categories=TYPES).codes.astype(np.int64)

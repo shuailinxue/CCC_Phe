@@ -22,8 +22,10 @@ class JointExpressionReport(ExpressionReport):
         plt.rcParams.update({'pdf.fonttype':42,'svg.fonttype':'none','font.size':8})
         self.z=np.load(self.output/'gnn/Z.npy');self.h=np.load(self.output/'gnn/H.npy')
         self.labels=pd.read_csv(self.output/'raw_clusters.csv')['CCC_Phe GNN (selected K)'].to_numpy()
-        self.old_labels=pd.read_csv(self.source/'raw_clusters.csv')['CCC_Phe GNN (fixed K)'].to_numpy()
+        cc_source=Path(self.summary.get('CCC_only_niche_results_dir',self.source))
+        self.old_labels=pd.read_csv(cc_source/'raw_clusters.csv')['CCC_Phe GNN (fixed K)'].to_numpy()
         self.truth=self.adata.obs.true_niche.to_numpy()
+        self.model_label='Joint GNN' if self.summary['joint_model_accepted'] else 'Frozen-Z GNN'
         self.composition=pd.read_csv(self.output/'niche_cell_composition.csv',index_col=0)
         self.top_ccc=pd.read_csv(self.output/'niche_top10_CCC.csv')
         true_h=np.load(self.source/'ground_truth/MI_dictionary.npy');den=np.maximum((true_h*true_h).sum(1),1e-12)
@@ -63,7 +65,7 @@ class JointExpressionReport(ExpressionReport):
         self.panel(axes[0],pd.Categorical(self.adata.obs.cell_type,categories=TYPES).codes,'Cell types',True,names=TYPES)
         self.panel(axes[1],self.truth,'Ground truth',True,names=['Tumor core','Normal exterior','Edge A','Edge B'])
         self.panel(axes[2],self.old_labels,'CCC-only GNN · raw K=4',True,names=[f'Niche {i+1}' for i in range(4)])
-        self.panel(axes[3],self.labels,f'Joint GNN · raw K={self.summary["selected_K"]}',True,names=[f'Niche {i+1}' for i in range(self.summary['selected_K'])])
+        self.panel(axes[3],self.labels,f'{self.model_label} · raw K={self.summary["selected_K"]}',True,names=[f'Niche {i+1}' for i in range(self.summary['selected_K'])])
         return self.save(fig,'spatial_ground_truth_and_predictions')
 
     def communication_recovery(self):
@@ -101,7 +103,8 @@ class JointExpressionReport(ExpressionReport):
         ax=fig.add_subplot(grid[2,0]);old=pd.read_csv(Path(self.summary['frozen_control'])/'expression_gene_metrics.csv')
         def response(frame):return frame[(frame.kind=='synthetic_response')&(frame.cell_type==frame.designed_receiver)].groupby('MI')
         baseline=response(self.gene_scores).baseline_RMSE.mean();frozen=response(old).RMSE.mean();joint=response(self.gene_scores).RMSE.mean();x=np.arange(4)
-        for shift,values,color,label in [(-.24,baseline,'#a7b3ba','Type + library baseline'),(0,frozen,COLORS[0],'Frozen-Z decoder'),(.24,joint,COLORS[2],'Joint decoder')]:ax.bar(x+shift,values.reindex(range(1,5)),.23,color=color,label=label)
+        selected_label='Joint decoder' if self.summary['joint_model_accepted'] else 'Retained frozen-Z decoder'
+        for shift,values,color,label in [(-.24,baseline,'#a7b3ba','Type + library baseline'),(0,frozen,COLORS[0],'Frozen-Z decoder'),(.24,joint,COLORS[2],selected_label)]:ax.bar(x+shift,values.reindex(range(1,5)),.23,color=color,label=label)
         ax.set(xticks=x,xticklabels=[f'MI-{j+1}' for j in range(4)],ylabel='Mean gene RMSE',title='Held-out receiver responses · six genes per MI');ax.legend(fontsize=6)
         ax=fig.add_subplot(grid[2,1]);counts=np.bincount(self.labels[self.test],minlength=len(observed));ax.bar(np.arange(len(counts)),counts,color=COLORS[0]);ax.set(xticks=np.arange(len(counts)),xticklabels=[f'Niche {i+1}' for i in range(len(counts))],ylabel='Expression-test centers',title='Held-out coverage · no core-center evaluation')
         pd.DataFrame({'niche':np.arange(len(counts))+1,'expression_test_centers':counts}).to_csv(self.output/'expression_test_niche_coverage.csv',index=False)
@@ -144,11 +147,12 @@ class JointExpressionReport(ExpressionReport):
         old_map=label_mapping(self.old_labels,self.truth,train);new_map=label_mapping(self.labels,self.truth,train)
         (self.output/'summary_plot_color_mapping.json').write_text(json.dumps({'fit_rows':'expression training blocks only; display/evaluation only','CCC_only':old_map,'joint':new_map},indent=2))
         self.panel(axes[0,2],mapped(self.old_labels,old_map),'c  CCC-only GNN · K=4',True)
-        self.panel(axes[0,3],mapped(self.labels,new_map),f'd  Joint GNN · K={self.summary["selected_K"]}',True)
+        self.panel(axes[0,3],mapped(self.labels,new_map),f'd  {self.model_label} · K={self.summary["selected_K"]}',True)
         for j in range(4):
             self.panel(axes[1,j],self.mi[:,j],f'{chr(101+j)}  True MI-{j+1} activity',vmax=max(float(np.quantile(self.mi[:,j],.99)),1e-8))
             self.panel(axes[2,j],self.recovered_signal[:,j],f'{chr(105+j)}  Recovered MI-{j+1} · ZH',vmax=self.limits[j])
-        fig.suptitle('Tumor-edge communication: simulated truth and CCC-priority joint reconstruction',fontsize=12)
+        mode='joint' if self.summary['joint_model_accepted'] else 'frozen-Z'
+        fig.suptitle(f'Tumor-edge communication: simulated truth and CCC-priority {mode} reconstruction',fontsize=12)
         # Actual held-out scores, not idealized success labels.
         frame=pd.read_csv(self.output/'metrics.csv');rows=frame[frame.evaluation=='heldout_test']
         scores=' | '.join(f'{r.method}: ARI {r.overall_ARI:.3f}, edge F1 {r.edge_F1:.3f}' for r in rows.itertuples())

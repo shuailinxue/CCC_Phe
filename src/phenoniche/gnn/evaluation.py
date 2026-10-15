@@ -5,25 +5,31 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import linear_sum_assignment
 from scipy.spatial import cKDTree
-from sklearn.cluster import MiniBatchKMeans
+from sklearn.cluster import MiniBatchKMeans,KMeans
 from sklearn.linear_model import Ridge,LogisticRegression
 from sklearn.metrics import adjusted_rand_score,silhouette_score,r2_score
 from ..consolidation import _latent_block,_soft_membership,_scale01,cosine_matrix
 from ..interpretation import export_top_markers
 
 
-def discover(data,arrays,h,config,program_projection=None):
+def discover(data,arrays,h,config,program_projection=None,clustering_values=None,full_kmeans=False):
     train,val,test=data.rows
     rng=np.random.default_rng(config.seed)
     fit_rows=np.sort(rng.choice(train,min(len(train),config.clustering_sample_size),replace=False))
     val_rows=np.sort(rng.choice(val,min(len(val),config.silhouette_sample_size),replace=False))
     if min(len(fit_rows),len(val_rows))<=config.k_max: raise ValueError('Too few disjoint centers for K=4–15 evaluation')
     center=float(np.median(np.log1p(arrays['activity'][fit_rows])));scale=max(float(np.std(np.log1p(arrays['activity'][fit_rows]))),.1)
-    latent=(lambda rows:np.asarray(arrays['Z'][rows])@program_projection) if program_projection is not None else (lambda rows:_latent_block(arrays['P'],arrays['activity'],rows,center,scale,config.activity_weight))
+    if clustering_values is not None:
+        clustering_values=np.asarray(clustering_values)
+        if clustering_values.ndim!=2 or len(clustering_values)!=len(data.cells) or not np.isfinite(clustering_values).all():raise ValueError('Invalid optional clustering features')
+        latent=lambda rows:clustering_values[rows]
+    else:
+        latent=(lambda rows:np.asarray(arrays['Z'][rows])@program_projection) if program_projection is not None else (lambda rows:_latent_block(arrays['P'],arrays['activity'],rows,center,scale,config.activity_weight))
     train_x=latent(fit_rows);val_x=latent(val_rows);models={};records=[]
     for k in range(config.k_min,config.k_max+1):
-        model=MiniBatchKMeans(n_clusters=k,random_state=config.seed,n_init=5,batch_size=4096).fit(train_x)
-        other=MiniBatchKMeans(n_clusters=k,random_state=config.seed+1,n_init=5,batch_size=4096).fit(train_x)
+        make=lambda seed:KMeans(n_clusters=k,random_state=seed,n_init=10) if full_kmeans else MiniBatchKMeans(n_clusters=k,random_state=seed,n_init=5,batch_size=4096)
+        model=make(config.seed).fit(train_x)
+        other=make(config.seed+1).fit(train_x)
         labels=model.predict(val_x);distances=model.transform(train_x);membership_scale=max(float(np.median(distances.min(1)**2)),1e-8)
         counts=np.bincount(labels,minlength=k);fractions=counts/len(labels)
         silhouette=float(silhouette_score(val_x,labels)) if 1<len(set(labels))<len(labels) else -1.
@@ -64,7 +70,8 @@ def discover(data,arrays,h,config,program_projection=None):
     pd.DataFrame({'niche':np.arange(1,k+1),'n_cells':counts,'fraction':counts/len(labels)}).to_csv(selected/'niche_counts.csv',index=False)
     # Store the fitted clustering model for new-data inference without refitting K.
     import torch
-    torch.save({'model':model,'membership_scale':soft_scale,'activity_center':center,'activity_scale':scale,'K':k,'program_projection':program_projection},output/'niche_model.pt')
+    torch.save({'model':model,'membership_scale':soft_scale,'activity_center':center,'activity_scale':scale,'K':k,'program_projection':program_projection,
+        'external_clustering_values':clustering_values is not None,'full_kmeans':full_kmeans},output/'niche_model.pt')
     return k,labels,table
 
 

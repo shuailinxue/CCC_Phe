@@ -1,0 +1,45 @@
+{
+  "url": "https://github.com/prabhakarlab/Banksy_py",
+  "commit": "9278996c39e376277d57ef95278000447ba6c57c",
+  "download": "Pinned official source files; sample datasets omitted",
+  "paths": [
+    "LICENSE.md",
+    "README.md",
+    "pyproject.toml",
+    "src/banksy/__init__.py",
+    "src/banksy/cluster_methods.py",
+    "src/banksy/csr_operations.py",
+    "src/banksy/embed_banksy.py",
+    "src/banksy/initialize_banksy.py",
+    "src/banksy/labels.py",
+    "src/banksy/main.py",
+    "src/banksy/plot_banksy.py",
+    "src/banksy/run_banksy.py",
+    "src/banksy_utils/__init__.py",
+    "src/banksy_utils/cluster_utils.py",
+    "src/banksy_utils/color_lists.py",
+    "src/banksy_utils/filter_utils.py",
+    "src/banksy_utils/load_data.py",
+    "src/banksy_utils/pca.py",
+    "src/banksy_utils/plot_utils.py",
+    "src/banksy_utils/plotting.py",
+    "src/banksy_utils/preprocessing.py",
+    "src/banksy_utils/refine_clusters.py",
+    "src/banksy_utils/slideseq_ref_data.py",
+    "src/banksy_utils/time_utils.py",
+    "src/banksy_utils/umap_pca.py",
+    "src/banksy_utils/umap_pca_2.py"
+  ],
+  "upstream_sha256": {
+    "src/banksy/main.py": "87c3dc0b90b77ad13ec3002641d5619a10e82836c614da07202ae493c1e2c131",
+    "src/banksy/csr_operations.py": "97fa4745fc118f8002c64a9dc079436e357bca9096e9f235b9aba52fdb3f920e",
+    "src/banksy/labels.py": "a3c899c1aea96ec54b9c501f9577f203cac99bc56ec5a4902875312c3a8ff494",
+    "src/banksy/embed_banksy.py": "2063a352320d1bd19d675ed009204b17ead0118f719914d21006037af8501617",
+    "src/banksy_utils/time_utils.py": "2bdb236a00430ac2f23703ff707b62ba345c867994ac5ac2e2a59ce1376e9b95"
+  },
+  "modifications": [
+    "Absolute imports changed to relative imports for vendoring.",
+    "Optional reference_rows for official zscore/concatenate_all: fit means and variances on training rows, apply to all rows. Defaults and feature formulas unchanged.",
+    "Training-reference moments use stable float64 standard deviations; zero training variance gives an all-zero feature, preventing heldout-only expression from generating infinity. Full-data default is unchanged."
+  ]
+}

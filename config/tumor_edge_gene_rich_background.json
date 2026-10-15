@@ -1,16 +1,31 @@
 {
-  "variant": "rich_background_moderate_LR",
-  "type_genes_per_type": 240,
-  "state_modules": 4,
-  "genes_per_state": 200,
-  "type_on_mean": 4.0,
-  "type_off_mean": 0.4,
-  "housekeeping_mean": 1.5,
-  "state_mean": 2.0,
-  "state_sd": 0.35,
-  "library_sd": 0.15,
-  "dispersion": 12.0,
-  "lr_role_mean": 1.5,
-  "lr_offtype_mean": 0.05,
-  "mi_fold_change": 2.0
+  "variant": "rich_background_coherent_LR",
+  "background_source_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_gene_rich_simulation",
+  "source_background_profile": {
+    "variant": "rich_background_moderate_LR",
+    "type_genes_per_type": 240,
+    "state_modules": 4,
+    "genes_per_state": 200,
+    "type_on_mean": 4.0,
+    "type_off_mean": 0.4,
+    "housekeeping_mean": 1.5,
+    "state_mean": 2.0,
+    "state_sd": 0.35,
+    "library_sd": 0.15,
+    "dispersion": 12.0,
+    "lr_role_mean": 1.5,
+    "lr_offtype_mean": 0.05,
+    "mi_fold_change": 2.0
+  },
+  "program_rates": {
+    "mi_baseline": 0.15,
+    "mi_offtype": 0.02,
+    "mi_signal": 3.0,
+    "unused_baseline": 0.3,
+    "unused_offtype": 0.01,
+    "basal_offtype": 0.01,
+    "program_dispersion": 12.0
+  },
+  "core_exterior_activity_floor": 1.0,
+  "boundary_source_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_gene_rich_coherent_simulation"
 }

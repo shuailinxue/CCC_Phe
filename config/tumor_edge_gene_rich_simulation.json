@@ -66,9 +66,10 @@
   "device": "cuda:2",
   "figure_dpi": 300,
   "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
-  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_gene_rich_simulation",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/tumor_edge_gene_rich_core_exterior_active_simulation",
   "program_design": "four_programs",
   "dictionary_initialization": "nmf",
   "nmf_initialization_sample_size": 8192,
-  "nmf_initialization_max_iter": 500
+  "nmf_initialization_max_iter": 500,
+  "expression_coverage": 0.1
 }

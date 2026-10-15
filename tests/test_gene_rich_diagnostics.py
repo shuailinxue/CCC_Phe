@@ -20,7 +20,8 @@ def fixture_files(root):
     obs=pd.DataFrame({'cell_type':types,'synthetic_library_factor':np.ones(200)},index=[str(i) for i in range(200)])
     x=np.zeros((200,len(genes)),np.float32);x[:,-1]=7
     a=ad.AnnData(x,obs=obs,var=pd.DataFrame(index=genes))
-    a.uns['rich_background_profile']=json.loads((ROOT/'config/tumor_edge_gene_rich_background.json').read_text())
+    profile=json.loads((ROOT/'config/tumor_edge_gene_rich_background.json').read_text())
+    a.uns['rich_background_profile']=profile.get('source_background_profile',profile)
     a.obsm['spatial']=np.column_stack((np.arange(200),np.zeros(200))).astype(np.float32)
     for key in ['designed_MI_activity','injected_sender_activity','injected_receiver_activity']:a.obsm[key]=np.ones((200,4),np.float32)
     a.write_h5ad(root/'before_injection.h5ad');a.write_h5ad(root/'injected.h5ad');lr.to_csv(root/'lr.csv',index=False)

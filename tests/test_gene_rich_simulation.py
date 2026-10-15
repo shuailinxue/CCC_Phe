@@ -15,7 +15,9 @@ from phenoniche.simulation.response_simulation import ExpressionExperimentConfig
 from phenoniche.simulation.response_experiment import run_expression_experiment
 
 
-def profile():return json.loads((ROOT/'config/tumor_edge_gene_rich_background.json').read_text())
+def profile():
+    value=json.loads((ROOT/'config/tumor_edge_gene_rich_background.json').read_text())
+    return value.get('source_background_profile',value)
 
 
 def test_3000_gene_reference_structured_background():
@@ -60,6 +62,27 @@ def test_moderate_injection_and_preparation_cache(mini):
 
 def test_gene_rich_end_to_end_existing_models_and_baselines(mini):
     root,base,p,source_config,pp=mini;prepare_rich_background(source_config,pp)
+    from phenoniche.simulation.coherent_background import prepare_coherent_background
+    coherent=replace(base,output_dir=str(root/'coherent'),expression_coverage=.1)
+    source_config=root/'coherent.json';source_config.write_text(json.dumps(coherent.to_dict()))
+    value=json.loads((ROOT/'config/tumor_edge_gene_rich_background.json').read_text());value['background_source_dir']=base.output_dir
+    value.pop('core_exterior_activity_floor',None);value.pop('boundary_source_dir',None)
+    cpp=root/'coherent_profile.json';cpp.write_text(json.dumps(value))
+    source=prepare_coherent_background(source_config,cpp)
+    stamp=(source/'injected.h5ad').stat().st_mtime_ns
+    assert prepare_coherent_background(source_config,cpp)==source and (source/'injected.h5ad').stat().st_mtime_ns==stamp
+    # The current notebook's constant core/exterior scenario gets a separate
+    # expression dataset and fresh models/baselines, preserving the ramped one.
+    from phenoniche.simulation.boundary_background import prepare_boundary_background
+    boundary=replace(coherent,output_dir=str(root/'boundary'))
+    boundary_config=root/'boundary.json';boundary_config.write_text(json.dumps(boundary.to_dict()))
+    value.update(core_exterior_activity_floor=1.,boundary_source_dir=str(source))
+    bpp=root/'boundary_profile.json';bpp.write_text(json.dumps(value))
+    old_hash=checksum(source/'injected.h5ad')
+    new_source=prepare_boundary_background(boundary_config,bpp)
+    assert prepare_boundary_background(boundary_config,bpp)==new_source
+    assert checksum(source/'injected.h5ad')==old_hash
+    source_config=boundary_config
     cfg=replace(ExpressionExperimentConfig(),base_simulation_config=str(source_config),output_dir=str(root/'joint'),frozen_control_dir=str(root/'frozen'),device='cpu',expression_epochs=2,joint_epochs=2,patience=2,batch_size=16,training_mode='joint',figure_dpi=80)
     out=run_expression_experiment(cfg)
     assert np.load(out/'gnn/Z.npy').shape==(180,32)
@@ -69,9 +92,9 @@ def test_gene_rich_end_to_end_existing_models_and_baselines(mini):
     summary=json.loads((out/'summary.json').read_text());assert summary['base_genes']==3000 and summary['response_genes_excluded_from_encoder']
     original=checksum(out/'gnn/checkpoint.pt')
     from baselines.benchmark import run_comparison
-    bc=json.loads((ROOT/'baselines/config.json').read_text());bc.update(device='cpu',graphst_epochs=2,graphst_hidden=8,pca_components=4,gmm_epochs=5)
+    bc=json.loads((ROOT/'baselines/config.json').read_text());bc.update(device='cpu',graphst_epochs=2,graphst_hidden=8,pca_components=4,gmm_epochs=5,scniche_epochs=2,scniche_batch_size=32,scniche_graph_k=5,scniche_mik=2,nichecompass_epochs=2,nichecompass_addon_programs=4,nichecompass_hidden=12,nichecompass_node_batch=16,spaniche_topics=4,spaniche_maxiter=4,spaniche_initial_maxiter=4,spaniche_initial_restarts=1,stagate_epochs=2,stagate_hidden_dims=[12,4],banksy_k_geom=3)
     bp=root/'baseline.json';bp.write_text(json.dumps(bc));comparison=run_comparison(out,bp)
-    assert {'GraphST','CellCharter (PCA)'}.issubset(set(pd.read_csv(comparison/'metrics.csv').method))
+    assert {'GraphST','CellCharter (PCA)','scNiche','NicheCompass','SpaNiche'}.issubset(set(pd.read_csv(comparison/'metrics.csv').method))
     assert checksum(out/'gnn/checkpoint.pt')==original
     from phenoniche.simulation.joint_reporting import JointExpressionReport
     from baselines.reporting import BaselineReport
@@ -80,20 +103,35 @@ def test_gene_rich_end_to_end_existing_models_and_baselines(mini):
     for name in ('spatial_comparison','communication_recovery','expression_recovery','niche_cell_types','curves','summary_figure'):
         fig=getattr(report,name)();assert fig.axes;plt.close(fig)
     for fig in (benchmark.spatial(),benchmark.metric_plot()):assert fig.axes;plt.close(fig)
+    from phenoniche.simulation.niche_refinement import refine_saved_niches
+    refined=refine_saved_niches(out,root/'refined')
+    assert refine_saved_niches(out,root/'refined')==refined
+    assert checksum(out/'gnn/checkpoint.pt')==original==checksum(refined/'gnn/checkpoint.pt')
+    assert checksum(refined/'expression/prediction.npy')==checksum(out/'expression/prediction.npy')
+    refinement=json.loads((refined/'summary.json').read_text());assert refinement['niche_refinement']['local_mixing']==.2
+    q=np.load(refined/'gnn/selected_model/Q.npy');contribution=pd.read_csv(refined/'gnn/selected_model/program_contribution.csv',index_col=0).to_numpy()
+    tr=np.flatnonzero(np.load(refined/'anchor_inputs/input/folds.npy')==0)
+    z=np.load(refined/'gnn/Z.npy');expected=q[tr].astype(float).T@z[tr];expected/=q[tr].sum(0)[:,None]
+    np.testing.assert_allclose(contribution,expected,rtol=1e-5,atol=1e-5)
+    refined_comparison=run_comparison(refined,bp)
+    metrics=pd.read_csv(refined_comparison/'metrics.csv');assert 'CCC-only GNN (unrefined)' in set(metrics.method)
+    updated=JointExpressionReport(refined);assert np.array_equal(updated.old_labels,pd.read_csv(refined/'ccc_only/raw_clusters.csv')['CCC_Phe GNN (fixed K)'])
+    for name in ('spatial_comparison','niche_cell_types','summary_figure'):
+        fig=getattr(updated,name)();assert fig.axes;plt.close(fig)
     for holder in (report,benchmark.reference):
         for value in vars(holder).values():
             if isinstance(value,np.memmap):value._mmap.close()
 
 
-def test_new_notebook_static_and_old_notebook_preserved():
+def test_new_notebook_static_and_old_notebook_preserved(tmp_path):
     import importlib.util
     original=ROOT/'TumorEdge_CCC_Expression_Reconstruction.ipynb';before=checksum(original)
-    spec=importlib.util.spec_from_file_location('rich_builder',ROOT/'scripts/build_tumor_edge_gene_rich_notebook.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);path=module.build()
+    spec=importlib.util.spec_from_file_location('rich_builder',ROOT/'scripts/build_tumor_edge_gene_rich_notebook.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);import shutil;shutil.copy2(original,tmp_path/original.name);module.ROOT=tmp_path;path=module.build()
     assert checksum(original)==before and path.name=='TumorEdge_GeneRich_CCC_Expression_Reconstruction.ipynb'
     notebook=nbformat.read(path,as_version=4);nbformat.validate(notebook);source=''
     for cell in notebook.cells:
         if cell.cell_type=='code':
             ast.parse('\n'.join(line for line in cell.source.splitlines() if not line.startswith('%')));assert not cell.outputs;source+=cell.source
-    assert source.index('prepare_rich_background(config.base_simulation_config')<source.index('run_expression_experiment(config)')<source.index('run_comparison(OUTPUT)')
+    assert source.index('prepare_boundary_background(config.base_simulation_config')<source.index('run_expression_experiment(config)')<source.index('run_comparison(OUTPUT)')
     a=ExpressionExperimentConfig.from_json(ROOT/'config/tumor_edge_gene_rich_expression.json');b=ExpressionExperimentConfig.from_json(ROOT/'config/tumor_edge_expression.json')
     assert a.output_dir!=b.output_dir and a.frozen_control_dir!=b.frozen_control_dir and a.device=='cuda:2'

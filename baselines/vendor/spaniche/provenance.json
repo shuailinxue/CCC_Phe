@@ -1,0 +1,11 @@
+{
+  "url": "https://github.com/SiyuanHuang1/SpaNiche",
+  "commit": "84a43cf0e77e49f84acf66eb130b45612234bb12",
+  "upstream_sha256": {
+    "R/nmf_modified.R": "7c898bfcb3bfb0f5d6356db9ef8290a5e0e690844d4c9127fbac9c3616c6da78",
+    "R/calculate_laplacian_matrix_with_gausskernel.R": "df89e2aaeb9757437d2a0d0c93d3f71af60e827edcacb5961c2c490a3a08a5b9",
+    "R/define_initial_weight.R": "e9d0e3929ec2235611a12352ecc3ee0890e4e430ea0634b33e514903b0381e70",
+    "R/generate_LRintegratedmatrix.R": "b5ef2c4f64da46583be96bd02f6caf3541bdb7077583a634f11f05932f32a291"
+  },
+  "modifications": []
+}

@@ -41,10 +41,10 @@ def test_actual_upstream_baseline_smoke():
         run_expression_experiment(frozen,base)
         joint=replace(frozen,training_mode='joint',output_dir=str(root/'joint'),frozen_control_dir=str(root/'frozen'),joint_epochs=2)
         experiment=run_expression_experiment(joint,base)
-        cfg=json.loads((Path(__file__).resolve().parents[1]/'baselines/config.json').read_text());cfg.update(device='cpu',graphst_epochs=2,graphst_hidden=8,pca_components=4,gmm_epochs=5,figure_dpi=80)
+        cfg=json.loads((Path(__file__).resolve().parents[1]/'baselines/config.json').read_text());cfg.update(cellcharter_representation='scVI',cellcharter_layers=3,cellcharter_scvi_epochs=2,device='cpu',graphst_epochs=2,graphst_hidden=8,pca_components=4,gmm_epochs=5,figure_dpi=80,scniche_epochs=2,scniche_batch_size=32,scniche_graph_k=5,scniche_mik=2,nichecompass_epochs=2,nichecompass_addon_programs=4,nichecompass_hidden=12,nichecompass_node_batch=16,spaniche_topics=4,spaniche_maxiter=4,spaniche_initial_maxiter=4,spaniche_initial_restarts=1,stagate_epochs=2,stagate_hidden_dims=[12,4],banksy_k_geom=3)
         config=root/'config.json';config.write_text(json.dumps(cfg))
         original=checksum(experiment/'gnn/checkpoint.pt');out=run_comparison(experiment,config)
-        table=pd.read_csv(out/'metrics.csv');assert {'GraphST','CellCharter (PCA)'}.issubset(set(table.method))
+        table=pd.read_csv(out/'metrics.csv');assert {'GraphST','CellCharter (scVI)'}.issubset(set(table.method))
         assert table.loc[table.scope=='common_spatial_test','n'].nunique()==1
         labels=pd.read_csv(out/'labels.csv');assert len(labels)==180 and labels['GraphST'].nunique()==4
         for p in (out/'graphst/embedding.npy',out/'cellcharter/embedding.npy'):assert np.isfinite(np.load(p)).all()

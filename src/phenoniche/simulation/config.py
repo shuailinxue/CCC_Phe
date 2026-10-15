@@ -41,6 +41,7 @@ class SimulationConfig:
     ccc_scale_power:float=.5
     ccc_error:str='huber'
     ccc_huber_delta:float=3.
+    expression_coverage:float|None=None
     gnn_epochs:int=40
     dictionary_initialization:str='rms_kmeans'
     nmf_initialization_sample_size:int=8192
@@ -73,6 +74,7 @@ class SimulationConfig:
         if self.expression_calibration not in ('none','type_mean'):raise ValueError('Unknown expression calibration')
         if self.split_strategy not in ('grid','mirrored_sectors') or self.angular_sectors<5:raise ValueError('Invalid geometry-only split strategy')
         if not 0<=self.ccc_scale_power<=1 or self.ccc_error not in ('huber','mse') or self.ccc_huber_delta<=0:raise ValueError('Invalid CCC supervision scaling/objective')
+        if self.expression_coverage is not None and not 0<self.expression_coverage<=1:raise ValueError('Invalid training expression coverage')
         if not 50<=self.n_lr<=100 or not 5<=self.mi_lr_count<=8 or self.n_genes<2*self.n_lr:raise ValueError('Use 50–100 LR, 5–8 LR/MI, and enough genes')
         if self.basal_lr_per_type<0 or self.mi_count*self.mi_lr_count+5*self.basal_lr_per_type>self.n_lr or not 0<=self.basal_lr_offtype_mean<self.basal_lr_mean:raise ValueError('Invalid type-specific basal LR profile')
         if self.programs!=32 or min(self.gnn_epochs,self.ae_stage1_epochs,self.ae_stage2_epochs)<2 or self.sc_cube_epochs<1:raise ValueError('Require 32 programs and positive epoch budgets')
@@ -85,7 +87,11 @@ class SimulationConfig:
             if len(self.mi_loadings)!=self.mi_count or any(len(row)!=self.mi_lr_count or min(row)<=0 for row in self.mi_loadings):raise ValueError('mi_loadings must have one positive mi_lr_count-length row per designed MI')
     @property
     def mi_count(self):return 4 if self.program_design=='four_programs' else 2
-    def to_dict(self):return json.loads(json.dumps(asdict(self)))
+    def to_dict(self):
+        values=json.loads(json.dumps(asdict(self)))
+        # Preserve identities of existing simulations when this option is off.
+        if values['expression_coverage'] is None:values.pop('expression_coverage')
+        return values
     @classmethod
     def from_json(cls,path):return cls(**json.loads(Path(path).read_text()))
     def signature(self):return hashlib.sha256(json.dumps(self.to_dict(),sort_keys=True).encode()).hexdigest()
