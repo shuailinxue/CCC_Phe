@@ -114,4 +114,4 @@ def test_notebook_static():
     for c in n.cells:
         if c.cell_type=='code':ast.parse('\n'.join(line for line in c.source.splitlines() if not line.startswith('%')))
     source='\n'.join(c.source for c in n.cells if c.cell_type=='code')
-    assert source.index('run(config)')<source.index('report=PairedReport')<source.index('show(report.spatial())')
+    assert source.index('compare_training()')<source.index('report=PairedReport')<source.index('show(report.spatial())')

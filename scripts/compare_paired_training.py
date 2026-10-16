@@ -22,14 +22,20 @@ def compare(outputs):
     for name,path in outputs:
         path=Path(path);prediction=np.load(path/'reconstruction.npy',mmap_mode='r')
         current_target=np.load(path/'input/ccc.npy',mmap_mode='r')
+        maximum_target_difference=0.
         for start in range(0,len(reference),512):
-            np.testing.assert_allclose(current_target[start:start+512],reference[start:start+512],atol=1e-6)
+            stop=min(start+512,len(reference))
+            actual=current_target[start:stop];expected=reference[start:stop]
+            # Independent float32 GPU reductions may differ by a few ULPs.
+            np.testing.assert_allclose(actual,expected,rtol=1e-5,atol=1e-5)
+            maximum_target_difference=max(maximum_target_difference,float(np.abs(actual-expected).max()))
         metrics=pd.read_csv(path/'metrics.csv').query("scope == 'heldout_slices'").iloc[0]
         summary=json.loads((path/'summary.json').read_text());history=pd.read_csv(path/'gnn/training.csv')
         best=json.loads((path/'gnn/heldout_metrics.json').read_text())
         row={'experiment':name,'encoder_genes':summary['expression_genes'],
              'training_slices':summary.get('training_slices',4),'training_centers':summary['split_sizes'][0],
              'best_epoch':best['best_epoch'],'epochs_run':len(history),'K':int(metrics.K),
+             'original_CCC_max_absolute_difference':maximum_target_difference,
              'heldout_ARI':metrics.ARI,'heldout_disease_F1':metrics.disease_niche_F1}
         for split,label in [(1,'validation'),(2,'test')]:
             ids=np.flatnonzero(fold==split);error=[];sse=0.;total=0.
@@ -53,7 +59,9 @@ def main():
     table.to_csv(c/'experiment_comparison.csv',index=False);print(table.to_string(index=False),flush=True)
     assert all(checksum(OLD/f)==h for f,h in hashes.items())
     (c/'comparison_audit.json').write_text(json.dumps({'original_results_unchanged':True,'source_hashes':hashes,
-        'original_validation_and_test_CCC_unchanged':True,'common_loss_scales':'Original training reference, never held-out refit',
+        'original_validation_and_test_CCC_numerically_equal':True,
+        'CCC_comparison_tolerance':{'rtol':1e-5,'atol':1e-5},
+        'common_loss_scales':'Original training reference, never held-out refit',
         'training_update_budget_matched':bool(table.training_centers.nunique()==1),
         'test_used_for_model_selection':False},indent=2)+'\n')
 

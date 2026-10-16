@@ -1,0 +1,33 @@
+{
+  "data_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/atopic_dermatitis_5k",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/atopic_dermatitis_5k/BK18_BK25",
+  "annotation_donor_counts": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/dermatomyositis_5k/all_sections.h5ad",
+  "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
+  "sections": [
+    "BK18",
+    "BK25"
+  ],
+  "seed": 52173,
+  "core_link_um": 100.0,
+  "minimum_core_cells": 100,
+  "coverage_fraction": 0.1,
+  "opportunity_fraction": 0.01,
+  "feature_nonzero_fraction": 0.005,
+  "feature_scope": "sample_union",
+  "excluded_ccc_types": [
+    "Unresolved"
+  ],
+  "encoder_genes": 2048,
+  "hidden": 128,
+  "message_layers": 2,
+  "epochs": 15,
+  "patience": 5,
+  "evaluation_centers_per_patient": 1000,
+  "batch_size": 128,
+  "device": "cuda:2",
+  "spatial_mixing": 0.2,
+  "split_unit": "joint_all",
+  "clustering_representation": "ccc_profile_activity",
+  "audit_scope": "Independent downstream AD paired niches; no clinical CCC/Cox changes; observed current-study AD counts define directed CCC; annotation completion is outcome-blind and audited",
+  "counts_source": "published_counts"
+}

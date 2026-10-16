@@ -1,0 +1,42 @@
+{
+  "data_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/kidney_dkd_5k",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/kidney_dkd_5k/HK3106_HK2695",
+  "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
+  "sections": [
+    "HK3106",
+    "HK2695"
+  ],
+  "seed": 52173,
+  "core_link_um": 100.0,
+  "minimum_core_cells": 100,
+  "coverage_fraction": 0.1,
+  "opportunity_fraction": 0.01,
+  "feature_nonzero_fraction": 0.005,
+  "feature_scope": "sample_union",
+  "excluded_ccc_types": [
+    "Immune_unknown"
+  ],
+  "encoder_genes": 2048,
+  "hidden": 128,
+  "message_layers": 2,
+  "epochs": 15,
+  "patience": 5,
+  "evaluation_centers_per_patient": 1000,
+  "batch_size": 128,
+  "device": "cuda:2",
+  "spatial_mixing": 0.2,
+  "split_unit": "joint_all",
+  "clustering_representation": "ccc_profile_activity",
+  "audit_scope": "Independent observed kidney downstream niches; no clinical CCC/Cox changes; exact Xenium counts and published annotations",
+  "dataset": "kidney_dkd",
+  "healthy_roi_centers": 30000,
+  "conditions": [
+    "HC",
+    "DKD"
+  ],
+  "control_label": "Healthy kidney",
+  "case_label": "Diabetic kidney disease",
+  "source_paper": "10.1038/s41586-026-10363-4",
+  "ccc_nonzero_weight_max": 1.0,
+  "case_roi_centers": 30000
+}

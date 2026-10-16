@@ -1,0 +1,23 @@
+{
+  "data_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/data/xenium_colitis_dataset2_5k",
+  "output_dir": "/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/colitis_xenium_5k_all_tissue",
+  "lr_atlas": "/home/xueshuailin/CCC_Phe/data/commuspace_human_lr_atlas.tsv",
+  "seed": 52173,
+  "core_link_um": 100.0,
+  "minimum_core_cells": 100,
+  "coverage_fraction": 0.1,
+  "opportunity_fraction": 0.01,
+  "feature_nonzero_fraction": 0.005,
+  "encoder_genes": 2048,
+  "hidden": 128,
+  "message_layers": 2,
+  "epochs": 40,
+  "patience": 8,
+  "train_centers_per_patient": 2000,
+  "evaluation_centers_per_patient": 1000,
+  "batch_size": 128,
+  "device": "cuda:2",
+  "spatial_mixing": 0.2,
+  "split_unit": "joint_all",
+  "clustering_representation": "program_mixture_activity"
+}

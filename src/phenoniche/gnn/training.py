@@ -183,6 +183,8 @@ def fit(data,config,initialize_composition=False,rescale_activity=False,ccc_obje
         np.save(output/'initial_B.npy',model.composition_dictionary.detach().cpu().numpy())
     data.prepare_device(device,output/'cache')
     optimizer=make_optimizer(model,config)
+    monitor_role=data.audit.get('monitor_role','validation')
+    monitor_name='training monitor' if monitor_role=='training_subset' else 'validation'
     history=[];best=float('inf');state=None;stale=0
     for e in range(config.max_epochs):
         print(f'Epoch {e+1}/{config.max_epochs}',flush=True)
@@ -190,8 +192,9 @@ def fit(data,config,initialize_composition=False,rescale_activity=False,ccc_obje
         va=epoch(model,data,data.rows[1],config,None,e,ccc_objective)
         # Compare the same CCC-primary objective across all epochs.
         score=va['ccc']+config.lambda_reg*va['regularization']+config.lambda_comp*va.get('composition',0.)
-        print(f'Epoch {e+1}: train CCC={tr["ccc"]:.6f}, validation CCC={va["ccc"]:.6f}, selected loss={score:.6f}; validation unweighted={va["ccc_unweighted"]:.6f}, positive={va["ccc_positive_huber"]:.6f}, gain vs zero={va["ccc_gain_over_zero"]:.1%}',flush=True)
-        history.append({'epoch':e+1,**{'train_'+k:v for k,v in tr.items()},**{'validation_'+k:v for k,v in va.items()},'selection_loss':score})
+        print(f'Epoch {e+1}: train CCC={tr["ccc"]:.6f}, {monitor_name} CCC={va["ccc"]:.6f}, selected loss={score:.6f}; {monitor_name} unweighted={va["ccc_unweighted"]:.6f}, positive={va["ccc_positive_huber"]:.6f}, gain vs zero={va["ccc_gain_over_zero"]:.1%}',flush=True)
+        prefix='monitor_' if monitor_role=='training_subset' else 'validation_'
+        history.append({'epoch':e+1,**{'train_'+k:v for k,v in tr.items()},**{prefix+k:v for k,v in va.items()},'selection_loss':score})
         pd.DataFrame(history).to_csv(output/'training.csv',index=False)
         if score<best-1e-7:
             best=score;state=copy.deepcopy(model.state_dict());stale=0;best_epoch=e+1
@@ -217,8 +220,12 @@ def fit(data,config,initialize_composition=False,rescale_activity=False,ccc_obje
     torch.save(payload,output/'checkpoint.pt')
     pd.DataFrame(history).to_csv(output/'training.csv',index=False)
     (output/'config.json').write_text(json.dumps(config.to_dict(),indent=2)+'\n')
-    test=epoch(model,data,data.rows[2],config,None,config.max_epochs,ccc_objective)
-    (output/'heldout_metrics.json').write_text(json.dumps({'best_epoch':best_epoch,'validation_loss':best,'test':test},indent=2)+'\n')
+    if monitor_role=='training_subset':
+        (output/'training_monitor_metrics.json').write_text(json.dumps({'best_epoch':best_epoch,'monitor_loss':best,
+            'monitor_role':monitor_role,'test':None,'training_centers':len(data.rows[0]),'monitor_centers':len(data.rows[1])},indent=2)+'\n')
+    else:
+        test=epoch(model,data,data.rows[2],config,None,config.max_epochs,ccc_objective) if len(data.rows[2]) else None
+        (output/'heldout_metrics.json').write_text(json.dumps({'best_epoch':best_epoch,'validation_loss':best,'test':test},indent=2)+'\n')
     return model
 
 

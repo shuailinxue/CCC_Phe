@@ -4,7 +4,9 @@
 
 ## 使用
 
-在项目根目录打开 `XeniumPrime5K_Breast_niche_walkthrough.ipynb`。Notebook 直接读取 NAS 上的现有结果，不会因文件缺失自动启动训练。图片导出到 `/home/nas3/biod/xueshuailin/CCC_Phe/workspace/outputs/xenium_prime_5k/figures/`。
+真实乳腺癌分析入口为 `XeniumPrime5K_GNN_niche_analysis.ipynb`，其中保留与 NAS 上旧 CCC-vector AE 结果的比较。
+
+结肠炎入口为 `Colitis_Xenium5K_Communication_Niches.ipynb`。在 cccphe 中 Run All，联合分析9位 HC/UC/ICI 患者；全部患者、全部保留组织片段的所有微环境共同训练；固定训练子集用于重构曲线监测，不设置独立测试集。空间图完整展示9位患者的所有保留片段，细胞类型与niche使用相同坐标。匹配的完整结果直接复用，图片、矩阵和模型保存到 NAS `outputs/colitis_xenium_5k_all_tissue/`；此前片段留出结果保留在 `outputs/colitis_xenium_5k_joint/`。独立患者划分的首轮探索保留在 `outputs/colitis_xenium_5k/`。
 
 新 GNN 的真实数据报告：[XeniumPrime5K_GNN_niche_analysis.ipynb](/home/xueshuailin/CCC_Phe/XeniumPrime5K_GNN_niche_analysis.ipynb)。使用 cccphe kernel，Run All 将构建/审计输入、训练新版 GNN（完整结果存在时复用）并展示结果；图片和模型矩阵均在 NAS 独立输出目录。
 
@@ -55,7 +57,7 @@ niche 分析属于独立下游模块。项目的 phenotype-associated CCC 主线
 
 ## Tumor-edge 模拟实验
 
-打开根目录 `TumorEdge_Communication_Simulation.ipynb`，选择 `cccphe` kernel，Run All。默认 8,000 cells、5 种类型、75 个真实 LR、四个各 6-LR 的真值 MI（两个边缘、一个 Tumor→Tumor core、一个 Normal→Normal exterior）。调用已核验的 scCube API；合成种子除了类型 marker，还为每种细胞设置 3 个类型特异基础 LR。LR 身份来自现有数据库，类型表达分配是明确的合成假设，不冒充实验先验。计数均值校准保留原始 count reference；MI 仅注入 sender ligand / receiver receptor 表达，之后调用原 CCC 公式。
+当前单组织模拟入口是 `TumorEdge_GeneRich_CCC_Expression_Reconstruction.ipynb`，健康/癌症多切片入口是 `HealthyCancer_Communication_Niches.ipynb`。早期基础模拟计算代码和 NAS 结果仍保留：8,000 cells、5 种类型、75 个真实 LR、四个各 6-LR 的真值 MI（两个边缘、一个 Tumor→Tumor core、一个 Normal→Normal exterior）。调用已核验的 scCube API；合成种子除了类型 marker，还为每种细胞设置 3 个类型特异基础 LR。LR 身份来自现有数据库，类型表达分配是明确的合成假设，不冒充实验先验。计数均值校准保留原始 count reference；MI 仅注入 sender ligand / receiver receptor 表达，之后调用原 CCC 公式。
 
 训练目标为 CCC 重构 + 0.005 × program regularization；无 Composition loss、Cell Type Embedding 或旧调控损失。CCC 使用训练集部分 RMS 归一化和 Huber error；native activity 参数在优化时重参数化，保存前合并回原 Linear，GNN 推理架构不变。niche 使用由 H 推导的 Z 距离，避免重复程序维度被标准化放大。K=4–15 选择不使用真实标签，另报固定 K=4 对照。
 
