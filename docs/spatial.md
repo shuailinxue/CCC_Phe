@@ -5,7 +5,18 @@ Entry point is `phenoniche.spatial.SpatialNiches.fit`, or
 cell types, specimen identifiers and a ligand–receptor table. For the lung data
 the CLI accepts `--lung-stim-dir`, which verifies registration before converting
 coordinates to micrometers. Use `python scripts/run.py --help` for the
-input options. The lung analysis notebook is stored on NAS at `/home/nas3/biod/xueshuailin/CCC_Phe/notebooks/CosMx_3D_Lung_V2.ipynb`.
+input options. A coordinates TSV requires `cell_id`, `x_um`, `y_um` and
+optionally `z_um`. An LR TSV requires `ligand` and `receptor` columns. All
+subunits of a receptor or ligand complex must be present in the gene panel.
+
+Pass optional parameter overrides as a JSON object via `--settings`. For
+example, `{"window_um": 40, "contact_um": 40, "seed": 73}` overrides the two
+radii and sets the seed. The output records effective settings. Context
+checkpoints are keyed by input, settings and source code, so changes to any of
+these can require a new fit. Archived checkpoints and outputs retain their
+original formats.
+
+The lung analysis notebook is stored on NAS at `/home/nas3/biod/xueshuailin/CCC_Phe/notebooks/CosMx_3D_Lung_V2.ipynb`.
 
 1. Construct an independent physical radius graph within each specimen.
    Composition uses the center plus all cells within 50 µm with Gaussian
@@ -48,5 +59,5 @@ contribution to a particular clustering decision.
 
 The implementation reports stability rather than assuming a consensus
 partition is reproducible. Parameters and resource requirements need
-validation on full specimens. Historical hotspot and dictionary outputs in the
-lung notebook are separate experiments.
+validation on full specimens. The lung notebook can be opened with the optional
+`notebook` dependencies, installed with `python -m pip install -e ".[notebook]"`.

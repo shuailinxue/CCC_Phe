@@ -1,8 +1,8 @@
-"""Nonnegative CP on observed window/type/type fibers. Absent fibers carry no loss."""
+"""Nonnegative CP on observed focal-cell, neighbor-type and directed LR scores."""
 
 import numpy as np
 from scipy import sparse
-from scipy.optimize import linear_sum_assignment, nnls
+from scipy.optimize import nnls
 
 
 def normalize(factors):
@@ -12,7 +12,7 @@ def normalize(factors):
         factors[0] *= norm
 
 
-def fit_programs(fibers, n_types, settings, rng, n_senders=None):
+def fit_programs(fibers, n_types, settings, rng):
     w = np.repeat(np.arange(len(fibers)), [len(f[0]) for f in fibers])
     s, r, y, _ = (np.concatenate(items) for items in zip(*fibers))
     if not len(w) or not np.any(y):
@@ -20,7 +20,7 @@ def fit_programs(fibers, n_types, settings, rng, n_senders=None):
     rank = min(settings.rank, len(np.unique(w)), y.shape[1])
     factors = [
         rng.uniform(0.3, 1, (n, rank))
-        for n in (len(fibers), n_senders or n_types * 2, n_types, y.shape[1])
+        for n in (len(fibers), 1, n_types, y.shape[1])
     ]
     ids = [w, s, r]
     y = (
@@ -49,12 +49,6 @@ def fit_programs(fibers, n_types, settings, rng, n_senders=None):
     return tuple(factors[1:])
 
 
-def match_programs(reference, other):
-    cos = np.prod([a.T @ b for a, b in zip(reference, other)], axis=0)
-    i, j = linear_sum_assignment(-cos)
-    return i, j, cos[i, j]
-
-
 def project(fiber, factors):
     sender, receiver, y, _ = fiber
     s, r, h = factors
@@ -77,22 +71,3 @@ def sample_blocks(ids, block, settings, rng):
     chosen = rng.choice(keys, max(1, int(0.8 * len(keys))), replace=False)
     eligible = ids[np.isin(block[ids], chosen)]
     return rng.choice(eligible, min(settings.fit_windows, len(eligible)), replace=False)
-
-
-def top_channels(factors, k=12):
-    s, r, h = factors
-    output = []
-    for p in range(h.shape[1]):
-        # Top k triples can only contain entries among the top k of each axis.
-        axes = [np.argsort(-m[:, p], kind="stable")[:k] for m in factors]
-        a, b, c = np.meshgrid(*axes, indexing="ij")
-        weights = s[a, p] * r[b, p] * h[c, p]
-        idx = np.argsort(-weights.ravel(), kind="stable")[:k]
-        output.append(
-            [
-                (a.flat[i], b.flat[i], c.flat[i], weights.flat[i])
-                for i in idx
-                if weights.flat[i] > 0
-            ]
-        )
-    return output

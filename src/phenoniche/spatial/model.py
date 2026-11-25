@@ -5,10 +5,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .channels import Channels, WindowTensor
+from .channels import Channels
 from .geometry import composition_partition, physical_graph
-from .refine import assign
-from .subclasses import partition_contexts
+from .contexts import partition_contexts
 from .cell_programs import fit_context
 from .settings import Settings
 
@@ -18,11 +17,11 @@ def _run_context(task):
     block, graph, contacts, types, channels, cfg = _CONTEXT_INPUTS
     print(f"开始 {key}，{len(centers):,} 个细胞", flush=True)
     seed = int(np.random.SeedSequence([cfg.seed, *key]).generate_state(1)[0])
-    part = fit_context(centers, key, block, graph, contacts, types, channels, cfg, seed)
+    part = fit_context(centers, block, graph, contacts, types, channels, cfg, seed)
     return key, part
 
 
-def _context_fingerprint(counts, xyz, ids, types, samples, channels, cfg, coarse):
+def _context_fingerprint(xyz, ids, types, samples, channels, cfg, coarse):
     import hashlib
 
     digest = hashlib.sha256()
@@ -50,7 +49,8 @@ def _context_fingerprint(counts, xyz, ids, types, samples, channels, cfg, coarse
         "model.py",
         "cell_programs.py",
         "programs.py",
-        "subclasses.py",
+        "contexts.py",
+        "geometry.py",
         "channels.py",
     ):
         digest.update((Path(__file__).parent / filename).read_bytes())
@@ -191,7 +191,7 @@ class SpatialNiches:
         )
         _, block = np.unique(tiles, axis=0, return_inverse=True)
         fingerprint = _context_fingerprint(
-            counts, xyz, ids, types, samples, ch, cfg, coarse
+            xyz, ids, types, samples, ch, cfg, coarse
         )
         partitions = _fit_contexts(
             groups,
@@ -282,182 +282,6 @@ class SpatialNiches:
             pd.DataFrame(evidence, columns=columns),
             programs,
             ch.names,
-            cfg,
-        )
-
-    @classmethod
-    def from_partitions(
-        cls,
-        ids,
-        samples,
-        names,
-        types,
-        coarse,
-        composition,
-        partitions,
-        channel_names,
-        cfg,
-    ):
-        niche = np.empty(len(ids), dtype=object)
-        context = np.empty(len(ids), dtype=object)
-        subclass = np.zeros(len(ids), dtype=int)
-        state = np.empty(len(ids), dtype=object)
-        stability = np.zeros(len(ids))
-        programs, evidence = {}, []
-        assigned = np.zeros(len(ids), dtype=int)
-        for key, result in sorted(partitions.items()):
-            a, b = key
-            parent = f"C{a}" if a == b else f"I{a}_{b}"
-            final_labels = [f"{parent}.{k}" if k else parent for k in result.labels]
-            niche[result.ids] = final_labels
-            context[result.ids] = parent
-            subclass[result.ids] = result.labels
-            state[result.ids] = result.status
-            state[result.ids[(result.labels == 0) & (result.status == "split")]] = (
-                "insufficient_observation"
-            )
-            stability[result.ids] = result.stability
-            assigned[result.ids] += 1
-            if result.program is not None:
-                programs[key] = result.program
-            for label, p, s, r, idx, weight, delta, n_in, n_out in result.channels:
-                if result.program[1][0].shape[0] == 4 * len(names):
-                    direction = s // len(names)
-                    source, target = (a, b)[direction // 2], (a, b)[direction % 2]
-                else:
-                    source, target = (a, b) if s < len(names) else (b, a)
-                evidence.append(
-                    (
-                        f"{parent}.{label}",
-                        parent,
-                        p,
-                        source,
-                        target,
-                        names[s % len(names)],
-                        names[r],
-                        *channel_names[idx],
-                        weight,
-                        delta,
-                        n_in,
-                        n_out,
-                    )
-                )
-        if not (assigned == 1).all():
-            raise ValueError("Every cell must belong to exactly one analysis context")
-        cells = pd.DataFrame(
-            dict(
-                specimen=samples,
-                cell_type=names[types],
-                coarse=coarse,
-                context=context,
-                subclass=subclass,
-                niche=niche,
-                status=state,
-                stability=stability,
-            ),
-            index=ids,
-        )
-        columns = [
-            "niche",
-            "context",
-            "program",
-            "source_coarse",
-            "target_coarse",
-            "sender",
-            "receiver",
-            "ligand",
-            "receptor",
-            "loading",
-            "subclass_minus_peers",
-            "observed_inside",
-            "observed_peers",
-        ]
-        return cls(
-            cells,
-            pd.DataFrame(composition, index=ids, columns=names),
-            pd.DataFrame(evidence, columns=columns),
-            programs,
-            channel_names,
-            cfg,
-        )
-
-    @classmethod
-    def from_contexts(
-        cls,
-        ids,
-        samples,
-        names,
-        types,
-        coarse,
-        composition,
-        contacts,
-        proposals,
-        programs,
-        channel_names,
-        cfg,
-    ):
-        """Resolve per-context proposals identically for sequential and checkpointed fits."""
-        labels, region_ids, accepted, strength = assign(
-            coarse, contacts, proposals, cfg.min_cells
-        )
-        evidence = []
-        for label, region, (a, b), p, sign, rows, n, original_n in accepted:
-            for s, r, idx, weight, delta, n_in, n_rim in rows:
-                source, target = (a, b) if s < len(names) else (b, a)
-                evidence.append(
-                    (
-                        label,
-                        region,
-                        n,
-                        original_n,
-                        p,
-                        sign,
-                        source,
-                        target,
-                        names[s % len(names)],
-                        names[r],
-                        *channel_names[idx],
-                        weight,
-                        delta,
-                        n_in,
-                        n_rim,
-                    )
-                )
-        columns = [
-            "niche",
-            "region",
-            "cells",
-            "candidate_cells",
-            "program",
-            "sign",
-            "source_coarse",
-            "target_coarse",
-            "sender",
-            "receiver",
-            "ligand",
-            "receptor",
-            "loading",
-            "candidate_minus_rim",
-            "observed_inside",
-            "observed_rim",
-        ]
-        cells = pd.DataFrame(
-            {
-                "specimen": samples,
-                "cell_type": names[types],
-                "coarse": coarse,
-                "niche": labels,
-                "functional_region": region_ids,
-                "max_candidate_agreement": strength,
-            },
-            index=ids,
-        )
-        return cls(
-            cells,
-            pd.DataFrame(composition, index=ids, columns=names),
-            pd.DataFrame(evidence, columns=columns),
-            programs,
-            channel_names,
             cfg,
         )
 

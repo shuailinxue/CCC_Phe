@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.ruff_cache/
 .ipynb_checkpoints/
 .venv/
 venv/
@@ -9,6 +10,5 @@ venv/
 .env.*
 !.env.example
 *.log
-/data/ccc/
-/data/processed/
 /outputs/
+/results/

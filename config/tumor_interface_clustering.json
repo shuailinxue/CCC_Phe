@@ -1,8 +1,0 @@
-{
-  "method": "shared_h_kmeans",
-  "K": 6,
-  "seed": 40700,
-  "n_init": 10,
-  "normalization": "fixed_global_training_calibration",
-  "row_normalization": false
-}

@@ -4,10 +4,10 @@ import igraph as ig
 import leidenalg
 import numpy as np
 from scipy import sparse
+from scipy.spatial import cKDTree
 from sklearn.metrics import adjusted_rand_score
 
 from .programs import fit_programs, project, sample_blocks
-from .subclasses import _activity_graph
 
 
 class CellTensor:
@@ -67,6 +67,33 @@ def pool_programs(ids, allowed, windows, types, scores, sigma):
     return np.concatenate(features, axis=1) / np.maximum(denominator[:, None], 1e-12)
 
 
+def _activity_graph(activity, neighbors):
+    # Keep the amplitude of the entire program and balance component scales.
+    scale = np.maximum(np.quantile(activity, 0.9, axis=0), 1e-7)
+    scaled = np.log1p(activity / scale)
+    points, inverse, sizes = np.unique(
+        scaled.round(6), axis=0, return_inverse=True, return_counts=True
+    )
+    if len(points) < 2:
+        return None, inverse, scaled
+    k = min(neighbors + 1, max(3, int(np.sqrt(len(points))) + 1), len(points))
+    distances, nearby = cKDTree(points).query(points, k=k)
+    a = np.repeat(np.arange(len(points)), k)
+    b = nearby.ravel()
+    keep = a != b
+    a, b = a[keep], b[keep]
+    local_scale = np.maximum(distances[:, -1], 1e-8)
+    weights = np.exp(
+        -distances.ravel()[keep] / np.sqrt(local_scale[a] * local_scale[b])
+    )
+    weights *= np.sqrt(sizes[a] * sizes[b])
+    adj = sparse.csr_matrix((weights, (a, b)), shape=(len(points),) * 2)
+    edges = sparse.triu(adj.maximum(adj.T), k=1).tocoo()
+    graph = ig.Graph(len(points), np.column_stack([edges.row, edges.col]))
+    graph.es["weight"] = edges.data
+    return graph, inverse, scaled
+
+
 def consensus(activity, cfg, seed):
     """Consensus on existing similarity edges, avoiding a quadratic co-assignment matrix."""
     graph, inverse, _ = _activity_graph(activity, cfg.communication_neighbors)
@@ -105,7 +132,7 @@ def consensus(activity, cfg, seed):
     return labels, stability
 
 
-def fit_context(ids, key, block, windows, contacts, types, channels, cfg, seed):
+def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
     allowed = np.zeros(len(types), dtype=bool)
     allowed[ids] = True
     tensor = CellTensor(contacts, types, channels, cfg.sigma_um)
@@ -124,7 +151,6 @@ def fit_context(ids, key, block, windows, contacts, types, channels, cfg, seed):
             tensor.n_types,
             cfg,
             rng,
-            n_senders=1,
         )
         if model is None:
             continue

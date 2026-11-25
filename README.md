@@ -1,9 +1,46 @@
 # CCC_Phe
 
-Spatial niches defined by local cell composition and directed cell–cell communication.
+CCC_Phe identifies spatial niches from local cell composition and directed
+ligand–receptor expression. It accepts cell-level counts, registered 2D or 3D
+coordinates in micrometres, cell types, specimen IDs, and an LR table.
 
-- API: `phenoniche.spatial.SpatialNiches.fit`
-- CLI: `python scripts/run.py --help`
-- Method and input details: [docs/spatial.md](docs/spatial.md)
+## Install and test
 
-Historical models and their launchers are archived on NAS under `Backup/retired_version_interfaces/`. Historical notebooks retain their saved outputs and refer to the archived workflows.
+From the checkout, with Python 3.11 or newer:
+
+```bash
+python -m pip install -e '.[dev]'
+python -m pytest
+```
+
+## Run
+
+For a single specimen with raw counts in the `counts` layer, cell types in
+`obs["celltypes"]`, and micrometre coordinates in `obsm["spatial_um"]`:
+
+```bash
+python scripts/run.py \
+  --input tissue.h5ad \
+  --output results/tissue \
+  --lr data/commuspace_human_lr_atlas.tsv \
+  --single-specimen --obsm-um spatial_um
+```
+
+Use `--layer X` when `.X` contains raw counts. For multiple specimens, replace
+`--single-specimen` with `--specimen-key KEY`. The output directory must be new.
+See `python scripts/run.py --help` for coordinate and settings options. Use an
+LR table appropriate to the species and gene symbols in the input.
+
+## Source and reproducibility
+
+- `src/phenoniche/spatial/` contains the model. Read `model.py` for the workflow
+  and `settings.py` for the defaults. Python callers use
+  `phenoniche.spatial.SpatialNiches.fit`.
+- `scripts/run.py` handles input and output. `tests/test_spatial.py` checks the
+  active model on synthetic inputs.
+- `data/` contains the human LR table and its provenance record.
+- [docs/spatial.md](docs/spatial.md) describes the input schema, method and outputs.
+
+The 3D lung notebook and saved results reside on the project NAS. Retired
+implementations and experiments are under `Backup/retired_version_interfaces/`
+on that NAS.
