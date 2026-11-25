@@ -1,6 +1,7 @@
 """Fit spatial niches to a registered specimen or a collection of specimens."""
 
 import argparse
+from dataclasses import replace
 import json
 from pathlib import Path
 import sys
@@ -19,9 +20,16 @@ def main():
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
-        "--lr", type=Path, required=True, help="Species-appropriate ligand/receptor TSV"
+        "--lr", type=Path, help="Species-appropriate ligand/receptor TSV"
     )
     parser.add_argument("--settings", type=Path)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--enrichment-only", action="store_true")
+    mode.add_argument("--interface", type=int, nargs=2, metavar=("CLASS_A", "CLASS_B"))
+    parser.add_argument("--interface-um", type=float)
+    parser.add_argument("--delaunay-max-um", type=float)
+    parser.add_argument("--enrichment-permutations", type=int)
+    parser.add_argument("--aggregation", choices=("sum-sum", "mean-sum", "mean-mean"))
     parser.add_argument("--composition-graph-cache", type=Path)
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--checkpoint-dir", type=Path)
@@ -41,6 +49,8 @@ def main():
         "--lung-stim-dir", type=Path, help="Directory containing section_*_aligned.csv"
     )
     args = parser.parse_args()
+    if not args.enrichment_only and args.lr is None:
+        parser.error("--lr is required for coarse-class and interface fits")
     if args.output.exists():
         raise FileExistsError(args.output)
     settings = (
@@ -48,6 +58,12 @@ def main():
         if args.settings
         else Settings()
     )
+    overrides = {
+        name: getattr(args, name) for name in (
+            "interface_um", "delaunay_max_um", "enrichment_permutations", "aggregation"
+        ) if getattr(args, name) is not None
+    }
+    settings = replace(settings, **overrides)
     data = anndata.read_h5ad(args.input)
     if args.coordinates_tsv:
         xyz = table_coordinates(data, args.coordinates_tsv)
@@ -60,6 +76,14 @@ def main():
         if args.specimen_key
         else np.repeat("specimen", data.n_obs)
     )
+    if args.enrichment_only:
+        preview = SpatialNiches.coarse(
+            data.obs_names, xyz, data.obs[args.types], sample, settings,
+            composition_graph_cache=args.composition_graph_cache,
+        )
+        preview.save(args.output)
+        print(f"{preview.cells.coarse.nunique()} coarse classes; saved to {args.output}")
+        return
     counts = data.X if args.layer == "X" else data.layers[args.layer]
     result = SpatialNiches.fit(
         counts,
@@ -73,6 +97,7 @@ def main():
         composition_graph_cache=args.composition_graph_cache,
         workers=args.workers,
         checkpoint_dir=args.checkpoint_dir,
+        interface=args.interface,
     )
     result.save(args.output)
     print(

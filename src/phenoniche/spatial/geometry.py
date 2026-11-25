@@ -47,20 +47,6 @@ def composition_partition(graph, types, settings, workers=1, cache_path=None):
     return fractions, np.asarray(partition.membership)[inverse]
 
 
-def contexts(graph, coarse):
-    """Index center cells by internal class and each directly touching interface."""
-    from collections import defaultdict
-
-    groups = defaultdict(list)
-    for i, label in enumerate(coarse):
-        groups[(label, label)].append(i)
-        adjacent = graph.indices[graph.indptr[i] : graph.indptr[i + 1]]
-        for other in np.unique(coarse[adjacent]):
-            if label != other:
-                groups[tuple(sorted((label, other)))].append(i)
-    return {k: np.asarray(v) for k, v in sorted(groups.items())}
-
-
 def composition_graph(fractions, neighbors, workers=1, cache_path=None):
     """Build or reuse the composition similarity graph, verifying exact inputs."""
     import hashlib

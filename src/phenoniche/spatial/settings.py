@@ -14,13 +14,19 @@ class Settings:
     fit_windows: int = 256
     repeats: int = 5
     block_um: float = 100
-    min_cells: int = 12
     seed: int = 73
-    interface_fraction: float = 0.05
+    interface_um: float = 25
+    delaunay_max_um: float | None = None
+    enrichment_permutations: int = 1000
+    aggregation: str = "mean-mean"
     communication_neighbors: int = 20
 
     def __post_init__(self):
+        if self.aggregation not in {"sum-sum", "mean-sum", "mean-mean"}:
+            raise ValueError("Invalid aggregation mode")
         for key, value in vars(self).items():
+            if key == "aggregation" or (key == "delaunay_max_um" and value is None):
+                continue
             if not math.isfinite(value) or (key != "seed" and value <= 0):
                 raise ValueError(f"Invalid {key}: {value}")
         for key in (
@@ -29,11 +35,11 @@ class Settings:
             "iterations",
             "fit_windows",
             "repeats",
-            "min_cells",
             "seed",
             "communication_neighbors",
+            "enrichment_permutations",
         ):
             if type(getattr(self, key)) is not int:
                 raise ValueError(f"{key} must be an integer")
-        if self.seed < 0 or self.interface_fraction > 1 or self.repeats < 2:
-            raise ValueError("Use a nonnegative seed, an interface fraction at most 1, and at least two repeats")
+        if self.seed < 0 or self.repeats < 2:
+            raise ValueError("Use a nonnegative seed and at least two repeats")

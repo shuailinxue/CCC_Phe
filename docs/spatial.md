@@ -1,63 +1,93 @@
-# Spatial niches: composition and bidirectional communication
+# Spatial niches from composition and directed communication
 
-Entry point is `phenoniche.spatial.SpatialNiches.fit`, or
-`scripts/run.py`. Input is raw cell-by-gene counts, micrometer coordinates,
-cell types, specimen identifiers and a ligand–receptor table. For the lung data
-the CLI accepts `--lung-stim-dir`, which verifies registration before converting
-coordinates to micrometers. Use `python scripts/run.py --help` for the
-input options. A coordinates TSV requires `cell_id`, `x_um`, `y_um` and
-optionally `z_um`. An LR TSV requires `ligand` and `receptor` columns. All
-subunits of a receptor or ligand complex must be present in the gene panel.
+Use `SpatialNiches.coarse(...)` to preview coarse classes and their adjacency
+enrichment. Use `SpatialNiches.fit(...)` to fit each coarse class independently,
+or pass `interface=(a, b)` to fit a single manually selected interface. Use the
+same input, cell order and settings for the preview and the fit. The fit
+recomputes the coarse labels. Each interface center remains a member of its
+original coarse class and may appear in the output of both analyses.
 
-Pass optional parameter overrides as a JSON object via `--settings`. For
-example, `{"window_um": 40, "contact_um": 40, "seed": 73}` overrides the two
-radii and sets the seed. The output records effective settings. Context
-checkpoints are keyed by input, settings and source code, so changes to any of
-these can require a new fit. Archived checkpoints and outputs retain their
-original formats.
+Inputs are aligned cell-by-gene raw counts, unique cell IDs, cell types,
+specimen IDs, registered 2D or 3D coordinates in micrometres, and a
+species-appropriate TSV with `ligand` and `receptor` columns. Supply raw counts
+in the `counts` layer by default, or use `--layer X`. Coordinate tables use
+`cell_id`, `x_um`, `y_um` and optionally `z_um`. The CosMx lung option
+`--lung-stim-dir` checks alignment before converting to micrometres.
 
-The lung analysis notebook is stored on NAS at `/home/nas3/biod/xueshuailin/CCC_Phe/notebooks/CosMx_3D_Lung_V2.ipynb`.
+## Workflow
 
-1. Construct an independent physical radius graph within each specimen.
-   Composition uses the center plus all cells within 50 µm with Gaussian
-   distance weights. Leiden partitions a nearest-neighbor graph of composition
-   vectors. The physical radius and Leiden settings are configurable.
-2. Determine co-located coarse classes by physical contacts. Retain an
-   interface only when both flanks satisfy the configured contact support.
-   Give centers touching multiple interfaces to the interface with the largest
-   cross-interface neighbor fraction. Other centers belong to their coarse
-   interior. Ties follow sorted coarse identifiers.
-3. Within each interior or interface, for every focal cell form a three-way
-   tensor of focal cell × neighbor cell type × directed LR. The last dimension
-   contains sender LR followed by receiver LR. Only neighbors assigned to the
-   same context enter its tensor. Focal sender values use focal ligand and
-   neighbor receptor; receiver values use neighbor ligand and focal receptor.
-   Each directed cell-pair expression score is a geometric mean, with Gaussian
-   distance weighting, and scores are summed across each neighbor type.
-   Complete LR complexes are required. Raw counts use panel-total CP10k.
-   Missing neighbor types and observed zero expression are represented
-   separately in the CP loss.
-4. Fit nonnegative CP independently in each context. Its cell, neighbor-type
-   and directed-LR loadings are saved. Each repeated fit uses a spatial block
-   subsample. Rank, iterations and sampling are explicit configuration.
-5. For each center, aggregate its same-context neighborhood's cell activity by
-   focal-cell type. The aggregation uses the same physical radius and distance
-   weights, normalized by total neighborhood weight. Build a communication
-   similarity graph, run Leiden at multiple resolutions and random seeds, and
-   obtain a consensus using co-clustering frequencies on similarity edges.
-   Repeat the procedure for independently fitted CP programs and report
-   adjusted-Rand agreement. Every cell has one final niche label.
+1. **Coarse classes.** Gaussian-weighted cell-type proportions include the
+   center and all cells within `window_um`. The composition similarity graph
+   and its Leiden partition are unchanged.
+2. **Spatial enrichment.** Triangulate independently in each specimen.
+   Use the affine span for coplanar/collinear coordinates, and use one vertex
+   per coincident location (the first input cell at that coordinate). Filter
+   edges strictly longer than `delaunay_max_um`, which defaults to the
+   effective `contact_um`. Count each undirected edge once, pool counts across
+   specimens, and estimate the null mean and population SD from 1,000 default
+   permutations that shuffle labels separately within specimens. The score is
+   (observed − null mean) / null SD. Zero null SD gives `NA` in the table and
+   grey in the heatmap. Diagonal counts are within-class edges. Contact counts
+   are unique endpoint cells on each side.
+3. **Manual interface.** Inspect the heatmap, then select two coarse IDs.
+   Within each specimen, use the midpoints of retained edges linking the two
+   classes. Keep cells of either class within `interface_um` of their nearest
+   midpoint. Specimens with no connecting edges contribute no interface centers.
+4. **CCC tensor.** A center's neighbors are all other cells of its specimen
+   within `contact_um`, independent of their coarse class or interface.
+   Compute center-sender and center-receiver LR scores using panel-total CP10k,
+   complete complexes, the geometric-mean expression score and Gaussian
+   distance weights. A neighbor type with zero expression is an observed
+   zero. An absent type has no tensor row and contributes no CP loss.
+5. **CP and clustering.** Fit nonnegative CP independently for each analysis
+   object using repeated subsamples. Block coordinates are floor(coordinate /
+   `block_um`), with separate block IDs across specimens. For each repeat,
+   randomly select approximately 80% of occupied blocks and cycle through the
+   selected blocks in random order, drawing one shuffled cell per block per
+   round until reaching `fit_windows` or exhausting those blocks. A single
+   block uses ordinary sampling without replacement. When the entire object
+   has at most `fit_windows` cells, use all of them. Project each center onto
+   its object's CP factors, then pool within `window_um` using only that
+   object's cells, including the center. The existing Consensus Leiden uses
+   the pooled features, and repeat agreement is reported with adjusted Rand
+   scores.
 
-Outputs include `cells.tsv`, `composition.tsv.gz`, `channels.tsv`,
-`lr.tsv`, `settings.json`, and CP factors, focal-cell activities and
-neighborhood features for each context and repeat. In `channels.tsv`,
-`direction` specifies whether the focal cell is sender or receiver,
-`focal_type` and `neighbor_type` identify the populations, and the two
-loadings describe the corresponding program. Program loadings describe the
-learned pattern; a high loading alone is not proof of causation or a unique
-contribution to a particular clustering decision.
+| `aggregation` | CCC weights | Pooled Program denominator |
+|---|---|---|
+| `sum-sum` | Gaussian-weighted sum for each neighbor type | Gaussian weight over all in-object cells in the window |
+| `mean-sum` | Gaussian-weighted mean within each neighbor type | Same original denominator |
+| `mean-mean` (default) | Gaussian-weighted mean within each neighbor type | Gaussian weight within each in-object cell type |
 
-The implementation reports stability rather than assuming a consensus
-partition is reproducible. Parameters and resource requirements need
-validation on full specimens. The lung notebook can be opened with the optional
-`notebook` dependencies, installed with `python -m pip install -e ".[notebook]"`.
+The dense features passed to the existing Leiden graph use zero placeholders
+for absent types. The exported support mask distinguishes these placeholders
+from observed zero activity. Use it when interpreting or summarizing features.
+The current graph distance itself does not mask those dimensions.
+
+## Parameters
+
+`window_um=50`, `contact_um=50`, `interface_um=25`, `sigma_um=20`,
+`block_um=100`, `fit_windows=256`, `enrichment_permutations=1000`,
+`delaunay_max_um=None` (use `contact_um`), and `aggregation="mean-mean"`.
+Set overrides in a JSON file passed to `--settings`. The new settings are
+also available as command-line flags. Leave the same coarse partition settings
+in use between preview and fit. Remove `interface_fraction` and `min_cells`
+from old settings files. Both were thresholds for the retired interface filter.
+
+## Output
+
+- `coarse_cells.tsv`, `composition.tsv.gz`, `enrichment.tsv` and
+  `enrichment.png` describe the coarse classes and spatial enrichment.
+- `cells.tsv` contains only centers fitted in the requested analysis.
+  `channels.tsv` records fitted Program loadings rather than causal evidence.
+- `neighbor_support.npz` contains aligned cell IDs, type names, contact counts
+  and effective Gaussian weights for the entire physical contact neighborhood.
+  `program_support_*.npz` holds in-object pooling weights and type presence.
+- `sampling_*.tsv` records each attempted repeat's sampled cell IDs, block IDs
+  and fit status. `spatial_blocks.tsv` maps block IDs to specimen and block
+  coordinates. `programs_*_repeat*.npz` stores successful repeats using the
+  same zero-based repeat IDs and the corresponding cells, factors and scores.
+- `settings.json` records the effective settings. Checkpoints depend on the
+  input, settings and model source, so old checkpoint files remain separate.
+
+The existing lung analysis notebook is on NAS under
+`/home/nas3/biod/xueshuailin/CCC_Phe/notebooks/`.

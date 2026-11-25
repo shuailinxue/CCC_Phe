@@ -31,6 +31,34 @@ Use `--layer X` when `.X` contains raw counts. For multiple specimens, replace
 See `python scripts/run.py --help` for coordinate and settings options. Use an
 LR table appropriate to the species and gene symbols in the input.
 
+For an interface analysis, preview the enrichment without fitting CP, then
+inspect `enrichment.png` and choose two coarse-class IDs. Use the same input
+and coarse settings for both commands:
+
+```bash
+python scripts/run.py --input tissue.h5ad --output preview \
+  --single-specimen --obsm-um spatial_um --enrichment-only
+
+python scripts/run.py --input tissue.h5ad --output results/interface_0_1 \
+  --lr data/commuspace_human_lr_atlas.tsv --single-specimen --obsm-um spatial_um \
+  --interface 0 1 --interface-um 25 --aggregation mean-mean
+```
+
+Python callers use the same two stages:
+
+```python
+from phenoniche.spatial import Settings, SpatialNiches
+
+cfg = Settings(interface_um=25, aggregation="mean-mean")
+preview = SpatialNiches.coarse(cell_ids, xyz_um, cell_types, specimens, cfg)
+preview.save("preview")
+# Choose a and b from the enrichment heatmap.
+result = SpatialNiches.fit(
+    counts, genes, cell_ids, xyz_um, cell_types, specimens, lr, cfg,
+    interface=(a, b),
+)
+```
+
 ## Source and reproducibility
 
 - `src/phenoniche/spatial/` contains the model. Read `model.py` for the workflow

@@ -13,7 +13,7 @@ from .programs import fit_programs, project, sample_blocks
 class CellTensor:
     """Focal cell × neighbor type × [outgoing LR, incoming LR]."""
 
-    def __init__(self, graph, types, channels, sigma):
+    def __init__(self, graph, types, channels, sigma, mean=True):
         self.graph, self.types, self.channels, self.sigma = (
             graph,
             types,
@@ -21,24 +21,27 @@ class CellTensor:
             sigma,
         )
         self.n_types = int(types.max()) + 1
+        self.mean = mean
 
-    def fiber(self, cell, allowed):
+    def fiber(self, cell):
         start, stop = self.graph.indptr[cell : cell + 2]
         neighbors = self.graph.indices[start:stop]
         distances = self.graph.data[start:stop]
-        keep = allowed[neighbors]
-        neighbors, distances = neighbors[keep], distances[keep]
         neighbor_types = self.types[neighbors]
         categories = np.unique(neighbor_types)
         lr = self.channels
         result = np.zeros((len(categories), 2 * len(lr.names)), dtype=np.float32)
+        support = np.zeros(len(categories))
         if len(neighbors):
             expression = lr.expression[np.r_[cell, neighbors]].toarray()
             focal, other = expression[0], expression[1:]
             weights = np.exp(-0.5 * (distances / self.sigma) ** 2)
             for row, category in enumerate(categories):
                 mask = neighbor_types == category
+                support[row] = weights[mask].sum()
                 incoming = weights[mask] @ other[mask]
+                if self.mean and support[row] > 0:
+                    incoming /= support[row]
                 result[row, : len(lr.names)] = focal[lr.left] * incoming[lr.right]
                 result[row, len(lr.names) :] = incoming[lr.left] * focal[lr.right]
         # The existing CP solver's singleton sender mode lets it fit the 3D tensor.
@@ -46,12 +49,25 @@ class CellTensor:
             np.zeros(len(categories), dtype=int),
             categories,
             result,
-            np.ones(len(categories)),
+            support,
         )
 
 
-def pool_programs(ids, allowed, windows, types, scores, sigma):
-    """Aggregate each focal cell's activity into its 3D neighborhood by cell type."""
+def _type_membership(types):
+    return sparse.csr_matrix((np.ones(len(types)), (np.arange(len(types)), types)))
+
+
+def contact_support(contacts, ids, types, sigma):
+    graph = contacts[ids].copy()
+    weights = np.exp(-0.5 * (graph.data / sigma) ** 2)
+    graph.data.fill(1)
+    membership = _type_membership(types)
+    counts = (graph @ membership).toarray().astype(np.int64)
+    graph.data = weights
+    return counts, (graph @ membership).toarray()
+
+
+def program_graph(ids, allowed, windows, types, sigma):
     graph = windows[ids].copy()
     graph.data = np.exp(-0.5 * (graph.data / sigma) ** 2)
     graph = graph.multiply(allowed).tocsr()
@@ -59,12 +75,21 @@ def pool_programs(ids, allowed, windows, types, scores, sigma):
         (np.ones(len(ids)), (np.arange(len(ids)), ids)), shape=graph.shape
     )
     graph = graph + self_edges
+    return graph, (graph @ _type_membership(types)).toarray()
+
+
+def pool_programs(graph, type_weights, types, scores, mean):
+    """Pool by focal-cell type, retaining structural absence as separate support."""
     features = []
-    for category in range(types.max() + 1):
-        mask = (types == category) & allowed
-        features.append(graph.multiply(mask) @ scores)
-    denominator = np.asarray(graph.sum(axis=1)).ravel()
-    return np.concatenate(features, axis=1) / np.maximum(denominator[:, None], 1e-12)
+    total = type_weights.sum(axis=1)
+    for category in range(type_weights.shape[1]):
+        activity = graph.multiply(types == category) @ scores
+        denominator = type_weights[:, category] if mean else total
+        features.append(np.divide(
+            activity, denominator[:, None], out=np.zeros_like(activity),
+            where=denominator[:, None] > 0,
+        ))
+    return np.concatenate(features, axis=1)
 
 
 def _activity_graph(activity, neighbors):
@@ -135,35 +160,35 @@ def consensus(activity, cfg, seed):
 def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
     allowed = np.zeros(len(types), dtype=bool)
     allowed[ids] = True
-    tensor = CellTensor(contacts, types, channels, cfg.sigma_um)
+    tensor = CellTensor(contacts, types, channels, cfg.sigma_um, cfg.aggregation != "sum-sum")
+    pool_graph, pool_weights = program_graph(ids, allowed, windows, types, cfg.sigma_um)
     rng = np.random.default_rng(seed)
-    models, features, cell_scores = [], [], []
+    models, features, cell_scores, sampling = [], [], [], []
     for repeat in range(cfg.repeats):
         print(
             f"  CP repeat {repeat + 1}/{cfg.repeats}: fitting and projecting",
             flush=True,
         )
         train = sample_blocks(ids, block, cfg, rng)
-        if not len(train):
-            continue
         model = fit_programs(
-            [tensor.fiber(i, allowed) for i in train],
+            [tensor.fiber(i) for i in train],
             tensor.n_types,
             cfg,
             rng,
         )
+        sampling.append(dict(rows=train, blocks=block[train], fitted=model is not None))
         if model is None:
             continue
         scores = np.zeros((len(types), model[2].shape[1]), dtype=np.float32)
         for position, i in enumerate(ids):
             if position and position % 10000 == 0:
                 print(f"    projected {position:,}/{len(ids):,} cells", flush=True)
-            value = project(tensor.fiber(i, allowed), model)
+            value = project(tensor.fiber(i), model)
             scores[i] = np.nan_to_num(value)
         models.append(model)
         cell_scores.append(scores[ids])
         features.append(
-            pool_programs(ids, allowed, windows, types, scores, cfg.sigma_um)
+            pool_programs(pool_graph, pool_weights, types, scores, cfg.aggregation == "mean-mean")
         )
     if not models:
         return dict(
@@ -174,6 +199,8 @@ def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
             models=[],
             cell_scores=[],
             feature_scores=[],
+            sampling=sampling,
+            pool_weights=pool_weights,
         )
     labels, graph_stability = consensus(features[0], cfg, seed)
     if len(features) > 1:
@@ -192,4 +219,6 @@ def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
         models=models,
         cell_scores=cell_scores,
         feature_scores=features,
+        sampling=sampling,
+        pool_weights=pool_weights,
     )

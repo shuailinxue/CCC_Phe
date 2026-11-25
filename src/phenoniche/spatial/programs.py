@@ -65,9 +65,25 @@ def project(fiber, factors):
 
 
 def sample_blocks(ids, block, settings, rng):
+    if len(ids) <= settings.fit_windows:
+        return rng.permutation(ids)
     keys = np.unique(block[ids])
-    if len(keys) < 2:
-        return np.array([], dtype=int)
-    chosen = rng.choice(keys, max(1, int(0.8 * len(keys))), replace=False)
-    eligible = ids[np.isin(block[ids], chosen)]
-    return rng.choice(eligible, min(settings.fit_windows, len(eligible)), replace=False)
+    selected = rng.choice(keys, max(1, round(0.8 * len(keys))), replace=False)
+    # Shuffle within each block, then draw one per block in successive rounds.
+    ordered = ids[np.argsort(block[ids], kind="stable")]
+    labels = block[ordered]
+    starts = np.searchsorted(labels, selected)
+    stops = np.searchsorted(labels, selected, side="right")
+    queues = [iter(rng.permutation(ordered[a:b])) for a, b in zip(starts, stops)]
+    sampled = []
+    while queues and len(sampled) < settings.fit_windows:
+        remaining = []
+        for queue in queues:
+            cell = next(queue, None)
+            if cell is not None:
+                sampled.append(cell)
+                remaining.append(queue)
+                if len(sampled) == settings.fit_windows:
+                    break
+        queues = remaining
+    return np.asarray(sampled, dtype=int)
