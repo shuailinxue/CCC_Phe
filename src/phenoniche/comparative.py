@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 from scipy import sparse
 from scipy.spatial import cKDTree
+from sklearn.metrics import adjusted_rand_score
 
 from .spatial.cell_programs import CellTensor, consensus, pool_programs, program_graph
 from .spatial.channels import Channels
@@ -28,7 +29,7 @@ class ComparativeSettings:
     matching_sigma: float = 0.2
     composition_quantile: float = 0.95
     abnormality_quantile: float = 0.95
-    balance: str = "none"
+    balance: str = "donor"
 
     def __post_init__(self):
         if type(self.k) is not int or self.k < 1:
@@ -53,6 +54,8 @@ class ComparativeResult:
     settings: ComparativeSettings
     spatial_settings: Settings
     cache_path: Path
+    functional_donor_proportions: pd.DataFrame
+    remodeling_donor_proportions: pd.DataFrame
 
 
 def _cached(path, make):
@@ -78,7 +81,7 @@ def _fingerprint(counts, genes, ids, xyz, labels, metadata, lr, cfg, comp):
         digest.update(repr((a.shape, a.dtype)).encode())
         digest.update(a.tobytes())
     for value in (matrix.shape, list(genes), list(ids), list(labels), metadata.to_dict("list"),
-                  lr.to_dict("list"), asdict(cfg), asdict(comp), sys.version,
+                  lr.to_dict("list"), asdict(cfg), comp.balance, sys.version,
                   {name: version(name) for name in ("numpy", "scipy", "torch", "pandas", "scikit-learn", "python-igraph", "leidenalg")}):
         digest.update(repr(value).encode())
     for file in [Path(__file__), *sorted((Path(__file__).parent / "spatial").glob("*.py"))]:
@@ -140,25 +143,54 @@ def _coordinates(x, metric):
     return x / norms[:, None]
 
 
-def _match(query, reference, composition, activity, cfg):
-    """Return fixed-K matches and original-space distances without silent K changes."""
-    if len(reference) < cfg.k:
-        return None
+def _match(query, reference, composition, activity, donors, cfg, limit=np.inf, leave_donor_out=False):
+    """Match K cells per donor, filter donors by composition and weight donors equally."""
     points = _coordinates(composition, cfg.matching_metric)
-    distances, indices = cKDTree(points[reference]).query(points[query], k=cfg.k)
-    distances = np.asarray(distances).reshape(len(query), cfg.k)
-    if cfg.matching_metric == "cosine":
-        distances = np.maximum(0, distances ** 2 / 2)
-    indices = reference[np.asarray(indices).reshape(len(query), cfg.k)]
-    logits = -0.5 * (distances / cfg.matching_sigma) ** 2
-    weights = np.exp(logits - logits.max(axis=1, keepdims=True))
-    weights /= weights.sum(axis=1, keepdims=True)
-    expected = np.einsum("nk,nkf->nf", weights, activity[indices])
-    return indices, distances, weights, expected
+    trees = {}
+    for donor in np.unique(donors[reference]):
+        members = reference[donors[reference] == donor]
+        if len(members) >= cfg.k:
+            trees[donor] = (members, cKDTree(points[members]))
+    result = []
+    for q in query:
+        candidates = []
+        for donor, (members, tree) in trees.items():
+            if leave_donor_out and donor == donors[q]:
+                continue
+            dist, local = tree.query(points[q], k=cfg.k)
+            dist, local = np.atleast_1d(dist), np.atleast_1d(local)
+            if cfg.matching_metric == "cosine":
+                dist = np.maximum(0, dist ** 2 / 2)
+            candidates.append((members[local], dist))
+        nearest = min((d[-1] for _, d in candidates), default=np.nan)
+        accepted = [(idx, d) for idx, d in candidates if d[-1] <= limit]
+        if not accepted:
+            result.append((nearest, None))
+            continue
+        indices = np.concatenate([x[0] for x in accepted])
+        distances = np.concatenate([x[1] for x in accepted])
+        weights = []
+        for _, dist in accepted:
+            logits = -0.5 * (dist / cfg.matching_sigma) ** 2
+            w = np.exp(logits - logits.max())
+            weights.extend(w / w.sum() / len(accepted))
+        weights = np.asarray(weights)
+        predicted = weights @ activity[indices]
+        score = float(np.linalg.norm(activity[indices] - activity[q], axis=1).min())
+        result.append((nearest, (indices, distances, weights, predicted, score)))
+    return result
 
 
 def _signed_features(values):
     return np.concatenate((np.maximum(values, 0), np.maximum(-values, 0)), axis=1)
+
+
+def _select_repeat(fits):
+    alpha = float(np.median([fit.metrics["calibrated_alpha"] for fit in fits]))
+    beta = float(np.median([fit.metrics["calibrated_beta"] for fit in fits]))
+    scores = [fit.metrics["reconstruction_loss"] + alpha * fit.metrics["a_orthogonality_loss"]
+              + beta * fit.metrics["bc_orthogonality_loss"] for fit in fits]
+    return int(np.argmin(scores)), scores, alpha, beta
 
 
 def _reference_analysis(ids, composition, activity, conditions, donors, cfg, spatial, seed):
@@ -168,63 +200,50 @@ def _reference_analysis(ids, composition, activity, conditions, donors, cfg, spa
     expected = np.full((n, features), np.nan)
     delta = np.full((n, features), np.nan)
     distance = np.full(n, np.nan)
+    scores = np.full(n, np.nan)
     matches = []
-    for donor in np.unique(donors[control]):
-        query = control[donors[control] == donor]
-        reference = control[donors[control] != donor]
-        result = _match(query, reference, composition, activity, cfg)
-        if result is not None:
-            indices, distances, weights, predicted = result
-            expected[query] = predicted
-            delta[query] = activity[query] - predicted
-            distance[query] = distances[:, -1]
-            matches.extend((int(ids[q]), int(ids[r]), float(d), float(w))
-                           for q, rs, ds, ws in zip(query, indices, distances, weights, strict=True)
-                           for r, d, w in zip(rs, ds, ws, strict=True))
+    preliminary = _match(control, control, composition, activity, donors, cfg, leave_donor_out=True)
+    for q, (nearest, _) in zip(control, preliminary, strict=True):
+        distance[q] = nearest
     lodo = control[np.isfinite(distance[control])]
     calibrated = len(np.unique(donors[lodo])) >= 2
     distance_limit = _weighted_quantile(distance[lodo], donors[lodo], cfg.composition_quantile) if calibrated else np.nan
-    eligible = lodo[distance[lodo] <= distance_limit] if calibrated else np.array([], dtype=int)
-    anomaly_calibrated = len(np.unique(donors[eligible])) >= 2
-    scores = np.linalg.norm(delta, axis=1)
-    abnormality_limit = _weighted_quantile(scores[eligible], donors[eligible], cfg.abnormality_quantile) if anomaly_calibrated else np.nan
-
+    limit = distance_limit if calibrated else np.inf
     reference_status = np.full(n, "no_reference", dtype=object)
-    reference_status[lodo] = "uncalibrated" if not calibrated else "comparable"
-    if calibrated:
-        reference_status[lodo[distance[lodo] > distance_limit]] = "no_reference"
-        bad = lodo[distance[lodo] > distance_limit]
-        expected[bad] = np.nan
-        delta[bad] = np.nan
-    result = _match(case, control, composition, activity, cfg) if len(case) else None
-    if result is not None:
-        indices, distances, weights, predicted = result
-        distance[case] = distances[:, -1]
-        comparable = np.ones(len(case), dtype=bool) if not calibrated else distance[case] <= distance_limit
-        chosen = case[comparable]
-        expected[chosen] = predicted[comparable]
-        delta[chosen] = activity[chosen] - predicted[comparable]
-        reference_status[chosen] = "comparable" if calibrated else "uncalibrated"
-        matches.extend((int(ids[q]), int(ids[r]), float(d), float(w))
-                       for q, rs, ds, ws in zip(case, indices, distances, weights, strict=True)
-                       for r, d, w in zip(rs, ds, ws, strict=True))
-    scores = np.linalg.norm(delta, axis=1)
+
+    def apply(query, result):
+        for q, (nearest, match) in zip(query, result, strict=True):
+            distance[q] = nearest
+            if match is None:
+                continue
+            indices, distances, weights, predicted, score = match
+            expected[q] = predicted
+            delta[q] = activity[q] - predicted
+            scores[q] = score
+            reference_status[q] = "comparable" if calibrated else "uncalibrated"
+            matches.extend((int(ids[q]), int(ids[r]), float(d), float(w))
+                           for r, d, w in zip(indices, distances, weights, strict=True))
+
+    apply(control, _match(control, control, composition, activity, donors, cfg, limit, True))
+    eligible = control[reference_status[control] == "comparable"]
+    anomaly_calibrated = len(np.unique(donors[eligible])) >= 2
+    abnormality_limit = _weighted_quantile(scores[eligible], donors[eligible], cfg.abnormality_quantile) if anomaly_calibrated else np.nan
+    apply(case, _match(case, control, composition, activity, donors, cfg, limit))
     abnormality = np.full(n, "uncalibrated", dtype=object)
     abnormality[reference_status == "no_reference"] = "no_reference"
     if anomaly_calibrated:
         valid = reference_status == "comparable"
         abnormality[valid] = np.where(scores[valid] > abnormality_limit, "outside_reference", "within_reference")
-    labels = np.full(n, "", dtype=object)
+    functional, _ = consensus(activity, spatial, seed)
+    remodeling = np.full(n, "no_reference", dtype=object)
     valid = np.isfinite(delta).all(axis=1)
     if valid.any():
-        result, _ = consensus(_signed_features(delta[valid]), spatial, seed)
-        labels[valid] = [f"R{x}" for x in result]
-    if (~valid).any():
-        result, _ = consensus(activity[~valid], spatial, seed + 1)
-        labels[~valid] = [f"U{x}" for x in result]
+        clusters, _ = consensus(_signed_features(delta[valid]), spatial, seed)
+        remodeling[valid] = [f"R{x}" for x in clusters]
     return dict(expected=expected, delta=delta, distance=distance, score=scores,
-                reference_status=reference_status, abnormality=abnormality, labels=labels,
-                calibrated=calibrated, abnormality_calibrated=anomaly_calibrated, composition_threshold=distance_limit,
+                reference_status=reference_status, abnormality=abnormality,
+                labels=remodeling, functional=functional, calibrated=calibrated,
+                abnormality_calibrated=anomaly_calibrated, composition_threshold=distance_limit,
                 abnormality_threshold=abnormality_limit, matches=matches)
 
 
@@ -265,27 +284,30 @@ def fit_control_case(counts, genes, cell_ids, coordinates_um, cell_types, metada
     directory.mkdir(parents=True, exist_ok=True)
     manifest = {"fingerprint": fingerprint, "cell_ids": ids.tolist(), "genes": list(genes),
                 "metadata": meta.to_dict("list"), "spatial_settings": asdict(cfg),
-                "comparative_settings": asdict(comp), "python": sys.version,
+                "comparative_settings": {"balance": comp.balance}, "python": sys.version,
                 "versions": {name: version(name) for name in ("numpy", "scipy", "torch", "pandas", "scikit-learn", "python-igraph", "leidenalg")},
                 "source_sha256": {str(path.name): hashlib.sha256(path.read_bytes()).hexdigest()
                                   for path in [Path(__file__), *sorted((Path(__file__).parent / "spatial").glob("*.py"))]}}
     manifest_path = directory / "manifest.json"
     if not manifest_path.exists():
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
-    if (directory / "result.pkl").exists():
-        return _cached(directory / "result.pkl", lambda: None)
+    analysis_id = hashlib.sha256(json.dumps(asdict(comp), sort_keys=True).encode()).hexdigest()
+    result_path = directory / f"result_{analysis_id}.pkl"
+    if result_path.exists():
+        return _cached(result_path, lambda: None)
     samples = meta.sample_id.to_numpy()
     names, types = np.unique(labels, return_inverse=True)
-    windows = physical_graph(xyz, samples, cfg.window_um)
+    windows = _cached(directory / "windows.pkl", lambda: physical_graph(xyz, samples, cfg.window_um))
     composition, coarse = _cached(directory / "composition.pkl", lambda: composition_partition(windows, types, cfg))
     channels = Channels(counts, pd.Index(genes), lr)
     radius = max(cfg.contact_um, cfg.contact_radius_um, cfg.secreted_radius_um, cfg.ecm_radius_um)
-    contacts = windows if radius == cfg.window_um else physical_graph(xyz, samples, radius)
     conditions, donors = meta.condition.to_numpy(), meta.donor_id.to_numpy()
     cells = meta.copy()
     cells.index = ids
     cells["coarse"] = coarse
     cells["niche"] = ""
+    cells["functional_niche"] = ""
+    cells["remodeling_niche"] = ""
     cells["reference_status"] = "no_reference"
     cells["abnormality"] = "no_reference"
     cells["match_distance"] = np.nan
@@ -294,57 +316,90 @@ def fit_control_case(counts, genes, cell_ids, coordinates_um, cell_types, metada
     for coarse_id in np.unique(coarse):
         center_ids = np.flatnonzero(coarse == coarse_id)
         allowed = coarse == coarse_id
-        tensor = _cached(directory / f"tensor_{coarse_id}.pkl",
-                         lambda: _StoredTensor(center_ids, CellTensor(contacts, types, channels, cfg.sigma_um,
-                                                    cfg.aggregation != "sum-sum", cfg), ids[center_ids]))
         pool, pool_weights = program_graph(center_ids, allowed, windows, types, cfg.sigma_um)
         balance = None if comp.balance == "none" else meta.iloc[center_ids][
             "sample_id" if comp.balance == "sample" else "donor_id"].to_numpy()
 
         def fit_models():
+            def build_tensor():
+                contacts = windows if radius == cfg.window_um else _cached(
+                    directory / "contacts.pkl", lambda: physical_graph(xyz, samples, radius))
+                return _StoredTensor(center_ids, CellTensor(contacts, types, channels, cfg.sigma_um,
+                                     cfg.aggregation != "sum-sum", cfg), ids[center_ids])
+            tensor = _cached(directory / f"tensor_{coarse_id}.pkl", build_tensor)
+            observed_centers = tensor.mask.any(axis=(1, 2))
+            excluded = [] if balance is None else [g for g in np.unique(balance) if not observed_centers[balance == g].any()]
             rng = np.random.default_rng(np.random.SeedSequence([cfg.seed, int(coarse_id)]))
-            return [fit_programs(center_ids, tensor.fiber, tensor.n_types, 2 * len(channels.names),
-                                 cfg, rng, balance_groups=balance) for _ in range(cfg.repeats)]
+            fits = [fit_programs(center_ids, tensor.fiber, tensor.n_types, 2 * len(channels.names),
+                    cfg, rng, balance_groups=balance, exclude_empty_groups=True) for _ in range(cfg.repeats)]
+            return fits, excluded
 
-        fits = _cached(directory / f"fits_{coarse_id}.pkl", fit_models)
+        fits, excluded = _cached(directory / f"fits_{coarse_id}.pkl", fit_models)
         if any(fit is None for fit in fits):
             cells.iloc[center_ids, cells.columns.get_loc("reference_status")] = "no_communication_signal"
             cells.iloc[center_ids, cells.columns.get_loc("abnormality")] = "no_communication_signal"
             cells.iloc[center_ids, cells.columns.get_loc("niche")] = f"C{coarse_id}.no_signal"
+            cells.iloc[center_ids, cells.columns.get_loc("functional_niche")] = f"C{coarse_id}.no_signal"
+            cells.iloc[center_ids, cells.columns.get_loc("remodeling_niche")] = "no_signal"
             contexts[int(coarse_id)] = {"cell_ids": ids[center_ids].tolist(), "fits": fits,
                                         "cell_types": names, "lr_pairs": channels.names,
-                                        "signaling_types": channels.signaling_types}
+                                        "signaling_types": channels.signaling_types,
+                                        "excluded_balance_groups": excluded}
             continue
-        activity = fits[0].factors[0]
-        scores = np.zeros((len(ids), activity.shape[1]), dtype=activity.dtype)
-        scores[center_ids] = activity
-        pooled = pool_programs(pool, pool_weights, types, scores, cfg.aggregation == "mean-mean")
-        result = _reference_analysis(center_ids, composition[center_ids], pooled,
-                                     conditions[center_ids], donors[center_ids], comp, cfg,
-                                     cfg.seed + int(coarse_id))
+        best, selection_scores, alpha, beta = _select_repeat(fits)
+        def analyze_fit(fit):
+            activity = fit.factors[0]
+            scores = np.zeros((len(ids), activity.shape[1]), dtype=activity.dtype)
+            scores[center_ids] = activity
+            pooled_fit = pool_programs(pool, pool_weights, types, scores, cfg.aggregation == "mean-mean")
+            analysis = _reference_analysis(center_ids, composition[center_ids], pooled_fit,
+                       conditions[center_ids], donors[center_ids], comp, cfg, cfg.seed + int(coarse_id))
+            return pooled_fit, analysis
+
+        pooled, result = analyze_fit(fits[best])
+        stability = []
+        for i, fit in enumerate(fits):
+            if i == best:
+                continue
+            _, other = analyze_fit(fit)
+            valid = (result["labels"] != "no_reference") & (other["labels"] != "no_reference")
+            stability.append(dict(repeat=i, functional_ari=adjusted_rand_score(result["functional"], other["functional"]),
+                                  remodeling_ari=adjusted_rand_score(result["labels"][valid], other["labels"][valid]) if valid.sum() >= 2 else np.nan,
+                                  remodeling_cells=int(valid.sum())))
         for key, field in (("reference_status", "reference_status"), ("abnormality", "abnormality"),
                            ("match_distance", "distance"), ("abnormality_score", "score")):
             cells.iloc[center_ids, cells.columns.get_loc(key)] = result[field]
         cells.iloc[center_ids, cells.columns.get_loc("niche")] = [f"C{coarse_id}.{x}" for x in result["labels"]]
+        cells.iloc[center_ids, cells.columns.get_loc("functional_niche")] = [f"C{coarse_id}.F{x}" for x in result["functional"]]
+        cells.iloc[center_ids, cells.columns.get_loc("remodeling_niche")] = [f"C{coarse_id}.{x}" if x != "no_reference" else "no_reference" for x in result["labels"]]
         matches.extend(result.pop("matches"))
         contexts[int(coarse_id)] = dict(cell_ids=ids[center_ids].tolist(), features=pooled,
                                         pool_weights=pool_weights, fits=fits, cell_types=names,
                                         lr_pairs=channels.names, signaling_types=channels.signaling_types,
+                                        best_repeat=best, stability=stability,
+                                        selection_scores=selection_scores, selection_alpha=alpha, selection_beta=beta,
+                                        excluded_balance_groups=excluded,
                                         **result)
     match_frame = pd.DataFrame(matches, columns=["center_row", "reference_row", "distance", "weight"])
     match_frame["center_id"] = ids.to_numpy()[match_frame.center_row.to_numpy(dtype=int)]
     match_frame["reference_id"] = ids.to_numpy()[match_frame.reference_row.to_numpy(dtype=int)]
-    grouping = ["donor_id", "condition", "coarse", "niche"]
-    proportions = cells.groupby(grouping, observed=True).size().rename("cells").reset_index()
-    combinations = []
-    for coarse_id, part in cells.groupby("coarse", sort=True):
-        donor_conditions = part[["donor_id", "condition"]].drop_duplicates()
-        niches = pd.DataFrame({"niche": part.niche.unique(), "coarse": coarse_id})
-        combinations.append(donor_conditions.merge(niches, how="cross"))
-    proportions = pd.concat(combinations, ignore_index=True).merge(proportions, on=grouping, how="left")
-    proportions["cells"] = proportions.cells.fillna(0).astype(int)
-    proportions["fraction"] = proportions.cells / proportions.groupby(["donor_id", "condition", "coarse"]).cells.transform("sum")
+    def donor_summary(label):
+        grouping = ["donor_id", "condition", "coarse", label]
+        counts = cells.groupby(grouping, observed=True).size().rename("cells").reset_index()
+        combinations = []
+        for coarse_id, part in cells.groupby("coarse", sort=True):
+            donor_conditions = part[["donor_id", "condition"]].drop_duplicates()
+            niches = pd.DataFrame({label: part[label].unique(), "coarse": coarse_id})
+            combinations.append(donor_conditions.merge(niches, how="cross"))
+        counts = pd.concat(combinations, ignore_index=True).merge(counts, on=grouping, how="left")
+        counts["cells"] = counts.cells.fillna(0).astype(int)
+        counts["fraction"] = counts.cells / counts.groupby(["donor_id", "condition", "coarse"]).cells.transform("sum")
+        return counts
+
+    functional_proportions = donor_summary("functional_niche")
+    remodeling_proportions = donor_summary("remodeling_niche")
     result = ComparativeResult(cells, pd.DataFrame(composition, index=ids, columns=names),
-                               contexts, match_frame, proportions, comp, cfg, directory)
-    _cached(directory / "result.pkl", lambda: result)
+                               contexts, match_frame, remodeling_proportions, comp, cfg, directory,
+                               functional_proportions, remodeling_proportions)
+    _cached(result_path, lambda: result)
     return result

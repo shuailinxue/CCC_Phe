@@ -91,7 +91,8 @@ def _batch_size(settings, device, n_types, n_lr, factor_bytes):
     return size
 
 
-def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None):
+def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
+                 exclude_empty_groups=False):
     """Optimize shared factors with one accumulated gradient step per full pass."""
     if not len(ids):
         return None
@@ -123,14 +124,16 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None):
                 part = values[select].data.astype(np.float64)
                 group_energy[group] += np.dot(part, part)
                 group_entries[group] += int(select.sum()) * values.shape[1]
-    if balance_groups is not None and np.any(group_entries == 0):
+    empty_groups = group_entries == 0
+    if balance_groups is not None and empty_groups.any() and not exclude_empty_groups:
         raise ValueError("A balance group has no observed tensor entries")
     if not np.isfinite(energy):
         raise FloatingPointError("Non-finite CCC energy")
     if not energy:
         return None
 
-    scale = float(np.sqrt(np.mean(group_energy / group_entries)))
+    scale = float(np.sqrt(np.mean(group_energy[~empty_groups] / group_entries[~empty_groups])))
+    n_groups = int((~empty_groups).sum())
     rank = min(settings.rank, int(observed.sum()), n_lr)
     initial = [
         (rng.uniform(0.3, 1, (rows, rank)) * rank ** (-1 / 3)).astype(np.float32)
@@ -211,6 +214,7 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None):
         metrics = dict(
             device=str(device), batch_size=size, centers=len(ids),
             balance_groups=n_groups,
+            excluded_balance_groups=np.flatnonzero(empty_groups).tolist(),
             centers_with_observations=int(observed.sum()), observed_entries=entries,
             rms_scale=scale, calibrated_alpha=alpha, calibrated_beta=beta,
             best_epoch=best_epoch, epochs_completed=epoch,

@@ -131,3 +131,16 @@ def test_cpu_cuda_cp_agree():
     for a, b in zip(cpu.factors, cuda.factors, strict=True):
         np.testing.assert_allclose(a, b, atol=1e-4, rtol=5e-4)
     assert cuda.metrics["total_loss"] == pytest.approx(cpu.metrics["total_loss"], abs=1e-6)
+
+
+def test_balanced_fit_excludes_groups_with_no_observed_fibers():
+    def fiber(i):
+        if i == 2:
+            return np.array([], dtype=int), np.zeros((0, 1)), None
+        return np.array([0]), np.array([[float(i + 1)]], dtype=np.float32), None
+    cfg = Settings(cp_device="cpu", rank=1, iterations=1, cp_alpha=0, cp_beta=0)
+    fit = fit_programs(np.arange(3), fiber, 1, 1, cfg, np.random.default_rng(5),
+                       np.array(["a", "a", "missing"]), exclude_empty_groups=True)
+    assert fit.metrics["balance_groups"] == 1
+    assert fit.metrics["excluded_balance_groups"] == [1]
+    assert fit.factors[0][2, 0] == 0
