@@ -18,9 +18,8 @@ def test_blind_local_partition(tmp_path):
         contact_um=1.5,
         rank=1,
         iterations=12,
-        fit_windows=100,
         repeats=4,
-        block_um=3,
+        cp_device="cpu",
     )
     model = SpatialNiches.fit(
         counts,
@@ -40,6 +39,16 @@ def test_blind_local_partition(tmp_path):
     assert model.evidence.focal_type.eq("T").all() and len(model.evidence)
     model.save(tmp_path / "out")
     assert len(pd.read_csv(tmp_path / "out/cells.tsv", sep="\t")) == len(xyz)
+    out = tmp_path / "out"
+    with np.load(out / "programs_0_0_repeat0.npz") as factors:
+        assert factors["focal_activity"].shape[0] == len(xyz)
+        np.testing.assert_array_equal(factors["focal_activity"], model.programs[(0, 0)]["models"][0][0])
+    history = pd.read_csv(out / "cp_losses_0_0.tsv", sep="\t")
+    metrics = pd.read_csv(out / "cp_metrics_0_0.tsv", sep="\t")
+    assert history.groupby("repeat").size().size == cfg.repeats
+    assert metrics.centers.eq(len(xyz)).all()
+    assert (out / "cp_losses_0_0.png").is_file()
+    assert not list(out.glob("sampling_*"))
 
 
 def test_no_signal_keeps_full_coarse_partition():
@@ -52,7 +61,7 @@ def test_no_signal_keeps_full_coarse_partition():
         ["T"] * n,
         ["s"] * n,
         pd.DataFrame({"ligand": ["L"], "receptor": ["R"]}),
-        Settings(window_um=2, contact_um=2, block_um=2, repeats=2, rank=1),
+        Settings(window_um=2, contact_um=2, cp_device="cpu", repeats=2, rank=1),
     )
     assert result.cells.niche.tolist() == ["C0.1"] * n
     assert result.evidence.empty
@@ -67,9 +76,9 @@ def test_focal_sender_receiver_are_directional():
     tensor = CellTensor(graph, np.array([0, 1]), channels, 20)
     out = tensor.fiber(0)
     incoming = tensor.fiber(1)
-    assert out[2][0, 0] > 0 and out[2][0, 1] == 0
-    assert incoming[2][0, 1] > 0 and incoming[2][0, 0] == 0
-    np.testing.assert_allclose(out[2][0, 0], incoming[2][0, 1])
+    assert out[1][0, 0] > 0 and out[1][0, 1] == 0
+    assert incoming[1][0, 1] > 0 and incoming[1][0, 0] == 0
+    np.testing.assert_allclose(out[1][0, 0], incoming[1][0, 1])
 
 
 def test_delaunay_filters_long_edges_and_specimens_in_2d_and_3d():
@@ -122,7 +131,7 @@ def test_manual_interface_uses_midpoints_and_does_not_remove_coarse_cells(monkey
     args = (
         np.ones((6, 2)), ["L", "R"], np.arange(6), xyz, types, samples,
         pd.DataFrame({"ligand": ["L"], "receptor": ["R"]}),
-        Settings(contact_um=2, window_um=2, interface_um=1.1, repeats=2, rank=1,
+        Settings(cp_device="cpu", contact_um=2, window_um=2, interface_um=1.1, repeats=2, rank=1,
                  iterations=2, enrichment_permutations=10),
     )
     coarse = SpatialNiches.fit(*args)
@@ -146,8 +155,8 @@ def test_cell_type_mean_normalization_and_structural_absence():
     ch = Channels([[1, 1, 0], [1, 1, 0], [1, 1, 0], [0, 0, 2]],
                   pd.Index(["L", "R", "B"]), atlas)
     weights = np.exp(-0.5 * np.array([1, 2]) ** 2)
-    _, present, means, _ = CellTensor(graph, types, ch, 1).fiber(0)
-    _, _, sums, _ = CellTensor(graph, types, ch, 1, mean=False).fiber(0)
+    present, means, _ = CellTensor(graph, types, ch, 1).fiber(0)
+    _, sums, _ = CellTensor(graph, types, ch, 1, mean=False).fiber(0)
     np.testing.assert_array_equal(present, [1, 2])
     np.testing.assert_allclose(means[0], [5000, 5000])
     np.testing.assert_allclose(sums[0], means[0] * weights.sum())
@@ -164,27 +173,3 @@ def test_cell_type_mean_normalization_and_structural_absence():
     np.testing.assert_allclose(pool_programs(pooling, support, types, scores, False),
                                [[3 / support.sum(), avg * weights.sum() / support.sum(), 0]])
     assert not support[0, 2]
-
-
-def test_balanced_block_sampling_and_single_block_fit(tmp_path):
-    from phenoniche.spatial.programs import sample_blocks
-
-    block = np.repeat(np.arange(5), [50, 50, 50, 50, 2])
-    cfg = Settings(fit_windows=20, rank=1, repeats=2, iterations=2, enrichment_permutations=10)
-    take = sample_blocks(np.arange(len(block)), block, cfg, np.random.default_rng(0))
-    sizes = np.bincount(block[take])
-    assert len(take) == len(set(take)) == 20 and np.count_nonzero(sizes) == 4
-    assert sizes[-1] == 2
-    assert np.ptp(sizes[:4][sizes[:4] > 0]) == 0
-
-    result = SpatialNiches.fit(
-        np.ones((6, 2)), ["L", "R"], [f"cell-{i}" for i in range(6)],
-        np.c_[np.arange(6), np.zeros(6)], ["T"] * 6, ["s"] * 6,
-        pd.DataFrame({"ligand": ["L"], "receptor": ["R"]}), cfg,
-    )
-    assert len(result.programs[(0, 0)]["models"]) == 2
-    result.save(tmp_path / "one-block")
-    manifest = pd.read_csv(tmp_path / "one-block/sampling_0_0.tsv", sep="\t")
-    assert manifest.groupby("repeat").cell_id.nunique().tolist() == [6, 6]
-    assert manifest.block_id.eq(0).all() and manifest.fitted.all()
-    assert (tmp_path / "one-block/enrichment.png").is_file()

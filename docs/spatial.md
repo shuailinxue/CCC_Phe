@@ -39,18 +39,12 @@ in the `counts` layer by default, or use `--layer X`. Coordinate tables use
    complete complexes, the geometric-mean expression score and Gaussian
    distance weights. A neighbor type with zero expression is an observed
    zero. An absent type has no tensor row and contributes no CP loss.
-5. **CP and clustering.** Fit nonnegative CP independently for each analysis
-   object using repeated subsamples. Block coordinates are floor(coordinate /
-   `block_um`), with separate block IDs across specimens. For each repeat,
-   randomly select approximately 80% of occupied blocks and cycle through the
-   selected blocks in random order, drawing one shuffled cell per block per
-   round until reaching `fit_windows` or exhausting those blocks. A single
-   block uses ordinary sampling without replacement. When the entire object
-   has at most `fit_windows` cells, use all of them. Project each center onto
-   its object's CP factors, then pool within `window_um` using only that
-   object's cells, including the center. The existing Consensus Leiden uses
-   the pooled features, and repeat agreement is reported with adjusted Rand
-   scores.
+5. **CP and clustering.** Each repeat starts from a different nonnegative
+   random initialization and jointly fits A (center activity), B (neighbor
+   type loading), and C (directed LR loading) using every center in the analysis
+   object. Pool the fitted A within `window_um` using only that object's cells,
+   including the center. Consensus Leiden and adjusted Rand stability use
+   these pooled features as before.
 
 | `aggregation` | CCC weights | Pooled Program denominator |
 |---|---|---|
@@ -63,15 +57,57 @@ for absent types. The exported support mask distinguishes these placeholders
 from observed zero activity. Use it when interpreting or summarizing features.
 The current graph distance itself does not mask those dimensions.
 
+## CP objective and execution
+
+Reconstruction is mean squared error over all LR entries of observed
+center–neighbor-type pairs, including observed zeros. The data are divided by
+their observed RMS for numerical conditioning. Missing pairs contribute no
+reconstruction loss. An object with no nonzero CCC signal receives no CP
+programs. Centers without any observed pairs have zero activity.
+
+Each epoch streams every center in computational batches. The loss uses sparse
+matrix multiplication and the LR factor Gram matrix to account for predicted
+values at observed zeros without materializing a dense reconstruction.
+After summing reconstruction gradients across batches, compute the two
+orthogonality gradients and take one Adam step followed by projection onto the
+nonnegative orthant. Computational batches share B and C.
+
+Normalize each factor column to unit L2 norm for the penalties. The A term
+is the sum of squared off-diagonal entries of the full normalized A Gram
+matrix. The BC term uses the elementwise product of the normalized B and C Gram
+matrices, which is the Gram of the complete joint patterns. Both terms are
+differentiated during training. Each weight is its configured multiplier times
+initial reconstruction loss divided by the corresponding initial penalty.
+The effective coefficient is zero when that penalty is numerically zero
+(at most 1e-8). Track relative improvement in the total objective and retain
+the factors from the best epoch. On export, B and C are column-normalized and
+their scale and the data RMS are absorbed into A.
+
+The default batch cap is 128 centers. CUDA reduces this cap based on current
+free memory and a conservative estimate that includes observed fibers, factors
+and optimizer state. Factors and optimizer state reside on the selected
+device. The host regenerates sparse observed batches on each pass, so it
+does not retain the full CCC tensor. A single center's observed fibers and all
+factor matrices must fit on the device. CUDA runs one context worker per device.
+The CPU supports multiple workers in separate processes.
+
 ## Parameters
 
 `window_um=50`, `contact_um=50`, `interface_um=25`, `sigma_um=20`,
-`block_um=100`, `fit_windows=256`, `enrichment_permutations=1000`,
-`delaunay_max_um=None` (use `contact_um`), and `aggregation="mean-mean"`.
-Set overrides in a JSON file passed to `--settings`. The new settings are
-also available as command-line flags. Leave the same coarse partition settings
-in use between preview and fit. Remove `interface_fraction` and `min_cells`
-from old settings files. Both were thresholds for the retired interface filter.
+`enrichment_permutations=1000`, `delaunay_max_um=None` (use `contact_um`),
+and `aggregation="mean-mean"`.
+
+CP defaults are `rank=12`, `iterations=40` maximum optimizer steps,
+`repeats=5`, `cp_learning_rate=0.03`, `cp_alpha=0.02`, `cp_beta=0.02`,
+`cp_tol=1e-4` and `cp_patience=5`. Set either multiplier to zero to disable
+its term independently. Set both to zero for ordinary masked nonnegative CP.
+
+`cp_device="auto"` prefers CUDA device 2 when at least three CUDA devices
+are visible, otherwise the first visible CUDA device, with CPU fallback if
+CUDA is unavailable. Override with `--cp-device cpu` or `--cp-device cuda:2`.
+`--cp-batch-size` overrides the computational batch cap. Set other parameters
+in a JSON file passed to `--settings`. Omit the retired `block_um` and
+`fit_windows` keys from older settings files.
 
 ## Output
 
@@ -82,10 +118,11 @@ from old settings files. Both were thresholds for the retired interface filter.
 - `neighbor_support.npz` contains aligned cell IDs, type names, contact counts
   and effective Gaussian weights for the entire physical contact neighborhood.
   `program_support_*.npz` holds in-object pooling weights and type presence.
-- `sampling_*.tsv` records each attempted repeat's sampled cell IDs, block IDs
-  and fit status. `spatial_blocks.tsv` maps block IDs to specimen and block
-  coordinates. `programs_*_repeat*.npz` stores successful repeats using the
-  same zero-based repeat IDs and the corresponding cells, factors and scores.
+- `programs_*_repeat*.npz` retains the cell rows and IDs, B and C loadings,
+  focal activity A and pooled activity for each repeat.
+- `cp_losses_*.tsv` and `cp_losses_*.png` record loss trajectories.
+  `cp_metrics_*.tsv` records calibrated weights, best epoch, maximum off-diagonal
+  cosine for A and BC, counts of centers and observed entries, and runtime.
 - `settings.json` records the effective settings. Checkpoints depend on the
   input, settings and model source, so old checkpoint files remain separate.
 

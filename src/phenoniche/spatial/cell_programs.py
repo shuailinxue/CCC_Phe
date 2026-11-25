@@ -7,7 +7,7 @@ from scipy import sparse
 from scipy.spatial import cKDTree
 from sklearn.metrics import adjusted_rand_score
 
-from .programs import fit_programs, project, sample_blocks
+from .programs import fit_programs
 
 
 class CellTensor:
@@ -44,13 +44,7 @@ class CellTensor:
                     incoming /= support[row]
                 result[row, : len(lr.names)] = focal[lr.left] * incoming[lr.right]
                 result[row, len(lr.names) :] = incoming[lr.left] * focal[lr.right]
-        # The existing CP solver's singleton sender mode lets it fit the 3D tensor.
-        return (
-            np.zeros(len(categories), dtype=int),
-            categories,
-            result,
-            support,
-        )
+        return categories, result, support
 
 
 def _type_membership(types):
@@ -157,36 +151,24 @@ def consensus(activity, cfg, seed):
     return labels, stability
 
 
-def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
+def fit_context(ids, windows, contacts, types, channels, cfg, seed):
     allowed = np.zeros(len(types), dtype=bool)
     allowed[ids] = True
     tensor = CellTensor(contacts, types, channels, cfg.sigma_um, cfg.aggregation != "sum-sum")
     pool_graph, pool_weights = program_graph(ids, allowed, windows, types, cfg.sigma_um)
     rng = np.random.default_rng(seed)
-    models, features, cell_scores, sampling = [], [], [], []
+    models, features, cell_scores, training = [], [], [], []
     for repeat in range(cfg.repeats):
-        print(
-            f"  CP repeat {repeat + 1}/{cfg.repeats}: fitting and projecting",
-            flush=True,
-        )
-        train = sample_blocks(ids, block, cfg, rng)
-        model = fit_programs(
-            [tensor.fiber(i) for i in train],
-            tensor.n_types,
-            cfg,
-            rng,
-        )
-        sampling.append(dict(rows=train, blocks=block[train], fitted=model is not None))
-        if model is None:
-            continue
-        scores = np.zeros((len(types), model[2].shape[1]), dtype=np.float32)
-        for position, i in enumerate(ids):
-            if position and position % 10000 == 0:
-                print(f"    projected {position:,}/{len(ids):,} cells", flush=True)
-            value = project(tensor.fiber(i), model)
-            scores[i] = np.nan_to_num(value)
-        models.append(model)
-        cell_scores.append(scores[ids])
+        print(f"  CP repeat {repeat + 1}/{cfg.repeats}: full fit", flush=True)
+        fit = fit_programs(ids, tensor.fiber, tensor.n_types, 2 * len(channels.names), cfg, rng)
+        if fit is None:
+            break
+        activity, _, _ = fit.factors
+        scores = np.zeros((len(types), activity.shape[1]), dtype=activity.dtype)
+        scores[ids] = activity
+        models.append(fit.factors)
+        cell_scores.append(activity)
+        training.append(fit)
         features.append(
             pool_programs(pool_graph, pool_weights, types, scores, cfg.aggregation == "mean-mean")
         )
@@ -199,7 +181,7 @@ def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
             models=[],
             cell_scores=[],
             feature_scores=[],
-            sampling=sampling,
+            training=training,
             pool_weights=pool_weights,
         )
     labels, graph_stability = consensus(features[0], cfg, seed)
@@ -219,6 +201,6 @@ def fit_context(ids, block, windows, contacts, types, channels, cfg, seed):
         models=models,
         cell_scores=cell_scores,
         feature_scores=features,
-        sampling=sampling,
+        training=training,
         pool_weights=pool_weights,
     )

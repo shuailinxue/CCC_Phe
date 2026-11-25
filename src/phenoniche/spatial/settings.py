@@ -11,9 +11,14 @@ class Settings:
     resolution: float = 0.4
     rank: int = 12
     iterations: int = 40
-    fit_windows: int = 256
     repeats: int = 5
-    block_um: float = 100
+    cp_device: str = "auto"
+    cp_batch_size: int = 128
+    cp_learning_rate: float = 0.03
+    cp_alpha: float = 0.02
+    cp_beta: float = 0.02
+    cp_tol: float = 1e-4
+    cp_patience: int = 5
     seed: int = 73
     interface_um: float = 25
     delaunay_max_um: float | None = None
@@ -25,15 +30,17 @@ class Settings:
         if self.aggregation not in {"sum-sum", "mean-sum", "mean-mean"}:
             raise ValueError("Invalid aggregation mode")
         for key, value in vars(self).items():
-            if key == "aggregation" or (key == "delaunay_max_um" and value is None):
+            if key in {"aggregation", "cp_device"} or (key == "delaunay_max_um" and value is None):
                 continue
-            if not math.isfinite(value) or (key != "seed" and value <= 0):
+            allow_zero = key in {"seed", "cp_alpha", "cp_beta"}
+            if not math.isfinite(value) or value < 0 or (not allow_zero and value == 0):
                 raise ValueError(f"Invalid {key}: {value}")
         for key in (
             "composition_neighbors",
             "rank",
             "iterations",
-            "fit_windows",
+            "cp_batch_size",
+            "cp_patience",
             "repeats",
             "seed",
             "communication_neighbors",

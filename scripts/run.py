@@ -31,6 +31,8 @@ def main():
     parser.add_argument("--enrichment-permutations", type=int)
     parser.add_argument("--aggregation", choices=("sum-sum", "mean-sum", "mean-mean"))
     parser.add_argument("--composition-graph-cache", type=Path)
+    parser.add_argument("--cp-device", help="auto, cpu, or cuda[:index]")
+    parser.add_argument("--cp-batch-size", type=int, help="Maximum cells per computational batch")
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--checkpoint-dir", type=Path)
     parser.add_argument("--types", default="celltypes")
@@ -60,7 +62,8 @@ def main():
     )
     overrides = {
         name: getattr(args, name) for name in (
-            "interface_um", "delaunay_max_um", "enrichment_permutations", "aggregation"
+            "interface_um", "delaunay_max_um", "enrichment_permutations", "aggregation",
+            "cp_device", "cp_batch_size"
         ) if getattr(args, name) is not None
     }
     settings = replace(settings, **overrides)

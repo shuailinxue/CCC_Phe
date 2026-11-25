@@ -28,6 +28,7 @@ python scripts/run.py \
 
 Use `--layer X` when `.X` contains raw counts. For multiple specimens, replace
 `--single-specimen` with `--specimen-key KEY`. The output directory must be new.
+Use `--cp-device cpu` or `--cp-device cuda:2` to select the CP device.
 See `python scripts/run.py --help` for coordinate and settings options. Use an
 LR table appropriate to the species and gene symbols in the input.
 

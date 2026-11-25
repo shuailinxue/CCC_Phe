@@ -1,6 +1,6 @@
 import json
 from contextlib import contextmanager
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 
 import numpy as np
@@ -11,14 +11,20 @@ from .geometry import composition_partition, physical_graph
 from .contexts import delaunay_edges, interface_cells, neighborhood_enrichment
 from .cell_programs import contact_support, fit_context
 from .settings import Settings
+from .programs import cp_device
 
 
-def _run_context(task):
+def _init_context_worker(inputs):
+    global _CONTEXT_INPUTS
+    _CONTEXT_INPUTS = inputs
+
+
+def _run_context(task, inputs=None):
     key, centers = task
-    block, graph, contacts, types, channels, cfg = _CONTEXT_INPUTS
+    graph, contacts, types, channels, cfg = _CONTEXT_INPUTS if inputs is None else inputs
     print(f"开始 {key}，{len(centers):,} 个细胞", flush=True)
     seed = int(np.random.SeedSequence([cfg.seed, *key]).generate_state(1)[0])
-    part = fit_context(centers, block, graph, contacts, types, channels, cfg, seed)
+    part = fit_context(centers, graph, contacts, types, channels, cfg, seed)
     return key, part
 
 
@@ -60,7 +66,6 @@ def _context_fingerprint(xyz, ids, types, samples, channels, cfg, coarse):
 
 def _fit_contexts(
     groups,
-    block,
     graph,
     contacts,
     types,
@@ -76,10 +81,9 @@ def _fit_contexts(
     from concurrent.futures import ProcessPoolExecutor, as_completed
     from multiprocessing import get_context
 
-    global _CONTEXT_INPUTS
     if workers < 1:
         raise ValueError("workers must be positive")
-    _CONTEXT_INPUTS = (block, graph, contacts, types, channels, cfg)
+    inputs = (graph, contacts, types, channels, cfg)
     directory = Path(checkpoint_dir) / fingerprint if checkpoint_dir else None
     if directory:
         directory.mkdir(parents=True, exist_ok=True)
@@ -118,10 +122,11 @@ def _fit_contexts(
     pending.sort(key=lambda item: -len(item[1]))
     if workers == 1:
         for task in pending:
-            commit(*_run_context(task))
+            commit(*_run_context(task, inputs))
     else:
         with ProcessPoolExecutor(
-            max_workers=workers, mp_context=get_context("fork")
+            max_workers=workers, mp_context=get_context("spawn"),
+            initializer=_init_context_worker, initargs=(inputs,),
         ) as executor:
             futures = [executor.submit(_run_context, task) for task in pending]
             for future in as_completed(futures):
@@ -227,7 +232,6 @@ class SpatialNiches:
     settings: Settings
     neighbor_counts: np.ndarray
     neighbor_weights: np.ndarray
-    block_tiles: np.ndarray
 
     @property
     def composition(self):
@@ -260,6 +264,10 @@ class SpatialNiches:
         interface=None,
     ):
         cfg = settings or Settings()
+        device = cp_device(cfg.cp_device)
+        if device.type == "cuda" and workers != 1:
+            raise ValueError("CUDA CP requires one context worker per device")
+        cfg = replace(cfg, cp_device=str(device))
         preview, xyz, ids, samples, names, types, graph, coarse, edges = _prepare_coarse(
             cell_ids, coordinates_um, cell_types, specimens, cfg, composition_graph_cache
         )
@@ -278,16 +286,11 @@ class SpatialNiches:
             pair = tuple(sorted(interface))
             rows = interface_cells(xyz, samples, coarse, edges, pair, cfg.interface_um)
             groups = {pair: rows}
-        tiles = np.column_stack(
-            [np.unique(samples, return_inverse=True)[1], np.floor(xyz / cfg.block_um)]
-        ).astype(np.int64)
-        block_tiles, block = np.unique(tiles, axis=0, return_inverse=True)
         fingerprint = _context_fingerprint(
             xyz, ids, types, samples, ch, cfg, coarse
         )
         partitions = _fit_contexts(
             groups,
-            block,
             graph,
             contacts,
             types,
@@ -371,7 +374,6 @@ class SpatialNiches:
             ch.names,
             cfg,
             *contact_support(contacts, selected, types, cfg.sigma_um),
-            block_tiles,
         )
 
     def save(self, directory):
@@ -391,29 +393,19 @@ class SpatialNiches:
                 cell_types=self.composition.columns.to_numpy(dtype=str),
                 counts=self.neighbor_counts, weights=self.neighbor_weights,
             )
-            samples = np.unique(self.coarse_analysis.cells.specimen)
-            blocks = pd.DataFrame(self.block_tiles[:, 1:], columns=list("xyz")[:self.block_tiles.shape[1]-1])
-            blocks.insert(0, "specimen", samples[self.block_tiles[:, 0]])
-            blocks.rename_axis("block_id").to_csv(tmp / "spatial_blocks.tsv", sep="\t")
             ids = self.coarse_analysis.cells.index.to_numpy(dtype=str)
             for (a, b), part in self.programs.items():
-                sampling = []
-                for rep, sample in enumerate(part["sampling"]):
-                    sampling.append(pd.DataFrame(dict(
-                        repeat=rep, cell_id=ids[sample["rows"]],
-                        block_id=sample["blocks"], fitted=sample["fitted"],
-                    )))
-                pd.concat(sampling).to_csv(tmp / f"sampling_{a}_{b}.tsv", sep="\t", index=False)
                 np.savez_compressed(
                     tmp / f"program_support_{a}_{b}.npz",
                     cell_ids=ids[part["ids"]], weights=part["pool_weights"],
                     present=part["pool_weights"] > 0,
                     cell_types=self.composition.columns.to_numpy(dtype=str),
                 )
-                fitted_repeats = (i for i, sample in enumerate(part["sampling"]) if sample["fitted"])
-                for rep, model, activity, feature in zip(
-                    fitted_repeats, part["models"], part["cell_scores"], part["feature_scores"], strict=True
-                ):
+                if part["training"]:
+                    _save_training(tmp, a, b, part["training"])
+                for rep, (model, activity, feature) in enumerate(zip(
+                    part["models"], part["cell_scores"], part["feature_scores"], strict=True
+                )):
                     _, neighbor, lr = model
                     np.savez_compressed(
                         tmp / f"programs_{a}_{b}_repeat{rep}.npz",
@@ -424,3 +416,29 @@ class SpatialNiches:
                         focal_activity=activity,
                         neighborhood_activity=feature,
                     )
+
+
+def _save_training(directory, a, b, training):
+    from matplotlib.backends.backend_agg import FigureCanvasAgg
+    from matplotlib.figure import Figure
+
+    losses = pd.DataFrame([
+        dict(repeat=repeat, **row)
+        for repeat, fit in enumerate(training) for row in fit.history
+    ])
+    losses.to_csv(directory / f"cp_losses_{a}_{b}.tsv", sep="\t", index=False)
+    pd.DataFrame([
+        dict(repeat=repeat, **fit.metrics) for repeat, fit in enumerate(training)
+    ]).to_csv(directory / f"cp_metrics_{a}_{b}.tsv", sep="\t", index=False)
+    figure = Figure(figsize=(9, 3), layout="constrained")
+    FigureCanvasAgg(figure)
+    axes = figure.subplots(1, 3)
+    for ax, (column, label) in zip(axes, [
+        ("reconstruction_loss", "Masked reconstruction"),
+        ("orthogonality_loss", "Weighted orthogonality"),
+        ("total_loss", "Total objective"),
+    ], strict=True):
+        for _, group in losses.groupby("repeat", sort=True):
+            ax.plot(group.epoch, group[column])
+        ax.set(title=label, xlabel="Epoch")
+    figure.savefig(directory / f"cp_losses_{a}_{b}.png", dpi=150)
