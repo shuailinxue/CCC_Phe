@@ -20,6 +20,44 @@ def test_masked_loss_matches_dense_reference():
     torch.testing.assert_close(got, expected.double())
 
 
+def test_group_specific_mask_includes_observed_zeros():
+    a = torch.tensor([[1., 2.]], requires_grad=True)
+    b = torch.tensor([[1., .5], [.5, 1.]], requires_grad=True)
+    c = torch.tensor([[1., 2.], [2., 1.], [1., 1.], [3., 1.]], requires_grad=True)
+    # Neighbor 0 observes both groups; neighbor 1 observes only the long-range group.
+    prediction = (a[0] * b) @ c.T
+    observed = torch.tensor([[0., 4., 2., 0.], [0., 0., 1., 3.]])
+    mask = torch.tensor([[True, True, True, True], [False, False, True, True]])
+    expected = ((prediction - observed)[mask]).square().sum()
+    actual = 0
+    for rows, cols in (([0], [0, 1]), ([0, 1], [2, 3])):
+        values = observed[rows][:, cols]
+        actual = actual + masked_squared_error(
+            a, b, c[cols], torch.zeros(len(rows), dtype=torch.long),
+            torch.tensor(rows), values.to_sparse_csr(), values.square().sum(),
+        )
+    torch.testing.assert_close(actual, expected.double())
+    actual.backward()
+    assert all(x.grad is not None and torch.isfinite(x.grad).all() for x in (a, b, c))
+
+
+def test_balanced_reconstruction_averages_each_sample_not_each_cell():
+    values = np.array([1., 1., 1., 5.])
+    groups = np.array(["large", "large", "large", "small"])
+
+    def fiber(i):
+        return np.array([0]), np.array([[values[i]]], dtype=np.float32), None
+
+    cfg = Settings(cp_device="cpu", rank=1, iterations=1, cp_alpha=0, cp_beta=0)
+    fit = fit_programs(np.arange(4), fiber, 1, 1, cfg, np.random.default_rng(4), groups)
+    rng = np.random.default_rng(4)
+    a, b, c = [rng.uniform(.3, 1, shape).astype(np.float32) for shape in ((4, 1), (1, 1), (1, 1))]
+    scale = np.sqrt((1 + 25) / 2)
+    error = (a[:, 0] * b[0, 0] * c[0, 0] - values / scale) ** 2
+    expected = (error[:3].mean() + error[3]) / 2
+    assert fit.history[0]["reconstruction_loss"] == pytest.approx(expected, abs=1e-6)
+
+
 def test_orthogonality_is_scale_invariant_and_joint():
     a = torch.tensor([[1., 1.], [0., 0.]], requires_grad=True)
     b = torch.tensor([[2., 2.], [0., 0.]])

@@ -33,12 +33,12 @@ in the `counts` layer by default, or use `--layer X`. Coordinate tables use
    Within each specimen, use the midpoints of retained edges linking the two
    classes. Keep cells of either class within `interface_um` of their nearest
    midpoint. Specimens with no connecting edges contribute no interface centers.
-4. **CCC tensor.** A center's neighbors are all other cells of its specimen
-   within `contact_um`, independent of their coarse class or interface.
+4. **CCC tensor.** A center's neighbors are other cells of its specimen within
+   the radius of each LR signaling type, independent of coarse class or interface.
    Compute center-sender and center-receiver LR scores using panel-total CP10k,
    complete complexes, the geometric-mean expression score and Gaussian
    distance weights. A neighbor type with zero expression is an observed
-   zero. An absent type has no tensor row and contributes no CP loss.
+   zero. A type absent within that LR's radius contributes no CP loss.
 5. **CP and clustering.** Each repeat starts from a different nonnegative
    random initialization and jointly fits A (center activity), B (neighbor
    type loading), and C (directed LR loading) using every center in the analysis
@@ -59,8 +59,8 @@ The current graph distance itself does not mask those dimensions.
 
 ## CP objective and execution
 
-Reconstruction is mean squared error over all LR entries of observed
-center–neighbor-type pairs, including observed zeros. The data are divided by
+Reconstruction is mean squared error over observed center–neighbor-type–LR
+entries, including observed zeros, using the mask for the LR signaling type. The data are divided by
 their observed RMS for numerical conditioning. Missing pairs contribute no
 reconstruction loss. An object with no nonzero CCC signal receives no CP
 programs. Centers without any observed pairs have zero activity.
@@ -97,6 +97,15 @@ The CPU supports multiple workers in separate processes.
 `enrichment_permutations=1000`, `delaunay_max_um=None` (use `contact_um`),
 and `aggregation="mean-mean"`.
 
+CCC neighborhoods are shared by signaling type: `contact_radius_um=20`,
+`secreted_radius_um=100`, and `ecm_radius_um=20`. The corresponding Gaussian
+scales are `contact_sigma_um=20`, `secreted_sigma_um=40`, and
+`ecm_sigma_um=20`. Unknown and ambiguous pairs retain `contact_um` and
+`sigma_um`. Set any of these fields in the JSON supplied to `--settings`, or
+pass them to Python `Settings(...)`. Neighbor counts and weight sums by type
+are stored in `neighbor_support.npz`; masks for reconstruction are specific to
+each signaling type, and an observed zero remains distinct from a missing type.
+
 CP defaults are `rank=12`, `iterations=40` maximum optimizer steps,
 `repeats=5`, `cp_learning_rate=0.03`, `cp_alpha=0.02`, `cp_beta=0.02`,
 `cp_tol=1e-4` and `cp_patience=5`. Set either multiplier to zero to disable
@@ -128,3 +137,6 @@ in a JSON file passed to `--settings`. Omit the retired `block_um` and
 
 The existing lung analysis notebook is on NAS under
 `/home/nas3/biod/xueshuailin/CCC_Phe/notebooks/`.
+
+For joint control–case analysis with shared communication programs and
+leave-one-donor calibration, see [comparative mode](comparative.md).

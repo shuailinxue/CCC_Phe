@@ -7,6 +7,12 @@ class Settings:
     window_um: float = 50
     contact_um: float = 50
     sigma_um: float = 20
+    contact_radius_um: float = 20
+    secreted_radius_um: float = 100
+    ecm_radius_um: float = 20
+    contact_sigma_um: float = 20
+    secreted_sigma_um: float = 40
+    ecm_sigma_um: float = 20
     composition_neighbors: int = 20
     resolution: float = 0.4
     rank: int = 12

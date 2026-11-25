@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pytest
 
 from phenoniche.spatial import Settings, SpatialNiches
 from phenoniche.spatial.channels import Channels
@@ -173,3 +174,44 @@ def test_cell_type_mean_normalization_and_structural_absence():
     np.testing.assert_allclose(pool_programs(pooling, support, types, scores, False),
                                [[3 / support.sum(), avg * weights.sum() / support.sum(), 0]])
     assert not support[0, 2]
+
+
+def test_signaling_specific_radii_weights_and_masks():
+    from phenoniche.spatial.channels import Channels
+    from phenoniche.spatial.cell_programs import CellTensor
+    from phenoniche.spatial.geometry import physical_graph
+    from phenoniche.spatial.programs import _observed_batch
+
+    xyz = np.array([[0., 0.], [10., 0.], [40., 0.], [90., 0.], [10., 0.]])
+    graph = physical_graph(xyz, np.array(['a', 'a', 'a', 'a', 'b']), 100)
+    types = np.array([0, 1, 1, 2, 2])
+    lr = pd.DataFrame({'ligand': ['L', 'L', 'L'], 'receptor': ['R1', 'R2', 'R3'],
+                       'signaling_type': ['Contact', 'Secreted', 'ECM']})
+    # R1 expression is zero: its contact observation still enters the mask.
+    counts = np.array([[1, 0, 1, 1], [1, 0, 1, 1], [1, 0, 2, 1],
+                       [1, 0, 1, 1], [1, 0, 10, 1]])
+    channels = Channels(counts, pd.Index(['L', 'R1', 'R2', 'R3']), lr)
+    cfg = Settings(contact_radius_um=20, secreted_radius_um=100, ecm_radius_um=20,
+                   secreted_sigma_um=30)
+    tensor = CellTensor(graph, types, channels, cfg.sigma_um, settings=cfg)
+    cats, values, support = tensor.fiber(0)
+    assert cats.tolist() == [1, 2]
+    assert support[0, 0] == pytest.approx(np.exp(-0.5 * (10 / 20) ** 2))
+    assert support[0, 1] == pytest.approx(np.exp(-0.5 * (10 / 30) ** 2) + np.exp(-0.5 * (40 / 30) ** 2))
+    assert support[1, 0] == 0 and support[1, 1] > 0 and support[1, 2] == 0
+    assert values[0, 0] == 0
+    weights = np.exp(-0.5 * (np.array([10., 40.]) / 30) ** 2)
+    expr = channels.expression.toarray()
+    expected = expr[0, channels.left[1]] * np.dot(weights, expr[[1, 2], channels.right[1]]) / weights.sum()
+    assert values[0, 1] == pytest.approx(expected)
+    _, summed, _ = CellTensor(graph, types, channels, cfg.sigma_um, mean=False, settings=cfg).fiber(0)
+    assert summed[0, 1] == pytest.approx(expected * weights.sum())
+    batches = _observed_batch(np.array([0]), tensor.fiber)
+    assert [len(neighbors) for _, neighbors, _, _ in batches] == [1, 2, 1]
+    assert sum(matrix.shape[0] * matrix.shape[1] for _, _, matrix, _ in batches) == 8
+    assert 4 not in graph.indices[graph.indptr[0]:graph.indptr[1]]
+    from phenoniche.spatial.programs import fit_programs
+    fit = fit_programs(np.array([0, 1, 2, 3, 4]), tensor.fiber, 3, 6,
+                       Settings(cp_device="cpu", rank=1, iterations=2, cp_batch_size=2),
+                       np.random.default_rng(2))
+    assert fit is not None and np.isfinite(fit.metrics["total_loss"])

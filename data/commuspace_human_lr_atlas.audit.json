@@ -13,5 +13,40 @@
     "/tmp/nichenet_lr.tsv": "0f9bf2b3c4e0853fe4f05f479a20214148a07de8043fa070abd12b004c577d12",
     "/tmp/cellchat_human.tsv": "1b7a6f70e520d604df3d6bbf96631f4c575840c071e09a89cf93e7df5978843d",
     "/tmp/liana-py/src/liana/resource/omni_resource.csv": "b499b56ce084b7afde3462460e25b79c6abc047086833cd95ca42172d78e0b7c"
+  },
+  "signaling_annotation": {
+    "species": "Homo sapiens",
+    "date": "2026-11-25",
+    "priority": "CellChatDB v2 > Cellinker > OmniPath intercell inferred from ligand subunits",
+    "rules": "HGNC approved symbol first, unique alias/previous symbol, exact unordered complete subunit sets, preserve ligand-receptor direction; conflicting annotations ambiguous; non-protein unknown; ECM/secreted/membrane overlap ambiguous; no ortholog conversion; OmniPath composite and UniProt localization/function evidence via OmniPath unioned per ligand subunit",
+    "source_matches_priority": {
+      "CellChatDB_v2": 4122,
+      "Cellinker": 1693,
+      "OmniPath": 3234
+    },
+    "classification": {
+      "Secreted": 3810,
+      "Ambiguous": 1784,
+      "Contact": 1594,
+      "Unknown": 1253,
+      "ECM": 870
+    },
+    "classified_fraction": 0.6738266566426807,
+    "sources": {
+      "CellChatDB": "https://raw.githubusercontent.com/jinworks/CellChat/75253cd0c9e68410e6e721a6d3a0419a1d7e358f/data/CellChatDB.human.rda",
+      "Cellinker": "https://www.rna-society.org/cellinker/download/Homo%20sapiens.txt",
+      "OmniPath": "https://omnipathdb.org/intercell?categories=ecm,secreted,plasma_membrane_transmembrane&source=composite&format=tsv",
+      "HGNC": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+      "UniProt via OmniPath": "https://omnipathdb.org/intercell?categories=ecm,secreted,plasma_membrane_transmembrane&databases=UniProt_location,UniProt_keyword,UniProt_topology&source=resource_specific&format=tsv"
+    },
+    "input_sha256": {
+      "CellChatDB.human.rda": "582e99db2bb1b1e05c0364553893d804952bd007fef870720a9cc659a7bd3ad8",
+      "hgnc_complete_set.txt": "84ddffcbdb7761b065c8c45e4fc7f626c3bf055b3ab054dbf039ac738a935170",
+      "Cellinker.human.tsv": "39076351802f46246089e3dad4fc8e9ac6dac18c6a9c30f65b08a1617f1aca7e",
+      "OmniPath.intercell.human.tsv": "41b0ed7a0d3f633cb139e27777d0143131e536ee3a31a84099603bec367f9ff5",
+      "UniProt.intercell.human.tsv": "5a6807da461c0fc4fbead5effc5a1241eae51f6ff1ca7424f96073e4f8bcb63e"
+    },
+    "uniprot_inferred_pairs": 2616,
+    "local_sources": "/home/nas3/biod/xueshuailin/CCC_Phe/LR_base/legacy_lr/raw/"
   }
 }

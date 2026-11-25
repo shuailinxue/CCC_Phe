@@ -13,7 +13,7 @@ from .programs import fit_programs
 class CellTensor:
     """Focal cell × neighbor type × [outgoing LR, incoming LR]."""
 
-    def __init__(self, graph, types, channels, sigma, mean=True):
+    def __init__(self, graph, types, channels, sigma, mean=True, settings=None):
         self.graph, self.types, self.channels, self.sigma = (
             graph,
             types,
@@ -22,6 +22,22 @@ class CellTensor:
         )
         self.n_types = int(types.max()) + 1
         self.mean = mean
+        labels = getattr(channels, "signaling_types", np.full(len(channels.names), "Unknown"))
+        self.groups = []
+        for label in ("Contact", "Secreted", "ECM", "Unknown"):
+            select = np.isin(labels, ["Unknown", "Ambiguous"]) if label == "Unknown" else labels == label
+            columns = np.flatnonzero(np.r_[select, select])
+            if not len(columns):
+                continue
+            radius = None if settings is None else {
+                "Contact": settings.contact_radius_um, "Secreted": settings.secreted_radius_um,
+                "ECM": settings.ecm_radius_um, "Unknown": settings.contact_um,
+            }[label]
+            scale = sigma if settings is None else {
+                "Contact": settings.contact_sigma_um, "Secreted": settings.secreted_sigma_um,
+                "ECM": settings.ecm_sigma_um, "Unknown": settings.sigma_um,
+            }[label]
+            self.groups.append((columns, radius, scale))
 
     def fiber(self, cell):
         start, stop = self.graph.indptr[cell : cell + 2]
@@ -31,19 +47,23 @@ class CellTensor:
         categories = np.unique(neighbor_types)
         lr = self.channels
         result = np.zeros((len(categories), 2 * len(lr.names)), dtype=np.float32)
-        support = np.zeros(len(categories))
+        support = np.zeros((len(categories), len(self.groups)))
         if len(neighbors):
             expression = lr.expression[np.r_[cell, neighbors]].toarray()
             focal, other = expression[0], expression[1:]
-            weights = np.exp(-0.5 * (distances / self.sigma) ** 2)
-            for row, category in enumerate(categories):
-                mask = neighbor_types == category
-                support[row] = weights[mask].sum()
-                incoming = weights[mask] @ other[mask]
-                if self.mean and support[row] > 0:
-                    incoming /= support[row]
-                result[row, : len(lr.names)] = focal[lr.left] * incoming[lr.right]
-                result[row, len(lr.names) :] = incoming[lr.left] * focal[lr.right]
+            for group, (columns, radius, sigma) in enumerate(self.groups):
+                eligible = np.ones(len(distances), dtype=bool) if radius is None else distances <= radius
+                weights = np.exp(np.maximum(-0.5 * (distances / sigma) ** 2, -700))
+                for row, category in enumerate(categories):
+                    mask = (neighbor_types == category) & eligible
+                    support[row, group] = weights[mask].sum()
+                    if not mask.any():
+                        continue
+                    incoming = weights[mask] @ other[mask]
+                    if self.mean and support[row, group] > 0:
+                        incoming /= support[row, group]
+                    values = np.r_[focal[lr.left] * incoming[lr.right], incoming[lr.left] * focal[lr.right]]
+                    result[row, columns] = values[columns]
         return categories, result, support
 
 
@@ -53,7 +73,7 @@ def _type_membership(types):
 
 def contact_support(contacts, ids, types, sigma):
     graph = contacts[ids].copy()
-    weights = np.exp(-0.5 * (graph.data / sigma) ** 2)
+    weights = np.exp(np.maximum(-0.5 * (graph.data / sigma) ** 2, -700))
     graph.data.fill(1)
     membership = _type_membership(types)
     counts = (graph @ membership).toarray().astype(np.int64)
@@ -154,7 +174,7 @@ def consensus(activity, cfg, seed):
 def fit_context(ids, windows, contacts, types, channels, cfg, seed):
     allowed = np.zeros(len(types), dtype=bool)
     allowed[ids] = True
-    tensor = CellTensor(contacts, types, channels, cfg.sigma_um, cfg.aggregation != "sum-sum")
+    tensor = CellTensor(contacts, types, channels, cfg.sigma_um, cfg.aggregation != "sum-sum", cfg)
     pool_graph, pool_weights = program_graph(ids, allowed, windows, types, cfg.sigma_um)
     rng = np.random.default_rng(seed)
     models, features, cell_scores, training = [], [], [], []

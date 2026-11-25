@@ -60,16 +60,25 @@ def masked_squared_error(a, b, c, rows, neighbor, values, energy):
 
 
 def _observed_batch(ids, fiber):
-    rows, types, matrices = [], [], []
+    owner = getattr(fiber, "__self__", None)
+    groups = getattr(owner, "groups", None)
+    buckets = {}
     for row, cell in enumerate(ids):
-        neighbor, values, _ = fiber(cell)
-        if len(neighbor):
-            rows.extend([row] * len(neighbor))
-            types.append(neighbor)
-            matrices.append(sparse.csr_matrix(values))
-    if not rows:
-        return None
-    return np.asarray(rows), np.concatenate(types), sparse.vstack(matrices, format="csr")
+        neighbor, values, support = fiber(cell)
+        if not len(neighbor):
+            continue
+        columns_by_group = [None] if groups is None else [g[0] for g in groups]
+        for group, columns in enumerate(columns_by_group):
+            present = np.ones(len(neighbor), dtype=bool) if groups is None else support[:, group] > 0
+            if not present.any():
+                continue
+            rows, types, matrices = buckets.setdefault(group, ([], [], []))
+            rows.extend([row] * int(present.sum()))
+            types.append(neighbor[present])
+            matrices.append(sparse.csr_matrix(values[present] if columns is None else values[present][:, columns]))
+    return [(np.asarray(rows), np.concatenate(types), sparse.vstack(matrices, format="csr"),
+             None if groups is None else groups[group][0])
+            for group, (rows, types, matrices) in buckets.items()]
 
 
 def _batch_size(settings, device, n_types, n_lr, factor_bytes):
@@ -82,7 +91,7 @@ def _batch_size(settings, device, n_types, n_lr, factor_bytes):
     return size
 
 
-def fit_programs(ids, fiber, n_types, n_lr, settings, rng):
+def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None):
     """Optimize shared factors with one accumulated gradient step per full pass."""
     if not len(ids):
         return None
@@ -92,21 +101,36 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng):
     size = min(len(ids), _batch_size(settings, device, n_types, n_lr, factor_bytes))
     batches = [(start, min(start + size, len(ids))) for start in range(0, len(ids), size)]
     observed = np.zeros(len(ids), dtype=bool)
+    if balance_groups is None:
+        group_codes = np.zeros(len(ids), dtype=int)
+    else:
+        if np.shape(balance_groups) != (len(ids),):
+            raise ValueError("One balance group is required per center")
+        _, group_codes = np.unique(np.asarray(balance_groups), return_inverse=True)
+    n_groups = int(group_codes.max()) + 1
+    group_entries = np.zeros(n_groups, dtype=np.int64)
+    group_energy = np.zeros(n_groups, dtype=np.float64)
     energy, entries = 0.0, 0
     for start, stop in batches:
         batch = _observed_batch(ids[start:stop], fiber)
-        if batch is not None:
-            rows, _, values = batch
+        for rows, _, values, columns in batch:
             observed[start + rows] = True
             data = values.data.astype(np.float64)
             energy += np.dot(data, data)
-            entries += values.shape[0] * n_lr
+            entries += values.shape[0] * values.shape[1]
+            for group in np.unique(group_codes[start + rows]):
+                select = group_codes[start + rows] == group
+                part = values[select].data.astype(np.float64)
+                group_energy[group] += np.dot(part, part)
+                group_entries[group] += int(select.sum()) * values.shape[1]
+    if balance_groups is not None and np.any(group_entries == 0):
+        raise ValueError("A balance group has no observed tensor entries")
     if not np.isfinite(energy):
         raise FloatingPointError("Non-finite CCC energy")
     if not energy:
         return None
 
-    scale = float(np.sqrt(energy / entries))
+    scale = float(np.sqrt(np.mean(group_energy / group_entries)))
     rank = min(settings.rank, int(observed.sum()), n_lr)
     initial = [
         (rng.uniform(0.3, 1, (rows, rank)) * rank ** (-1 / 3)).astype(np.float32)
@@ -127,23 +151,26 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng):
         reconstruction = torch.zeros((), dtype=torch.float64, device=device)
         for start, stop in batches:
             batch = _observed_batch(ids[start:stop], fiber)
-            if batch is None:
-                continue
-            rows, neighbor, values = batch
-            data = torch.from_numpy(values.data).to(device) / scale
-            tensor = torch.sparse_csr_tensor(
-                values.indptr.astype(np.int64), values.indices.astype(np.int64),
-                data, size=values.shape, device=device,
-            )
             local = a[start:stop].detach().requires_grad_()
-            loss = masked_squared_error(
-                local, b, c, torch.as_tensor(rows, device=device),
-                torch.as_tensor(neighbor, device=device), tensor,
-                data.square().sum(dtype=torch.float64),
-            ) / entries
-            loss.backward()
-            a.grad[start:stop].copy_(local.grad)
-            reconstruction += loss.detach()
+            for rows, neighbor, values, columns in batch:
+                for group in np.unique(group_codes[start + rows]):
+                    select = group_codes[start + rows] == group
+                    part = values[select]
+                    data = torch.from_numpy(part.data).to(device) / scale
+                    tensor = torch.sparse_csr_tensor(
+                        part.indptr.astype(np.int64), part.indices.astype(np.int64),
+                        data, size=part.shape, device=device,
+                    )
+                    selected_c = c if columns is None else c[torch.as_tensor(columns, device=device)]
+                    loss = masked_squared_error(
+                        local, b, selected_c, torch.as_tensor(rows[select], device=device),
+                        torch.as_tensor(neighbor[select], device=device), tensor,
+                        data.square().sum(dtype=torch.float64),
+                    ) / (n_groups * int(group_entries[group]))
+                    loss.backward()
+                    reconstruction += loss.detach()
+            if local.grad is not None:
+                a.grad[start:stop].copy_(local.grad)
 
         loss_a, loss_bc = orthogonality(a, b, c)
         rec = max(0.0, reconstruction.item())
@@ -183,6 +210,7 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng):
         bc_cos = _offdiag(_gram(bb) * _gram(cc))
         metrics = dict(
             device=str(device), batch_size=size, centers=len(ids),
+            balance_groups=n_groups,
             centers_with_observations=int(observed.sum()), observed_entries=entries,
             rms_scale=scale, calibrated_alpha=alpha, calibrated_beta=beta,
             best_epoch=best_epoch, epochs_completed=epoch,

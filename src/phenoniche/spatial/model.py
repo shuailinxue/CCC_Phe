@@ -5,6 +5,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from scipy import sparse
 
 from .channels import Channels
 from .geometry import composition_partition, physical_graph
@@ -46,7 +47,7 @@ def _context_fingerprint(xyz, ids, types, samples, channels, cfg, coarse):
         a = np.ascontiguousarray(array)
         digest.update(str((a.shape, a.dtype)).encode())
         digest.update(a.view(np.uint8))
-    for values in (ids, samples, channels.names):
+    for values in (ids, samples, channels.names, channels.signaling_types):
         for value in values:
             digest.update(repr(value).encode())
             digest.update(b"\0")
@@ -232,6 +233,9 @@ class SpatialNiches:
     settings: Settings
     neighbor_counts: np.ndarray
     neighbor_weights: np.ndarray
+    neighbor_counts_by_signaling: np.ndarray
+    neighbor_weights_by_signaling: np.ndarray
+    lr_signaling_types: np.ndarray
 
     @property
     def composition(self):
@@ -276,10 +280,8 @@ class SpatialNiches:
                 "Count matrix dimensions do not match cell/gene identifiers"
             )
         ch = Channels(counts, pd.Index(genes), lr)
-        contacts = (
-            graph if cfg.window_um == cfg.contact_um
-            else physical_graph(xyz, samples, cfg.contact_um)
-        )
+        max_radius = max(cfg.contact_um, cfg.contact_radius_um, cfg.secreted_radius_um, cfg.ecm_radius_um)
+        contacts = graph if cfg.window_um == max_radius else physical_graph(xyz, samples, max_radius)
         if interface is None:
             groups = {(int(c), int(c)): np.flatnonzero(coarse == c) for c in np.unique(coarse)}
         else:
@@ -366,6 +368,15 @@ class SpatialNiches:
             "neighbor_loading",
             "lr_loading",
         ]
+        support = []
+        for radius, sigma in ((cfg.contact_radius_um, cfg.contact_sigma_um),
+                              (cfg.secreted_radius_um, cfg.secreted_sigma_um),
+                              (cfg.ecm_radius_um, cfg.ecm_sigma_um),
+                              (cfg.contact_um, cfg.sigma_um)):
+            edges = contacts.tocoo()
+            keep = edges.data <= radius
+            eligible = sparse.csr_matrix((edges.data[keep], (edges.row[keep], edges.col[keep])), shape=contacts.shape)
+            support.append(contact_support(eligible, selected, types, sigma))
         return cls(
             cells,
             preview,
@@ -373,7 +384,10 @@ class SpatialNiches:
             partitions,
             ch.names,
             cfg,
-            *contact_support(contacts, selected, types, cfg.sigma_um),
+            support[-1][0], support[-1][1],
+            np.stack([x[0] for x in support], axis=1),
+            np.stack([x[1] for x in support], axis=1),
+            ch.signaling_types,
         )
 
     def save(self, directory):
@@ -381,9 +395,9 @@ class SpatialNiches:
             self.coarse_analysis._write(tmp)
             self.cells.to_csv(tmp / "cells.tsv", sep="\t")
             self.evidence.to_csv(tmp / "channels.tsv", sep="\t", index=False)
-            pd.DataFrame(self.lr, columns=["ligand", "receptor"]).to_csv(
-                tmp / "lr.tsv", sep="\t", index=False
-            )
+            lr = pd.DataFrame(self.lr, columns=["ligand", "receptor"])
+            lr["signaling_type"] = self.lr_signaling_types
+            lr.to_csv(tmp / "lr.tsv", sep="\t", index=False)
             (tmp / "settings.json").write_text(
                 json.dumps(asdict(self.settings), indent=2)
             )
@@ -391,7 +405,10 @@ class SpatialNiches:
                 tmp / "neighbor_support.npz",
                 cell_ids=self.cells.index.to_numpy(dtype=str),
                 cell_types=self.composition.columns.to_numpy(dtype=str),
+                signaling_types=np.array(["Contact", "Secreted", "ECM", "Unknown/Ambiguous"]),
                 counts=self.neighbor_counts, weights=self.neighbor_weights,
+                counts_by_signaling=self.neighbor_counts_by_signaling,
+                weights_by_signaling=self.neighbor_weights_by_signaling,
             )
             ids = self.coarse_analysis.cells.index.to_numpy(dtype=str)
             for (a, b), part in self.programs.items():
