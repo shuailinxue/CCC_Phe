@@ -1,0 +1,15 @@
+{
+  "seed": 40700,
+  "device": "cuda:2",
+  "coarse_K": 5,
+  "maximum_total_K": 6,
+  "kmeans_initializations": 10,
+  "anchor_batch_size": 256,
+  "feature_batch_size": 256,
+  "null_standardization_draws": 64,
+  "null_max_calibration_draws": 256,
+  "null_holdout_draws": 32,
+  "minimum_supported_weight": 50,
+  "alpha": 0.05,
+  "scope": "Exploratory two-stage simulation test; known number of generating states permits coarse K and total K, but no labels, planted mechanisms or truth-selected features enter fitting."
+}

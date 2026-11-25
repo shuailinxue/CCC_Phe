@@ -1,0 +1,15 @@
+{
+  "url": "https://github.com/ZJUFanLab/scNiche",
+  "commit": "98069f89c6c8a14ced06734003f34b7720ff6bfc",
+  "upstream_sha256": {
+    "scniche/trainer/_model.py": "111d2b9929282857846a6bca28ca162ca4fd541b8cb46f49ee7410528afc761b",
+    "scniche/trainer/_train.py": "1d44809401b005621c9c472895a82745b1120022fe18b6fe443e7e360b577a1f",
+    "scniche/trainer/_utils.py": "401c138e440f3d7bf838ec649d786c4a9eb4b7462c72564e9396941e344e6011",
+    "scniche/preprocess/_utils.py": "ebd7efab367880b23597910399ba89589b9a1a9cbdadf87f2a3cf38009d3f914",
+    "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  "modifications": [
+    "DGL adjacency size query replaced with equivalent num_nodes; NumPy hstack generator replaced with list"
+  ],
+  "adapter_scope": "Official model and native loss retained; fold-safe same-size batch/PCA preparation replaces only dataset plumbing."
+}

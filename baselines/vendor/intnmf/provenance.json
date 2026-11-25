@@ -1,0 +1,13 @@
+{
+  "url": "https://github.com/cran/IntNMF",
+  "commit": "c95af29a27c708d95001b1c4ffb4ece4aeab92cb",
+  "upstream_sha256": {
+    "R/nmf.mnnals.R": "c04f13ec695824a53e0c196541d291f1983422a2b769700ba8680ce773d63f19",
+    "R/IntNMF-internal.R": "bee013af410998a44f28892675520830f450b899275eabef1961037f6adb6457",
+    "R/H.fcnnls.R": "0a19af6ef7d7ade136c858fa24c42f0ee02ab7876925b26313e06478c5646483",
+    "R/W.fcnnls.R": "efb8dd004f82a4a9a19038fa778f7e16cd58cecc691a100e46119d829b43018c",
+    "DESCRIPTION": "de9609cf9926c1a278524640ae3e54625a96219234dff75a5193592e6522391b",
+    "R/adj.cssls.R": "839972ff38ebb9819fc77bf33066802022f272152362710e480d0a4c78d89d7d"
+  },
+  "modifications": []
+}

@@ -1,0 +1,7 @@
+{
+ "fail": [
+  "figure threw: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:43467/CCC_Phe/figure/figure.js?v=1793447001734"
+ ],
+ "warn": [],
+ "info": []
+}

@@ -1,0 +1,32 @@
+Package: SpaNiche
+Title: Spatial Niche Analysis
+Version: 1.1.0
+Authors@R: 
+    person("Siyuan", "Huang", , "huangsiyuan1001@163.com", role = c("aut", "cre"))
+Description: 
+    Provides tools for spatial niche analysis to explore colocalization patterns and cellular interactions in spatial transcriptomics data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    patchwork,
+    IntNMF,
+    scSeqComm,
+    raster,
+    RColorBrewer,
+    scales,
+    reticulate,
+    Seurat,
+    tidyverse,
+    plyr,
+    pheatmap,
+    Nebulosa,
+    ggrastr,
+    reshape2,
+    utils,
+    grDevices,
+    stats
+Depends: 
+    R (>= 2.10)
+LazyData: true

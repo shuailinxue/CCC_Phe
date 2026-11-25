@@ -1,0 +1,13 @@
+{
+  "url": "https://github.com/RucDongLab/STAGATE_pyG",
+  "commit": "ae1158ca8cf1eb6bb8ee198298552d44c9ac21db",
+  "upstream_sha256": {
+    "STAGATE_pyG/STAGATE.py": "2224eb23af303b1b8e175740f62d1d8fdee991b9ba32e74d4f805daf3f40fb92",
+    "STAGATE_pyG/gat_conv.py": "598666cb5ac9e23b292f826c87664311340b9c204e8eee468ecda502e791175a",
+    "STAGATE_pyG/Train_STAGATE.py": "997fcaea97ec690e809f6513d48cf3ef8892784c15305b4eab75bd400995efa5",
+    "STAGATE_pyG/utils.py": "df8295dbe9b11b9492f1baa2d15e6183282289f6b3993d4bf088c27b24b09ecd"
+  },
+  "modifications": [
+    "Optional return_model hook for saving weights; detached scalar loss history. Official model, MSE, tied weights, optimizer and gradient clipping unchanged."
+  ]
+}
