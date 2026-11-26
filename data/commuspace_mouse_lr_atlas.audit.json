@@ -1,0 +1,235 @@
+{
+  "raw_rows": {
+    "NicheNet": 5668,
+    "CellChat": 3379,
+    "LIANA": 3998,
+    "Cellinker": 3241
+  },
+  "normalized_unique": {
+    "NicheNet": 5598,
+    "CellChat": 3353,
+    "LIANA": 3982,
+    "Cellinker": 3230
+  },
+  "unresolved_rows": {
+    "NicheNet": 6,
+    "CellChat": 4,
+    "LIANA": 15,
+    "Cellinker": 11
+  },
+  "union": 8961,
+  "unresolved_examples": {
+    "NicheNet": [
+      [
+        "Gm13309",
+        "Ackr2"
+      ],
+      [
+        "Gm13309",
+        "Ackr4"
+      ],
+      [
+        "Gm13309",
+        "Ccr10"
+      ],
+      [
+        "Gm13309",
+        "Ccr7"
+      ],
+      [
+        "Gm13309",
+        "Ccrl2"
+      ],
+      [
+        "Gm13309",
+        "Cxcr3"
+      ]
+    ],
+    "CellChat": [
+      [
+        "Ccl21",
+        "Ccr7"
+      ],
+      [
+        "Ccl21",
+        "Ackr4"
+      ],
+      [
+        "H2-D",
+        "Klra"
+      ],
+      [
+        "H2-K1",
+        "Klra"
+      ]
+    ],
+    "LIANA": [
+      [
+        "Gm2506",
+        "Ackr2"
+      ],
+      [
+        "LOC100861978",
+        "Ackr2"
+      ],
+      [
+        "Gm2506",
+        "Adra2a"
+      ],
+      [
+        "LOC100861978",
+        "Adra2a"
+      ],
+      [
+        "Gm2506",
+        "Ccr10"
+      ],
+      [
+        "LOC100861978",
+        "Ccr10"
+      ],
+      [
+        "Gm2506",
+        "Ccr2"
+      ],
+      [
+        "LOC100861978",
+        "Ccr2"
+      ],
+      [
+        "Gm2506",
+        "Ccr3"
+      ],
+      [
+        "LOC100861978",
+        "Ccr3"
+      ],
+      [
+        "Gm2506",
+        "Grm7"
+      ],
+      [
+        "LOC100861978",
+        "Grm7"
+      ],
+      [
+        "Gm2506",
+        "Mtnr1a"
+      ],
+      [
+        "LOC100861978",
+        "Mtnr1a"
+      ],
+      [
+        "LOC100861969",
+        "Cd40"
+      ]
+    ],
+    "Cellinker": [
+      [
+        "Tjp3",
+        "Jam1"
+      ],
+      [
+        "Afdn",
+        "Jam1"
+      ],
+      [
+        "Jam1",
+        "Jam1"
+      ],
+      [
+        "Pard3",
+        "Jam1"
+      ],
+      [
+        "Jam2",
+        "Jam1"
+      ],
+      [
+        "Jam3",
+        "Jam1"
+      ],
+      [
+        "Tjp1",
+        "Jam1"
+      ],
+      [
+        "Mpdz",
+        "Jam1"
+      ],
+      [
+        "Jam1",
+        "Itgal;Itgb2"
+      ],
+      [
+        "Jam1",
+        "Ulbp1"
+      ],
+      [
+        "Robo3",
+        "Jam1"
+      ]
+    ]
+  },
+  "signaling_type_counts": {
+    "Secreted": 3055,
+    "Ambiguous": 1879,
+    "Unknown": 1762,
+    "Contact": 1669,
+    "ECM": 596
+  },
+  "classification_coverage": 0.5936837406539449,
+  "annotation_source_counts": {
+    "CellChatDB_v2": 3353,
+    "OmniPath_intercell;UniProt": 2573,
+    "Cellinker": 1416,
+    "": 768,
+    "UniProt": 584,
+    "OmniPath_intercell": 267
+  },
+  "panel": {
+    "name": "Cadinu2024 colitis MERFISH",
+    "genes": 943,
+    "unique_covered_directed_lr": 1952,
+    "by_signaling_type": {
+      "Ambiguous": 511,
+      "Contact": 262,
+      "ECM": 49,
+      "Secreted": 1114,
+      "Unknown": 16
+    }
+  },
+  "one_to_one_orthology_pairs": 1618,
+  "sources": {
+    "NicheNet_v2": "https://zenodo.org/records/7074291",
+    "NicheNet_parquet_mirror": "https://huggingface.co/datasets/Zenodo-ML/Nichenetr-Python-Datasets/blob/75facd023d54ef82debd2195458947c8f1323afa/lr_network_mouse.parquet",
+    "NicheNet_mirror_original": "https://zenodo.org/records/19549668",
+    "CellChatDB_v2": "https://raw.githubusercontent.com/jinworks/CellChat/75253cd0c9e68410e6e721a6d3a0419a1d7e358f/data/CellChatDB.mouse.rda",
+    "LIANA_MouseConsensus": "https://github.com/saezlab/liana/tree/6cab46c54234f861ea176c3de77c4b8aa45ec7d",
+    "Cellinker_mouse": "https://www.rna-society.org/cellinker/download/Mus%20musculus.txt",
+    "MGI": "https://www.informatics.jax.org/downloads/reports/MRK_List2.rpt.gz",
+    "OmniPath": "https://omnipathdb.org/intercell?categories=ecm,secreted,plasma_membrane_transmembrane&source=composite&format=tsv",
+    "UniProt": "https://rest.uniprot.org/uniprotkb/search"
+  },
+  "notes": [
+    "NicheNet mouse parquet is a public third-party conversion: checksum verified against Zenodo 19549668 (7752025624b8bef72cddcb55099fc816); original Zenodo 7074291 mouse RDS was inaccessible, so bytewise equivalence is not independently verified. Corresponding human parquet matches the human atlas NicheNet pairs exactly after case normalization.",
+    "MGI exact current marker symbols take priority; only unambiguous aliases are resolved. Complete complex subunit sets are deduplicated and written comma-delimited. Ambiguous or unmapped symbols are not guessed.",
+    "OmniPath human intercell categories are translated only using LIANA one-to-one human-mouse orthology; mouse UniProt reviewed records are queried directly for candidate mouse ligands. Inferred categories are low confidence; conflicting categories are Ambiguous.",
+    "UniProt search gene_exact:a was not used because it returned the entire mouse proteome; this ligand was not inferred from UniProt.",
+    "CellChat non-protein signaling remains Unknown. Source membership flags are nonexclusive; annotation priority is CellChatDB v2 > Cellinker > OmniPath/UniProt inference.",
+    "Panel coverage follows the current Channels implementation on the 943 unmodified gene names and requires every complex subunit on the panel; it does not establish expression or communication."
+  ],
+  "access_date": "2026-11-25",
+  "species": "Mus musculus (NCBI taxonomy 10090)",
+  "source_sha256": {
+    "ccc_mgi.rpt.gz": "567186bf2103586bfa789bf21128f4400fead0d1821f0416301e67c3f4d109bd",
+    "ccc_mouse_cellchat.rda": "dd59b19646e546b3ed41f394ad2cf64cf44f3d3fcfbb58ac176f0fe1322f9413",
+    "ccc_mouse_liana.tsv": "5da62d4ab7f0ab4bfce2e7655bb834c8a98178f9a8ce19d426d7f490fff530b8",
+    "ccc_mouse_cellinker.tsv": "7847f30bdaf5770e6e275f0c21e4519c6525117adc6de533d8ccf3f6c7680a8d",
+    "ccc_nichenet_mouse.parquet": "36882706897618e0619b41292c071c847b06c91d9cdfd1806074f08392346c50",
+    "ccc_mouse_uniprot.tsv": "bef8902d3b52fe8ceaa22be5b9977e4639cd1f82c9926be5f6dd5b52e8faeec9",
+    "ccc_liana_orthology.tsv": "8daa7bfb3afd6c3f04e35642acc4d63356d651eca867aec836509dc899a1c32e",
+    "ccc_colitis_rownames.rds": "2f706e33b9d83ad930e8edbd4dc907a3640142212a0be7543078f6e93cc52cc2"
+  }
+}
