@@ -112,8 +112,10 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
     group_entries = np.zeros(n_groups, dtype=np.int64)
     group_energy = np.zeros(n_groups, dtype=np.float64)
     energy, entries = 0.0, 0
+    prepared = []
     for start, stop in batches:
         batch = _observed_batch(ids[start:stop], fiber)
+        prepared.append(batch)
         for rows, _, values, columns in batch:
             observed[start + rows] = True
             data = values.data.astype(np.float64)
@@ -152,8 +154,7 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
         optimizer.zero_grad(set_to_none=True)
         a.grad = torch.zeros_like(a)
         reconstruction = torch.zeros((), dtype=torch.float64, device=device)
-        for start, stop in batches:
-            batch = _observed_batch(ids[start:stop], fiber)
+        for (start, stop), batch in zip(batches, prepared):
             local = a[start:stop].detach().requires_grad_()
             for rows, neighbor, values, columns in batch:
                 for group in np.unique(group_codes[start + rows]):

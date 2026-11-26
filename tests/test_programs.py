@@ -98,7 +98,7 @@ def _fit(batch_size, device="cpu", alpha=.02, beta=.02, iterations=18, tol=1e-4)
     )
     fit = fit_programs(np.arange(len(data)), fiber, 2, 3, settings, np.random.default_rng(73))
     assert fit is not None
-    assert visits == list(range(len(data))) * (len(fit.history) + 1)
+    assert visits == list(range(len(data)))
     assert fit.metrics["observed_entries"] == 24
     assert fit.metrics["centers"] == 7
     assert fit.metrics["centers_with_observations"] == 6

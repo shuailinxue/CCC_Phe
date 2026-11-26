@@ -215,3 +215,14 @@ def test_signaling_specific_radii_weights_and_masks():
                        Settings(cp_device="cpu", rank=1, iterations=2, cp_batch_size=2),
                        np.random.default_rng(2))
     assert fit is not None and np.isfinite(fit.metrics["total_loss"])
+def test_rare_activity_scaling_preserves_zeros_without_amplification():
+    from phenoniche.spatial.cell_programs import scale_activity
+
+    activity = np.zeros((100, 3))
+    activity[:, 0] = 2
+    activity[0, 1] = 5
+    scaled = scale_activity(activity)
+    np.testing.assert_allclose(scaled[0], np.log1p([1, 1, 0]))
+    assert np.all(scaled[1:, 1:] == 0)
+    assert np.isfinite(scaled).all()
+

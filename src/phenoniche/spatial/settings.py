@@ -16,7 +16,7 @@ class Settings:
     composition_neighbors: int = 20
     resolution: float = 0.4
     rank: int = 12
-    iterations: int = 40
+    iterations: int = 500
     repeats: int = 5
     cp_device: str = "auto"
     cp_batch_size: int = 128

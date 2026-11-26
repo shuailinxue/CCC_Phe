@@ -86,16 +86,24 @@ their scale and the data RMS are absorbed into A.
 The default batch cap is 128 centers. CUDA reduces this cap based on current
 free memory and a conservative estimate that includes observed fibers, factors
 and optimizer state. Factors and optimizer state reside on the selected
-device. The host regenerates sparse observed batches on each pass, so it
-does not retain the full CCC tensor. A single center's observed fibers and all
+device. Sparse observed batches are prepared once and retained in host memory
+for reuse across epochs; their contents are transferred in batches. This avoids
+repeated preprocessing but requires host memory for the prepared sparse tensor.
+A single center's observed fibers and all
 factor matrices must fit on the device. CUDA runs one context worker per device.
 The CPU supports multiple workers in separate processes.
+
+For communication-feature clustering, each feature is scaled by the 90th
+percentile of its positive values before `log1p`. Missing and zero values remain
+zero. This prevents rare features whose overall 90th percentile is zero from
+being amplified by an arbitrary near-zero denominator.
 
 ## Parameters
 
 `window_um=50`, `contact_um=50`, `interface_um=25`, `sigma_um=20`,
 `enrichment_permutations=1000`, `delaunay_max_um=None` (use `contact_um`),
-and `aggregation="mean-mean"`.
+`iterations=500` (maximum; early stopping remains active), and
+`aggregation="mean-mean"`.
 
 CCC neighborhoods are shared by signaling type: `contact_radius_um=20`,
 `secreted_radius_um=100`, and `ecm_radius_um=20`. The corresponding Gaussian

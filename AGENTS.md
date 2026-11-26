@@ -15,8 +15,10 @@ Describe any change to input, output or settings in `docs/spatial.md`.
   user to choose Python or R for future figure tasks.
 
 Preserve existing inputs, notebooks, checkpoints, and saved results. Do not
-rerun analyses or generate large artifacts without a request. Use physical
-GPU 2 when GPU work is requested and no device is specified.
+rerun analyses or generate large artifacts without a request. Use GPU acceleration
+by default for supported computations; use physical GPU 2 unless the user specifies
+another device. Respect existing jobs and do not restart an analysis just to change
+devices. If a step cannot use the GPU, make its CPU execution clear.
 
 The spatial model builds physical graphs independently per specimen. Known
 niches, simulation truth and phenotype labels are downstream evaluation only.

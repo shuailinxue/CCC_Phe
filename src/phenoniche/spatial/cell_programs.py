@@ -106,10 +106,19 @@ def pool_programs(graph, type_weights, types, scores, mean):
     return np.concatenate(features, axis=1)
 
 
+def scale_activity(activity):
+    """Scale each feature by its nonzero 90th percentile; preserve absent zeros."""
+    activity = np.asarray(activity)
+    scale = np.ones(activity.shape[1], dtype=float)
+    for column in range(activity.shape[1]):
+        positive = activity[:, column][activity[:, column] > 0]
+        if len(positive):
+            scale[column] = np.quantile(positive, 0.9)
+    return np.log1p(activity / scale)
+
+
 def _activity_graph(activity, neighbors):
-    # Keep the amplitude of the entire program and balance component scales.
-    scale = np.maximum(np.quantile(activity, 0.9, axis=0), 1e-7)
-    scaled = np.log1p(activity / scale)
+    scaled = scale_activity(activity)
     points, inverse, sizes = np.unique(
         scaled.round(6), axis=0, return_inverse=True, return_counts=True
     )
