@@ -20,6 +20,14 @@ by default for supported computations; use physical GPU 2 unless the user specif
 another device. Respect existing jobs and do not restart an analysis just to change
 devices. If a step cannot use the GPU, make its CPU execution clear.
 
+When the A100 is unavailable or lacks sufficient capacity, use the 3090 host
+`10.254.29.105` via SSH without asking again. The host can access the same NAS
+at `/home/nas3/biod/xueshuailin/CCC_Phe/`; select an idle 3090 with adequate
+free memory and do not disturb existing jobs. Its existing Python environment is
+`/home/xueshuailin/conda_envs/hespotex_3090/bin/python`. The project checkout
+is not mounted there: use temporary worker files when needed, record code and
+environment versions, and write persistent project outputs directly to NAS.
+
 The spatial model builds physical graphs independently per specimen. Known
 niches, simulation truth and phenotype labels are downstream evaluation only.
 The included LR reference is human. Expression-derived LR scores are proxies
