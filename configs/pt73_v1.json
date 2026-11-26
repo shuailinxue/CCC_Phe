@@ -1,0 +1,7 @@
+{
+  "source": "/home/nas3/biod/xueshuailin/CCC_Phe/data/nsclc_merfish_chen2024/processed/Pt73.h5ad",
+  "atlas": "data/commuspace_human_lr_atlas.tsv",
+  "root": "/home/nas3/biod/xueshuailin/CCC_Phe/results/nsclc_merfish_chen2024/phenomap_v1",
+  "network": {"coords":"spatial","types":"type_lvl1","specimen":"biosample_id","layer":"X","window":50,"fraction":0.1,"workers":8},
+  "model": {"k":4,"rank":12,"epochs":18,"centers_per_epoch":768,"batch":64,"local_steps":10,"spacing":50}
+}

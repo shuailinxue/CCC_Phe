@@ -145,3 +145,8 @@ The existing lung analysis notebook is on NAS under
 
 For joint control–case analysis with shared communication programs and
 leave-one-donor calibration, see [comparative mode](comparative.md).
+
+## PhenoMap V1
+
+The independent V1 entry point is `scripts/phenomap_v1.py`. Its network cache,
+model, inference, and Pt73 configuration are described in [PhenoMap V1](phenomap_v1.md).
