@@ -1,10 +1,13 @@
 """Streamed, masked nonnegative CP on observed cell–neighbor-type fibers."""
 
 from dataclasses import dataclass
+from dataclasses import replace
+from itertools import combinations
 from time import perf_counter
 
 import numpy as np
 from scipy import sparse
+from scipy.optimize import linear_sum_assignment
 import torch
 from torch.nn.functional import normalize
 
@@ -136,7 +139,9 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
 
     scale = float(np.sqrt(np.mean(group_energy[~empty_groups] / group_entries[~empty_groups])))
     n_groups = int((~empty_groups).sum())
-    rank = min(settings.rank, int(observed.sum()), n_lr)
+    if settings.rank > min(int(observed.sum()), n_lr):
+        raise ValueError("Rank exceeds the number of observed centers or LR channels")
+    rank = settings.rank
     initial = [
         (rng.uniform(0.3, 1, (rows, rank)) * rank ** (-1 / 3)).astype(np.float32)
         for rows in (len(ids), n_types, n_lr)
@@ -165,6 +170,7 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
                         part.indptr.astype(np.int64), part.indices.astype(np.int64),
                         data, size=part.shape, device=device,
                     )
+
                     selected_c = c if columns is None else c[torch.as_tensor(columns, device=device)]
                     loss = masked_squared_error(
                         local, b, selected_c, torch.as_tensor(rows[select], device=device),
@@ -180,15 +186,14 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
         rec = max(0.0, reconstruction.item())
         qa, qbc = loss_a.item(), loss_bc.item()
         if epoch == 0:
-            alpha = settings.cp_alpha * rec / max(qa, 1e-8) if qa > 1e-8 else 0.0
             beta = settings.cp_beta * rec / max(qbc, 1e-8) if qbc > 1e-8 else 0.0
-        penalty = alpha * loss_a + beta * loss_bc
-        total = rec + alpha * qa + beta * qbc
+        penalty = beta * loss_bc
+        total = rec + beta * qbc
         if not np.isfinite(total):
             raise FloatingPointError("Non-finite CP objective")
         history.append(dict(
             epoch=epoch, reconstruction_loss=rec, a_orthogonality_loss=qa,
-            bc_orthogonality_loss=qbc, orthogonality_loss=alpha * qa + beta * qbc,
+            bc_orthogonality_loss=qbc, orthogonality_loss=beta * qbc,
             total_loss=total, elapsed_seconds=perf_counter() - started,
         ))
         if total < best_loss:
@@ -217,7 +222,7 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
             balance_groups=n_groups,
             excluded_balance_groups=np.flatnonzero(empty_groups).tolist(),
             centers_with_observations=int(observed.sum()), observed_entries=entries,
-            rms_scale=scale, calibrated_alpha=alpha, calibrated_beta=beta,
+            rms_scale=scale, calibrated_beta=beta,
             best_epoch=best_epoch, epochs_completed=epoch,
             stopped_early=epoch < settings.iterations,
             runtime_seconds=history[-1]["elapsed_seconds"],
@@ -233,3 +238,46 @@ def fit_programs(ids, fiber, n_types, n_lr, settings, rng, balance_groups=None,
         factor /= safe_norms
         activity *= safe_norms
     return CPFit(best, history, metrics)
+
+def fit_repeated(ids, fiber, n_types, n_lr, settings, seed, balance_groups=None):
+    """Fit every candidate on all centers; combine elbow strength and BC stability."""
+    ranks = settings.rank_candidates if settings.rank_mode == "auto" else (settings.rank,)
+    if settings.rank_mode == "auto" and max(ranks) > min(len(ids), n_lr):
+        raise ValueError("Auto-rank candidates exceed the number of centers or LR channels")
+    evaluations, models = [], {}
+    for rank in ranks:
+        cfg = replace(settings, rank=rank, rank_mode="manual")
+        rng = np.random.default_rng(np.random.SeedSequence([int(seed), int(rank)]))
+        fits = [fit_programs(ids, fiber, n_types, n_lr, cfg, rng, balance_groups,
+                             exclude_empty_groups=balance_groups is not None)
+                for _ in range(settings.repeats)]
+        if any(fit is None for fit in fits):
+            return [], []
+        similarities = []
+        for first, second in combinations(fits, 2):
+            b1, c1 = first.factors[1:]; b2, c2 = second.factors[1:]
+            similarity = (b1.T @ b2) * (c1.T @ c2)
+            row, col = linear_sum_assignment(-similarity)
+            similarities.append(float(similarity[row, col].mean()))
+        losses = [float(f.metrics["reconstruction_loss"]) for f in fits]
+        evaluations.append(dict(rank=rank, reconstruction_loss=float(np.mean(losses)),
+                                repeat_reconstruction_losses=losses,
+                                consistency=float(np.mean(similarities))))
+        models[rank] = fits
+    if settings.rank_mode == "manual":
+        evaluations[0]["selected"] = True
+        return models[settings.rank], evaluations
+    x = np.array(ranks, float); y = np.array([e["reconstruction_loss"] for e in evaluations])
+    x = (x - x[0]) / (x[-1] - x[0])
+    span = y[0] - y[-1]
+    if span <= 0:
+        raise ValueError("Auto-rank reconstruction curve has no decreasing elbow")
+    improvement = (y[0] - y) / span
+    for index, entry in enumerate(evaluations):
+        entry["elbow_score"] = float(max(improvement[index] - x[index], 0) * entry["consistency"])
+    best = max(evaluations[1:-1], key=lambda entry: entry["elbow_score"])
+    if best["elbow_score"] <= 0:
+        raise ValueError("Auto-rank found no supported interior elbow")
+    for entry in evaluations:
+        entry["selected"] = entry["rank"] == best["rank"]
+    return models[best["rank"]], evaluations

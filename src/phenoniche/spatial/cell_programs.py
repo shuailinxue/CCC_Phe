@@ -7,21 +7,16 @@ from scipy import sparse
 from scipy.spatial import cKDTree
 from sklearn.metrics import adjusted_rand_score
 
-from .programs import fit_programs
+from .programs import fit_repeated
 
 
 class CellTensor:
     """Focal cell × neighbor type × [outgoing LR, incoming LR]."""
 
-    def __init__(self, graph, types, channels, sigma, mean=True, settings=None):
-        self.graph, self.types, self.channels, self.sigma = (
-            graph,
-            types,
-            channels,
-            sigma,
-        )
+    def __init__(self, graph, types, channels, settings):
+        self.graph, self.types, self.channels = graph, types, channels
+        self.tensor_log1p = settings.tensor_log1p
         self.n_types = int(types.max()) + 1
-        self.mean = mean
         labels = getattr(channels, "signaling_types", np.full(len(channels.names), "Unknown"))
         self.groups = []
         for label in ("Contact", "Secreted", "ECM", "Unknown"):
@@ -29,15 +24,11 @@ class CellTensor:
             columns = np.flatnonzero(np.r_[select, select])
             if not len(columns):
                 continue
-            radius = None if settings is None else {
+            radius = {
                 "Contact": settings.contact_radius_um, "Secreted": settings.secreted_radius_um,
                 "ECM": settings.ecm_radius_um, "Unknown": settings.contact_um,
             }[label]
-            scale = sigma if settings is None else {
-                "Contact": settings.contact_sigma_um, "Secreted": settings.secreted_sigma_um,
-                "ECM": settings.ecm_sigma_um, "Unknown": settings.sigma_um,
-            }[label]
-            self.groups.append((columns, radius, scale))
+            self.groups.append((columns, radius))
 
     def fiber(self, cell):
         start, stop = self.graph.indptr[cell : cell + 2]
@@ -51,34 +42,61 @@ class CellTensor:
         if len(neighbors):
             expression = lr.expression[np.r_[cell, neighbors]].toarray()
             focal, other = expression[0], expression[1:]
-            for group, (columns, radius, sigma) in enumerate(self.groups):
-                eligible = np.ones(len(distances), dtype=bool) if radius is None else distances <= radius
-                weights = np.exp(np.maximum(-0.5 * (distances / sigma) ** 2, -700))
+            for group, (columns, radius) in enumerate(self.groups):
+                eligible = distances <= radius
                 for row, category in enumerate(categories):
                     mask = (neighbor_types == category) & eligible
-                    support[row, group] = weights[mask].sum()
+                    support[row, group] = mask.sum()
                     if not mask.any():
                         continue
-                    incoming = weights[mask] @ other[mask]
-                    if self.mean and support[row, group] > 0:
-                        incoming /= support[row, group]
+                    incoming = other[mask].mean(axis=0)
                     values = np.r_[focal[lr.left] * incoming[lr.right], incoming[lr.left] * focal[lr.right]]
                     result[row, columns] = values[columns]
+        if self.tensor_log1p:
+            np.log1p(result, out=result)
         return categories, result, support
+
+
+class StoredTensor:
+    """Sparse center-by-type fibers and type-specific observation masks."""
+    def __init__(self, ids, tensor, cell_ids):
+        self.ids = np.asarray(ids)
+        self.cell_ids = np.asarray(cell_ids, dtype=str)
+        self.lookup = {int(cell): row for row, cell in enumerate(ids)}
+        self.groups = tensor.groups
+        self.n_types = tensor.n_types
+        chunks, columns = [], []
+        sizes = np.zeros(len(ids) * tensor.n_types, dtype=np.int64)
+        self.mask = np.zeros((len(ids), tensor.n_types, len(self.groups)), dtype=bool)
+        for row, cell in enumerate(ids):
+            categories, data, support = tensor.fiber(cell)
+            self.mask[row, categories] = support > 0
+            block = sparse.csr_matrix(data)
+            sizes[row * tensor.n_types + categories] = np.diff(block.indptr)
+            chunks.append(block.data); columns.append(block.indices)
+        self.values = sparse.csr_matrix(
+            (np.concatenate(chunks) if chunks else np.empty(0, np.float32),
+             np.concatenate(columns) if columns else np.empty(0, np.int32), np.r_[0, np.cumsum(sizes)]),
+            shape=(len(ids) * tensor.n_types, 2 * len(tensor.channels.names)))
+
+    def fiber(self, cell):
+        row = self.lookup[int(cell)]
+        support = self.mask[row]
+        categories = np.flatnonzero(support.any(axis=1))
+        values = self.values[row * self.n_types + categories].toarray()
+        return categories, values, support[categories]
 
 
 def _type_membership(types):
     return sparse.csr_matrix((np.ones(len(types)), (np.arange(len(types)), types)))
 
 
-def contact_support(contacts, ids, types, sigma):
+def contact_support(contacts, ids, types):
     graph = contacts[ids].copy()
-    weights = np.exp(np.maximum(-0.5 * (graph.data / sigma) ** 2, -700))
     graph.data.fill(1)
     membership = _type_membership(types)
     counts = (graph @ membership).toarray().astype(np.int64)
-    graph.data = weights
-    return counts, (graph @ membership).toarray()
+    return counts, counts.astype(float)
 
 
 def program_graph(ids, allowed, windows, types, sigma):
@@ -104,6 +122,16 @@ def pool_programs(graph, type_weights, types, scores, mean):
             where=denominator[:, None] > 0,
         ))
     return np.concatenate(features, axis=1)
+
+
+def communication_features(graph, type_weights, types, scores, ids, mode):
+    if mode == "A":
+        return scores[ids]
+    if mode == "H1":
+        total = type_weights.sum(axis=1)
+        activity = graph @ scores
+        return np.divide(activity, total[:, None], out=np.zeros_like(activity), where=total[:, None] > 0)
+    return pool_programs(graph, type_weights, types, scores, mode == "H2")
 
 
 def scale_activity(activity):
@@ -183,24 +211,21 @@ def consensus(activity, cfg, seed):
 def fit_context(ids, windows, contacts, types, channels, cfg, seed):
     allowed = np.zeros(len(types), dtype=bool)
     allowed[ids] = True
-    tensor = CellTensor(contacts, types, channels, cfg.sigma_um, cfg.aggregation != "sum-sum", cfg)
+    tensor = StoredTensor(ids, CellTensor(contacts, types, channels, cfg), ids)
     pool_graph, pool_weights = program_graph(ids, allowed, windows, types, cfg.sigma_um)
-    rng = np.random.default_rng(seed)
-    models, features, cell_scores, training = [], [], [], []
-    for repeat in range(cfg.repeats):
-        print(f"  CP repeat {repeat + 1}/{cfg.repeats}: full fit", flush=True)
-        fit = fit_programs(ids, tensor.fiber, tensor.n_types, 2 * len(channels.names), cfg, rng)
-        if fit is None:
-            break
+    models, features, cell_scores, training, representations = [], [], [], [], []
+    fits, rank_evaluation = fit_repeated(ids, tensor.fiber, tensor.n_types, 2 * len(channels.names), cfg, seed)
+    for fit in fits:
         activity, _, _ = fit.factors
         scores = np.zeros((len(types), activity.shape[1]), dtype=activity.dtype)
         scores[ids] = activity
         models.append(fit.factors)
         cell_scores.append(activity)
         training.append(fit)
-        features.append(
-            pool_programs(pool_graph, pool_weights, types, scores, cfg.aggregation == "mean-mean")
-        )
+        all_features = {mode: communication_features(pool_graph, pool_weights, types, scores, ids, mode)
+                        for mode in ("A", "H1", "H2", "H3")}
+        representations.append(all_features)
+        features.append(all_features[cfg.representation])
     if not models:
         return dict(
             ids=ids,
@@ -212,6 +237,7 @@ def fit_context(ids, windows, contacts, types, channels, cfg, seed):
             feature_scores=[],
             training=training,
             pool_weights=pool_weights,
+            tensor=tensor, rank_evaluation=rank_evaluation, representations=representations,
         )
     labels, graph_stability = consensus(features[0], cfg, seed)
     if len(features) > 1:
@@ -232,4 +258,5 @@ def fit_context(ids, windows, contacts, types, channels, cfg, seed):
         feature_scores=features,
         training=training,
         pool_weights=pool_weights,
+        tensor=tensor, rank_evaluation=rank_evaluation, representations=representations,
     )

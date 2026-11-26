@@ -48,7 +48,7 @@ def test_balanced_reconstruction_averages_each_sample_not_each_cell():
     def fiber(i):
         return np.array([0]), np.array([[values[i]]], dtype=np.float32), None
 
-    cfg = Settings(cp_device="cpu", rank=1, iterations=1, cp_alpha=0, cp_beta=0)
+    cfg = Settings(cp_device="cpu", rank=1, iterations=1, cp_beta=0)
     fit = fit_programs(np.arange(4), fiber, 1, 1, cfg, np.random.default_rng(4), groups)
     rng = np.random.default_rng(4)
     a, b, c = [rng.uniform(.3, 1, shape).astype(np.float32) for shape in ((4, 1), (1, 1), (1, 1))]
@@ -75,7 +75,7 @@ def test_orthogonality_is_scale_invariant_and_joint():
     torch.testing.assert_close(duplicate, torch.tensor(2.))
 
 
-def _fit(batch_size, device="cpu", alpha=.02, beta=.02, iterations=18, tol=1e-4):
+def _fit(batch_size, device="cpu", beta=.02, iterations=18, tol=1e-4):
     data = [
         ([0], [[4., 0., 2.]]),
         ([0, 1], [[0., 3., 3.], [1., 1., 0.]]),
@@ -93,7 +93,7 @@ def _fit(batch_size, device="cpu", alpha=.02, beta=.02, iterations=18, tol=1e-4)
         return np.array(categories, dtype=int), np.array(values, np.float32).reshape(-1, 3), None
 
     settings = Settings(
-        cp_device=device, cp_batch_size=batch_size, cp_alpha=alpha,
+        cp_device=device, cp_batch_size=batch_size,
         cp_beta=beta, rank=2, iterations=iterations, cp_tol=tol,
     )
     fit = fit_programs(np.arange(len(data)), fiber, 2, 3, settings, np.random.default_rng(73))
@@ -113,15 +113,15 @@ def test_full_batch_and_chunked_cp_match_and_reduce_loss():
         np.testing.assert_allclose(a, b, atol=3e-6, rtol=3e-5)
     for fit in (full, chunked):
         assert fit.metrics["total_loss"] < fit.history[0]["total_loss"]
-        assert fit.metrics["calibrated_alpha"] > 0
         assert fit.metrics["calibrated_beta"] > 0
 
 
-def test_orthogonality_coefficients_can_be_disabled_independently_and_stop_early():
-    for alpha, beta in ((0., 0.), (0., .02), (.02, 0.)):
-        fit = _fit(4, alpha=alpha, beta=beta, tol=2.)
-        assert (fit.metrics["calibrated_alpha"] > 0) == (alpha > 0)
+def test_bc_orthogonality_can_be_disabled_and_stops_early():
+    for beta in (0., .02):
+        fit = _fit(4, beta=beta, tol=2.)
         assert (fit.metrics["calibrated_beta"] > 0) == (beta > 0)
+        assert fit.history[0]["orthogonality_loss"] == pytest.approx(
+            fit.metrics["calibrated_beta"] * fit.history[0]["bc_orthogonality_loss"])
         assert fit.metrics["stopped_early"]
 
 
@@ -138,9 +138,27 @@ def test_balanced_fit_excludes_groups_with_no_observed_fibers():
         if i == 2:
             return np.array([], dtype=int), np.zeros((0, 1)), None
         return np.array([0]), np.array([[float(i + 1)]], dtype=np.float32), None
-    cfg = Settings(cp_device="cpu", rank=1, iterations=1, cp_alpha=0, cp_beta=0)
+    cfg = Settings(cp_device="cpu", rank=1, iterations=1, cp_beta=0)
     fit = fit_programs(np.arange(3), fiber, 1, 1, cfg, np.random.default_rng(5),
                        np.array(["a", "a", "missing"]), exclude_empty_groups=True)
     assert fit.metrics["balance_groups"] == 1
     assert fit.metrics["excluded_balance_groups"] == [1]
     assert fit.factors[0][2, 0] == 0
+
+
+def test_auto_rank_combines_elbow_and_matched_bc_stability(monkeypatch):
+    from types import SimpleNamespace
+    from phenoniche.spatial import programs
+    calls = []
+    def fake_fit(ids, fiber, n_types, n_lr, settings, rng, *args, **kwargs):
+        rank = settings.rank; calls.append((rank, len(ids)))
+        b = np.eye(4, rank); c = np.eye(4, rank)
+        return SimpleNamespace(factors=(np.ones((len(ids), rank)), b, c),
+                               metrics={'reconstruction_loss': {1: 1., 2: .45, 3: .4}[rank]})
+    monkeypatch.setattr(programs, 'fit_programs', fake_fit)
+    cfg = Settings(rank_mode='auto', rank_candidates=(1, 2, 3), repeats=2, cp_device='cpu')
+    fits, evaluation = programs.fit_repeated(np.arange(4), None, 4, 4, cfg, 7)
+    assert len(fits) == 2 and fits[0].factors[0].shape == (4, 2)
+    assert calls == [(1, 4), (1, 4), (2, 4), (2, 4), (3, 4), (3, 4)]
+    assert all(item['consistency'] == pytest.approx(1) for item in evaluation)
+    assert evaluation[1]['elbow_score'] > 0

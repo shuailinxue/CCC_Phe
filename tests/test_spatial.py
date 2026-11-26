@@ -18,7 +18,7 @@ def test_blind_local_partition(tmp_path):
         window_um=1.5,
         contact_um=1.5,
         rank=1,
-        iterations=12,
+        iterations=150,
         repeats=4,
         cp_device="cpu",
     )
@@ -44,6 +44,14 @@ def test_blind_local_partition(tmp_path):
     with np.load(out / "programs_0_0_repeat0.npz") as factors:
         assert factors["focal_activity"].shape[0] == len(xyz)
         np.testing.assert_array_equal(factors["focal_activity"], model.programs[(0, 0)]["models"][0][0])
+        assert {"A", "H1", "H2", "H3"}.issubset(factors.files)
+        np.testing.assert_allclose(factors["H3"], factors["H1"])
+    from scipy import sparse
+    assert sparse.load_npz(out / "tensor_0_0.npz").shape[0] == len(xyz)
+    with np.load(out / "tensor_mask_0_0.npz", allow_pickle=False) as saved:
+        assert saved["mask"].shape[0] == len(xyz)
+        assert len(saved["cell_ids"]) == len(xyz)
+    assert (out / "rank_evaluation_0_0.json").is_file()
     history = pd.read_csv(out / "cp_losses_0_0.tsv", sep="\t")
     metrics = pd.read_csv(out / "cp_metrics_0_0.tsv", sep="\t")
     assert history.groupby("repeat").size().size == cfg.repeats
@@ -74,7 +82,7 @@ def test_focal_sender_receiver_are_directional():
     graph = physical_graph(np.array([[0.0, 0.0], [1.0, 0.0]]), np.array(["s", "s"]), 2)
     atlas = pd.DataFrame({"ligand": ["L"], "receptor": ["R"]})
     channels = Channels([[5, 0], [0, 5]], pd.Index(["L", "R"]), atlas)
-    tensor = CellTensor(graph, np.array([0, 1]), channels, 20)
+    tensor = CellTensor(graph, np.array([0, 1]), channels, Settings())
     out = tensor.fiber(0)
     incoming = tensor.fiber(1)
     assert out[1][0, 0] > 0 and out[1][0, 1] == 0
@@ -154,17 +162,15 @@ def test_cell_type_mean_normalization_and_structural_absence():
     types = np.array([0, 1, 1, 2])
     atlas = pd.DataFrame({"ligand": ["L"], "receptor": ["R"]})
     ch = Channels([[1, 1, 0], [1, 1, 0], [1, 1, 0], [0, 0, 2]],
-                  pd.Index(["L", "R", "B"]), atlas)
+                  pd.Index(["L", "R", "B"]), atlas, preprocessing="cp10k")
     weights = np.exp(-0.5 * np.array([1, 2]) ** 2)
-    present, means, _ = CellTensor(graph, types, ch, 1).fiber(0)
-    _, sums, _ = CellTensor(graph, types, ch, 1, mean=False).fiber(0)
+    present, means, _ = CellTensor(graph, types, ch, Settings()).fiber(0)
     np.testing.assert_array_equal(present, [1, 2])
     np.testing.assert_allclose(means[0], [5000, 5000])
-    np.testing.assert_allclose(sums[0], means[0] * weights.sum())
     np.testing.assert_array_equal(means[1], [0, 0])
-    counts, support = contact_support(graph, [0], types, 1)
+    counts, support = contact_support(graph, [0], types)
     np.testing.assert_array_equal(counts[0], [0, 2, 1])
-    np.testing.assert_allclose(support[0], [0, weights.sum(), weights[0]])
+    np.testing.assert_allclose(support[0], [0, 2, 1])
 
     allowed = np.array([True, True, True, False])
     pooling, support = program_graph(np.array([0]), allowed, graph, types, 1)
@@ -191,21 +197,17 @@ def test_signaling_specific_radii_weights_and_masks():
     counts = np.array([[1, 0, 1, 1], [1, 0, 1, 1], [1, 0, 2, 1],
                        [1, 0, 1, 1], [1, 0, 10, 1]])
     channels = Channels(counts, pd.Index(['L', 'R1', 'R2', 'R3']), lr)
-    cfg = Settings(contact_radius_um=20, secreted_radius_um=100, ecm_radius_um=20,
-                   secreted_sigma_um=30)
-    tensor = CellTensor(graph, types, channels, cfg.sigma_um, settings=cfg)
+    cfg = Settings(contact_radius_um=20, secreted_radius_um=100, ecm_radius_um=20)
+    tensor = CellTensor(graph, types, channels, cfg)
     cats, values, support = tensor.fiber(0)
     assert cats.tolist() == [1, 2]
-    assert support[0, 0] == pytest.approx(np.exp(-0.5 * (10 / 20) ** 2))
-    assert support[0, 1] == pytest.approx(np.exp(-0.5 * (10 / 30) ** 2) + np.exp(-0.5 * (40 / 30) ** 2))
+    assert support[0, 0] == 1
+    assert support[0, 1] == 2
     assert support[1, 0] == 0 and support[1, 1] > 0 and support[1, 2] == 0
     assert values[0, 0] == 0
-    weights = np.exp(-0.5 * (np.array([10., 40.]) / 30) ** 2)
     expr = channels.expression.toarray()
-    expected = expr[0, channels.left[1]] * np.dot(weights, expr[[1, 2], channels.right[1]]) / weights.sum()
+    expected = expr[0, channels.left[1]] * np.mean(expr[[1, 2], channels.right[1]])
     assert values[0, 1] == pytest.approx(expected)
-    _, summed, _ = CellTensor(graph, types, channels, cfg.sigma_um, mean=False, settings=cfg).fiber(0)
-    assert summed[0, 1] == pytest.approx(expected * weights.sum())
     batches = _observed_batch(np.array([0]), tensor.fiber)
     assert [len(neighbors) for _, neighbors, _, _ in batches] == [1, 2, 1]
     assert sum(matrix.shape[0] * matrix.shape[1] for _, _, matrix, _ in batches) == 8
@@ -226,3 +228,42 @@ def test_rare_activity_scaling_preserves_zeros_without_amplification():
     assert np.all(scaled[1:, 1:] == 0)
     assert np.isfinite(scaled).all()
 
+
+
+def test_commuspace_expression_scaling_uses_nonzero_quantile_and_preserves_zeros():
+    from scipy import sparse
+    counts = np.array([[2, 8, 0], [4, 6, 0], [8, 2, 0], [0, 10, 0]], dtype=float)
+    genes = pd.Index(['L', 'R', 'unused'])
+    lr = pd.DataFrame({'ligand': ['L'], 'receptor': ['R']})
+    cp = Channels(counts, genes, lr, preprocessing='cp10k')
+    scaled = Channels(sparse.csr_matrix(counts), genes, lr, preprocessing='commuspace', quantile=.5)
+    values = np.log1p(counts / counts.sum(axis=1, keepdims=True) * 10000)
+    for col in range(2):
+        nz = values[:, col] > 0
+        values[nz, col] = np.minimum(values[nz, col] / np.quantile(values[nz, col], .5), 1)
+    # Arm expression contains the square root of the preprocessed gene expression.
+    np.testing.assert_allclose(scaled.expression.toarray() ** 2, values[:, :2], atol=1e-6)
+    np.testing.assert_allclose(cp.expression.toarray() ** 2, counts[:, :2] * 1000, atol=1e-3)
+    assert scaled.expression.toarray()[3, 0] == 0
+
+
+def test_tensor_log1p_and_h3_type_contributions_sum_to_h1():
+    from phenoniche.spatial.cell_programs import CellTensor, communication_features, program_graph
+    xyz = np.array([[0., 0.], [1., 0.], [2., 0.]])
+    graph = physical_graph(xyz, ['s'] * 3, 3)
+    types = np.array([0, 1, 1])
+    ch = Channels([[2, 1], [1, 3], [3, 1]], pd.Index(['L', 'R']),
+                  pd.DataFrame({'ligand': ['L'], 'receptor': ['R']}), preprocessing='cp10k')
+    plain = CellTensor(graph, types, ch, Settings())
+    logged = CellTensor(graph, types, ch, Settings(tensor_log1p=True))
+    cats, values, support = plain.fiber(0)
+    cats2, transformed, support2 = logged.fiber(0)
+    np.testing.assert_array_equal(cats, cats2)
+    np.testing.assert_array_equal(support, support2)
+    np.testing.assert_allclose(transformed, np.log1p(values))
+    ids = np.arange(3); pool, weights = program_graph(ids, np.ones(3, bool), graph, types, 1)
+    scores = np.array([[1., 2.], [2., 1.], [3., 4.]])
+    h1 = communication_features(pool, weights, types, scores, ids, 'H1')
+    h3 = communication_features(pool, weights, types, scores, ids, 'H3')
+    np.testing.assert_allclose(h3.reshape(3, 2, 2).sum(axis=1), h1)
+    np.testing.assert_array_equal(communication_features(pool, weights, types, scores, ids, 'A'), scores)

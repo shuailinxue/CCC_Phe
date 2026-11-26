@@ -15,10 +15,11 @@ from scipy import sparse
 from scipy.spatial import cKDTree
 from sklearn.metrics import adjusted_rand_score
 
-from .spatial.cell_programs import CellTensor, consensus, pool_programs, program_graph
+from .spatial.cell_programs import CellTensor, StoredTensor, consensus, communication_features, program_graph
+from .spatial.cell_programs import StoredTensor as _StoredTensor  # Historical tensor caches.
 from .spatial.channels import Channels
 from .spatial.geometry import composition_partition, physical_graph
-from .spatial.programs import fit_programs
+from .spatial.programs import fit_repeated
 from .spatial.settings import Settings
 
 
@@ -89,39 +90,6 @@ def _fingerprint(counts, genes, ids, xyz, labels, metadata, lr, cfg, comp):
     return digest.hexdigest()
 
 
-class _StoredTensor:
-    """Persist the sparse tensor and its type-specific observation mask."""
-
-    def __init__(self, ids, tensor, cell_ids):
-        self.ids = np.asarray(ids)
-        self.cell_ids = np.asarray(cell_ids, dtype=str)
-        self.lookup = {int(cell): row for row, cell in enumerate(ids)}
-        self.groups = tensor.groups
-        self.n_types = tensor.n_types
-        chunks, columns = [], []
-        sizes = np.zeros(len(ids) * tensor.n_types, dtype=np.int64)
-        self.mask = np.zeros((len(ids), tensor.n_types, len(self.groups)), dtype=bool)
-        for row, cell in enumerate(ids):
-            categories, data, support = tensor.fiber(cell)
-            self.mask[row, categories] = support > 0
-            block = sparse.csr_matrix(data)
-            sizes[row * tensor.n_types + categories] = np.diff(block.indptr)
-            chunks.append(block.data)
-            columns.append(block.indices)
-        indptr = np.r_[0, np.cumsum(sizes)]
-        self.values = sparse.csr_matrix(
-            (np.concatenate(chunks), np.concatenate(columns), indptr),
-            shape=(len(ids) * tensor.n_types, 2 * len(tensor.channels.names)),
-        )
-
-    def fiber(self, cell):
-        row = self.lookup[int(cell)]
-        support = self.mask[row]
-        categories = np.flatnonzero(support.any(axis=1))
-        values = self.values[row * self.n_types + categories].toarray()
-        return categories, values, support[categories]
-
-
 def _weighted_quantile(values, donors, q):
     values = np.asarray(values, dtype=float)
     donors = np.asarray(donors)
@@ -186,7 +154,7 @@ def _signed_features(values):
 
 
 def _select_repeat(fits):
-    alpha = float(np.median([fit.metrics["calibrated_alpha"] for fit in fits]))
+    alpha = 0.0
     beta = float(np.median([fit.metrics["calibrated_beta"] for fit in fits]))
     scores = [fit.metrics["reconstruction_loss"] + alpha * fit.metrics["a_orthogonality_loss"]
               + beta * fit.metrics["bc_orthogonality_loss"] for fit in fits]
@@ -299,7 +267,7 @@ def fit_control_case(counts, genes, cell_ids, coordinates_um, cell_types, metada
     names, types = np.unique(labels, return_inverse=True)
     windows = _cached(directory / "windows.pkl", lambda: physical_graph(xyz, samples, cfg.window_um))
     composition, coarse = _cached(directory / "composition.pkl", lambda: composition_partition(windows, types, cfg))
-    channels = Channels(counts, pd.Index(genes), lr)
+    channels = Channels(counts, pd.Index(genes), lr, cfg.expression_preprocessing, cfg.expression_quantile)
     radius = max(cfg.contact_um, cfg.contact_radius_um, cfg.secreted_radius_um, cfg.ecm_radius_um)
     conditions, donors = meta.condition.to_numpy(), meta.donor_id.to_numpy()
     cells = meta.copy()
@@ -324,18 +292,17 @@ def fit_control_case(counts, genes, cell_ids, coordinates_um, cell_types, metada
             def build_tensor():
                 contacts = windows if radius == cfg.window_um else _cached(
                     directory / "contacts.pkl", lambda: physical_graph(xyz, samples, radius))
-                return _StoredTensor(center_ids, CellTensor(contacts, types, channels, cfg.sigma_um,
-                                     cfg.aggregation != "sum-sum", cfg), ids[center_ids])
+                return StoredTensor(center_ids, CellTensor(contacts, types, channels, cfg), ids[center_ids])
             tensor = _cached(directory / f"tensor_{coarse_id}.pkl", build_tensor)
             observed_centers = tensor.mask.any(axis=(1, 2))
             excluded = [] if balance is None else [g for g in np.unique(balance) if not observed_centers[balance == g].any()]
-            rng = np.random.default_rng(np.random.SeedSequence([cfg.seed, int(coarse_id)]))
-            fits = [fit_programs(center_ids, tensor.fiber, tensor.n_types, 2 * len(channels.names),
-                    cfg, rng, balance_groups=balance, exclude_empty_groups=True) for _ in range(cfg.repeats)]
-            return fits, excluded
+            seed = int(np.random.SeedSequence([cfg.seed, int(coarse_id)]).generate_state(1)[0])
+            fits, rank_evaluation = fit_repeated(center_ids, tensor.fiber, tensor.n_types,
+                2 * len(channels.names), cfg, seed, balance)
+            return fits, excluded, rank_evaluation
 
-        fits, excluded = _cached(directory / f"fits_{coarse_id}.pkl", fit_models)
-        if any(fit is None for fit in fits):
+        fits, excluded, rank_evaluation = _cached(directory / f"fits_{coarse_id}.pkl", fit_models)
+        if not fits:
             cells.iloc[center_ids, cells.columns.get_loc("reference_status")] = "no_communication_signal"
             cells.iloc[center_ids, cells.columns.get_loc("abnormality")] = "no_communication_signal"
             cells.iloc[center_ids, cells.columns.get_loc("niche")] = f"C{coarse_id}.no_signal"
@@ -351,17 +318,19 @@ def fit_control_case(counts, genes, cell_ids, coordinates_um, cell_types, metada
             activity = fit.factors[0]
             scores = np.zeros((len(ids), activity.shape[1]), dtype=activity.dtype)
             scores[center_ids] = activity
-            pooled_fit = pool_programs(pool, pool_weights, types, scores, cfg.aggregation == "mean-mean")
+            representations = {mode: communication_features(pool, pool_weights, types, scores, center_ids, mode)
+                               for mode in ("A", "H1", "H2", "H3")}
+            pooled_fit = representations[cfg.representation]
             analysis = _reference_analysis(center_ids, composition[center_ids], pooled_fit,
                        conditions[center_ids], donors[center_ids], comp, cfg, cfg.seed + int(coarse_id))
-            return pooled_fit, analysis
+            return pooled_fit, analysis, representations
 
-        pooled, result = analyze_fit(fits[best])
+        pooled, result, representations = analyze_fit(fits[best])
         stability = []
         for i, fit in enumerate(fits):
             if i == best:
                 continue
-            _, other = analyze_fit(fit)
+            _, other, _ = analyze_fit(fit)
             valid = (result["labels"] != "no_reference") & (other["labels"] != "no_reference")
             stability.append(dict(repeat=i, functional_ari=adjusted_rand_score(result["functional"], other["functional"]),
                                   remodeling_ari=adjusted_rand_score(result["labels"][valid], other["labels"][valid]) if valid.sum() >= 2 else np.nan,
@@ -373,11 +342,11 @@ def fit_control_case(counts, genes, cell_ids, coordinates_um, cell_types, metada
         cells.iloc[center_ids, cells.columns.get_loc("functional_niche")] = [f"C{coarse_id}.F{x}" for x in result["functional"]]
         cells.iloc[center_ids, cells.columns.get_loc("remodeling_niche")] = [f"C{coarse_id}.{x}" if x != "no_reference" else "no_reference" for x in result["labels"]]
         matches.extend(result.pop("matches"))
-        contexts[int(coarse_id)] = dict(cell_ids=ids[center_ids].tolist(), features=pooled,
+        contexts[int(coarse_id)] = dict(cell_ids=ids[center_ids].tolist(), features=pooled, representations=representations,
                                         pool_weights=pool_weights, fits=fits, cell_types=names,
                                         lr_pairs=channels.names, signaling_types=channels.signaling_types,
                                         best_repeat=best, stability=stability,
-                                        selection_scores=selection_scores, selection_alpha=alpha, selection_beta=beta,
+                                        selection_scores=selection_scores, selection_alpha=alpha, selection_beta=beta, rank_evaluation=rank_evaluation,
                                         excluded_balance_groups=excluded,
                                         **result)
     match_frame = pd.DataFrame(matches, columns=["center_row", "reference_row", "distance", "weight"])

@@ -7,7 +7,9 @@ from scipy import sparse
 
 
 class Channels:
-    def __init__(self, counts, genes, lr):
+    def __init__(self, counts, genes, lr, preprocessing="commuspace", quantile=0.95):
+        if preprocessing not in {"commuspace", "cp10k"} or not 0 < quantile <= 1:
+            raise ValueError("Invalid expression preprocessing or quantile")
         data = sparse.csr_matrix(counts, dtype=np.float32)
         if np.any(~np.isfinite(data.data)) or np.any(data.data < 0):
             raise ValueError("Counts must be finite and nonnegative")
@@ -35,6 +37,14 @@ class Channels:
             raise ValueError("No complete ligand–receptor pairs on panel")
         total = np.asarray(data.sum(axis=1)).ravel()
         data = data.multiply(10000 / np.maximum(total[:, None], 1)).tocsc()
+        data.eliminate_zeros()
+        if preprocessing == "commuspace":
+            data.data = np.log1p(data.data)
+            for j in range(data.shape[1]):
+                column = data.data[data.indptr[j]:data.indptr[j + 1]]
+                if len(column):
+                    high = np.quantile(column, quantile)
+                    np.minimum(column / high, 1, out=column)
         arms = sorted({a for pair in pairs for a in pair})
         columns = []
         for parts in arms:

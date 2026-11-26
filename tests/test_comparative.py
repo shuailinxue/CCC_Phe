@@ -54,7 +54,7 @@ def test_stored_tensor_preserves_type_specific_mask_and_observed_zeros():
                        "signaling_type": ["Contact", "Secreted"]})
     channels = Channels(counts, genes, lr)
     cfg = Settings()
-    original = CellTensor(graph, np.array([0, 1, 2]), channels, cfg.sigma_um, settings=cfg)
+    original = CellTensor(graph, np.array([0, 1, 2]), channels, cfg)
     stored = _StoredTensor(np.arange(3), original, ["a", "b", "c"])
     for cell in range(3):
         categories, values, support = original.fiber(cell)
@@ -86,12 +86,20 @@ def test_end_to_end_shared_factors_and_cache(tmp_path, monkeypatch):
     assert len(result.cells) == n and len(result.contexts[0]["fits"]) == 2
     assert result.contexts[0]["fits"][0].metrics["balance_groups"] == 3
     assert result.contexts[0]["features"].shape[0] == n
+    assert set(result.contexts[0]["representations"]) == {"A", "H1", "H2", "H3"}
+    np.testing.assert_allclose(
+        result.contexts[0]["representations"]["H3"].reshape(n, 2, 1).sum(axis=1),
+        result.contexts[0]["representations"]["H1"], atol=1e-6)
     np.testing.assert_allclose(result.donor_proportions.groupby(["donor_id", "coarse"]).fraction.sum(), 1)
     assert (result.cache_path / "tensor_0.pkl").exists()
     assert (result.cache_path / "composition.pkl").exists()
     assert list(result.cache_path.glob("result_*.pkl"))
     assert result.contexts[0]["best_repeat"] == np.argmin(result.contexts[0]["selection_scores"])
     assert len(result.contexts[0]["stability"]) == 1
+    from dataclasses import replace
+    changed = fit_control_case(*args, cache_dir=tmp_path,
+                               settings=replace(spatial, tensor_log1p=True), comparative=comp)
+    assert changed.cache_path != result.cache_path
     assert {"functional_niche", "remodeling_niche"}.issubset(result.cells.columns)
     with monkeypatch.context() as check:
         check.setattr(module, "physical_graph", lambda *args: pytest.fail("cache was not reused"))
@@ -100,7 +108,7 @@ def test_end_to_end_shared_factors_and_cache(tmp_path, monkeypatch):
     with monkeypatch.context() as check:
         check.setattr(module, "physical_graph", lambda *args: pytest.fail("spatial graph recomputed"))
         check.setattr(module, "composition_partition", lambda *args: pytest.fail("composition recomputed"))
-        check.setattr(module, "fit_programs", lambda *args, **kwargs: pytest.fail("CP recomputed"))
+        check.setattr(module, "fit_repeated", lambda *args, **kwargs: pytest.fail("CP recomputed"))
         check.setattr(module._StoredTensor, "__init__", lambda *args: pytest.fail("tensor recomputed"))
         changed = fit_control_case(*args, cache_dir=tmp_path, settings=spatial,
                                    comparative=ComparativeSettings(k=2, balance="donor"))
@@ -140,8 +148,8 @@ def test_best_repeat_uses_shared_objective_not_first_initialization():
                                "calibrated_beta": 0, "a_orthogonality_loss": penalty,
                                "bc_orthogonality_loss": 0})
     best, scores, alpha, _ = _select_repeat([fit(2, .1, 2), fit(.5, .2, 1), fit(3, .3, 1)])
-    assert best == 1 and alpha == pytest.approx(.2)
-    assert scores[1] == pytest.approx(.7)
+    assert best == 1 and alpha == 0
+    assert scores[1] == pytest.approx(.5)
 
 
 def test_no_observation_donor_is_recorded_without_stopping(tmp_path, monkeypatch):

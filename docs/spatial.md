@@ -33,24 +33,25 @@ in the `counts` layer by default, or use `--layer X`. Coordinate tables use
    Within each specimen, use the midpoints of retained edges linking the two
    classes. Keep cells of either class within `interface_um` of their nearest
    midpoint. Specimens with no connecting edges contribute no interface centers.
-4. **CCC tensor.** A center's neighbors are other cells of its specimen within
-   the radius of each LR signaling type, independent of coarse class or interface.
-   Compute center-sender and center-receiver LR scores using panel-total CP10k,
-   complete complexes, the geometric-mean expression score and Gaussian
-   distance weights. A neighbor type with zero expression is an observed
-   zero. A type absent within that LR's radius contributes no CP loss.
-5. **CP and clustering.** Each repeat starts from a different nonnegative
-   random initialization and jointly fits A (center activity), B (neighbor
-   type loading), and C (directed LR loading) using every center in the analysis
-   object. Pool the fitted A within `window_um` using only that object's cells,
-   including the center. Consensus Leiden and adjusted Rand stability use
-   these pooled features as before.
+4. **CCC tensor.** Neighbors are within the signaling-type radius and the same
+   specimen, regardless of coarse class. Bidirectional LR scores are averaged
+   over eligible neighbors of each type, with no distance decay. A present
+   neighbor type with zero expression is observed zero; absence is masked.
+5. **CP and clustering.** Each repeat fits A, B and C on all centers. The
+   default H1 representation Gaussian-averages A over the current object's
+   `window_um` neighborhood, including the center. Consensus Leiden is unchanged.
 
-| `aggregation` | CCC weights | Pooled Program denominator |
-|---|---|---|
-| `sum-sum` | Gaussian-weighted sum for each neighbor type | Gaussian weight over all in-object cells in the window |
-| `mean-sum` | Gaussian-weighted mean within each neighbor type | Same original denominator |
-| `mean-mean` (default) | Gaussian-weighted mean within each neighbor type | Gaussian weight within each in-object cell type |
+Expression defaults to `expression_preprocessing="commuspace"`: CP10K, log1p,
+then clip and scale each gene by its nonzero 95th percentile. The original
+CP10K scoring is available as `"cp10k"`; complexes use the geometric mean.
+`tensor_log1p=True` optionally transforms the resulting tensor. Its default is
+false to avoid an additional compression after the default expression transform.
+
+`representation` selects `"A"`, `"H1"` (default), `"H2"`, or `"H3"`.
+H2 concatenates per-cell-type weighted means; H3 uses the total neighborhood
+weight as denominator for every cell type, so its type contributions sum to H1.
+Only cells within the same analysis object provide A for pooling; CCC neighbors
+can still be outside it. All four representations are saved for each repeat.
 
 The dense features passed to the existing Leiden graph use zero placeholders
 for absent types. The exported support mask distinguishes these placeholders
@@ -68,20 +69,13 @@ programs. Centers without any observed pairs have zero activity.
 Each epoch streams every center in computational batches. The loss uses sparse
 matrix multiplication and the LR factor Gram matrix to account for predicted
 values at observed zeros without materializing a dense reconstruction.
-After summing reconstruction gradients across batches, compute the two
-orthogonality gradients and take one Adam step followed by projection onto the
-nonnegative orthant. Computational batches share B and C.
-
-Normalize each factor column to unit L2 norm for the penalties. The A term
-is the sum of squared off-diagonal entries of the full normalized A Gram
-matrix. The BC term uses the elementwise product of the normalized B and C Gram
-matrices, which is the Gram of the complete joint patterns. Both terms are
-differentiated during training. Each weight is its configured multiplier times
-initial reconstruction loss divided by the corresponding initial penalty.
-The effective coefficient is zero when that penalty is numerically zero
-(at most 1e-8). Track relative improvement in the total objective and retain
-the factors from the best epoch. On export, B and C are column-normalized and
-their scale and the data RMS are absorbed into A.
+After summing reconstruction gradients across batches, compute the BC joint
+orthogonality gradient and take one Adam step followed by nonnegative projection.
+There is no A orthogonality penalty. The BC penalty uses the elementwise product
+of the column-normalized B and C Gram matrices. Its coefficient `cp_beta` is
+calibrated to the initial reconstruction and penalty magnitudes, with zero
+penalty if the initial penalty is zero. Best-epoch factors and loss history are
+saved. B and C are column-normalized on export, with their scales absorbed in A.
 
 The default batch cap is 128 centers. CUDA reduces this cap based on current
 free memory and a conservative estimate that includes observed fibers, factors
@@ -101,23 +95,24 @@ being amplified by an arbitrary near-zero denominator.
 ## Parameters
 
 `window_um=50`, `contact_um=50`, `interface_um=25`, `sigma_um=20`,
-`enrichment_permutations=1000`, `delaunay_max_um=None` (use `contact_um`),
-`iterations=500` (maximum; early stopping remains active), and
-`aggregation="mean-mean"`.
+`expression_preprocessing="commuspace"`, `expression_quantile=0.95`,
+`tensor_log1p=False`, and `representation="H1"`.
+Contact and ECM radii are 20 μm; Secreted is 100 μm; Unknown and Ambiguous use
+`contact_um=50`. Counts and effective weights are equal because communication
+neighbors are equally weighted. Gaussian weights remain in local A aggregation.
 
-CCC neighborhoods are shared by signaling type: `contact_radius_um=20`,
-`secreted_radius_um=100`, and `ecm_radius_um=20`. The corresponding Gaussian
-scales are `contact_sigma_um=20`, `secreted_sigma_um=40`, and
-`ecm_sigma_um=20`. Unknown and ambiguous pairs retain `contact_um` and
-`sigma_um`. Set any of these fields in the JSON supplied to `--settings`, or
-pass them to Python `Settings(...)`. Neighbor counts and weight sums by type
-are stored in `neighbor_support.npz`; masks for reconstruction are specific to
-each signaling type, and an observed zero remains distinct from a missing type.
+CP defaults are `rank_mode="manual"`, `rank=12`, `iterations=500`, `repeats=5`,
+`cp_beta=0.02`, `cp_learning_rate=0.03`, `cp_tol=1e-4`, `cp_patience=5`.
+`rank_mode="auto"` evaluates `rank_candidates=(4,8,12,16,24)` using all
+centers and repeated initializations. For each candidate, mean reconstruction
+error and pairwise Hungarian-matched cosine similarity of complete BC patterns
+are recorded. The interior rank maximizing normalized chord-elbow improvement
+multiplied by consistency is selected. An invalid candidate range or a curve
+without an interior positive elbow raises an error; set rank manually in that case.
 
-CP defaults are `rank=12`, `iterations=40` maximum optimizer steps,
-`repeats=5`, `cp_learning_rate=0.03`, `cp_alpha=0.02`, `cp_beta=0.02`,
-`cp_tol=1e-4` and `cp_patience=5`. Set either multiplier to zero to disable
-its term independently. Set both to zero for ordinary masked nonnegative CP.
+For example: `--rank-mode auto --rank-candidates 4 8 12 16 24`, or
+`--rank 12 --representation H3 --expression-preprocessing cp10k --tensor-log1p`.
+All settings may also be supplied through Python `Settings(...)` or a JSON file.
 
 `cp_device="auto"` prefers CUDA device 2 when at least three CUDA devices
 are visible, otherwise the first visible CUDA device, with CPU fallback if
@@ -133,10 +128,12 @@ in a JSON file passed to `--settings`. Omit the retired `block_um` and
 - `cells.tsv` contains only centers fitted in the requested analysis.
   `channels.tsv` records fitted Program loadings rather than causal evidence.
 - `neighbor_support.npz` contains aligned cell IDs, type names, contact counts
-  and effective Gaussian weights for the entire physical contact neighborhood.
+  and effective equal weights for the entire physical contact neighborhood.
   `program_support_*.npz` holds in-object pooling weights and type presence.
-- `programs_*_repeat*.npz` retains the cell rows and IDs, B and C loadings,
-  focal activity A and pooled activity for each repeat.
+- `tensor_*.npz` and `tensor_mask_*.npz` contain sparse values, aligned cells,
+  signaling-specific structural masks, radii and channel indices.
+- `rank_evaluation_*.json` records reconstruction, consistency and elbow scores.
+- `programs_*_repeat*.npz` contains B, C and all A/H1/H2/H3 features per repeat.
 - `cp_losses_*.tsv` and `cp_losses_*.png` record loss trajectories.
   `cp_metrics_*.tsv` records calibrated weights, best epoch, maximum off-diagonal
   cosine for A and BC, counts of centers and observed entries, and runtime.

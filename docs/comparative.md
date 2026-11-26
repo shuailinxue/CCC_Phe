@@ -52,12 +52,16 @@ retained; they are descriptive, not evidence that a disease state is new.
 
 Each coarse class has one joint CP fit per repeat. Repeats have different
 initializations and independently calibrated regularization weights. To compare
-objectives consistently, selection uses the median effective alpha and beta
-across repeats and evaluates each retained solution with these shared weights;
+objectives consistently, selection uses the median effective BC penalty weight
+across repeats and evaluates each retained solution with that shared weight;
 the lowest score is the main result. `contexts` records the selected repeat,
 weights, scores and adjusted Rand indices comparing the functional and
 remodeling labels across repeats. A remodeling comparison reports the number of
 cells that have reference matches in both repeats.
+The shared spatial settings also control expression preprocessing, optional
+tensor log1p, manual/automatic rank and A/H1/H2/H3 representation. The default
+H1 and the optional alternatives use the same coarse-class pooling boundary;
+all four representations are retained for the selected repeat.
 
 The functional labels cluster actual H using the existing consensus algorithm.
 Remodeling labels independently cluster the positive and negative parts of

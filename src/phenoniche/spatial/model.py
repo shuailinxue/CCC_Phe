@@ -279,7 +279,7 @@ class SpatialNiches:
             raise ValueError(
                 "Count matrix dimensions do not match cell/gene identifiers"
             )
-        ch = Channels(counts, pd.Index(genes), lr)
+        ch = Channels(counts, pd.Index(genes), lr, cfg.expression_preprocessing, cfg.expression_quantile)
         max_radius = max(cfg.contact_um, cfg.contact_radius_um, cfg.secreted_radius_um, cfg.ecm_radius_um)
         contacts = graph if cfg.window_um == max_radius else physical_graph(xyz, samples, max_radius)
         if interface is None:
@@ -369,14 +369,12 @@ class SpatialNiches:
             "lr_loading",
         ]
         support = []
-        for radius, sigma in ((cfg.contact_radius_um, cfg.contact_sigma_um),
-                              (cfg.secreted_radius_um, cfg.secreted_sigma_um),
-                              (cfg.ecm_radius_um, cfg.ecm_sigma_um),
-                              (cfg.contact_um, cfg.sigma_um)):
+        for radius in (cfg.contact_radius_um, cfg.secreted_radius_um,
+                       cfg.ecm_radius_um, cfg.contact_um):
             edges = contacts.tocoo()
             keep = edges.data <= radius
             eligible = sparse.csr_matrix((edges.data[keep], (edges.row[keep], edges.col[keep])), shape=contacts.shape)
-            support.append(contact_support(eligible, selected, types, sigma))
+            support.append(contact_support(eligible, selected, types))
         return cls(
             cells,
             preview,
@@ -412,6 +410,13 @@ class SpatialNiches:
             )
             ids = self.coarse_analysis.cells.index.to_numpy(dtype=str)
             for (a, b), part in self.programs.items():
+                tensor = part["tensor"]
+                sparse.save_npz(tmp / f"tensor_{a}_{b}.npz", tensor.values)
+                np.savez_compressed(tmp / f"tensor_mask_{a}_{b}.npz",
+                    cell_ids=ids[part["ids"]], mask=tensor.mask,
+                    radii_um=np.array([group[1] for group in tensor.groups]),
+                    **{f"channels_{i}": group[0] for i, group in enumerate(tensor.groups)})
+                (tmp / f"rank_evaluation_{a}_{b}.json").write_text(json.dumps(part["rank_evaluation"], indent=2))
                 np.savez_compressed(
                     tmp / f"program_support_{a}_{b}.npz",
                     cell_ids=ids[part["ids"]], weights=part["pool_weights"],
@@ -432,6 +437,7 @@ class SpatialNiches:
                         lr=lr,
                         focal_activity=activity,
                         neighborhood_activity=feature,
+                        **part["representations"][rep],
                     )
 
 

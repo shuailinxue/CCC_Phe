@@ -29,7 +29,13 @@ def main():
     parser.add_argument("--interface-um", type=float)
     parser.add_argument("--delaunay-max-um", type=float)
     parser.add_argument("--enrichment-permutations", type=int)
-    parser.add_argument("--aggregation", choices=("sum-sum", "mean-sum", "mean-mean"))
+    parser.add_argument("--representation", choices=("A", "H1", "H2", "H3"))
+    parser.add_argument("--expression-preprocessing", choices=("commuspace", "cp10k"))
+    parser.add_argument("--expression-quantile", type=float)
+    parser.add_argument("--tensor-log1p", action="store_true", default=None)
+    parser.add_argument("--rank-mode", choices=("manual", "auto"))
+    parser.add_argument("--rank", type=int)
+    parser.add_argument("--rank-candidates", type=int, nargs="+")
     parser.add_argument("--composition-graph-cache", type=Path)
     parser.add_argument("--cp-device", help="auto, cpu, or cuda[:index]")
     parser.add_argument("--cp-batch-size", type=int, help="Maximum cells per computational batch")
@@ -62,8 +68,9 @@ def main():
     )
     overrides = {
         name: getattr(args, name) for name in (
-            "interface_um", "delaunay_max_um", "enrichment_permutations", "aggregation",
-            "cp_device", "cp_batch_size"
+            "interface_um", "delaunay_max_um", "enrichment_permutations", "representation",
+            "expression_preprocessing", "expression_quantile", "tensor_log1p", "rank_mode",
+            "rank", "rank_candidates", "cp_device", "cp_batch_size"
         ) if getattr(args, name) is not None
     }
     settings = replace(settings, **overrides)
