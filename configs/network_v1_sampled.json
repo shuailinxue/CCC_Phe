@@ -1,0 +1,1 @@
+{"rank":12,"k":4,"batch":32,"centers":512,"epochs":30,"min_epochs":12,"patience":3,"spacing":50,"local_steps":16,"niche_epochs":24,"tune_epochs":6,"local_ridge":0.04}

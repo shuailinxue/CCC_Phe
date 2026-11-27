@@ -150,3 +150,8 @@ leave-one-donor calibration, see [comparative mode](comparative.md).
 
 The independent V1 entry point is `scripts/phenomap_v1.py`. Its network cache,
 model, inference, and Pt73 configuration are described in [PhenoMap V1](phenomap_v1.md).
+
+The default direct-network refit is documented in [PhenoMap V1 network mixture](phenomap_network.md).
+
+For the sequential LR-prior, rank, evidence-scale and niche-count comparisons,
+see [PhenoMap V1 polishing](phenomap_polish.md).
