@@ -13,7 +13,14 @@ python -m pip install -e '.[dev]'
 python -m pytest
 ```
 
-## Run
+## Run PhenoMap V1
+
+Use `python scripts/phenomap_network.py --network CACHE --root OUTPUT` for
+full-slice niche fitting on a closed 50 µm observation cache. The defaults
+are R=12 and K=8. Compatible completed results are reused automatically.
+See the [V1 network and cache instructions](docs/phenomap_network.md).
+
+## Spatial CP workflow
 
 For a single specimen with raw counts in the `counts` layer, cell types in
 `obs["celltypes"]`, and micrometre coordinates in `obsm["spatial_um"]`:

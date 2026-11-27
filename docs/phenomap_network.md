@@ -1,6 +1,47 @@
 # PhenoMap V1 direct-network mixture
 
-The entry point is `scripts/phenomap_network.py`. It uses the existing V1
+## Full-slice default
+
+`scripts/phenomap_network.py` uses `configs/network_v1_full.json` by default.
+The vocabulary and communication features are ordered Sender × Receiver × LR.
+Composition and communication use the same closed 50 µm window around each
+cell. Both endpoints belong to the window and specimen. Only distinct cells
+within the LR-specific cutoff can communicate. The cutoffs are 20 µm for
+Contact and ECM, 100 µm for Secreted, and 50 µm for Unknown and Ambiguous.
+Distances are used for eligibility. Eligible receivers receive equal weight.
+
+An eligible sender–receiver-type–LR combination contributes one Hurdle trial
+per sender cell. Its activity is the sender ligand arm score times the mean
+receiver arm score across eligible receiver cells of that type, including
+zero receptor values. The dictionary keeps the closed-window weighting by
+local sender-type composition, support and LR reliability. The existing
+occurrence and positive log-intensity likelihoods are used to learn an
+independent dictionary and fit the joint composition–communication mixture.
+
+The default has R=12, K=8, seed 73, batch size 32, diversity weight 4 and
+communication temperature 1. Each center appears once per shuffled epoch,
+for 30 dictionary and 24 prototype epochs. Both stages finish at the last
+epoch. The historical sampling settings in the configuration preserve the
+recorded fit signature. Census fitting does not consult them.
+
+The command below verifies and reuses the completed ovarian fit, including
+its network and model source hashes, aligned cell IDs and both coverage
+records. With `--reuse-only`, an incompatible or missing fit raises an error.
+For a new full-slice input, provide a closed cache from
+`phenoniche.v1.storage.prepare` with `window=50` and `fraction=0` and omit
+`--reuse-only`. Checkpoints, local activity, results and epoch coverage
+are stored under a content-addressed directory inside the output root.
+
+```bash
+root=/home/nas3/biod/xueshuailin/CCC_Phe/results/spatialfusion_ovca/phenomap_polish
+python scripts/phenomap_network.py \
+  --network "$root/full_window_cache/network-03aef6c677034d3cc5b12452" \
+  --root "$root" --reuse-only
+```
+
+## Historical sampled benchmarks
+
+The historical entry point is `scripts/phenomap_network.py --sampled`. It uses the existing V1
 network schema and sufficient statistics. The old implementation and
 `scripts/phenomap_v1.py` remain available for reproducible comparisons.
 
@@ -54,7 +95,7 @@ The final test region is used only for reporting.
 ## Run and inspect
 
 ```bash
-python scripts/phenomap_network.py --network /path/to/cached/network \
+python scripts/phenomap_network.py --sampled --network /path/to/cached/network \
   --root /path/to/results/dataset/phenomap_network \
   --config configs/network_v1_sampled.json --device cuda:2
 ```

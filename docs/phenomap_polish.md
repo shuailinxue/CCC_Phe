@@ -120,7 +120,7 @@ formula. The LR graph is retained as metadata and an ablation, with zero
 regularizer weight in the defaults.
 
 The Pt73 default uses the A dictionary with a fixed communication temperature
-of 1 and K=4. The ovarian default uses R=12, a diversity coefficient of 4,
+of 1 and K=4. The historical ovarian selection uses R=12, a diversity coefficient of 4,
 temperature 1 and K=8. The two seed comparisons selected these settings on
 internal data. The third seed evaluates the frozen settings. Ablation
 checkpoints use seed 73. The held-out evaluation includes fit and dictionary

@@ -35,4 +35,4 @@ elif [[ "$seed" != 73 ]]; then
   extra=(--joint-only)
 fi
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
-exec "$PYTHON" -u scripts/phenomap_network.py --network "$net" --root "$root" --seed "$seed" --device "$device" --config configs/network_v1_sampled.json "${extra[@]}"
+exec "$PYTHON" -u scripts/phenomap_network.py --sampled --network "$net" --root "$root" --seed "$seed" --device "$device" --config configs/network_v1_sampled.json "${extra[@]}"

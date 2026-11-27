@@ -190,3 +190,26 @@ def test_raw_tissue_composition_with_matched_conditional_activity(tmp_path):
     cfg = Settings(k=2,rank=2,epochs=3,local_steps=4)
     m,_,_,_ = train(d,cfg,"cpu")
     assert adjusted_rand_score(np.arange(len(obs))//8%2,infer(m,d,"cpu")["niche"]) == 1
+
+
+def test_full_slice_network_fits_every_center_and_reuses_checkpoints(tissue, tmp_path):
+    from phenoniche.v1.polish import Options
+    from phenoniche.v1.polish_fit import fit_full_slice
+    from phenoniche.v1.probabilistic import Config
+
+    data, _, _ = tissue
+    cfg = Config(rank=2, k=2, batch=30, epochs=2, min_epochs=1, niche_epochs=2, local_steps=2)
+    options = Options(diversity=4.)
+    out = fit_full_slice(data.path, tmp_path, cfg, options, 1., "cpu")
+    for stage in ("dictionary", "niche"):
+        with np.load(out / f"{stage}_coverage.npz") as coverage:
+            np.testing.assert_array_equal(coverage["ids"], data.ids)
+            np.testing.assert_array_equal(coverage["visits"], np.full(len(data.ids), 2))
+    with np.load(out / "cells.npz") as cells:
+        assert cells["train"].all()
+        assert not cells["test"].any()
+        assert cells["activity"].shape == (len(data.ids), 2)
+    checkpoint = out / "dictionary.pt"
+    written = checkpoint.stat().st_mtime_ns
+    assert fit_full_slice(data.path, tmp_path, cfg, options, 1., "cpu", reuse_only=True) == out
+    assert checkpoint.stat().st_mtime_ns == written

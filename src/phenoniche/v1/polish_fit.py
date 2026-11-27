@@ -1,8 +1,10 @@
-"""Sequential validation-only dictionary and niche search."""
+"""Fit and reuse the full-slice V1, with historical validation utilities."""
 from dataclasses import asdict, replace
 from copy import deepcopy
 import json
 from pathlib import Path
+import time
+from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
@@ -16,7 +18,7 @@ from .polish import Options, StructuredDictionary, biological_graph
 from .polish_metrics import benchmark, gradient_parts, utility
 from .probabilistic import Config, batched, batch_data, infer_activity
 from .refit import activities, init_dictionary, initialize_niches, sampler_for, spatial_split
-from .storage import digest, key, lock, save_npz
+from .storage import Network, digest, key, lock, save_npz
 from .workflow import runtime
 
 
@@ -212,3 +214,310 @@ class Experiment:
         with lock(where):
             n,m=fit_niches(self.data,where,model,a,self.train,self.valid,cfg,temp,mode,self.baseline,self.device)
         return n,m,where
+
+
+class _ResidentWindows:
+    """Read the sparse window statistics on the fit device."""
+    def __init__(self,d,device):
+        self.device=device
+        def to(x):
+            return torch.as_tensor(x,device=self.device)
+        self.mass=to(d.mass).float()
+        self.support=to(d.support)
+        self.group=to(d.group)
+        self.ptr=to(d.ptr)
+        self.edges=to(d.edge)
+        self.values=to(np.ascontiguousarray(d.stats[:,:2]))
+        self.positions=torch.arange(int(np.diff(d.ptr).max()),device=self.device)
+        self.nt,self.nl=d.nt,d.nl
+        self.width=d.nt*d.nt*d.nl
+
+    def batch(self,ids):
+        support=self.support[ids][...,self.group].reshape(len(ids),self.width).float()
+        start=self.ptr[ids]
+        count=self.ptr[ids+1]-start
+        valid=self.positions[None,:]<count[:,None]
+        if self.positions.numel()==0:
+            zeros=torch.zeros_like(support)
+            return SimpleNamespace(s=support,c=zeros,logs=zeros,mass=self.mass[ids],
+                                   n=len(ids),nt=self.nt,nl=self.nl)
+        gather=(start[:,None]+self.positions).clamp_max(len(self.edges)-1)
+        destination=torch.where(valid,self.edges[gather].long(),self.width)
+        values=self.values[gather]*valid[:,:,None]
+        dense=torch.zeros((len(ids),self.width+1,2),device=self.device)
+        dense.scatter_(1,destination[:,:,None].expand(-1,-1,2),values)
+        c,logs=dense[:,:self.width].unbind(2)
+        return SimpleNamespace(s=support,c=c,logs=logs,mass=self.mass[ids],
+                               n=len(ids),nt=self.nt,nl=self.nl)
+
+
+class _FullSliceTrainer:
+    def __init__(self,resident,net,optimizer,local,stage,dictionary,cfg):
+        self.cfg=cfg
+        self.device=local.device
+        self.resident,self.net,self.opt,self.local=resident,net,optimizer,local
+        self.stage,self.dictionary=stage,dictionary
+        self.visits=torch.zeros(len(local),dtype=torch.int32,device=self.device)
+        self.one=torch.ones(cfg.batch,dtype=torch.int32,device=self.device)
+        self.static=torch.arange(cfg.batch,device=self.device)
+        self.stats=torch.zeros(5,dtype=torch.float64,device=self.device)
+        self.graphs={}
+
+    def step(self,ids,uniform=False):
+        b=self.resident.batch(ids)
+        f=self.dictionary.features(b)
+        if self.stage==1:
+            a=infer_activity(self.dictionary,f,self.cfg,self.local[ids],steps=6)
+            self.local[ids]=a
+            w=self.dictionary.weights()
+            occ,inten=self.dictionary.local_loss(f,a,w)
+            lr,div=self.dictionary.regularizers(w)
+            loss = ((occ + inten).mean() + .15 * w.mean()
+                    + .15 * (self.dictionary.base - self.dictionary.anchor).square().mean()
+                    + self.dictionary.options.lr_strength * lr
+                    + self.dictionary.options.diversity * div)
+            parts=(loss,occ.mean(),inten.mean(),lr,div)
+        else:
+            loss,terms=self.net.loss(b.mass,self.dictionary,f,uniform=uniform)
+            parts=(loss,*[v.mean() for v in terms])
+        self.opt.zero_grad(set_to_none=True)
+        loss.backward()
+        self.opt.step()
+        if self.stage==2:
+            with torch.no_grad():
+                self.net.activity.clamp_min_(0)
+        with torch.no_grad():
+            self.stats.add_(torch.stack(parts).detach().double()*len(ids))
+            self.visits.index_add_(0,ids,self.one[:len(ids)])
+
+    def graph(self,uniform):
+        # Warm up on a side stream, then restore the same initial state in-place.
+        self.static.copy_(torch.arange(self.cfg.batch,device=self.device))
+        net=deepcopy(self.net.state_dict())
+        local=self.local[:self.cfg.batch].clone()
+        visits=self.visits[:self.cfg.batch].clone()
+        stats=self.stats.clone()
+        opt=deepcopy(self.opt.state_dict())
+        stream=torch.cuda.Stream()
+        stream.wait_stream(torch.cuda.current_stream())
+        with torch.cuda.stream(stream):
+            for _ in range(3):
+                self.step(self.static,uniform)
+        torch.cuda.current_stream().wait_stream(stream)
+        with torch.no_grad():
+            self.net.load_state_dict(net)
+            self.local[:self.cfg.batch].copy_(local)
+            self.visits[:self.cfg.batch].copy_(visits)
+            self.stats.copy_(stats)
+            for group_now,group_saved in zip(self.opt.param_groups,opt['param_groups'],strict=True):
+                for param, ident in zip(group_now['params'],group_saved['params'],strict=True):
+                    for name,value in self.opt.state[param].items():
+                        saved=opt['state'].get(ident,{}).get(name)
+                        if torch.is_tensor(value):
+                            value.zero_() if saved is None else value.copy_(saved)
+        torch.cuda.synchronize()
+        graph=torch.cuda.CUDAGraph()
+        with torch.cuda.graph(graph):
+            self.step(self.static,uniform)
+        self.graphs[uniform]=graph
+        return graph
+
+    def epoch(self,order,uniform):
+        self.stats.zero_()
+        perm=torch.as_tensor(order,device=self.device)
+        end = len(order) // self.cfg.batch * self.cfg.batch
+        if self.device.type != "cuda" or not end:
+            for batch in batched(perm,self.cfg.batch):
+                self.step(batch,uniform)
+            return (self.stats/len(order)).cpu().tolist()
+        graph=self.graphs.get(uniform)
+        if graph is None:
+            graph=self.graph(uniform)
+        for start in range(0,end,self.cfg.batch):
+            self.static.copy_(perm[start:start+self.cfg.batch])
+            graph.replay()
+        if end<len(order):
+            self.step(perm[end:],uniform)
+        return (self.stats/len(order)).cpu().tolist()
+
+
+def _fit_full_stage(stage,resident,net,dictionary,local,epochs,cfg,out):
+    device=local.device
+    lr=.012 if stage==1 else .04
+    opt=torch.optim.Adam(net.parameters(),lr=lr,fused=device.type=="cuda",capturable=device.type=="cuda")
+    trainer=_FullSliceTrainer(resident,net,opt,local,stage,dictionary,cfg)
+    resume=out/f'stage{stage}_resume.pt'
+    rng=np.random.default_rng(cfg.seed)
+    start=0
+    history=[]
+    if resume.exists():
+        saved=torch.load(resume,map_location=device,weights_only=True)
+        net.load_state_dict(saved['state'])
+        opt.load_state_dict(saved['optimizer'])
+        trainer.local.copy_(saved['local'])
+        trainer.visits.copy_(saved['visits'])
+        history=saved['history']
+        start=saved['epoch']
+        rng.bit_generator.state=json.loads(saved['rng'])
+    for i in range(start,epochs):
+        before=time.monotonic()
+        metrics=trainer.epoch(rng.permutation(len(local)),uniform=stage==2 and i<3)
+        if not np.isfinite(metrics).all():
+            raise ValueError("Nonfinite loss in full-slice fit")
+        minimum,maximum=int(trainer.visits.min()),int(trainer.visits.max())
+        if minimum!=i+1 or maximum!=i+1:
+            raise RuntimeError(f'Unbalanced coverage at epoch {i+1}: {minimum}, {maximum}')
+        history.append(dict(epoch=i+1,total=metrics[0],component_1=metrics[1],component_2=metrics[2],
+                            component_3=metrics[3],component_4=metrics[4],visits_min=minimum,visits_max=maximum))
+        save_checkpoint(resume,state=net.state_dict(),optimizer=opt.state_dict(),local=local,
+                        visits=trainer.visits,epoch=i+1,history=history,rng=json.dumps(rng.bit_generator.state))
+        print(f'Stage {stage} epoch {i+1}/{epochs} • {time.monotonic()-before:.1f}s • loss {metrics[0]:.4f}',flush=True)
+    pd.DataFrame(history).to_csv(out/f'stage{stage}_loss.tsv',sep='\t',index=False)
+    return trainer.visits.cpu().numpy()
+
+
+@torch.no_grad()
+def _full_activity(data,resident,dictionary,cfg,out,device):
+    path=out/"activity.npz"
+    blocks=out/"activity_blocks"
+    if not path.exists():
+        blocks.mkdir(exist_ok=True)
+        chunks=[]
+        for start in range(0,len(data.ids),8192):
+            stop=min(start+8192,len(data.ids))
+            block=blocks/f"{start:08d}.npz"
+            if not block.exists():
+                values=[]
+                for ix in batched(torch.arange(start,stop,device=device),128):
+                    batch=resident.batch(ix)
+                    value=infer_activity(dictionary,dictionary.features(batch),cfg,steps=2*cfg.local_steps)
+                    values.append(value.cpu().numpy())
+                save_npz(block,ids=data.ids[start:stop],activity=np.concatenate(values))
+            with np.load(block,allow_pickle=False) as z:
+                np.testing.assert_array_equal(z["ids"],data.ids[start:stop])
+                chunks.append(z["activity"])
+        save_npz(path,ids=data.ids,activity=np.concatenate(chunks))
+    with np.load(path,allow_pickle=False) as z:
+        np.testing.assert_array_equal(z["ids"],data.ids)
+        return z["activity"]
+
+
+def _full_identity(network,cfg,options,temperature):
+    from . import model, network_workflow, networks, polish, probabilistic, refit, storage
+    from phenoniche.spatial import channels
+
+    manifest=network/"manifest.json"
+    schema=network/"schema.npz"
+    observed=json.loads(manifest.read_text())
+    radii={"Contact":20.,"ECM":20.,"Secreted":100.,"Ambiguous":50.,"Unknown":50.}
+    expected_code={Path(m.__file__).name:digest(m.__file__) for m in (storage,networks,channels)}
+    if (observed.get("window")!=50 or observed.get("radii")!=radii or observed.get("holdout")!=0
+        or observed.get("null_seed") is not None or observed.get("source_code")!=expected_code):
+        raise ValueError("Expected a closed 50 µm network cache from the full, unpermuted slice")
+    with np.load(schema,allow_pickle=False) as z:
+        if (float(z["window"])!=50 or not len(z["ids"]) or not z["train"].all() or z["test"].any()
+            or not np.array_equal(z["radii"][z["group"]], [radii[x] for x in z["signaling"]])):
+            raise ValueError("Invalid full-slice cache schema")
+    return dict(network=digest(manifest),schema=digest(schema),config=asdict(cfg),
+                options=asdict(options),temperature=temperature,
+                model_source={m.__name__:digest(m.__file__) for m in
+                              (polish,probabilistic,refit,network_workflow,storage,model)})
+
+
+def _verify_full_run(path,network,cfg,identity):
+    if not (path/"complete").is_file():
+        raise ValueError(f"Incomplete full-slice fit: {path}")
+    recorded=json.loads((path/"manifest.json").read_text())
+    if any(recorded.get(k)!=v for k,v in identity.items()):
+        raise ValueError(f"Full-slice fit provenance mismatch: {path}")
+    for name in ("dictionary.pt","niche.pt","programs.npz","niches.npz","metrics.json"):
+        if not (path/name).is_file():
+            raise ValueError(f"Missing full-slice result: {path/name}")
+    dictionary = torch.load(path/"dictionary.pt", map_location="cpu", weights_only=True)["state"]
+    niche = torch.load(path/"niche.pt", map_location="cpu", weights_only=True)
+    if (dictionary["loading"].shape[1] != cfg.rank or niche["state"]["activity"].shape != (cfg.k, cfg.rank)
+        or niche["mode"] != "joint" or niche["temperature"] != identity["temperature"]):
+        raise ValueError("Full-slice checkpoint settings disagree with its manifest")
+    with np.load(network/"schema.npz",allow_pickle=False) as schema, np.load(
+        path/"cells.npz",allow_pickle=False
+    ) as cells:
+        ids=schema["ids"]
+        for name in ("ids","xyz","train","test"):
+            np.testing.assert_array_equal(cells[name],schema[name])
+        if cells["activity"].shape!=(len(ids),cfg.rank) or cells["soft"].shape!=(len(ids),cfg.k):
+            raise ValueError("Full-slice results have a different rank or K")
+    for stage,epochs in (("dictionary",cfg.epochs),("niche",cfg.niche_epochs)):
+        with np.load(path/f"{stage}_coverage.npz",allow_pickle=False) as coverage:
+            np.testing.assert_array_equal(coverage["ids"],ids)
+            if coverage["visits"].shape!=ids.shape or not (coverage["visits"]==epochs).all():
+                raise ValueError(f"Incomplete {stage} visits")
+    return path
+
+
+def fit_full_slice(network,root,cfg,options,temperature,device,reuse_only=False):
+    """Reuse an aligned census fit, otherwise fit all cells without a split."""
+    from .network_workflow import niche_from
+
+    if options.lr_strength != 0 or not np.isfinite(temperature) or temperature <= 0:
+        raise ValueError("Full-slice V1 requires zero LR-prior strength and a positive temperature")
+    network,root=Path(network),Path(root)
+    identity=_full_identity(network,cfg,options,temperature)
+    completed=[]
+    for path in sorted(root.glob("fullfit-*/complete")):
+        manifest=path.parent/"manifest.json"
+        if manifest.is_file():
+            recorded=json.loads(manifest.read_text())
+            if all(recorded.get(k)==v for k,v in identity.items()):
+                completed.append(path.parent)
+    if completed:
+        if len(completed)!=1:
+            raise ValueError("Multiple compatible full-slice fits in the output root")
+        return _verify_full_run(completed[0],network,cfg,identity)
+    if reuse_only:
+        raise ValueError("No compatible completed full-slice fit")
+    device=torch.device(device)
+    if device.type=="cuda":
+        torch.cuda.set_device(device)
+    meta=dict(**identity,data_access="all centers once per epoch",stopping="fixed final epoch",
+              source=digest(__file__),runtime=runtime(str(device)))
+    out=root/("fullfit-"+key(meta))
+    out.mkdir(parents=True,exist_ok=True)
+    with lock(out):
+        if (out/"complete").is_file():
+            return _verify_full_run(out,network,cfg,identity)
+        (out/"manifest.json").write_text(json.dumps(meta,indent=2))
+        data=Network(network)
+        ids=np.arange(len(data.ids))
+        resident=_ResidentWindows(data,device)
+        dictionary_path=out/"dictionary.pt"
+        if not dictionary_path.is_file():
+            checkpoint=out/"stage1_resume.pt"
+            if checkpoint.is_file():
+                state=torch.load(checkpoint,map_location=device,weights_only=True)["state"]
+                dictionary=StructuredDictionary(state["anchor"],state["support"],state["positive"],cfg.rank,options)
+            else:
+                init=init_dictionary(data,ids,cfg,device)
+                dictionary=StructuredDictionary(init.anchor,init.support,init.positive,cfg.rank,options)
+                dictionary.load_state_dict(init.state_dict())
+            local=torch.ones((len(ids),cfg.rank),device=device)
+            visits=_fit_full_stage(1,resident,dictionary,dictionary,local,cfg.epochs,cfg,out)
+            save_npz(out/"dictionary_coverage.npz",ids=data.ids,visits=visits)
+            save_checkpoint(dictionary_path,state=dictionary.state_dict())
+            del local
+        dictionary=load_dictionary(dictionary_path,cfg,options,device)
+        activity=_full_activity(data,resident,dictionary,cfg,out,device)
+        niche_path=out/"niche.pt"
+        if not niche_path.is_file():
+            niche=initialize_niches(data,ids,activity,"joint",temperature,cfg,device,cfg.seed)
+            local=torch.as_tensor(activity,device=device)
+            visits=_fit_full_stage(2,resident,niche,dictionary,local,cfg.niche_epochs,cfg,out)
+            save_npz(out/"niche_coverage.npz",ids=data.ids,visits=visits)
+            save_checkpoint(niche_path,state=niche.state_dict(),temperature=temperature,mode="joint")
+        niche=niche_from(torch.load(niche_path,map_location=device,weights_only=True),cfg,data.nt,device)
+        del resident
+        if device.type=="cuda":
+            torch.cuda.empty_cache()
+        metrics=export(data,dictionary,niche,activity,replace(cfg,batch=128),device,out)
+        (out/"metrics.json").write_text(json.dumps(metrics,indent=2))
+        (out/"complete").touch()
+    return out
