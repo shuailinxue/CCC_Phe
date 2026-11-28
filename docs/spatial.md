@@ -145,3 +145,34 @@ The existing lung analysis notebook is on NAS under
 
 For joint control–case analysis with shared communication programs and
 leave-one-donor calibration, see [comparative mode](comparative.md).
+
+## Xenium OVCA Harmonics baseline
+
+The separate NAS notebook `Xenium_5K_OVCA_Harmonics_K8_全切片.ipynb` uses the
+same full-slice `processed_OVCA.h5ad` as the PhenoMap V1 notebook. The inputs
+are cell IDs, `obsm["spatial"]` in µm and author `obs["major_celltype"]`
+annotations, including `Unassigned`. It runs YangLabHKUST Harmonics at
+revision `0ad3dba17f5787f795ae762c20cc11b788a5bf5a` with the default joint
+graph (three Delaunay hops, shortest 99% of Delaunay edges, completion to 20
+neighbors, uniform weights), standardized PCA and 20 initial k-means clusters
+(seed 73). Weighted hierarchical JSD matching stops at eight and
+`select_solution(n_niche=8)` selects that cut. The upstream graph, PCA,
+k-means and matching run on CPU.
+
+`results/spatialfusion_ovca/harmonics/` on NAS holds the input-aligned
+`neighborhoods-*.npz` composition cache and `k8-*.npz` solution with niche
+IDs, counts and type distributions. Both store ordered cell IDs and hashed
+input, settings, upstream source and dependency provenance for reload.
+
+The notebook also shows niche composition from assigned cells' author labels,
+composition similarity (`1 - total variation`), an all-cell UMAP of the fitted
+Harmonics neighborhood compositions, and niche co-location. UMAP uses exhaustive
+double-precision Euclidean 20-neighbor search on physical GPU 2, followed by seeded CPU layout
+with PCA initialization, seed 73 and `min_dist=0.2`. Co-location uses Harmonics
+Delaunay edges at the 99th distance percentile. Within-niche edges are excluded.
+For each directed niche pair, the notebook reports its share of the source
+niche's cross-niche edge ends. Enrichment uses two-sided Fisher tests and
+Benjamini–Yekutieli correction across the 56 directed pairs, with thresholds
+`q <= 0.05`, `log2FC >= 1` and edge share `>= 0.01`. This is a single-slice
+edge-based analysis. The corresponding source data are stored with aligned cell
+IDs in `niche-summary-*.npz`, `composition-knn-*.npz`, and `composition-umap-*.npz`.
